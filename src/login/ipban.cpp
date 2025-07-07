@@ -16,20 +16,21 @@
 #include "loginlog.hpp"
 
 
-std::string ipban_db_hostname = "127.0.0.1";
-uint16 ipban_db_port = 3306;
-std::string ipban_db_username = "ragnarok";
-std::string ipban_db_password = "";
-std::string ipban_db_database = "ragnarok";
-std::string ipban_codepage = "";
-std::string ipban_table = "ipbanlist";
+// 連線到封鎖資料庫所需的設定
+std::string ipban_db_hostname = "127.0.0.1"; // 資料庫主機位址
+uint16 ipban_db_port = 3306;                 // 連接埠號
+std::string ipban_db_username = "ragnarok"; // 使用者名稱
+std::string ipban_db_password = "";         // 密碼
+std::string ipban_db_database = "ragnarok"; // 資料庫名稱
+std::string ipban_codepage = "";            // 文字編碼
+std::string ipban_table = "ipbanlist";      // 儲存封鎖紀錄的資料表
 
-// globals
-static Sql* sql_handle = nullptr;
-static int32 cleanup_timer_id = INVALID_TIMER;
-static bool ipban_inited = false;
+// 模組全域變數
+static Sql* sql_handle = nullptr;       // 與資料庫的連線控制
+static int32 cleanup_timer_id = INVALID_TIMER; // 定期清理的計時器 ID
+static bool ipban_inited = false;       // 是否已初始化
 
-//early declaration
+// 前向宣告定時清理函式
 TIMER_FUNC(ipban_cleanup);
 
 /**
@@ -37,10 +38,11 @@ TIMER_FUNC(ipban_cleanup);
  * @param ip: ipv4 ip to check if ban
  * @return true if found or error, false if not in list
  */
+// 檢查給定 IP 是否在封鎖名單中
 bool ipban_check(uint32 ip) {
-	uint8* p = (uint8*)&ip;
-	char* data = nullptr;
-	int32 matches;
+        uint8* p = (uint8*)&ip;
+        char* data = nullptr;
+        int32 matches;
 
 	if( !login_config.ipban )
 		return false;// ipban disabled
@@ -68,6 +70,7 @@ bool ipban_check(uint32 ip) {
  *  Also bans the user if too many failed attempts are made.
  * @param ip: ipv4 ip to record the failure
  */
+// 記錄密碼錯誤並視次數啟用暫時封鎖
 void ipban_log(uint32 ip) {
 	unsigned long failures;
 
@@ -96,6 +99,7 @@ void ipban_log(uint32 ip) {
  * @param data: unused
  * @return 0
  */
+// 定期清除過期的 IP 封鎖紀錄
 TIMER_FUNC(ipban_cleanup){
 	if( !login_config.ipban )
 		return 0;// ipban disabled
@@ -112,6 +116,7 @@ TIMER_FUNC(ipban_cleanup){
  * @param value: config value for keyword
  * @return true if successful, false if config not complete or server already running
  */
+// 讀取封鎖系統相關設定
 bool ipban_config_read(const char* key, const char* value) {
 	const char* signature;
 
@@ -180,6 +185,7 @@ bool ipban_config_read(const char* key, const char* value) {
  * Initialize the module.
  * Launched at login-serv start, create db or other long scope variable here.
  */
+// 初始化 IP 封鎖模組，建立資料庫連線並啟動清理計時器
 void ipban_init(void) {
 	ipban_inited = true;
 
@@ -214,6 +220,7 @@ void ipban_init(void) {
  * Destroy the module.
  * Launched at login-serv end, cleanup db connection or other thing here.
  */
+// 結束時關閉資料庫連線並釋放相關資源
 void ipban_final(void) {
 	if( !login_config.ipban )
 		return;// ipban disabled

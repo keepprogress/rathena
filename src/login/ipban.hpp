@@ -7,36 +7,33 @@
 #include <common/cbasetypes.hpp>
 
 /**
- * Check if ip is in the active bans list.
- * @param ip: ipv4 ip to check if ban
- * @return true if found or error, false if not in list
+ * 檢查指定 IP 是否已被封鎖
+ * @param ip: IPv4 位址
+ * @return true 代表在封鎖名單中或查詢失敗
  */
 bool ipban_check(uint32 ip);
 
 /**
- * Log a failed attempt.
- *  Also bans the user if too many failed attempts are made.
- * @param ip: ipv4 ip to record the failure
+ * 記錄登入失敗次數，超過限制時自動封鎖
+ * @param ip: 發生錯誤的 IPv4 位址
  */
 void ipban_log(uint32 ip);
 
 /**
- * Read configuration options.
- * @param key: config keyword
- * @param value: config value for keyword
- * @return true if successful, false if config not complete or server already running
+ * 讀取封鎖模組相關設定
+ * @param key: 設定項目名稱
+ * @param value: 對應的數值
+ * @return 是否成功處理
  */
 bool ipban_config_read(const char* key, const char* value);
 
 /**
- * Initialize the module.
- * Launched at login-serv start, create db or other long scope variable here.
+ * 初始化 IP 封鎖模組
  */
 void ipban_init(void);
 
 /**
- * Destroy the module.
- * Launched at login-serv end, cleanup db connection or other thing here.
+ * 結束 IP 封鎖模組並釋放資源
  */
 void ipban_final(void);
 
