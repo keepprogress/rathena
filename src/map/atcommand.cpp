@@ -186,14 +186,16 @@ uint64 AtcommandAliasDatabase::parseBodyNode( const ryml::NodeRef& node ){
 
 // 若傳入的是別名，回傳實際指令名稱
 const char* AtcommandAliasDatabase::checkAlias( const char* alias ){
-	std::string alias_str( alias );
-	std::string* command = util::umap_find( this->aliases, alias_str );
+        std::string alias_str( alias ); // 轉為 string 方便查詢
+        std::string* command = util::umap_find( this->aliases, alias_str );
 
-	if( command == nullptr ){
-		return alias;
-	}else{
-		return command->c_str();
-	}
+        if( command == nullptr ){
+                // 沒找到對應別名則回傳原始字串
+                return alias;
+        }else{
+                // 找到匹配的指令名稱後回傳
+                return command->c_str();
+        }
 }
 
 AtcommandAliasDatabase atcommand_alias_db;

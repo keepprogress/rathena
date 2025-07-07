@@ -234,8 +234,9 @@ void char_db_kickoffline( std::shared_ptr<struct online_char_data> character, in
 }
 
 void char_set_all_offline(int32 id){
-	if (id < 0)
-		ShowNotice("Sending all users offline.\n");
+        // 將所有玩家標記為離線，可指定某個地圖伺服器
+        if (id < 0)
+                ShowNotice("Sending all users offline.\n");
 	else
 		ShowNotice("Sending users of map-server %d offline.\n",id);
 
@@ -250,9 +251,9 @@ void char_set_all_offline(int32 id){
 }
 
 void char_set_all_offline_sql(void){
-	//Set all players to 'OFFLINE'
-	if( SQL_ERROR == Sql_Query(sql_handle, "UPDATE `%s` SET `online` = '0'", schema_config.char_db) )
-		Sql_ShowDebug(sql_handle);
+        // 將資料庫中所有角色狀態更新為 OFFLINE
+        if( SQL_ERROR == Sql_Query(sql_handle, "UPDATE `%s` SET `online` = '0'", schema_config.char_db) )
+                Sql_ShowDebug(sql_handle);
 	if( SQL_ERROR == Sql_Query(sql_handle, "UPDATE `%s` SET `connect_member` = '0'", schema_config.guild_db) )
 		Sql_ShowDebug(sql_handle);
 }

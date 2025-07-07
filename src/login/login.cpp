@@ -751,6 +751,7 @@ bool login_config_read(const char* cfgName, bool normal) {
 /**
  * Init login-serv default configuration.
  */
+// 初始化登入伺服器的預設設定
 void login_set_defaults() {
 	login_config.login_ip = INADDR_ANY;
 	login_config.login_port = 6900;
@@ -805,6 +806,7 @@ void login_set_defaults() {
  * Login-serv destructor
  *  dealloc..., function called at exit of the login-serv
  */
+// 程式結束時釋放資源並關閉登入伺服器
 void LoginServer::finalize(){
 	struct client_hash_node *hn = login_config.client_hash_nodes;
 	AccountDB* db = accounts;
@@ -848,27 +850,30 @@ void LoginServer::finalize(){
 }
 
 void LoginServer::handle_shutdown(){
-	ShowStatus("Shutting down...\n");
-	// TODO proper shutdown procedure; kick all characters, wait for acks, ...  [FlavioJS]
-	do_shutdown_loginchrif();
-	flush_fifos();
+        ShowStatus("Shutting down...\n");
+        // TODO proper shutdown procedure; kick all characters, wait for acks, ...  [FlavioJS]
+        // 關閉與角色伺服器的連線並刷新 FIFO
+        do_shutdown_loginchrif();
+        flush_fifos();
 }
 
 bool LoginServer::initialize( int32 argc, char* argv[] ){
-	// Init default value
-	safestrncpy(console_log_filepath, "./log/login-msg_log.log", sizeof(console_log_filepath));
+        // Init default value
+        // 設定訊息輸出檔案路徑
+        safestrncpy(console_log_filepath, "./log/login-msg_log.log", sizeof(console_log_filepath));
 
-	// initialize engine
-	accounts = account_db_sql();
+        // initialize engine
+        // 產生帳號資料庫存取介面
+        accounts = account_db_sql();
 
 	// read login-server configuration
 	login_set_defaults();
 	cli_get_options(argc,argv);
 
-	login_config_read(LOGIN_CONF_NAME, true);
-	msg_config_read(LOGIN_MSG_CONF_NAME);
-	login_lan_config_read(LAN_CONF_NAME);
-	//end config
+        login_config_read(LOGIN_CONF_NAME, true);
+        msg_config_read(LOGIN_MSG_CONF_NAME);
+        login_lan_config_read(LAN_CONF_NAME);
+        //end config
 
 	do_init_loginclif();
 	do_init_loginchrif();
@@ -877,8 +882,9 @@ bool LoginServer::initialize( int32 argc, char* argv[] ){
 	if( login_config.log_login )
 		loginlog_init();
 
-	// initialize static and dynamic ipban system
-	ipban_init();
+        // initialize static and dynamic ipban system
+        // 初始化靜態與動態的 IP 封鎖機制
+        ipban_init();
 
 	add_timer_func_list(login_waiting_disconnect_timer, "waiting_disconnect_timer");
 
@@ -900,15 +906,17 @@ bool LoginServer::initialize( int32 argc, char* argv[] ){
 		}
 	}
 
-	// server port open & binding
-	if( (login_fd = make_listen_bind(login_config.login_ip,login_config.login_port)) == -1 ) {
-		ShowFatalError("Failed to bind to port '" CL_WHITE "%d" CL_RESET "'\n",login_config.login_port);
+        // server port open & binding
+        // 以指定 IP 與 Port 建立監聽 Socket
+        if( (login_fd = make_listen_bind(login_config.login_ip,login_config.login_port)) == -1 ) {
+                ShowFatalError("Failed to bind to port '" CL_WHITE "%d" CL_RESET "'\n",login_config.login_port);
 		return false;
 	}
 
 	do_init_logincnslif();
 
-	ShowStatus("The login-server is " CL_GREEN "ready" CL_RESET " (Server is listening on the port %u).\n\n", login_config.login_port);
+        // 顯示成功啟動訊息
+        ShowStatus("The login-server is " CL_GREEN "ready" CL_RESET " (Server is listening on the port %u).\n\n", login_config.login_port);
 	login_log(0, "login server", 100, "login server started");
 
 	return true;

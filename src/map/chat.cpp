@@ -28,7 +28,8 @@ int32 chat_triggerevent(struct chat_data *cd); // forward declaration
 /// Returns a chatroom object on success, or nullptr on failure.
 static struct chat_data* chat_createchat(struct block_list* bl, const char* title, const char* pass, int32 limit, bool pub, int32 trigger, const char* ev, int32 zeny, int32 minLvl, int32 maxLvl)
 {
-	struct chat_data* cd;
+        // bl 代表聊天室擁有者，可能是玩家或 NPC
+        struct chat_data* cd;
 	nullpo_retr(nullptr, bl);
 
 	cd = (struct chat_data *) aMalloc(sizeof(struct chat_data));
@@ -76,6 +77,7 @@ static struct chat_data* chat_createchat(struct block_list* bl, const char* titl
  * @return 0
  */
 // 玩家建立私人或公開聊天室
+// 會在當前座標產生新的聊天頻道
 int32 chat_createpcchat(map_session_data* sd, const char* title, const char* pass, int32 limit, bool pub)
 {
 	struct chat_data* cd;
@@ -120,7 +122,7 @@ int32 chat_createpcchat(map_session_data* sd, const char* title, const char* pas
 	return 0;
 }
 
- /**
+/**
  * Join an existing chat room.
  * @param sd : player requesting
  * @param chatid : ID of the chat room
@@ -193,7 +195,8 @@ int32 chat_joinchat(map_session_data* sd, int32 chatid, const char* pass)
  */
 int32 chat_leavechat(map_session_data* sd, bool kicked)
 {
-	struct chat_data* cd;
+        // 處理玩家離開聊天室的邏輯
+        struct chat_data* cd;
 	int32 i;
 	int32 leavechar;
 
