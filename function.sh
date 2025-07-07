@@ -27,6 +27,7 @@ check_inst_right(){
 }
 
 # 若腳本與安裝目錄不同，則切換至安裝目錄執行
+# 於安裝路徑中執行相關指令
 inst_launch_workaround(){
   if [ -d "${PKG_PATH}" ]; then
     if [ "$(pwd)" != "${PKG_PATH}" ]; then cd "${PKG_PATH}"; fi

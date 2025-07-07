@@ -93,6 +93,7 @@ static DBMap* atcommand_db = nullptr; //name -> AtCommandInfo
 
 static AtCommandInfo* get_atcommandinfo_byname( const char* name );
 
+// 用來解析指令別名設定的資料庫類別
 class AtcommandAliasDatabase : public TypesafeYamlDatabase<std::string, s_atcommand_alias_info>{
 private:
 	std::unordered_map<std::string, std::string> aliases;
@@ -119,6 +120,7 @@ const std::string AtcommandAliasDatabase::getDefaultLocation(){
 	return std::string(conf_path) + "/atcommands.yml";
 }
 
+// 解析 YAML 節點並建立別名對應
 uint64 AtcommandAliasDatabase::parseBodyNode( const ryml::NodeRef& node ){
 	std::string command;
 
@@ -182,6 +184,7 @@ uint64 AtcommandAliasDatabase::parseBodyNode( const ryml::NodeRef& node ){
 	return 1;
 }
 
+// 若傳入的是別名，回傳實際指令名稱
 const char* AtcommandAliasDatabase::checkAlias( const char* alias ){
 	std::string alias_str( alias );
 	std::string* command = util::umap_find( this->aliases, alias_str );
@@ -223,6 +226,7 @@ struct atcmd_binding_data* get_atcommandbind_byname(const char* name) {
  * @param name the name of the command to retrieve help information for
  * @return the string associated with the command, or nullptr
  */
+// 取得指定指令的說明文字
 static const char* atcommand_help_string( const char* command ){
 	// remove the prefix symbol for the raw name of the command
 	if( *command == atcommand_symbol || *command == charcommand_symbol ){

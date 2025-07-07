@@ -33,12 +33,12 @@ mkdir -p "${PKG_PATH}/usr/${PKG}/"
 mkdir -p "${PKG_PATH}/var/${PKG}/log"
 
 #we copy all file into opt/ dir and treat dir like normal unix arborescence
-cp -r db/ "${PKG_PATH}/var/${PKG}/db"
+cp -r db/ "${PKG_PATH}/var/${PKG}/db"  # 複製資料庫設定檔
 if [ -d log ]; then cp -r log/* "${PKG_PATH}/var/${PKG}/log/"; fi
-cp -r conf/ "${PKG_PATH}/etc/${PKG}/conf"
+cp -r conf/ "${PKG_PATH}/etc/${PKG}/conf"  # 複製範例設定檔
 cp -r npc/ "${PKG_PATH}/usr/${PKG}/npc"
 cp athena-start "${PKG_PATH}/"
-cp *-server* "${PKG_PATH}/bin/"
+cp *-server* "${PKG_PATH}/bin/"  # 複製三大服務執行檔
 
 # 建立連結方便存取
 ln -fs "${PKG_PATH}/var/${PKG}/db/" "${PKG_PATH}/db"

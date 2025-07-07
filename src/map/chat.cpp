@@ -23,6 +23,7 @@
 
 int32 chat_triggerevent(struct chat_data *cd); // forward declaration
 
+// 建立一個聊天室的函數
 /// Initializes a chatroom object (common functionality for both pc and npc chatrooms).
 /// Returns a chatroom object on success, or nullptr on failure.
 static struct chat_data* chat_createchat(struct block_list* bl, const char* title, const char* pass, int32 limit, bool pub, int32 trigger, const char* ev, int32 zeny, int32 minLvl, int32 maxLvl)
@@ -74,6 +75,7 @@ static struct chat_data* chat_createchat(struct block_list* bl, const char* titl
  * @param pub : public or private
  * @return 0
  */
+// 玩家建立私人或公開聊天室
 int32 chat_createpcchat(map_session_data* sd, const char* title, const char* pass, int32 limit, bool pub)
 {
 	struct chat_data* cd;
@@ -125,6 +127,7 @@ int32 chat_createpcchat(map_session_data* sd, const char* title, const char* pas
  * @param pass : password of chat room
  * @return 0
  */
+// 玩家嘗試加入既有聊天室
 int32 chat_joinchat(map_session_data* sd, int32 chatid, const char* pass)
 {
 	struct chat_data* cd;

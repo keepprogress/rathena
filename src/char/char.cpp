@@ -94,6 +94,7 @@ online_char_data::online_char_data( uint32 account_id ){
 	this->pincode_success = false;
 }
 
+// 玩家回到角色選單時更新狀態
 void char_set_charselect(uint32 account_id) {
 	std::shared_ptr<struct online_char_data> character = util::umap_find( char_get_onlinedb(), account_id );
 
@@ -118,6 +119,7 @@ void char_set_charselect(uint32 account_id) {
 
 }
 
+// 玩家登入地圖時標記其為在線
 void char_set_char_online(int32 map_id, uint32 char_id, uint32 account_id) {
 	//Update DB
 	if( SQL_ERROR == Sql_Query(sql_handle, "UPDATE `%s` SET `online`='1', `last_login`=NOW() WHERE `char_id`='%d' LIMIT 1", schema_config.char_db, char_id) )
@@ -159,6 +161,7 @@ void char_set_char_online(int32 map_id, uint32 char_id, uint32 account_id) {
 	chlogif_send_setacconline(account_id);
 }
 
+// 玩家離線或被踢出時更新狀態
 void char_set_char_offline(uint32 char_id, uint32 account_id){
 	if ( char_id == -1 )
 	{
