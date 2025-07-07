@@ -1,4 +1,5 @@
 #!/bin/sh
+# 此腳本用於安裝 rAthena 至指定目錄
 #source var/function
 . ./function.sh
 
@@ -12,6 +13,7 @@ if [ $? != 0 ] ; then echo "Terminating..." >&2 ; exit 1 ; fi
 eval set -- "${TEMP}"
 
 eval set -- "${TEMP}"
+# 解析命令列參數
 while [ $# -gt 0 ]
 do
     case "$1" in
@@ -20,9 +22,11 @@ do
     shift
 done
 
+# 顯示安裝目標路徑
 echo "destdir = ${PKG_PATH} "
 check_inst_right
 check_files
+# 建立必要的資料夾
 mkdir -p "${PKG_PATH}/bin/"
 mkdir -p "${PKG_PATH}/etc/${PKG}/"
 mkdir -p "${PKG_PATH}/usr/${PKG}/"
@@ -36,6 +40,7 @@ cp -r npc/ "${PKG_PATH}/usr/${PKG}/npc"
 cp athena-start "${PKG_PATH}/"
 cp *-server* "${PKG_PATH}/bin/"
 
+# 建立連結方便存取
 ln -fs "${PKG_PATH}/var/${PKG}/db/" "${PKG_PATH}/db"
 ln -fs "${PKG_PATH}/var/${PKG}/log/" "${PKG_PATH}/log"
 ln -fs "${PKG_PATH}/etc/${PKG}/conf/" "${PKG_PATH}/conf"

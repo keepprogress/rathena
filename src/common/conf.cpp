@@ -5,6 +5,7 @@
 
 #include "showmsg.hpp" // ShowError
 
+// 讀取指定的配置檔
 int32 conf_read_file(config_t *config, const char *config_filename)
 {
 	config_init(config);
@@ -24,6 +25,7 @@ static void config_setting_copy_simple(config_setting_t *parent, const config_se
 static void config_setting_copy_elem(config_setting_t *parent, const config_setting_t *src);
 static void config_setting_copy_aggregate(config_setting_t *parent, const config_setting_t *src);
 int32 config_setting_copy(config_setting_t *parent, const config_setting_t *src);
+// 簡單的配置屬性複製
 
 void config_setting_copy_simple(config_setting_t *parent, const config_setting_t *src)
 {
@@ -52,6 +54,7 @@ void config_setting_copy_simple(config_setting_t *parent, const config_setting_t
 	}
 }
 
+// 複製單一設定項目
 void config_setting_copy_elem(config_setting_t *parent, const config_setting_t *src)
 {
 	config_setting_t *set = nullptr;
@@ -73,6 +76,7 @@ void config_setting_copy_elem(config_setting_t *parent, const config_setting_t *
 	}
 }
 
+// 複製集合型設定
 void config_setting_copy_aggregate(config_setting_t *parent, const config_setting_t *src)
 {
 	config_setting_t *newAgg;
@@ -94,6 +98,7 @@ void config_setting_copy_aggregate(config_setting_t *parent, const config_settin
 	}
 }
 
+// 從來源節點複製設定至目標
 int32 config_setting_copy(config_setting_t *parent, const config_setting_t *src)
 {
 	if (!config_setting_is_group(parent) && !config_setting_is_list(parent))

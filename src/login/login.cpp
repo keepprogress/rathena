@@ -80,6 +80,7 @@ struct online_login_data* login_get_online_user( uint32 account_id ){
  * @param account_id : aid connected
  * @return the new online_login_data for that user
  */
+// 新增一筆在線玩家資料
 struct online_login_data* login_add_online_user(int32 char_server, uint32 account_id){
 	struct online_login_data* p = login_get_online_user( account_id );
 
@@ -113,6 +114,7 @@ struct online_login_data* login_add_online_user(int32 char_server, uint32 accoun
  *  Checking if user was already scheduled for deletion, and remove that timer if found.
  * @param account_id : aid to remove from db
  */
+// 將玩家從在線列表中移除
 void login_remove_online_user(uint32 account_id) {
 	struct online_login_data* p = login_get_online_user( account_id );
 
@@ -173,6 +175,7 @@ TIMER_FUNC(login_waiting_disconnect_timer){
 	return 0;
 }
 
+// 將所有在線資料標記為離線
 void login_online_db_setoffline( int32 char_server ){
 	for( std::pair<uint32,struct online_login_data> pair : online_db ){
 		if( char_server == -1 ){
@@ -198,6 +201,7 @@ void login_online_db_setoffline( int32 char_server ){
  * @param data: unused
  * @return : 0
  */
+// 定時清理線上資料狀態
 static TIMER_FUNC(login_online_data_cleanup){
 	for( std::pair<uint32,struct online_login_data> pair : online_db  ){
 		// Unknown server.. set them offline
