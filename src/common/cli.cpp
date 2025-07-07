@@ -45,6 +45,7 @@ const char* MSG_CONF_NAME_EN = "conf/msg_conf/char_msg.conf"; //all
  *   false : no other args found, and throw a warning
  *   true : something following us
  */
+// 檢查指定選項之後是否還有另一個參數
 bool opt_has_next_value(const char* option, int32 i, int32 argc){
 	if (i >= argc - 1) {
 		ShowWarning("Missing value for option '%s'.\n", option);
@@ -61,6 +62,7 @@ bool opt_has_next_value(const char* option, int32 i, int32 argc){
  *   irc hangout
  * @param do_exit: terminate execution ?
  */
+// 顯示版本資訊以及官網連結
 void display_versionscreen(bool do_exit)
 {
 	const char* svn = get_svn_revision();
@@ -85,6 +87,7 @@ void display_versionscreen(bool do_exit)
  * @param argv: arguments values (from main)
  * @return true or exit on failure
  */
+// 解析命令行選項，設定單個服務的配置檔
 int32 cli_get_options(int32 argc, char ** argv) {
 	int32 i = 0;
 	for (i = 1; i < argc; i++) {

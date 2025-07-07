@@ -1,4 +1,5 @@
 #!/bin/sh
+# 此腳本用於安裝 rAthena 至指定目錄
 #source var/function
 . ./function.sh
 
