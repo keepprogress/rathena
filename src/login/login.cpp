@@ -80,6 +80,7 @@ struct online_login_data* login_get_online_user( uint32 account_id ){
  * @param account_id : aid connected
  * @return the new online_login_data for that user
  */
+// 新增一筆在線玩家資料
 struct online_login_data* login_add_online_user(int32 char_server, uint32 account_id){
 	struct online_login_data* p = login_get_online_user( account_id );
 
@@ -113,6 +114,7 @@ struct online_login_data* login_add_online_user(int32 char_server, uint32 accoun
  *  Checking if user was already scheduled for deletion, and remove that timer if found.
  * @param account_id : aid to remove from db
  */
+// 將玩家從在線列表中移除
 void login_remove_online_user(uint32 account_id) {
 	struct online_login_data* p = login_get_online_user( account_id );
 
