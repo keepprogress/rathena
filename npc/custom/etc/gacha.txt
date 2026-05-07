@@ -1,0 +1,163 @@
+//===== rAthena Script =======================================
+//= Custom Gacha (轉蛋)
+//===== Description: =========================================
+//= A configurable gacha / capsule machine.
+//= - Pay with Zeny or a custom ticket item.
+//= - Three weighted prize tiers (Rare / Rare / Common).
+//= - Picks a random item from each tier's pool.
+//= - Optional broadcast when a top-tier prize is won.
+//= - Supports single pull or 10-pull (with a small bonus).
+//===== How to configure =====================================
+//= 1. Edit the .config block in OnInit below to set the
+//    currency, ticket item id, prize pools and weights.
+//= 2. Enable the script in npc/scripts_custom.conf:
+//      npc: npc/custom/etc/gacha.txt
+//= 3. Reload with @reloadscript or restart the map-server.
+//============================================================
+
+prontera,156,180,4	script	Gacha Machine#cgacha	76,{
+
+	// -- Greeting --
+	mes "[轉蛋機]";
+	mes "歡迎光臨！";
+	mes "每次轉蛋費用：^0055FF" + ((.use_item)? .ticket_amount + " 個 " + getitemname(.ticket_id) : F_InsertComma(.price) + " Zeny") + "^000000";
+	mes "10 連抽：^0055FF" + ((.use_item)? (.ticket_amount * 10) + " 個 " + getitemname(.ticket_id) : F_InsertComma(.price * 10) + " Zeny") + "^000000 (保證至少 1 個稀有獎)";
+	next;
+
+	switch (select("單抽 (1 次):10 連抽:查看獎項機率:離開")) {
+	case 1:
+		.@pulls = 1;
+		break;
+	case 2:
+		.@pulls = 10;
+		break;
+	case 3:
+		mes "[轉蛋機]";
+		mes "獎項機率：";
+		mes " - ^FF0000高級獎^000000：" + (.w_top * 100 / .w_total) + "%";
+		mes " - ^0055FF中級獎^000000：" + (.w_mid * 100 / .w_total) + "%";
+		mes " - ^777777普通獎^000000：" + (.w_low * 100 / .w_total) + "%";
+		close;
+	default:
+		close;
+	}
+
+	// -- Cost check & deduct --
+	if (.use_item) {
+		if (countitem(.ticket_id) < .ticket_amount * .@pulls) {
+			mes "[轉蛋機]";
+			mes "您的 " + getitemname(.ticket_id) + " 數量不足。";
+			close;
+		}
+		delitem .ticket_id, .ticket_amount * .@pulls;
+	} else {
+		if (Zeny < .price * .@pulls) {
+			mes "[轉蛋機]";
+			mes "您的 Zeny 不足。";
+			close;
+		}
+		Zeny -= .price * .@pulls;
+	}
+
+	// -- Roll --
+	.@guaranteed_rare = (.@pulls >= 10)? 1 : 0;
+	.@got_rare = 0;
+
+	mes "[轉蛋機]";
+	mes "結果：";
+	for (.@i = 0; .@i < .@pulls; ++.@i) {
+
+		.@roll = rand(.w_total);
+		.@tier = 0;	// 0=top, 1=mid, 2=low
+
+		if (.@roll < .w_top) {
+			.@tier = 0;
+		} else if (.@roll < .w_top + .w_mid) {
+			.@tier = 1;
+		} else {
+			.@tier = 2;
+		}
+
+		// 10-pull guarantee: force last roll to mid-tier if no rare yet
+		if (.@guaranteed_rare && !.@got_rare && .@i == .@pulls - 1 && .@tier == 2)
+			.@tier = 1;
+
+		if (.@tier <= 1)
+			.@got_rare = 1;
+
+		// Pick a random item from the chosen tier pool
+		if (.@tier == 0) {
+			.@idx = rand(.top_size);
+			.@item_id = .top_items[.@idx];
+			.@qty = .top_qty;
+			.@color$ = "^FF0000";
+		} else if (.@tier == 1) {
+			.@idx = rand(.mid_size);
+			.@item_id = .mid_items[.@idx];
+			.@qty = .mid_qty;
+			.@color$ = "^0055FF";
+		} else {
+			.@idx = rand(.low_size);
+			.@item_id = .low_items[.@idx];
+			.@qty = .low_qty;
+			.@color$ = "^777777";
+		}
+
+		getitem .@item_id, .@qty;
+		mes (.@i + 1) + ". " + .@color$ + getitemname(.@item_id) + " x " + .@qty + "^000000";
+
+		if (.@tier == 0 && .announce_top)
+			announce "[轉蛋] " + strcharinfo(0) + " 抽中了大獎：" + getitemname(.@item_id) + "！", bc_all;
+	}
+	close;
+
+OnInit:
+	// ============== Configuration ==============
+
+	// Cost: set use_item = 1 to charge a ticket item, 0 to charge Zeny.
+	.use_item       = 0;
+	.price          = 10000;		// Zeny per pull (when use_item = 0)
+	.ticket_id      = 7711;			// Ticket item id (when use_item = 1)
+	.ticket_amount  = 1;			// Tickets per pull
+
+	// Announce top-tier wins to the whole server
+	.announce_top   = 1;
+
+	// Prize weights (any positive numbers; ratio is what matters)
+	.w_top = 5;		// 5%  ratio of top weight
+	.w_mid = 20;	// 20% ratio
+	.w_low = 75;	// 75% ratio
+	.w_total = .w_top + .w_mid + .w_low;
+
+	// --- Top tier prizes (rare) ---
+	.top_qty = 1;
+	setarray .top_items[0],
+		617,	// Old Violet Box
+		644,	// Gift Box
+		12103;	// Bloody Branch
+	.top_size = getarraysize(.top_items);
+
+	// --- Mid tier prizes ---
+	.mid_qty = 1;
+	setarray .mid_items[0],
+		603,	// Old Blue Box
+		616,	// Old Card Album
+		12246;	// Mystical Card Album
+	.mid_size = getarraysize(.mid_items);
+
+	// --- Low tier prizes (common) ---
+	.low_qty = 5;
+	setarray .low_items[0],
+		501,	// Red Potion
+		502,	// Orange Potion
+		503,	// Yellow Potion
+		504;	// White Potion
+	.low_size = getarraysize(.low_items);
+
+	end;
+}
+
+// -- Duplicates --
+// Uncomment / add as you wish:
+//morocc,156,93,4	duplicate(Gacha Machine#cgacha)	Gacha Machine#mor	76
+//geffen,120,66,4	duplicate(Gacha Machine#cgacha)	Gacha Machine#gef	76
