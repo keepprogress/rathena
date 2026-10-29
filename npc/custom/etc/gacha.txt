@@ -7,12 +7,15 @@
 //= - Picks a random item from each tier's pool.
 //= - Optional broadcast when a top-tier prize is won.
 //= - Supports single pull or 10-pull (with a small bonus).
+//= - Logs every pull to `gacha_log` for audit.
 //===== How to configure =====================================
-//= 1. Edit the .config block in OnInit below to set the
+//= 1. Apply the schema:
+//      mysql -u <user> -p <db> < sql-files/migrations/20260507_gacha.sql
+//= 2. Edit the .config block in OnInit below to set the
 //    currency, ticket item id, prize pools and weights.
-//= 2. Enable the script in npc/scripts_custom.conf:
+//= 3. Enable the script in npc/scripts_custom.conf:
 //      npc: npc/custom/etc/gacha.txt
-//= 3. Reload with @reloadscript or restart the map-server.
+//= 4. Reload with @reloadscript or restart the map-server.
 //============================================================
 
 prontera,156,180,4	script	Gacha Machine#cgacha	76,{
@@ -63,6 +66,10 @@ prontera,156,180,4	script	Gacha Machine#cgacha	76,{
 	.@guaranteed_rare = (.@pulls >= 10)? 1 : 0;
 	.@got_rare = 0;
 
+	// One batch id per gacha_log row group (single pull = 1 row, 10-pull = 10 rows sharing this id)
+	.@batch_id = gettimetick(2) * 10000 + rand(10000);
+	.@values$ = "";
+
 	mes "[轉蛋機]";
 	mes "結果：";
 	for (.@i = 0; .@i < .@pulls; ++.@i) {
@@ -106,9 +113,31 @@ prontera,156,180,4	script	Gacha Machine#cgacha	76,{
 		getitem .@item_id, .@qty;
 		mes (.@i + 1) + ". " + .@color$ + getitemname(.@item_id) + " x " + .@qty + "^000000";
 
+		// Build one VALUES tuple per pull; flushed in a single INSERT after the loop.
+		// All ints come from script vars / config — no injection surface.
+		if (.@values$ != "")
+			.@values$ = .@values$ + ",";
+		.@values$ = .@values$ + "("
+			+ getcharid(0) + ","
+			+ getcharid(3) + ","
+			+ .@batch_id + ","
+			+ (.@i + 1) + ","
+			+ .@tier + ","
+			+ .@item_id + ","
+			+ .@qty + ","
+			+ ((.use_item)? 0 : .price) + ","
+			+ ((.use_item)? .ticket_id : 0) + ","
+			+ ((.use_item)? .ticket_amount : 0) + ")";
+
 		if (.@tier == 0 && .announce_top)
 			announce "[轉蛋] " + strcharinfo(0) + " 抽中了大獎：" + getitemname(.@item_id) + "！", bc_all;
 	}
+
+	// Audit log — schema in sql-files/migrations/20260507_gacha.sql
+	query_sql "INSERT INTO `gacha_log` "
+		+ "(`char_id`,`account_id`,`pull_batch_id`,`pull_idx`,`tier`,`item_id`,`qty`,`cost_zeny`,`cost_item_id`,`cost_item_qty`) VALUES "
+		+ .@values$;
+
 	close;
 
 OnInit:
