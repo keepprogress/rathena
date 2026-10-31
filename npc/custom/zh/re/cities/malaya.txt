@@ -92,38 +92,38 @@ malaya,276,55,4	script	Optamara Crew#malaya	100,{
 
 // Generic Port Malaya NPCs
 //============================================================
-ma_in01,30,94,4	script	Inn Keeper#ma	583,{
+ma_in01,30,94,4	script	旅館老闆#ma::Inn Keeper#ma	583,{
 	if (malaya_hi < 10) {
-		mes "[Inn Keeper]";
+		mes "[旅館老闆]";
 		mes "Oh my! Visiting?";
 		mes "What bad timing. The village is a bit unorganized at the moment so I'm actually closed. Sorry.";
 		close;
 	} else if (malaya_hi < 20) {
-		mes "[Inn Keeper]";
+		mes "[旅館老闆]";
 		mes "So you are the adventurer villagers are talking about? I reopened my inn thanks to you. Thank you.";
 		next;
 	} else {
-		mes "[Inn Keeper]";
+		mes "[旅館老闆]";
 		mes "歡迎。";
 		mes "This is Port Malaya's best inn, 'Cabin in the City'.";
 		next;
 	}
-	mes "[Inn Keeper]";
+	mes "[旅館老闆]";
 	mes "Come for a rest? Lodging will be 5,000 Zeny.";
 	next;
 	switch(select("Store.:Lodge. - 5,000z:Cancel.")) {
 	case 1:
-		mes "[Inn Keeper]";
+		mes "[旅館老闆]";
 		mes "Successfully stored. See you next time.";
 		savepoint "ma_in01",43,98,1,1;
 		close;
 	case 2:
 		if (Zeny < 5000) {
-			mes "[Inn Keeper]";
+			mes "[旅館老闆]";
 			mes "Sorry. I think you are a bit short.";
 			close;
 		}
-		mes "[Inn Keeper]";
+		mes "[旅館老闆]";
 		mes "Hope you enjoy your stay.";
 		close2;
 		set Zeny, Zeny-5000;

@@ -19,7 +19,7 @@
 //= 1.5 Fixed missed variable. (bugreport:1523) [L0ne_W0lf]
 //============================================================
 
-prontera,73,140,0	script	Milk Vendor	86,{
+prontera,73,140,0	script	牛奶商::Milk Vendor	86,{
 	if (checkweight(1201,1) == 0) {
 		mes "^3355FF請稍等！";
 		mes "我無法提供任何";
@@ -29,46 +29,46 @@ prontera,73,140,0	script	Milk Vendor	86,{
 		mes "卡普拉倉庫，之後再來～";
 		close;
 	}
-	mes "[Milk Vendor]";
-	mes "Hey, hey...";
-	mes "If you bring me";
-	mes "1 Empty Bottle and";
-	mes "15 Zeny, I'll exchange";
-	mes "them for 1 Milk. How";
-	mes "does that sound?";
+	mes "[牛奶商]";
+	mes "嘿，嘿……";
+	mes "如果您帶來";
+	mes "1 個空瓶，還有";
+	mes "15 Zeny，我就會兌換";
+	mes "成 1 瓶牛奶。";
+	mes "您覺得如何？";
 	next;
-	if (select("Exchange all empty bottles.:Cancel") == 1) {
+	if (select("全部兌換空瓶。:取消") == 1) {
 		if (countitem(713) <= 0) {
-			mes "[Milk Vendor]";
+			mes "[牛奶商]";
 			mes "嘿……";
 			mes "你沒有";
-			mes "any Empty Bottles.";
-			mes "I can't really give you";
-			mes "this milk any other";
-			mes "way, you know...";
+			mes "沒有任何空瓶。";
+			mes "我真的不能免費給您";
+			mes "這瓶牛奶，";
+			mes "您知道的……";
 			close;
 		}
 		set .@bottles,countitem(713);
 		set .@total_weight,.@bottles * 50;
 		set .@total_cost,.@bottles * 15;
 		if (Zeny < .@Total_cost) {
-			mes "[Milk Vendor]";
-			mes "Oh, whoa~!";
+			mes "[牛奶商]";
+			mes "喔，哇~！";
 			mes "您沒有足夠的";
-			mes "zeny to exchange all";
-			mes "these Empty Bottles for";
-			mes "Milk. You need to have";
-			mes "at least " + .@total_cost + " Zeny。";
+			mes "Zeny 來兌換全部";
+			mes "這些空瓶，換取";
+			mes "牛奶。您需要有";
+			mes "至少 " + .@total_cost + " Zeny。";
 			close;
 		}
 		if (MaxWeight - Weight < .@total_weight) {
-			mes "[Milk Vendor]";
+			mes "[牛奶商]";
 			mes "嗯……";
-			mes "Would you make";
-			mes "a little more room";
-			mes "in your inventory";
-			mes "before I give you";
-			mes "all of this milk?";
+			mes "能不能";
+			mes "稍微多騰出一些";
+			mes "背包空間";
+			mes "再給您";
+			mes "這些牛奶嗎？";
 			close;
 		}
 		set Zeny, Zeny-.@total_cost;

@@ -134,6 +134,9 @@ def check(src, dst):
 		return 'menu separator count mismatch'
 	if re.search(r'(?<!\\)"', dst) or dst.endswith('\\'):
 		return 'unescaped quote/backslash'
+	# rAthena 只在前一個位元組 <= 0x7e 時把 \ 當跳脫：中文字後面的 \" 會直接結束字串（中文請用「」）
+	if re.search(r'[^\x00-\x7e]\\', dst):
+		return 'backslash right after a Chinese character'
 	if (src[:1] == ' ') != (dst[:1] == ' ') or (src[-1:] == ' ') != (dst[-1:] == ' '):
 		return 'leading/trailing space mismatch'
 	return None
