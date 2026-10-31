@@ -12,7 +12,7 @@
 | `gen_tex.py` | Omarchy（Pillow + Noto Sans CJK TC） | 按鈕貼圖的韓文換繁中，給 `build_zhtw.py` 的 `tex-zh/` |
 | `gen_jobnames.py` | Pi | roBrowser `src/DB/Monsters/JobNameTable.js`（已含在 patch 裡） |
 | `ui_zh.py` + `ui_translations.json` | Pi | 就地改寫 roBrowser 原始碼裡寫死的英文介面字（視窗、選單提示、右鍵選單、/指令說明、世界地圖地名） |
-| `robrowser-caddo.patch` | Pi | roBrowser 改動：選角 hover、單擊空位建角、繁中職業名 |
+| `robrowser-caddo.patch` | Pi | roBrowser 改動：選角 hover、單擊空位建角、繁中職業名、讀 99Max itemInfo 拼錯的 `identifiedDiSPlayName`（否則道具名全空） |
 
 NPC 對話另見 `npc/custom/zh/npc_zh.py`。
 
@@ -31,6 +31,7 @@ rsync -a --delete /tmp/overlay.new/ overlay/ && docker restart robrowserlegacy
 git -C src apply <repo>/data-overlay/zh-tw/robrowser-caddo.patch
 python3 -I <repo>/data-overlay/zh-tw/ui_zh.py apply src   # 可重複跑；重產 patch 前要先 checkout 掉翻譯
 cd src && docker build --target slim -f ../Dockerfile.caddo -t robrowserlegacy:slim . && cd .. && docker rm -f robrowserlegacy && ./run.sh
+# Config.local.js 必須有 loadLua: true（預設 false：道具名、技能名、地名改讀 data.grf 的韓文表）與 enableMapName: true
 ```
 
 ## 同步上游後

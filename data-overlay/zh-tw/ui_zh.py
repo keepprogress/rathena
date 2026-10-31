@@ -35,11 +35,13 @@ HTML_VALUE = re.compile(r'\bvalue\s*=\s*"([^"]*)"')
 # 這些呼叫/屬性所在的那一行（含跨行的引數）裡的字串會顯示給玩家
 JS_DISPLAY = re.compile(
 	r'\b(?:addText|show(?:Message|Prompt|Error|Confirm)Box|addElement|setStatus|setTitle|alert|confirm)\s*\('
-	r'|\.(?:textContent|innerText|innerHTML|placeholder|title)\s*\+?='
+	r'|\.(?:textContent|innerText|innerHTML|placeholder|title)\s*\+?=|\bmsg\s*\+?=(?!=)'
 	r'|\b(?:title|label|description|message|tooltip|text|placeholder|header)\s*:'
 	r'|setAttribute\(\s*[\'"](?:title|placeholder)'
-	r'|getMessage\(\s*\d+\s*,')
+	r'|getMessage\(\s*\d+\s*,'
+	r'|[\'"`]\s*</?[a-zA-Z]')  # 拼 HTML 的字串
 JS_STRING = re.compile(r"""'((?:[^'\\\n]|\\.)*)'|"((?:[^"\\\n]|\\.)*)"|`((?:[^`\\\n]|\\.)*)`""")
+JS_QUOTED = re.compile(r"'((?:[^'\\\n]|\\.)*)'")  # 第二輪：樣板字串 ${…} 裡的 'Passive' 這種
 # 緊接在這些後面的字串是程式用的（元件名、選擇器、比較、物件 key）
 JS_CODE_BEFORE = re.compile(
 	r'(?:getComponent|querySelector(?:All)?|getElementById|closest|matches|add|remove|toggle|contains'
@@ -50,7 +52,7 @@ JS_CODE_AFTER = re.compile(r'\s*(?:===?|!==?|\]|\bin\b)')
 JS_KEY = (re.compile(r'[{,]\s*$'), re.compile(r'\s*:'))  # { 'key': ... }，三元運算的 ? 'a' : 'b' 不算
 # 像識別字/路徑/選擇器的不算
 CODE_LIKE = re.compile(
-	r'^[a-z][\w-]*$|^[A-Z][a-z0-9]+(?:[A-Z][a-z0-9]*)+$|^[^\s]*[./][^\s]*$|^[#.\[]|^\w+\(|^[A-Z0-9_]+$')
+	r'^[a-z][\w-]*$|^[A-Z][a-z0-9]+(?:[A-Z][a-z0-9]*)+$|^[^\sA-Z]*[./][^\sA-Z]*$|^[#.\[]|^\w+\(|^[A-Z0-9_]+$')
 # 譯文必須原樣保留：模板與格式佔位符、HTML 標籤與實體、跳脫字元、快捷鍵
 KEEP = re.compile(
 	r'\$\{[^}]*\}|%[-+ #0]*\d*(?:\.\d+)?[sdifxXuc%]|<[^>]+>|&#?\w+;|\\.|\{\d+\}'
@@ -126,12 +128,15 @@ def js_strings(text, display=JS_DISPLAY):
 			depth += code.count('(') - code.count(')')
 		else:
 			continue
-		for s in JS_STRING.finditer(code):
-			i = next(g for g in (1, 2, 3) if s.group(g) is not None)
+		spans = []
+		for s in [*JS_STRING.finditer(code), *JS_QUOTED.finditer(code)]:
+			i = next(g for g in (1, 2, 3) if s.lastindex >= g and s.group(g) is not None)
 			v = s.group(i)
 			before = code[:s.start()]
-			if (wanted(v) and not JS_CODE_BEFORE.search(before) and not JS_CODE_AFTER.match(code, s.end())
+			if (wanted(v) and not any(a <= s.start() < b for a, b in spans) and not JS_CODE_BEFORE.search(before)
+					and not JS_CODE_AFTER.match(code, s.end())
 					and not (JS_KEY[0].search(before) and JS_KEY[1].match(code, s.end()))):
+				spans.append(s.span())
 				found.append((start + s.start(i), start + s.end(i), v))
 	return found
 
@@ -201,7 +206,8 @@ def norm(s):
 assert [s for *_, s in html_strings('<b title="Close">Base Lv. <i>x</i></b><option value="BASE">Base</option>')] == [
 	'Close', 'Base Lv.', 'Base']
 assert [s for *_, s in js_strings("ContextMenu.addElement('View Status', f);\nUIManager.getComponent('WinPopup');\n"
-	"x = a ? 'Yes' : 'No';\nshowMessageBox(\n\t'Two lines', { 'Key': 1 }\n);")] == ['View Status', 'Two lines']
+	"x = a ? 'Yes' : 'No';\nshowMessageBox(\n\t'Two lines', { 'Key': 1 }\n);\n"
+	"h += `<div>${t ? `Sp : ${n}` : 'Passive'}</div>`;")] == ['View Status', 'Two lines', 'Passive']
 
 
 def main():

@@ -1,3 +1,23 @@
+diff --git a/src/DB/DBManager.js b/src/DB/DBManager.js
+index 2ced1954..803427a9 100644
+--- a/src/DB/DBManager.js
++++ b/src/DB/DBManager.js
+@@ -5548,13 +5548,14 @@ function loadItemInfo(filename, callback, onEnd) {
+ 				// this is necessary because some servers has main function on itemInfo.lub and others load it from itemInfo_f.lub
+ 				// doing this way we avoid to have to load the other file
+ 				// on my tests dont care if the main() is on itemInfo.lub or itemInfo_f.lub the content is always the same
++				// 99Max 的 itemInfo_true 把已鑑定名稱欄位拼成 identifiedDiSPlayName
+ 				lua.doStringSync(`
+ 						function main_item()
+ 							_processedItems = _processedItems or {} 
+ 							for ItemID, DESC in pairs(tbl) do
+ 								if not _processedItems[ItemID] and #DESC.identifiedDescriptionName > 0 then
+ 									_processedItems[ItemID] = true 
+-									result, msg = AddItem(ItemID, DESC.unidentifiedDisplayName, DESC.unidentifiedResourceName, DESC.identifiedDisplayName, DESC.identifiedResourceName, DESC.slotCount, DESC.ClassNum)
++									result, msg = AddItem(ItemID, DESC.unidentifiedDisplayName, DESC.unidentifiedResourceName, DESC.identifiedDisplayName or DESC.identifiedDiSPlayName, DESC.identifiedResourceName, DESC.slotCount, DESC.ClassNum)
+ 									if not result then
+ 										return false, msg
+ 									end
 diff --git a/src/DB/Monsters/JobNameTable.js b/src/DB/Monsters/JobNameTable.js
 new file mode 100644
 index 00000000..d8ac20ec

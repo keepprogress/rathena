@@ -14,7 +14,7 @@ FONT = '/usr/share/fonts/noto-cjk/NotoSansCJK-Bold.ttc'
 MAGENTA = (255, 0, 255)  # 客戶端的透明色
 
 # (路徑規則, 中文, 版型, 搜尋範圍)；先比對到的先用，所以特例要排前面
-# 版型 button = 漸層底 + 深色字；flat = 洋紅透明底 + 單色字
+# 版型 button = 漸層底 + 深色字；flat = 洋紅透明底 + 單色字；vertical = 直排分頁，| 分隔各頁由上而下
 LABELS = [
 	(r'achievement_re/btn_receive_', '領取獎勵', 'button', None),
 	(r'bank/btn_1000mil_', '1000萬', 'flat', None),
@@ -77,6 +77,7 @@ LABELS = [
 	(r'login_interface/chk_save', '記住', 'flat', (10, 0, 34, 10)),  # 左邊 10px 是勾選框；10px 高只能用無反鋸齒粗體
 	(r'make_character/btn_create_', '建立', 'button', None),
 	(r'^win_msgbox', '訊息', 'button', (16, 1, 140, 16)),  # 只換標題列，避開左邊的圓形圖示
+	(r'basic_interface/tab_que_0[123]', '進行|保留|全部', 'vertical', None),  # 任務視窗左側分頁
 ]
 
 
@@ -106,7 +107,41 @@ def bbox(points):
 	return min(xs), min(ys), max(xs), max(ys)
 
 
+def vertical(im, labels):
+	"""直排分頁：深色字擦成同列的分頁底色，依垂直間隔分組後逐字直排寫上。"""
+	px = im.load()
+	w, h = im.size
+	text = [(x, y) for y in range(h) for x in range(w) if px[x, y] != MAGENTA and lum(px[x, y]) < 150]
+	rows = sorted({y for _, y in text})
+	groups = [[rows[0]]]
+	for y in rows[1:]:
+		if y - groups[-1][-1] > 4:  # 字與字間隔 ≤3 列，分頁之間 ≥8 列
+			groups.append([])
+		groups[-1].append(y)
+	if len(groups) != len(labels):
+		raise ValueError(f'找到 {len(groups)} 個分頁，預期 {len(labels)}')
+	colors = {p: px[p] for p in text}
+	for x, y in text:
+		fill = next(px[x + d * s, y] for d in range(1, w) for s in (-1, 1)
+			if 0 <= x + d * s < w and px[x + d * s, y] != MAGENTA and lum(px[x + d * s, y]) > 230)
+		px[x, y] = fill
+	draw = ImageDraw.Draw(im)
+	font, box = fit('進', 12, 10)
+	step = box[3] - box[1] + 1
+	for ys, label in zip(groups, labels):
+		pts = [p for p in text if ys[0] <= p[1] <= ys[-1]]
+		x0, y0, x1, y1 = bbox(pts)
+		color = max(set(colors[p] for p in pts), key=[colors[p] for p in pts].count)
+		cx, cy = (x0 + x1 + 1) / 2, (y0 + y1 + 1) / 2
+		for i, ch in enumerate(label):
+			b = font.getbbox(ch)
+			y = cy + (i - (len(label) - 1) / 2) * step
+			draw.text((cx - (b[0] + b[2]) / 2, y - (b[1] + b[3]) / 2), ch, font=font, fill=color)
+
+
 def convert(im, label, kind, region):
+	if kind == 'vertical':
+		return vertical(im, label.split('|'))
 	px = im.load()
 	w, h = im.size
 	x0, y0, x1, y1 = region or (3, 2, w - 3, h - 2)  # 內縮避開按鈕邊框
