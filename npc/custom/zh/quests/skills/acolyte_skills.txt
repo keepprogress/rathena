@@ -16,95 +16,95 @@
 //============================================================
 
 prt_church,173,23,4	script	祭司::Cleric	79,{
-	mes "[Acolyte Klift]";
-	mes "Ahh . Brothers ! Does the task of";
-	mes "caring for out lost sheep burden";
-	mes "and tire you ?";
-	mes "I am here to assist you.";
+	mes "[見習克利夫特]";
+	mes "啊。兄弟！照顧迷途羔羊的";
+	mes "重擔是否讓你";
+	mes "感到疲憊？";
+	mes "我在這裡協助你。";
 	next;
-	switch (select("^3355FF' About acolyte's hidden ability '^000000 ..:^3355FF' Holy light '^000000 training:End conversation")) {
+	switch (select("^3355FF「見習修士的隱藏能力」^000000 ……:^3355FF「神聖之光」^000000 訓練:結束對話")) {
 	case 1:
-		mes "[Acolyte Klift]";
-		mes "Our members of the clergy";
-		mes "naturally learn a skill as";
-		mes "as they mature. As they approach ";
-		mes "their senior years as an acolyte";
-		mes "this special skill.";
+		mes "[見習克利夫特]";
+		mes "我們教會的成員";
+		mes "會自然學會一項技能，";
+		mes "隨著他們成熟。當他們接近 ";
+		mes "資深見習修士的年紀時，";
+		mes "會學會這項特殊技能。";
 		next;
-		mes "[Acolyte Klift]";
-		mes "Faced with great danger and";
-		mes "an endless struggle with evil,";
-		mes "our brethren are much in need of assistance.";
-		mes "^3355FF' Holy Light '^000000 is that skill.";
-		mes "To gain this ability for yourself,";
-		mes "takes some work.";
+		mes "[見習克利夫特]";
+		mes "面對巨大的危險與";
+		mes "與邪惡無止境的抗爭，";
+		mes "我們的同胞非常需要援助。";
+		mes "^3355FF「神聖之光」^000000 就是那項技能。";
+		mes "想要為自己獲得這項能力，";
+		mes "需要一番努力。";
 		next;
-		mes "[Acolyte Klift]";
-		mes "To gain the skill, you must find these items.";
-		mes "^FF33551 Opal^000000";
-		mes "^FF33551 Crystal Blue^000000";
-		mes "^FF33551 Rosary^000000 ";
+		mes "[見習克利夫特]";
+		mes "要獲得此技能，你必須找到這些道具。";
+		mes "^FF33551 白寶石^000000";
+		mes "^FF33551 水靈礦石^000000";
+		mes "^FF33551 幸運珠鏈^000000 ";
 		next;
-		mes "[Acolyte Klift]";
-		mes "In order to be able to even use this skill,";
-		mes "one must be have sufficient experience.";
-		mes "^FF3355 Job Level 30^000000";
-		mes "is required to learn this skill.";
+		mes "[見習克利夫特]";
+		mes "要能使用這項技能，";
+		mes "必須具備足夠的經驗。";
+		mes "^FF3355 職業等級 30^000000";
+		mes "是學習此技能的必要條件。";
 		next;
-		mes "[Acolyte Klift]";
-		mes "As for a priest, because of their";
-		mes "already vast amount of experience,";
-		mes "they are able to gain this skill at any";
-		mes "job level.";
+		mes "[見習克利夫特]";
+		mes "至於祭司，因為他們";
+		mes "已累積了龐大的經驗，";
+		mes "能在任何";
+		mes "職業等級都學會此技能。";
 		close;
 	case 2:
 		if (getskilllv("AL_HOLYLIGHT") == 1) {
-			mes "[Acolyte Klift]";
-			mes "Brother, you already possess";
-			mes "the skill of ` Holy Light '.";
-			mes "You cannot gain a skill you";
-			mes "already possess ..";
-			mes "I pray that you are using";
-			mes "this skill for the work of good . .";
+			mes "[見習克利夫特]";
+			mes "兄弟，你已經擁有";
+			mes "「神聖之光」這項技能。";
+			mes "你無法獲得你";
+			mes "已經擁有的技能……";
+			mes "願你是在運用";
+			mes "這項技能行善積德……";
 			close;
 		}
 		if ((countitem(727) > 0) && (countitem(991) > 0) && (countitem(2608) > 0) && (JobLevel > 29 || (BaseJob == Job_Priest || BaseJob == Job_Monk)) && (BaseClass == Job_Acolyte)) {
-			mes "[Acolyte Klift]";
-			mes "Your faith has proven worthy";
-			mes "for you to gain the ' Holy Light ' skill.";
-			mes "Your skill is adequate";
-			mes "to use this skill.";
-			mes "Use it wisely. . .";
+			mes "[見習克利夫特]";
+			mes "你的信仰已證明你";
+			mes "值得獲得「神聖之光」技能。";
+			mes "你的技藝已足夠";
+			mes "使用此技能。";
+			mes "請善加運用……";
 			next;
 			delitem 727,1; //White_Jewel
 			delitem 991,1; //Crystal_Blue
 			delitem 2608,1; //Rosary
 			skill "AL_HOLYLIGHT",1,SKILL_PERM;
-			mes "[Acolyte Klift]";
-			mes "You now know ' Holy Light '";
-			mes "May you use this skill only in the";
-			mes "best conduct . . . . .";
+			mes "[見習克利夫特]";
+			mes "你現在已學會「神聖之光」";
+			mes "願你只在";
+			mes "正當的行為中使用此技能……";
 			close;
 		}
-		mes "[Acolyte Klift]";
-		mes "Oh, it is clear. . .";
-		mes "You are not yet ready to";
-		mes "receive the ' Holy Light ' skill.";
+		mes "[見習克利夫特]";
+		mes "哦，我明白了……";
+		mes "你還沒準備好";
+		mes "領受「神聖之光」技能。";
 		next;
-		mes "[Acolyte Klift]";
-		mes "You should listen carefully to what";
-		mes "is necessary for this skill.";
-		mes "If you listen closely,";
-		mes "you may learn what you lack.";
-		mes "So that you may improve upon yourself.";
+		mes "[見習克利夫特]";
+		mes "你應當仔細聆聽";
+		mes "這項技能所需的條件。";
+		mes "如果你仔細聽，";
+		mes "就會明白你缺少什麼。";
+		mes "好讓你能夠提升自己。";
 		close;
 	case 3:
-		mes "[Acolyte Klift]";
+		mes "[見習克利夫特]";
 		mes ". . . . .";
-		mes "I understand your zeal.";
-		mes "You have much time yet to";
-		mes "practice and gain experience.";
-		mes "Blessings upon you . . . . .";
+		mes "我理解你的熱忱。";
+		mes "你還有很多時間";
+		mes "來修練並累積經驗。";
+		mes "願神祝福你……";
 		close;
 	}
 }

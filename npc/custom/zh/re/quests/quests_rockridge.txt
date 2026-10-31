@@ -183,7 +183,7 @@ harboro1,80,218,5	script	Costello#harboro1	4_M_COSTELL,{
 		setpcblock PCBLOCK_NPC, true;
 		unittalk getcharid(3), "" + strcharinfo(0) + " : Mr. Costello?", bc_self;
 		sleep2 1000;
-		npctalk "*Gasp*", "", bc_self;;
+		npctalk "*倒抽一口氣*", "", bc_self;;
 		sleep2 1000;
 		setpcblock PCBLOCK_NPC, false;
 		mes "[Costello]";
@@ -289,7 +289,7 @@ harboro1,80,218,5	script	Costello#harboro1	4_M_COSTELL,{
 		next;
 		unittalk getcharid(3), "" + strcharinfo(0) + " : ...", bc_self;
 		mes "[Costello]";
-		mes "Why are you looking at me like that?";
+		mes "你為什麼那樣看著我？";
 		mes "Protecting my company's profits is important, sure, but I can't do that if I'm dead, now can I?";
 		next;
 		select("I was joking.");
@@ -356,7 +356,7 @@ harboro1,80,218,5	script	Costello#harboro1	4_M_COSTELL,{
 		mes "[Costello]";
 		mes "I'm sorry I said that. That was thoughtless.";
 		mes "You and the Sheriff take care of it. I'll stay out of it.";
-		mes "You do that.";
+		mes "你去做吧。";
 		close;
 	}
 	if (rock_main_quest == 13 || rock_main_quest == 14) {
@@ -783,7 +783,7 @@ har_in01,20,30,5	script	Wyatt Warp#har_in01	4_M_YATTWARP,{
 		next;
 		mes "[Wyatt Warp]";
 		mes "Both badges are worn by us Vigilantes, but they provide different effects.";
-		mes "I have " + mesitemlink( 28495, false, "Vigilante Badge (L)" );
+		mes "我特地 " + mesitemlink( 28495, false, "Vigilante Badge (L)" );
 		mes "和 " + mesitemlink( 28496, false, "Vigilante Badge (R)" ) + ".";
 		mes "Pick one you like.";
 		next;
@@ -791,7 +791,7 @@ har_in01,20,30,5	script	Wyatt Warp#har_in01	4_M_YATTWARP,{
 		setarray .@item_id[0], 28495, 28496;
 		.@s = select( "Vigilante Badge (L)", "Vigilante Badge (R)" ) - 1;
 		mes "[Wyatt Warp]";
-		mes "Do you want " + mesitemlink( .@item_id[.@s], false, .@item_name$[.@s] ) + "?";
+		mes "您想要 " + mesitemlink( .@item_id[.@s], false, .@item_name$[.@s] ) + "?";
 		mes "很好的選擇！";
 		mes "Are you certain you want this?";
 		next;
@@ -943,7 +943,7 @@ har_in01,14,24,5	script	Ivoka Skudi#rr03	4_M_EVOKASCUDI,{
 	}
 	if (rock_main_quest == 14 || rock_main_quest == 15) {
 		mes "[Ivoka Skudi]";
-		mes "It worked!";
+		mes "成功了！";
 		mes "Come on, let's go play Johnny!";
 		mes "*輕笑*";
 		close;
@@ -1088,7 +1088,7 @@ har_in01,89,26,5	script	Johnny James#har_in01	4_M_JOHNNYJAMES,{
 		next;
 		mes "[" + .@player_name$ + "]";
 		mes "Just so you know, this offer won't be on the table too long.";
-		mes "I hope you'll make the right decision.";
+		mes "希望你能做出正確的決定。";
 		next;
 		npctalk "...", "", bc_self;
 		select("Stop looking outside the window.");
@@ -1782,7 +1782,7 @@ rockmi2,97,120,5	script	Broken Elevator#rrevt10	4_ENERGY_WHITE,{
 		next;
 		mes "[????]";
 		mes "It's good we've caught it,";
-		mes "isn't it?";
+		mes "不是嗎？";
 		close2;
 		rock_main_quest = 18;
 		monster "rockmi2", 95,116,"Buffalo Bandit",3736,1, "Broken Elevator#rrevt10::OnMyMobDead";
@@ -3072,7 +3072,7 @@ rockrdg1,262,90,7	script	Crouched Horse#rr	4_M_CACTUSMAN1,{
 		mes "Thank you for doing this for me.";
 		next;
 		mes "[Crouched Horse]";
-		mes "Please take this small token of my appreciation.";
+		mes "請收下這份小小的謝意。";
 		mes "I've received it from your village,";
 		mes "and I don't need it.";
 		.@count = countitem(25260);
@@ -3301,7 +3301,7 @@ harboro1,357,163,3	script	Food Distributer	4_COOK,{
 		mes "[Food Distributer]";
 		mes "Alright, then let's do this. I'll jot down everything I need. Can you bring them from Midgard?";
 		next;
-		select( "Sure thing.", "It'd be a waste of my time if I say no now." );
+		select( "沒問題。", "It'd be a waste of my time if I say no now." );
 		mes "[Food Distributer]";
 		mes "Good! We've made a deal. I need some time to take inventory. Talk to me again later.";
 		setquest 12381;// New Continent's Food Supplier
@@ -3335,7 +3335,7 @@ harboro1,357,163,3	script	Food Distributer	4_COOK,{
 	mes "[Food Distributer]";
 	mes "Aww, here's the list of ingredients I need. Bring them quickly, will you?";
 	next;
-	if (select( "Sure thing.", "Sorry, I'm busy." ) == 2) {
+	if (select( "沒問題。", "抱歉，我很忙。" ) == 2) {
 		mes "[Food Distributer]";
 		mes "Oh, come on. Help me out here. People are starving.";
 		close;
@@ -3699,7 +3699,7 @@ harboro1,357,152,3	script	Steel Vigilante#2	4_M_ACROSS,{
 		mes "[Steel Vigilante]";
 		mes "You're pretty strong. Can you handle something tough?";
 		next;
-		if (select( "Sure, why not?", "讓我想想。" ) == 2) {
+		if (select( "好啊，有何不可？", "讓我想想。" ) == 2) {
 			mes "[Steel Vigilante]";
 			mes "Alright, take your time.";
 			close;
@@ -4025,7 +4025,7 @@ harboro1,332,144,6	script	Underground Passage#1	PORTAL,{
 	}
 	mes "^0000ffDo you want to move to the underground village?^000000";
 	next;
-	if (select( "Move.", "Do it later." ) == 2) {
+	if (select( "Move.", "之後再說。" ) == 2) {
 		mes "You have decided not to use the underground passage.";
 		close;
 	}
@@ -4036,7 +4036,7 @@ harboro1,332,144,6	script	Underground Passage#1	PORTAL,{
 harboro2,333,187,6	script	Underground Passage#2	PORTAL,{
 	mes "^0000ffDo you want to go above ground?^000000";
 	next;
-	if (select( "Move.", "Do it later." ) == 2) {
+	if (select( "Move.", "之後再說。" ) == 2) {
 		mes "You have decided not to use the menu.";// ?
 		close;
 	}
@@ -4147,7 +4147,7 @@ harboro1,138,157,5	script	Donovan	4_M_EINMAN2,{
 		mes "it's time to";
 		mes "get rid of sea anemones again.";
 		next;
-		if (select( "I can do that.", "Sorry, I'm busy." ) == 2) {
+		if (select( "這我可以做。", "抱歉，我很忙。" ) == 2) {
 			mes "[Donovan]";
 			mes "喔，我明白了。";
 			mes "我懂了。";
@@ -4202,7 +4202,7 @@ harboro1,138,157,5	script	Donovan	4_M_EINMAN2,{
 		mes "The work itself isn't complicated.";
 		mes "Could you help me?";
 		next;
-		if (select( "當然。", "Sorry, I'm busy." ) == 2) {
+		if (select( "當然。", "抱歉，我很忙。" ) == 2) {
 			mes "[Donovan]";
 			mes "喔，我明白了。";
 			mes "我懂了。";
@@ -4580,7 +4580,7 @@ harboro2,164,80,5	script	Demon#srdg01	4_M_NFMAN,{
 		mes "He's been following me around since then.";
 		next;
 		mes "[Midnight]";
-		mes "Who? Me?";
+		mes "誰？我？";
 		next;
 		mes "[Demon]";
 		mes "Yes. Or why did you save me when I came to the mine to get even with the buffaloes? They kicked you out because of me.";
@@ -4798,7 +4798,7 @@ rockrdg2,295,328,5	script	Frail Ghast#rockdaily	4_M_COWRAIDERS2,{
 		mes "[Frail Ghast]";
 		mes "Ah, stranger! You came to help again, right?";
 		next;
-		if (select( "Help.", "拒絕。" ) == 2) {
+		if (select( "幫忙。", "拒絕。" ) == 2) {
 			mes "[Frail Ghast]";
 			mes "Why not? Are you too busy today?";
 			close;
@@ -4848,7 +4848,7 @@ rockrdg2,295,328,5	script	Frail Ghast#rockdaily	4_M_COWRAIDERS2,{
 		mes "Hunt ^FF000020 Gasters^000000 before I get in there.";
 		mes "I'll repay you. Please?";
 		next;
-		if (select( "Help.", "拒絕。" ) == 2) {
+		if (select( "幫忙。", "拒絕。" ) == 2) {
 			mes "[Frail Ghast]";
 			mes "Come on, I said I'd repay you.";
 			mes "Bah! Alright, then I won't force you.";
@@ -4931,7 +4931,7 @@ harboro1,347,65,3	script	Mrs. McPhy#rockdaily	1_F_MERCHANT_02,{
 		mes "[Mrs. McPhy]";
 		mes "As I told you before, we've got something for you this time: ^0000CD1 Rock Ridge Coin^000000. Say, could you help us?";
 		next;
-		if (select( "Help.", "拒絕。" ) == 2) {
+		if (select( "幫忙。", "拒絕。" ) == 2) {
 			mes "[Mrs. McPhy]";
 			mes "We have no one else to turn to. Please come back if you change your mind.";
 			close;
@@ -5100,7 +5100,7 @@ harboro1,347,65,3	script	Mrs. McPhy#rockdaily	1_F_MERCHANT_02,{
 		mes "*Clenches his teeth* Sweetheart, let's not start it right now.";
 		mes "Anyway, what can we do for you?";
 		next;
-		if (select( "Say you want to help them find the ring.", "Say hello." ) == 2) {
+		if (select( "Say you want to help them find the ring.", "打招呼。" ) == 2) {
 			mes "[Mr. McPhy]";
 			mes "Why, hello to you, too.";
 			mes "你真傻。";
@@ -5715,7 +5715,7 @@ harboro1,75,219,3	script	Irene#rockwn14	4W_KID,5,5,{
 OnTouch:
 	specialeffect EF_SPHERE;
 	emotion ET_BIGTHROB;
-	npctalk "Welcome, adventurer!", "", bc_self;
+	npctalk "歡迎，冒險者！", "", bc_self;
 	end;
 }
 
@@ -6282,7 +6282,7 @@ harboro1,226,255,3	script	Bulk Trader's Camel#3	4_DST_CAMEL,{
 
 harboro1,227,260,3	script	Bulk Trader's Camel#4	4_DST_CAMEL,{
 	mes "[駱駝]";
-	mes "*Snort*";
+	mes "*哼*";
 	close;
 }
 harboro1,227,260,3	duplicate(Bulk Trader's Camel#4)	Bulk Trader's Camel#6	4_DST_CAMEL
@@ -6601,7 +6601,7 @@ harboro1,273,259,4	script	Alain Morlein#dy	4_M_YURI,{
 	next;
 	emotion ET_THINK;
 	mes "[Alain Morlein]";
-	mes "*Snort*";
+	mes "*哼*";
 	next;
 	emotion ET_THANKS, getnpcid(0, "Bank Clerk#dy");
 	mes "[銀行職員]";
@@ -6700,7 +6700,7 @@ harboro1,278,195,5	script	Carola Firth#rockn17	4_F_CAPEGIRL,{
 	mes "Word is that some worker couldn't get out in time before the basement was buried.";
 	mes "This place has so many people coming in and out of it, it's hard to keep track of every one of them.";
 	next;
-	npctalk "Boo!", "Lucas Richie#rockn08", bc_self;
+	npctalk "噓！", "Lucas Richie#rockn08", bc_self;
 	mes "[Carola Firth]";
 	mes "Some workers went down to the basement for repair work and heard strange rustling noises.";
 	mes "When they found the source of noise? kyaaaahhh!";
@@ -6761,7 +6761,7 @@ harboro1,282,201,3	script	Rock Ridge Tiger#srdg01	4_CAT_REST,{
 	end;
 }
 
-harboro1,302,175,7	script	Sammy#srdg01	4_DOG01,{
+harboro1,302,175,7	script	山姆#srdg01::Sammy#srdg01	4_DOG01,{
 	emotion ET_THROB;
 	npctalk "Woof, woof! Woof, woof!";
 	end;
@@ -6909,7 +6909,7 @@ harboro2,118,264,5	script	老婦人#srdg01::Old Woman#srdg01	4_F_LGTGRAND,{
 	mes "My lovely Clementine... I proposed to her here.";
 	next;
 	mes "[老婦人]";
-	mes "I'm here.";
+	mes "我到了。";
 	next;
 	mes "[老先生]";
 	mes "My Clementine is not so old!";
@@ -6951,7 +6951,7 @@ harboro2,125,196,3	script	Mom's Kid#srdg01	4_F_CHILD,{
 	mes "Soon. When Daddy can go work at the mine again. When Mommy and Daddy make enough money to buy back the house.";
 	next;
 	mes "[小孩]";
-	mes "I want to go home...";
+	mes "我想回家……";
 	close;
 }
 
@@ -7007,7 +7007,7 @@ rockrdg1,310,48,3	script	Erekter#rockc06	4_M_CACTUSCHILD,{
 	mes "[Erekter]";
 	mes "Erekter wants to become the best netter in the village when he grows up.";
 	next;
-	npctalk "Oh, wait.", "", bc_self;
+	npctalk "喔，等等。", "", bc_self;
 	emotion ET_THINK;
 	mes "[Erekter]";
 	mes "The best netter in the village is Mrs. Soft Feather.";

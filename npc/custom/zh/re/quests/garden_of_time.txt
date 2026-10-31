@@ -12,7 +12,7 @@ function	script	F_mesnavi	{
 }
 
 // Warps
-xmas_fild01,158,246,2	script	Dimensional barrier#got1	GATE_SKYBLUE,2,2,{
+xmas_fild01,158,246,2	script	次元結界#got1::Dimensional barrier#got1	GATE_SKYBLUE,2,2,{
 	// Fallthrough
 OnTouch:
 	warp "t_garden",116,47;
@@ -23,7 +23,7 @@ OnInit:
 	end;
 }
 
-t_garden,111,36,2	script	Dimensional Barrier#got2	GATE_SKYBLUE,2,2,{
+t_garden,111,36,2	script	次元結界#got2::Dimensional Barrier#got2	GATE_SKYBLUE,2,2,{
 	// Fallthrough
 OnTouch:
 	warp "xmas_fild01",150,240;
@@ -79,12 +79,12 @@ OnTouch:
 }
 	
 t_garden,114,49,6	script(CLOAKED)	Leticia#life	4_4JOB_LETICIA,{
-	mes "^0000ffShe is not paying attention to you because she is explaining something to Oscar.^000007";
+	mes "^0000ff她正在向奧斯卡解釋某件事，沒有在注意你。^000007";
 	close;
 }
 
 t_garden,118,49,3	script(CLOAKED)	Rigel#life	4_CS_RIGEL,{
-	mes "^0000ffIt seems like they are focusing on the story of Oscar and Leticia.^000007";
+	mes "^0000ff看起來他們正專注於奧斯卡與萊蒂西亞的故事。^000007";
 	close;
 }
 
@@ -93,108 +93,108 @@ t_garden,119,46,2	script(CLOAKED)	Oscar#life	4_ED_OSCAR,{
 		end;
 	if (isbegin_quest(12592) == 0) {
 		emotion ET_THROB;
-		mes "^0000ffOscar appears to be talking to someone.^000000";
+		mes "^0000ff奧斯卡似乎在跟某人說話。^000000";
 		next;
-		if (select( "Quit and step away", "Eavesdrop from the side." ) == 1) {
-			mes "^0000ffOf course, eavesdropping is a bit like that.^000000";
+		if (select( "離開", "在旁邊偷聽。" ) == 1) {
+			mes "^0000ff偷聽什麼的，當然多少也是這樣啦。^000000";
 			close;
 		}
 		cutin "OSCAR03.bmp",2;
 		mes "[奧斯卡]";
-		mes "So, is your claim that I happened to find a crack near Lutie and came in and found this garden?";
+		mes "所以你的意思是，我正好在薑餅城附近發現了裂縫，然後進來發現了這座花園？";
 		next;
 		cutin "4job_leticia_01.png",2;
-		mes "[Leticia]";
+		mes "[蕾蒂西亞]";
 		mes "沒錯！";
 		next;
 		cutin "OSCAR03.bmp",2;
 		mes "[奧斯卡]";
-		mes "Why did you do that, Leticia?";
+		mes "蕾蒂西亞，妳為什麼要那樣做？";
 		next;
 		cutin "4job_leticia_04.png",2;
-		mes "[Leticia]";
-		mes "Why! Doesn't this place look really useful? A nice garden and an unidentifiable mansion! This is perfect, Oscar!";
+		mes "[蕾蒂西亞]";
+		mes "為什麼！這裡看起來不是很有用嗎？有漂亮的花園，還有來歷不明的宅邸！這簡直完美，奧斯卡！";
 		next;
 		cutin "OSCAR03.bmp",2;
 		mes "[奧斯卡]";
-		mes "You don't understand, Leticia. You found a crack, but I'm asking why you called me here without extinguishing it.";
+		mes "妳不懂，蕾蒂西亞。妳發現了裂縫，我問的是妳為什麼不先把它消除就把我叫來這裡。";
 		next;
 		cutin "4job_leticia_05.png",2;
-		mes "[Leticia]";
-		mes "Well... that's right, it would be a waste to destroy it.";
+		mes "[蕾蒂西亞]";
+		mes "嗯……說得也是，把它毀掉太可惜了。";
 		next;
 		cutin "OSCAR03.bmp",2;
 		mes "[奧斯卡]";
-		mes "You didn't destroy it because it was a waste~ and what?";
+		mes "你不毀掉它是因為太可惜了~ 然後呢？";
 		next;
 		cutin "4job_leticia_02.png",2;
-		mes "[Leticia]";
-		mes "Oscar, you've been wandering around without a proper place to live. No matter how good a person you are, you shouldn't just volunteer like this!";
+		mes "[蕾蒂西亞]";
+		mes "奧斯卡，你一直在四處遊蕩，連個像樣的住所都沒有。不管你人再好，也不該這樣隨便自願幫忙！";
 		next;
 		cutin "OSCAR09.bmp",2;
 		mes "[奧斯卡]";
 		mes "啥？";
 		next;
 		cutin "rigel_halfeyes02.png",2;
-		mes "[Rigel]";
-		mes "Leticia is begging you to stop acting like a homeless person, buy a decent house, and live like a constellation. It's not good to keep ignoring what others say.";
+		mes "[參宿七]";
+		mes "蕾蒂西亞拜託你別再像流浪漢一樣，買間像樣的房子，過得像個星座一樣。一直無視別人的話可不好。";
 		next;
 		cutin "OSCAR07.bmp",2;
 		mes "[奧斯卡]";
-		mes "Homeless..., am I not that bad? Are you looking at me like that, Leticia?";
+		mes "流浪漢……我有那麼糟嗎？蕾蒂西亞，妳是那樣看我的嗎？";
 		next;
 		cutin "4job_leticia_02.png",2;
-		mes "[Leticia]";
-		mes "Even Betelgeuse, who came to this continent a long time ago, already has a decent home of his own! I think it's unreasonable for Oscar to wander around like this without a place to live!";
+		mes "[蕾蒂西亞]";
+		mes "就連很久以前來到這片大陸的參宿四，都已經有了像樣的住處！我覺得奧斯卡沒有住處還到處遊蕩，實在不合理！";
 		next;
 		cutin "OSCAR04.bmp",2;
 		mes "[奧斯卡]";
-		mes "Okay, I understand your intentions. I still have to think about how to handle this in the right way...";
+		mes "好，我明白你的用意。不過我還是得好好想想該怎麼妥善處理……";
 		next;
 		cutin "rigel05.png",2;
-		mes "[Rigel]";
-		mes "From what I've looked at, there are a few unstable dimensional passages, but they don't seem to be very dangerous. Leticia has a point.";
+		mes "[參宿七]";
+		mes "依我看來，這裡有幾處不穩定的次元通道，但似乎不太危險。蕾蒂西亞說得有道理。";
 		next;
 		cutin "rigel_halfeyes02.png",2;
-		mes "[Rigel]";
-		mes "I think I and Leticia could find an appropriate use for the unstable dimensional passages. What do you think, Leticia?";
+		mes "[參宿七]";
+		mes "我覺得我和蕾蒂西亞可以找到這些不穩定次元通道的適當用途。蕾蒂西亞，妳覺得呢？";
 		next;
 		cutin "4job_leticia_05.png",2;
-		mes "[Leticia]";
-		mes "I agree, Rigel! I think the unstable area near the center of the garden can be stabilized by imposing restrictions in the form of a dungeon. I'll take care of that!";
+		mes "[蕾蒂西亞]";
+		mes "我同意，參宿七！我想花園中央附近的不穩定區域，可以用設立地城的方式加以限制，使其穩定下來。這件事交給我來處理！";
 		next;
 		cutin "rigel_halfeyes02.png",2;
-		mes "[Rigel]";
-		mes "The flower garden to the north of the garden is unstable and connected to another dimension. I'll do some work there.";
+		mes "[參宿七]";
+		mes "花園北邊的花圃不穩定，而且和另一個次元相連。我會在那裡做些處理。";
 		next;
 		cutin "OSCAR05.bmp",2;
 		mes "[奧斯卡]";
-		mes "Wow, I didn't know these two would get along so well. It's not like they planned it in advance or anything, right?";
+		mes "哇，沒想到這兩個人會這麼合得來。他們該不會事先串通好了吧？";
 		next;
 		cutin "rigel_halfeyes01.png",2;
-		mes "[Rigel]";
-		mes "That's not important, Oscar. Do you feel anything about the central mansion?";
+		mes "[參宿七]";
+		mes "這不重要，奧斯卡。你對中央的宅邸有什麼感覺嗎？";
 		next;
 		cutin "OSCAR01.bmp",2;
 		mes "[奧斯卡]";
-		mes "Oh, you mean 'that'? I feel it very well.";
+		mes "喔，你是說「那件事」嗎？我感覺得很清楚。";
 		next;
 		cutin "rigel_halfeyes02.png",2;
-		mes "[Rigel]";
-		mes "It seems like it's an issue involving ^0000fftime^000000, so I don't think Leticia or me can do anything about it. Oscar, you can do it, right?";
+		mes "[參宿七]";
+		mes "看起來這跟^0000ff時間^000000有關，所以我和蕾蒂西亞都插不上手。奧斯卡，這件事只能靠你了吧？";
 		next;
 		cutin "OSCAR07.bmp",2;
 		mes "[奧斯卡]";
-		mes "Ugh... that's my responsibility, so it's right for me to go regardless of whether it works or not.";
+		mes "唉……這是我的責任，所以不管行不行得通，我都該去一趟。";
 		next;
 		cutin "4job_leticia_05.png",2;
-		mes "[Leticia]";
-		mes "Then, let's go do some garden maintenance first. There's an adventurer who's eavesdropping nearby, so it would be perfect if we go together!";
+		mes "[蕾蒂西亞]";
+		mes "那麼，我們先去做些花園維護吧。附近有個冒險者在偷聽，一起去的話再好不過了！";
 		next;
-		select( "Yes? Me too?" );
+		select( "咦？我也要去嗎？" );
 		cutin "4job_leticia_04.png",2;
-		mes "[Leticia]";
-		mes "You're saying the obvious. If you've heard the story up to this point, you probably already know what's going on. Don't talk nonsense and just follow me into the garden.";
+		mes "[蕾蒂西亞]";
+		mes "你這是廢話。既然聽到了這裡，你大概也知道是怎麼回事了。別說些有的沒的，跟我進花園來。";
 		setquest 12592;
 		completequest 12592;
 		setquest 12593;
@@ -230,28 +230,28 @@ OnTouch:
 t_garden,118,91,6	script(CLOAKED)	Leticia#life2	4_4JOB_LETICIA,{
 	if (isbegin_quest(12593) == 1) {
 		cutin "4job_leticia_02.png",2;
-		mes "[Leticia]";
-		mes "The flow of time inside that mansion is different from our current time. So, we don't know when Oscar will fully restore the mansion.";
+		mes "[蕾蒂西亞]";
+		mes "那座宅邸裡的時間流速和我們現在的時間不同。所以我們也不知道奧斯卡什麼時候才能完全修復宅邸。";
 		next;
 		cutin "4job_leticia_01.png",2;
-		mes "[Leticia]";
-		mes "But we can't just bite our fingers. Moreover, from what the spirits who came here say, it seems like there is something else we need to do.";
+		mes "[蕾蒂西亞]";
+		mes "但我們也不能乾等。而且從來到這裡的靈體們口中聽來，似乎還有別的事情需要我們去做。";
 		next;
 		cutin "4job_leticia_05.png",2;
-		mes "[Leticia]";
-		mes "And I heard that the spirits that originally guarded this space were driven out by their compatriots who became fierce for some reason.";
+		mes "[蕾蒂西亞]";
+		mes "我還聽說，原本守護這片空間的靈體，因為某種原因變得兇暴，被自己的同伴趕了出去。";
 		next;
 		cutin "4job_leticia_04.png",2;
-		mes "[Leticia]";
-		mes "Perhaps due to the unstable energy flow, the attributes of nature were twisted and transformed and the spirits became fierce. They were told to rest for a while in the northwest of the garden.";
+		mes "[蕾蒂西亞]";
+		mes "或許是因為不穩定的能量流動，自然屬性遭到扭曲與轉變，靈體才變得兇暴。他們被告知要在花園西北方暫時休息。";
 		next;
 		cutin "4job_leticia_04.png",2;
-		mes "[Leticia]";
-		mes "According to their words, it seems that the cause is foreign spirits from the dimension connected to this place, so it would be better to reduce the number of those foreign things.";
+		mes "[蕾蒂西亞]";
+		mes "據他們所說，原因似乎是與此地相連的次元中有外來的靈體，所以最好減少那些外來之物的數量。";
 		next;
 		cutin "4job_leticia_01.png",2;
-		mes "[Leticia]";
-		mes "I'm going to need your help here. I need to gather energy flows to the east and west to create a gate, so let's move.";
+		mes "[蕾蒂西亞]";
+		mes "這裡我需要你的幫忙。我得把東西兩側的能量流匯集起來，才能創造出一道門，我們走吧。";
 		completequest 12593;
 		setquest 12595;
 		setquest 12596;
@@ -259,8 +259,8 @@ t_garden,118,91,6	script(CLOAKED)	Leticia#life2	4_4JOB_LETICIA,{
 	}
 	if (isbegin_quest(12595) == 1 || isbegin_quest(12596) == 1) {
 		cutin "4job_leticia_01.png",2;
-		mes "[Leticia]";
-		mes "Not all exits are activated. Activate both the east and west exits and then come find me.";
+		mes "[蕾蒂西亞]";
+		mes "出口還沒有全部啟動。請先啟動東、西兩側的出口，然後再來找我。";
 		close3;
 	}
 	if (isbegin_quest(12620) == 0) {
@@ -269,18 +269,18 @@ t_garden,118,91,6	script(CLOAKED)	Leticia#life2	4_4JOB_LETICIA,{
 		sleep2 500;
 		setpcblock PCBLOCK_NPC, false;
 		cutin "4job_leticia_05.png",2;
-		mes "[Leticia]";
-		mes "We gathered all the spirits that were asking for help around here and concentrated them in the northwest of the central square. They are really noisy.";
+		mes "[蕾蒂西亞]";
+		mes "我們把這附近所有求助的靈體都集中到中央廣場的西北方了。他們真的很吵。";
 		next;
 		cutin "4job_leticia_03.png",2;
-		mes "[Leticia]";
-		mes "They're probably just waiting for you to arrive. It's up to you whether you help them or not, but it wouldn't be a loss to help the spirits. I recommend going at least once.";
+		mes "[蕾蒂西亞]";
+		mes "他們大概正等著你過去。要不要幫他們由你決定，不過幫助靈體並不會吃虧。我建議你至少去一次。";
 		setquest 12620;
 		close3;
 	}
 	cutin "4job_leticia_01.png",2;
-	mes "[Leticia]";
-	mes "Have you tried talking to the spirits? There won't be any harm in becoming friends with them.";
+	mes "[蕾蒂西亞]";
+	mes "你有試著跟靈體們說說話嗎？跟他們交朋友也不會有什麼壞處。";
 	close3;
 
 OnInit:
@@ -297,15 +297,15 @@ OnTouch:
 		end;
 	case 1:
 		cutin "4job_leticia_01.png",2;
-		mes "[Leticia]";
-		mes "Okay, that's enough. It will open a passage to the place where the unholy energy is on the time seal seen there.";
+		mes "[蕾蒂西亞]";
+		mes "好了，夠了。這樣就會在你所看見的時間封印上，開啟一條通往不祥能量所在之處的通道。";
 		next;
 		cutin "4job_leticia_02.png",2;
-		mes "[Leticia]";
-		mes "Are you ready? Then extend your hand forward and keep your eyes on the seal as if you are focusing the power I'm giving you onto the seal.";
+		mes "[蕾蒂西亞]";
+		mes "準備好了嗎？那就把手伸向前方，目光緊盯封印，就像要把我給你的力量集中到封印上一樣。";
 		// close2;
 		next;
-		select( "Reach out hand and watch the seal" );
+		select( "伸出手，注視封印" );
 		setpcblock PCBLOCK_NPC, true;
 		cutin "",255;
 		specialeffect2 EF_BEGINSPELL_N3;
@@ -320,28 +320,28 @@ OnTouch:
 		setpcblock PCBLOCK_NPC, false;
 		if (isbegin_quest(12596) == 1) {
 			cutin "4job_leticia_04.png",2;
-			mes "[Leticia]";
-			mes "Now then, let's open the other one as well. Move to the site opposite this gate.";
+			mes "[蕾蒂西亞]";
+			mes "那麼，我們也來開啟另一個吧。請移動到與這道門相對的地點。";
 			completequest 12595;
 			close3;
 		}
 		cutin "4job_leticia_04.png",2;
-		mes "[Leticia]";
-		mes "It's simpler than you think, isn't it?. With this, we'll be able to stop strange guys from flooding the garden until Oscar completes the mansion, so it's a relief.";
+		mes "[蕾蒂西亞]";
+		mes "比你想的簡單吧？有了這個，在奧斯卡完成宅邸之前，我們就能阻止奇怪的傢伙湧入花園，真是讓人鬆了一口氣。";
 		next;
 		cutin "4job_leticia_01.png",2;
-		mes "[Leticia]";
-		mes "And since you've already helped me, from now on you'll have to work with me every day. It's no big deal. Reduce the number of unholy things in the dungeon under the passage created here.";
+		mes "[蕾蒂西亞]";
+		mes "既然你已經幫過我了，從今以後你就得每天跟我一起工作。沒什麼大不了的。去減少這裡所開啟通道下方地城中的不祥之物吧。";
 		next;
-		select( "I think I've heard this before" );
+		select( "我好像聽過這句話" );
 		cutin "4job_leticia_03.png",2;
-		mes "[Leticia]";
-		mes "Why are you muttering? Do you have any complaints?";
+		mes "[蕾蒂西亞]";
+		mes "你在嘀咕什麼？有什麼不滿嗎？";
 		next;
 		select( "不要。" );
 		cutin "4job_leticia_05.png",2;
-		mes "[Leticia]";
-		mes "I think it's finished. Let's come to the central square for a moment and talk about the next thing.";
+		mes "[蕾蒂西亞]";
+		mes "我想應該好了。我們先到中央廣場一趟，談談接下來的事情。";
 		completequest 12595;
 		close3;
 	case 2:
@@ -361,11 +361,11 @@ t_garden,78,92,2	script(CLOAKED)	Passage of Time#1	GATE_SKYBLUE,{
 		end;
 	if (isbegin_quest(12596) != 2) {
 		cutin "4job_leticia_01.png",2;
-		mes "[Leticia]";
-		mes "Not all exits are activated. Activate both the east and west exits and then come find me.";
+		mes "[蕾蒂西亞]";
+		mes "出口還沒有全部啟動。請先啟動東、西兩側的出口，然後再來找我。";
 		close3;
 	}
-	switch( select( "Forgotten memories, Zone 1, 6 o'clock", "Forgotten memories, Zone 1, Center", "Forgotten memories, Zone 1, 10 o'clock" ) ) {
+	switch( select( "遺忘的記憶，第1區，6點方向", "遺忘的記憶，第1區，中央", "遺忘的記憶，第1區，10點方向" ) ) {
 	case 1:
 		warp "for_dun01",159,35;
 		break;
@@ -387,15 +387,15 @@ OnTouch:
 		end;
 	case 1:
 		cutin "4job_leticia_01.png",2;
-		mes "[Leticia]";
-		mes "Okay, that's enough. It will open a passage to the place where the unholy energy is on the time seal seen there.";
+		mes "[蕾蒂西亞]";
+		mes "好了，夠了。這樣就會在你所看見的時間封印上，開啟一條通往不祥能量所在之處的通道。";
 		next;
 		cutin "4job_leticia_02.png",2;
-		mes "[Leticia]";
-		mes "Are you ready? Then extend your hand forward and keep your eyes on the seal as if you are focusing the power I'm giving you onto the seal.";
+		mes "[蕾蒂西亞]";
+		mes "準備好了嗎？那就把手伸向前方，目光緊盯封印，就像要把我給你的力量集中到封印上一樣。";
 		// close2;
 		next;
-		select( "Reach out hand and watch the seal" );
+		select( "伸出手，注視封印" );
 		setpcblock PCBLOCK_NPC, true;
 		cutin "",255;
 		specialeffect2 EF_BEGINSPELL_N3;
@@ -410,28 +410,28 @@ OnTouch:
 		setpcblock PCBLOCK_NPC, false;
 		if (isbegin_quest(12595) == 1) {
 			cutin "4job_leticia_04.png",2;
-			mes "[Leticia]";
-			mes "Now then, let's open the other one as well. Move to the site opposite this gate.";
+			mes "[蕾蒂西亞]";
+			mes "那麼，我們也來開啟另一個吧。請移動到與這道門相對的地點。";
 			completequest 12596;
 			close3;
 		}
 		cutin "4job_leticia_04.png",2;
-		mes "[Leticia]";
-		mes "It's simpler than you think, isn't it?. With this, we'll be able to stop strange guys from flooding the garden until Oscar completes the mansion, so it's a relief.";
+		mes "[蕾蒂西亞]";
+		mes "比你想的簡單吧？有了這個，在奧斯卡完成宅邸之前，我們就能阻止奇怪的傢伙湧入花園，真是讓人鬆了一口氣。";
 		next;
 		cutin "4job_leticia_01.png",2;
-		mes "[Leticia]";
-		mes "And since you've already helped me, from now on you'll have to work with me every day. It's no big deal. Reduce the number of unholy things in the dungeon under the passage created here.";
+		mes "[蕾蒂西亞]";
+		mes "既然你已經幫過我了，從今以後你就得每天跟我一起工作。沒什麼大不了的。去減少這裡所開啟通道下方地城中的不祥之物吧。";
 		next;
-		select( "I think I've heard this before" );
+		select( "我好像聽過這句話" );
 		cutin "4job_leticia_03.png",2;
-		mes "[Leticia]";
-		mes "Why are you muttering? Do you have any complaints?";
+		mes "[蕾蒂西亞]";
+		mes "你在嘀咕什麼？有什麼不滿嗎？";
 		next;
 		select( "不要。" );
 		cutin "4job_leticia_05.png",2;
-		mes "[Leticia]";
-		mes "I think it's finished. Let's come to the central square for a moment and talk about the next thing.";
+		mes "[蕾蒂西亞]";
+		mes "我想應該好了。我們先到中央廣場一趟，談談接下來的事情。";
 		completequest 12596;
 		close3;
 	case 2:
@@ -451,11 +451,11 @@ t_garden,157,92,2	script(CLOAKED)	Passage of Time#2	GATE_SKYBLUE,{
 		end;
 	if (isbegin_quest(12595) != 2) {
 		cutin "4job_leticia_01.png",2;
-		mes "[Leticia]";
-		mes "Not all exits are activated. Activate both the east and west exits and then come find me.";
+		mes "[蕾蒂西亞]";
+		mes "出口還沒有全部啟動。請先啟動東、西兩側的出口，然後再來找我。";
 		close3;
 	}
-	switch( select( "Forgotten Memories, Zone 2, 7 o'clock", "Forgotten Memories, Zone 2, 1 o'clock", "Forgotten Memories, Zone 2, 5 o'clock" ) ) {
+	switch( select( "遺忘的記憶，第2區，7點方向", "遺忘的記憶，第2區，1點方向", "遺忘的記憶，第2區，5點方向" ) ) {
 	case 1:
 		warp "for_dun02",33,55;
 		break;
@@ -470,10 +470,10 @@ t_garden,157,92,2	script(CLOAKED)	Passage of Time#2	GATE_SKYBLUE,{
 }
 
 
-for_dun01,100,146,2	script	Spatial coordinate probe#1	4_SYSTEM_BOX,{
-	mes "Would you like to go back to the Garden of Time?";
+for_dun01,100,146,2	script	空間座標探測器#1::Spatial coordinate probe#1	4_SYSTEM_BOX,{
+	mes "要返回時間花園嗎？";
 	next;
-	if (select( "取消", "Return" ) == 1)
+	if (select( "取消", "返回" ) == 1)
 		end;
 	warp "t_garden",83,92;
 	end;
@@ -482,22 +482,22 @@ OnInit:
 	questinfo( QTYPE_CLICKME, QMARK_YELLOW, "isbegin_quest(12595) == 2" );
 	end;
 }
-for_dun01,128,282,2	duplicate(Spatial coordinate probe#1)	Spatial coordinate probe#2	4_SYSTEM_BOX
-for_dun01,55,142,2	duplicate(Spatial coordinate probe#1)	Spatial coordinate probe#3	4_SYSTEM_BOX
-for_dun01,262,167,2	duplicate(Spatial coordinate probe#1)	Spatial coordinate probe#4	4_SYSTEM_BOX
-for_dun01,204,67,2	duplicate(Spatial coordinate probe#1)	Spatial coordinate probe#5	4_SYSTEM_BOX
-for_dun01,57,270,2	duplicate(Spatial coordinate probe#1)	Spatial coordinate probe#6	4_SYSTEM_BOX
-for_dun01,65,34,2	duplicate(Spatial coordinate probe#1)	Spatial coordinate probe#7	4_SYSTEM_BOX
-for_dun01,146,27,2	duplicate(Spatial coordinate probe#1)	Spatial coordinate probe#8	4_SYSTEM_BOX
-for_dun01,154,139,2	duplicate(Spatial coordinate probe#1)	Spatial coordinate probe#9	4_SYSTEM_BOX
-for_dun01,124,203,2	duplicate(Spatial coordinate probe#1)	Spatial coordinate probe#10	4_SYSTEM_BOX
-for_dun01,267,265,2	duplicate(Spatial coordinate probe#1)	Spatial coordinate probe#11	4_SYSTEM_BOX
+for_dun01,128,282,2	duplicate(Spatial coordinate probe#1)	空間座標探測器#2::Spatial coordinate probe#2	4_SYSTEM_BOX
+for_dun01,55,142,2	duplicate(Spatial coordinate probe#1)	空間座標探測器#3::Spatial coordinate probe#3	4_SYSTEM_BOX
+for_dun01,262,167,2	duplicate(Spatial coordinate probe#1)	空間座標探測器#4::Spatial coordinate probe#4	4_SYSTEM_BOX
+for_dun01,204,67,2	duplicate(Spatial coordinate probe#1)	空間座標探測器#5::Spatial coordinate probe#5	4_SYSTEM_BOX
+for_dun01,57,270,2	duplicate(Spatial coordinate probe#1)	空間座標探測器#6::Spatial coordinate probe#6	4_SYSTEM_BOX
+for_dun01,65,34,2	duplicate(Spatial coordinate probe#1)	空間座標探測器#7::Spatial coordinate probe#7	4_SYSTEM_BOX
+for_dun01,146,27,2	duplicate(Spatial coordinate probe#1)	空間座標探測器#8::Spatial coordinate probe#8	4_SYSTEM_BOX
+for_dun01,154,139,2	duplicate(Spatial coordinate probe#1)	空間座標探測器#9::Spatial coordinate probe#9	4_SYSTEM_BOX
+for_dun01,124,203,2	duplicate(Spatial coordinate probe#1)	空間座標探測器#10::Spatial coordinate probe#10	4_SYSTEM_BOX
+for_dun01,267,265,2	duplicate(Spatial coordinate probe#1)	空間座標探測器#11::Spatial coordinate probe#11	4_SYSTEM_BOX
 
 
-for_dun02,190,147,2	script	Spatial coordinate probe#12	4_SYSTEM_BOX,{
-	mes "Would you like to go back to the Garden of Time?";
+for_dun02,190,147,2	script	空間座標探測器#12::Spatial coordinate probe#12	4_SYSTEM_BOX,{
+	mes "要返回時間花園嗎？";
 	next;
-	if (select( "取消", "Return" ) == 1)
+	if (select( "取消", "返回" ) == 1)
 		end;
 	warp "t_garden",152,92;
 	end;
@@ -506,16 +506,16 @@ OnInit:
 	questinfo( QTYPE_CLICKME, QMARK_YELLOW, "isbegin_quest(12596) == 2" );
 	end;
 }
-for_dun02,143,149,2	duplicate(Spatial coordinate probe#12)	Spatial coordinate probe#13	4_SYSTEM_BOX
-for_dun02,276,29,2	duplicate(Spatial coordinate probe#12)	Spatial coordinate probe#14	4_SYSTEM_BOX
-for_dun02,106,34,2	duplicate(Spatial coordinate probe#12)	Spatial coordinate probe#15	4_SYSTEM_BOX
-for_dun02,216,271,2	duplicate(Spatial coordinate probe#12)	Spatial coordinate probe#16	4_SYSTEM_BOX
-for_dun02,64,268,2	duplicate(Spatial coordinate probe#12)	Spatial coordinate probe#17	4_SYSTEM_BOX
-for_dun02,18,170,2	duplicate(Spatial coordinate probe#12)	Spatial coordinate probe#18	4_SYSTEM_BOX
-for_dun02,16,92,2	duplicate(Spatial coordinate probe#12)	Spatial coordinate probe#19	4_SYSTEM_BOX
-for_dun02,29,52,2	duplicate(Spatial coordinate probe#12)	Spatial coordinate probe#20	4_SYSTEM_BOX
-for_dun02,276,255,2	duplicate(Spatial coordinate probe#12)	Spatial coordinate probe#21	4_SYSTEM_BOX
-for_dun02,283,197,2	duplicate(Spatial coordinate probe#12)	Spatial coordinate probe#22	4_SYSTEM_BOX
+for_dun02,143,149,2	duplicate(Spatial coordinate probe#12)	空間座標探測器#13::Spatial coordinate probe#13	4_SYSTEM_BOX
+for_dun02,276,29,2	duplicate(Spatial coordinate probe#12)	空間座標探測器#14::Spatial coordinate probe#14	4_SYSTEM_BOX
+for_dun02,106,34,2	duplicate(Spatial coordinate probe#12)	空間座標探測器#15::Spatial coordinate probe#15	4_SYSTEM_BOX
+for_dun02,216,271,2	duplicate(Spatial coordinate probe#12)	空間座標探測器#16::Spatial coordinate probe#16	4_SYSTEM_BOX
+for_dun02,64,268,2	duplicate(Spatial coordinate probe#12)	空間座標探測器#17::Spatial coordinate probe#17	4_SYSTEM_BOX
+for_dun02,18,170,2	duplicate(Spatial coordinate probe#12)	空間座標探測器#18::Spatial coordinate probe#18	4_SYSTEM_BOX
+for_dun02,16,92,2	duplicate(Spatial coordinate probe#12)	空間座標探測器#19::Spatial coordinate probe#19	4_SYSTEM_BOX
+for_dun02,29,52,2	duplicate(Spatial coordinate probe#12)	空間座標探測器#20::Spatial coordinate probe#20	4_SYSTEM_BOX
+for_dun02,276,255,2	duplicate(Spatial coordinate probe#12)	空間座標探測器#21::Spatial coordinate probe#21	4_SYSTEM_BOX
+for_dun02,283,197,2	duplicate(Spatial coordinate probe#12)	空間座標探測器#22::Spatial coordinate probe#22	4_SYSTEM_BOX
 
 
 // B. Event with Oscar
@@ -538,55 +538,55 @@ t_garden,118,142,3	script(CLOAKED)	Oscar#life2	4_ED_OSCAR,{
 		next;
 		cutin "OSCAR09.bmp",2;
 		mes "[奧斯卡]";
-		mes "This is true. I'm really sorry for unintentionally getting you involved in our work.";
+		mes "確實如此。很抱歉，我們的工作不小心把你牽扯進來了。";
 		next;
-		select( "Are you going into the mansion?" );
+		select( "你要進入宅邸嗎？" );
 		cutin "OSCAR01.bmp",2;
 		mes "[奧斯卡]";
-		mes "I guess that's the way it is. This mansion is a space where multiple timelines are intricately intertwined, so I don't think anyone else can touch it.";
+		mes "也只能這樣了。這座宅邸是多重時間線錯綜交織的空間，我想其他人是無法觸碰的。";
 		next;
-		select( "Is there anything I can do to help in the mansion?" );
+		select( "我在宅邸裡有什麼能幫上忙的地方嗎？" );
 		cutin "OSCAR05.bmp",2;
 		mes "[奧斯卡]";
-		mes "" + strcharinfo(0) + " I've worked with you many times, so I'd like to ask you to come with me, but I don't think I can do that this time.";
+		mes "" + strcharinfo(0) + " 我們合作過很多次了，本來想請你跟我一起去，但這次恐怕不行。";
 		next;
 		cutin "OSCAR09.bmp",2;
 		mes "[奧斯卡]";
-		mes "It seems like the speed of time inside this mansion is very different from the outside world. My guess is about... 1/1000? Maybe even more.";
+		mes "看來這座宅邸裡的時間流速和外面的世界差很多。我猜大概是……1比1000？甚至可能差更多。";
 		next;
 		select( "這代表……" );
 		cutin "OSCAR07.bmp",2;
 		mes "[奧斯卡]";
-		mes "This means that even if you only spend a few days inside the mansion, years or even decades may pass by in the outside world. It will probably be difficult for a human like " + strcharinfo(0) + " to endure it";
+		mes "這代表即使你在宅邸裡只待了幾天，外面世界可能已經過了好幾年，甚至幾十年。像你這樣的人類，恐怕很難 " + strcharinfo(0) + " 承受得住。";
 		next;
 		cutin "OSCAR01.bmp",2;
 		mes "[奧斯卡]";
-		mes "There is a high probability that quite a long time will pass by the time the interior of the mansion is cleaned up. It must end quickly...";
+		mes "在清理完宅邸內部之前，很可能會過去相當長的時間。必須盡快結束才行……";
 		next;
 		cloakoffnpcself( "Leticia#life3" );
 		cutin "4job_leticia_01.png",2;
-		mes "[Leticia]";
-		mes "Oh, are you going in now?";
+		mes "[蕾蒂西亞]";
+		mes "喔，你現在就要進去了嗎？";
 		next;
 		cutin "OSCAR01.bmp",2;
 		mes "[奧斯卡]";
-		mes "Yes, I have to go in. Leticia, I hope you don't cause any trouble and take good care of the garden until I come out after cleaning up the mansion.";
+		mes "嗯，我得進去了。蕾蒂西亞，希望妳別惹麻煩，在我清理完宅邸出來之前，好好照顧花園。";
 		next;
 		cutin "4job_leticia_05.png",2;
-		mes "[Leticia]";
-		mes "Oh, don't worry about that. I'll make sure you're isolated from the real world.";
+		mes "[蕾蒂西亞]";
+		mes "喔，這個不用擔心。我會確保你與現實世界隔離開來。";
 		next;
 		cutin "OSCAR01.bmp",2;
 		mes "[奧斯卡]";
-		mes "Okay. Then, please take care of me. Oh, and " + strcharinfo(0) + ", if you have the time, I would appreciate it if you could help Leticia. She's so lazy...";
+		mes "好。那就麻煩你了。喔，還有 " + strcharinfo(0) + "，如果你有空的話，希望你能幫忙蕾蒂西亞。她真的很懶……";
 		next;
 		cutin "4job_leticia_04.png",2;
-		mes "[Leticia]";
-		mes "I'll take care of the adventurer here, so let's leave it at that and go in.";
+		mes "[蕾蒂西亞]";
+		mes "這裡的冒險者由我來處理，所以就到此為止，我們進去吧。";
 		next;
 		cutin "OSCAR03.bmp",2;
 		mes "[奧斯卡]";
-		mes "Okay, I'll finish the work and come out as soon as possible. See you then.";
+		mes "好，我會盡快完成工作然後出來。到時候見。";
 		close2;
 		cutin "",255;
 		specialeffect EF_BEGINSPELL_N4;
@@ -595,8 +595,8 @@ t_garden,118,142,3	script(CLOAKED)	Oscar#life2	4_ED_OSCAR,{
 		cloakonnpcself( "Oscar#life2" );
 		setpcblock PCBLOCK_NPC, false;
 		cutin "4job_leticia_02.png",2;
-		mes "[Leticia]";
-		mes "Well, I'm sure Oscar will take care of it... Don't just stand there and help out with Rigel and my work.";
+		mes "[蕾蒂西亞]";
+		mes "嗯，我相信奧斯卡會處理好的……別光站在那裡，去幫參宿七和我的工作吧。";
 		close2;
 		cutin "",255;
 		cloakonnpcself( "Leticia#life3" );
@@ -610,7 +610,7 @@ OnInit:
 	end;
 }
 
-t_garden,115,139,7	duplicate(dummy_cloaked_npc)	Leticia#life3	4_4JOB_LETICIA
+t_garden,115,139,7	duplicate(dummy_cloaked_npc)	蕾蒂西亞#life3::Leticia#life3	4_4JOB_LETICIA
 
 
 // C. Instances
@@ -628,22 +628,22 @@ OnTouch:
 t_garden,166,217,3	script(CLOAKED)	Rigel#life2	4_CS_RIGEL,{
 	if (isbegin_quest(12594) == 1) {
 		cutin "rigel01.png",2;
-		mes "[Rigel]";
-		mes "You're here " + strcharinfo(0) + ".";
-		mes "It would be very appropriate to be this far away from the mansion without disturbing Oscar, right?";
+		mes "[參宿七]";
+		mes "你來了 " + strcharinfo(0) + ".";
+		mes "像這樣離宅邸遠一點，不去打擾奧斯卡，應該很恰當吧？";
 		next;
-		select( "What are you going to do here?" );
+		select( "你在這裡要做什麼？" );
 		cutin "rigel02.png",2;
-		mes "[Rigel]";
-		mes "From now on, we will build a prison. A prison to hold very dangerous and unstable prisoners.";
+		mes "[參宿七]";
+		mes "從現在起，我們要建造一座監獄。用來關押極度危險又不穩定的囚犯的監獄。";
 		next;
-		select( "You're making a prison in the flower garden?" );
+		select( "你要在花園裡蓋監獄？" );
 		cutin "rigel01.png",2;
-		mes "[Rigel]";
-		mes "Anyway, this place will only serve as a passage, and the prison itself is connected to another dimension. I will leave them. I have no intention of ruining the flower garden.";
+		mes "[參宿七]";
+		mes "總之，這裡只是個通道，監獄本身與另一個次元相連。那些囚犯我會把他們留在那裡。我無意破壞花園。";
 		next;
-		mes "[Rigel]";
-		mes "We have created a prison access list a little further north. Only those registered on the list can enter the prison, so let's go and register first.";
+		mes "[參宿七]";
+		mes "我們在再往北一點的地方設置了監獄入場名單。只有登記在名單上的人才能進入監獄，所以我們先去登記吧。";
 		close2;
 		completequest 12594;
 		setquest 12597;
@@ -651,8 +651,8 @@ t_garden,166,217,3	script(CLOAKED)	Rigel#life2	4_CS_RIGEL,{
 		end;
 	}
 	cutin "rigel01.png",2;
-	mes "[Rigel]";
-	mes "Let's start by looking for the sealing spirit stone I installed a little further north.";
+	mes "[參宿七]";
+	mes "我們先去找我在更北邊設置的封印靈石吧。";
 	close3;
 
 OnInit:
@@ -698,15 +698,15 @@ t_garden,166,235,3	script(CLOAKED)	Sealing Spirit Stone#life2	HEROS_OUT_ORB,{
 	case 0:
 		end;
 	case 1:
-		mes "[Sealing Spirit Stone]";
-		mes "^ff0000Unauthenticated user.^000000";
+		mes "[封印靈石]";
+		mes "^ff0000未認證的使用者。^000000";
 		next;
 		cutin "rigel_halfeyes01.png",2;
-		mes "[Rigel]";
-		mes "Don't just stare blankly, extend your hand.";
-		mes "Focus your mind by placing your thumb on the bottom right of the unfolded spirit stone and the rest of your fingers on top. ";
+		mes "[參宿七]";
+		mes "別發呆了，把手伸出來。";
+		mes "將拇指放在展開的靈石右下方，其餘手指放在上方，集中精神。 ";
 		next;
-		select( "Put your hand on the guide." );
+		select( "把手放在嚮導上。" );
 		setpcblock PCBLOCK_NPC, true;
 		cutin "",255;
 		specialeffect2 EF_BEGINSPELL_N5;
@@ -727,69 +727,69 @@ t_garden,166,235,3	script(CLOAKED)	Sealing Spirit Stone#life2	HEROS_OUT_ORB,{
 		cloakoffnpcself( "Dimension Prison#2" );
 		sleep2 1500;
 		cutin "rigel_halfeyes01.png",2;
-		mes "[Rigel]";
-		mes "It looks like it's registered well. Now you've completed the basic preparations to recognize the prison and enter and exit it. For any further questions, please refer to this guide.";
+		mes "[參宿七]";
+		mes "看來已經登記好了。現在你已完成辨認監獄及進出監獄的基本準備。如有任何疑問，請參閱這份指南。";
 		next;
-		select( "Who are you going to put in that prison?" );
+		select( "你要把誰關進那座監獄？" );
 		cutin "rigel_annoying01.png",2;
-		mes "[Rigel]";
-		mes "^bb0000Doppelganger.^000000";
+		mes "[參宿七]";
+		mes "^bb0000分身怪。^000000";
 		next;
 		cutin "rigel_halfeyes01.png",2;
-		mes "[Rigel]";
-		mes "Well, you might think it's just a doppelganger and a fuss, but the one you'll be imprisoning here is on a different level than the doppelganger you think of.";
+		mes "[參宿七]";
+		mes "嗯，你可能覺得不過是個分身怪，何必大驚小怪，但你要關在這裡的傢伙，跟你想的分身怪可不是同一個層級。";
 		next;
-		mes "[Rigel]";
-		mes "It's the worst kind of being that doesn't just mimic abilities or appearances, but devours the soul of the target being and turns into that being itself.";
+		mes "[參宿七]";
+		mes "那是最糟糕的存在，它不只是模仿能力或外貌，而是會吞噬目標的靈魂，然後變成那個存在本身。";
 		next;
-		select( "Whose image do it take on now?" );
+		select( "它現在變成了誰的模樣？" );
 		cutin "rigel_annoying01.png",2;
-		mes "[Rigel]";
-		mes "It's me.";
+		mes "[參宿七]";
+		mes "是我。";
 		next;
 		select( "這是什麼意思？" );
 		cutin "rigel_halfeyes01.png",2;
-		mes "[Rigel]";
-		mes "This prisoner swallowed me, Rigel, from the 326th dimension and became a being that called itself the Constellation of Life.";
+		mes "[參宿七]";
+		mes "這個囚犯吞噬了來自第326次元的我，參宿七，然後變成了一個自稱「生命星座」的存在。";
 		next;
-		mes "[Rigel]";
-		mes "When I ran to save myself there, it was already too late. I knew as soon as I saw the unconscious person who looked exactly like me. This wasn't me.";
+		mes "[參宿七]";
+		mes "當我逃命跑到那裡時，已經太遲了。我一看到那個昏迷不醒、和我長得一模一樣的人，就知道了。那不是我。";
 		next;
 		cutin "rigel_annoying01.png",2;
-		mes "[Rigel]";
-		mes "Although we succeeded in sealing the guy who couldn't use it power properly. It might succeed in breaking the seal someday.";
+		mes "[參宿七]";
+		mes "雖然我們成功封印了那個無法妥善駕馭力量的傢伙，但它總有一天可能會打破封印。";
 		next;
-		select( "Why don't you take down the criminal yourself?" );
+		select( "你自己為什麼不去把那個罪犯解決掉？" );
 		cutin "rigel01.png",2;
-		mes "[Rigel]";
-		mes "I don't know what the error is, but the world recognizes it as another constellation of life. If a constellation attacks the same constellation, it violates the rules of the dimension and immediately loses it powers.";
+		mes "[參宿七]";
+		mes "我不知道問題出在哪，但這個世界認定它是另一個生命星座。如果星座攻擊同一個星座，就違反了次元的規則，會立刻失去它的力量。";
 		next;
-		mes "[Rigel]";
-		mes "And, if by any chance it takes over my existence, then it will be in an irreversible situation.";
+		mes "[參宿七]";
+		mes "而且，萬一它奪走了我的存在，那就會是無可挽回的局面了。";
 		next;
-		select( "Is there any possibility that the prisoner will take over our bodies?" );
+		select( "囚犯有可能奪取我們的身體嗎？" );
 		cutin "rigel_close02.png",2;
-		mes "[Rigel]";
-		mes "This is truly one of the funniest jokes I've heard in hundreds of years.";
+		mes "[參宿七]";
+		mes "這是我幾百年來聽過最好笑的笑話之一。";
 		next;
 		cutin "rigel_halfeyes02.png",2;
-		mes "[Rigel]";
-		mes "Would you ever abandon the immortal body you worked so hard to occupy and return to your mortal body?";
+		mes "[參宿七]";
+		mes "你會為了回到凡人的肉身，而拋棄你費盡心力才得到的不朽之身嗎？";
 		next;
-		select( "Maybe if your life is threatened." );
+		select( "或許是在你的性命受到威脅的時候吧。" );
 		cutin "rigel_halfeyes01.png",2;
-		mes "[Rigel]";
-		mes "Well, I don't agree with that opinion at all, but I'll ease your worries. It's surrounded by layers of seals I've placed on it.";
+		mes "[參宿七]";
+		mes "嗯，我完全不同意那種看法，不過我會讓你安心。它周圍有我設下的好幾層封印。";
 		next;
-		mes "[Rigel]";
-		mes "Even if it wanted to take over your and it friends' bodies, it wouldn't be able to exert that kind of power.";
+		mes "[參宿七]";
+		mes "就算它想奪取你和你朋友們的身體，也無法施展那種力量。";
 		next;
 		cutin "rigel_close01.png",2;
-		mes "[Rigel]";
-		mes "It's a long story. Prison information will be posted separately at the prison entrance, so check it regularly.";
+		mes "[參宿七]";
+		mes "說來話長。監獄資訊會另外張貼在監獄入口，請定期查看。";
 		next;
-		mes "[Rigel]";
-		mes "I look forward to seeing you and your colleagues do a great job here.";
+		mes "[參宿七]";
+		mes "期待看到你和你的同事們在這裡表現出色。";
 		close2;
 		cutin "",255;
 		completequest 12597;
@@ -798,174 +798,174 @@ t_garden,166,235,3	script(CLOAKED)	Sealing Spirit Stone#life2	HEROS_OUT_ORB,{
 	case 2:
 		break;
 	}
-	mes "[Sealing Spirit Stone]";
-	mes "Guidelines for correct prison management. What would you like to see?";
+	mes "[封印靈石]";
+	mes "正確的監獄管理指南。你想看哪一項？";
 	next;
 	while(1) {
-		switch( select( "Stop viewing", "Reissue of the Constellation's protection", "Information on imprisoned prisoners", "Information on prison entry", "Information on barriers", "Information on traps", "Information on sanctuaries ", "Information on the underworld", "Information on dangerous omens", "Information on the resilience of prisoners" ) ) {
+		switch( select( "停止查看", "重新發放星座的守護", "囚犯資訊", "入獄資訊", "結界資訊", "陷阱資訊", "聖域資訊 ", "冥界資訊", "危險徵兆資訊", "囚犯韌性資訊" ) ) {
 		case 1:
 			end;
 		case 2:
 			if (countitem(420231) - isequippedcnt(420231) < 1) {
-				mes "[Sealing Spirit Stone]";
-				mes "Please check again whether it is registered in ^ff0000equipment set setting^000000 and whether it is already installed.";
+				mes "[封印靈石]";
+				mes "請再確認是否已在^ff0000裝備套裝設定^000000中登記，以及是否已經安裝。";
 				mes " ";
-				mes "Even if you have two or more blessings, the record engraved in the adventurer's ^ff0000soul takes priority^000000, so we recommend that you dispose of any excess blessings at the store.";
+				mes "就算你擁有兩個以上的祝福，冒險者靈魂上刻下的^ff0000紀錄具有優先權^000000，因此建議你到商店把多餘的祝福處理掉。";
 				next;
-				if (select( "取消", "Reissue" ) == 1)
+				if (select( "取消", "重新發放" ) == 1)
 					continue;
-				mes "[Sealing Spirit Stone]";
-				mes "Based on the records engraved in the adventurer's soul";
-				mes "We have reissued a protection engraved with a barrier ^0000fflevel 1^000000.";
+				mes "[封印靈石]";
+				mes "依冒險者靈魂上刻印的紀錄";
+				mes "已重新發放刻有結界^0000ff1級^000000的守護。";
 				getitem2 420231,1,1,0,0,0,0,0,312453;	// MD_Hol_Protection
 				close;
 			}
-			mes "[Sealing Spirit Stone]";
-			mes "You have the protection issued in your inventory. Re-issuing it is only possible if you do not have the constellation's protection in your inventory.";
+			mes "[封印靈石]";
+			mes "你的背包中已有發放的守護。只有在背包中沒有星座守護時，才能重新發放。";
 			close;
 		case 3:
-			mes "[Prisoner Information Guide]";
-			mes "Based on this book, on the left is a lava lake where the guards who managed dimensional criminals are imprisoned. On the right is the Hall of Life where dimensional managers are imprisoned.";
+			mes "[囚犯資訊指南]";
+			mes "根據這本書記載，左側是關押管理次元罪犯的看守們的熔岩湖，右側則是關押次元管理者的生命之殿。";
 			mes " ";
-			mes "The guards were originally meant to monitor dimensional criminals, but at some point, they showed an intention to protect the dimensional criminals.";
+			mes "看守原本是負責監視次元罪犯的，但在某個時候，他們表現出想要保護次元罪犯的意圖。";
 			next;
-			mes "[Prisoner Information Guide]";
-			mes "Accordingly, the Constellation of Life imprisoned the 4 divine prisoners, who were guards, in a dimension completely separate from the dimensional criminals.";
+			mes "[囚犯資訊指南]";
+			mes "因此，生命星座將這四名身為看守的神聖囚犯，關進與次元罪犯完全隔離的另一個次元。";
 			mes " ";
-			mes "The main prisoner, a dimensional criminal, is a doppelganger-type monster who stole the appearance and abilities of the 326th dimension's constellation of life. Currently, its level of danger has never been measured, so it is not recorded.";
+			mes "主要囚犯是次元罪犯，為分身型怪物，竊取了第326次元生命星座的外貌與能力。目前其危險程度從未被測量過，因此沒有記錄。";
 			next;
-			mes "[Prisoner Information Guide]";
-			mes "One thing is certain: the dimensional criminals have hijacked the bodies and powers of the dimensional life constellations.";
+			mes "[囚犯資訊指南]";
+			mes "有一件事可以確定: 次元罪犯劫持了次元生命星座的身體與力量。";
 			mes " ";
-			mes "Due to this series of events, not only the Constellation of Life but also the 4 Divine Beasts are vacant in the 326th dimension. Therefore, the user must manage this prison with two main goals.";
+			mes "由於這一連串事件，第326次元不只生命星座出現空缺，連四神獸也空缺了。因此，管理者必須以兩大主要目標來管理這座監獄。";
 			next;
-			mes "-First-";
-			mes "You must attack dimension criminals periodically to prevent them from hoarding power.";
+			mes "-第一-";
+			mes "必須定期攻擊次元罪犯，防止他們囤積力量。";
 			mes " ";
-			mes "Even now, it is accumulating vast amounts of life energy, which could pose a serious danger to the dimensional world.";
+			mes "即使現在，它仍在累積大量生命能量，這可能對次元世界造成嚴重威脅。";
 			next;
-			mes "-Second-";
-			mes "The level of power that dimensional criminals exert must be measured and recorded.";
+			mes "-第二-";
+			mes "必須測量並記錄次元罪犯所施展的力量等級。";
 			mes " ";
-			mes "Relatedly, when entering a prison, you can equip yourself with the protection touched by the constellation and measure and record the level of risk based on the level of the barrier attached to it.";
+			mes "相關地，進入監獄時，你可以裝備經過星座觸碰的守護，並依其附著的結界等級，測量與記錄危險程度。";
 			next;
-			mes "-Third-";
-			mes "It may be of lesser importance, but it is necessary to visit the jailers' prisons periodically to weaken their power.";
+			mes "-第三-";
+			mes "雖然重要性較低，但必須定期拜訪看守的牢獄，削弱他們的力量。";
 			mes " ";
-			mes "The currently imprisoned guards are a dangerous force potentially sympathizing with the escape of dimensional criminals. Periodically suppress them by force and confiscate the prison keys they are managing/producing.";
+			mes "目前被囚禁的看守，是可能同情次元罪犯脫逃的危險勢力。請定期以武力鎮壓，並沒收他們所管理／製作的監獄鑰匙。";
 			next;
-			mes "[Prisoner Information Guide]";
-			mes "This is information about prisoners held in prison. Do you need any additional information?";
+			mes "[囚犯資訊指南]";
+			mes "這是關於獄中囚犯的資訊。還需要其他資訊嗎？";
 			break;
 		case 4:
-			mes "[Access information information]";
-			mes "The prison is divided into an area where the guards are confined and an area where the dimension criminals are confined.";
+			mes "[入場資訊]";
+			mes "監獄分為看守被囚禁的區域，以及次元罪犯被囚禁的區域。";
 			mes " ";
-			mes "First, you can enter the lava lake where the guards are imprisoned once a day. There is no additional seal, so as long as you stick to the once a day time, there will be no particular restrictions on entry.";
+			mes "首先，你每天可以進入囚禁看守的熔岩湖一次。沒有額外的封印，只要遵守每天一次的時限，進入便不會有特別的限制。";
 			next;
-			mes "[Access information information]";
-			mes "The Hall of Life where dimensional criminals are imprisoned";
-			mes "Only accessible while holding " + mesitemlink(1001415) + ".";
+			mes "[入場資訊]";
+			mes "囚禁次元罪犯的生命之殿";
+			mes "僅限持有 " + mesitemlink(1001415) + ".";
 			mes " ";
-			mes "Remember that, with the exception of the one-hour dungeon time limit, you can enter as many times as you want as long as you have the key.";
+			mes "請記住，除了一小時的地城時間限制外，只要持有鑰匙，就可以無限次進入。";
 			next;
-			mes "[Access information information]";
-			mes "However, if you receive the reward once, you will not be able to receive the reward again in the Hall of Life for ^ff0000one week.^000000 Of course, even in that case, entry is free.";
+			mes "[入場資訊]";
+			mes "不過，若領取過一次獎勵，在生命之殿將有^ff0000一週^000000內無法再次領取獎勵。當然，即使如此，進入仍是免費的。";
 			mes " ";
-			mes "Do you need any additional information?";
+			mes "還需要其他資訊嗎？";
 			break;
 		case 5:
-			mes "[Barrier information information]";
-			mes "The power of dimensional criminals is sealed by a barrier tightly bound by Rigel, the constellation of life.";
+			mes "[結界資訊]";
+			mes "次元罪犯的力量由生命星座參宿七以緊密的結界封印著。";
 			mes " ";
-			mes "Therefore, when you enter to manage the prison, the first dimensional criminal you encounter is the barrier adjusted so that only the lowest level of strength is exerted.";
+			mes "因此，當你進入監獄管理時，最先遇到的次元罪犯，是調整為只釋放最低等級力量的結界。";
 			next;
-			mes "[Barrier information information]";
-			mes "However, if you apply appropriate corrections to the dimensional criminal and make him submit, you will either receive appropriate ^ff0000compensation,^000000, or delay the reward and get a chance to unlock the next ^ff0000barrier ^000000level.";
+			mes "[結界資訊]";
+			mes "不過，若你對次元罪犯施以適當的矯正，使其屈服，就能獲得適當的^ff0000補償^000000，或延後領取獎勵，以取得解開下一個^ff0000結界 ^000000等級的機會。";
 			next;
-			mes "[Barrier information information]";
-			mes "If you want a higher reward level, remember that it is advantageous to level up quickly by clearing barriers rather than selecting rewards.";
+			mes "[結界資訊]";
+			mes "若想獲得更高的獎勵等級，請記住：比起選擇獎勵，透過清除結界來快速提升等級更為有利。";
 			next;
-			mes "[Barrier information information]";
-			mes "However, it is not advantageous to simply raise the level of the barrier.";
+			mes "[結界資訊]";
+			mes "不過，單純提高結界等級並不有利。";
 			mes " ";
-			mes "If you fail to correct a dimensional criminal, the level of barrier you can handle will be lowered by 1 level the next time you enter prison.^000000";
+			mes "若未能矯正次元罪犯，下次進入監獄時，你能應對的結界等級將降低一級。^000000";
 			next;
-			mes "[Barrier information information]";
-			mes "I recommend that you do not pay undue attention to barriers that you cannot handle and that you strive for stable correction.";
+			mes "[結界資訊]";
+			mes "建議你不要過度在意無法應付的結界，而應努力穩定地進行矯正。";
 			mes " ";
-			mes "Do you need any additional information?";
+			mes "還需要其他資訊嗎？";
 			break;
 		case 6:
-			mes "[Trap Information Guide]";
-			mes "The dimensional criminal used his power to cause time-moving traps to appear in his space to prevent outside intruders.";
+			mes "[陷阱資訊指南]";
+			mes "次元罪犯運用力量，在自己的空間中製造出會移動的時間陷阱，以防止外來的入侵者。";
 			mes " ";
-			mes "The danger of this trap varies depending on the level of the barrier, and its destructive power becomes more powerful the further away you are from the center of the prison.";
+			mes "這種陷阱的危險程度依結界等級而異，離監獄中心越遠，破壞力就越強。";
 			next;
-			mes "[Trap Information Guide]";
-			mes "Additionally, ^ff0000each time you or an ally is damaged by a trap, the Warp Criminal's attack power will become more powerful.^000000";
+			mes "[陷阱資訊指南]";
+			mes "此外，^ff0000每當你或同伴受到陷阱傷害時，扭曲罪犯的攻擊力就會變得更強。^000000";
 			next;
-			mes "[Trap Information Guide]";
-			mes "If the prison is full of traps, you can reset the traps using the other side of the world. Please refer to the information on the other side of the world for this part.";
+			mes "[陷阱資訊指南]";
+			mes "若監獄中布滿陷阱，可以利用另一個世界來重置陷阱。相關內容請參閱關於另一個世界的資訊。";
 			mes " ";
-			mes "Do you need any additional information?";
+			mes "還需要其他資訊嗎？";
 			break;
 		case 7:
-			mes "[Sanctuary Information Guide]";
-			mes "Dimensional criminals can periodically establish a sanctuary around themselves that makes them immune to physical and magical attacks.";
+			mes "[聖域資訊指南]";
+			mes "次元罪犯會定期在自身周圍展開聖域，使其對物理與魔法攻擊免疫。";
 			mes " ";
-			mes "This appears to be a duplicate of an ability available to high-ranking constellations and cannot be disarmed by any means.";
+			mes "這似乎是高階星座所擁有能力的複製品，任何手段都無法解除。";
 			next;
-			mes "[Sanctuary Information Guide]";
-			mes "However, if you pull a dimensional criminal who has declared sanctuary out of the sanctuary, the sanctuary will be canceled. If the dimensional criminal uses the sanctuary to go on a rampage, pull him out of the sanctuary.";
+			mes "[聖域資訊指南]";
+			mes "不過，若把展開聖域的次元罪犯拉出聖域之外，聖域就會解除。若次元罪犯利用聖域大肆破壞，就把他拉出聖域吧。";
 			mes " ";
-			mes "Do you need any additional information?";
+			mes "還需要其他資訊嗎？";
 			break;
 		case 8:
-			mes "[Information Guide to the Secret World]";
-			mes "When the number of traps in the prison exceeds a certain number, a portal to the other world will be created on the north side of the prison.";
+			mes "[另一個世界資訊指南]";
+			mes "當監獄中的陷阱數量超過一定數目時，監獄北側會出現通往另一個世界的傳送門。";
 			mes " ";
-			mes "In the underworld, there are imperfect illusions of dimensional criminals, and those illusions are imperfectly connected to the dimensional criminals.";
+			mes "在冥界中，存在著次元罪犯不完全的幻影，這些幻影與次元罪犯之間也只有不完整的聯繫。";
 			next;
-			mes "[Information Guide to the Secret World]";
-			mes "The moment all the illusions of the other world are defeated, the dimensional criminals of the original world will receive a strong blow and fall into a groggy state for a certain period of time.";
+			mes "[另一個世界資訊指南]";
+			mes "另一個世界的所有幻影一旦被擊敗，原本世界的次元罪犯將受到強烈打擊，並在一段時間內陷入眩暈狀態。";
 			mes " ";
-			mes "At this moment, traps within the prison are reset, all attack power built up by the warp criminal is returned to its original state, and all defenses of the warp criminal are drastically lowered for a brief period of time.";
+			mes "此時，監獄內的陷阱會被重置，扭曲罪犯累積的所有攻擊力都會恢復原狀，且扭曲罪犯的所有防禦會在短時間內大幅下降。";
 			next;
-			mes "[Information Guide to the Secret World]";
-			mes "However, the portal to the underworld should not be used by too many people.";
+			mes "[另一個世界資訊指南]";
+			mes "不過，通往冥界的傳送門不宜有太多人使用。";
 			mes " ";
-			mes "This is because each time a person passes through the portal, the dimensional criminal's recovery per second increases by a certain amount, and if this number overlaps, he or she can recover health in an instant.";
+			mes "這是因為每有一人通過傳送門，次元罪犯每秒的回復量就會增加一定數值，若數值重疊，他就能瞬間回復生命值。";
 			next;
-			mes "[Information Guide to the Secret World]";
-			mes "Remember that in order to kill the illusions of the other world, it is advisable to have a small number of party members with strong attack power and mobility.";
+			mes "[另一個世界資訊指南]";
+			mes "請記住，為了擊殺另一個世界的幻影，建議派出少數攻擊力強、機動力高的隊員。";
 			mes " ";
-			mes "Do you need any additional information?";
+			mes "還需要其他資訊嗎？";
 			break;
 		case 9:
-			mes "[Guide to dangerous omens]";
-			mes "If you see any unusual effects on the ground while correcting dimensional criminals, quickly leave the area.";
+			mes "[危險徵兆指南]";
+			mes "在矯正次元罪犯時，若看到地面出現任何異常效果，請迅速離開該區域。";
 			mes " ";
-			mes "This effect is a precursor to the dimensional offender's widespread and powerful influence.";
+			mes "此效果是次元罪犯大範圍且強大影響力的前兆。";
 			next;
-			mes "[Guide to dangerous omens]";
-			mes "The influence of a dimensional criminal can result in confinement effects, serious lacerations and frostbite, and sometimes even death.";
+			mes "[危險徵兆指南]";
+			mes "次元罪犯的影響可能導致禁錮效果、嚴重割傷與凍傷，有時甚至會死亡。";
 			mes " ";
-			mes "Do not take your eyes off the ground even for a moment and be alert in all directions.";
+			mes "請不要有片刻移開視線，四面八方都要保持警覺。";
 			mes " ";
-			mes "Do you need any additional information?";
+			mes "還需要其他資訊嗎？";
 			break;
 		case 10:
-			mes "[Recovery information information]";
-			mes "Dimensional criminals have the ability to regenerate health in real time. Therefore, normal correction may not be possible unless a blow exceeds this recovery ability.";
+			mes "[痊癒資訊]";
+			mes "次元罪犯具有即時回復生命值的能力。因此，除非攻擊超過其回復能力，否則一般的矯正可能無效。";
 			mes " ";
-			mes "The moment the inner world is purified, the recovery rate decreases sharply during the time the dimensional criminal is in a groggy state.";
+			mes "內在世界被淨化的瞬間，次元罪犯陷入暈眩狀態期間，回復速度會急劇下降。";
 			next;
-			mes "[Recovery information information]";
-			mes "However, do not forget that ^ff0000recovery also increases in proportion to the number of people who use the portal^000000 to purify the Underworld.";
-			mes "If too many portal users occur, normal correction may fail due to a rapid increase in resilience.";
+			mes "[痊癒資訊]";
+			mes "但請別忘了，使用傳送門淨化冥界的人數越多，^ff0000回復能力也會隨之提升^000000。";
+			mes "若傳送門使用者過多，回復能力會急速上升，一般的矯正可能因此失敗。";
 			mes " ";
-			mes "Do you need any additional information?";
+			mes "還需要其他資訊嗎？";
 			break;
 		}
 		next;
@@ -983,11 +983,11 @@ t_garden,158,235,2	script(CLOAKED)	Dimension Prison#1	GATE_SKYBLUE,{
 	if (isbegin_quest(12597) != 2)
 		end;
 	if (checkweight(1201,1) == 0) {
-		mes "^ff0000It seems that there are too many types and weights of items. Please organize your inventory.^000000";
+		mes "^ff0000道具的種類與重量似乎過多，請整理您的背包。^000000";
 		close;
 	}
 	if (getcharid(1) < 1) {
-		mes "^0000ffPlease organize a party of at least one person and proceed.^000000";
+		mes "^0000ff請組成至少一人的隊伍後再前進。^000000";
 		close;
 	}
 	// ...
@@ -999,7 +999,7 @@ t_garden,173,235,2	script(CLOAKED)	Dimension Prison#2	GATE_SKYBLUE,{
 	if (isbegin_quest(12597) != 2)
 		end;
 	if (checkweight(1201,1) == 0) {
-		mes "^ff0000It seems that there are too many types and weights of items. Please organize your inventory.^000000";
+		mes "^ff0000道具的種類與重量似乎過多，請整理您的背包。^000000";
 		close;
 	}
 	// ...
@@ -1023,43 +1023,43 @@ OnTouch:
 	cloakoffnpcself( "Serpens#life2" );
 
 	if (.@state == 1) {
-		mes "[Terremotus]";
-		mes "^777700Oh, the adventurer Leticia sent has finally arrived.";
+		mes "[特雷莫圖斯]";
+		mes "^777700啊，蕾蒂西亞派來的冒險者終於到了。";
 		next;
-		mes "[Ardor]";
-		mes "^aa0000Adventurer! Are you willing to fight? We don't need a weakling!";
+		mes "[阿多爾]";
+		mes "^aa0000冒險者！你願意戰鬥嗎？我們不需要弱者！";
 		next;
-		mes "[Diluvio]";
-		mes "^0000ffArdor! Have you forgotten what Leticia told you to be at least polite?";
+		mes "[迪盧維奧]";
+		mes "^0000ff阿多爾！你忘了蕾蒂西亞交代過，至少要有禮貌嗎？";
 		next;
-		mes "[Procella]";
-		mes "^00cc00Diluvio is right. It would be good to show some courtesy to the humans who come to help us.";
+		mes "[普羅切拉]";
+		mes "^00cc00迪盧維奧說得對。對前來幫助我們的人類，應該表現出一些禮貌才好。";
 		next;
-		select( "I'm fine, please tell me what to do" );
-		mes "[Serpens]";
-		mes "^aa00aaWe are ancient spirits from a world connected to this garden. It is an instinct engraved in our spirit bodies to help each natural element remain harmonious.";
+		select( "我沒問題，請告訴我該做什麼。" );
+		mes "[塞爾彭斯]";
+		mes "^aa00aa我們是來自與這座花園相連之世界的古老精靈。協助各項自然元素保持和諧，是刻印在我們靈體中的本能。";
 		next;
-		mes "[Serpens]";
-		mes "^aa00aaHowever, after being swept away by a strange dimensional storm, the elements of the world connected to this garden began to run wild, and eventually began to turn into spirits.";
+		mes "[塞爾彭斯]";
+		mes "^aa00aa然而，在一場奇異的次元風暴捲過之後，與這座花園相連之世界的元素開始失控，最終逐漸化為精靈。";
 		next;
-		mes "[Terremotus]";
-		mes "^777700If the elements continue to become elementals, eventually the material world that makes up this world will collapse. That must be prevented.";
+		mes "[特雷莫圖斯]";
+		mes "^777700若元素持續變成元素精靈，最終構成此世界的物質世界將會崩潰。必須阻止這種情況。";
 		next;
-		mes "[Diluvio]";
-		mes "^0000ffAdventurer, you must no longer allow the elements to turn into spirits. Use your power to send them back to nature.";
+		mes "[迪盧維奧]";
+		mes "^0000ff冒險者，絕不能再讓元素化為精靈了。請運用你的力量，將它們送回自然之中。";
 		next;
-		mes "[Terremotus]";
-		mes "^777700This is not an act of destroying nature. It is a matter of returning the disappearing elements that have been transformed into spirits back to their original positions. Will you listen to our request?";
+		mes "[特雷莫圖斯]";
+		mes "^777700這並非破壞自然的行為，而是要讓已化為精靈、正在消逝的元素回歸原本的位置。你願意聽聽我們的請求嗎？";
 		next;
-		select( "I will." );
-		mes "[Ardor]";
-		mes "^aa0000You're a good communicator! Okay then, I'll tell you what to do every day!^000000";
+		select( "我願意。" );
+		mes "[阿多爾]";
+		mes "^aa0000你很會溝通嘛！好吧，那我每天都會告訴你該做什麼！^000000";
 		next;
-		mes "[Ardor]";
-		mes "^aa0000Let's place the sacred items prepared by the constellations across from us. In human language, it's called a vending machine.^000000";
+		mes "[阿多爾]";
+		mes "^aa0000來，把星座們準備的神聖道具放在我們對面吧。用人類的話來說，那叫做自動販賣機。^000000";
 		next;
-		mes "[Ardor]";
-		mes "^aa0000The reward for helping us and the constellations' work here will be received through that sacred item.^000000";
+		mes "[阿多爾]";
+		mes "^aa0000協助我們與星座們在此處的工作所得的報酬，會透過那件神聖道具領取。^000000";
 		next;
 		completequest 12620;
 		navigateto("t_garden",126,117);
@@ -1072,7 +1072,7 @@ t_garden,97,114,5	script(CLOAKED)	Diluvio#life2	4_EM_DILUVIO,{
 	if (isbegin_quest(12620) != 2)
 		end;
 	if (checkweight(1201,1) == 0) {	// Useless check ?
-		mes "I am unable to communicate with spirits because I have too many items or weights.";
+		mes "我的道具數量或重量過多，無法與精靈溝通。";
 		close;
 	}
 	switch( checkquest(12598,PLAYTIME) ) {
@@ -1080,23 +1080,23 @@ t_garden,97,114,5	script(CLOAKED)	Diluvio#life2	4_EM_DILUVIO,{
 		break;
 	case 0:
 	case 1:
-		mes "^ff0000Today's request has already been received. You can't receive any more.^000000";
+		mes "^ff0000今日的委託已經領取過了，無法再領取。^000000";
 		close;
 	case 2:
 		erasequest 12598;
 		break;
 	}
 	if (F_queststatus( HAVEQUEST,12633,12634,12635,12636 ) == -1) {
-		mes "^0000ffThere are still uncompleted quests. You cannot receive additional requests or reset until all requests are completed at the " + F_mesnavi("Spirit Vending Machine", "t_garden",128,122) + ".^000000";
+		mes "^0000ff目前還有未完成的任務，在所有委託完成前無法接取額外委託或重置，請到 " + F_mesnavi("靈魂自動販賣機", "t_garden",128,122) + ".^000000";
 		close;
 	}
-	mes "[Diluvio]";
-	mes "My goal is to return the water spirits, who are gradually materializing within forgotten memories, back to their elements. I would like your help.";
+	mes "[迪盧維奧]";
+	mes "我的目標是讓逐漸在遺忘記憶中具現化的水之精靈，回歸各自的元素。希望能得到你的幫助。";
 	next;
-	if (select( "I will help you next time.", "I will help you" ) == 1)
+	if (select( "下次再幫你吧。", "我會幫你的。" ) == 1)
 		end;
-	mes "[Diluvio]";
-	mes "This is a list of requests for you. Thank you very much.";
+	mes "[迪盧維奧]";
+	mes "這是為你整理的委託清單，非常感謝。";
 	close2;
 	.@quest_id[0] = rand(12633,12634);
 	.@quest_id[1] = rand(12635,12636);
@@ -1115,7 +1115,7 @@ t_garden,100,117,5	script(CLOAKED)	Terremotus#life2	4_EM_TERREMOTUS,{
 	if (isbegin_quest(12620) != 2)
 		end;
 	if (checkweight(1201,1) == 0) {
-		mes "I am unable to communicate with spirits because I have too many items or weights.";
+		mes "我的道具數量或重量過多，無法與精靈溝通。";
 		close;
 	}
 	switch( checkquest(12599,PLAYTIME) ) {
@@ -1123,23 +1123,23 @@ t_garden,100,117,5	script(CLOAKED)	Terremotus#life2	4_EM_TERREMOTUS,{
 		break;
 	case 0:
 	case 1:
-		mes "^ff0000Today's request has already been received. You can't receive any more.^000000";
+		mes "^ff0000今日的委託已經領取過了，無法再領取。^000000";
 		close;
 	case 2:
 		erasequest 12599;
 		break;
 	}
 	if (F_queststatus( HAVEQUEST,12621,12622,12623,12624 ) == -1) {
-		mes "^0000ffThere are still uncompleted quests. You cannot receive additional requests or reset until all requests are completed at the " + F_mesnavi("Spirit Vending Machine", "t_garden",128,122) + ".^000000";
+		mes "^0000ff目前還有未完成的任務，在所有委託完成前無法接取額外委託或重置，請到 " + F_mesnavi("靈魂自動販賣機", "t_garden",128,122) + ".^000000";
 		close;
 	}
-	mes "[Terremotus]";
-	mes "The elements of the earth must remain in their elemental state. If they continue to become elementals, eventually there will not be a single ounce of dirt left. Will you help me?";
+	mes "[特雷莫圖斯]";
+	mes "大地的元素必須維持在元素的狀態。若它們持續化為元素精靈，最終將連一點泥土都不剩。你願意幫我嗎？";
 	next;
-	if (select( "I will help you next time.", "I will help you" ) == 1)
+	if (select( "下次再幫你吧。", "我會幫你的。" ) == 1)
 		end;
-	mes "[Terremotus]";
-	mes "That's all I ask of you today. Take your time and take a look.";
+	mes "[特雷莫圖斯]";
+	mes "今天的請求就只有這些。慢慢看，不急。";
 	close2;
 	.@quest_id[0] = rand(12621,12622);
 	.@quest_id[1] = rand(12623,12624);
@@ -1158,7 +1158,7 @@ t_garden,103,120,5	script(CLOAKED)	Serpens#life2	4_EM_SERPENS,{
 	if (isbegin_quest(12620) != 2)
 		end;
 	if (checkweight(1201,1) == 0) {
-		mes "I am unable to communicate with spirits because I have too many items or weights.";
+		mes "我的道具數量或重量過多，無法與精靈溝通。";
 		close;
 	}
 	switch( checkquest(12600,PLAYTIME) ) {
@@ -1166,23 +1166,23 @@ t_garden,103,120,5	script(CLOAKED)	Serpens#life2	4_EM_SERPENS,{
 		break;
 	case 0:
 	case 1:
-		mes "^ff0000Today's request has already been received. You can't receive any more.^000000";
+		mes "^ff0000今日的委託已經領取過了，無法再領取。^000000";
 		close;
 	case 2:
 		erasequest 12600;
 		break;
 	}
 	if (F_queststatus( HAVEQUEST,12637,12638,12639,12640,12641,12642,12643 ) == -1) {
-		mes "^0000ffThere are still uncompleted quests. You cannot receive additional requests or reset until all requests are completed at the " + F_mesnavi("Spirit Vending Machine", "t_garden",128,122) + ".^000000";
+		mes "^0000ff目前還有未完成的任務，在所有委託完成前無法接取額外委託或重置，請到 " + F_mesnavi("靈魂自動販賣機", "t_garden",128,122) + ".^000000";
 		close;
 	}
-	mes "[Serpens]";
-	mes "I can't stand to see healthy elements becoming corrupted as I can't turn them into spirits. I need your power to prevent them from falling into anger and becoming polluted.";
+	mes "[塞爾彭斯]";
+	mes "眼睜睜看著健康的元素因為無法化為精靈而墮落，我實在無法忍受。我需要你的力量，阻止它們陷入憤怒而遭到汙染。";
 	next;
-	if (select( "I will help you next time.", "I will help you" ) == 1)
+	if (select( "下次再幫你吧。", "我會幫你的。" ) == 1)
 		end;
-	mes "[Serpens]";
-	mes "I'm sorry to ask you this kind of favor again today. Thank you very much.";
+	mes "[塞爾彭斯]";
+	mes "今天又要麻煩你，真的很抱歉。非常感謝。";
 	close2;
 	.@quest_id[0] = rand(12637,12638);
 	.@quest_id[1] = rand(12639,12643);
@@ -1201,7 +1201,7 @@ t_garden,106,123,5	script(CLOAKED)	Procella#life2	4_EM_PROCELLA,{
 	if (isbegin_quest(12620) != 2)
 		end;
 	if (checkweight(1201,1) == 0) {
-		mes "I am unable to communicate with spirits because I have too many items or weights.";
+		mes "我的道具數量或重量過多，無法與精靈溝通。";
 		close;
 	}
 	switch( checkquest(12601,PLAYTIME) ) {
@@ -1209,23 +1209,23 @@ t_garden,106,123,5	script(CLOAKED)	Procella#life2	4_EM_PROCELLA,{
 		break;
 	case 0:
 	case 1:
-		mes "^ff0000Today's request has already been received. You can't receive any more.^000000";
+		mes "^ff0000今日的委託已經領取過了，無法再領取。^000000";
 		close;
 	case 2:
 		erasequest 12601;
 		break;
 	}
 	if (F_queststatus( HAVEQUEST,12629,12630,12631,12632 ) == -1) {
-		mes "^0000ffThere are still uncompleted quests. You cannot receive additional requests or reset until all requests are completed at the " + F_mesnavi("Spirit Vending Machine", "t_garden",128,122) + ".^000000";
+		mes "^0000ff目前還有未完成的任務，在所有委託完成前無法接取額外委託或重置，請到 " + F_mesnavi("靈魂自動販賣機", "t_garden",128,122) + ".^000000";
 		close;
 	}
-	mes "[Procella]";
-	mes "Wind means the source of life, the atmosphere. If the elements of wind continue to turn into spirits, all living things in this dimension will eventually die. I need someone's help.";
+	mes "[普羅切拉]";
+	mes "風代表生命之源，也就是大氣。若風之元素持續化為精靈，這個次元的所有生命終將死亡。我需要有人幫忙。";
 	next;
-	if (select( "I will help you next time.", "I will help you" ) == 1)
+	if (select( "下次再幫你吧。", "我會幫你的。" ) == 1)
 		end;
-	mes "[Procella]";
-	mes "I'm glad there is someone who can solve this problem. Please solve my request well.";
+	mes "[普羅切拉]";
+	mes "很高興有人能解決這個問題。請好好處理我的委託。";
 	close2;
 	.@quest_id[0] = rand(12629,12630);
 	.@quest_id[1] = rand(12631,12632);
@@ -1244,7 +1244,7 @@ t_garden,109,126,5	script(CLOAKED)	Ardor#life2	4_EM_ARDOR,{
 	if (isbegin_quest(12620) != 2)
 		end;
 	if (checkweight(1201,1) == 0) {
-		mes "I am unable to communicate with spirits because I have too many items or weights.";
+		mes "我的道具數量或重量過多，無法與精靈溝通。";
 		close;
 	}
 	switch( checkquest(12602,PLAYTIME) ) {
@@ -1252,23 +1252,23 @@ t_garden,109,126,5	script(CLOAKED)	Ardor#life2	4_EM_ARDOR,{
 		break;
 	case 0:
 	case 1:
-		mes "^ff0000Today's request has already been received. You can't receive any more.^000000";
+		mes "^ff0000今日的委託已經領取過了，無法再領取。^000000";
 		close;
 	case 2:
 		erasequest 12602;
 		break;
 	}
 	if (F_queststatus( HAVEQUEST,12625,12626,12627,12628 ) == -1) {
-		mes "^0000ffThere are still uncompleted quests. You cannot receive additional requests or reset until all requests are completed at the " + F_mesnavi("Spirit Vending Machine", "t_garden",128,122) + ".^000000";
+		mes "^0000ff目前還有未完成的任務，在所有委託完成前無法接取額外委託或重置，請到 " + F_mesnavi("靈魂自動販賣機", "t_garden",128,122) + ".^000000";
 		close;
 	}
-	mes "[Ardor]";
-	mes "Flame that has become a spirit and moves and thinks on its own is dangerous in itself. Don't you think it's too dangerous to just sit there like this? I don't ask you any favors. Follow my instructions.";
+	mes "[阿多爾]";
+	mes "化為精靈、能自行移動與思考的火焰本身就很危險。你不覺得就這樣坐著不動太危險了嗎？我不是在求你，照我的指示做就對了。";
 	next;
-	if (select( "I will help you next time.", "I will help you" ) == 1)
+	if (select( "下次再幫你吧。", "我會幫你的。" ) == 1)
 		end;
-	mes "[Ardor]";
-	mes "It's something you have to do. You'd better do it as quickly as possible.";
+	mes "[阿多爾]";
+	mes "這是你非做不可的事，最好儘快去做。";
 	close2;
 	.@quest_id[0] = rand(12625,12626);
 	.@quest_id[1] = rand(12627,12628);
@@ -1305,21 +1305,21 @@ t_garden,126,126,2	script(CLOAKED)	Spirit Complaint Terminal#1	4_VENDING_MACHINE
 	if (isbegin_quest(12620) != 2)
 		end;
 	if (checkweight(1201,1) == 0) {
-		mes "I cannot communicate with the barrier because I have too many types or weights of items.";
+		mes "道具的種類或重量過多，我無法與結界溝通。";
 		close;
 	}
-	mes "[Spirit Complaint Terminal]";
-	mes "Conversation between spirits and humans. Seamless communication. We will listen to the voices of our customers. This is Kiosk 5000, a comprehensive information terminal that processes spirit complaints and compensation at the same time. How can we help you?";
+	mes "[精靈申訴終端機]";
+	mes "精靈與人類之間的對話，無縫溝通。我們傾聽顧客的心聲。這裡是 Kiosk 5000，能同時處理精靈申訴與賠償的綜合資訊終端機。請問需要什麼協助？";
 	next;
-	if (select( "Exit menu", "Spirit complaint processing" ) == 1) {
-		mes "[Spirit Complaint Terminal]";
+	if (select( "離開選單", "精靈申訴處理" ) == 1) {
+		mes "[精靈申訴終端機]";
 		mes "再見。";
 		close;
 	}
-	mes "[Spirit Complaint Terminal]";
-	mes "We will automatically process all completed spirit requests that you have.";
+	mes "[精靈申訴終端機]";
+	mes "我們將自動處理您已完成的所有精靈委託。";
 	next;
-	mes "[Spirit Complaint Terminal]";
+	mes "[精靈申訴終端機]";
 
 	.@count += callsub( S_Hunt,
 		12621,				// Quest ID
@@ -1365,16 +1365,16 @@ t_garden,126,126,2	script(CLOAKED)	Spirit Complaint Terminal#1	4_VENDING_MACHINE
 	.@count += callsub( S_Gathering, 12643, "Serpens's Request 7", 1001432,20, 1001465, 27176580,0 );
 
 	if (.@count == 0) {
-		mes "It appears that no special complaints have been handled. If you have handled a complaint related to spirits, please come back at any time. Thank you.";
+		mes "目前似乎沒有已處理的特殊申訴。若您處理過與精靈相關的申訴，隨時歡迎再來。謝謝。";
 		close;
 	}
 	mes "------------";
-	mes "The above " + .@count + " complaints have been processed.";
+	mes "以上 " + .@count + " 則申訴已處理完畢。";
 	close;
 
 S_Hunt:
 	if (checkquest(getarg(0),HUNTING) == 2) {
-		mes "^0000ff" + getarg(1) + " Completed^000000 - Compensation paid.";
+		mes "^0000ff" + getarg(1) + " 已完成^000000 - 已支付賠償。";
 		erasequest getarg(0);
 		getitem getarg(2),1;
 		for ( .@i = 0; .@i < 10; ++.@i )
@@ -1385,7 +1385,7 @@ S_Hunt:
 	
 S_Gathering:
 	if (countitem(getarg(2)) >= getarg(3)) {
-		mes "^0000ff" + getarg(1) + " Completed^000000 - Compensation paid.";
+		mes "^0000ff" + getarg(1) + " 已完成^000000 - 已支付賠償。";
 		erasequest getarg(0);
 		delitem getarg(2),getarg(3);
 		getitem getarg(4),1;
@@ -1431,11 +1431,11 @@ t_garden,129,123,2	script(CLOAKED)	Subspace vending machine#1	HEROS_IN_ORB_1,{
 	if (isbegin_quest(12620) != 2)
 		end;
 	if (checkweight(1201,1) == 0) {
-		mes "I cannot communicate with the barrier because I have too many types or weights of objects.";
+		mes "物件的種類或重量過多，我無法與結界溝通。";
 		close;
 	}
-	npctalk "Everything you want is here. What deal do you want?", "", bc_self;
-	switch( select( "取消", "Energy transaction by attribute", "Energy transaction by season", "Various consumable transaction" ) ) {
+	npctalk "你想要的東西全都在這裡。想要哪種交易？", "", bc_self;
+	switch( select( "取消", "依屬性交易能量", "依季節交易能量", "各類消耗品交易" ) ) {
 	case 1:
 		end;
 	case 2:
@@ -1459,11 +1459,11 @@ t_garden,132,120,2	script(CLOAKED)	Subspace vending machine#2	HEROS_IN_ORB_2,{
 	if (isbegin_quest(12620) != 2)
 		end;
 	if (checkweight(1201,1) == 0) {
-		mes "I cannot communicate with the barrier because I have too many types or weights of objects.";
+		mes "物件的種類或重量過多，我無法與結界溝通。";
 		close;
 	}
-	npctalk "This place specializes in equipment. What kind of deal do you want?", "", bc_self;
-	switch( select( "取消", "Purchase Circulation of Life Accessories", "Purchase Divine Beast's Cloak", "Upgrade Divine Beast's Cloak" ) ) {
+	npctalk "這裡專營裝備。想要哪種交易？", "", bc_self;
+	switch( select( "取消", "購買生命循環飾品", "購買神獸披風", "強化神獸披風" ) ) {
 	case 1:
 		end;
 	case 2:
@@ -1487,11 +1487,11 @@ t_garden,135,117,2	script(CLOAKED)	Subspace vending machine#3	HEROS_IN_ORB_3,{
 	if (isbegin_quest(12620) != 2)
 		end;
 	if (checkweight(1201,1) == 0) {
-		mes "I cannot communicate with the barrier because I have too many types or weights of objects.";
+		mes "物件的種類或重量過多，我無法與結界溝通。";
 		close;
 	}
-	npctalk "We carefully enchant the equipment obtained from the Lake of Fire. Is there a menu you would like?", "", bc_self;
-	switch( select( "Divine Beast's Cloak - Spring", "Divine Beast's Cloak - Summer", "Divine Beast's Cloak - Fall", "Divine Beast's Cloak - Winter" ) ) {
+	npctalk "我們會仔細附魔從火之湖取得的裝備。有想要的項目嗎？", "", bc_self;
+	switch( select( "神獸披風 - 春", "神獸披風 - 夏", "神獸披風 - 秋", "神獸披風 - 冬" ) ) {
 	case 1:
 		item_enchant(117);
 		break;
@@ -1516,11 +1516,11 @@ t_garden,138,114,2	script(CLOAKED)	Subspace vending machine#4	HEROS_IN_ORB_4,{
 	if (isbegin_quest(12620) != 2)
 		end;
 	if (checkweight(1201,1) == 0) {
-		mes "I cannot communicate with the barrier because I have too many types or weights of objects.";
+		mes "物件的種類或重量過多，我無法與結界溝通。";
 		close;
 	}
-	npctalk "We put great effort into enchanting circulating equipment. Is there a menu you would like?", "", bc_self;
-	switch( select( "Circle of Life Accessories", "Circle of Life-Spring", "Circle of Life-Summer", "Circle of Life-Autumn", "Circle of Life-Winter" ) ) {
+	npctalk "我們在循環裝備的附魔上投入了很多心血。有想要的項目嗎？", "", bc_self;
+	switch( select( "生命循環飾品", "生命循環-春", "生命循環-夏", "生命循環-秋", "生命循環-冬" ) ) {
 	case 1:
 		item_enchant(142);
 		break;
@@ -1548,9 +1548,9 @@ OnInit:
 // Storages
 -	shop	t_garden_shop	-1,501:-1
 
-t_garden,156,222,2	script	Functional Vending Machine#1	4_VENDING_MACHINE2,{
+t_garden,156,222,2	script	功能販賣機#1::Functional Vending Machine#1	4_VENDING_MACHINE2,{
 	// switch( select( "Tool Dealer", "Storage 1 (100z)", "Storage 2 (100z)", "Storage 3 (100z)", "Use savepoint service" ) ) {
-	switch( select( "工具商人", "Storage 1 (100z)", "", "", "Use savepoint service" ) ) {
+	switch( select( "工具商人", "倉庫 1 (100z)", "", "", "使用存檔點服務" ) ) {
 	case 1:
 		callshop( "t_garden_shop", 2 );
 		end;
@@ -1564,7 +1564,7 @@ t_garden,156,222,2	script	Functional Vending Machine#1	4_VENDING_MACHINE2,{
 		.@storage_num = 3;
 		break;
 	case 5:
-		npctalk "" + strcharinfo(0) + " your location has been safely saved.", "", bc_self;
+		npctalk "" + strcharinfo(0) + " 您的位置已安全儲存。", "", bc_self;
 
 		.@num = atoi( strnpcinfo(2) );
 		if (.@num == 1)
@@ -1578,11 +1578,11 @@ t_garden,156,222,2	script	Functional Vending Machine#1	4_VENDING_MACHINE2,{
 		break;
 	}
 	if (Zeny < 100) {
-		npctalk "To use the Storage, please insert 100 zeny.", "", bc_self;
+		npctalk "使用倉庫需要投入 100 Zeny。", "", bc_self;
 		end;
 	}
 	Zeny -= 100;
-	npctalk "I will open storage number " + .@storage_num + ". Thank you for using it.", "", bc_self;
+	npctalk "我將為您開啟第 " + .@storage_num + "號倉庫，感謝您使用。", "", bc_self;
 	openstorage;
 	end;
 
@@ -1590,6 +1590,6 @@ OnInit:
 	questinfo( QTYPE_CLICKME, QMARK_YELLOW, "isbegin_quest(12592) == 2" );
 	end;
 }
-t_garden,97,138,6	duplicate(Functional Vending Machine#1)	Functional Vending Machine#2	4_VENDING_MACHINE2
-t_garden,91,116,2	duplicate(Functional Vending Machine#1)	Functional Vending Machine#3	4_VENDING_MACHINE2
-t_garden,144,116,2	duplicate(Functional Vending Machine#1)	Functional Vending Machine#4	4_VENDING_MACHINE2
+t_garden,97,138,6	duplicate(Functional Vending Machine#1)	功能販賣機#2::Functional Vending Machine#2	4_VENDING_MACHINE2
+t_garden,91,116,2	duplicate(Functional Vending Machine#1)	功能販賣機#3::Functional Vending Machine#3	4_VENDING_MACHINE2
+t_garden,144,116,2	duplicate(Functional Vending Machine#1)	功能販賣機#4::Functional Vending Machine#4	4_VENDING_MACHINE2

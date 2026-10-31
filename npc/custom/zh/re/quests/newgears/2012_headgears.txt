@@ -16,7 +16,7 @@
 
 // Main NPC :: 2012_hat_quest
 //============================================================
-moc_para01,41,169,3	script	Reno#2012hat	64,{
+moc_para01,41,169,3	script	雷諾#2012hat::Reno#2012hat	64,{
 
 	// iRO has (very) minor differences in dialogue from the original script.
 	// To use iRO's version, uncomment the line below.
@@ -24,7 +24,7 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 
 	//custom translation -  all checks below
 	if (checkweight(1301,1) == 0 || MaxWeight - Weight < 800) {
-		mes "- Carrying too many items, cannot proceed. -";
+		mes "- 攜帶物品過多，無法繼續。 -";
 		close;
 	}
 
@@ -36,11 +36,11 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 	for (set .@i,0; .@i<6; set .@i,.@i+1) {
 		if (checkquest(.@quests_playtime[.@i],PLAYTIME) == 2) {
 			erasequest .@quests_playtime[.@i];
-			mes "[Reno]";
+			mes "[雷諾]";
 			if (.@i < 3)	// hunting quest wait time
-				mes "The waiting time for a "+.@type$[.@i]+" collection quest has expired. You can now take another request.";
+				mes "收集任務 "+.@type$[.@i]+" 的等待時間已過，現在可以再接取新的委託。";
 			else        	// buff wait time
-				mes "The waiting time for storing "+.@crystal$[.@i]+" Energy Crystals has expired. You can now store them again.";
+				mes "儲存 "+.@crystal$[.@i]+" 能量結晶的等待時間已過，現在可以再次儲存了。";
 			close;
 		}
 	}
@@ -58,52 +58,52 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 			if (isbegin_quest(.@i + 5222)) {
 				set .@item, 6623 + .@i;
 				set .@amount, 2 + rand(3);
-				mes "[Reno]";
-				mes getitemname(.@item)+" storage is now complete.";
+				mes "[雷諾]";
+				mes getitemname(.@item)+" 儲存已完成。";
 				next;
 				setquest 5225 + .@i;
 				erasequest 5222 + .@i;
 				getitem .@item,.@amount;
-				mes "[Reno]";
-				mes "^0000FF"+.@amount+" "+getitemname(.@item)+"s^000000 were extracted.";
+				mes "[雷諾]";
+				mes "^0000FF"+.@amount+" "+getitemname(.@item)+"^000000 已被取出。";
 				close;
 			}
 		}
 	}
 
-	mes "[Reno]";
-	mes "Hi? I am Reno from the Energy Crystal Research Association, or ECRA.";
+	mes "[雷諾]";
+	mes "嗨？我是能量結晶研究協會（ECRA）的雷諾。";
 	next;
-	switch(select("ECRA?:Quest to get Energy Crystals:Energy Crystal Buffs:Compress Energy Crystals:Exchange Crystals for Headgear:Random Gear for Crystals" + ((.@features_iRO)?":See Equipment List":""))) {
+	switch(select("ECRA是什麼？:收集能量結晶的委託:能量結晶增益:壓縮能量結晶:用結晶兌換頭飾:用結晶換取隨機裝備" + ((.@features_iRO)?":查看裝備清單":""))) {
 	case 1:
-		mes "[Reno]";
-		mes "ECRA is the institute that researches '^0000FFEnergy Crystals^000000' that shall be used as an alternative energy source in the Rune-Midgarts Kingdom, which suffers from a shortage of energy.";
+		mes "[雷諾]";
+		mes "ECRA是研究「^0000FF能量結晶^000000」的機構，這些結晶將作為盧恩米德加茲王國的替代能源。該王國正深受能源短缺之苦。";
 		next;
-		select("The reason for doing this?");
-		mes "[Reno]";
-		mes "I would like to explain that we are not trying to make an excuse to get away from facing problem before I explain the reason. Never! So please let me finish.";
+		select("這麼做的理由是什麼？");
+		mes "[雷諾]";
+		mes "在說明理由之前，我想先澄清一點：我們不是想找藉口逃避問題。絕對不是！所以請讓我把話說完。";
 		next;
-		mes "[Reno]";
-		mes "The Research Team has sent me the results they found.";
+		mes "[雷諾]";
+		mes "研究團隊已經把他們的研究結果寄給我了。";
 		next;
-		mes "[Reno]";
-		mes "Energy Crystals turned out to be ^0000FFgenerated inside the bodies of some monsters^000000, and according to the research, stronger monsters generate higher-class energy crystals in their bodies.";
+		mes "[雷諾]";
+		mes "研究發現，能量結晶是^0000FF在某些怪物體內生成的^000000，而且根據研究，越強的怪物體內會生成等級越高的能量結晶。";
 		next;
-		mes "[Reno]";
-		mes "The Research Team decided to collect Energy Crystals by giving requests to adventurers, with appropriate rewards. That enables us to collect better and be more ^FF0000efficient^000000.";
+		mes "[雷諾]";
+		mes "研究團隊決定透過向冒險者發布委託並給予適當報酬的方式來收集能量結晶。這樣能讓我們收集得更好，也更^FF0000有效率^000000。";
 		next;
-		mes "[Reno]";
-		mes "Energy Crystals, accumulated through hunting monsters by my request, shall be used for my research. ^0000FFSome of them are planned to be returned to adventurers.^000000";
+		mes "[雷諾]";
+		mes "透過依我的委託狩獵怪物而累積的能量結晶，將用於我的研究。^0000FF其中一部分預計會返還給冒險者。^000000";
 		next;
-		mes "[Reno]";
-		mes "Adventurers can use collected Energy Crystals for ^FF0000upgrading equipments^000000 through me.";
+		mes "[雷諾]";
+		mes "冒險者可以透過我，把收集到的能量結晶用於^FF0000裝備升級^000000。";
 		next;
-		mes "[Reno]";
-		mes "If it works well, it seems to be good for both ECRA and adventurers.";
+		mes "[雷諾]";
+		mes "如果進展順利，對ECRA和冒險者雙方應該都有好處。";
 		close;
 	case 2:
-		mes "[Reno]";
-		mes "The hunting quests are ranked by monster level and difficulty. The ranges are lower, intermediate, high quests and can only be taken once per day.";
+		mes "[雷諾]";
+		mes "狩獵委託依怪物等級與難度分類，分為低級、中級、高級委託，每天只能接取一次。";
 		next;
 
 		setarray .@quest_status[0],
@@ -112,30 +112,30 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 			isbegin_quest(5175) + isbegin_quest(5176) + isbegin_quest(5177) + isbegin_quest(5178) + isbegin_quest(5179) + isbegin_quest(5180) + isbegin_quest(5181) + isbegin_quest(5182);
 		setarray .@quest_index[0],5161,5169,5174;
 
-		set .@select, select("Lower level hunting [61-80]:Intermediate level hunting [80-99]:High level hunting [90 and up]:Cancel my current quest.") - 1;
+		set .@select, select("低級狩獵 [61-80]:中級狩獵 [80-99]:高級狩獵 [90以上]:取消目前的委託。") - 1;
 		if (.@select < 3) {
 			setarray .@min_level[0],60,80,90,100;
 			if (BaseLevel < .@min_level[.@select]) {
-				mes "[Reno]";
-				mes "I am sorry but the request for the "+.@type$[.@select]+" collection is only available for those level "+.@min_level[.@select]+" and higher. You do not seem to be capable of carrying out this request.";
+				mes "[雷諾]";
+				mes "很抱歉，您要求的 "+.@type$[.@select]+" 收集委託只限等級 "+.@min_level[.@select]+" 以上的人接取。您的實力似乎無法勝任這項委託。";
 				close;
 			}
 			if (.@quest_status[.@select]) {
-				mes "[Reno]";
-				mes "You seem to be under the other request of "+.@type$[.@select]+" collection. If the quest seems to be too hard... how about you ^FF0000give up on the request^000000?";
+				mes "[雷諾]";
+				mes "您似乎正在接取另一項 "+.@type$[.@select]+" 收集委託。如果覺得委託太難……要不要^FF0000放棄這項委託^000000？";
 				close;
 			}
 			set .@playtime, checkquest(.@quest_index[.@select],PLAYTIME);
 			if (.@playtime == 0 || .@playtime == 1) {
-				mes "[Reno]";
-				mes "Currently waiting for the "+.@type$[.@select]+" collection commission. Tasks in each collection can only be completed once per day."; //custom translation
+				mes "[雷諾]";
+				mes "目前正在等待 "+.@type$[.@select]+" 收集委託的回覆。每項收集任務每天只能完成一次。"; //custom translation
 				close;
 			}
-			mes "[Reno]";
-			mes "You selected to hunt a monster from the "+.@type$[.@select]+" collection. After hunting these monsters you will receive "+((.@features_iRO)?"10 ":"")+"^0000FF"+.@crystal$[.@select]+" Energy Crystals^000000 when you return to me.";
+			mes "[雷諾]";
+			mes "您已選擇從 "+.@type$[.@select]+" 收集委託中狩獵怪物。擊殺這些怪物後，回來找我就能拿到 "+((.@features_iRO)?"10 ":"")+"^0000FF"+.@crystal$[.@select]+" 能量結晶^000000。";
 			next;
-			mes "[Reno]";
-			mes "Please select the monster that you think you can easily hunt from the list.";
+			mes "[雷諾]";
+			mes "請從清單中選擇你認為容易狩獵的怪物。";
 			next;
 			switch (.@select) {
 			case 0:
@@ -169,22 +169,22 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 					"[Highest] Ancient Mimic"
 				);
 				if (.@quest > 4 && BaseLevel < .@min_level[3]) {
-					mes "[Reno]";
-					mes "I am sorry but the request for the most advanced collection is only available for those level "+.@min_level[3]+" and higher. You do not seem to be capable of carrying out this request.";
+					mes "[雷諾]";
+					mes "很抱歉，最高級的收集委託只限等級 "+.@min_level[3]+" 以上的人接取。您的實力似乎無法勝任這項委託。";
 					close;
 				}
 				break;
 			}
 			setquest .@quest_index[.@select] + .@quest;
-			mes "[Reno]";
-			mes "The request for "+.@type$[.@select]+" collection monsters has been issued. Please check the details on the issued document.";
+			mes "[雷諾]";
+			mes "已為 "+.@type$[.@select]+" 收集委託發出任務，請查看委託書上的詳細內容。";
 			close;
 		} else {
 			setarray .@quest_count[0],7,4,8;
 			for (set .@i,0; .@i<3; set .@i,.@i+1) {
 				if (.@quest_status[.@i]) {
-					mes "[Reno]";
-					mes "You are currently under the request of the "+.@type$[.@i]+" collection. If you give up now, all your history will be lost. Do you really want to give up?";
+					mes "[雷諾]";
+					mes "您目前正在接取 "+.@type$[.@i]+" 收集委託。現在放棄的話，所有紀錄都會消失。您確定要放棄嗎？";
 					next;
 					set .@erase_quest, select("是:否");
 					switch (.@erase_quest) {
@@ -201,34 +201,34 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 			}
 			switch (.@erase_quest) {
 			case 0:
-				mes "[Reno]";
-				mes "You are not under any request.";
+				mes "[雷諾]";
+				mes "您目前沒有接取任何委託。";
 				close;
 			case 1:
-				mes "[Reno]";
-				mes "The written request for you has been withdrawn.";
+				mes "[雷諾]";
+				mes "為您所寫的委託已撤回。";
 				close;
 			case 2:
-				mes "[Reno]";
-				mes "Please keep up on it.";
+				mes "[雷諾]";
+				mes "請繼續努力。";
 				close;
 			}
 		}
 	case 3:
-		mes "[Reno]";
-		mes "Do you want to accumulate Energy Crystals inside of your body to receive a buff?";
+		mes "[雷諾]";
+		mes "您想要在體內累積能量結晶，以獲得增益效果嗎？";
 		next;
-		set .@select, select("Accumulating Energy Crystals?:Accumulate Rough Energy Crystal:Accumulate Purified Energy Crystal:Accumulate High Energy Crystal");
+		set .@select, select("累積能量結晶？:累積未純化能量結晶:累積已純化能量結晶:累積高純度能量結晶");
 		switch (.@select) {
 		case 1:
-			mes "[Reno]";
-			mes "Energy Crystals are accumulated in your body when you hunt the monsters we ask you to.";
+			mes "[雷諾]";
+			mes "當您狩獵我們指定的怪物時，能量結晶就會累積在您的體內。";
 			next;
-			mes "[Reno]";
-			mes "Our research shows that some methods enable humans to accumulate the energy crystals inside of the body in the form of a buff.";
+			mes "[雷諾]";
+			mes "我們的研究顯示，有些方法能讓人類以增益效果的形式在體內累積能量結晶。";
 			next;
-			mes "[Reno]";
-			mes "If you spend about 3 hours, you will be able to gain a small amount of Energy Crystals. So do you want to receive the buff?";
+			mes "[雷諾]";
+			mes "只要花費大約 3 小時，就能獲得少量能量結晶。那麼，您要接受這個增益效果嗎？";
 			close;
 		case 2:
 			set .@playtime, checkquest(5225,PLAYTIME);
@@ -253,64 +253,64 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 			break;
 		}
 		if (.@playtime == 0 || .@playtime == 1) {
-			mes "[Reno]";
-			mes "Were you successful? While storing other Energy Crystals will not have much effect on your body, storing the same one may cause you harm."; //custom translation
+			mes "[雷諾]";
+			mes "你成功了嗎？儲存不同種類的能量結晶對身體影響不大，但儲存同一種可能會傷害身體。"; //custom translation
 			close;
 		}
 		if (BaseLevel < .@min_level) {
-			mes "[Reno]";
-			mes "With a body like that, you can't accumulate "+.@crystal$[.@select-2]+" Energy Crystals. You must be level "+.@min_level+" or your body will be harmed in the process."; //custom translation
+			mes "[雷諾]";
+			mes "以您目前的身體狀況，無法累積 "+.@crystal$[.@select-2]+" 能量結晶。您必須達到等級 "+.@min_level+" 以上，否則過程中身體會受到傷害。"; //custom translation
 			close;
 		}
 		if (.@energy_buf00) {
-			mes "[Reno]";
-			mes "Accumulating Energy Crystal has already begun. I am sorry but it is impossible to accumulate two different types of Energy Crystals at a time.";
+			mes "[雷諾]";
+			mes "能量結晶的累積已經開始了。很抱歉，無法同時累積兩種不同的能量結晶。";
 			close;
 		}
 		if (isbegin_quest(.@quest) > 0) {
 			erasequest .@quest;
-			mes "[Reno]";
-			mes "An error has occurred. Please forgive me for the inconvenience."; //custom translation
+			mes "[雷諾]";
+			mes "發生錯誤。造成您的不便，敬請見諒。"; //custom translation
 			close;
 		}
-		mes "[Reno]";
-		mes "It takes 3 hours for your body to accumulate 2 to 4 "+.@crystal$[.@select-2]+" Energy Crystals. Do you want to start?";
+		mes "[雷諾]";
+		mes "您的身體需要 3 小時才能累積 2 到 4 "+.@crystal$[.@select-2]+" 能量結晶。要開始嗎？";
 		next;
-		if(select("Cancel:Start") == 1) {
-			mes "[Reno]";
-			mes "I recommend that you try to ccumulate Energy Crystal when you have time.";
+		if(select("取消:開始") == 1) {
+			mes "[雷諾]";
+			mes "建議您有空的時候再來累積能量結晶。";
 			close;
 		}
-		mes "[Reno]";
-		mes "You might feel a slight tingle.";
+		mes "[雷諾]";
+		mes "您可能會感到輕微的刺痛。";
 		next;
 		specialeffect2 EF_BASH3D;
 		percentheal .@rate * -5,0;
 		//consumeitem ??; //Keep_Connection_[.@rate]
 		sc_start .@buff,10800000,.@rate;	// Atk/Matk + 5*rate (+5, +10, +15)
 		setquest .@quest;
-		mes "[Reno]";
-		mes "- Puck -";
+		mes "[雷諾]";
+		mes "- 普克 -";
 		next;
-		mes "[Reno]";
-		mes "Everything seems to be in order. Let's start accumulating "+.@crystal$[.@select-2]+" Energy Crystals. Remember to come back to me after 3 hours to get the "+.@crystal$[.@select-2]+" Energy Crystals.";
+		mes "[雷諾]";
+		mes "一切準備就緒。現在開始累積 "+.@crystal$[.@select-2]+" 能量結晶。記得 3 小時後回來找我領取 "+.@crystal$[.@select-2]+" 能量結晶。";
 		close;
 	case 4:
-		mes "[Reno]";
-		mes "Do you want to compress the Energy Crystals?";
+		mes "[雷諾]";
+		mes "要壓縮能量結晶嗎？";
 		next;
-		switch(select("What does compressing do?:Compress Rough to Purified Crystal:Compress Purified to High Crystal")) {
+		switch(select("壓縮是什麼？:將未純化結晶壓縮為已純化結晶:將已純化結晶壓縮為高純度結晶")) {
 		case 1:
-			mes "[Reno]";
-			mes "Are you curious about Energy Crystal compression? I can compress lower level Energy Crystals into higher ones.";
+			mes "[雷諾]";
+			mes "您對能量結晶的壓縮有興趣嗎？我可以把較低級的能量結晶壓縮成較高級的。";
 			next;
-			mes "[Reno]";
-			mes "Here is what I can make.";
-			mes "^FF000010 Rough Energy Crystals^000000 = ^FF00001 Purified Energy Crystal^000000";
-			mes "^FF00005 Purified Energy Crystals^000000 = ^FF00001 High Energy Crystal^000000";
+			mes "[雷諾]";
+			mes "以下是我能壓縮的內容。";
+			mes "^FF000010 個未純化能量結晶^000000 = ^FF00001 個已純化能量結晶^000000";
+			mes "^FF00005 個已純化能量結晶^000000 = ^FF00001 個高純度能量結晶^000000";
 			next;
-			mes "[Reno]";
-			mes "If you need higher grade Energy Crystals, this is a good way to get them since the lower ones are easier to get.";
+			mes "[雷諾]";
+			mes "如果需要高級能量結晶，這是個好方法，因為低級結晶比較容易取得。";
 			close;
 		case 2:
 			set .@crystal,6623;  //Rough_Energy_Crystal
@@ -325,16 +325,16 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 		}
 		set .@crystal_count, countitem(.@crystal);
 		set .@crystal_get, .@crystal_count / .@rate;
-		mes "[Reno]";
-		mes sprintf("^FF0000%d %s^000000 = ^FF00001 %s^000000",.@rate,getitemname(.@crystal),getitemname(.@crystal_));
+		mes "[雷諾]";
+		mes sprintf("^FF0000%d 個%s^000000 = ^FF00001 個%s^000000",.@rate,getitemname(.@crystal),getitemname(.@crystal_));
 		next;
-		mes "[Reno]";
-		mes sprintf("%d %ss will be compressed to %d %ss.",.@crystal_count,getitemname(.@crystal),.@crystal_get,getitemname(.@crystal_));
-		mes "Do you want to compress?";
+		mes "[雷諾]";
+		mes sprintf("%d 個%s 將被壓縮為 %d 個%s。",.@crystal_count,getitemname(.@crystal),.@crystal_get,getitemname(.@crystal_));
+		mes "要壓縮嗎？";
 		next;
-		if(select("Compress:Stop") == 2) {
-			mes "[Reno]";
-			mes "Okay, please contact if you need me in the future.";
+		if(select("壓縮:停止") == 2) {
+			mes "[雷諾]";
+			mes "好的，之後有需要再來找我。";
 			close;
 		}
 		while(1) {
@@ -343,32 +343,32 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 				getitem .@crystal_,1;
 				set .@crystal_count, countitem(.@crystal);
 				set .@crystal_get, .@crystal_count / .@rate;
-				mes "[Reno]";
-				mes "The compression was very successful.";
-				mes "目前還有 "+.@crystal_count+" Energy Crystals left, which can compress into "+.@crystal_get+" Energy Crystals. Do you want to continue?";
+				mes "[雷諾]";
+				mes "壓縮非常成功。";
+				mes "目前還有 "+.@crystal_count+" 個能量結晶剩餘，可壓縮成 "+.@crystal_get+" 個能量結晶。要繼續嗎？";
 				next;
-				if(select("Compress:Stop") == 2)
+				if(select("壓縮:停止") == 2)
 					break;
 			} else {
-				mes "[Reno]";
+				mes "[雷諾]";
 				mes "您的 "+getitemname(.@crystal)+"s.";
 				next;
 				break;
 			}
 		}
-		mes "[Reno]";
-		mes "Compression completed.";
+		mes "[雷諾]";
+		mes "壓縮完成。";
 		close;
 	case 5:
 		disable_items;
-		mes "[Reno]";
-		mes "Do you want to exchange Energy Crystals for equipment? Please select the type of Energy Crystal that you wish to exchange.";
+		mes "[雷諾]";
+		mes "要用能量結晶兌換裝備嗎？請選擇您想兌換的能量結晶種類。";
 		next;
 		setarray .@crystals[0], countitem(6623), countitem(6624), countitem(6625);
-		switch(select("See Equipment List:["+.@crystals[0]+"] Rough Energy Crystal:["+.@crystals[1]+"] Purified Energy Crystal:["+.@crystals[2]+"] High Energy Crystal")) {
+		switch(select("查看裝備清單:["+.@crystals[0]+"] 未純化能量結晶:["+.@crystals[1]+"] 已純化能量結晶:["+.@crystals[2]+"] 高純度能量結晶")) {
 		case 1:
-			mes "[Reno]";
-			mes "This is the brochure regarding the equipment upgrade that our Energy Crystal research association provides. Please take a look around.";
+			mes "[雷諾]";
+			mes "這是能量結晶研究協會提供的裝備升級宣傳冊，請隨意參閱。";
 			close2;
 			readbook 11060,1; //Energy_Xtal_Combi_Book
 			end;
@@ -401,8 +401,8 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 			setarray .@rewards[0],  18765,18768,18766,18767,18767,22014,2957,2958,15068,2183,22015,20710,18776;
 			break;
 		}
-		mes "[Reno]";
-		mes "Please select the equipment to exchange for "+getitemname(.@crystal)+"s.";
+		mes "[雷諾]";
+		mes "請選擇要兌換為 "+getitemname(.@crystal)+"s.";
 		next;
 		set .@crystal_count, countitem(.@crystal);
 		set .@menu$,"";
@@ -420,39 +420,39 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 		if (.@material == 2615) {  // Special case: Safety Ring
 			if (countitem(2615) < 1 || countitem(2621) < 1 || countitem(2622) < 1 || countitem(2624) < 1 ||
 			    countitem(2625) < 1 || countitem(2623) < 1 || countitem(2626) < 1 || countitem(.@crystal) < .@cost) {
-				mes "[Reno]";
-				mes "The materials to make a Safety Ring[1] are insufficient. Please check your inventory.";
+				mes "[雷諾]";
+				mes "製作防禦戒指[1]的材料不足。請檢查您的背包。";
 				close;
 			}
-			mes "[Reno]";
-			mes "Before upgrading your Safety Ring, please listen to these ^FF0000precautions^000000.";
+			mes "[雷諾]";
+			mes "升級防禦戒指前，請先聽好以下^FF0000注意事項^000000。";
 			next;
-			mes "[Reno]";
-			mes "^FF0000In addition to the Safety Ring, all refinements and cards of the required materials will also disappear.^000000";
+			mes "[雷諾]";
+			mes "^FF0000除了防禦戒指之外，所需材料上的所有精煉與卡片也會消失。^000000";
 			next;
 		} else {
 			if (countitem(.@material) < 1 || countitem(.@crystal) < .@cost) {
-				mes "[Reno]";
-				mes "The materials are insufficient. Please check your materials.";
+				mes "[雷諾]";
+				mes "材料不足。請檢查您的材料。";
 				close;
 			}
-			mes "[Reno]";
-			mes "Before upgrading your equipment, please listen to these ^FF0000precautions^000000.";
+			mes "[雷諾]";
+			mes "升級裝備前，請先聽好以下^FF0000注意事項^000000。";
 			next;
-			mes "[Reno]";
-			mes "^FF0000When using Energy Crystals to upgrade equipment, all previous refinements, enchantments, and cards will be lost.^000000";
+			mes "[雷諾]";
+			mes "^FF0000使用能量結晶升級裝備時，所有先前的精煉、附魔與卡片都會遺失。^000000";
 			next;
 		}
-		mes "[Reno]";
-		mes "Are you familiar with the ^FF0000precautions^000000?";
+		mes "[雷諾]";
+		mes "您已經了解^FF0000注意事項^000000了嗎？";
 		next;
-		if(select("I am.:No.") == 2) {
-			mes "[Reno]";
-			mes "Okay. Next time, then.";
+		if(select("了解。:不了。") == 2) {
+			mes "[雷諾]";
+			mes "好的，那下次再說。";
 			close;
 		}
-		mes "[Reno]";
-		mes "Then let's begin to upgrade "+.@item_name$+".";
+		mes "[雷諾]";
+		mes "那就開始升級 "+.@item_name$+".";
 		next;
 		specialeffect2 EF_REPAIRWEAPON;
 		progressbar "ffff00",2;
@@ -467,67 +467,67 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 		}
 		delitem .@crystal,.@cost;
 		getitem .@reward,1;
-		mes "[Reno]";
-		mes "The upgrade was successful. Your Energy Crystals will help our research greatly.";
+		mes "[雷諾]";
+		mes "升級成功。您的能量結晶將對我們的研究大有幫助。";
 		close;
 	case 6:
-		mes "[Reno]";
-		mes "Do you want to donate Energy Crystals to get a random new headgear?";
+		mes "[雷諾]";
+		mes "要捐獻能量結晶來換取隨機新頭飾嗎？";
 		next;
-		switch(select("Donate Energy Crystals?:Donate 300 Rough Energy Crystals.:Donate 600 Purified Energy Crystals.:Donate 900 High Energy Crystals.")) {
+		switch(select("捐獻能量結晶？:捐獻 300 個未純化能量結晶。:捐獻 600 個已純化能量結晶。:捐獻 900 個高純度能量結晶。")) {
 		case 1:
-			mes "[Reno]";
-			mes "We are collecting Energy Crystals so that we can research more combinations of headgears for adventurers.";
+			mes "[雷諾]";
+			mes "我們正在收集能量結晶，以便研究更多冒險者用的頭飾組合。";
 			next;
-			mes "[Reno]";
-			mes "Thanks to the support of adventurers we can use these Energy Crystals to further our research.";
+			mes "[雷諾]";
+			mes "多虧冒險者的支持，我們才能運用這些能量結晶推進研究。";
 			next;
-			mes "[Reno]";
-			mes "So we receive a minimum of 300 Rough Energy Crystals, 600 Purified Energy Crystals, and 900 High Energy Crystals.";
+			mes "[雷諾]";
+			mes "因此我們最少需要 300 個未純化能量結晶、600 個已純化能量結晶，以及 900 個高純度能量結晶。";
 			if (!.@features_iRO) {
 				next;
-				mes "[Reno]";
-				mes "You may feel that this is a burden, but for the sake of our research, please continue."; //custom translation
+				mes "[雷諾]";
+				mes "您可能覺得這是負擔，但為了我們的研究，還請繼續支持。"; //custom translation
 				close;
 			}
-			mes "For the donation, I'll give you a random new headgear.";
+			mes "作為捐獻的回報，我會給您一件隨機新頭飾。";
 			next;
-			mes "[Reno]";
-			mes "300 Rough Energy Crystals";
-			mes "- New Mage Hat";
-			mes "- New Magician Hat";
-			mes "- New Kitsune Mask";
-			mes "- New Joker Jester";
-			mes "- New Bunny Band";
-			mes "- New Munak Hat";
-			mes "- New Bongun Hat";
-			mes "- New Phantom Opera Mask";
+			mes "[雷諾]";
+			mes "300 個未純化能量結晶";
+			mes "- 新魔法師帽";
+			mes "- 新魔術師帽";
+			mes "- 新狐狸面具";
+			mes "- 新小丑帽";
+			mes "- 新兔耳髮圈";
+			mes "- 新殭屍帽";
+			mes "- 新妖道帽";
+			mes "- 新幻影歌劇面具";
 			next;
-			mes "[Reno]";
-			mes "600 Purified Energy Crystals";
-			mes "- Good Binoculars";
-			mes "- Good Fin Helm";
-			mes "- Good Assassin Mask";
-			mes "- Good Welding Mask";
-			mes "- Good Safety Ring";
-			mes "- Good Angelic Protection";
-			mes "- Good Angelic Guard";
-			mes "- Good Angelic Cardigan";
-			mes "- Good Angel's Reincarnation";
+			mes "[雷諾]";
+			mes "600 個已純化能量結晶";
+			mes "- 優良望遠鏡";
+			mes "- 優良劍士頭盔";
+			mes "- 優良卡滋爆米花假髮";
+			mes "- 優良鋼鐵面具";
+			mes "- 優良防禦戒指";
+			mes "- 優良天使之守護";
+			mes "- 優良天使之保護";
+			mes "- 優良天使之溫暖";
+			mes "- 優良天使之降臨";
 			next;
-			mes "[Reno]";
-			mes "900 High Energy Crystals";
-			mes "- Enhanced Corsair";
-			mes "- Enhanced Bone Helm";
-			mes "- Enhanced Helm of Angel";
-			mes "- Enhanced Variant Shoes";
-			mes "- Enhanced Ring of Flame Lord";
-			mes "- Enhanced Ring of Resonance";
+			mes "[雷諾]";
+			mes "900 個高純度能量結晶";
+			mes "- 增強型海盜船長帽";
+			mes "- 增強型骨製頭盔";
+			mes "- 增強型天使頭盔";
+			mes "- 增強型變形長靴";
+			mes "- 增強型炎之領主戒指";
+			mes "- 增強型共鳴戒指";
 			close;
 		case 2:
 			if (countitem(6623) < 300) {
-				mes "[Reno]";
-				mes "Thank for your support, but we need 300 Rough Energy Crystals.";
+				mes "[雷諾]";
+				mes "感謝您的支持，但我們需要 300 個未純化能量結晶。";
 				close;
 			}
 			delitem 6623,300; //Rough_Energy_Crystal
@@ -543,8 +543,8 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 			break;
 		case 3:
 			if (countitem(6624) < 600) {
-				mes "[Reno]";
-				mes "Thank for your support, but we need 600 Purified Energy Crystals.";
+				mes "[雷諾]";
+				mes "感謝您的支持，但我們需要 600 個已純化能量結晶。";
 				close;
 			}
 			delitem 6624,600; //Purified_Energy_Crystal
@@ -562,8 +562,8 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 			break;
 		case 4:
 			if (countitem(6625) < 900) {
-				mes "[Reno]";
-				mes "Thank for your support, but we need 900 High Energy Crystals.";
+				mes "[雷諾]";
+				mes "感謝您的支持，但我們需要 900 個高純度能量結晶。";
 				close;
 			}
 			delitem 6625,900; //High_Purity_Energy_Xtal
@@ -576,12 +576,12 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 			else                getitem 2958,1;  //Good_Ring_Of_Resonance
 			break;
 		}
-		mes "[Reno]";
-		mes "Thank you very much. The Energy Crystals you donated will be greatly helpful for our research. This is your reward for your donation."; //custom translation
+		mes "[雷諾]";
+		mes "非常感謝。您捐獻的能量結晶將對我們的研究大有幫助。這是您捐獻的回報。"; //custom translation
 		close;
 	case 7:  // iRO only
-		mes "[Reno]";
-		mes "This is the brochure regarding the equipment upgrade that our Energy Crystal research association provides. Please take a look around.";
+		mes "[雷諾]";
+		mes "這是能量結晶研究協會提供的裝備升級宣傳冊，請隨意參閱。";
 		close2;
 		readbook 11060,1; //Energy_Xtal_Combi_Book
 		end;
@@ -591,13 +591,13 @@ moc_para01,41,169,3	script	Reno#2012hat	64,{
 L_CheckHunting:
 	for (set .@quest,getarg(0)+1; .@quest<getarg(1)+getarg(2); set .@quest,.@quest+1) {
 		if (checkquest(.@quest,HUNTING) == 2) {
-			mes "[Reno]";
-			mes "Finished "+getarg(3)+" collection hunting quest.";
+			mes "[雷諾]";
+			mes "已完成 "+getarg(3)+" 收集狩獵委託。";
 			next;
 			setquest getarg(0);
 			erasequest .@quest;
 			getitem getarg(4),getarg(5);
-			mes "You receive "+getarg(5)+" "+getitemname(getarg(4))+"s as the "+getarg(3)+" collection reward.";
+			mes "您獲得 "+getarg(5)+" "+getitemname(getarg(4))+"作為 "+getarg(3)+" 收集委託的獎勵。";
 			close;
 		}
 	}

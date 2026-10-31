@@ -9,18 +9,18 @@
 //		file. [Capuche]
 //============================================================
 
-moro_vol,91,105,1	script	Eclage Teleporter#143_1	PORTAL,{
-	mes "[Dophe]";
-	mes "This teleporter is connected to Eclage.";
-	mes "It'll be destroyed once our operation is over, but for now it's something we cannot live without.";
+moro_vol,91,105,1	script	埃克拉傳送器#143_1::Eclage Teleporter#143_1	PORTAL,{
+	mes "[多菲]";
+	mes "這座傳送器與埃克拉珠相連。";
+	mes "等我們的行動結束就會摧毀它，但現在它是我們不可或缺的東西。";
 	next;
-	mes "Use the teleporter to move to Eclage.";
+	mes "使用傳送器前往埃克拉珠。";
 	next;
-	if (select( "Move to Eclage.", "取消。" ) == 2) {
-		mes "Do not use the teleporter.";
+	if (select( "前往埃克拉珠。", "取消。" ) == 2) {
+		mes "請勿使用傳送器。";
 		close;
 	}
-	mes "Move to Eclage.";
+	mes "前往埃克拉珠。";
 	close2;
 	warp "ecl_in01",38,96;
 	end;
@@ -29,18 +29,18 @@ moro_vol,91,105,1	script	Eclage Teleporter#143_1	PORTAL,{
 ecl_in01,38,98,1	script	次元裝置#ecl::Interdimensional Device#ecl	PORTAL,{
 	if (ep14_3_newerabs < 10) {
 		mes "[艾克萊吉守衛]";
-		mes "This teleporter is connected to the recently discovered hideout of the Demon God.";
-		mes "Only those allowed to enter the hideout can use this teleporter.";
+		mes "這座傳送器與最近才被發現的魔神藏身處相連。";
+		mes "只有獲准進入藏身處的人，才能使用這座傳送器。";
 		close;
 	}
-	mes "This teleporter is connected to the recently discovered hideout of the Demon God.";
-	mes "Do you want to use it?";
+	mes "這座傳送器與最近才被發現的魔神藏身處相連。";
+	mes "你要使用它嗎？";
 	next;
-	if (select( "Move to the Demon God's hideout.", "離開。" ) == 2) {
-		mes "Do not use the teleporter.";
+	if (select( "前往魔神的藏身處。", "離開。" ) == 2) {
+		mes "請勿使用傳送器。";
 		close;
 	}
-	mes "Use the teleporter to move to the Demon God's hideout.";
+	mes "使用傳送器前往魔神的藏身處。";
 	close2;
 	warp "moro_vol",91,102;
 	end;
@@ -50,183 +50,183 @@ ecl_in01,40,96,3	script	艾克萊吉守衛#143_6::Eclage Guard#143_6	4_M_FAIRYSO
 	mes "[艾克萊吉守衛]";
 	mes "有什麼可以為您效勞的嗎？";
 	next;
-	switch( select( "What's that teleporter?", "Why is it so crowded in here?", "Demon God's hideout?", "再見。" ) ) {
+	switch( select( "那是什麼傳送器？", "這裡怎麼這麼擠？", "魔神的藏身處？", "再見。" ) ) {
 	case 1:
 		mes "[艾克萊吉守衛]";
-		mes "It's connected to the recently discovered hideout the of Demon God.";
-		mes "It's scientifically designed to send its user directly to the Dimensional Crack where his hideout is.";
+		mes "它與最近才發現的魔神藏身處相連。";
+		mes "這是以科學方式設計的，能直接把使用者送到他藏身處所在的次元裂縫。";
 		next;
 		mes "[艾克萊吉守衛]";
-		mes "Many a warrior already left to the hideout.";
-		mes "So long as Morocc exists, Yggdrasil is not safe. I'm going to join the Expedition.";
+		mes "已經有許多戰士前往藏身處了。";
+		mes "只要夢羅克還存在，世界樹就不安全。我要加入遠征隊。";
 		close;
 	case 2:
 		mes "[艾克萊吉守衛]";
-		mes "It turns out Demon God ran from Morocc to hide out in our dimension.";
-		mes "He has to be dealt with, either banished back to his realm or destroyed.";
+		mes "原來魔神是從夢羅克逃到我們的次元藏匿的。";
+		mes "必須解決他，不是把他放逐回自己的領域，就是將他消滅。";
 		next;
 		mes "[艾克萊吉守衛]";
-		mes "If you want to join the Expedition to defeat the Demon God, then use this teleporter.";
-		mes "It'll send you directly to the Expedition Camp.";
+		mes "如果你想加入討伐魔神的遠征隊，就使用這座傳送器吧。";
+		mes "它會直接把你送到遠征營地。";
 		close;
 	case 3:
 		mes "[艾克萊吉守衛]";
-		mes "You know the Dimensional Crack, don't you? Recently it's been revealed that the Crack is made up of dimensional passageways.";
-		mes "We can now use those passageways to explore inside the Crack.";
+		mes "你知道次元裂縫吧？最近發現，裂縫其實是由次元通道所構成的。";
+		mes "現在我們能利用這些通道，探索裂縫的內部。";
 		next;
 		mes "[艾克萊吉守衛]";
-		mes "Originally the Crack was created by the Demon God to aid in his escape,";
-		mes "so it'd been thought investigating the Crack could locate him.";
+		mes "裂縫原本是魔神為了脫逃而製造的，";
+		mes "所以人們本來認為調查裂縫就能找到他。";
 		next;
 		mes "[艾克萊吉守衛]";
-		mes "And it was; finally his hideout has been discovered.";
-		mes "His traces and his demon soldiers are sighted mainly around the giant hill in the center.";
+		mes "事實上確實如此，終於找到了他的藏身處。";
+		mes "他的蹤跡與惡魔士兵，主要出現在中央的巨大山丘附近。";
 		next;
 		mes "[艾克萊吉守衛]";
-		mes "If you want more details, then you should visit the actual site.";
-		mes "Just use the teleporter over there.";
+		mes "如果想知道更多細節，你應該親自去現場看看。";
+		mes "就用那邊的傳送器吧。";
 		close;
 	case 4:
 		mes "[艾克萊吉守衛]";
-		mes "May Yggdrasil bless you.";
+		mes "願世界樹庇佑你。";
 		close;
 	}
 }
 
 // Others
-ecl_in01,44,99,1	script	Combat Laphine#143_4	4_M_FAIRYSOLDIER2,{
-	mes "[Combat Laphine]";
-	mes "I'm nervous.";
+ecl_in01,44,99,1	script	戰鬥拉芬#143_4::Combat Laphine#143_4	4_M_FAIRYSOLDIER2,{
+	mes "[戰鬥拉芬]";
+	mes "我好緊張。";
 	close;
 }
 
-ecl_in01,46,99,1	script	Combat Laphine#143_5	4_M_FAIRYSOLDIER2,{
-	mes "[Combat Laphine]";
-	mes "I hope I can return in one piece.";
+ecl_in01,46,99,1	script	戰鬥拉芬#143_5::Combat Laphine#143_5	4_M_FAIRYSOLDIER2,{
+	mes "[戰鬥拉芬]";
+	mes "希望我能完整地回來。";
 	close;
 }
 
-ecl_in01,48,99,1	script	Combat Laphine#143_6	4_M_FAIRYSOLDIER2,{
-	mes "[Combat Laphine]";
+ecl_in01,48,99,1	script	戰鬥拉芬#143_6::Combat Laphine#143_6	4_M_FAIRYSOLDIER2,{
+	mes "[戰鬥拉芬]";
 	mes "嗯……";
 	close;
 }
-ecl_in01,44,97,1	script	Combat Laphine#143_7	4_F_FAIRYSOLDIER,{
-	mes "[Combat Laphine]";
-	mes "Shush.";
+ecl_in01,44,97,1	script	戰鬥拉芬#143_7::Combat Laphine#143_7	4_F_FAIRYSOLDIER,{
+	mes "[戰鬥拉芬]";
+	mes "噓，安靜。";
 	close;
 }
 
-ecl_in01,46,97,1	script	Combat Laphine#143_8	4_F_FAIRYSOLDIER,{
-	mes "[Combat Laphine]";
-	mes "Mwa hah hah, it's time for me to shine!";
+ecl_in01,46,97,1	script	戰鬥拉芬#143_8::Combat Laphine#143_8	4_F_FAIRYSOLDIER,{
+	mes "[戰鬥拉芬]";
+	mes "哇哈哈，輪到我大顯身手的時候了！";
 	close;
 }
 
-ecl_in01,48,97,1	script	Combat Laphine#143_9	4_F_FAIRYSOLDIER,{
-	mes "[Combat Laphine]";
-	mes "I must have been out of my mind when I decided to join the army. Sigh, why does the Door to Verities have to be so high up there?";
+ecl_in01,48,97,1	script	戰鬥拉芬#143_9::Combat Laphine#143_9	4_F_FAIRYSOLDIER,{
+	mes "[戰鬥拉芬]";
+	mes "我當初決定從軍時一定是腦袋壞掉了。唉，真理之門為什麼非得建得那麼高？";
 	close;
 }
 
-ecl_in01,46,102,3	script	Commander Laphine#143_1	4_M_FAIRYSOLDIER,5,5,{
-	mes "[Commander Laphine]";
-	mes "Evil must be nipped in the butt.";
-	mes "You're unexpected visitors from the Midgard Continent.";
+ecl_in01,46,102,3	script	指揮官拉芬#143_1::Commander Laphine#143_1	4_M_FAIRYSOLDIER,5,5,{
+	mes "[指揮官拉芬]";
+	mes "邪惡必須趁早剷除。";
+	mes "你們是來自米德加爾大陸的意外訪客。";
 	next;
-	mes "[Commander Laphine]";
-	mes "If you  are the cause doom to ourselves OR Yggdrasil, then we won't hesitate to fight you.";
+	mes "[指揮官拉芬]";
+	mes "如果你們是帶來我們或世界樹毀滅的根源，我們絕不會猶豫與你們作戰。";
 	close;
 
 OnTouch_:
 	if (.talk == 0) {
 		.talk = 1;
-		npctalk "Commander: Soldiers, finally it's time to put your training to use!";
+		npctalk "指揮官: 士兵們，終於到了讓你們的訓練派上用場的時候了！";
 		sleep 2000;
-		npctalk "啊啊！", "Combat Laphine#143_4";
-		npctalk "啊啊！", "Combat Laphine#143_5";
-		npctalk "啊啊！", "Combat Laphine#143_6";
-		npctalk "啊！", "Combat Laphine#143_7";
-		npctalk "啊啊！", "Combat Laphine#143_8";
-		npctalk "啊啊！", "Combat Laphine#143_9";
+		npctalk "啊啊！", "戰鬥拉芬#143_4";
+		npctalk "啊啊！", "戰鬥拉芬#143_5";
+		npctalk "啊啊！", "戰鬥拉芬#143_6";
+		npctalk "啊！", "戰鬥拉芬#143_7";
+		npctalk "啊啊！", "戰鬥拉芬#143_8";
+		npctalk "啊啊！", "戰鬥拉芬#143_9";
 		sleep 2000;
-		npctalk "Commander: Did someone just whimper?";
+		npctalk "指揮官: 剛才是誰在哭嗎？";
 		sleep 3000;
-		npctalk "Commander: Don't disappoint your comrades at the Splendide advance base!";
+		npctalk "指揮官: 別辜負史波浪壯麗前線基地的同袍們！";
 		sleep 3000;
-		npctalk "Commander: Stay focused! We're going to finish off the Demon God!";
+		npctalk "指揮官: 集中精神！我們要徹底消滅魔神！";
 		sleep 2000;
-		npctalk "是啦是啦。", "Combat Laphine#143_7";
+		npctalk "是啦是啦。", "戰鬥拉芬#143_7";
 		sleep 2000;
-		npctalk "...", "Combat Laphine#143_4";
-		npctalk "啊……", "Combat Laphine#143_5";
-		npctalk "...", "Combat Laphine#143_6";
-		npctalk "...", "Combat Laphine#143_8";
+		npctalk "...", "戰鬥拉芬#143_4";
+		npctalk "啊……", "戰鬥拉芬#143_5";
+		npctalk "...", "戰鬥拉芬#143_6";
+		npctalk "...", "戰鬥拉芬#143_8";
 		sleep 3000;
-		npctalk "Commander: Ah, suddenly I can't see...";
+		npctalk "指揮官: 啊，突然什麼都看不見了……";
 		.talk = 0;
 	}
 	end;
 }
 
-ecl_in01,37,90,3	script	Magic Scholar Lemony#14	4_F_FAIRY2,{
-	mes "[Lemony]";
-	mes "Did you read the latest issue of the Door to Verities magazine?";
-	mes "Was Avant's new teleporter really featured in it?";
+ecl_in01,37,90,3	script	魔法學者勒莫尼#14::Magic Scholar Lemony#14	4_F_FAIRY2,{
+	mes "[勒莫尼]";
+	mes "你看過最新一期的《真理之門》雜誌了嗎？";
+	mes "阿凡特的新傳送器真的登上那期的專題了嗎？";
 	next;
-	mes "[Armandi]";
-	mes "Yes, just the basic principles and the information relevant to the Humans.";
-	mes "I didn't quite understand it all.";
+	mes "[阿曼迪]";
+	mes "有，只是基本原理和與人類相關的資訊而已。";
+	mes "我不太懂那些內容。";
 	next;
-	mes "[Lemony]";
-	mes "I wonder if this means Avant has finally decided to pursue his interest in research activities.";
+	mes "[勒莫尼]";
+	mes "不知道這是否意味著阿凡特終於決定追求他對研究的興趣。";
 	next;
-	mes "[Lemony]";
-	mes "Hey, Human.";
-	mes "Were you eavesdropping on us? Well, though it wasn't like we're discussing secrets.";
+	mes "[勒莫尼]";
+	mes "喂，人類。";
+	mes "你在偷聽我們說話嗎？算了，反正我們也不是在討論什麼秘密。";
 	next;
-	mes "[Lemony]";
-	mes "Oh, right. Are you too going there?";
-	mes "You know, the hideout of the Demon God who created some of the Space Time Dimensional Cracks has recently been discovered.";
+	mes "[勒莫尼]";
+	mes "喔，對了。你也要去那裡嗎？";
+	mes "你知道嗎，那個製造了一些時空次元裂縫的魔神藏身處，最近已經被發現了。";
 	next;
-	mes "[Lemony]";
-	mes "If you're curious, then use that teleporter to the hideout over there.";
-	mes "There will be quite a spectacle to watch.";
-	mes "Oh, just so you know, you might be throwing away your life. *Giggle*";
+	mes "[勒莫尼]";
+	mes "如果你好奇，就用那座傳送器前往那邊的藏身處吧。";
+	mes "那裡將會是相當壯觀的景象。";
+	mes "喔，先告訴你，你可能會把命都丟掉喔。*咯咯*";
 	next;
-	mes "[Armandi]";
-	mes "Lemony, you really need to work on improving your personality.";
-	mes "Tsk, tsk.";
+	mes "[阿曼迪]";
+	mes "勒莫尼，你真的該好好改改你的個性。";
+	mes "嘖嘖。";
 	close;
 }
 
-ecl_in01,35,89,6	script	Magic Scholar Armandi#1	4_M_FAIRYKID6,{
-	mes "[Armandi]";
-	mes "I hope the Interdimensional Device won't take a heavy toll on the world.";
-	mes "By the way, Avant never fails to amaze me.";
+ecl_in01,35,89,6	script	魔法學者阿曼迪#1::Magic Scholar Armandi#1	4_M_FAIRYKID6,{
+	mes "[阿曼迪]";
+	mes "希望這台次元跨越裝置不會對世界造成太大的負擔。";
+	mes "說到這個，阿凡特總是讓我驚訝不已。";
 	next;
-	mes "[Lemony]";
-	mes "Ack, I hate that guy.";
+	mes "[勒莫尼]";
+	mes "唉，我討厭那傢伙。";
 	next;
-	mes "[Armandi]";
-	mes "Avant may be repulsive,";
-	mes "but he's the best at what he does.";
+	mes "[阿曼迪]";
+	mes "阿凡特或許很令人討厭，";
+	mes "但他在自己的領域是最厲害的。";
 	next;
-	mes "[Lemony]";
-	mes "That, I agree.";
-	mes "Only he could pull off this kind of teleporter.";
-	mes "Why is he helping the Mayor, anyway?";
+	mes "[勒莫尼]";
+	mes "這點我同意。";
+	mes "只有他才能做出這種傳送器。";
+	mes "話說回來，他為什麼要幫市長？";
 	next;
-	mes "[Armandi]";
-	mes "When I asked him, he mumbled something about repentance.";
-	mes "I can only guess it has something to do with the Mayor's birth.";
+	mes "[阿曼迪]";
+	mes "我問他的時候，他含糊地提到了懺悔之類的事。";
+	mes "我只能猜測，這跟市長的誕生有關。";
 	next;
-	mes "[Armandi]";
-	mes "I wanted to ask more, but he looked down his nose at me.";
-	mes "Sigh, it's unfair such a jerk is considered the best in magical science.";
+	mes "[阿曼迪]";
+	mes "我本來想多問幾句，但他卻居高臨下地看著我。";
+	mes "唉，這麼討厭的傢伙竟被視為魔法科學界的第一，真不公平。";
 	next;
-	mes "[Lemony]";
-	mes "You can always study hard to beat him.";
+	mes "[勒莫尼]";
+	mes "你可以多努力用功，把他比下去。";
 	close;
 }
 

@@ -31,7 +31,7 @@ te_aldecas1,226,34,3	script	Blacksmith Cano#tegod01	4_M_RACHMAN1,{
 	}
 	if (WoeTETimeStart(14400) == 1 || agitcheck3() == 1) {// cannot start the quest 4 hours before and during WOE TE
 		mes "From now on, I'll stay here quietly and not interrupt anyone until the siege ends.";
-		mes "Don't worry about me.";
+		mes "不用擔心我。";
 		close;
 	}
 	if (is_guild_leader() == false) {
@@ -85,7 +85,7 @@ te_aldecas1,226,34,3	script	Blacksmith Cano#tegod01	4_M_RACHMAN1,{
 					mes "They're here..!!";
 					next;
 					mes "[" + strcharinfo(0) + "]";
-					mes "Leave it to me.";
+					mes "交給我吧。";
 					next;
 					mes "^4d4dff!- Instruction -!";
 					mes "Soon, 7 girls that are after "+ .@npc_name$ +" will try to invade the fortress.";
@@ -149,7 +149,7 @@ te_aldecas1,226,34,3	script	Blacksmith Cano#tegod01	4_M_RACHMAN1,{
 		mes "["+ .@npc_name$ +"]";
 		mes "Stop them. Please!";
 		next;
-		switch( select( "Leave it to me.","What do you mean 'the girls?'" ) ) {
+		switch( select( "交給我吧。","What do you mean 'the girls?'" ) ) {
 		case 1:
 			mes "["+ .@npc_name$ +"]";
 			mes "謝謝你……";
@@ -205,7 +205,7 @@ te_aldecas1,226,34,3	script	Blacksmith Cano#tegod01	4_M_RACHMAN1,{
 		mes "I can finally breathe now.";
 		mes "I'll start making Jormungand as promised.";
 		next;
-		switch( select( "Make Jormungand.","Fuse materials.","Not now." ) ) {
+		switch( select( "Make Jormungand.","Fuse materials.","現在不要。" ) ) {
 		case 1:
 			if (countitem(6603) > 3 && countitem(6599) > 0 && countitem(6598) > 0 && countitem(6601) > 3 && countitem(6600) > 0 && countitem(6605) > 0 && countitem(6604) > 0 && countitem(1473) > 0) {
 				mes "^ff0000Wizardry staff is needed in the process of making Jormungand.";
@@ -395,7 +395,7 @@ te_aldecas1,3,2,0	script	#tequest_master_alde01	CLEAR_NPC,{
 	mes "Princess Status: " + $@2012_tegirls_alde01;
 	mes "Current Commerce Level of the Fortress:" + getcastledata(.@map$,2);
 	next;
-	switch( select( "Do not proceed","Initialization","Raise Commerce Level","Lower Commerce Level" ) ) {
+	switch( select( "Do not proceed","初始化","Raise Commerce Level","Lower Commerce Level" ) ) {
 	case 1:
 		end;
 	case 2:

@@ -31,7 +31,7 @@ te_prtcas01,204,204,3	script	Blacksmith Kai#tegod01	4_M_RACHMAN2,{
 	}
 	if (WoeTETimeStart(14400) == 1 || agitcheck3() == 1) {// cannot start the quest 4 hours before and during WOE TE
 		mes "From now on, I'll stay here quietly and not interrupt anyone until the siege ends.";
-		mes "Don't worry about me.";
+		mes "不用擔心我。";
 		close;
 	}
 	if (is_guild_leader() == false) {
@@ -85,7 +85,7 @@ te_prtcas01,204,204,3	script	Blacksmith Kai#tegod01	4_M_RACHMAN2,{
 					mes "They're here..!!";
 					next;
 					mes "[" + strcharinfo(0) + "]";
-					mes "Leave it to me.";
+					mes "交給我吧。";
 					next;
 					mes "^4d4dff!- Instruction -!";
 					mes "Soon, 7 girls that are after "+ .@npc_name$ +" will try to invade the fortress.";
@@ -149,7 +149,7 @@ te_prtcas01,204,204,3	script	Blacksmith Kai#tegod01	4_M_RACHMAN2,{
 		mes "["+ .@npc_name$ +"]";
 		mes "Stop them. Please!";
 		next;
-		switch( select( "Leave it to me.","What do you mean 'the girls?'" ) ) {
+		switch( select( "交給我吧。","What do you mean 'the girls?'" ) ) {
 		case 1:
 			mes "["+ .@npc_name$ +"]";
 			mes "謝謝你……";
@@ -205,7 +205,7 @@ te_prtcas01,204,204,3	script	Blacksmith Kai#tegod01	4_M_RACHMAN2,{
 		mes "I can finally breathe now.";
 		mes "I'll start making Hervor as promised.";
 		next;
-		switch( select( "Make Hervor.","Fuse materials.","Not now." ) ) {
+		switch( select( "Make Hervor.","Fuse materials.","現在不要。" ) ) {
 		case 1:
 			if (countitem(6595) > 1 && countitem(6596) > 0 && countitem(6594) > 3 && countitem(6597) > 2 && countitem(6602) > 0 && countitem(6605) > 0 && countitem(6604) > 0 && countitem(2115) > 0) {
 				mes "^ff0000Valkyrja's Shield is needed in the process of making Hervor.";
@@ -395,7 +395,7 @@ te_prtcas01,190,2,0	script	#tequest_master_prt01	CLEAR_NPC,{
 	mes "Princess Status: " + $@2012_tegirls_prt01;
 	mes "Current Commerce Level of the Fortress:" + getcastledata(.@map$,2);
 	next;
-	switch( select( "Do not proceed","Initialization","Raise Commerce Level","Lower Commerce Level" ) ) {
+	switch( select( "Do not proceed","初始化","Raise Commerce Level","Lower Commerce Level" ) ) {
 	case 1:
 		end;
 	case 2:

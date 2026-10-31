@@ -18,33 +18,33 @@
 // Goods Cabinets :: pare_service
 //============================================================
 -	script	Goods Cabinet#00::pggc	-1,{
-	mes "It is a Goods Storage Cabinet.";
-	mes "A message is written on a piece of paper.";
+	mes "這是一個物品保管櫃。";
+	mes "紙上寫著一段訊息。";
 	next;
-	mes "+ Cabinet is exclusively +";
-	mes "+ for the Eden group +";
-	mes "If you want to use this";
-	mes "cabinet please check";
-	mes "the following:";
+	mes "+ 保管櫃專供 +";
+	mes "+ 伊甸園集團使用 +";
+	mes "若你想使用這個";
+	mes "保管櫃，請先確認";
+	mes "以下事項:";
 	next;
-	mes "1.Are you a member";
-	mes "   of Eden group?";
-	mes "2.Have you learned";
-	mes "   enough basic skills?";
-	mes "3.Cabinet fee is";
-	mes "  ^4d4dff500 zeny^000000!";
+	mes "1. 你是否為";
+	mes "   伊甸園成員嗎？";
+	mes "2. 你是否已學會";
+	mes "   足夠的基礎技能？";
+	mes "3. 保管櫃費用為";
+	mes "  ^4d4dff每次 500 Zeny^000000！";
 	next;
 	if (callfunc("F_HasEdenGroupMark")) {
-		mes "You need to insert zeny to use the cabinet.";
-		mes "Cost : 500 Zeny ";
-		mes "Would you like to use it?";
+		mes "你需要投入 Zeny 才能使用保管櫃。";
+		mes "費用 : 500 Zeny ";
+		mes "你想要使用它嗎？";
 		next;
-		switch(select("Use the Cabinet.:Cancel.")) {
+		switch(select("使用保管櫃。:取消。")) {
 			case 1:
 				if (Zeny > 499) {
 					if(!callfunc("F_CanOpenStorage")){
-						mes "The cabinet is not working for me.";
-						mes "Maybe I am not yet qualified to use Cabinet.";
+						mes "保管櫃對我沒反應。";
+						mes "也許我還沒有資格使用保管櫃。";
 						close;
 					}
 					set Zeny, Zeny - 500;
@@ -52,16 +52,16 @@
 					openstorage;
 					end;
 				}
-				mes "I don't have enough zeny.";
-				mes "I need at least 500 zeny to use the Cabinet.";
+				mes "我的 Zeny 不夠。";
+				mes "使用保管櫃至少需要 500 Zeny。";
 				close;
 			case 2:
-				mes "I will use it next time.";
+				mes "下次再用吧。";
 				close;
 		}
 	}
-	mes "I need an Eden Group Mark to use this Cabinet.";
+	mes "我需要伊甸園徽章才能使用這個保管櫃。";
 	close;
 }
-moc_para01,173,120,0	duplicate(pggc)	Goods Cabinet#01	111
-moc_para01,170,120,0	duplicate(pggc)	Goods Cabinet#02	111
+moc_para01,173,120,0	duplicate(pggc)	物品保管櫃#01::Goods Cabinet#01	111
+moc_para01,170,120,0	duplicate(pggc)	物品保管櫃#02::Goods Cabinet#02	111

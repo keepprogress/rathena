@@ -12,72 +12,72 @@
 moro_vol,94,110,5	script	守護者尼德霍格#143nyd01::Guardian Nidhogg#143nyd01	4_F_NYDHOG,{
 	mes "[尼德霍格]";
 	if (ep4_3_mockill == 0) {
-		mes "Soon we'll face a decisive war.";
-		mes "I'll do my best to fulfill my duty as the Guardian.";
+		mes "不久之後，我們將面臨決定性的戰爭。";
+		mes "我會盡力履行守護者的職責。";
 		cutin "ep14_nyd04.bmp",2;
 		next;
 		mes "[尼德霍格]";
-		mes "I'm preparing a gift for you to make up for my past transgressions against you.";
+		mes "我正在準備一份禮物，來彌補我過去對你犯下的過錯。";
 		close3;
 	}
 	if ($ep143_3_expbuff == 1) {
-		mes "I hope you'll like my gift. Yggdrasil's blessing doesn't last forever, ";
-		mes "but it'll last at least long enough to aid you and your party in battle.";
+		mes "希望你會喜歡我的禮物。世界樹的庇佑並不會永遠持續， ";
+		mes "但至少會持續到能協助你和你的隊伍戰鬥的時候。";
 		cutin "ep14_nyd04.bmp",2;
 		close3;
 	}
 	if (ep4_3_mockill == 1 && countitem(6715) > 0) {
-		mes "Oh, it's a shard of his soul.";
-		mes "He's destined to endlessly roam the world that he's created in his mind.";
-		mes "Vengeance is meted out, but the results aren't as satisfying as I thought.";
+		mes "喔，這是他靈魂的碎片。";
+		mes "他註定要永遠在自己心中所創造的世界裡流浪。";
+		mes "復仇已經完成，但結果並不如我所想的那樣令人滿足。";
 		cutin "ep14_nyd01.bmp",2;
 		next;
 		mes "[尼德霍格]";
-		mes "May I have this Soul Shard?";
-		mes "In exchange, I'll give you and your party";
-		mes "the biggest gift I can give.";
+		mes "我可以拿走這塊靈魂碎片嗎？";
+		mes "作為交換，我會把";
+		mes "我能給的最大禮物送給你和你的隊伍。";
 		cutin "ep14_nyd03.bmp",2;
 		next;
-		if (select( "Give the Soul Shard.", "拒絕。" ) == 2) {
+		if (select( "交出靈魂碎片。", "拒絕。" ) == 2) {
 			mes "[尼德霍格]";
-			mes "Watch out for the Demon God's negative influence on you.";
+			mes "小心魔神對你的負面影響。";
 			cutin "ep14_nyd04.bmp",2;
 			close3;
 		}
 		if ($ep143_3_expbuff == 1) {
 			mes "[尼德霍格]";
-			mes "Oh, you already received Yggdrasil's blessing.";
-			mes "I'll take a rain check on this.";
+			mes "喔，你已經獲得了世界樹的庇佑了。";
+			mes "這件事改天再說吧。";
 			cutin "ep14_nyd01.bmp",2;
 			close3;
 		}
 		cutin "ep14_nyd04.bmp",2;
 		mes "[尼德霍格]";
 		mes "謝謝。";
-		mes "May Yggdrasil bless you.";
+		mes "願世界樹庇佑你。";
 		delitem 6715,1;// P_Of_Evil_Soul
 		$ep143_3_expbuff = 1;
 		$ep143_3_exptime = 0;
 		ep4_3_mockill = 2;
-		announce "Nidhogg: May Yggdrasil bless the Demon God slayers " + strcharinfo(0) + " and others.", bc_all, "0xFF0000";
+		announce "尼德霍格: 願世界樹庇佑討伐魔神的勇者們 " + strcharinfo(0) + " 以及其他人。", bc_all, "0xFF0000";
 		donpcevent "Loki#1432loki01::OnEventOn";
 		next;
-		mes "^4d4dffGood job taking out Demon God Morocc. The server EXP rate has increased by 10% for about 1 hour.^000000";
+		mes "^4d4dff討伐魔神夢羅克幹得好。伺服器經驗值倍率將提升10%，持續約1小時。^000000";
 		close3;
 	}
-	mes "I don't understand this;";
-	mes "I badly wanted to get rid of him from this world,";
-	mes "yet I feel like I'm empty on the inside.";
+	mes "我不明白這是怎麼回事；";
+	mes "我非常想把他從這個世界上除掉，";
+	mes "可是我卻覺得內心空空的。";
 	cutin "ep14_nyd02.bmp",2;
 	next;
 	mes "[尼德霍格]";
-	mes "This must be";
-	mes "how people feel when they've lost their jobs overnight.";
+	mes "這大概就是";
+	mes "人們一夜之間失去工作時的感覺吧。";
 	cutin "ep14_nyd01.bmp",2;
 	next;
 	mes "[尼德霍格]";
-	mes "At least I've saved enough money";
-	mes "to go without a job for a while.";
+	mes "至少我存夠了錢，";
+	mes "可以暫時不工作一陣子。";
 	cutin "ep14_nyd04.bmp",2;
 	close3;
 
@@ -120,15 +120,15 @@ OnInterIfInitOnce:
 moro_vol,97,110,3	script	洛基#1432loki01::Loki#1432loki01	4_M_ROKI2,{
 	cutin "ep14_roki01.bmp",2;
 	mes "[洛基]";
-	mes "Things haven't even started off yet;";
-	mes "they will only when his true colors are revealed.";
+	mes "事情還沒真正開始；";
+	mes "要等到他的真面目顯露出來，事情才算開始。";
 	close3;
 
 OnEventOn:
 	initnpctimer;
 	end;
 OnTimer5000:
-	announce "For defeating Morocc, you have been rewarded with an extra 10% Server EXP reward for 1 hour.", bc_all, "0xFF0000";
+	announce "因為擊敗了夢羅克，你獲得了額外10%伺服器經驗值獎勵，持續1小時。", bc_all, "0xFF0000";
 	end;
 OnTimer11500:
 	announce " ", bc_all, "0xFF0000";
@@ -141,47 +141,47 @@ OnTimer12000:
 
 moro_vol,98,107,3	script	魔法學者#143avt01::Magic Scholar#143avt01	4_M_FAIRYAVANT,{
 	if (checkweight(1304,3) == 0) {
-		mes "You are carrying too many items to proceed with the quest.";
-		mes "Please make some room in your inventory.";
+		mes "你攜帶的道具太多，無法繼續任務。";
+		mes "請先騰出一些背包空間。";
 		close;
 	}
 	cutin "avant01.bmp",1;
 	if (ep14_2_mylord < 33) {
 		mes "[魔法學者]";
-		mes "Stop bothering me.";
-		mes "If you're here to donate your body for my experiment, then you can stay.";
-		mes "Or scram!";
+		mes "別來煩我。";
+		mes "如果你是來讓我進行實驗、奉獻你的身體的，那就留下吧。";
+		mes "不然就滾！";
 		close3;
 	}
 	if (ep14_2_mylord == 33) {
 		mes "[阿凡特]";
-		mes "What brings you, rookie?";
-		mes "Did you come to laugh at my misery, like everyone else?";
+		mes "新手，你來做什麼？";
+		mes "你也是來嘲笑我的悲慘處境的嗎，跟其他人一樣？";
 		next;
-		select( "你來這裡做什麼？", "Are you sorry for what you've done?" );
+		select( "你來這裡做什麼？", "你為自己做過的事感到抱歉嗎？" );
 		mes "[阿凡特]";
-		mes "*Snort*";
-		mes "This is a matter of pride.";
-		mes "I admit that my action sent my kinsmen in harm's way.";
+		mes "*哼*";
+		mes "這是關乎尊嚴的事。";
+		mes "我承認，我的行動讓我的族人陷入了危險。";
 		next;
 		cutin "avant02.bmp",1;
 		mes "[阿凡特]";
-		mes "I want to say that I'm doing this to make up for what I did,";
-		mes "like everyone wants to believe. *Smirk*";
+		mes "我想說我這麼做是為了彌補我做過的事，";
+		mes "就像大家希望相信的那樣。*冷笑*";
 		next;
 		mes "[阿凡特]";
-		mes "But if I'm honest with myself,";
-		mes "I'm doing this to get back at Shnaim and Morocc for using me like a tool.";
+		mes "但若我誠實面對自己，";
+		mes "我這麼做，是為了向夏奈姆和夢羅克報復，他們把我當成工具利用。";
 		next;
 		mes "[阿凡特]";
-		mes "I'm planning to be the last one standing after everything goes down.";
+		mes "我打算在一切結束後，成為最後站著的那一個。";
 		ep14_2_mylord = 34;
 		close3;
 	}
 	if (BaseLevel < 140) {
 		mes "[阿凡特]";
-		mes "I've got no use for weaklings.";
-		mes "Come back when you become stronger.";
+		mes "我對弱者沒有興趣。";
+		mes "等你變強了再來吧。";
 		close3;
 	}
 	switch( checkquest(7584,PLAYTIME) ) {
@@ -189,8 +189,8 @@ moro_vol,98,107,3	script	魔法學者#143avt01::Magic Scholar#143avt01	4_M_FAIRY
 		if (isbegin_quest(7583) == 1) {// Collecting Mana
 			if (countitem(6708) > 2) {
 				mes "[阿凡特]";
-				mes "Not bad, rookie.";
-				mes "Let me take the Mana Crystallines.";
+				mes "不錯嘛，新手。";
+				mes "把魔力結晶交給我吧。";
 				mes "做得不錯。";
 				delitem 6708, countitem(6708);// Mana_crystal
 				erasequest 7583;// Collecting Mana
@@ -199,47 +199,47 @@ moro_vol,98,107,3	script	魔法學者#143avt01::Magic Scholar#143avt01	4_M_FAIRY
 				close3;
 			}
 			mes "[阿凡特]";
-			mes "Greenhorn, if you defeat those strong Demons, you'll find some mana crystallines.";
-			mes "I want you to bring them to me,";
-			mes "at least three at a time. Got it?";
+			mes "菜鳥，如果你擊敗那些強大的惡魔，就會找到一些魔力結晶。";
+			mes "我希望你把它們拿來給我，";
+			mes "每次至少三個。聽懂了嗎？";
 			close3;
 		}
 		if (checkquest(7581,HUNTING) == 0 || checkquest(7581,HUNTING) == 1) {
 			mes "[阿凡特]";
-			mes "Hey, rookie.";
-			mes "Do you see those massive goons?";
-			mes "If you hunt those Distorted,";
+			mes "喂，新手。";
+			mes "你看到那些龐大的傢伙了嗎？";
+			mes "如果你獵殺那些扭曲的，";
 			next;
 			mes "[阿凡特]";
-			mes "Blazing, and Freezing Reincarnations, you'll find some mana crystallines.";
-			mes "Part of mana stolen from the orb, the crystallines are what";
-			mes "make those Demon runts so strong.";
+			mes "熾炎與寒冰的轉生者，你就會找到一些魔力結晶。";
+			mes "這些結晶是從魔力球中被偷走的一部分魔力，";
+			mes "正是讓那些惡魔小兵變得如此強大的原因。";
 			next;
 			mes "[阿凡特]";
-			mes "I want you to";
-			mes "get rid of them and bring me Mana Crystallines.";
-			mes "Don't try to keep them from me: they're not useful for you.";
+			mes "我想要你";
+			mes "把它們除掉，然後把魔力結晶拿給我。";
+			mes "別想瞞著我:這些對你沒什麼用。";
 			next;
 			mes "[阿凡特]";
-			mes "Three Reincarnations, thus three Mana Crystallines.";
-			mes "Bring them at least for Kardui of Eclage.";
+			mes "三個轉生者，就有三個魔力結晶。";
+			mes "至少要拿給埃克拉的卡杜伊。";
 			setquest 7583;// Collecting Mana
 			close3;
 		}
 		mes "[阿凡特]";
-		mes "Hm, I didn't know such a small amount of mana could produce";
-		mes "such great power.";
-		mes "Dirty Demons.";
+		mes "嗯，我不知道這麼一點點魔力，竟能產生";
+		mes "如此強大的力量。";
+		mes "骯髒的惡魔。";
 		close3;
 	case 0:
 	case 1:
 		mes "[阿凡特]";
-		mes "I hope you'll come back for the next subjugation.";
+		mes "希望你下次討伐時還會回來。";
 		close3;
 	case 2:
 		mes "[阿凡特]";
-		mes "Soon the Human Alliance will send out a Demon subjugation party. Come by before you leave.";
-		mes "You want to collect the mana, don't you?";
+		mes "人類聯盟很快就會派出討伐惡魔的隊伍。你要離開前，記得過來一趟。";
+		mes "你是想收集魔力，對吧？";
 		erasequest 7584;
 		close3;
 	}
@@ -250,66 +250,66 @@ OnInit:
 	end;
 }
 
-moro_vol,95,108,7	script	Hishieh#143hisie01	4_M_FARIY_HISIE,{
+moro_vol,95,108,7	script	希希耶#143hisie01::Hishieh#143hisie01	4_M_FARIY_HISIE,{
 	cutin "hisie01.bmp",0;
-	mes "[Hishieh]";
+	mes "[希希耶]";
 	if (ep14_2_mylord < 15) {
-		mes "Are you from the Human Alliance?";
-		mes "I don't remember asking for your assistance, yet.";
+		mes "你是人類聯盟的人嗎？";
+		mes "我還記得沒有請你幫忙呢。";
 		next;
-		mes "[Hishieh]";
-		mes "If something were to happen, I'd send word to your commander-in-chief, Hibba Agip.";
+		mes "[希希耶]";
+		mes "要是發生什麼事，我會通知你們的總指揮官希巴·阿吉普。";
 		close3;
 	}
 	if (ep14_2_mylord < 33) {
-		mes "Can we really learn the truth about the Demon God in this place?";
-		mes "It's filled with creatures I've never seen.";
+		mes "我們真的能在這個地方查明魔神的真相嗎？";
+		mes "這裡充滿了我從未見過的生物。";
 		next;
-		mes "[Hishieh]";
-		mes "Creepy...";
+		mes "[希希耶]";
+		mes "好毛骨悚然……";
 		close3;
 	}
 	if (ep14_2_mylord == 33) {
-		mes "The instigator of all the bad things is really hiding out in here, huh?";
-		mes "How exciting!";
+		mes "所有壞事的主謀，真的就藏在這裡面，對吧？";
+		mes "真令人興奮！";
 		next;
-		mes "[Hishieh]";
-		mes "Oh, why am I here?";
-		mes "I came on Kar's behalf.";
-		mes "He can't leave Eclage while supplying it with mana that the orb can't.";
+		mes "[希希耶]";
+		mes "喔，我為什麼會在這裡？";
+		mes "我是代表卡爾來的。";
+		mes "他無法離開埃克拉，因為他得替它補充魔力球無法供應的魔力。";
 		next;
-		mes "[Hishieh]";
-		mes "Our priorities lie with Yggdrasil and her Guardian.";
-		mes "Plus, we really can't afford to lose the newborn Mayor.";
+		mes "[希希耶]";
+		mes "我們的首要任務是世界樹與她的守護者。";
+		mes "再說，我們真的承受不起失去新誕生的市長。";
 		next;
 		cutin "hisie04.bmp",0;
-		mes "[Hishieh]";
-		mes "I was able to persuade the Elders to let me command the army,";
-		mes "but I'm still a commander in name only.";
+		mes "[希希耶]";
+		mes "我成功說服了長老們，讓我指揮軍隊，";
+		mes "但我仍然只是名義上的指揮官。";
 		next;
-		select("What happened to Avant?");
+		select("阿凡特怎麼了？");
 		cutin "hisie02.bmp",0;
-		mes "[Hishieh]";
+		mes "[希希耶]";
 		mes "嗯……";
-		mes "We're using his knowledge.";
-		mes "We could have killed him, but that would've been too easy.";
+		mes "我們正在利用他的知識。";
+		mes "我們本來可以殺了他，但那樣實在太便宜他了。";
 		next;
-		mes "[Hishieh]";
-		mes "It's a kind of revenge I guess, huh.";
-		mes "After all, his only transgression is that he loves his science too much.";
+		mes "[希希耶]";
+		mes "我想這也算是一種復仇吧，對吧。";
+		mes "說到底，他唯一的過錯就是太過熱愛他的科學。";
 		next;
-		mes "[Hishieh]";
-		mes "Even the Elders acknowledged his talent and decided to save his life.";
-		mes "Above all...";
+		mes "[希希耶]";
+		mes "就連長老們也承認他的才能，決定饒他一命。";
+		mes "最重要的是……";
 		next;
-		mes "[Hishieh]";
-		mes "(Lowering his voice)";
-		mes "No one else knows the orb's mana has been stolen.";
-		mes "As far as others know, Avant's only responsible for me and Kar.";
+		mes "[希希耶]";
+		mes "(壓低聲音)";
+		mes "沒有其他人知道魔力球的魔力被偷走了。";
+		mes "就其他人所知，阿凡特只需對我和卡爾負責。";
 		next;
-		mes "[Hishieh]";
-		mes "Avant's over there. You can ask him questions if you'd like.";
-		mes "Hah hah. ";
+		mes "[希希耶]";
+		mes "阿凡特在那邊。如果你想，可以去問他問題。";
+		mes "哈哈。 ";
 		close3;
 	}
 	switch( checkquest(7600,PLAYTIME) ) {
@@ -317,75 +317,75 @@ moro_vol,95,108,7	script	Hishieh#143hisie01	4_M_FARIY_HISIE,{
 		switch( checkquest(7595,HUNTING) ) {
 		case -1:
 			if (isbegin_quest(7593) == 1) {
-				mes "The Temple of the Demon God, huh? Okay, well if you find stray mana from the orb in there, could you take care of it?";
-				mes "I don't know what kind of shape the mana is taking at the moment, but you won't mistake it for anything else.";
+				mes "魔神神殿嗎？好吧，如果你在那裡找到了從魔力球流出的散落魔力，能幫忙處理一下嗎？";
+				mes "我不知道魔力現在呈現什麼樣子，但你不會把它誤認為其他東西的。";
 				next;
-				mes "[Hishieh]";
-				mes "If you find stray mana from the orb, then please hit and disperse it.";
-				mes "It'll find its way back to Yggdrasil and the orb.";
-				mes "Can you do that for us?";
+				mes "[希希耶]";
+				mes "如果你找到從魔力球散落的魔力，請攻擊並使其消散。";
+				mes "它會自行回到世界樹與魔力球那裡。";
+				mes "你能為我們這麼做嗎？";
 				next;
-				if (select( "Gladly.", "抱歉。" ) == 2) {
+				if (select( "樂意之至。", "抱歉。" ) == 2) {
 					cutin "hisie02.bmp",0;
-					mes "[Hishieh]";
-					mes "No worries.";
-					mes "I'll ask someone else.";
-					mes "We're good.";
+					mes "[希希耶]";
+					mes "別擔心。";
+					mes "那我去問別人好了。";
+					mes "我們沒事了。";
 					close3;
 				}
-				mes "[Hishieh]";
-				mes "I owe you so much,";
-				mes "I don't know how to repay you.";
+				mes "[希希耶]";
+				mes "我真的欠你太多了，";
+				mes "我不知道該怎麼報答你。";
 				mes "謝謝。";
 				next;
-				mes "[Hishieh]";
-				mes "Please release 3 Brilliant Manas, 3 Life Manas, and 3 Earth Manas.";
-				mes "I'll be counting on you.";
-				mes "Come back safely, you hear?";
+				mes "[希希耶]";
+				mes "請交出3個光輝魔力、3個生命魔力與3個大地魔力。";
+				mes "我就靠你了。";
+				mes "平安回來，聽到了嗎？";
 				setquest 7595;// Wandering Orb Magic
 				close3;
 			}
-			mes "Avant knows about the orb's mana better than anyone else.";
-			mes "Even Kar and I can barely stand Avant, but he really needs your help.";
+			mes "阿凡特比任何人都更了解魔力球的魔力。";
+			mes "就連卡爾和我都幾乎無法忍受阿凡特，但他真的需要你的幫助。";
 			next;
-			mes "[Hishieh]";
-			mes "This isn't just about collecting the orb's mana, but also has to do with the Demon God.";
-			mes "Most of my kinsmen don't know yet the orb's core mana has been stolen.";
+			mes "[希希耶]";
+			mes "這不只是收集魔力球的魔力，還跟魔神有關。";
+			mes "我的大多數族人還不知道魔力球的核心魔力已被偷走。";
 			next;
 			cutin "hisie02.bmp",0;
-			mes "[Hishieh]";
-			mes "And I want to keep it that way.";
-			mes "Please help us.";
-			mes "Kar and I really need you.";
+			mes "[希希耶]";
+			mes "而我想讓情況維持這樣。";
+			mes "請幫幫我們。";
+			mes "卡爾和我真的需要你。";
 			close3;
 		case 0:
 		case 1:
-			mes "All you have to do is just hit and disperse the moving globes of mana in the Temple of the Demon God.";
-			mes "Then the mana will be returned to Yggdrasil.";
+			mes "你只需要攻擊並驅散魔神神殿裡移動的魔力球就行了。";
+			mes "這樣魔力就會回到世界樹那裡。";
 			next;
-			mes "[Hishieh]";
-			mes "If you find solidified, immobile mana, just absorb them";
-			mes "by touching it.";
+			mes "[希希耶]";
+			mes "如果你找到凝固、不會移動的魔力，就直接吸收它們";
+			mes "用手碰觸它即可。";
 			next;
-			mes "[Hishieh]";
-			mes "It's no longer useful for us, but this is for you";
-			mes "to fight the Demons.";
+			mes "[希希耶]";
+			mes "這些對我們來說已經沒有用了，但這是給你的";
+			mes "用來對抗惡魔。";
 			close3;
 		case 2:
 			cutin "hisie04.bmp",0;
 			mes "做得好！";
-			mes "I've felt the mana returning.";
-			mes "You did great. Kar will be excited!";
+			mes "我感覺到魔力正在回歸。";
+			mes "你做得很好。卡爾一定會很興奮！";
 			next;
 			cutin "hisie01.bmp",0;
-			mes "[Hishieh]";
-			mes "This isn't much, but I want you to have it.";
-			mes "Hope you'll like it.";
-			mes "A substantial amount of mana has been leaked out of the orb.";
+			mes "[希希耶]";
+			mes "這東西不多，但我想讓你收下。";
+			mes "希望你會喜歡。";
+			mes "大量魔力已經從魔力球中洩漏出來。";
 			next;
-			mes "[Hishieh]";
-			mes "If you're planning to reenter the Temple of the Demon God, then please look for more mana globes.";
-			mes "You should go rest for now.";
+			mes "[希希耶]";
+			mes "如果你打算再次進入魔神神殿，請多找一些魔力球。";
+			mes "你現在應該去休息一下。";
 			erasequest 7595;// Wandering Orb Magic
 			setquest 7600;// Promising Tomorrow
 			getitem 22567,1;// Squad_Prize
@@ -394,18 +394,18 @@ moro_vol,95,108,7	script	Hishieh#143hisie01	4_M_FARIY_HISIE,{
 		}
 	case 0:
 	case 1:
-		mes "Not all the stray globes of mana from the orb have been retrieved,";
-		mes "though we're making progress.";
-		mes "I'll appreciate if you can come back tomorrow and help us again.";
+		mes "從魔力球散落的魔力球並未全部回收，";
+		mes "不過我們正在取得進展。";
+		mes "如果你明天能再回來幫我們，我會很感激。";
 		close3;
 	case 2:
 		erasequest 7600;// Promising Tomorrow
-		mes "If you're planning to reenter the Temple of the Demon God, then I'd like to ask you a favor.";
-		mes "Yes, it's the same thing I asked you before:";
-		mes "return the mana.";
+		mes "如果你打算再次進入魔神神殿，我想請你幫個忙。";
+		mes "是的，跟我之前請你做的事一樣:";
+		mes "把魔力歸還。";
 		next;
-		mes "[Hishieh]";
-		mes "Talk to me again if you want to help us.";
+		mes "[希希耶]";
+		mes "如果你想幫我們，再來找我談吧。";
 		close3;
 	}
 	end;
@@ -415,59 +415,59 @@ OnInit:
 	end;
 }
 
-moro_vol,108,88,5	script	Commander Hibba Agip#14301	4_M_REDSWORD,{
+moro_vol,108,88,5	script	指揮官希巴#14301::Commander Hibba Agip#14301	4_M_REDSWORD,{
 	cutin "ep13_captin_edq.bmp",2;
 	mes "[希巴阿吉普]";
 	if (ep14_3_mors01 == 0 || BaseLevel < 160) {
-		mes "This place is bizarre beyond comprehension.";
-		mes "Morocc is here somewhere.";
+		mes "這個地方怪異到難以理解。";
+		mes "夢羅克就在這附近某處。";
 		next;
 		mes "[希巴阿吉普]";
-		mes "This definitely looks abysmal enough for someone like him to hang around.";
-		mes "Those must have been dragged in from the Morocc Desert, then contaminated by his evil energy.";
+		mes "這裡看起來確實夠陰暗，適合像他那樣的傢伙待著。";
+		mes "那些一定是從夢羅克沙漠被拖進來的，然後被他的邪惡能量污染了。";
 		next;
 		mes "[希巴阿吉普]";
 		mes "唉……";
-		mes "We have a long and winding load ahead of us.";
+		mes "我們前方還有一段漫長曲折的路要走。";
 		mes "...";
 		next;
 		mes "[希巴阿吉普]";
-		mes "Sigh.";
-		mes "I'll call you when I need you.";
-		mes "Till then, focus on staying alive.";
+		mes "唉。";
+		mes "需要你的時候我會叫你。";
+		mes "在那之前，專心活下去吧。";
 		close3;
 	}
 	if (ep4_3_mockill == 0) {
 		if (isbegin_quest(7597) == 1) {
-			mes "Ah, our hero is back!";
-			mes "Mwah hah hah, finally we've reached the end of our expedition!";
+			mes "啊，我們的英雄回來了！";
+			mes "哇哈哈，我們終於走到遠征的盡頭了！";
 			mes "做得好！";
-			mes "I thank you on behalf of the entire humankind.";
+			mes "我代表全人類感謝你。";
 			next;
-			mes "[Adjutant Abidal]";
-			mes "You're incredible!";
-			mes "You've saved the world!";
-			mes "After this, I'm going to go back home...";
+			mes "[副官阿比達爾]";
+			mes "你太厲害了！";
+			mes "你拯救了世界！";
+			mes "之後，我要回家去了……";
 			next;
-			mes "[Hiva Agip]";
-			mes "Abidal, enough!";
-			mes "Are you trying to raise a red flag?!";
+			mes "[希瓦阿吉普]";
+			mes "阿比達爾，夠了！";
+			mes "你是想引起大家的警覺嗎？！";
 			next;
-			mes "[Hiva Agip]";
-			mes "This isn't much, but I want you to have it.";
-			mes "Thank you for your service.";
-			mes "Hah hah.";
-			mes "Finally I can sleep!";
+			mes "[希瓦阿吉普]";
+			mes "這東西不多，但我想讓你收下。";
+			mes "感謝你的效勞。";
+			mes "哈哈。";
+			mes "終於可以睡覺了！";
 			next;
-			mes "[Hiva Agip]";
-			mes "Wait, I sense something ominous around you...";
-			mes "Oh gods, what is this?!";
-			mes "Are you trying to have your soul devoured by the Demon God?!";
+			mes "[希瓦阿吉普]";
+			mes "等等，我感覺到你身邊有某種不祥的東西……";
+			mes "天啊，這是什麼？！";
+			mes "你是想讓自己的靈魂被魔神吞噬嗎？！";
 			next;
-			mes "[Hiva Agip]";
-			mes "Give it to me, and I'll crystallize it for you.";
-			mes "And I want you to meet that Guardian lady at the Laphine camp.";
-			mes "She might know about this.";
+			mes "[希瓦阿吉普]";
+			mes "把它交給我，我會幫你把它結晶化。";
+			mes "我還希望你去拉芬營地見見那位守護者女士。";
+			mes "她或許知道這件事。";
 			ep4_3_mockill = 1;
 			erasequest 7597;// Fall of the False God
 			setquest 7598;// Caged God
@@ -477,62 +477,62 @@ moro_vol,108,88,5	script	Commander Hibba Agip#14301	4_M_REDSWORD,{
 			close3;
 		}
 		if (isbegin_quest(7593) == 1) {
-			mes "The Temple of the Demon God is discovered inside the cave in the central hill.";
-			mes "A tree is blocking the entry to the temple.";
+			mes "魔神神殿位於中央山丘的洞穴裡，已被發現。";
+			mes "一棵大樹擋住了神殿的入口。";
 			next;
 			mes "[希巴阿吉普]";
-			mes "That purple lady called the Guardian said she'd go there soon.";
-			mes "You should find her.";
+			mes "那位被稱為守護者的紫衣女士說她很快就會去那裡。";
+			mes "你應該去找她。";
 			close3;
 		}
-		mes "Well-met.";
-		mes "I've heard a path has been cleared in that dark cave.";
-		mes "Sometimes I think this condemned basin is alive.";
+		mes "很高興見到你。";
+		mes "我聽說那個陰暗的洞穴已經開出一條路了。";
+		mes "有時我覺得這個被詛咒的盆地彷彿有生命。";
 		next;
 		mes "[希巴阿吉普]";
-		mes "You're smart and capable. I don't have to explain why I'm telling you this, do I?";
-		mes "Don't worry. I've sent out an advance party.";
+		mes "你聰明又能幹。我不必解釋為什麼要告訴你這些，對吧？";
+		mes "別擔心，我已經派出先遣隊了。";
 		next;
 		mes "[希巴阿吉普]";
-		mes "Be joyous, comrade!";
-		mes "It won't be long before our perilous journey is over!";
-		mes "And you'll be the one to end it.";
+		mes "同志，振作起來！";
+		mes "我們這段險路很快就要走完了！";
+		mes "而你將會是終結它的人。";
 		next;
 		mes "[希巴阿吉普]";
-		mes "We've decided to call the newly discovered place the Temple of the Demon God.";
-		mes "Actually the first scout named it, and the name stuck.";
+		mes "我們決定將這片新發現的地方命名為惡魔神神殿。";
+		mes "其實是最先的偵察兵取的名字，後來就一直沿用下來了。";
 		next;
 		mes "[希巴阿吉普]";
-		mes "I'd like to put you on a subjugation mission in the Temple of the Demon God.";
-		mes "This is not an order, but a request;";
-		mes "you decide to take the mission at your own risk.";
+		mes "我想請你前往惡魔神神殿執行討伐任務。";
+		mes "這不是命令，而是請求；";
+		mes "若你決定接下任務，風險請自行承擔。";
 		next;
-		if (select( "I'll do it.", "不要。" ) == 2) {
+		if (select( "我接下了。", "不要。" ) == 2) {
 			mes "[希巴阿吉普]";
 			mes "我了解";
-			mes "you don't want to risk your life for the world peace.";
-			mes "Enjoy living until the end of the world.";
+			mes "若你不想為了世界和平冒上性命危險，";
+			mes "那就好好享受世界末日前的日子吧。";
 			close3;
 		}
 		mes "[希巴阿吉普]";
-		mes "I knew I chose the right person for the job.";
-		mes "Loki said the Demon God hadn't fully recovered from";
-		mes "the damage received upon the break of his seal.";
+		mes "我就知道選對人了。";
+		mes "洛基說惡魔神尚未從";
+		mes "封印破除時所受的傷害中完全復原。";
 		next;
 		mes "[希巴阿吉普]";
-		mes "He's still licking his wounds,";
-		mes "which gives us a perfect opportunity to get at him.";
+		mes "他仍在舔舐傷口，";
+		mes "正是我們攻擊他的絕佳機會。";
 		mes "祝你好運。";
 		setquest 7593;// Demon God Subjugation
 		close3;
 	}
 	if (isbegin_quest(7597) == 1) {
-		mes "*Whistle* Good work!";
-		mes "How's the Temple of the Demon God?";
-		mes "Still the same?";
+		mes "*吹口哨* 幹得好！";
+		mes "惡魔神神殿那邊情況如何？";
+		mes "還是老樣子嗎？";
 		next;
-		mes "[Hiva Agip]";
-		mes "Take your reward.";
+		mes "[希瓦阿吉普]";
+		mes "收下你的報酬吧。";
 		mes "再見。";
 		erasequest 7597;// Fall of the False God
 		setquest 7598;// Caged God
@@ -542,53 +542,53 @@ moro_vol,108,88,5	script	Commander Hibba Agip#14301	4_M_REDSWORD,{
 	}
 	switch( checkquest(7598,PLAYTIME) ) {
 	case -1:
-		mes "For the life of me, I can't figure out what's happening.";
-		mes "This place has gone to the dogs since that monster proclaimed that he would replace God.";
+		mes "我怎麼想都想不通到底發生了什麼事。";
+		mes "自從那個怪物宣稱要取代神明之後，這裡就變得一團糟。";
 		next;
-		mes "[Hiva Agip]";
-		mes "I'm afraid once warped, dimensions can never be the same.";
-		mes "Could you go back to the Temple of the Demon God once more?";
+		mes "[希瓦阿吉普]";
+		mes "恐怕一旦次元扭曲，就再也回不到原來的樣子了。";
+		mes "你能再回一趟惡魔神神殿嗎？";
 		next;
 		if (select( "當然。", "不要。" ) == 2) {
-			mes "[Hiva Agip]";
+			mes "[希瓦阿吉普]";
 			mes "我懂了。";
-			mes "You've done enough already.";
-			mes "I'll send someone else.";
+			mes "你已經做得夠多了。";
+			mes "我改派別人去。";
 			close3;
 		}
-		mes "[Hiva Agip]";
-		mes "The Temple of the Demon God is stuck in a perpetual time loop,";
-		mes "just like all the other Dimensional Cracks.";
+		mes "[希瓦阿吉普]";
+		mes "惡魔神神殿陷入了永無止境的時間迴圈中，";
+		mes "就跟其他次元裂縫一樣。";
 		next;
-		mes "[Hiva Agip]";
-		mes "He tried desperately to escape from this world, but all to no avail.";
-		mes "That world of his is now filled with nothing but hellish memories that repeat themselves over and over.";
+		mes "[希瓦阿吉普]";
+		mes "他拼命想逃離這個世界，卻始終徒勞無功。";
+		mes "如今他的世界裡只剩下不斷重演的地獄般記憶。";
 		next;
-		mes "[Hiva Agip]";
-		mes "Good luck exploring the temple. If you see Morocc again, don't hesitate to kill the Demon God again.";
-		mes "He doesn't deserve commiseration.";
+		mes "[希瓦阿吉普]";
+		mes "祝你探索神殿順利。若再遇到夢羅克，就毫不猶豫地再次擊殺惡魔神吧。";
+		mes "他不值得同情。";
 		mes "一路順風。";
 		if (isbegin_quest(7593) == 0)
 			setquest 7593;// Demon God Subjugation
 		close3;
 	case 0:
 	case 1:
-		mes "Now that we've taken care of the main body, we can take things slow.";
-		mes "Why don't you go rest for now?";
+		mes "既然主體已經解決，我們可以慢慢來了。";
+		mes "你要不要先去休息一下？";
 		mes "剩下的交給我們。";
 		close3;
 	case 2:
 		erasequest 7598;// Caged God
-		mes "I wouldn't believe you had an intense battle yesterday if I didn't already know about it.";
-		mes "Are you ready for another battle?";
+		mes "如果我不是已經知道，我真不敢相信你昨天打了一場激烈的戰鬥。";
+		mes "準備好再戰一場了嗎？";
 		next;
-		mes "[Hiva Agip]";
-		mes "Let me know when you're ready.";
-		mes "Morocc is gone, yet his temple stands.";
-		mes "It might have something to do with the Dimensional Crack.";
+		mes "[希瓦阿吉普]";
+		mes "準備好了就告訴我。";
+		mes "夢羅克已經消失了，但他的神殿依然矗立。";
+		mes "這或許跟次元裂縫有關。";
 		next;
-		mes "[Hiva Agip]";
-		mes "Oh, don't worry. I'm not thinking to send you out there.";
+		mes "[希瓦阿吉普]";
+		mes "喔，別擔心，我沒有打算派你去那裡。";
 		mes "哈哈哈！";
 		close3;
 	}
@@ -600,64 +600,64 @@ OnInit:
 	end;
 }
 
-moro_vol,110,90,3	script	Adjutant Abidal#14302	4_M_SAGE_C,{
+moro_vol,110,90,3	script	副官阿比達爾#14302::Adjutant Abidal#14302	4_M_SAGE_C,{
 	switch( checkquest(7599,PLAYTIME) ) {
 	case -1:
 		switch( checkquest(7594,HUNTING) ) {
 		case -1:
 			if (isbegin_quest(7593) == 1) {
-				mes "[Abidal]";
-				mes "Are you on the quest to subjugate the Temple of the Demon God?";
-				mes "Then please do me a favor.";
-				mes "Our scouts have reported on the presence of a Frost Spider and a Fire Wolf that have tasted the Frost of Genesis.";
+				mes "[阿比達爾]";
+				mes "你是來執行惡魔神神殿討伐任務的嗎？";
+				mes "那麼請幫我一個忙。";
+				mes "偵察兵回報，發現一隻嘗過創世之霜的冰霜蜘蛛和一隻火狼。";
 				next;
-				mes "[Abidal]";
-				mes "They're just as evil as their master Morocc.";
-				mes "Please exterminate the Frost Spider and Fire Wolf.";
+				mes "[阿比達爾]";
+				mes "他們和主人夢羅克一樣邪惡。";
+				mes "請剷除那隻冰霜蜘蛛和火狼。";
 				next;
 				if (select( "接受。", "拒絕。" ) == 2) {
-					mes "[Abidal]";
-					mes "Are you afraid you can't handle them?";
+					mes "[阿比達爾]";
+					mes "你怕自己對付不了他們嗎？";
 					mes "我懂了。";
-					mes "They're formidable enemies.";
+					mes "他們是很難對付的強敵。";
 					close;
 				}
-				mes "[Abidal]";
+				mes "[阿比達爾]";
 				mes "謝謝。";
-				mes "The Fire Spider is called Brinaranea; the Fire Wolf, Muspellskoll.";
-				mes "Please exterminate those creatures of the Demon God.";
+				mes "火焰蜘蛛名為巴利納拉雷亞；火狼則叫穆斯佩斯科爾。";
+				mes "請剷除那些惡魔神的爪牙。";
 				mes "祝你好運。";
 				setquest 7594;// Frost Spider and Fire Wolf
 				close;
 			}
-			mes "[Abidal]";
-			mes "Did you come to help us subjugate the Demon God?";
-			mes "Please be careful; the environment of this place keeps changing without any warning.";
+			mes "[阿比達爾]";
+			mes "你是來幫我們討伐惡魔神的嗎？";
+			mes "請小心，這裡的環境會毫無預警地不斷變化。";
 			close;
 		case 0:
 		case 1:
-			mes "[Abidal]";
-			mes "According to my intel, the Demon God has several henchmen.";
-			mes "I'd like you to eliminate the biggest threat among them.";
+			mes "[阿比達爾]";
+			mes "根據我掌握的情報，惡魔神有好幾名手下。";
+			mes "我希望你除掉其中最大的威脅。";
 			next;
-			mes "[Abidal]";
-			mes "It won't be easy, but I have faith in you.";
-			mes "The future of Midgard rests on your shoulders.";
+			mes "[阿比達爾]";
+			mes "不會容易，但我相信你。";
+			mes "米德加爾的未來就託付在你的肩上了。";
 			close;
 		case 2:
-			mes "[Abidal]";
-			mes "You did it!";
-			mes "I knew you would!";
+			mes "[阿比達爾]";
+			mes "你做到了！";
+			mes "我就知道你會成功！";
 			mes "恭喜！";
 			next;
-			mes "[Abidal]";
-			mes "But I'm afraid this is not over yet.";
-			mes "I have this nagging sense of misgiving.";
-			mes "I'm sorry. Maybe I'm thinking irrationally.";
+			mes "[阿比達爾]";
+			mes "但恐怕這還沒有結束。";
+			mes "我心裡一直有種不安的感覺。";
+			mes "抱歉，或許是我想太多了。";
 			next;
-			mes "[Abidal]";
-			mes "I've prepared a small token of appreciation for you.";
-			mes "I'm sorry this is the best I can do.";
+			mes "[阿比達爾]";
+			mes "我準備了一點小小的謝禮給你。";
+			mes "很抱歉，我能做的只有這些。";
 			mes "辛苦你了。";
 			erasequest 7594;// Frost Spider and Fire Wolf
 			setquest 7599;// Unending Hunt
@@ -666,19 +666,19 @@ moro_vol,110,90,3	script	Adjutant Abidal#14302	4_M_SAGE_C,{
 		}
 	case 0:
 	case 1:
-		mes "[Abidal]";
-		mes "You did great. You should go rest.";
+		mes "[阿比達爾]";
+		mes "你表現得很好，去休息吧。";
 		close;
 	case 2:
 		erasequest 7599;// Unending Hunt
-		mes "[Abidal]";
-		mes "Are you well rested?";
-		mes "You look like you are.";
-		mes "That's great because we're worried about the Temple of the Demon God. We can't seem to close it.";
+		mes "[阿比達爾]";
+		mes "你休息夠了嗎？";
+		mes "看起來你已經休息夠了。";
+		mes "那太好了，因為我們很擔心惡魔神神殿，似乎無法將它封閉。";
 		next;
-		mes "[Abidal]";
-		mes "I might ask you again to exterminate Frost Spiders and Fire Wolves.";
-		mes "Why wouldn't the Temple of the Demon God disappear?";
+		mes "[阿比達爾]";
+		mes "我可能還會再請你剷除冰霜蜘蛛和火狼。";
+		mes "為什麼惡魔神神殿就是不肯消失呢？";
 		close;
 	}
 	end;
@@ -688,13 +688,13 @@ OnInit:
 	end;
 }
 
-moro_vol,111,87,1	script	 Instructor Igrid#14303	4_M_CRU,{
+moro_vol,111,87,1	script	 教官伊格里德#14303:: Instructor Igrid#14303	4_M_CRU,{
 	if (BaseLevel < 140) {
 		mes "[教官伊格莉德]";
 		mes "你。";
-		mes "(Shaking her head) You won't do.";
-		mes "You're too weak to fight these Demons.";
-		mes "Go back and train some more.";
+		mes "（搖搖頭）你不行。";
+		mes "你太弱了，無法對抗這些惡魔。";
+		mes "回去再多加修練吧。";
 		close;
 	}
 	switch( checkquest(7582,PLAYTIME) ) {
@@ -702,55 +702,55 @@ moro_vol,111,87,1	script	 Instructor Igrid#14303	4_M_CRU,{
 		switch( checkquest(7581,HUNTING) ) {
 		case -1:
 			mes "[教官伊格莉德]";
-			mes "Hey, well-met.";
+			mes "嘿，真巧。";
 			mes "我需要你的幫助。";
-			mes "Some of those Demons pouring out of the Flaming Basin are a real pain in the neck.";
+			mes "從烈焰盆地湧出的那些惡魔真是棘手。";
 			next;
 			mes "[教官伊格莉德]";
-			mes "Morocc Reincarnations have invaded here just as well, and some of them are noticeably strong.";
-			mes "I want you to get rid of them.";
+			mes "夢羅克轉生者也入侵了這裡，而且其中有些相當強悍。";
+			mes "我希望你把他們清除掉。";
 			next;
-			if (select( "Why me?", "當然。" ) == 1) {
+			if (select( "為什麼是我？", "當然。" ) == 1) {
 				mes "[教官伊格莉德]";
-				mes "Um, this is unexpected.";
-				mes "I thought you came to protect the peace and prosperity of Midgard. Did you not?";
+				mes "嗯，這真是出乎意料。";
+				mes "我以為你是來守護米德加爾的和平與繁榮的，難道不是嗎？";
 				next;
 				mes "[教官伊格莉德]";
-				mes "Maybe I gave you too much credit.";
-				mes "All right, I'll ask someone else.";
-				mes "I'm really disappointed in you.";
+				mes "或許是我太高估你了。";
+				mes "好吧，那我找別人。";
+				mes "我真的對你很失望。";
 				close;
 			}
 			mes "[教官伊格莉德]";
-			mes "You don't disappoint me.";
-			mes "Listen, in the center of the basin is a high hill.";
-			mes "In four directions from the center roams a strong Demon.";
+			mes "你沒有讓我失望。";
+			mes "聽著，盆地中央有一座高丘。";
+			mes "從中央往四個方向，各有一隻強大的惡魔徘徊。";
 			next;
 			mes "[教官伊格莉德]";
-			mes "They look just like those Reincarnations that attacked Morocc City,";
-			mes "but bigger and stronger.";
+			mes "他們看起來就跟攻擊夢羅克城的那些轉生者一模一樣，";
+			mes "只是更大、更強。";
 			next;
 			mes "[教官伊格莉德]";
-			mes "For the smooth operation of the subjugation mission,";
-			mes "please ^4d4dffeliminate Distorted Morocc Reincarnation, Blazing Morocc Reincarnation, and Freezing Morocc Reincarnation.^000000";
-			mes "I'll be counting on you.";
+			mes "為了讓討伐任務順利進行，";
+			mes "請 ^4d4dff消滅扭曲的夢羅克轉生者、燃燒的夢羅克轉生者，以及冰凍的夢羅克轉生者。^000000";
+			mes "我就靠你了。";
 			setquest 7581;// Eliminating Risks
 			close;
 		case 0:
 		case 1:
 			mes "[教官伊格莉德]";
-			mes "Please ^4d4dffeliminate Distorted Morocc Reincarnation, Blazing Morocc Reincarnation, and Freezing Morocc Reincarnation.^000000";
-			mes "You can find them stationed in four directions from the center of the basin.";
+			mes "請 ^4d4dff消滅扭曲的夢羅克轉生者、燃燒的夢羅克轉生者，以及冰凍的夢羅克轉生者。^000000";
+			mes "你可以在盆地中央的四個方向找到他們。";
 			close;
 		case 2:
 			mes "[教官伊格莉德]";
-			mes "You really took out those strong Demons.";
-			mes "That should be enough to break the spirit of the rest.";
+			mes "你真的擊倒了那些強大的惡魔。";
+			mes "這應該足以瓦解其餘惡魔的士氣了。";
 			mes "做得不錯。";
 			next;
 			mes "[教官伊格莉德]";
-			mes "I hope you'll come back to help me again.";
-			mes "Let's go back home together, yeah?";
+			mes "希望你能再回來幫我。";
+			mes "我們一起回家吧，好嗎？";
 			erasequest 7581;// Eliminating Risks
 			setquest 7582;// Daily Cleaning
 			getexp 1000000,800000;
@@ -760,16 +760,16 @@ moro_vol,111,87,1	script	 Instructor Igrid#14303	4_M_CRU,{
 	case 1:
 		mes "[教官伊格莉德]";
 		mes "你。";
-		mes "Do you mean those giant reincarnations?";
-		mes "I've assigned some more adventurers to take care of them.";
+		mes "你是說那些巨大的轉生者嗎？";
+		mes "我已經另外派了一些冒險者去處理他們。";
 		next;
 		mes "[教官伊格莉德]";
-		mes "You should rest for the day. Come back to hunt tomorrow.";
+		mes "你今天先休息吧，明天再來狩獵。";
 		close;
 	case 2:
 		mes "[教官伊格莉德]";
-		mes "It's almost time for a Demon hunt.";
-		mes "Aren't you excited? Because I am! Hah hah!";
+		mes "差不多該去獵殺惡魔了。";
+		mes "你不興奮嗎？我可是很興奮呢！哈哈！";
 		erasequest 7582;// Daily Cleaning
 		close;
 	}
@@ -780,66 +780,66 @@ OnInit:
 	end;
 }
 
-moro_vol,136,84,3	script	Jeruth Hesranta#ep143	4_MAN_JERUTOO,{
+moro_vol,136,84,3	script	傑露斯·赫斯蘭塔#ep143::Jeruth Hesranta#ep143	4_MAN_JERUTOO,{
 	if (checkweight(1304,3) == 0) {
-		mes "You are carrying too many items to proceed with the quest.";
-		mes "Please make some room in your inventory.";
+		mes "你攜帶的道具太多，無法繼續任務。";
+		mes "請先騰出一些背包空間。";
 		close;
 	}
 	cutin "ep13_heslanta.bmp",2;
-	mes "[Jeruth Hesranta]";
+	mes "[傑露斯·赫斯蘭塔]";
 	if (ep13_3_secret < 22) {
-		mes "I'm Hesranta, commander of the Sappha army.";
-		mes "It's my honor to fight beside you Humans.";
+		mes "我是赫斯蘭塔，薩法軍的指揮官。";
+		mes "能與你們人類並肩作戰，是我的榮幸。";
 		close3;
 	}
 	if (ep13_3_secret < 24) {// custom translation
-		mes "I didn't expect to see you here!";
-		mes "... although a lot of things happened, I'm still waiting for you to complete the first thing I asked!";
+		mes "沒想到會在這裡見到你！";
+		mes "……雖然發生了很多事，但我仍在等你完成我最初拜託你的那件事！";
 		next;
-		mes "[Jeruth Hesranta]";
-		mes "Please come back to help me!";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "請回來幫我！";
 		close3;
 	}
 	if (ep13_3_secret == 24) {
 		mes "好久不見。";
-		mes "Do you remember me?";
-		mes "We had an important discussion together back in Diel.";
+		mes "你還記得我嗎？";
+		mes "我們在迪爾的時候，曾經有過一次重要的談話。";
 		next;
 		select("你來這裡做什麼？");
-		mes "[Jeruth Hesranta]";
-		mes "I persuaded the Elders to let me bring an army here.";
-		mes "As you suspected, Ahat isn't a Sappha.";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "我說服了長老們，讓我帶軍隊來到這裡。";
+		mes "正如你所懷疑的，阿哈特並不是薩法族人。";
 		next;
-		mes "[Jeruth Hesranta]";
-		mes "Only I'm aware of that knowledge at the moment.";
-		mes "Everyone else has pretty much forgotten he ever existed.";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "目前只有我知道這件事。";
+		mes "其他人幾乎都已經忘了他的存在。";
 		next;
-		mes "[Jeruth Hesranta]";
-		mes "My undying suspicion about him kept me safe from Ahat's hypnosis.";
-		mes "He used the unspeakable talent to disappear.";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "我對他一直存有不滅的懷疑，才讓我免於阿哈特的催眠。";
+		mes "他利用了一種不可言說的能力消失了。";
 		next;
-		mes "[Jeruth Hesranta]";
-		mes "After he disappeared, I persuaded the Elders that we must join the subjugation of the Demon God.";
-		mes "Other Sapphas were against me, for the safety of our kind,";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "他消失後，我說服了長老們，我們必須加入討伐惡魔神的行動。";
+		mes "其他薩法族人為了族群的安全而反對我，";
 		next;
-		mes "[Jeruth Hesranta]";
-		mes "but it's in our nature to help our friends at all costs.";
-		mes "So I've brought our bravest Gartens to the battlefield.";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "但幫助朋友是我們的天性，不惜一切代價。";
+		mes "所以我把我們最勇敢的加爾頓族戰士帶上了戰場。";
 		next;
-		mes "[Jeruth Hesranta]";
-		mes "Long story short,";
-		mes "you no longer have to work for Ahat.";
-		mes "If you need the Contribution Certificate, do me a favor later and I'll give you one.";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "長話短說，";
+		mes "你不必再為阿哈特效命了。";
+		mes "如果你需要貢獻證明書，之後幫我一個忙，我就給你一張。";
 		next;
-		mes "[Jeruth Hesranta]";
-		mes "You know Chesher, don't you?";
-		mes "When it comes to him,";
-		mes "I can't trust anyone else.";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "你認識柴舍爾，對吧？";
+		mes "一提到他，";
+		mes "我就無法相信其他任何人。";
 		next;
-		mes "[Jeruth Hesranta]";
-		mes "I want to collect information about him first before I proceed with my plan.";
-		mes "Please stay safe until I talk to you again.";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "在進行我的計畫之前，我想先收集關於他的情報。";
+		mes "在我再次找你之前，請保重。";
 		ep13_3_secret = 25;
 		ep13_3_ahtdayq = 0;
 		if (isbegin_quest(7200) > 0)
@@ -854,46 +854,46 @@ moro_vol,136,84,3	script	Jeruth Hesranta#ep143	4_MAN_JERUTOO,{
 	}
 	if (ep13_3_secret == 25) {
 		if (BaseLevel < 140) {// custom translation
-			mes "Do you remember that we talked about Chesher?";
-			mes "He's a sensitive issue, so I can't talk to other Sapphas about him.";
+			mes "你還記得我們談過柴舍爾的事嗎？";
+			mes "這是個敏感的問題，所以我不能跟其他薩法族人談論他。";
 			next;
-			mes "[Jeruth Hesranta]";
-			mes "But... it does not seem to please you,";
-			mes "go back and train some more.";
+			mes "[傑露斯·赫斯蘭塔]";
+			mes "但是……你似乎不太高興，";
+			mes "回去再多加修練吧。";
 			close3;
 		}
-		mes "Do you remember that we talked about Chesher?";
-		mes "He's a sensitive issue, so I can't talk to other Sapphas about him.";
-		mes "And I was thinking...";
+		mes "你還記得我們談過柴舍爾的事嗎？";
+		mes "這是個敏感的問題，所以我不能跟其他薩法族人談論他。";
+		mes "而我一直在想……";
 		next;
-		mes "[Jeruth Hesranta]";
-		mes "Maybe you could help me confirm my suspicion.";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "或許你可以幫我確認我的懷疑。";
 		next;
-		select("What suspicion?");
-		mes "[Jeruth Hesranta]";
-		mes "There are some things that don't seem to belong to this Flaming Basin.";
-		mes "They're boxes of some kind.";
+		select("什麼懷疑？");
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "目前還有一些東西，似乎不該出現在這座烈焰盆地。";
+		mes "那些像是某種箱子。";
 		next;
-		mes "[Jeruth Hesranta]";
-		mes "Animated by the Demon God's evil energy, those boxes are running amok about the basin.";
-		mes "Now I'm concerned...";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "那些箱子受惡魔神的邪惡力量驅使，正在盆地裡四處橫衝直撞。";
+		mes "現在我開始擔心了……";
 		next;
-		select("You're concerned?");
-		mes "[Jeruth Hesranta]";
-		mes "They're the spitting images of Bradium Boxes in Dicastes.";
-		mes "Could you exterminate them and help me determine their identity?";
+		select("你會擔心？");
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "它們和迪卡斯特斯的鈽鐳礦石箱一模一樣。";
+		mes "你能剷除它們，幫我確認它們的身分嗎？";
 		next;
-		mes "[Jeruth Hesranta]";
-		mes "They really could be the Bradium Boxes that Chesher stole from Dicastes.";
-		mes "If so, I can use the boxes to replenish my army.";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "它們很可能就是柴舍爾從迪卡斯特斯偷走的鈽鐳礦石箱。";
+		mes "如果是的話，我就能用這些箱子來補充我的軍隊。";
 		next;
-		select("And retrieve the stolen Bradiums as well.");
-		mes "[Jeruth Hesranta]";
-		mes "Correct. My army isn't getting much support, since this expedition has been solely my idea.";
-		mes "It's just wishful thinking; we won't know until we have the boxes.";
+		select("也能把被偷走的鈽鐳礦石一併找回來。");
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "沒錯。由於這次遠征完全是我的主意，我的軍隊得不到什麼支援。";
+		mes "這只是我的一廂情願，得拿到箱子才知道。";
 		next;
-		mes "[Jeruth Hesranta]";
-		mes "For now please hunt one box and let me know what you find from it.";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "現在請先獵殺一個箱子，並告訴我你從裡面發現了什麼。";
 		mes "我會等你的。";
 		setquest 7578;// Rampaging Box
 		ep13_3_secret = 26;
@@ -902,39 +902,39 @@ moro_vol,136,84,3	script	Jeruth Hesranta#ep143	4_MAN_JERUTOO,{
 	if (ep13_3_secret == 26) {
 		if (checkquest(7578,HUNTING) != 2) {
 			cutin "ep13_heslanta.bmp",2;
-			mes "[Jeruth Hesranta]";
-			mes "Just hunt 1 ^4d4dffRampaging Box^000000 and bring me what you find inside it.";
+			mes "[傑露斯·赫斯蘭塔]";
+			mes "請獵殺 1 個 ^4d4dff暴走箱子^000000，並把你在裡面找到的東西帶來給我。";
 			if (isbegin_quest(7578) == 0)
 				setquest 7578;
 			close3;
 		}
 		if (countitem(6392) < 1) {// Bradium_Box
-			mes "I see that you've subjugated a Rampaging Box,";
-			mes "but my real objective was to check its contents.";
-			mes "^4d4dffPlease exterminate a box and bring me the item you've found from it.^000000";
+			mes "我看到你已經討伐了一個暴走箱子，";
+			mes "但我真正的目的是要檢查它的內容物。";
+			mes "^4d4dff請剷除一個箱子，並把你從中找到的道具帶來給我。^000000";
 			close3;
 		}
 		mes "我就知道。";
-		mes "It's amazing how such an animate object can move on its own.";
-		mes "It must be enchanted, don't you think?";
+		mes "像這樣的有生命物體竟能自行移動，真是不可思議。";
+		mes "一定是被施了魔法吧，你不這麼覺得嗎？";
 		next;
-		mes "[Jeruth Hesranta]";
-		mes "This confirms my suspicion:";
-		mes "those boxes in the Flaming Basin are Bradium Boxes from El Dicastes.";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "這證實了我的懷疑:";
+		mes "烈焰盆地裡的那些箱子，正是來自艾爾迪卡斯特斯的鈽鐳礦石箱。";
 		next;
-		mes "[Jeruth Hesranta]";
-		mes "I don't want to impose on your kindness, but I hope you'll continue to hunt these boxes.";
-		mes "You're the only one I can trust with this, at least for now.";
-		mes "Gartens are brave, but they'll want to understand why Bradium Boxes are found in this place.";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "我不想強求你的好意，但希望你能繼續獵殺這些箱子。";
+		mes "至少目前，我只能把這件事託付給你。";
+		mes "加爾頓族很勇敢，但他們會想知道為什麼這裡會出現鈽鐳礦石箱。";
 		next;
-		mes "[Jeruth Hesranta]";
-		mes "Then I'll have to tell them everything,";
-		mes "starting with Ahat, and that most Sapphas have forgotten about him will make things really complicated.";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "那我就得把一切都告訴他們，";
+		mes "從阿哈特開始說起，再加上大多數薩法族人都已經忘記他了，事情會變得非常複雜。";
 		next;
-		select("When do I start?");
-		mes "[Jeruth Hesranta]";
+		select("我什麼時候可以開始？");
+		mes "[傑露斯·赫斯蘭塔]";
 		mes "現在又如何？";
-		mes "^4d4dffPlease hunt those Rampaging Boxes and collect 10 Bradium Boxes.^000000";
+		mes "^4d4dff請獵殺那些暴走箱子，並收集 10 個鈽鐳礦石箱。^000000";
 		delitem 6392,1;// Bradium_Box
 		completequest 7578;// Rampaging Box
 		setquest 7579;// Collecting Bradiums
@@ -947,32 +947,32 @@ moro_vol,136,84,3	script	Jeruth Hesranta#ep143	4_MAN_JERUTOO,{
 		switch( checkquest(7579,HUNTING) ) {
 		case 0:
 			cutin "ep13_heslanta.bmp",2;
-			mes "[Jeruth Hesranta]";
+			mes "[傑露斯·赫斯蘭塔]";
 			mes "歡迎回來。";
-			mes "Are you ready for the day?";
+			mes "今天準備好了嗎？";
 			break;
 		case 1:
 			cutin "ep13_heslanta.bmp",2;
-			mes "[Jeruth Hesranta]";
-			mes "Rampaging Boxes themselves aren't threatening, but they're surrounded by dangerous monsters. Please be careful.";
+			mes "[傑露斯·赫斯蘭塔]";
+			mes "暴走箱子本身並不具威脅，但它們周圍有危險的怪物環繞。請小心。";
 			next;
-			mes "[Jeruth Hesranta]";
-			mes "Happy hunting!";
+			mes "[傑露斯·赫斯蘭塔]";
+			mes "祝狩獵順利！";
 			close3;
 		case 2:
 			if (countitem(6392) < 10) {
-				mes "It's amazing how those ore-filled boxes are moving on their own.";
-				mes "Maybe that's how the Demon God is recruiting his soldiers.";
+				mes "那些裝滿礦石的箱子竟然會自己移動，真是不可思議。";
+				mes "或許惡魔神就是這樣招募他的士兵的。";
 				close3;
 			}
 			cutin "ep13_heslanta.bmp",2;
-			mes "[Jeruth Hesranta]";
+			mes "[傑露斯·赫斯蘭塔]";
 			mes "做得不錯。";
-			mes "I can't thank you enough.";
-			mes "Let me take all the Bradium Boxes.";
+			mes "真是感激不盡。";
+			mes "讓我把所有鈽鐳礦石箱都收下吧。";
 			next;
-			mes "[Jeruth Hesranta]";
-			mes "I can feel other people's eyes on us. Hah hah.";
+			mes "[傑露斯·赫斯蘭塔]";
+			mes "我感覺到有其他人的目光落在我們身上。哈哈。";
 			mes "再見。";
 			delitem 6392, countitem(6392);// Bradium_Box
 			erasequest 7579;// Collecting Bradiums
@@ -984,34 +984,34 @@ moro_vol,136,84,3	script	Jeruth Hesranta#ep143	4_MAN_JERUTOO,{
 		break;
 	case 0:
 	case 1:
-		mes "Hah hah, we're not in a hurry at the moment.";
-		mes "I wonder if Chesher knows we're stealing back his Bradium Boxes.";
+		mes "哈哈，我們現在不急。";
+		mes "不知道柴舍爾有沒有發現我們正在奪回他的鈽鐳礦石箱。";
 		next;
-		mes "[Jeruth Hesranta]";
-		mes "What should I feed the poor cat later?";
-		mes "Oh, keep up the good work collecting Bradium Boxes.";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "等一下該餵那隻可憐的貓什麼好呢？";
+		mes "喔，收集鈽鐳礦石箱的工作要繼續加油喔。";
 		break;
 	case 2:
 		cutin "ep13_heslanta.bmp",2;
-		mes "[Jeruth Hesranta]";
-		mes "It's time to collect Bradium Boxes.";
+		mes "[傑露斯·赫斯蘭塔]";
+		mes "該去收集鈽鐳礦石箱了。";
 		erasequest 7580;// Collecting Every Day
 		break;
 	}
 	next;
-	if (select( "I'll get on with it.", "我之後再來。" ) == 2) {
-		mes "[Jeruth Hesranta]";
+	if (select( "我這就去辦。", "我之後再來。" ) == 2) {
+		mes "[傑露斯·赫斯蘭塔]";
 		mes "沒問題。";
-		mes "Come back whenever you can.";
+		mes "有空的時候再回來吧。";
 		next;
-		mes "[Jeruth Hesranta]";
+		mes "[傑露斯·赫斯蘭塔]";
 		mes "很抱歉";
-		mes "I can't stop asking you for favors.";
+		mes "我老是拜託你幫忙，真不好意思。";
 		close3;
 	}
-	mes "[Jeruth Hesranta]";
+	mes "[傑露斯·赫斯蘭塔]";
 	mes "這才像話！";
-	mes "hunt Rampaging Boxes and collect Bradiums.";
+	mes "獵殺暴走箱子，並收集鈽鐳礦石。";
 	setquest 7579;// Collecting Bradiums
 	close3;
 
@@ -1035,64 +1035,64 @@ function	script	kick_mob	{
 	return;
 }
 
-moro_vol,88,107,5	script	Magic Scholar Dophe#143vol01	4_F_FAIRYKID5,{
- 	mes "[Dophe]";
- 	mes "A Human, I see.";
- 	mes "Looking at you, I can't help but muse on our situation.";
- 	mes "You and I are having conversation.";
+moro_vol,88,107,5	script	魔法學者多菲#143vol01::Magic Scholar Dophe#143vol01	4_F_FAIRYKID5,{
+ 	mes "[多菲]";
+ 	mes "原來是人類啊。";
+ 	mes "看著你，我不禁思索起我們的處境。";
+ 	mes "你和我正在交談。";
  	next;
- 	mes "[Dophe]";
- 	mes "This so-called Dimensional Crack, where the Demon God has taken up residence, falls into Bifrost's jurisdiction.";
+ 	mes "[多菲]";
+ 	mes "這個所謂的次元裂縫，也就是惡魔神棲身之處，歸比夫羅斯特管轄。";
  	next;
-	mes "[Dophe]";
-	mes "He and us are like two sides of the coin, or above and below the waterline.";
+	mes "[多菲]";
+	mes "他和我們就像一枚硬幣的兩面，又或者像水線的上方與下方。";
 	next;
-	mes "[Dophe]";
-	mes "He and us aren't exactly running parallel to each other, but maybe standing in a universe parallel to each other's.";
+	mes "[多菲]";
+	mes "我們和他其實並不是平行前進的，但或許是站在彼此平行的宇宙中。";
 	next;
-	mes "[Dophe]";
+	mes "[多菲]";
 	mes "...";
 	next;
-	mes "[Dophe]";
-	mes "My point is:";
-	mes "he could be under our nose, and we're unable to see him.";
-	mes "If his lair is located somewhere in Bifrost's territory,";
+	mes "[多菲]";
+	mes "我的意思是:";
+	mes "他可能就在我們眼皮底下，只是我們看不見他。";
+	mes "如果他的巢穴位於比夫羅斯特的領地之內，";
 	next;
-	mes "[Dophe]";
-	mes "the only possible scenario for us is";
+	mes "[多菲]";
+	mes "那我們唯一可能的情況是";
 	mes "obliteration.";
 	close;
 }
 
-moro_vol,87,104,5	script	Magic Scholar Konpana#143vol02	4_M_FAIRYKID5,{
-	mes "[Konpana]";
-	mes "This place is nothing like I've imagined.";
-	mes "No grassy field or forest, really?";
+moro_vol,87,104,5	script	魔法學者康帕納#143vol02::Magic Scholar Konpana#143vol02	4_M_FAIRYKID5,{
+	mes "[康帕娜]";
+	mes "這個地方跟我想像的完全不一樣。";
+	mes "真的沒有草原或森林嗎？";
 	close;
 }
 
-moro_vol,88,102,6	script	Magic Scholar Makia#143vol03	4_M_FAIRYKID3,{
-	mes "[Makia]";
-	mes "This place is overrun with strange creatures.";
-	mes "Everywhere is burning with fire, yet the air isn't suffocating.";
+moro_vol,88,102,6	script	魔法學者瑪奇亞#143vol03::Magic Scholar Makia#143vol03	4_M_FAIRYKID3,{
+	mes "[瑪奇亞]";
+	mes "這裡到處都是奇怪的生物。";
+	mes "到處都燃燒著火焰，空氣卻不會令人窒息。";
 	mes "太厲害了。";
 	close;
 }
 
-moro_vol,104,109,0	script	Combat Laphine#sol01	4_M_FAIRYSOLDIER,{ end; }
-moro_vol,106,109,0	duplicate(Combat Laphine#sol01)	Combat Laphine#sol02	4_M_FAIRYSOLDIER
-moro_vol,108,109,0	duplicate(Combat Laphine#sol01)	Combat Laphine#sol03	4_M_FAIRYSOLDIER
-moro_vol,104,107,0	duplicate(Combat Laphine#sol01)	Combat Laphine#sol04	4_M_FAIRYSOLDIER
-moro_vol,106,107,0	duplicate(Combat Laphine#sol01)	Combat Laphine#sol05	4_M_FAIRYSOLDIER
-moro_vol,108,107,0	duplicate(Combat Laphine#sol01)	Combat Laphine#sol06	4_M_FAIRYSOLDIER
-moro_vol,104,105,0	duplicate(Combat Laphine#sol01)	Combat Laphine#sol07	4_M_FAIRYSOLDIER
-moro_vol,106,105,0	duplicate(Combat Laphine#sol01)	Combat Laphine#sol08	4_M_FAIRYSOLDIER
-moro_vol,108,105,0	duplicate(Combat Laphine#sol01)	Combat Laphine#sol09	4_M_FAIRYSOLDIER
+moro_vol,104,109,0	script	戰鬥拉芬#sol01::Combat Laphine#sol01	4_M_FAIRYSOLDIER,{ end; }
+moro_vol,106,109,0	duplicate(Combat Laphine#sol01)	戰鬥拉芬#sol02::Combat Laphine#sol02	4_M_FAIRYSOLDIER
+moro_vol,108,109,0	duplicate(Combat Laphine#sol01)	戰鬥拉芬#sol03::Combat Laphine#sol03	4_M_FAIRYSOLDIER
+moro_vol,104,107,0	duplicate(Combat Laphine#sol01)	戰鬥拉芬#sol04::Combat Laphine#sol04	4_M_FAIRYSOLDIER
+moro_vol,106,107,0	duplicate(Combat Laphine#sol01)	戰鬥拉芬#sol05::Combat Laphine#sol05	4_M_FAIRYSOLDIER
+moro_vol,108,107,0	duplicate(Combat Laphine#sol01)	戰鬥拉芬#sol06::Combat Laphine#sol06	4_M_FAIRYSOLDIER
+moro_vol,104,105,0	duplicate(Combat Laphine#sol01)	戰鬥拉芬#sol07::Combat Laphine#sol07	4_M_FAIRYSOLDIER
+moro_vol,106,105,0	duplicate(Combat Laphine#sol01)	戰鬥拉芬#sol08::Combat Laphine#sol08	4_M_FAIRYSOLDIER
+moro_vol,108,105,0	duplicate(Combat Laphine#sol01)	戰鬥拉芬#sol09::Combat Laphine#sol09	4_M_FAIRYSOLDIER
 
-moro_vol,106,111,3	script	Battle Commander#sol10	4_M_FAIRYSOLDIER,3,3,{
-	mes "[Commander Laphine]";
-	mes "We're in the process of regrouping for the upcoming battle.";
-	mes "Please don't bother us.";
+moro_vol,106,111,3	script	戰鬥指揮官#sol10::Battle Commander#sol10	4_M_FAIRYSOLDIER,3,3,{
+	mes "[指揮官拉芬]";
+	mes "我們正在為即將到來的戰鬥重新集結。";
+	mes "請別來打擾我們。";
 	close;
 
 OnTouch:
@@ -1107,33 +1107,33 @@ OnEventOn:
 	.is_enabled = 1;
 	enablenpc "#soltalk01";
 	sleep 3000;
-	npctalk "Commander: Soldiers, finally it's time to put your training to use!", "Battle Commander#sol10";
+	npctalk "指揮官: 士兵們，終於到了讓你們的訓練派上用場的時候了！", "戰鬥指揮官#sol10";
 	sleep 3000;
-	npctalk "Commander: WE ARE!", "Battle Commander#sol10";
+	npctalk "指揮官: 我們是！", "戰鬥指揮官#sol10";
 	sleep 2000;
-	npctalk "WE ARE!", "Combat Laphine#sol01";
-	npctalk "WE ARE!", "Combat Laphine#sol02";
-	npctalk "WE ARE!", "Combat Laphine#sol03";
+	npctalk "我們是！", "戰鬥拉菲恩#sol01";
+	npctalk "我們是！", "戰鬥拉菲恩#sol02";
+	npctalk "我們是！", "戰鬥拉菲恩#sol03";
 	sleep 1500;
-	npctalk "THE PROUD!", "Combat Laphine#sol04";
-	npctalk "THE PROUD!", "Combat Laphine#sol05";
-	npctalk "THE PROUD!", "Combat Laphine#sol06";
+	npctalk "驕傲的！", "戰鬥拉菲恩#sol04";
+	npctalk "驕傲的！", "戰鬥拉菲恩#sol05";
+	npctalk "驕傲的！", "戰鬥拉菲恩#sol06";
 	sleep 1500;
-	npctalk "LAPHNES!", "Combat Laphine#sol07";
-	npctalk "LAPHNES!", "Combat Laphine#sol08";
-	npctalk "LAPHNES!", "Combat Laphine#sol09";
+	npctalk "拉菲恩族！", "戰鬥拉菲恩#sol07";
+	npctalk "拉菲恩族！", "戰鬥拉菲恩#sol08";
+	npctalk "拉菲恩族！", "戰鬥拉菲恩#sol09";
 	sleep 3000;
-	npctalk "Commander: We fight evil!", "Battle Commander#sol10";
+	npctalk "指揮官: 我們與邪惡戰鬥！", "戰鬥指揮官#sol10";
 	sleep 2000;
-	npctalk "Fight evil!", "Combat Laphine#sol01";
-	npctalk "Fight evil!", "Combat Laphine#sol02";
-	npctalk "Fight evil!", "Combat Laphine#sol03";
-	npctalk "Fight evil!", "Combat Laphine#sol04";
-	npctalk "Fight evil!", "Combat Laphine#sol05";
-	npctalk "Fight evil!", "Combat Laphine#sol06";
-	npctalk "Fight evil!", "Combat Laphine#sol07";
-	npctalk "Fight evil!", "Combat Laphine#sol08";
-	npctalk "Fight evil!", "Combat Laphine#sol09";
+	npctalk "與邪惡戰鬥！", "戰鬥拉菲恩#sol01";
+	npctalk "與邪惡戰鬥！", "戰鬥拉菲恩#sol02";
+	npctalk "與邪惡戰鬥！", "戰鬥拉菲恩#sol03";
+	npctalk "與邪惡戰鬥！", "戰鬥拉菲恩#sol04";
+	npctalk "與邪惡戰鬥！", "戰鬥拉菲恩#sol05";
+	npctalk "與邪惡戰鬥！", "戰鬥拉菲恩#sol06";
+	npctalk "與邪惡戰鬥！", "戰鬥拉菲恩#sol07";
+	npctalk "與邪惡戰鬥！", "戰鬥拉菲恩#sol08";
+	npctalk "與邪惡戰鬥！", "戰鬥拉菲恩#sol09";
 	sleep 17000;
 	disablenpc "#soltalk01";
 	.is_enabled = 0;
@@ -1144,86 +1144,86 @@ OnInit:
 	end;
 }
 
-moro_vol,101,102,0	script	Laphine Magician#wsol01	4_F_FAIRY2,{
+moro_vol,101,102,0	script	拉菲因魔法師#wsol01::Laphine Magician#wsol01	4_F_FAIRY2,{
 	.@ttemp = rand(1,5);
 	if (.@ttemp == 1)
-		npctalk "...Freeze them all! Freeze!";
+		npctalk "……全部凍結！凍住！";
 	else if (.@ttemp == 2)
-		npctalk "(Exhaling through his mouth)";
+		npctalk "（從嘴裡吐氣）";
 	else if (.@ttemp == 3)
 		npctalk "...";
 	else if (.@ttemp == 4)
 		npctalk "...";
 	else
-		npctalk "The Guardian is watching. I can't make any mistakes.";
+		npctalk "守護者正在看著，我不能犯任何錯誤。";
 	end;
 }
 
-moro_vol,103,102,0	script	Laphine Magician#wsol02	4_F_MORAFINE1,{
+moro_vol,103,102,0	script	拉菲因魔法師#wsol02::Laphine Magician#wsol02	4_F_MORAFINE1,{
 	if (rand(1,5) == 5)
-		npctalk "Shush.";
+		npctalk "噓，安靜。";
 	else
 		npctalk "...";
 	end;
 }
 
-moro_vol,105,102,0	script	Laphine Magician#wsol03	4_M_FAIRYKID5,{
+moro_vol,105,102,0	script	拉菲因魔法師#wsol03::Laphine Magician#wsol03	4_M_FAIRYKID5,{
 	.@ttemp = rand(1,5);
 	if (.@ttemp == 1)
-		npctalk "Those Humans behind us are bothering me.";
+		npctalk "我們背後的那些人類讓我很困擾。";
 	else if (.@ttemp == 2)
-		npctalk "I shouldn't have volunteered to come here. I miss my yai...";
+		npctalk "我真不該自願來這裡。好想念我的 yai……";
 	else if (.@ttemp == 3)
 		npctalk "...";
 	else if (.@ttemp == 4)
-		npctalk "How long do we have to wait?";
+		npctalk "我們還要等多久？";
 	else
-		npctalk "Sigh.";
+		npctalk "唉。";
 	end;
 }
 
-moro_vol,107,102,0	script	Laphine Magician#wsol04	4_F_FAIRYKID5,{
+moro_vol,107,102,0	script	拉菲因魔法師#wsol04::Laphine Magician#wsol04	4_F_FAIRYKID5,{
 	.@ttemp = rand(1,5);
 	if (.@ttemp == 1)
-		npctalk "I'm nervous.";
+		npctalk "我好緊張。";
 	else if (.@ttemp == 2)
-		npctalk "The Sapphas aren't enemies... The Sapphas aren't enemies... Argh, but I want to beat them senseless!";
-	else if (.@ttemp == 3)
-		npctalk "...";
-	else if (.@ttemp == 4)
-		npctalk "...";
-	else
-		npctalk "I'm trying to remember to fire the moment I see the enemy.";
-	end;
-}
-
-moro_vol,109,102,0	script	Laphine Magician#wsol05	4_M_FAIRYKID5,{
-	.@ttemp = rand(1,5);
-	if (.@ttemp == 1)
-		npctalk "I'm trying to remember to fire the moment I see the enemy.";
-	else if (.@ttemp == 2)
-		npctalk "I like tension--it keeps me on edge. Heh heh.";
+		npctalk "薩法族不是敵人……薩法族不是敵人……啊，可我真想把他們揍到昏過去！";
 	else if (.@ttemp == 3)
 		npctalk "...";
 	else if (.@ttemp == 4)
 		npctalk "...";
 	else
-		npctalk "I'm nervous.";
+		npctalk "我得記住，一看到敵人就要立刻開火。";
 	end;
 }
 
-moro_vol,93,128,1	script	Combat Laphine#line01	4_M_FAIRYSOLDIER2,2,3,{
+moro_vol,109,102,0	script	拉菲因魔法師#wsol05::Laphine Magician#wsol05	4_M_FAIRYKID5,{
 	.@ttemp = rand(1,5);
 	if (.@ttemp == 1)
-		npctalk "Yeah, yeah~";
+		npctalk "我得記住，一看到敵人就要立刻開火。";
 	else if (.@ttemp == 2)
-		npctalk "Watch out!";
+		npctalk "我喜歡這種緊張感，讓我保持警覺。嘿嘿。";
+	else if (.@ttemp == 3)
+		npctalk "...";
+	else if (.@ttemp == 4)
+		npctalk "...";
+	else
+		npctalk "我好緊張。";
+	end;
+}
+
+moro_vol,93,128,1	script	戰鬥拉芬#line01::Combat Laphine#line01	4_M_FAIRYSOLDIER2,2,3,{
+	.@ttemp = rand(1,5);
+	if (.@ttemp == 1)
+		npctalk "是是~";
+	else if (.@ttemp == 2)
+		npctalk "小心！";
 	else if (.@ttemp == 3)
 		npctalk "*呵欠*";
 	else if (.@ttemp == 4)
 		npctalk "請小心。";
 	else
-		npctalk "Back off--it's dangerous!";
+		npctalk "後退——很危險！";
 	end;
 
 OnTouch:	// prevent the player from triggering the text
@@ -1237,25 +1237,25 @@ OnTouchNPC:
 	end;
 }
 
-moro_vol,96,130,1	duplicate(Combat Laphine#line01)	Combat Laphine#line02	4_M_FAIRYSOLDIER2
-moro_vol,99,131,1	duplicate(Combat Laphine#line01)	Combat Laphine#line03	4_M_FAIRYSOLDIER2,2,3
-moro_vol,102,132,7	duplicate(Combat Laphine#line01)	Combat Laphine#line04	4_M_FAIRYSOLDIER
-moro_vol,105,132,7	duplicate(Combat Laphine#line01)	Combat Laphine#line05	4_F_FAIRYSOLDIER,2,3
-moro_vol,108,131,7	duplicate(Combat Laphine#line01)	Combat Laphine#line06	4_M_FAIRYSOLDIER2
-moro_vol,111,129,7	duplicate(Combat Laphine#line01)	Combat Laphine#line07	4_M_FAIRYSOLDIER,2,3
+moro_vol,96,130,1	duplicate(Combat Laphine#line01)	戰鬥拉芬#line02::Combat Laphine#line02	4_M_FAIRYSOLDIER2
+moro_vol,99,131,1	duplicate(Combat Laphine#line01)	戰鬥拉芬#line03::Combat Laphine#line03	4_M_FAIRYSOLDIER2,2,3
+moro_vol,102,132,7	duplicate(Combat Laphine#line01)	戰鬥拉芬#line04::Combat Laphine#line04	4_M_FAIRYSOLDIER
+moro_vol,105,132,7	duplicate(Combat Laphine#line01)	戰鬥拉芬#line05::Combat Laphine#line05	4_F_FAIRYSOLDIER,2,3
+moro_vol,108,131,7	duplicate(Combat Laphine#line01)	戰鬥拉芬#line06::Combat Laphine#line06	4_M_FAIRYSOLDIER2
+moro_vol,111,129,7	duplicate(Combat Laphine#line01)	戰鬥拉芬#line07::Combat Laphine#line07	4_M_FAIRYSOLDIER,2,3
 
-moro_vol,85,117,1	script	Combat Laphine#line11	4_F_FAIRYSOLDIER,2,2,{
+moro_vol,85,117,1	script	戰鬥拉芬#line11::Combat Laphine#line11	4_F_FAIRYSOLDIER,2,2,{
 	.@ttemp = rand(1,5);
 	if (.@ttemp == 1)
-		npctalk "Yeah, yeah~";
+		npctalk "是是~";
 	else if (.@ttemp == 2)
-		npctalk "Watch out!";
+		npctalk "小心！";
 	else if (.@ttemp == 3)
-		npctalk "You're in a war zone. Don't let your guard down.";
+		npctalk "這裡是戰區，別鬆懈。";
 	else if (.@ttemp == 4)
 		npctalk "請小心。";
 	else
-		npctalk "I'm worried for the guys at the front lines.";
+		npctalk "我很擔心前線的弟兄們。";
 	end;
 
 OnTouch:
@@ -1270,53 +1270,53 @@ OnTouchNPC:
 	end;
 }
 
-moro_vol,89,118,1	duplicate(Combat Laphine#line11)	Combat Laphine#line12	4_M_FAIRYSOLDIER
-moro_vol,92,119,7	duplicate(Combat Laphine#line11)	Combat Laphine#line13	4_M_FAIRYSOLDIER,2,2
-moro_vol,96,119,7	duplicate(Combat Laphine#line11)	Combat Laphine#line14	4_M_FAIRYSOLDIER2
-moro_vol,100,117,7	duplicate(Combat Laphine#line11)	Combat Laphine#line15	4_M_FAIRYSOLDIER,2,2
-moro_vol,107,118,7	duplicate(Combat Laphine#line11)	Combat Laphine#line17	4_F_FAIRYSOLDIER,2,2
-moro_vol,114,114,7	duplicate(Combat Laphine#line11)	Combat Laphine#line19	4_M_FAIRYSOLDIER2,2,2
+moro_vol,89,118,1	duplicate(Combat Laphine#line11)	戰鬥拉芬#line12::Combat Laphine#line12	4_M_FAIRYSOLDIER
+moro_vol,92,119,7	duplicate(Combat Laphine#line11)	戰鬥拉芬#line13::Combat Laphine#line13	4_M_FAIRYSOLDIER,2,2
+moro_vol,96,119,7	duplicate(Combat Laphine#line11)	戰鬥拉芬#line14::Combat Laphine#line14	4_M_FAIRYSOLDIER2
+moro_vol,100,117,7	duplicate(Combat Laphine#line11)	戰鬥拉芬#line15::Combat Laphine#line15	4_M_FAIRYSOLDIER,2,2
+moro_vol,107,118,7	duplicate(Combat Laphine#line11)	戰鬥拉芬#line17::Combat Laphine#line17	4_F_FAIRYSOLDIER,2,2
+moro_vol,114,114,7	duplicate(Combat Laphine#line11)	戰鬥拉芬#line19::Combat Laphine#line19	4_M_FAIRYSOLDIER2,2,2
 
-moro_vol,103,118,1	script	Combat Laphine#line16	4_F_FAIRYSOLDIER,{
+moro_vol,103,118,1	script	戰鬥拉芬#line16::Combat Laphine#line16	4_F_FAIRYSOLDIER,{
 	.@ttemp = rand(1,5);
 	if (.@ttemp == 1)
-		npctalk "The Sapphas had better not flank us.";
+		npctalk "薩法族最好別從側翼包抄我們。";
 	else if (.@ttemp == 2)
-		npctalk "Watch out!";
+		npctalk "小心！";
 	else if (.@ttemp == 3)
-		npctalk "You're in a war zone. Don't let your guard down.";
+		npctalk "這裡是戰區，別鬆懈。";
 	else if (.@ttemp == 4)
 		npctalk "請小心。";
 	else
-		npctalk "I'm worried for the guys at the front lines.";
+		npctalk "我很擔心前線的弟兄們。";
 	end;
 }
 
-moro_vol,110,117,7	duplicate(Combat Laphine#line16)	Combat Laphine#line18	4_M_FAIRYSOLDIER2
+moro_vol,110,117,7	duplicate(Combat Laphine#line16)	戰鬥拉芬#line18::Combat Laphine#line18	4_M_FAIRYSOLDIER2
 
-moro_vol,104,86,3	script	Ryoson#14304	4_M_ALCHE_A,{
-	mes "[Ryoson]";
-	mes "Of course I'm nervous. You don't have to ask me that.";
-	mes "Why the Administrative Officer put me in charge of the knights is beyond me.";
+moro_vol,104,86,3	script	梁森#14304::Ryoson#14304	4_M_ALCHE_A,{
+	mes "[梁森]";
+	mes "我當然緊張啊，用不著問我。";
+	mes "行政官為什麼要我負責這些騎士，我實在想不通。";
 	next;
-	mes "[Ryoson]";
-	mes "They're not knights-in-training, or even apprentice knights. They're freaking Rune Knights.";
-	mes "Ah, I'm too inexperienced and powerless to do anything with them.";
+	mes "[梁森]";
+	mes "他們不是見習騎士，甚至連學徒騎士都不是。他們可是該死的符文騎士！";
+	mes "唉，我經驗不足，也無力指揮他們做任何事。";
 	next;
-	mes "[Ryoson]";
-	mes "At least my safety is guaranteed so long as the three knights are with me.";
-	mes "I hope.";
+	mes "[梁森]";
+	mes "至少只要那三名騎士跟著我，我的安全就有保障。";
+	mes "但願如此。";
 	close;
 }
 
-moro_vol,101,87,5	script	Rune-Midgarts Knight#mid01	4_M_KNIGHT_BLACK,{
+moro_vol,101,87,5	script	米德加爾騎士#mid01::Rune-Midgarts Knight#mid01	4_M_KNIGHT_BLACK,{
 	.@ttemp = rand(1,5);
 	if (.@ttemp == 1)
 		npctalk "...";
 	else if (.@ttemp == 2)
-		npctalk "Too quiet.";
+		npctalk "太安靜了。";
 	else if (.@ttemp == 3)
-		npctalk "I really need to let off some steam.";
+		npctalk "我真需要發洩一下。";
 	else if (.@ttemp == 4)
 		npctalk "嗚嗚……";
 	else
@@ -1324,171 +1324,171 @@ moro_vol,101,87,5	script	Rune-Midgarts Knight#mid01	4_M_KNIGHT_BLACK,{
 	end;
 }
 
-moro_vol,101,85,5	script	Rune-Midgarts Knight#mid02	4_M_KNIGHT_GOLD,{
+moro_vol,101,85,5	script	米德加爾騎士#mid02::Rune-Midgarts Knight#mid02	4_M_KNIGHT_GOLD,{
 	.@ttemp = rand(1,5);
 	if (.@ttemp == 1)
-		npctalk "I'm here to protect important personnel.";
+		npctalk "我是來保護重要人員的。";
 	else if (.@ttemp == 2)
-		npctalk "Ryoson, don't panic--fear spreads like wildfire.";
+		npctalk "梁森，別慌——恐懼會像野火一樣蔓延。";
 	else if (.@ttemp == 3)
-		npctalk "I really hope I can accomplish my mission.";
+		npctalk "我真希望能完成任務。";
 	else if (.@ttemp == 4)
-		npctalk "Sigh.";
+		npctalk "唉。";
 	else
-		npctalk "So far, so good.";
+		npctalk "目前為止都還順利。";
 	end;
 }
 
-moro_vol,103,83,1	script	Rune-Midgarts Knight#mid03	4_M_KNIGHT_SILVER,{
+moro_vol,103,83,1	script	米德加爾騎士#mid03::Rune-Midgarts Knight#mid03	4_M_KNIGHT_SILVER,{
 	.@ttemp = rand(1,5);
 	if (.@ttemp == 1)
-		npctalk "Ryoson, no one's going to bite ya. Don't be so afraid.";
+		npctalk "梁森，沒人會咬你的，別這麼害怕。";
 	else if (.@ttemp == 2)
-		npctalk "Fighting the Demon God is like every knight's wet dream has come true.";
+		npctalk "能與惡魔神交戰，簡直就是每個騎士夢寐以求的事。";
 	else if (.@ttemp == 3)
 		npctalk "嗯……";
 	else if (.@ttemp == 4)
-		npctalk "Tension in the battlefield always thrills me.";
+		npctalk "戰場上的緊張感總讓我興奮不已。";
 	else
 		npctalk "...";
 	end;
 }
 
-moro_vol,110,83,3	script	Hugh#14305	4_M_LGTGUARD,{
-	mes "[Hugh]";
-	mes "We're here at last.";
-	mes "At first, I couldn't believe all those rumors about the Demon God's hideout and stronghold.";
+moro_vol,110,83,3	script	休#14305::Hugh#14305	4_M_LGTGUARD,{
+	mes "[休]";
+	mes "我們總算到了。";
+	mes "起初，我根本不相信那些關於惡魔神藏身處與據點的傳言。";
 	next;
-	mes "[Hugh]";
-	mes "As things stand, I have no hope of going back to the mainland any time soon.";
+	mes "[休]";
+	mes "眼下的情況，我看不到近期返回大陸的希望。";
 	next;
-	mes "[Hugh]";
-	mes "Gosh, I'm tired of those guys.";
-	mes "I'd better find the Demon God quickly.";
+	mes "[休]";
+	mes "天啊，我真受夠那些傢伙了。";
+	mes "我最好儘快找到惡魔神。";
 	next;
-	mes "[Hugh]";
-	mes "Have I thought about losing?";
-	mes "I have, but I try not to.";
-	mes "I'll never going to win if I let myself believe I'll lose.";
+	mes "[休]";
+	mes "我有想過輸嗎？";
+	mes "我有想過，但我盡量不去想。";
+	mes "如果我讓自己相信會輸，那就永遠贏不了。";
 	next;
-	mes "[Hugh]";
-	mes "We Schwarzwaldians are born to win.";
+	mes "[休]";
+	mes "我們秀發茲發德人生來就是要贏的。";
 	close;
 }
 
-moro_vol,108,81,7	script	Schwarzwald Elite#sch01	4_M_EIN_SOLDIER,{
+moro_vol,108,81,7	script	秀發茲發德精英#sch01::Schwarzwald Elite#sch01	4_M_EIN_SOLDIER,{
 	.@ttemp = rand(1,5);
 	if (.@ttemp == 1)
-		npctalk "For the glory of Schwarzwald!";
+		npctalk "為了秀發茲發德的榮耀！";
 	else if (.@ttemp == 2)
-		npctalk "I thought Einbroch had bad air, and this place is no better.";
+		npctalk "我本來以為艾音布羅克的空氣就夠糟了，這裡也好不到哪去。";
 	else if (.@ttemp == 3)
 		npctalk "...";
 	else if (.@ttemp == 4)
-		npctalk "We're going to win!";
+		npctalk "我們一定會贏！";
 	else
 		npctalk "...";
 	end;
 }
 
-moro_vol,111,80,1	script	Schwarzwald Elite#sch02	4_M_EIN_SOLDIER,{
+moro_vol,111,80,1	script	秀發茲發德精英#sch02::Schwarzwald Elite#sch02	4_M_EIN_SOLDIER,{
 	.@ttemp = rand(1,5);
 	if (.@ttemp == 1)
-		npctalk "For the glory of Schwarzwald!";
+		npctalk "為了秀發茲發德的榮耀！";
 	else if (.@ttemp == 2)
-		npctalk "For Midgard!";
+		npctalk "為了米德加爾！";
 	else if (.@ttemp == 3)
 		npctalk "...";
 	else if (.@ttemp == 4)
-		npctalk "We're going to win!";
+		npctalk "我們一定會贏！";
 	else
 		npctalk "...";
 	end;
 }
 
-moro_vol,113,81,3	script	Schwarzwald Elite#sch03	4_M_EIN_SOLDIER,{
+moro_vol,113,81,3	script	秀發茲發德精英#sch03::Schwarzwald Elite#sch03	4_M_EIN_SOLDIER,{
 	.@ttemp = rand(1,5);
 	if (.@ttemp == 1)
-		npctalk "Sigh.";
+		npctalk "唉。";
 	else if (.@ttemp == 2)
-		npctalk "Which one would you prefer: fighting the Demon God or standing watch in Einbroch?";
+		npctalk "你比較想怎麼選: 與惡魔神交戰，還是在艾音布羅克站崗？";
 	else if (.@ttemp == 3)
-		npctalk "My eyes are suddenly misty... I'd better chin up... *Inhale*";
+		npctalk "我的眼眶突然濕潤了……得振作起來……*深吸一口氣*";
 	else if (.@ttemp == 4)
-		npctalk "We're going to win, though.";
+		npctalk "不過，我們一定會贏。";
 	else
-		npctalk "I wish I trained harder.";
+		npctalk "真希望我當初能更努力修練。";
 	end;
 }
 
 
-moro_vol,118,86,5	script	Henjinne#14306	4_M_RACHMAN1,{
-	mes "[Henjinne]";
-	mes "This place is much more exciting than I imagined!";
-	mes "Where's the Demon God anyway?";
+moro_vol,118,86,5	script	亨金妮#14306::Henjinne#14306	4_M_RACHMAN1,{
+	mes "[亨金妮]";
+	mes "這裡比我想像的刺激多了！";
+	mes "惡魔神到底在哪裡？";
 	next;
-	mes "[Henjinne]";
-	mes "Neither hide nor hair of him is to be seen.";
-	mes "Mwah hah hah!";
+	mes "[亨金妮]";
+	mes "連他的影子都看不到。";
+	mes "嘿哈哈哈！";
 	close;
 }
 
-moro_vol,116,84,7	script	Arunafeltz Crusader#aru01	4_M_TRAINEE,{
+moro_vol,116,84,7	script	阿魯納十字軍#aru01::Arunafeltz Crusader#aru01	4_M_TRAINEE,{
 	.@ttemp = rand(1,5);
 	if (.@ttemp == 1)
-		npctalk "Everything is Her will.";
+		npctalk "一切都是祂的旨意。";
 	else if (.@ttemp == 2)
-		npctalk "Having to coexist with heretics...";
+		npctalk "必須與異端共存……";
 	else if (.@ttemp == 3)
-		npctalk "I've never seen so many different groups of heretics congregating in one place.";
+		npctalk "我從沒見過這麼多不同派系的異端聚集在同一個地方。";
 	else if (.@ttemp == 4)
-		npctalk "May the Goddess bless you.";
+		npctalk "願女神祝福你。";
 	else
 		npctalk "...";
 	end;
 }
 
-moro_vol,118,83,7	script	Arunafeltz Crusader#aru02	4_F_MASK,{
+moro_vol,118,83,7	script	阿魯納十字軍#aru02::Arunafeltz Crusader#aru02	4_F_MASK,{
 	.@ttemp = rand(1,5);
 	if (.@ttemp == 1)
-		npctalk "Everything is Her will.";
+		npctalk "一切都是祂的旨意。";
 	else if (.@ttemp == 2)
-		npctalk "Having to coexist with heretics...";
+		npctalk "必須與異端共存……";
 	else if (.@ttemp == 3)
-		npctalk "I've never seen so many different groups of heretics congregating in one place.";
+		npctalk "我從沒見過這麼多不同派系的異端聚集在同一個地方。";
 	else if (.@ttemp == 4)
-		npctalk "May the Goddess bless you.";
+		npctalk "願女神祝福你。";
 	else
 		npctalk "...";
 	end;
 }
 
-moro_vol,121,84,1	script	Arunafeltz Crusader#aru03	4_F_TRAINEE,{
+moro_vol,121,84,1	script	阿魯納十字軍#aru03::Arunafeltz Crusader#aru03	4_F_TRAINEE,{
 	.@ttemp = rand(1,5);
 	if (.@ttemp == 1)
-		npctalk "Goddess is watching over us.";
+		npctalk "女神正看顧著我們。";
 	else if (.@ttemp == 2)
-		npctalk "May the Goddess bless you.";
+		npctalk "願女神祝福你。";
 	else if (.@ttemp == 3)
-		npctalk "Everything is Her will.";
+		npctalk "一切都是祂的旨意。";
 	else if (.@ttemp == 4)
-		npctalk "Having to coexist with heretics...";
+		npctalk "必須與異端共存……";
 	else
 		npctalk "...";
 	end;
 }
 
-moro_vol,119,106,3	script	Instructor Jakken#h_sol01	4_M_YOUNGKNIGHT,3,3,{
-	mes "[Instructor Jakken]";
-	mes "When I volunteered for the Ash-Bakum Expedition, I knew this day would come.";
+moro_vol,119,106,3	script	教官傑肯#h_sol01::Instructor Jakken#h_sol01	4_M_YOUNGKNIGHT,3,3,{
+	mes "[教官傑肯]";
+	mes "我自願參加灰燼巴庫遠征時，就知道這一天遲早會來。";
 	next;
-	mes "[Instructor Jakken]";
+	mes "[教官傑肯]";
 	mes "我準備好了。";
-	mes "I'm going to fight to the death for the peace of the Midgard Continent.";
+	mes "為了米德加爾大陸的和平，我將奮戰到底。";
 	next;
-	mes "[Instructor Jakken]";
-	mes "But I'm nervous all the same.";
-	mes "I really need to work on my emotional control. I don't want to scare anyone else.";
+	mes "[教官傑肯]";
+	mes "不過我還是很緊張。";
+	mes "我真的得好好控制情緒，不想再嚇到其他人。";
 	close;
 
 OnTouch:
@@ -1503,43 +1503,43 @@ OnEventOn:
 	.is_enabled = 1;
 	enablenpc "#soltalk02";
 	sleep 3000;
-	npctalk "Jakken: Soldiers, we're from different countries, but we've gathered here for one goal!", "Instructor Jakken#h_sol01";
+	npctalk "傑肯: 士兵們，我們來自不同的國家，但為了同一個目標聚集在這裡！", "教官傑肯#h_sol01";
 	sleep 3000;
-	npctalk "Jakken: Let's show the enemy the power of our union!", "Instructor Jakken#h_sol01";
+	npctalk "傑肯: 讓敵人見識我們團結的力量！", "教官傑肯#h_sol01";
 	sleep 2000;
-	npctalk "Jakken: Commence your march to glory!", "Instructor Jakken#h_sol01";
+	npctalk "傑肯: 出發，向榮耀進軍！", "教官傑肯#h_sol01";
 	sleep 1500;
-	npctalk "At dawn~", "Midgard Alliance Soldier#h_sol02";
-	npctalk "I had a dream~", "Midgard Alliance Soldier#h_sol03";
-	npctalk "Of my home~", "Midgard Alliance Soldier#h_sol04";
+	npctalk "拂曉時分~", "米德加爾聯盟士兵#h_sol02";
+	npctalk "我做了一個夢~", "米德加爾聯盟士兵#h_sol03";
+	npctalk "關於我的家鄉~", "米德加爾聯盟士兵#h_sol04";
 	sleep 3000;
-	npctalk "I put on my jacket~", "Midgard Alliance Soldier#h_sol05";
-	npctalk "Put on my helm~", "Midgard Alliance Soldier#h_sol06";
-	npctalk "Getting ready for a new day~", "Midgard Alliance Soldier#h_sol07";
+	npctalk "我穿上外套~", "米德加爾聯盟士兵#h_sol05";
+	npctalk "戴上頭盔~", "米德加爾聯盟士兵#h_sol06";
+	npctalk "準備迎接新的一天~", "米德加爾聯盟士兵#h_sol07";
 	sleep 3000;
-	npctalk "I'm ready~", "Midgard Alliance Soldier#h_sol08";
-	npctalk "I wear my sword~", "Midgard Alliance Soldier#h_sol09";
-	npctalk "Step out under the morning sun~", "Midgard Alliance Soldier#h_sol10";
+	npctalk "我準備好了~", "米德加爾聯盟士兵#h_sol08";
+	npctalk "我配上我的劍~", "米德加爾聯盟士兵#h_sol09";
+	npctalk "走進晨光之中~", "米德加爾聯盟士兵#h_sol10";
 	sleep 3000;
-	npctalk "I look up~", "Midgard Alliance Soldier#h_sol11";
-	npctalk "I look up~", "Midgard Alliance Soldier#h_sol12";
-	npctalk "Look forward~", "Midgard Alliance Soldier#h_sol13";
+	npctalk "我抬頭仰望~", "米德加爾聯盟士兵#h_sol11";
+	npctalk "我抬頭仰望~", "米德加爾聯盟士兵#h_sol12";
+	npctalk "向前看~", "米德加爾聯盟士兵#h_sol13";
 	sleep 3000;
-	npctalk "Water's pure~", "Midgard Alliance Soldier#h_sol02";
-	npctalk "Mountains are green~", "Midgard Alliance Soldier#h_sol03";
-	npctalk "For my home~", "Midgard Alliance Soldier#h_sol04";
+	npctalk "水清澈~", "米德加爾聯盟士兵#h_sol02";
+	npctalk "山色翠綠~", "米德加爾聯盟士兵#h_sol03";
+	npctalk "為了我的家園~", "米德加爾聯盟士兵#h_sol04";
 	sleep 3000;
-	npctalk "I won't stop~", "Midgard Alliance Soldier#h_sol05";
-	npctalk "Until I defeat", "Midgard Alliance Soldier#h_sol06";
-	npctalk "The Demon God!", "Midgard Alliance Soldier#h_sol07";
+	npctalk "我絕不停下~", "米德加爾聯盟士兵#h_sol05";
+	npctalk "直到我擊敗", "米德加爾聯盟士兵#h_sol06";
+	npctalk "惡魔神！", "米德加爾聯盟士兵#h_sol07";
 	sleep 3000;
-	npctalk "I won't stop~", "Midgard Alliance Soldier#h_sol08";
-	npctalk "Until I defeat", "Midgard Alliance Soldier#h_sol09";
-	npctalk "The Demon God!", "Midgard Alliance Soldier#h_sol10";
+	npctalk "我絕不停下~", "米德加爾聯盟士兵#h_sol08";
+	npctalk "直到我擊敗", "米德加爾聯盟士兵#h_sol09";
+	npctalk "惡魔神！", "米德加爾聯盟士兵#h_sol10";
 	sleep 3000;
-	npctalk "Waaaah-!", "Midgard Alliance Soldier#h_sol11";
-	npctalk "Haaaaah-!", "Midgard Alliance Soldier#h_sol12";
-	npctalk "Haaaaah-!", "Midgard Alliance Soldier#h_sol13";
+	npctalk "哇啊啊-！", "米德加爾聯盟士兵#h_sol11";
+	npctalk "哈啊啊-！", "米德加爾聯盟士兵#h_sol12";
+	npctalk "哈啊啊-！", "米德加爾聯盟士兵#h_sol13";
 	sleep 18000;
 	disablenpc "#soltalk02";
 	.is_enabled = 0;
@@ -1550,49 +1550,49 @@ OnInit:
 	end;
 }
 
-moro_vol,117,104,1	duplicate(Combat Laphine#sol01)	Midgard Alliance Soldier#h_sol02	4_M_MOC_SOLDIER
-moro_vol,117,102,1	duplicate(Combat Laphine#sol01)	Midgard Alliance Soldier#h_sol05	4_M_MOC_SOLDIER
-moro_vol,117,100,1	duplicate(Combat Laphine#sol01)	Midgard Alliance Soldier#h_sol08	4_M_MOC_SOLDIER
-moro_vol,117,98,1	duplicate(Combat Laphine#sol01)	Midgard Alliance Soldier#h_sol11	4_M_MOC_SOLDIER
-moro_vol,119,104,1	duplicate(Combat Laphine#sol01)	Midgard Alliance Soldier#h_sol03	4_M_EIN_SOLDIER
-moro_vol,119,102,1	duplicate(Combat Laphine#sol01)	Midgard Alliance Soldier#h_sol06	4_M_EIN_SOLDIER
-moro_vol,119,100,1	duplicate(Combat Laphine#sol01)	Midgard Alliance Soldier#h_sol09	4_M_LGTGUARD
-moro_vol,119,98,1	duplicate(Combat Laphine#sol01)	Midgard Alliance Soldier#h_sol12	4_M_LGTGUARD
-moro_vol,121,104,1	duplicate(Combat Laphine#sol01)	Midgard Alliance Soldier#h_sol04	4_M_RASWORD
-moro_vol,121,102,1	duplicate(Combat Laphine#sol01)	Midgard Alliance Soldier#h_sol07	4_M_RASWORD
-moro_vol,121,100,1	duplicate(Combat Laphine#sol01)	Midgard Alliance Soldier#h_sol10	4_DST_SOLDIER
-moro_vol,121,98,1	duplicate(Combat Laphine#sol01)	Midgard Alliance Soldier#h_sol13	4_DST_SOLDIER
+moro_vol,117,104,1	duplicate(Combat Laphine#sol01)	米德聯盟士兵#h_sol02::Midgard Alliance Soldier#h_sol02	4_M_MOC_SOLDIER
+moro_vol,117,102,1	duplicate(Combat Laphine#sol01)	米德聯盟士兵#h_sol05::Midgard Alliance Soldier#h_sol05	4_M_MOC_SOLDIER
+moro_vol,117,100,1	duplicate(Combat Laphine#sol01)	米德聯盟士兵#h_sol08::Midgard Alliance Soldier#h_sol08	4_M_MOC_SOLDIER
+moro_vol,117,98,1	duplicate(Combat Laphine#sol01)	米德聯盟士兵#h_sol11::Midgard Alliance Soldier#h_sol11	4_M_MOC_SOLDIER
+moro_vol,119,104,1	duplicate(Combat Laphine#sol01)	米德聯盟士兵#h_sol03::Midgard Alliance Soldier#h_sol03	4_M_EIN_SOLDIER
+moro_vol,119,102,1	duplicate(Combat Laphine#sol01)	米德聯盟士兵#h_sol06::Midgard Alliance Soldier#h_sol06	4_M_EIN_SOLDIER
+moro_vol,119,100,1	duplicate(Combat Laphine#sol01)	米德聯盟士兵#h_sol09::Midgard Alliance Soldier#h_sol09	4_M_LGTGUARD
+moro_vol,119,98,1	duplicate(Combat Laphine#sol01)	米德聯盟士兵#h_sol12::Midgard Alliance Soldier#h_sol12	4_M_LGTGUARD
+moro_vol,121,104,1	duplicate(Combat Laphine#sol01)	米德聯盟士兵#h_sol04::Midgard Alliance Soldier#h_sol04	4_M_RASWORD
+moro_vol,121,102,1	duplicate(Combat Laphine#sol01)	米德聯盟士兵#h_sol07::Midgard Alliance Soldier#h_sol07	4_M_RASWORD
+moro_vol,121,100,1	duplicate(Combat Laphine#sol01)	米德聯盟士兵#h_sol10::Midgard Alliance Soldier#h_sol10	4_DST_SOLDIER
+moro_vol,121,98,1	duplicate(Combat Laphine#sol01)	米德聯盟士兵#h_sol13::Midgard Alliance Soldier#h_sol13	4_DST_SOLDIER
 
-moro_vol,105,97,3	script	Expedition Assassin#ass01	4_M_ACROSS,{
-	mes "[Expedition Assassin]";
-	mes "A new mission will be announced soon.";
-	mes "Our objective is to locate the Demon God.";
+moro_vol,105,97,3	script	遠征刺客#ass01::Expedition Assassin#ass01	4_M_ACROSS,{
+	mes "[遠征刺客]";
+	mes "新的任務很快就會公布。";
+	mes "我們的目標是找出惡魔神的所在。";
 	next;
-	mes "[Expedition Assassin]";
-	mes "Let me check the intel our predecessors have left for us.";
+	mes "[遠征刺客]";
+	mes "讓我看看前人留下的情報。";
 	next;
-	mes "[Expedition Assassin]";
+	mes "[遠征刺客]";
 	mes "...";
-	mes "It's rude to eavesdrop on others, even if they're your colleagues.";
+	mes "就算是同事，偷聽別人說話也是很失禮的。";
 	close;
 }
 
-moro_vol,103,96,5	script	Expedition Assassin#ass02	4_F_ACROSS,{
-	mes "[Expedition Assassin]";
-	mes "This area... Well,";
-	mes "I'll check it out later.";
+moro_vol,103,96,5	script	遠征刺客#ass02::Expedition Assassin#ass02	4_F_ACROSS,{
+	mes "[遠征刺客]";
+	mes "這個區域……嗯，";
+	mes "我待會再去查看。";
 	next;
-	mes "[Expedition Assassin]";
-	mes "Sigh.";
-	mes "Can't you see we're having a meeting? Please leave.";
+	mes "[遠征刺客]";
+	mes "唉。";
+	mes "你沒看到我們正在開會嗎？請離開。";
 	close;
 }
 
-moro_vol,105,95,1	script	Expedition Assassin#ass03	4_TOWER_15,{
-	mes "[Expedition Assassin]";
+moro_vol,105,95,1	script	遠征刺客#ass03::Expedition Assassin#ass03	4_TOWER_15,{
+	mes "[遠征刺客]";
 	mes "... ";
-	mes "Well, I'm at the bottom of the food chain.";
-	mes "I just watch what my seniors do.";
+	mes "唉，我可是食物鏈的最底層。";
+	mes "我只是看著前輩們怎麼做。";
 	mes "就這樣。";
 	close;
 }
@@ -1600,9 +1600,9 @@ moro_vol,105,95,1	script	Expedition Assassin#ass03	4_TOWER_15,{
 moro_vol,114,128,1	script	大陸守衛#line01::Continental Guard#line01	4_M_MOCASS1,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "It is dangerous past this point. Please move back.";
+		npctalk "再往前很危險，請往後退。";
 	else if (.@ttemp == 2)
-		npctalk "All clear.";
+		npctalk "安全，沒問題。";
 	else
 		npctalk "請小心。";
 	end;
@@ -1619,14 +1619,14 @@ moro_vol,122,130,7	duplicate(Continental Guard#line01)	大陸守衛#line03::Cont
 moro_vol,125,129,7	duplicate(Continental Guard#line01)	大陸守衛#line04::Continental Guard#line04	4_M_MOCASS1
 moro_vol,127,127,7	duplicate(Continental Guard#line01)	大陸守衛#line05::Continental Guard#line05	4_M_MOCASS2
 
-moro_vol,135,123,1	script	Midgard Alliance Soldier#line21	4_M_MONK,2,2,{
+moro_vol,135,123,1	script	米德聯盟士兵#line21::Midgard Alliance Soldier#line21	4_M_MONK,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "Those Continentals are damn good fighters.";
+		npctalk "那些大陸人還真是厲害的戰士。";
 	else if (.@ttemp == 2)
-		npctalk "Those Arunafeltz knuckleheads, why don't they come forward?";
+		npctalk "那些阿魯納費爾茲的蠢貨，怎麼不上前來？";
 	else
-		npctalk "I can take down any of you!";
+		npctalk "你們任何一個我都能打倒！";
 	end;
 
 OnTouch:
@@ -1636,36 +1636,36 @@ OnTouchNPC:
 	end;
 }
 
-moro_vol,139,124,1	script	Midgard Alliance Soldier#line22	4_F_CRU,{
+moro_vol,139,124,1	script	米德聯盟士兵#line22::Midgard Alliance Soldier#line22	4_F_CRU,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
 		npctalk "...";
 	else if (.@ttemp == 2)
 		npctalk "請小心。";
 	else
-		npctalk "They don't stop coming.";
+		npctalk "他們源源不絕地來。";
 	end;
 }
 
-moro_vol,143,124,1	script	Midgard Alliance Soldier#line23	4_M_JOB_WIZARD,{
+moro_vol,143,124,1	script	米德聯盟士兵#line23::Midgard Alliance Soldier#line23	4_M_JOB_WIZARD,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "The Guardians are making things easier, but...";
+		npctalk "守護者們讓事情輕鬆了一些，但是……";
 	else if (.@ttemp == 2)
-		npctalk "Step back.";
+		npctalk "後退。";
 	else
 		npctalk "唉……";
 	end;
 }
 
-moro_vol,147,124,7	script	Midgard Alliance Soldier#line24	4_M_MOC_SOLDIER,2,2,{
+moro_vol,147,124,7	script	米德聯盟士兵#line24::Midgard Alliance Soldier#line24	4_M_MOC_SOLDIER,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
 		npctalk "...";
 	else if (.@ttemp == 2)
 		npctalk "請小心。";
 	else
-		npctalk "Please step back.";
+		npctalk "請後退。";
 	end;
 
 OnTouch:
@@ -1675,34 +1675,34 @@ OnTouchNPC:
 	end;
 }
 
-moro_vol,150,121,7	script	Midgard Alliance Soldier#line25	4_M_MOC_SOLDIER,{
+moro_vol,150,121,7	script	米德聯盟士兵#line25::Midgard Alliance Soldier#line25	4_M_MOC_SOLDIER,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "Wh-where's the next relief?!";
+		npctalk "支、支援什麼時候來？！";
 	else if (.@ttemp == 2)
-		npctalk "Why are we the only ones on the front line?";
+		npctalk "為什麼只有我們守在最前線？";
 	else
-		npctalk "D-don't come closer!";
+		npctalk "別、別靠近！";
 	end;
 }
 
-moro_vol,151,119,7	script	Midgard Alliance Soldier#line26	4_M_EIN_SOLDIER,{
+moro_vol,151,119,7	script	米德聯盟士兵#line26::Midgard Alliance Soldier#line26	4_M_EIN_SOLDIER,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "Stop acting like a hero and move back!";
+		npctalk "別逞英雄了，快退後！";
 	else if (.@ttemp == 2)
-		npctalk "I'm always on guard duty wherever I go.";
+		npctalk "不管去哪裡，我總是在站崗。";
 	else
-		npctalk "I can get through the night. I must.";
+		npctalk "我撐得過這一夜，必須撐下去。";
 	end;
 }
 
-moro_vol,153,116,7	script	Midgard Alliance Soldier#line27	4_M_EIN_SOLDIER,2,2,{
+moro_vol,153,116,7	script	米德聯盟士兵#line27::Midgard Alliance Soldier#line27	4_M_EIN_SOLDIER,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
 		npctalk "...";
 	else if (.@ttemp == 2)
-		npctalk "They don't stop coming.";
+		npctalk "他們源源不絕地來。";
 	else
 		npctalk "請小心。";
 	end;
@@ -1714,14 +1714,14 @@ OnTouchNPC:
 	end;
 }
 
-moro_vol,118,115,1	script	Midgard Alliance Soldier#line31	4_M_JOB_WIZARD,2,2,{
+moro_vol,118,115,1	script	米德聯盟士兵#line31::Midgard Alliance Soldier#line31	4_M_JOB_WIZARD,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "I think I've chosen the wrong team...";
+		npctalk "我想我選錯陣營了……";
 	else if (.@ttemp == 2)
-		npctalk "I'm tired of hearing them yelling heretics.";
+		npctalk "我受夠聽他們吼著異端了。";
 	else
-		npctalk "Ugh, how did I get myself into this mess?";
+		npctalk "唉，我怎麼會攪進這種麻煩裡？";
 	end;
 
 OnTouch:
@@ -1731,25 +1731,25 @@ OnTouchNPC:
 	end;
 }
 
-moro_vol,121,115,1	script	Midgard Alliance Soldier#line32	4_M_EIN_SOLDIER,{
+moro_vol,121,115,1	script	米德聯盟士兵#line32::Midgard Alliance Soldier#line32	4_M_EIN_SOLDIER,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "...Loud.";
+		npctalk "……好吵。";
 	else if (.@ttemp == 2)
-		npctalk "The front lines are most dangerous.";
+		npctalk "前線最危險。";
 	else
 		npctalk "唉……";
 	end;
 }
 
-moro_vol,124,116,1	script	Midgard Alliance Soldier#line33	4_M_EIN_SOLDIER,2,2,{
+moro_vol,124,116,1	script	米德聯盟士兵#line33::Midgard Alliance Soldier#line33	4_M_EIN_SOLDIER,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "All clear.";
+		npctalk "安全，沒問題。";
 	else if (.@ttemp == 2)
-		npctalk "I'll protect this defense line.";
+		npctalk "我會守住這道防線。";
 	else
-		npctalk "Watch out!";
+		npctalk "小心！";
 	end;
 
 OnTouch:
@@ -1759,45 +1759,45 @@ OnTouchNPC:
 	end;
 }
 
-moro_vol,128,116,1	script	Midgard Alliance Soldier#line34	4_M_EIN_SOLDIER,{
+moro_vol,128,116,1	script	米德聯盟士兵#line34::Midgard Alliance Soldier#line34	4_M_EIN_SOLDIER,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "I wasn't napping!";
+		npctalk "我可沒有打瞌睡！";
 	else if (.@ttemp == 2)
-		npctalk "...Yeah, yeah... Everything's clear, sir!";
+		npctalk "……是是……一切都安全，長官！";
 	else
-		npctalk "Yeah, yeah, of course.";
+		npctalk "是是，當然。";
 	end;
 }
 
-moro_vol,131,115,7	script	Midgard Alliance Soldier#line35	4_M_RASWORD,{
+moro_vol,131,115,7	script	米德聯盟士兵#line35::Midgard Alliance Soldier#line35	4_M_RASWORD,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "I can't believe I'm fighting beside heretics.";
+		npctalk "真不敢相信我竟然要跟異端並肩作戰。";
 	else if (.@ttemp == 2)
 		npctalk "...";
 	else
-		npctalk "May the Goddess bless you.";
+		npctalk "願女神祝福你。";
 	end;
 }
 
-moro_vol,133,113,7	script	Midgard Alliance Soldier#line36	4_DST_SOLDIER,{
+moro_vol,133,113,7	script	米德聯盟士兵#line36::Midgard Alliance Soldier#line36	4_DST_SOLDIER,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "*Yawn* Where's the next relief?";
+		npctalk "*打呵欠* 下一批支援在哪？";
 	else if (.@ttemp == 2)
-		npctalk "Hey, stop loitering. You're going to get yourself killed.";
+		npctalk "喂，別閒晃了，你會把自己害死的。";
 	else
-		npctalk "...This is tiring.";
+		npctalk "……真累人。";
 	end;
 }
 
-moro_vol,136,111,7	script	Midgard Alliance Soldier#line37	4_M_RASWORD,2,2,{
+moro_vol,136,111,7	script	米德聯盟士兵#line37::Midgard Alliance Soldier#line37	4_M_RASWORD,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "Please step back.";
+		npctalk "請後退。";
 	else if (.@ttemp == 2)
-		npctalk "Our defense line is intact.";
+		npctalk "我們的防線完好無損。";
 	else
 		npctalk "請小心。";
 	end;
@@ -1809,105 +1809,105 @@ OnTouchNPC:
 	end;
 }
 
-moro_vol,138,108,7	script	Midgard Alliance Soldier#line38	4_DST_SOLDIER,{
+moro_vol,138,108,7	script	米德聯盟士兵#line38::Midgard Alliance Soldier#line38	4_DST_SOLDIER,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "May the Goddess bless you.";
+		npctalk "願女神祝福你。";
 	else if (.@ttemp == 2)
-		npctalk "Keep your eyes forward! Everything's clear!";
+		npctalk "眼睛盯緊前方！一切安全！";
 	else
-		npctalk "All clear!";
+		npctalk "一切安全！";
 	end;
 }
 
-moro_vol,134,83,5	script	Jeruth Vehanus#ep143	4_MAN_JERUTOO,{
-	mes "[Vehanus]";
-	mes "You came here, too.";
-	mes "You can communicate with me without the ring, I see.";
+moro_vol,134,83,5	script	耶魯斯韋哈努斯#ep143::Jeruth Vehanus#ep143	4_MAN_JERUTOO,{
+	mes "[維哈努斯]";
+	mes "你也來到這裡了。";
+	mes "我看你不用戒指也能跟我溝通了。";
 	next;
-	mes "[Vehanus]";
-	mes "Now I wonder how far Bifrost's grace reaches.";
-	mes "Maybe I should use this opportunity to get to know the Laphines.";
+	mes "[維哈努斯]";
+	mes "現在我很好奇比夫羅斯特的恩寵能延伸到多遠。";
+	mes "或許我該趁這個機會認識一下拉菲恩族。";
 	next;
-	mes "[Vehanus]";
-	mes "I admire Hesranta's bravery.";
-	mes "He's come to the battlefield, willing to ally with our enemy Laphines.";
+	mes "[維哈努斯]";
+	mes "我很佩服赫斯蘭塔的勇氣。";
+	mes "他願意來到戰場，與我們的敵人拉菲恩族結盟。";
 	next;
-	mes "[Vehanus]";
-	mes "I really hope we won't have to fight Laphines in here.";
+	mes "[維哈努斯]";
+	mes "我真希望我們不必在這裡與拉菲恩族交戰。";
 	close;
 }
 
-moro_vol,138,84,3	script	Adjutant Tiera#ep143	4_MAN_NITT,{
-	mes "[Tiera]";
-	mes "The Jeruths and Nits in Dicastes Diel may have acquiesced Hesranta's plea,";
+moro_vol,138,84,3	script	副官緹耶拉#ep143::Adjutant Tiera#ep143	4_MAN_NITT,{
+	mes "[堤耶拉]";
+	mes "迪卡斯特斯迪爾的傑露斯族與尼特族或許已經答應了赫斯蘭塔的請求，";
 	next;
-	mes "[Tiera]";
-	mes "but I'm completely with him on this.";
-	mes "Our enemies are our friends in the face of a common enemy: Demon God.";
+	mes "[堤耶拉]";
+	mes "但我完全站在他這邊。";
+	mes "面對共同的敵人: 惡魔神，我們的敵人也成了朋友。";
 	next;
-	mes "[Tiera]";
-	mes "We can be cowards and let others fight the fight for us, sure,";
-	mes "but what if they lose? We'll go down with them, and that'll be on us.";
+	mes "[堤耶拉]";
+	mes "我們可以當懦夫，讓別人替我們打這場仗，沒錯，";
+	mes "但萬一他們輸了呢？我們也會跟著一起完蛋，那就是我們的責任。";
 	next;
-	mes "[Tiera]";
-	mes "The same goes for you, Humans.";
-	mes "We fight this fight to win.";
+	mes "[堤耶拉]";
+	mes "你們人類也一樣。";
+	mes "這場仗我們要贏。";
 	close;
 }
 
-moro_vol,134,87,1	script	Advance Captain Avaranc#ep143	4_MAN_GALTUN,{
-	mes "[Avaranche]";
-	mes "My unit consists of the best of the best Gartens.";
-	mes "Human warrior,";
-	mes "I've waited for this day to fight beside you.";
+moro_vol,134,87,1	script	阿瓦蘭克隊長#ep143::Advance Captain Avaranc#ep143	4_MAN_GALTUN,{
+	mes "[阿瓦蘭契]";
+	mes "我的部隊是由加爾頓族中最頂尖的戰士組成。";
+	mes "人類戰士，";
+	mes "我一直在等這一天，能與你並肩作戰。";
 	next;
-	mes "[Avaranche]";
-	mes "I swear on my life that I won't stop fighting until the Demon God is defeated!";
+	mes "[阿瓦蘭契]";
+	mes "我以性命起誓，不擊敗惡魔神絕不停止戰鬥！";
 	close;
 }
 
 moro_vol,131,86,1	script	Dicastes Garten#gal01	4_MAN_GALTUN1,{
-	mes "[Dicastes Garten]";
-	mes "When can we fight?";
-	mes "When?";
+	mes "[迪卡斯特斯加爾頓]";
+	mes "我們什麼時候開打？";
+	mes "什麼時候？";
 	next;
-	mes "[Dicastes Garten]";
-	mes "I can't believe I have to fight alongside those accursed Laphines.";
-	mes "I still remember what they did to us in the last battle.";
+	mes "[迪卡斯特斯加爾頓]";
+	mes "真不敢相信我得跟那些該死的拉菲恩族並肩作戰。";
+	mes "我還記得上次戰役他們對我們做的事。";
 	close;
 }
 
 moro_vol,138,87,7	script	Dicastes Garten#gal02	4_MAN_GALTUN1,{
-	mes "[Dicastes Garten]";
-	mes "My duty is to protect Jeruth Hesranta.";
-	mes "You'd better step back,";
-	mes "or I'll consider you my enemy.";
+	mes "[迪卡斯特斯加爾頓]";
+	mes "我的職責是保護傑露斯·赫斯蘭塔。";
+	mes "你最好退後，";
+	mes "否則我就把你當作敵人。";
 	close;
 }
 
-moro_vol,140,97,1	duplicate(Combat Laphine#sol01)	Dicastes Elite#gal11	4_MAN_GALTUN1
-moro_vol,143,97,1	duplicate(Combat Laphine#sol01)	Dicastes Elite#gal12	4_MAN_GALTUN1
-moro_vol,146,97,1	duplicate(Combat Laphine#sol01)	Dicastes Elite#gal13	4_MAN_GALTUN1
-moro_vol,140,94,1	duplicate(Combat Laphine#sol01)	Dicastes Elite#gal14	4_MAN_GALTUN
-moro_vol,143,94,1	duplicate(Combat Laphine#sol01)	Dicastes Elite#gal15	4_MAN_GALTUN
-moro_vol,146,94,1	duplicate(Combat Laphine#sol01)	Dicastes Elite#gal16	4_MAN_GALTUN
+moro_vol,140,97,1	duplicate(Combat Laphine#sol01)	迪卡斯特精英#gal11::Dicastes Elite#gal11	4_MAN_GALTUN1
+moro_vol,143,97,1	duplicate(Combat Laphine#sol01)	迪卡斯特精英#gal12::Dicastes Elite#gal12	4_MAN_GALTUN1
+moro_vol,146,97,1	duplicate(Combat Laphine#sol01)	迪卡斯特精英#gal13::Dicastes Elite#gal13	4_MAN_GALTUN1
+moro_vol,140,94,1	duplicate(Combat Laphine#sol01)	迪卡斯特精英#gal14::Dicastes Elite#gal14	4_MAN_GALTUN
+moro_vol,143,94,1	duplicate(Combat Laphine#sol01)	迪卡斯特精英#gal15::Dicastes Elite#gal15	4_MAN_GALTUN
+moro_vol,146,94,1	duplicate(Combat Laphine#sol01)	迪卡斯特精英#gal16::Dicastes Elite#gal16	4_MAN_GALTUN
 
-moro_vol,150,86,1	duplicate(Combat Laphine#sol01)	Dicastes Elite#gal21	4_MAN_GALTUN1
-moro_vol,153,86,1	duplicate(Combat Laphine#sol01)	Dicastes Elite#gal22	4_MAN_GALTUN1
-moro_vol,156,86,1	duplicate(Combat Laphine#sol01)	Dicastes Elite#gal23	4_MAN_GALTUN1
-moro_vol,150,83,1	duplicate(Combat Laphine#sol01)	Dicastes Elite#gal24	4_MAN_GALTUN
-moro_vol,153,83,1	duplicate(Combat Laphine#sol01)	Dicastes Elite#gal25	4_MAN_GALTUN
-moro_vol,156,83,1	duplicate(Combat Laphine#sol01)	Dicastes Elite#gal26	4_MAN_GALTUN
+moro_vol,150,86,1	duplicate(Combat Laphine#sol01)	迪卡斯特精英#gal21::Dicastes Elite#gal21	4_MAN_GALTUN1
+moro_vol,153,86,1	duplicate(Combat Laphine#sol01)	迪卡斯特精英#gal22::Dicastes Elite#gal22	4_MAN_GALTUN1
+moro_vol,156,86,1	duplicate(Combat Laphine#sol01)	迪卡斯特精英#gal23::Dicastes Elite#gal23	4_MAN_GALTUN1
+moro_vol,150,83,1	duplicate(Combat Laphine#sol01)	迪卡斯特精英#gal24::Dicastes Elite#gal24	4_MAN_GALTUN
+moro_vol,153,83,1	duplicate(Combat Laphine#sol01)	迪卡斯特精英#gal25::Dicastes Elite#gal25	4_MAN_GALTUN
+moro_vol,156,83,1	duplicate(Combat Laphine#sol01)	迪卡斯特精英#gal26::Dicastes Elite#gal26	4_MAN_GALTUN
 
-moro_vol,139,104,1	script	Manuk Defender#line01	4_MAN_GALTUN1,{
+moro_vol,139,104,1	script	魔怒克守衛#line01::Manuk Defender#line01	4_MAN_GALTUN1,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
 		npctalk "哼！";
 	else if (.@ttemp == 2)
-		npctalk "All clear.";
+		npctalk "安全，沒問題。";
 	else
-		npctalk "Back off, Humanling!";
+		npctalk "退後，人類小鬼！";
 	end;
 
 OnTouch:
@@ -1917,27 +1917,27 @@ OnTouchNPC:
 	end;
 }
 
-moro_vol,143,106,1	duplicate(Manuk Defender#line01)	Manuk Defender#line02	4_MAN_GALTUN1,2,2
+moro_vol,143,106,1	duplicate(Manuk Defender#line01)	魔怒克守衛#line02::Manuk Defender#line02	4_MAN_GALTUN1,2,2
 
-moro_vol,147,108,1	script	Manuk Defender#line03	4_MAN_GALTUN1,{
+moro_vol,147,108,1	script	魔怒克守衛#line03::Manuk Defender#line03	4_MAN_GALTUN1,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "Do you hear some bugs buzzing?";
+		npctalk "你有聽到蟲子嗡嗡叫的聲音嗎？";
 	else if (.@ttemp == 2)
-		npctalk "All clear.";
+		npctalk "安全，沒問題。";
 	else
 		npctalk "...";
 	end;
 }
 
-moro_vol,152,109,1	script	Manuk Defender#line04	4_MAN_GALTUN1,2,2,{
+moro_vol,152,109,1	script	魔怒克守衛#line04::Manuk Defender#line04	4_MAN_GALTUN1,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
 		npctalk "哼！";
 	else if (.@ttemp == 2)
-		npctalk "All clear.";
+		npctalk "安全，沒問題。";
 	else
-		npctalk "Back off, Humanling!";
+		npctalk "退後，人類小鬼！";
 	end;
 
 OnTouch:
@@ -1947,25 +1947,25 @@ OnTouchNPC:
 	end;
 }
 
-moro_vol,156,110,1	script	Manuk Defender#line05	4_MAN_GALTUN1,{
+moro_vol,156,110,1	script	魔怒克守衛#line05::Manuk Defender#line05	4_MAN_GALTUN1,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "Don't compare us to those winged jerks!";
+		npctalk "別把我們跟那些長翅膀的混蛋相提並論！";
 	else if (.@ttemp == 2)
-		npctalk "All clear.";
+		npctalk "安全，沒問題。";
 	else
-		npctalk "Why does it have to be the Laphines?";
+		npctalk "為什麼偏偏是拉菲恩族？";
 	end;
 }
 
-moro_vol,160,110,7	script	Manuk Defender#line06	4_MAN_GALTUN1,2,2,{
+moro_vol,160,110,7	script	魔怒克守衛#line06::Manuk Defender#line06	4_MAN_GALTUN1,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
 		npctalk "哼！";
 	else if (.@ttemp == 2)
-		npctalk "All clear.";
+		npctalk "安全，沒問題。";
 	else
-		npctalk "Back off, Humanling!";
+		npctalk "退後，人類小鬼！";
 	end;
 
 OnTouch:
@@ -1975,25 +1975,25 @@ OnTouchNPC:
 	end;
 }
 
-moro_vol,164,109,7	script	Manuk Defender#line07	4_MAN_GALTUN1,{
+moro_vol,164,109,7	script	魔怒克守衛#line07::Manuk Defender#line07	4_MAN_GALTUN1,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
 		npctalk "哼！";
 	else if (.@ttemp == 2)
-		npctalk "All clear.";
+		npctalk "安全，沒問題。";
 	else
-		npctalk "We're superior to the Laphines.";
+		npctalk "我們比拉菲恩族優秀。";
 	end;
 }
 
-moro_vol,167,107,7	script	Manuk Defender#line08	4_MAN_GALTUN1,2,2,{
+moro_vol,167,107,7	script	魔怒克守衛#line08::Manuk Defender#line08	4_MAN_GALTUN1,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
 		npctalk "哼！";
 	else if (.@ttemp == 2)
-		npctalk "All clear.";
+		npctalk "安全，沒問題。";
 	else
-		npctalk "Back off, Humanling!";
+		npctalk "退後，人類小鬼！";
 	end;
 
 OnTouch:
@@ -2003,25 +2003,25 @@ OnTouchNPC:
 	end;
 }
 
-moro_vol,169,104,7	script	Manuk Defender#line09	4_MAN_GALTUN1,{
+moro_vol,169,104,7	script	魔怒克守衛#line09::Manuk Defender#line09	4_MAN_GALTUN1,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
 		npctalk "哼！";
 	else if (.@ttemp == 2)
-		npctalk "Too loud.";
+		npctalk "太吵了。";
 	else
-		npctalk "Back off, Humanling!";
+		npctalk "退後，人類小鬼！";
 	end;
 }
 
-moro_vol,171,100,5	script	Manuk Defender#line10	4_MAN_GALTUN1,2,2,{
+moro_vol,171,100,5	script	魔怒克守衛#line10::Manuk Defender#line10	4_MAN_GALTUN1,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
 		npctalk "哼！";
 	else if (.@ttemp == 2)
-		npctalk "All clear.";
+		npctalk "安全，沒問題。";
 	else
-		npctalk "Back off, Humanling!";
+		npctalk "退後，人類小鬼！";
 	end;
 
 OnTouch:
@@ -2031,25 +2031,25 @@ OnTouchNPC:
 	end;
 }
 
-moro_vol,172,95,5	script	Manuk Defender#line11	4_MAN_GALTUN1,{
+moro_vol,172,95,5	script	魔怒克守衛#line11::Manuk Defender#line11	4_MAN_GALTUN1,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
 		npctalk "哼！";
 	else if (.@ttemp == 2)
-		npctalk "All clear.";
+		npctalk "安全，沒問題。";
 	else
-		npctalk "We Gartens never retreat!";
+		npctalk "我們加爾頓族絕不後退！";
 	end;
 }
 
-moro_vol,173,89,5	script	Manuk Defender#line12	4_MAN_GALTUN1,2,2,{
+moro_vol,173,89,5	script	魔怒克守衛#line12::Manuk Defender#line12	4_MAN_GALTUN1,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
 		npctalk "哼！";
 	else if (.@ttemp == 2)
-		npctalk "All clear.";
+		npctalk "安全，沒問題。";
 	else
-		npctalk "Back off, Humanling!";
+		npctalk "退後，人類小鬼！";
 	end;
 
 OnTouch:
@@ -2061,48 +2061,48 @@ OnTouchNPC:
 
 
 // Dimensional Travel Quest
-morocc,138,238,4	script	Piled Rags#ep14bs	4_M_DIEMAN,{
+morocc,138,238,4	script	堆積破布#ep14bs::Piled Rags#ep14bs	4_M_DIEMAN,{
 	if (BaseLevel < 140) {
-		mes "- There is a pile of dirty rags. -";
+		mes "- 有一堆髒破布。 -";
 		close;
 	}
 	if (checkweight(1119,3) == 0) {
-		mes "- You are carrying too many items to proceed with the quest. -";
+		mes "- 你攜帶的道具太多，無法繼續進行任務。 -";
 		close;
 	}
 	if (ep14_3_newerabs == 0) {
-		mes "- There is a pile of dirty rags. -";
+		mes "- 有一堆髒破布。 -";
 		next;
-		if (select( "放著不管。", "Remove it." ) == 1) {
-			mes "- You left the pile of dirty rags where it is. -";
+		if (select( "放著不管。", "移開它。" ) == 1) {
+			mes "- 你把那堆髒破布留在原地。 -";
 			close;
 		}
 		mes "[???]";
 		mes "唔……";
 		next;
-		mes "- A moan is heard underneath the pile of rags. -";
+		mes "- 破布堆下傳來一陣呻吟聲。 -";
 		next;
-		if (select( "執行。", "Shake the rags." ) == 1) {
-			mes "- Startled, you ran. -";
+		if (select( "執行。", "抖一抖破布。" ) == 1) {
+			mes "- 你嚇得拔腿就跑。 -";
 			close;
 		}
 		mes "[" + strcharinfo(0) + "]";
 		mes "嘿，";
-		mes "wake up!";
+		mes "醒醒！";
 		next;
 		mes "[???]";
 		mes "唔……";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "Are you all right?";
+		mes "你還好嗎？";
 		next;
 		mes "[???]";
 		mes "唔……";
-		mes "I n-need food...";
-		mes "I could even eat ^0000FFMonster's Feed^000000. Please...";
+		mes "我、我需要食物……";
+		mes "我連 ^0000FF怪物飼料^000000 都吃得下。拜託……";
 		next;
-		mes "- Again he lost consciousness, exhausted just from talking.";
-		mes "You should feed him ^0000FFMonster's Feed^000000. -";
+		mes "- 他又因為說話太累而昏了過去。";
+		mes "你應該餵他^0000FF魔物飼料^000000。 -";
 		setquest 11349;// Dimensional Travel
 		ep14_3_newerabs = 1;
 		close;
@@ -2110,21 +2110,21 @@ morocc,138,238,4	script	Piled Rags#ep14bs	4_M_DIEMAN,{
 	if (ep14_3_newerabs < 5) {
 		if (ep14_3_newerabs == 1) {
 			if (countitem(528) < 1) {
-				mes "- Again he lost consciousness, exhausted just from talking.";
-				mes "You should feed him ^0000FFMonster's Feed^000000. -";
+				mes "- 他又因為說話太累而昏了過去。";
+				mes "你應該餵他^0000FF魔物飼料^000000。 -";
 				close;
 			}
 			mes "[???]";
 			mes "唔……";
 			next;
-			if (select( "放著不管。", "Give Monster's Feed." ) == 1) {
+			if (select( "放著不管。", "給予魔物飼料。" ) == 1) {
 				mes "[???]";
-				mes "Ugh... H-help...";
+				mes "唔……救、救命……";
 				close;
 			}
 			mes "[???]";
 			mes "唔……";
-			mes "Yuck!";
+			mes "噁！";
 			cutin "ep143_tadir.bmp",2;
 			delitem 528,1;// Monster's Feed
 			completequest 11349;// Dimensional Travel
@@ -2132,8 +2132,8 @@ morocc,138,238,4	script	Piled Rags#ep14bs	4_M_DIEMAN,{
 			ep14_3_newerabs = 2;
 			next;
 			mes "[???]";
-			mes "*Chomp Chomp*";
-			mes "*Barf*";
+			mes "*咀嚼咀嚼*";
+			mes "*嘔*";
 			next;
 			mes "[???]";
 			mes "呼……";
@@ -2141,63 +2141,63 @@ morocc,138,238,4	script	Piled Rags#ep14bs	4_M_DIEMAN,{
 		}
 		if (ep14_3_newerabs == 2) {
 			mes "[" + strcharinfo(0) + "]";
-			mes "Are you all right?";
+			mes "你還好嗎？";
 			next;
 			mes "[???]";
-			mes "*Retch* Oh, yes, thanks to you.";
-			mes "*Retch*";
+			mes "*乾嘔* 喔，對了，多虧了你。";
+			mes "*乾嘔*";
 			cutin "ep143_tadir.bmp",2;
 			next;
 			mes "[???]";
-			mes "I thought I was going to die. I'm lucky to be alive.";
+			mes "我還以為自己會死。能活下來真是幸運。";
 			next;
 			mes "[???]";
-			mes "I've been having nothing but bad luck lately.";
+			mes "我最近真是倒楣透了。";
 			next;
 			mes "[???]";
-			mes "I got sucked into some strange place, separated from the rest of my party. The place I arrived was terrible. There was no sign of Human habitation.";
+			mes "我被吸進了一個奇怪的地方，和隊伍走散了。我到達的那個地方糟透了，完全看不到人類居住的痕跡。";
 			next;
 			mes "[???]";
-			mes "It's a miracle that I'm here.";
+			mes "我能活到現在簡直是奇蹟。";
 			next;
 			mes "[???]";
-			mes "I lucked out.";
-			mes "Still alive.";
+			mes "我算是走運。";
+			mes "還活著。";
 			mes "哈哈哈！";
 			next;
 			mes "[???]";
 			mes "喔！";
-			mes "Where are my manners? I forgot to thank you properly.";
+			mes "我真沒禮貌，居然忘了好好向你道謝。";
 			next;
 			mes "[???]";
 			mes "謝謝";
-			mes "for feeding me, though the feed tasted horrible.";
+			mes "謝謝你餵我，雖然飼料難吃得要命。";
 			next;
 			mes "[???]";
-			mes "I'm glad I didn't die on the street. The world is still a beautiful place.";
-			mes "I'm moved.";
+			mes "很慶幸我沒有死在街頭。這個世界依然很美好。";
+			mes "我好感動。";
 			next;
 			mes "[塔瑪林]";
-			mes "My name is ^0000FFTamarin^000000.";
-			mes "I'm an adventurer, and no, this isn't my preferred attire.";
+			mes "我叫^0000FF塔瑪林^000000。";
+			mes "我是冒險者，而且，這身打扮不是我的本意。";
 			next;
-			select("Introduce yourself.");
+			select("自我介紹。");
 			mes "[塔瑪林]";
-			mes "" + strcharinfo(0) + ", huh? That's a good name.";
+			mes "" + strcharinfo(0) + "，是嗎？好名字。";
 			next;
 		}
 		if (ep14_3_newerabs <= 3) {
 			mes "[塔瑪林]";
 			mes "啊，";
-			mes "I'd better do something before people start asking if I'm homeless.";
+			mes "在大家開始問我是不是流浪漢之前，我最好做點什麼。";
 			cutin "ep143_tadir.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "Do you know a place where I can wash myself?";
+			mes "你知道哪裡可以讓我洗個澡嗎？";
 			next;
-			if (select( "Tell him the place.", "Say you don't know." ) == 2) {
+			if (select( "告訴他地點。", "說你不知道。" ) == 2) {
 				mes "[塔瑪林]";
-				mes "Water is scarce in the desert, huh?";
+				mes "沙漠裡的水果然很稀少，對吧？";
 				ep14_3_newerabs = 3;
 				close3;
 			}
@@ -2205,26 +2205,26 @@ morocc,138,238,4	script	Piled Rags#ep14bs	4_M_DIEMAN,{
 		if (ep14_3_newerabs <= 4) {
 			mes "[塔瑪林]";
 			mes "啊，";
-			mes "do you mean the ^0000FFoasis near the northwestern sphinx^000000?";
+			mes "你是說^0000FF西北方獅身人面像旁的綠洲^000000嗎？";
 			cutin "ep143_tadir.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "I've been in Morocc, but this is my first time inside the village.";
-			mes "I remember hearing that the place holds special water.";
+			mes "我來過夢羅克，但這是我第一次進入村子裡面。";
+			mes "我記得聽說那裡有特別的水。";
 			next;
 			mes "[塔瑪林]";
-			mes "I feel excited to wash myself with the special water!";
-			mes "I'm going to the oasis now. Could you wait for me?";
+			mes "能用那特別的水洗澡，我好興奮！";
+			mes "我現在要去綠洲了，你能等我一下嗎？";
 			next;
 			mes "[塔瑪林]";
-			mes "It'll take a while before I feel strong again, but at least I can walk on my own.";
+			mes "要過一陣子我才能恢復體力，不過至少我能自己走路了。";
 			mes "哈哈哈！";
 			next;
-			if (select( "Watch him.", "Accompany him." ) == 1) {
+			if (select( "看著他。", "陪他一起去。" ) == 1) {
 				mes "[塔瑪林]";
-				mes "(Braces himself and inhales.)";
+				mes "（振作精神，深吸一口氣。）";
 				mes "等等，等等。";
-				mes "I can stand up on my own.";
+				mes "我能自己站起來了。";
 				next;
 				mes "[塔瑪林]";
 				mes "等等，等等！";
@@ -2232,11 +2232,11 @@ morocc,138,238,4	script	Piled Rags#ep14bs	4_M_DIEMAN,{
 				close3;
 			}
 			mes "[塔瑪林]";
-			mes "How kind of you!";
-			mes "The world is still an okay place to live.";
+			mes "你真是太好心了！";
+			mes "這個世界仍然是個還不錯的地方。";
 			next;
 			mes "[塔瑪林]";
-			mes "Then, let's go to the ^0000FFoasis near the northwestern sphinx^000000.";
+			mes "那麼，我們去^0000FF西北方獅身人面像旁的綠洲^000000吧。";
 			changequest 11350,11351;
 			ep14_3_newerabs = 5;
 			close3;
@@ -2244,15 +2244,15 @@ morocc,138,238,4	script	Piled Rags#ep14bs	4_M_DIEMAN,{
 	}
 	if (ep14_3_newerabs == 5) {
 		mes "[塔瑪林]";
-		mes "How kind of you!";
-		mes "The world is still an okay place to live.";
+		mes "你真是太好心了！";
+		mes "這個世界仍然是個還不錯的地方。";
 		cutin "ep143_tadir.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "Then, let's go to the ^0000FFoasis near the northwestern sphinx^000000.";
+		mes "那麼，我們去^0000FF西北方獅身人面像旁的綠洲^000000吧。";
 		close3;
 	}
-	mes "- There is a pile of dirty rags. -";
+	mes "- 有一堆髒破布。 -";
 	close;
 
 OnInit:
@@ -2264,143 +2264,143 @@ moc_ruins,106,140,4	script	塔瑪林#ep14bs_ru::Tamarin#ep14bs_ru	4_M_TAMARIN,{
 	if (ep14_3_newerabs == 5 || ep14_3_newerabs == 6) {
 		if (ep14_3_newerabs == 5) {
 			mes "[塔瑪林]";
-			mes "Pah!";
-			mes "This feels great!";
+			mes "呸！";
+			mes "舒服極了！";
 			cutin "ep143_tasmi.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "The water feels too warm for my liking, but beggars can't be choosers.";
+			mes "水溫對我來說有點太熱了，但乞丐不能挑三揀四。";
 			cutin "ep143_tasta.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "You saved me from starvation, and took me to this great place. I must have been a great person in the past life";
-			mes "to deserve such kindness.";
+			mes "你讓我免於餓死，還帶我來到這麼棒的地方。我前世一定是個了不起的人";
+			mes "，才配得上這樣的恩情。";
 			cutin "ep143_tahuk.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "I want to repay you, fellow adventurer.";
-			mes "I lost all my belongings when I fell into that strange hole and got separated from my party,";
+			mes "我想報答你，同為冒險者的朋友。";
+			mes "我掉進那個奇怪的洞裡，和隊伍走散，所有的東西都弄丟了，";
 			cutin "ep143_tasta.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "but at least I can tell you an ^0000FFinteresting story^000000.";
+			mes "不過至少我能講一個^0000FF有趣的故事^000000給你聽。";
 			cutin "ep143_tasmi.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "It's about the strange place I've been to.";
+			mes "故事是關於我去過的那個奇怪地方。";
 			cutin "ep143_tahuk.bmp",2;
 			next;
 			if (select( "沒興趣。", "我在聽。" ) == 1) {
 				mes "[塔瑪林]";
-				mes "All right, then.";
-				mes "I thought you were serious about adventuring.";
+				mes "好吧。";
+				mes "我還以為你是認真想冒險的呢。";
 				cutin "ep143_tahuk.bmp",2;
 				next;
 				mes "[塔瑪林]";
-				mes "Then";
-				mes "do you want your Monster's Feed back?";
+				mes "那麼";
+				mes "你要把你的魔物飼料拿回去嗎？";
 				cutin "ep143_tasta.bmp",2;
 				next;
 				mes "[塔瑪林]";
-				mes "*Retch*";
+				mes "*乾嘔*";
 				cutin "ep143_taang.bmp",2;
 				close3;
 			}
 			mes "[塔瑪林]";
-			mes "I knew you'd be interested!";
-			mes "Nothing piques adventurers' interest like the story of a strange place, right?";
+			mes "我就知道你會有興趣！";
+			mes "沒有什麼比奇怪地方的故事更能引起冒險者的興趣，對吧？";
 			cutin "ep143_tasmi.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "Ahem.";
-			mes "The story begins with my journey to the ^0000FFOther World^000000, the latest hot spot for adventurers.";
+			mes "咳哼。";
+			mes "故事要從我前往^0000FF異世界^000000開始，那是近來冒險者最熱門的地方。";
 			cutin "ep143_tahuk.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "Adventurer Tamarin and his party went on a journey to the land of the unknown, Other World.";
+			mes "冒險者塔瑪林和他的隊伍踏上了前往未知之地——異世界的旅程。";
 			cutin "ep143_tasmi.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "Their journey was perilous, but they bravely moved forward.";
+			mes "他們的旅程充滿危險，但仍勇敢地向前邁進。";
 			cutin "ep143_taang.bmp",2;
 			next;
 			mes "[塔瑪林]";
 			mes "喔，";
-			mes "why am I speaking in the third-person perspective?";
+			mes "為什麼我要用第三人稱來講這件事？";
 			cutin "ep143_tahuk.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "My original inspiration was Bard, but then I became a Hunter because my friends thought that suited me better.";
+			mes "我原本是想當吟遊詩人，後來朋友覺得獵人比較適合我，我就變成了獵人。";
 			cutin "ep143_tasmi.bmp",2;
 			next;
-			select("Ask him to be more straightforward.");
+			select("要他說話直接一點。");
 			mes "[塔瑪林]";
 			mes "是的。";
 			cutin "ep143_tahuk.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "A while ago, my friends and I decided to explore the Other World together.";
+			mes "不久前，我和朋友們決定一起去探索異世界。";
 			cutin "ep143_tasta.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "Since it'd be our first visit to the Other World, we wanted to go to a more popular spot, but one of us wouldn't have it--he was so excited that he started acting out of control.";
+			mes "既然是第一次去異世界，我們本來想去比較熱門的地方，但其中一人不肯——他太興奮了，開始變得失控。";
 			cutin "ep143_taang.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "When I came back to my senses, I was alone in a strange place.";
+			mes "等我回過神來，已經獨自一人身處奇怪的地方。";
 			cutin "ep143_tahuk.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "The ^0000FFland was burning with perpetual flames^000000 that weren't too hot to touch, and ^0000FFstrange-looking plants and insects^000000 were crawling all over the place.";
+			mes "^0000FF這片土地燃燒著永不熄滅的火焰^000000，火焰雖不燙手，^0000FF奇形怪狀的植物和蟲子^000000卻在四處爬行。";
 			next;
 			mes "[塔瑪林]";
-			mes "At first I yelled for help and moved around hoping to find others, but all to no avail.";
+			mes "起初我大聲呼救，四處走動希望能找到其他人，但全都白費力氣。";
 			next;
 			mes "[塔瑪林]";
-			mes "After a few days of having nothing to eat, I started to eat anything I saw off the ground, and I had the worst diarrhea ever.";
+			mes "幾天沒東西吃之後，我開始撿地上看到的東西來吃，結果拉得慘不忍睹。";
 			cutin "ep143_taang.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "I didn't know how many days had passed before I saw a group of some entities that I thought were men at a glance.";
+			mes "我不知道過了幾天，才看到一群乍看之下以為是人類的生物。";
 			cutin "ep143_tahuk.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "But ^0000FFthey looked too strange to pass as human^000000.";
-			mes "I couldn't talk to them, so I just jumped into the Crack that they came through.";
+			mes "但^0000FF他們看起來太奇怪，不像是人類^000000。";
+			mes "我無法和他們交談，於是就跳進了他們出現的裂縫。";
 			next;
 			mes "[塔瑪林]";
-			mes "My knees gave way and I rolled on my side. When I looked around, I was back at the ^0000FFDimensional Crack^000000 where my friends and I first arrived.";
+			mes "我雙腿一軟，側身滾了一圈。環顧四周時，我發現自己回到了我和朋友們最初抵達的^0000FF次元裂縫^000000。";
 			next;
 			mes "[塔瑪林]";
-			mes "I came out through the ^0000FFMorocc Dimensional Teleporter^000000 and used every ounce of my energy to get to Morocc.";
+			mes "我從^0000FF夢羅克次元傳送器^000000出來，用盡全身力氣才走到夢羅克。";
 			next;
 			mes "[塔瑪林]";
 			mes "唉……";
-			mes "I wonder if my friends are safe.";
+			mes "不知道我的朋友們是否平安。";
 			cutin "ep143_tasta.bmp",2;
 			next;
 		}
 		mes "[塔瑪林]";
-		mes "I should seek them out,";
-		mes "but first I want to go back to that strange place when I get my full strength back. Not many people have a chance to see such a special place, you know.";
+		mes "我應該去找他們，";
+		mes "不過等我恢復全部體力後，我還想再回到那個奇怪的地方。畢竟，能看到那麼特別的地方的人可不多。";
 		cutin "ep143_tasmi.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "Fortunately for me, with the ^0000FFMorocc restoration work^000000 underway, I shouldn't have a problem making money through some part-time jobs.";
+		mes "幸好，隨著^0000FF夢羅克的重建工程^000000展開，我應該能靠打零工賺到錢。";
 		next;
-		if (select( "Tell him have safe travel.", "Tell him you want to tag along." ) == 1) {
+		if (select( "祝他旅途平安。", "告訴他你想跟著去。" ) == 1) {
 			mes "[塔瑪林]";
-			mes "I will.";
-			mes "Thank you for saving me.";
+			mes "我願意。";
+			mes "謝謝你救了我。";
 			cutin "ep143_tahuk.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "This is the beauty of adventuring:";
-			mes "making new friends!";
+			mes "這就是冒險的美好之處:";
+			mes "能交到新朋友！";
 			cutin "ep143_tasmi.bmp",2;
 			next;
 			mes "[塔瑪林]";
-			mes "I'll be in Morocc for a while, making some money and getting ready for another adventure. I hope I can see you again before I leave.";
+			mes "我會在夢羅克待一陣子，賺點錢，準備下一次冒險。希望在我離開之前還能再見到你。";
 			ep14_3_newerabs = 6;
 			close3;
 		}
@@ -2409,19 +2409,19 @@ moc_ruins,106,140,4	script	塔瑪林#ep14bs_ru::Tamarin#ep14bs_ru	4_M_TAMARIN,{
 		cutin "ep143_tahuk.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "Do you mean it?";
+		mes "你是認真的嗎？";
 		next;
 		mes "[塔瑪林]";
-		mes "By the gods I'm a lucky bastard!";
+		mes "我真是個走運的傢伙！";
 		mes "*啜泣*";
 		cutin "ep143_taang.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "Then meet me at the ^0000FFDimensional Crack^000000. I need to replenish myself first.";
+		mes "那就在^0000FF次元裂縫^000000跟我會合吧。我得先補充一下體力。";
 		cutin "ep143_tasta.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "It may take a while for me to get everything packed, so get your other business done in the meantime.";
+		mes "我得花點時間收拾行李，所以你這段時間先去辦你的其他事吧。";
 		erasequest 11351;// Dimensional Travel
 		setquest 11352;// Dimensional Travel
 		ep14_3_newerabs = 7;
@@ -2429,16 +2429,16 @@ moc_ruins,106,140,4	script	塔瑪林#ep14bs_ru::Tamarin#ep14bs_ru	4_M_TAMARIN,{
 	}
 	if (ep14_3_newerabs == 7) {
 		mes "[塔瑪林]";
-		mes "Then meet me at the ^0000FFDimensional Crack^000000. I need to replenish myself first.";
+		mes "那就在^0000FF次元裂縫^000000跟我會合吧。我得先補充一下體力。";
 		cutin "ep143_tasta.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "It may take a while for me to get everything packed, so get your other business done in the meantime.";
+		mes "我得花點時間收拾行李，所以你這段時間先去辦你的其他事吧。";
 		close3;
 	}
 	mes "[塔瑪林]";
-	mes "Pah!";
-	mes "This feels great!";
+	mes "呸！";
+	mes "舒服極了！";
 	cutin "ep143_tasmi.bmp",2;
 	close3;
 }
@@ -2446,26 +2446,26 @@ moc_ruins,106,140,4	script	塔瑪林#ep14bs_ru::Tamarin#ep14bs_ru	4_M_TAMARIN,{
 dali,112,69,4	script	塔瑪林#ep14bs_cha::Tamarin#ep14bs_cha	4_M_TAMARIN,{
 	if (ep14_3_newerabs == 7) {
 		mes "[塔瑪林]";
-		mes "" + strcharinfo(0) + ", over here!";
-		mes "You're early.";
+		mes "" + strcharinfo(0) + "，這邊！";
+		mes "你來得真早。";
 		cutin "ep143_tasta.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "(Glancing around surreptitiously)";
-		mes "I hope no one's watching us.";
+		mes "（偷偷地左右張望）";
+		mes "希望沒有人在看我們。";
 		cutin "ep143_tahuk.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "I've hidden the opening to that place: I didn't want anyone to get there before me.";
+		mes "我把那個地方的入口藏起來了: 我不想讓任何人比我先到那裡。";
 		cutin "ep143_tasmi.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "At that time, I was too distracted to remember where the opening was, but I think it's definitely ^0000FFsomewhere on the 2nd floor^000000.";
+		mes "當時我心神不寧，已經想不起入口在哪裡了，但我想一定是在^0000FF二樓的某處^000000。";
 		cutin "ep143_tasta.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "Meet me in front of the ^0000FFHidden Crack^000000. Make sure no one follows you there.";
-		mes "I've ^0000FFcovered the opening with dirt^000000. I hope no one dug it open.";
+		mes "在^0000FF隱藏裂縫^000000前面跟我會合。確認沒有人跟著你來。";
+		mes "我已經用^0000FF泥土把入口蓋住^000000了。希望沒有人挖開它。";
 		erasequest 11352;// Dimensional Travel
 		setquest 11353;// Dimensional Travel
 		ep14_3_newerabs = 8;
@@ -2473,79 +2473,79 @@ dali,112,69,4	script	塔瑪林#ep14bs_cha::Tamarin#ep14bs_cha	4_M_TAMARIN,{
 	}
 	if (ep14_3_newerabs == 8) {
 		mes "[塔瑪林]";
-		mes "I've hidden the opening to that place: I didn't want anyone to get there before me.";
+		mes "我把那個地方的入口藏起來了: 我不想讓任何人比我先到那裡。";
 		cutin "ep143_tasmi.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "At that time, I was too distracted to remember where the opening was, but I think it's definitely ^0000FFsomewhere on the 2nd floor^000000.";
+		mes "當時我心神不寧，已經想不起入口在哪裡了，但我想一定是在^0000FF二樓的某處^000000。";
 		cutin "ep143_tasta.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "Meet me in front of the ^0000FFHidden Crack^000000. Make sure no one follows you there.";
-		mes "I've ^0000FFcovered the opening with dirt^000000. I hope no one dug it open.";
+		mes "在^0000FF隱藏裂縫^000000前面跟我會合。確認沒有人跟著你來。";
+		mes "我已經用^0000FF泥土把入口蓋住^000000了。希望沒有人挖開它。";
 		close3;
 	}
 	mes "[塔瑪林]";
-	mes "Hm, my mark had better stay where I left it.";
+	mes "嗯，我做的記號最好還留在原處。";
 	cutin "ep143_tahuk.bmp",2;
 	close3;
 }
 
-dali02,90,62,0	script	Sand Mound#ep14bs	4_SOIL,{
+dali02,90,62,0	script	沙丘#ep14bs::Sand Mound#ep14bs	4_SOIL,{
 	if (ep14_3_newerabs < 8) {
-		mes "- A mound of sand stands awkwardly, looking out of place. -";
+		mes "- 一座沙堆突兀地立在那裡，顯得格格不入。 -";
 		close;
 	}
 	if (ep14_3_newerabs == 8) {
-		mes "- A mound of sand stands awkwardly, looking out of place. -";
+		mes "- 一座沙堆突兀地立在那裡，顯得格格不入。 -";
 		next;
 		mes "[塔瑪林]";
 		mes "呼！";
-		mes "I'm glad you've found me.";
+		mes "很高興你找到我了。";
 		cutin "ep143_tasmi.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "Let me clear the dirt...";
-		mes "Be mindful of the opening. It's quite narrow.";
+		mes "讓我把泥土清開……";
+		mes "小心入口，很窄的。";
 		cutin "ep143_tasta.bmp",2;
 		next;
 		if (select( "進入。", "離開。" ) == 2) {
 			mes "[塔瑪林]";
-			mes "Aren't you going in?";
+			mes "你不進去嗎？";
 			cutin "ep143_tahuk.bmp",2;
 			close3;
 		}
-		mes "- The passage is barely wide enough to contain one person. -";
+		mes "- 這條通道勉強只夠一個人通過。 -";
 		completequest 11353;// Dimensional Travel
 		ep14_3_newerabs = 9;
 		close2;
 		warp "moro_vol",136,135;
 		end;
 	}
-	mes "- A mound of sand stands awkwardly, looking out of place. -";
+	mes "- 一座沙堆突兀地立在那裡，顯得格格不入。 -";
 	next;
 	if (select( "進入。", "離開。" ) == 2) {
-		mes "You decided not to enter.";
+		mes "你決定不進入。";
 		close;
 	}
-	mes "- The passage is barely wide enough to contain one person. -";
+	mes "- 這條通道勉強只夠一個人通過。 -";
 	close2;
 	warp "moro_vol",136,135;
 	end;
 }
 
-moro_vol,137,136,0	script	Sand Mound#ep14bs_	4_SOIL,{
+moro_vol,137,136,0	script	沙丘#ep14bs_::Sand Mound#ep14bs_	4_SOIL,{
 	if (ep14_3_newerabs < 9) {
-		mes "- A mound of sand stands awkwardly, looking out of place. -";
+		mes "- 一座沙堆突兀地立在那裡，顯得格格不入。 -";
 		close;
 	}
-	mes "- A mound of sand stands awkwardly, looking out of place. -";
+	mes "- 一座沙堆突兀地立在那裡，顯得格格不入。 -";
 	next;
-	if (select( "Return to the Dimensional Crack.", "離開。" ) == 2) {
-		mes "You decided not to enter.";
+	if (select( "返回次元裂縫。", "離開。" ) == 2) {
+		mes "你決定不進入。";
 		close;
 	}
-	mes "- The passage is barely wide enough to contain one person. -";
+	mes "- 這條通道勉強只夠一個人通過。 -";
 	close2;
 	warp "dali02",91,63;
 	end;
@@ -2555,27 +2555,27 @@ moro_vol,132,140,4	script	塔瑪林#ep14bs_ju::Tamarin#ep14bs_ju	4_M_TAMARIN,{
 	if (ep14_3_newerabs == 9) {
 		mes "[塔瑪林]";
 		mes "哇！";
-		mes "I didn't expect to see so many people.";
+		mes "沒想到會看到這麼多人。";
 		cutin "ep143_tahuk.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "I'm disappointed that I'm not the first one to discover the place, and am glad that I'm not alone in this dismal place.";
+		mes "很遺憾我不是第一個發現這個地方的人，不過慶幸在這片陰鬱的地方我不是孤單一人。";
 		cutin "ep143_taang.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "I see more of those entities that look sort of like men.";
-		mes "This place might be much more than I thought it was!";
+		mes "我又看到更多那種看起來有點像人類的生物。";
+		mes "這個地方或許比我想像的還要不簡單！";
 		cutin "ep143_tasmi.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "Look!";
-		mes "Walking trees!";
-		mes "Grrr-!";
+		mes "看！";
+		mes "會走路的樹！";
+		mes "嗚——！";
 		cutin "ep143_tahuk.bmp",2;
 		next;
-		mes "[Barget Tiblack]";
-		mes "HEY!";
-		mes "What the hell do you think you're doing?!";
+		mes "[巴吉特·提布萊克]";
+		mes "喂！";
+		mes "你們到底在搞什麼鬼？！";
 		cutin "",255;
 		setquest 11354;// Specimen Collection
 		ep14_3_newerabs = 15;
@@ -2583,31 +2583,31 @@ moro_vol,132,140,4	script	塔瑪林#ep14bs_ju::Tamarin#ep14bs_ju	4_M_TAMARIN,{
 	}
 	if (ep14_3_newerabs == 15) {
 		mes "[塔瑪林]";
-		mes "Look!";
-		mes "Walking trees!";
-		mes "Grrr-!";
+		mes "看！";
+		mes "會走路的樹！";
+		mes "嗚——！";
 		cutin "ep143_tahuk.bmp",2;
 		next;
-		mes "[Barget Tiblack]";
-		mes "HEY!";
-		mes "What the hell do you think you're doing?!";
+		mes "[巴吉特·提布萊克]";
+		mes "喂！";
+		mes "你們到底在搞什麼鬼？！";
 		cutin "",255;
 		close;
 	}
 	if (ep14_3_newerabs == 16) {
 		mes "[塔瑪林]";
-		mes "They might kick us out if they know we sneaked in.";
-		mes "Let's do what they ask for now, yeah?";
+		mes "如果他們知道我們偷溜進來，可能會把我們趕出去。";
+		mes "那就照他們說的做吧，好嗎？";
 		cutin "ep143_taang.bmp",2;
 		close3;
 	}
 	if (ep14_3_newerabs == 17 || ep14_3_newerabs == 18) {
 		mes "[塔瑪林]";
-		mes "Collecting the plant specimens doesn't sound too difficult. We can split them between us.";
+		mes "採集植物標本聽起來不太難。我們可以平分。";
 		cutin "ep143_tasta.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "^0000FFWhen you collect 25 Sonia stems, meet me by the big rock in the center of this place^000000.";
+		mes "^0000FF當你收集到25根索妮雅莖時，到這裡中央的大岩石旁找我^000000。";
 		if (ep14_3_newerabs == 17) {
 			erasequest 11356;// Specimen Collection
 			setquest 11357;// Specimen Collection
@@ -2618,94 +2618,94 @@ moro_vol,132,140,4	script	塔瑪林#ep14bs_ju::Tamarin#ep14bs_ju	4_M_TAMARIN,{
 	if (ep14_3_newerabs == 19) {
 		if (countitem(6690) < 25) {// YummyStem
 			mes "[塔瑪林]";
-			mes "Ooh! (Wincing)";
-			mes "You don't have enough stems.";
-			mes "Get more and take them to Barget.";
+			mes "哦！（皺眉）";
+			mes "您沒有足夠的索妮雅莖。";
+			mes "再去多收集一些，然後拿給巴吉特。";
 			cutin "ep143_tahuk.bmp",2;
 			close3;
 		}
 		mes "[塔瑪林]";
-		mes "Let's report to Barget first.";
+		mes "我們先向巴吉特報告吧。";
 		cutin "ep143_tahuk.bmp",2;
 		close3;
 	}
 	if (ep14_3_newerabs == 21 || ep14_3_newerabs == 22) {
 		mes "[塔瑪林]";
-		mes "Come on,";
-		mes "hurry over to ^0000FFInstructor Rugen^000000!";
+		mes "拜託，";
+		mes "快去找^0000FF魯根教官^000000！";
 		cutin "ep143_tahuk.bmp",2;
 		close3;
 	}
 	if (ep14_3_newerabs == 23) {
 		mes "[塔瑪林]";
-		mes "Thank the gods, who knew that thing I ate out of hunger would save me?";
-		mes "Let's report to Barget.";
+		mes "感謝神明，誰知道我餓極了亂吃的那東西，竟然救了我一命？";
+		mes "我們去向巴吉特報告吧。";
 		cutin "ep143_tahuk.bmp",2;
 		close3;
 	}
 	if (ep14_3_newerabs == 24) {
 		mes "[塔瑪林]";
-		mes "Arrgh!";
-		mes "" + strcharinfo(0) + " Get in the cave before everyone else explores it!";
+		mes "啊啊！";
+		mes "" + strcharinfo(0) + " 趕在其他人探索之前衝進洞穴！";
 		cutin "ep143_tahuk.bmp",2;
 		close3;
 	}
 	mes "[塔瑪林]";
 	mes "唔……";
-	mes "I was the first to come to this place!";
+	mes "我是第一個來到這個地方的人！";
 	cutin "ep143_taang.bmp",2;
 	close3;
 }
 
-moro_vol,142,131,5	script	Barget Tiblack#ep14bs	4_M_ALCHE_D,{
+moro_vol,142,131,5	script	巴吉特·提布萊克#ep14bs::Barget Tiblack#ep14bs	4_M_ALCHE_D,{
 	if (checkweight(1119,3) == 0) {
-		mes "- You are carrying too many items to proceed with the quest. -";
+		mes "- 你攜帶的道具太多，無法繼續進行任務。 -";
 		close;
 	}
 	if (ep14_3_newerabs < 15) {
-		mes "[Barget Tiblack]";
-		mes "Ugh, I'm exhausted.";
-		mes "I understand the urgency, but that doesn't mean I like being bossed around.";
+		mes "[巴吉特·提布萊克]";
+		mes "唉，我累壞了。";
+		mes "我明白事情緊急，但這不代表我喜歡被人使喚。";
 		close;
 	}
 	if (ep14_3_newerabs == 15) {
-		mes "[Barget Tiblack]";
-		mes "You've ruined my precious samples!";
-		mes "I've asked people of your ilk to steer clear of my work zone. Didn't your superiors tell you that?";
+		mes "[巴吉特·提布萊克]";
+		mes "你毀了我珍貴的樣本！";
+		mes "我已經說過，你們這種人別靠近我的工作區。你的上級沒告訴你嗎？";
 		next;
-		mes "[Barget Tiblack]";
-		mes "I haven't even finished the research at the camp, and they dragged me away for yet another burdening project.";
+		mes "[巴吉特·提布萊克]";
+		mes "我在營地的研究還沒做完，他們就又把我拖去做另一個沉重的計畫。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "I demand an assistant!";
-		mes "Enough with that budget problem!";
+		mes "[巴吉特·提布萊克]";
+		mes "我要一個助手！";
+		mes "預算問題夠了！";
 		mes "啊啊！";
 		next;
-		mes "[Barget Tiblack]";
+		mes "[巴吉特·提布萊克]";
 		mes "...";
 		mes "...";
 		next;
-		mes "[Barget Tiblack]";
+		mes "[巴吉特·提布萊克]";
 		mes "好吧。";
-		mes "You two over there!";
-		mes "You must have too much time on your hands, loitering about aimlessly. Make yourself useful and help me collect samples.";
+		mes "那邊的你們兩個！";
+		mes "你們一定是閒得發慌，到處晃來晃去。來點有用的，幫我採集樣本吧。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "You've ruined my existing samples, after all.";
+		mes "[巴吉特·提布萊克]";
+		mes "你畢竟毀了我現有的樣本。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "First, I want to collect animal specimens.";
-		mes "It's not uncommon to see mutant animals around here. Recently, one of them was confirmed as a ^0000FFcompletely new species^000000.";
+		mes "[巴吉特·提布萊克]";
+		mes "首先，我想採集動物標本。";
+		mes "這附近常見變異動物。最近，其中一種已被確認為^0000FF全新物種^000000。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "^0000FFThis new species of insect is called the Firebugs because they're surrounded by flames and live in fire pits like that over there^000000.";
+		mes "[巴吉特·提布萊克]";
+		mes "^0000FF這種新物種的昆蟲被稱為火焰蟲，因為牠們被火焰包圍，並住在像那邊那樣的火坑裡^000000。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "Firebugs that crawl out of their pits die soon after.";
+		mes "[巴吉特·提布萊克]";
+		mes "從坑裡爬出來的火焰蟲很快就會死去。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "Please investigate ^0000FF20 fire pits and collect 50 Burning Insect Shells from Firebugs^000000.";
-		mes "Be careful not to burn yourself in the process.";
+		mes "[巴吉特·提布萊克]";
+		mes "請調查^0000FF20個火坑，並從火焰蟲身上收集50個燃燒蟲殼^000000。";
+		mes "過程中小心別燒傷自己。";
 		erasequest 11354;// Specimen Collection
 		setquest 11355;// Specimen Collection
 		ep14_3_newerabs = 16;
@@ -2714,174 +2714,174 @@ moro_vol,142,131,5	script	Barget Tiblack#ep14bs	4_M_ALCHE_D,{
 	if (ep14_3_newerabs < 19) {
 		if (ep14_3_newerabs == 16) {
 			if (countitem(6689) < 50 || checkquest(11355,HUNTING) != 2) {
-				mes "[Barget Tiblack]";
-				mes "First, I want to collect animal specimens.";
-				mes "It's not uncommon to see mutant animals around here. Recently, one of them was confirmed as a ^0000FFcompletely new species^000000.";
+				mes "[巴吉特·提布萊克]";
+				mes "首先，我想採集動物標本。";
+				mes "這附近常見變異動物。最近，其中一種已被確認為^0000FF全新物種^000000。";
 				next;
-				mes "[Barget Tiblack]";
-				mes "^0000FFThis new species of insect is called the Firebugs because they're surrounded by flames and live in fire pits like that over there^000000.";
+				mes "[巴吉特·提布萊克]";
+				mes "^0000FF這種新物種的昆蟲被稱為火焰蟲，因為牠們被火焰包圍，並住在像那邊那樣的火坑裡^000000。";
 				next;
-				mes "[Barget Tiblack]";
-				mes "Firebugs that crawl out of their pits die soon after.";
+				mes "[巴吉特·提布萊克]";
+				mes "從坑裡爬出來的火焰蟲很快就會死去。";
 				next;
-				mes "[Barget Tiblack]";
-				mes "Please investigate ^0000FF20 fire pits and collect 50 Burning Insect Shells from Firebugs^000000.";
-				mes "Be careful not to burn yourself in the process.";
+				mes "[巴吉特·提布萊克]";
+				mes "請調查^0000FF20個火坑，並從火焰蟲身上收集50個燃燒蟲殼^000000。";
+				mes "過程中小心別燒傷自己。";
 				close;
 			}
-			mes "[Barget Tiblack]";
+			mes "[巴吉特·提布萊克]";
 			mes "喔，";
-			mes "well done!";
-			mes "You finished your task more quickly than I anticipated.";
+			mes "做得好！";
+			mes "你比我預期的還快完成任務。";
 			delitem 6689,50;// BurningSkin
 			erasequest 11355;// Specimen Collection
 			setquest 11356;// Specimen Collection
 			ep14_3_newerabs = 17;
 			next;
-			mes "[Barget Tiblack]";
-			mes "Ouch, HOT!";
-			mes "*Huffing Puffing*";
-			mes "Let me bottle them before they get cold, and send them to the lab.";
+			mes "[巴吉特·提布萊克]";
+			mes "哎唷，好燙！";
+			mes "*呼哧呼哧*";
+			mes "趁還沒涼掉，讓我把它們裝瓶，然後送到實驗室去。";
 			next;
 		}
-		mes "[Barget Tiblack]";
-		mes "Now, it's time for plant specimens.";
-		mes "Our target plant is called Sonia, a very primitive type of plant.";
+		mes "[巴吉特·提布萊克]";
+		mes "現在，該輪到植物標本了。";
+		mes "我們的目標植物叫做索妮雅，是一種非常原始的植物。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "At a glance, Sonias look like plastic tubes, but their structure is very minimal.";
+		mes "[巴吉特·提布萊克]";
+		mes "乍看之下，索妮雅像塑膠管，但它們的結構非常簡單。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "They're not difficult to gather. Please ^0000FFpick 50 Sonias and bring me 50 stems^000000.";
+		mes "[巴吉特·提布萊克]";
+		mes "採集並不難。請^0000FF摘取50株索妮雅，並帶50根莖給我^000000。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "Sonia specimens are the last of my specimen collection. If you happen to ^0000FFsee peculiar Sonias^000000, please don't hesitate to let me know.";
+		mes "[巴吉特·提布萊克]";
+		mes "索妮雅標本是我標本收藏中的最後一項。如果你碰巧^0000FF看到奇特的索妮雅^000000，請立刻告訴我。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "Try not to stray too far away from the base. It's too dangerous out there.";
-		mes "Come back safely.";
+		mes "[巴吉特·提布萊克]";
+		mes "盡量別離基地太遠，外面太危險了。";
+		mes "平安回來。";
 		next;
 		mes "[塔瑪林]";
 		mes "嗯……";
-		mes "" + strcharinfo(0) + ", wait!";
+		mes "" + strcharinfo(0) + "，等等！";
 		cutin "ep143_tahuk.bmp",2;
 		close3;
 	}
 	if (ep14_3_newerabs == 19) {
 		if (countitem(6690) < 25) {
-			mes "[Barget Tiblack]";
-			mes "How are you doing with collecting Sonias?";
+			mes "[巴吉特·提布萊克]";
+			mes "索妮雅採集得怎麼樣了？";
 			close;
 		}
-		mes "[Barget Tiblack]";
+		mes "[巴吉特·提布萊克]";
 		mes "啊，";
-		mes "welcome back!";
-		mes "I forgot to tell you ^0000FFnot to go near the rock in the center of this place^000000.";
+		mes "歡迎回來！";
+		mes "我忘了告訴你，^0000FF不要靠近這裡中央的岩石^000000。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "When I realized my mistake, I called a rescue party, so worried for your safety. I'm glad you're back unscathed.";
+		mes "[巴吉特·提布萊克]";
+		mes "我意識到自己的失誤後，就召集了救援隊，非常擔心你們的安危。很高興你們平安歸來。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "I apologize for being a total jerk.";
-		mes "I was stressed out about my heavy workload.";
+		mes "[巴吉特·提布萊克]";
+		mes "很抱歉我之前那麼混蛋。";
+		mes "我因為工作量太大而壓力很大。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "I still have so many things to do... Sigh...";
+		mes "[巴吉特·提布萊克]";
+		mes "我還有好多事要做……唉……";
 		next;
-		select("Tell her about the central rock.");
-		mes "[Barget Tiblack]";
-		mes "Say WHAT?!";
-		mes "You went there?!";
-		mes "And you came back unscathed? How?";
+		select("告訴她關於中央岩石的事。");
+		mes "[巴吉特·提布萊克]";
+		mes "你說什麼？！";
+		mes "你去了那裡？！";
+		mes "而你居然毫髮無傷地回來了？怎麼做到的？";
 		next;
-		mes "[Barget Tiblack]";
-		mes "Everyone else who went there ^0000FFfell into a coma due to the noxious gas released from the rock^000000.";
+		mes "[巴吉特·提布萊克]";
+		mes "去過那裡的其他人，都因為岩石釋放的有毒氣體^0000FF陷入昏迷^000000。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "What did you do?";
-		mes "This is a great discovery!";
+		mes "[巴吉特·提布萊克]";
+		mes "你做了什麼？";
+		mes "這是重大發現！";
 		next;
-		select("Relay what happened.");
-		mes "[Barget Tiblack]";
-		mes "You ate a Sonia stem.";
-		mes "Okay, I've known the stem is nontoxic, but I haven't finished its substance research yet. Did you experience any side effect?";
+		select("把經過說出來。");
+		mes "[巴吉特·提布萊克]";
+		mes "你吃了一根索妮雅莖。";
+		mes "好吧，我一直知道這莖無毒，但它的成分研究還沒完成。你有出現任何副作用嗎？";
 		next;
-		mes "[Barget Tiblack]";
+		mes "[巴吉特·提布萊克]";
 		mes "哇！";
-		mes "This really is a great discovery!";
+		mes "這真的是重大發現！";
 		next;
-		mes "[Barget Tiblack]";
-		mes "I'd better get back to the research...";
-		mes "No, we first must ^0000FFtreat those patients who need Sonia stems. Please bring them to me.^000000";
+		mes "[巴吉特·提布萊克]";
+		mes "我最好回去繼續研究……";
+		mes "不，我們得先^0000FF治療需要索妮雅莖的患者。請把它們帶給我。^000000";
 		next;
-		mes "[Barget Tiblack]";
-		mes "^0000FFInstructor Rugen manages them^000000, so you can bring them to him.";
-		mes "Please hand me the document. I'll sign it for you.";
+		mes "[巴吉特·提布萊克]";
+		mes "^0000FF魯根教官負責管理他們^000000，所以你可以把它們帶給他。";
+		mes "請把文件交給我，我會替你簽名。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "I'd better get back to my stem research. I'll ask someone else for assistance.";
-		mes "You lucked out this time. Better not make a habit of eating things off the ground.";
+		mes "[巴吉特·提布萊克]";
+		mes "我最好回去繼續研究莖。我會找其他人幫忙。";
+		mes "你這次算是走運。最好別養成亂吃地上東西的習慣。";
 		erasequest 11358;// Specimen Collection
 		setquest 11359;// Antidote
 		ep14_3_newerabs = 20;
 		close;
 	}
 	if (ep14_3_newerabs == 20) {
-		mes "[Barget Tiblack]";
-		mes "I'd better get back to the research...";
-		mes "No, we first must ^0000FFtreat those patients who need Sonia stems. Please bring them to me.^000000";
+		mes "[巴吉特·提布萊克]";
+		mes "我最好回去繼續研究……";
+		mes "不，我們得先^0000FF治療需要索妮雅莖的患者。請把它們帶給我。^000000";
 		next;
-		mes "[Barget Tiblack]";
-		mes "^0000FFInstructor Rugen manages them^000000, so you can bring them to him.";
-		mes "Please hand me the document. I'll sign it for you.";
+		mes "[巴吉特·提布萊克]";
+		mes "^0000FF魯根教官負責管理他們^000000，所以你可以把它們帶給他。";
+		mes "請把文件交給我，我會替你簽名。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "I'd better get back to my stem research. I'll ask someone else for assistance.";
-		mes "You lucked out this time. Better not make a habit of eating things off the ground.";
+		mes "[巴吉特·提布萊克]";
+		mes "我最好回去繼續研究莖。我會找其他人幫忙。";
+		mes "你這次算是走運。最好別養成亂吃地上東西的習慣。";
 		close;
 	}
 	if (ep14_3_newerabs < 23) {
-		mes "[Barget Tiblack]";
-		mes "Did you see Instructor Rugen?";
+		mes "[巴吉特·提布萊克]";
+		mes "你見到魯根教官了嗎？";
 		close;
 	}
 	if (ep14_3_newerabs == 23) {
-		mes "[Barget Tiblack]";
+		mes "[巴吉特·提布萊克]";
 		mes "哈哈哈！";
 		mes "進展如何？";
-		mes "They worked, didn't they?";
+		mes "有效，不是嗎？";
 		next;
-		mes "[Barget Tiblack]";
-		mes "I have high hopes for my research.";
-		mes "Your seemingly reckless decision has saved many lives.";
+		mes "[巴吉特·提布萊克]";
+		mes "我對我的研究寄予厚望。";
+		mes "你看似莽撞的決定救了許多人的性命。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "With this, we'll soon be able to investigate that ^0000FFsuspicious cave^000000 from the inside out!";
+		mes "[巴吉特·提布萊克]";
+		mes "有了這個，我們很快就能從內到外調查那個^0000FF可疑的洞穴^000000了！";
 		next;
-		select("What cave?");
-		mes "[Barget Tiblack]";
-		mes "Oh, the cave that releases the noxious gas.";
-		mes "The gas is ^0000FFso thick in the air, you can't see the cave entrance clearly^000000.";
+		select("什麼洞穴？");
+		mes "[巴吉特·提布萊克]";
+		mes "喔，就是會釋放有毒氣體的那個洞穴。";
+		mes "空氣中的氣體^0000FF濃到看不清洞穴入口^000000。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "Those who we gave the first batch of the vaccine already left to the cave.";
-		mes "We haven't heard from them yet. I'd like to believe it's a good sign.";
+		mes "[巴吉特·提布萊克]";
+		mes "我們已經把第一批疫苗發給的那些人，全都進洞穴去了。";
+		mes "我們還沒收到他們的消息。我希望這是個好兆頭。";
 		next;
-		mes "[Barget Tiblack]";
-		mes "If it weren't two of you, I could have pulled all my hair out in frustration.";
-		mes "Good job, you guys!";
+		mes "[巴吉特·提布萊克]";
+		mes "要不是你們兩個，我早就急得把頭髮都拔光了。";
+		mes "你們做得好！";
 		getexp 0,1500000;
 		completequest 11362;// Antidote
 		ep14_3_newerabs = 24;
 		close;
 	}
-	mes "[Barget Tiblack]";
-	mes "Those who we gave the first batch of the vaccine already left to the cave.";
-	mes "We haven't heard from them yet. I'd like to believe it's a good sign.";
+	mes "[巴吉特·提布萊克]";
+	mes "我們已經把第一批疫苗發給的那些人，全都進洞穴去了。";
+	mes "我們還沒收到他們的消息。我希望這是個好兆頭。";
 	next;
-	mes "[Barget Tiblack]";
-	mes "If it weren't two of you, I could have pulled all my hair out in frustration.";
-	mes "Good job, you guys!";
+	mes "[巴吉特·提布萊克]";
+	mes "要不是你們兩個，我早就急得把頭髮都拔光了。";
+	mes "你們做得好！";
 	close;
 }
 
@@ -2889,49 +2889,49 @@ moro_vol,198,179,4	script	塔瑪林#ep14bs_st::Tamarin#ep14bs_st	4_M_TAMARIN,{
 	if (ep14_3_newerabs < 18) {
 		mes "[塔瑪林]";
 		mes "嗯……";
-		mes "We don't have time for this!";
+		mes "我們沒有時間耗在這裡了！";
 		cutin "ep143_taang.bmp",2;
 		close3;
 	}
 	if (ep14_3_newerabs == 18) {
 		if (countitem(6690) < 25 || checkquest(11357,HUNTING) != 2) {
 			mes "[塔瑪林]";
-			mes "^0000FFWhen you collect 25 Sonia stems, meet me here^000000.";
+			mes "^0000FF當你收集到25根索妮雅莖時，到這裡來找我^000000。";
 			cutin "ep143_tasta.bmp",2;
 			close3;
 		}
 		mes "[塔瑪林]";
-		mes "I don't remember this rock was so big.";
-		mes "Or seeing these strange things around it.";
-		mes "I also smell ^0000FFsmoke^000000.";
+		mes "我不記得這塊岩石有這麼大。";
+		mes "也不記得周圍有這些奇怪的東西。";
+		mes "我還聞到^0000FF煙味^000000。";
 		cutin "ep143_tahuk.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "Again,";
-		mes "I don't remember seeing ^0000FFso many strange animals and plants^000000 either.";
-		mes "These are Sonias, right? They weren't so many before.";
+		mes "又來了，";
+		mes "我也不記得看過^0000FF這麼多奇怪的動物和植物^000000。";
+		mes "這些是索妮雅，對吧？以前可沒這麼多。";
 		next;
 		mes "[塔瑪林]";
-		mes "If they were, I wouldn't have had to starve.";
-		mes "Sonias were the most delicious and least toxic among all the plants I tried.";
+		mes "要是有這麼多，我就不用挨餓了。";
+		mes "在我試過的所有植物中，索妮雅是最好吃、毒性最低的。";
 		cutin "ep143_taang.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "" + strcharinfo(0) + ", do you want to taste it?";
-		mes "I brought a few stems for memories' sake.";
+		mes "" + strcharinfo(0) + "，你想嚐嚐看嗎？";
+		mes "我留了幾根莖，當作紀念。";
 		cutin "ep143_tasmi.bmp",2;
 		next;
 		cutin "",255;
-		mes "- Taste of Sonia -";
-		mes "Its thick, tongue-warming sap fills your mouth with delicious aroma.";
+		mes "- 索妮雅的滋味 -";
+		mes "濃稠、暖舌的汁液充滿口中，散發出誘人的香氣。";
 		next;
 		mes "[塔瑪林]";
 		mes "你覺得怎麼樣？";
-		mes "Delicious, huh?";
+		mes "很美味吧？";
 		cutin "ep143_tahuk.bmp",2;
 		next;
 		mes "[塔瑪林]";
-		mes "I've got only a few left. Let's take turns to gather some more.";
+		mes "我只剩幾根了。我們輪流去多採一些吧。";
 		cutin "ep143_tasmi.bmp",2;
 		erasequest 11357;// Specimen Collection
 		setquest 11358;// Specimen Collection
@@ -2940,27 +2940,27 @@ moro_vol,198,179,4	script	塔瑪林#ep14bs_st::Tamarin#ep14bs_st	4_M_TAMARIN,{
 	}
 	if (ep14_3_newerabs == 19) {
 		mes "[塔瑪林]";
-		mes "I've got only a few left. Let's take turns to gather some more.";
+		mes "我只剩幾根了。我們輪流去多採一些吧。";
 		cutin "ep143_tasmi.bmp",2;
 		close3;
 	}
 	if (ep14_3_newerabs < 23) {
 		mes "[塔瑪林]";
-		mes "Come on,";
-		mes "hurry over to ^0000FFInstructor Rugen^000000!";
+		mes "拜託，";
+		mes "快去找^0000FF魯根教官^000000！";
 		cutin "ep143_tahuk.bmp",2;
 		close3;
 	}
 	if (ep14_3_newerabs == 23) {
 		mes "[塔瑪林]";
-		mes "Thank the gods, who knew that thing I ate out of hunger would save me?";
-		mes "Let's report to Barget.";
+		mes "感謝神明，誰知道我餓極了亂吃的那東西，竟然救了我一命？";
+		mes "我們去向巴吉特報告吧。";
 		cutin "ep143_tahuk.bmp",2;
 		close3;
 	}
 	mes "[塔瑪林]";
-	mes "Arrgh!";
-	mes "" + strcharinfo(0) + " get in there before everyone else explores it!";
+	mes "啊啊！";
+	mes "" + strcharinfo(0) + " 趕在其他人探索之前衝進去！";
 	cutin "ep143_tahuk.bmp",2;
 	next;
 	if (select( "進入。", "離開。" ) == 2) {
@@ -2970,53 +2970,53 @@ moro_vol,198,179,4	script	塔瑪林#ep14bs_st::Tamarin#ep14bs_st	4_M_TAMARIN,{
 		close3;
 	}
 	mes "[塔瑪林]";
-	mes "The floor is dark. Watch your step!";
+	mes "地板很暗，小心腳下！";
 	close2;
 	warp "moro_cav",40,50;
 	end;
 }
 
-moro_vol,105,71,5	script	Instructor Rugen#ep14bs	4_M_YOUNGKNIGHT,{
+moro_vol,105,71,5	script	魯根教官#ep14bs::Instructor Rugen#ep14bs	4_M_YOUNGKNIGHT,{
 	if (ep14_3_newerabs < 20) {
-		mes "[Instructor Rugen]";
+		mes "[魯根教官]";
 		mes "呼……";
-		mes "Why were you so reckless?";
+		mes "你為什麼這麼莽撞？";
 		next;
-		mes "[Instructor Rugen]";
-		mes "Is this worth it?";
+		mes "[魯根教官]";
+		mes "這樣值得嗎？";
 		mes "...";
 		close;
 	}
 	if (ep14_3_newerabs == 20) {
-		mes "[Instructor Rugen]";
+		mes "[魯根教官]";
 		mes "呼……";
-		mes "Why were you so reckless?";
+		mes "你為什麼這麼莽撞？";
 		next;
-		mes "[Instructor Rugen]";
-		mes "Is this worth it?";
+		mes "[魯根教官]";
+		mes "這樣值得嗎？";
 		mes "...";
 		next;
-		if (select( "去找他談談吧。", "No, he looks too upset to talk." ) == 2) {
-			mes "[Instructor Rugen]";
+		if (select( "去找他談談吧。", "不，他看起來氣得說不出話來。" ) == 2) {
+			mes "[魯根教官]";
 			mes "唉……";
-			mes "This is just...";
+			mes "這……這真是……";
 			close;
 		}
-		mes "[Instructor Rugen]";
+		mes "[魯根教官]";
 		mes "有什麼可以為您效勞的嗎？";
-		mes "If you're seeking medical assistance, then please describe your symptoms at the reception desk and wait until help arrives.";
+		mes "如果您需要醫療協助，請在櫃台說明您的症狀，並等候救援人員到來。";
 		next;
-		select("Give Sonia stems.");
+		select("交出索妮雅莖。");
 		if (countitem(6690) < 25) {
-			mes "[Instructor Rugen]";
-			mes "These aren't enough.";
-			mes "Could you check the number of your Sonia stems?";
+			mes "[魯根教官]";
+			mes "這些還不夠。";
+			mes "你能再確認一下你的索妮雅莖數量嗎？";
 			close;
 		}
-		mes "[Instructor Rugen]";
+		mes "[魯根教官]";
 		mes "你是認真的嗎？";
-		mes "Dr. Tiblack sent you, so I should believe you.";
-		mes "I'll feed these to the patients.";
+		mes "提布萊克博士派你來的，那我就相信你。";
+		mes "我會把這些餵給患者。";
 		delitem 6690,25;// YummyStem
 		erasequest 11359;// Antidote
 		setquest 11360;// Antidote
@@ -3024,101 +3024,101 @@ moro_vol,105,71,5	script	Instructor Rugen#ep14bs	4_M_YOUNGKNIGHT,{
 		close;
 	}
 	if (ep14_3_newerabs == 21) {
-		mes "[Instructor Rugen]";
+		mes "[魯根教官]";
 		mes "你是認真的嗎？";
-		mes "Dr. Tiblack sent you, so I should believe you.";
-		mes "I'll feed these to the patients.";
+		mes "提布萊克博士派你來的，那我就相信你。";
+		mes "我會把這些餵給患者。";
 		close;
 	}
 	if (ep14_3_newerabs == 22) {
-		mes "[Instructor Rugen]";
+		mes "[魯根教官]";
 		mes "喔！";
-		mes "Otto!";
+		mes "奧托！";
 		mes "你看得見我嗎？";
 		next;
 		mes "[奧托]";
 		mes "唔……";
 		next;
-		mes "[Instructor Rugen]";
+		mes "[魯根教官]";
 		mes "喔！";
-		mes "It worked!";
+		mes "成功了！";
 		next;
-		mes "[Instructor Rugen]";
-		mes "The patients are showing remarkable improvements, though they need to stay in bed for now.";
-		mes "I'll feed the stems to the most critical patients, and wait for Dr. Tiblack to finish her research.";
+		mes "[魯根教官]";
+		mes "患者的好轉非常明顯，不過他們目前還需要臥床休息。";
+		mes "我會先把莖餵給病情最危急的患者，並等待提布萊克博士完成她的研究。";
 		next;
-		mes "[Instructor Rugen]";
-		mes "I'll give you a report on the patients' responses to the stem. Please bring the report to ^0000FFDr. Tiblack^000000.";
-		mes "Hah hah.";
-		mes "It worked!";
+		mes "[魯根教官]";
+		mes "我會寫一份患者對莖的反應報告。請把報告帶給^0000FF提布萊克博士^000000。";
+		mes "哈哈。";
+		mes "成功了！";
 		erasequest 11361;// Antidote
 		setquest 11362;// Antidote
 		ep14_3_newerabs = 23;
 		close;
 	}
 	if (ep14_3_newerabs == 23) {
-		mes "[Instructor Rugen]";
-		mes "The patients are showing remarkable improvements, though they need to stay in bed for now.";
-		mes "I'll feed the stems to the most critical patients, and wait for Dr. Tiblack to finish her research.";
+		mes "[魯根教官]";
+		mes "患者的好轉非常明顯，不過他們目前還需要臥床休息。";
+		mes "我會先把莖餵給病情最危急的患者，並等待提布萊克博士完成她的研究。";
 		next;
-		mes "[Instructor Rugen]";
-		mes "I'll give you a report on the patients' responses to the stem. Please bring the report to ^0000FFDr. Tiblack^000000.";
-		mes "Hah hah.";
-		mes "It worked!";
+		mes "[魯根教官]";
+		mes "我會寫一份患者對莖的反應報告。請把報告帶給^0000FF提布萊克博士^000000。";
+		mes "哈哈。";
+		mes "成功了！";
 		close;
 	}
-	mes "[Instructor Rugen]";
-	mes "I'm glad that the research resulted in our favor.";
-	mes "My comrades are well on their way to a full recovery.";
-	mes "Thank to you.";
+	mes "[魯根教官]";
+	mes "很高興研究結果對我們有利。";
+	mes "我的同伴們正在順利地逐漸康復。";
+	mes "多虧了你。";
 	close;
 }
 
-moro_vol,104,70,4	script	Intoxicated Patient#ep14bs	4_M_LIEMAN,{
+moro_vol,104,70,4	script	醉酒病患#ep14bs::Intoxicated Patient#ep14bs	4_M_LIEMAN,{
 	if (ep14_3_newerabs == 21) {
-		mes "[Poisoned Patient]";
+		mes "[中毒患者]";
 		mes "唔……";
 		next;
-		mes "- You feed him a Sonia stem. The color instantly returns to his face. -";
+		mes "- 你餵他一根索妮雅莖。他的臉色立刻恢復了血色。 -";
 		erasequest 11360;// Antidote
 		setquest 11361;// Antidote
 		ep14_3_newerabs = 22;
 		close;
 	}
 	if (ep14_3_newerabs == 22) {
-		mes "[Poisoned Patient]";
+		mes "[中毒患者]";
 		mes "唔……";
 		next;
-		mes "- You feed him a Sonia stem. The color instantly returns to his face. -";
-		mes "- Talk to Instructor Rugen. -";
+		mes "- 你餵他一根索妮雅莖。他的臉色立刻恢復了血色。 -";
+		mes "- 去跟魯根教官談談。 -";
 		close;
 	}
-	mes "[Poisoned Patient]";
+	mes "[中毒患者]";
 	mes "唔……";
 	close;
 }
 
-moro_vol,101,72,4	script	Patient#ep14bs1	4_M_PATIENT,{
-	mes "[Patient]";
+moro_vol,101,72,4	script	患者#ep14bs1::Patient#ep14bs1	4_M_PATIENT,{
+	mes "[患者]";
 	mes "唔……";
 	close;
 }
 
-moro_vol,101,74,4	script	Patient#ep14bs2	4_F_FAIRYKID6,{
-	mes "[Patient]";
-	mes "*Moan*";
+moro_vol,101,74,4	script	患者#ep14bs2::Patient#ep14bs2	4_F_FAIRYKID6,{
+	mes "[患者]";
+	mes "*呻吟*";
 	close;
 }
 
-moro_vol,103,71,6	script	Patient#ep14bs3	4_F_PATIENT,{
-	mes "[Patient]";
-	mes "*Groan*";
+moro_vol,103,71,6	script	患者#ep14bs3::Patient#ep14bs3	4_F_PATIENT,{
+	mes "[患者]";
+	mes "*低聲呻吟*";
 	close;
 }
 
-moro_vol,106,69,4	script	Patient#ep14bs4	4_M_PATIENT,{
-	mes "[Patient]";
-	mes "Aww... Ugh...";
+moro_vol,106,69,4	script	患者#ep14bs4::Patient#ep14bs4	4_M_PATIENT,{
+	mes "[患者]";
+	mes "唉唷……唔……";
 	close;
 }
 
@@ -3184,7 +3184,7 @@ S_M_chk:
 	if (unitexists(.gid[.@index]) == true) {
 		getunitdata .gid[.@index], .@data;
 		if ((.@data[UMOB_X] < (getarg(1) - 15)) || (.@data[UMOB_X] > (getarg(1) + 15)) || (.@data[UMOB_Y] < (getarg(2) - 15)) || (.@data[UMOB_Y] > (getarg(2) + 15))) {
-			unittalk .gid[.@index], "I have to go back to my position, this is his order.!";
+			unittalk .gid[.@index], "我得回去崗位，這是他的命令！";
 			donpcevent "#f_boss_c::OnFail" + .@index;
 		}
 	}
@@ -3214,29 +3214,29 @@ OnTimer60000:
 moro_vol,1,2,3	duplicate(#f_boss0)	#f_boss1	CLEAR_NPC
 moro_vol,1,2,3	duplicate(#f_boss0)	#f_boss2	CLEAR_NPC
 
-moro_vol,86,167,7	script	Advance Base Defender#1	4_M_CRU_HEAD,3,3,{
-	mes "[Advance Base Defender]";
+moro_vol,86,167,7	script	前線基地守衛#1::Advance Base Defender#1	4_M_CRU_HEAD,3,3,{
+	mes "[前線基地守衛]";
 	.@num = atoi(strnpcinfo(2));
 	if (.@num == 1 || .@num == 11)
-		mes "This place is too dangerous. Return to the base, now!";
+		mes "這裡太危險了。立刻回基地去！";
 	else if (.@num == 2 || .@num == 12)
-		mes "I'll see that no monster sneak into the base.";
+		mes "我會確保沒有任何魔物潛入基地。";
 	else if (.@num == 3 || .@num == 13)
-		mes "Sigh, how long do I have to do this?";
+		mes "唉，我還得做這個多久？";
 	else if (.@num == 4 || .@num == 14)
-		mes "Don't worry. I'm here to protect you.";
+		mes "別擔心。我在這裡保護你們。";
 	else if (.@num == 5 || .@num == 15)
-		mes "We're in the middle of the battlefield. I can't talk for too long.";
+		mes "我們正身處戰場中央，我不能聊太久。";
 	else if (.@num == 6 || .@num == 16)
-		mes "Please step aside. You're blocking my vision.";
+		mes "請讓開，你擋住我的視線了。";
 	else if (.@num == 7 || .@num == 17)
-		mes "If you have time for chit-chat, then kill one more enemy instead.";
+		mes "如果你有閒工夫聊天，不如多殺一隻敵人。";
 	else if (.@num == 8 || .@num == 18)
-		mes "Bah, I'm cold and hungry... Oh, I was just talking to myself.";
+		mes "唉，好冷好餓……喔，我只是在自言自語而已。";
 	else if (.@num == 9 || .@num == 19)
-		mes "Be careful: this place is overrun with dangerous monsters.";
+		mes "小心: 這裡到處都是危險的魔物。";
 	else if (.@num == 10 || .@num == 20)
-		mes "For every monster I kill, one or more appear to take its place.";
+		mes "我每殺一隻魔物，就有一隻或更多隻冒出來頂替它。";
 	close;
 
 OnTouch:
@@ -3244,13 +3244,13 @@ OnTouch:
 OnTouchNPC:
 	.@t_rnd = rand(1,4);
 	if (.@t_rnd == 1)
-		npctalk "Advance Base Defender: Creature of Depravity, I command you to return to the Netherworld.";
+		npctalk "前線基地守衛: 墮落之物，我命令你回到冥界去！";
 	else if (.@t_rnd == 2)
-		npctalk "Advance Base Defender: Not a step closer to my base, monsters!";
+		npctalk "前線基地守衛: 魔物們，別再靠近我的基地一步！";
 	else if (.@t_rnd == 3)
-		npctalk "Advance Base Defender: Stop right there, monsters! Don't you dare get close to our sanctuary!";
+		npctalk "前線基地守衛: 站住，魔物！膽敢靠近我們的聖域試試！";
 	else if (.@t_rnd == 4)
-		npctalk "Advance Base Defender: Begone, monsters! This land belongs to the Army of Holy Light!";
+		npctalk "前線基地守衛: 滾開，魔物！這片土地屬於聖光軍！";
 	specialeffect EF_BEGINSPELL;
 	sleep2 1000;
 	.@c_rnd = rand(1,4);
@@ -3266,102 +3266,102 @@ OnTouchNPC:
 	unitwarp 0,"moro_vol",145,148;
 	end;
 }
-moro_vol,93,166,7	duplicate(Advance Base Defender#1)	Advance Base Defender#2	4_M_CRU_KNT,3,3
-moro_vol,100,165,7	duplicate(Advance Base Defender#1)	Advance Base Defender#3	4_M_CRU_SOLD,3,3
-moro_vol,107,164,7	duplicate(Advance Base Defender#1)	Advance Base Defender#4	4_M_KY_HEAD,3,3
-moro_vol,114,162,7	duplicate(Advance Base Defender#1)	Advance Base Defender#5	4_M_KY_KIYOM,3,3
-moro_vol,121,160,7	duplicate(Advance Base Defender#1)	Advance Base Defender#6	4_M_KY_KNT,3,3
-moro_vol,128,158,7	duplicate(Advance Base Defender#1)	Advance Base Defender#7	4_M_CRU_HEAD,3,3
-moro_vol,135,155,7	duplicate(Advance Base Defender#1)	Advance Base Defender#8	4_M_CRU_KNT,3,3
-moro_vol,142,152,7	duplicate(Advance Base Defender#1)	Advance Base Defender#9	4_M_CRU_SOLD,3,3
-moro_vol,149,148,7	duplicate(Advance Base Defender#1)	Advance Base Defender#10	4_M_KY_HEAD,3,3
-moro_vol,156,144,7	duplicate(Advance Base Defender#1)	Advance Base Defender#11	4_M_KY_KIYOM,3,3
-moro_vol,162,137,6	duplicate(Advance Base Defender#1)	Advance Base Defender#12	4_M_KY_KNT,3,3
-moro_vol,168,130,6	duplicate(Advance Base Defender#1)	Advance Base Defender#13	4_M_CRU_HEAD,3,3
-moro_vol,174,123,6	duplicate(Advance Base Defender#1)	Advance Base Defender#14	4_M_CRU_KNT,3,3
-moro_vol,178,116,6	duplicate(Advance Base Defender#1)	Advance Base Defender#15	4_M_CRU_SOLD,3,3
-moro_vol,182,109,6	duplicate(Advance Base Defender#1)	Advance Base Defender#16	4_M_KY_HEAD,3,3
-moro_vol,185,102,6	duplicate(Advance Base Defender#1)	Advance Base Defender#17	4_M_KY_KIYOM,3,3
-moro_vol,187,95,6	duplicate(Advance Base Defender#1)	Advance Base Defender#18	4_M_KY_KNT,3,3
-moro_vol,189,88,6	duplicate(Advance Base Defender#1)	Advance Base Defender#19	4_M_CRU_HEAD,3,3
-moro_vol,191,81,6	duplicate(Advance Base Defender#1)	Advance Base Defender#20	4_M_CRU_KNT,3,3
+moro_vol,93,166,7	duplicate(Advance Base Defender#1)	前線基地守衛#2::Advance Base Defender#2	4_M_CRU_KNT,3,3
+moro_vol,100,165,7	duplicate(Advance Base Defender#1)	前線基地守衛#3::Advance Base Defender#3	4_M_CRU_SOLD,3,3
+moro_vol,107,164,7	duplicate(Advance Base Defender#1)	前線基地守衛#4::Advance Base Defender#4	4_M_KY_HEAD,3,3
+moro_vol,114,162,7	duplicate(Advance Base Defender#1)	前線基地守衛#5::Advance Base Defender#5	4_M_KY_KIYOM,3,3
+moro_vol,121,160,7	duplicate(Advance Base Defender#1)	前線基地守衛#6::Advance Base Defender#6	4_M_KY_KNT,3,3
+moro_vol,128,158,7	duplicate(Advance Base Defender#1)	前線基地守衛#7::Advance Base Defender#7	4_M_CRU_HEAD,3,3
+moro_vol,135,155,7	duplicate(Advance Base Defender#1)	前線基地守衛#8::Advance Base Defender#8	4_M_CRU_KNT,3,3
+moro_vol,142,152,7	duplicate(Advance Base Defender#1)	前線基地守衛#9::Advance Base Defender#9	4_M_CRU_SOLD,3,3
+moro_vol,149,148,7	duplicate(Advance Base Defender#1)	前線基地守衛#10::Advance Base Defender#10	4_M_KY_HEAD,3,3
+moro_vol,156,144,7	duplicate(Advance Base Defender#1)	前線基地守衛#11::Advance Base Defender#11	4_M_KY_KIYOM,3,3
+moro_vol,162,137,6	duplicate(Advance Base Defender#1)	前線基地守衛#12::Advance Base Defender#12	4_M_KY_KNT,3,3
+moro_vol,168,130,6	duplicate(Advance Base Defender#1)	前線基地守衛#13::Advance Base Defender#13	4_M_CRU_HEAD,3,3
+moro_vol,174,123,6	duplicate(Advance Base Defender#1)	前線基地守衛#14::Advance Base Defender#14	4_M_CRU_KNT,3,3
+moro_vol,178,116,6	duplicate(Advance Base Defender#1)	前線基地守衛#15::Advance Base Defender#15	4_M_CRU_SOLD,3,3
+moro_vol,182,109,6	duplicate(Advance Base Defender#1)	前線基地守衛#16::Advance Base Defender#16	4_M_KY_HEAD,3,3
+moro_vol,185,102,6	duplicate(Advance Base Defender#1)	前線基地守衛#17::Advance Base Defender#17	4_M_KY_KIYOM,3,3
+moro_vol,187,95,6	duplicate(Advance Base Defender#1)	前線基地守衛#18::Advance Base Defender#18	4_M_KY_KNT,3,3
+moro_vol,189,88,6	duplicate(Advance Base Defender#1)	前線基地守衛#19::Advance Base Defender#19	4_M_CRU_HEAD,3,3
+moro_vol,191,81,6	duplicate(Advance Base Defender#1)	前線基地守衛#20::Advance Base Defender#20	4_M_CRU_KNT,3,3
 
 
 // Flaming Basin and Doom Prayers
 // gef_fild02,106,225,4	script	Base Investigator#bl	4_M_KY_HEAD,{
-moro_vol,131,103,3	script	Base Investigator#bl	4_M_KY_HEAD,{
+moro_vol,131,103,3	script	基地調查員#bl::Base Investigator#bl	4_M_KY_HEAD,{
 	if (checkweight(1301,3) == 0) {
 		mes "- 你的道具太多，無法繼續對話。 -";
 		close;
 	}
 	if (BaseLevel < 150) {
-		mes "[Base Investigator]";
-		mes "You look super weak!";
-		mes "Why are you here??";
+		mes "[基地調查員]";
+		mes "你看起來超級弱！";
+		mes "你怎麼會在這裡？？";
 		next;
-		mes "[Base Investigator]";
-		mes "Well, there are not enough people!";
-		mes "But we will wait until you reach level 150.";
+		mes "[基地調查員]";
+		mes "唉，人手根本不夠！";
+		mes "不過我們會等你練到150級。";
 		mes "請稍後再來！";
 		close;
 	}
 	if (ep14_3_fall_bless == 0) {
-		mes "[Base Investigator]";
-		mes "Have you noticed it, too?";
-		mes "Yes, the monsters in this area are really quite strange.";
+		mes "[基地調查員]";
+		mes "你也注意到了嗎？";
+		mes "是啊，這一帶的魔物真的很奇怪。";
 		next;
-		mes "[Base Investigator]";
-		mes "They appear to be mutant versions of Midgard monsters";
+		mes "[基地調查員]";
+		mes "牠們看起來像是米德加爾魔物的變異版本";
 		next;
-		mes "[Base Investigator]";
-		mes "Worse still, their number has been rapidly increasing.";
-		mes "We must keep an eye on them.";
+		mes "[基地調查員]";
+		mes "更糟的是，牠們的數量正在迅速增加。";
+		mes "我們必須密切注意牠們。";
 		next;
-		mes "[Base Investigator]";
-		mes "To my regret, everyone seems so busy that I can't ask them for help, despite the seriousness of the investigation.";
-		mes "This is not a safe environment.";
+		mes "[基地調查員]";
+		mes "很遺憾，儘管調查非常嚴重，大家都忙得不可開交，我無法向他們求助。";
+		mes "這裡不是安全的環境。";
 		next;
-		switch( select( "發生什麼事了？", "Why can't you do it yourself?", "Do you want me to do it?" ) ) {
+		switch( select( "發生什麼事了？", "你為什麼不自己去做？", "你要我去做嗎？" ) ) {
 		case 1:
-			mes "[Base Investigator]";
-			mes "The environmental characteristics of this area are making the investigation too difficult.";
-			mes "The scenery looks familiar, yet in a way... strange.";
-			mes "The place looks like it's on the verge of utter collapse but.. I can see bursts of vibrant growth.";
+			mes "[基地調查員]";
+			mes "這一帶的環境特性讓調查變得太困難了。";
+			mes "這景色看起來很熟悉，卻又在某種程度上……很奇怪。";
+			mes "這地方看起來快要徹底崩毀了，但……我能看到一陣陣蓬勃的生機。";
 			next;
-			mes "[Base Investigator]";
+			mes "[基地調查員]";
 			mes "這是什麼地方？";
 			close;
 		case 2:
-			mes "[Base Investigator]";
-			mes "Like everyone else from a noble background,";
-			mes "I only know how to command others.";
+			mes "[基地調查員]";
+			mes "就像其他出身貴族的人一樣，";
+			mes "我只會指揮別人。";
 			emotion 4, playerattached();
 			close;
 		case 3:
-			mes "[Base Investigator]";
-			mes "Of all those monsters,";
-			mes "^0000FFFire Condors^000000 look most dangerous.";
-			mes "Those birds with burning tails charge headlong toward everyone they see. You may be able to run from them, but you will always get singed.";
+			mes "[基地調查員]";
+			mes "在那些魔物當中，";
+			mes "^0000FF火焰禿鷹^000000看起來最危險。";
+			mes "那些尾巴燃燒的鳥會直衝向看到的每一個人。你或許能逃開，但一定會被燒焦一點。";
 			next;
-			select("Do you want me to hunt Fire Condors?");
-			mes "[Base Investigator]";
-			mes "No, I have no one to dispose their carcasses.";
-			mes "My purpose is, after all, an investigation.";
+			select("你要我去獵殺火焰禿鷹嗎？");
+			mes "[基地調查員]";
+			mes "不，我沒有人可以處理牠們的屍體。";
+			mes "畢竟，我的目的是調查。";
 			mes "只要把";
-			mes "15 ^FF0000Burning Feathers^000000";
-			mes "from ^0000FFFire Condors^000000.";
+			mes "15根^FF0000燃燒羽毛^000000";
+			mes "來自^0000FF火焰禿鷹^000000。";
 			next;
-			if (select( "I'm as busy as you!", "明白了。" ) == 1) {
-				mes "[Base Investigator]";
-				mes "You acted as if you'd help me.";
-				mes "Were you messing with me?";
+			if (select( "我跟你一樣忙！", "明白了。" ) == 1) {
+				mes "[基地調查員]";
+				mes "你之前還表現得好像會幫我似的。";
+				mes "你是在耍我嗎？";
 				close;
 			}
-			mes "[Base Investigator]";
+			mes "[基地調查員]";
 			mes "帶來給我";
-			mes "^FF000015 Burning Feathers^000000";
-			mes "from ^0000FFFire Condors^000000.";
-			mes "Hurry before more people fall victim to those vicious birds!";
+			mes "^FF000015 燃燒羽毛^000000";
+			mes "來自^0000FF火焰禿鷹^000000。";
+			mes "快點，別讓更多人遭那些凶猛的鳥毒手！";
 			setquest 1264;	// Flaming Basin and Doom Prayers
 			ep14_3_fall_bless = 1;
 			close;
@@ -3369,77 +3369,77 @@ moro_vol,131,103,3	script	Base Investigator#bl	4_M_KY_HEAD,{
 	}
 	if (ep14_3_fall_bless == 1) {
 		if (countitem(6691) < 15) {
-			mes "[Base Investigator]";
-			mes "I thought you'd be hard at work by now,";
-			mes "gathering ^FF000015 Burning Feathers^000000";
-			mes "from ^0000FFFire Condors^000000,";
-			mes "so I called an emergency meeting of";
-			mes "my investigators.";
+			mes "[基地調查員]";
+			mes "我本來以為你現在應該已經埋頭苦幹了，";
+			mes "正在收集^FF000015 燃燒羽毛^000000";
+			mes "從^0000FF火焰禿鷹^000000身上，";
+			mes "所以我召集了緊急會議，";
+			mes "把我的調查員都叫來。";
 			next;
-			mes "[Base Investigator]";
-			mes "And you're still in town,";
-			mes "enjoying a leisurely walk.";
+			mes "[基地調查員]";
+			mes "結果你還在城裡，";
+			mes "悠閒地散步。";
 			close;
 		}
-		mes "[Base Investigator]";
+		mes "[基地調查員]";
 		mes "你帶來了";
-		mes "all the ^FF000015 Burning Feathers^000000.";
-		mes "Thank you. Now I can";
-		mes "proceed with my investigation.";
+		mes "全部的^FF000015 燃燒羽毛^000000。";
+		mes "謝謝你。現在我可以";
+		mes "繼續我的調查了。";
 		next;
-		mes "[Base Investigator]";
-		mes "Most of all, I can finally enjoy the warmth of a fire!";
+		mes "[基地調查員]";
+		mes "最重要的是，我終於可以享受生火的溫暖了！";
 		emotion 21;
 		next;
-		mes "[Base Investigator]";
-		mes "Did you notice the worrisome expression on my face?";
+		mes "[基地調查員]";
+		mes "你有注意到我臉上憂心忡忡的表情嗎？";
 		next;
-		if (select( "Nope. Never.", "I did, instantly." ) == 1) {
-			mes "[Base Investigator]";
-			mes "That's not the answer I expected,";
-			mes "but I'll continue with the spiel";
-			mes "I've prepared.";
+		if (select( "沒有。完全沒注意到。", "我立刻就注意到了。" ) == 1) {
+			mes "[基地調查員]";
+			mes "這不是我預期的答案，";
+			mes "不過我還是繼續說下去吧";
+			mes "我已經準備好了。";
 			mes "唉……";
 			next;
-			mes "[Base Investigator]";
-			mes "A scout hasn't returned";
-			mes "from the Flaming Basin.";
-			mes "I want you to go check";
-			mes "what happened to him.";
+			mes "[基地調查員]";
+			mes "有一名偵察兵還沒回來";
+			mes "從烈焰盆地。";
+			mes "我要你去查看";
+			mes "他遇到了什麼事。";
 			next;
-			if (select( "No can do.", "當然。" ) == 1) {
-				mes "[Base Investigator]";
-				mes "I know you'll do it anyway!";
+			if (select( "辦不到。", "當然。" ) == 1) {
+				mes "[基地調查員]";
+				mes "我知道你還是會去的！";
 				close;
 			}
-			mes "[Base Investigator]";
-			mes "The scout headed for the area teeming with monsters.";
-			mes "Keep your eyes peeled for him.";
+			mes "[基地調查員]";
+			mes "那名偵察兵前往了魔物橫行的區域。";
+			mes "留意一下他的下落。";
 			delitem 6691,15;// BurningFeather
 			completequest 1264;	// Flaming Basin and Doom Prayers
 			setquest 1265;	// Flaming Basin and Doom Prayers
 			ep14_3_fall_bless = 2;
 			close;
 		}
-		mes "[Base Investigator]";
+		mes "[基地調查員]";
 		// google translate..
-		mes "Not bad! You guys....";
-		mes "Please eat three bowls of gongs!";
+		mes "不錯嘛！你們……";
+		mes "請吃三碗公！";
 		next;
-		mes "[Base Investigator]";
-		mes "A scout hasn't returned";
-		mes "from the Flaming Basin.";
-		mes "I want you to go check";
-		mes "what happened to him.";
+		mes "[基地調查員]";
+		mes "有一名偵察兵還沒回來";
+		mes "從烈焰盆地。";
+		mes "我要你去查看";
+		mes "他遇到了什麼事。";
 		next;
-		if (select( "No can do.", "當然。" ) == 1) {
-			mes "[Base Investigator]";
-			mes "I know you'll do it anyway!";
+		if (select( "辦不到。", "當然。" ) == 1) {
+			mes "[基地調查員]";
+			mes "我知道你還是會去的！";
 			close;
 		}
-		mes "[Base Investigator]";
-		mes "The scout headed for the area teeming with monsters.";
-		mes "Keep your eyes peeled for him.";
+		mes "[基地調查員]";
+		mes "那名偵察兵前往了魔物橫行的區域。";
+		mes "留意一下他的下落。";
 		delitem 6691,15;// BurningFeather
 		completequest 1264;	// Flaming Basin and Doom Prayers
 		setquest 1265;	// Flaming Basin and Doom Prayers
@@ -3447,69 +3447,69 @@ moro_vol,131,103,3	script	Base Investigator#bl	4_M_KY_HEAD,{
 		close;
 	}
 	if (ep14_3_fall_bless < 4) {
-		mes "[Base Investigator]";
-		mes "I sent you out to look for the scout.";
-		mes "Did you come back or haven't you left at all?";
+		mes "[基地調查員]";
+		mes "我派你去找偵察兵的。";
+		mes "你是回來了，還是根本沒出發？";
 		next;
-		mes "[Base Investigator]";
-		mes "Go look for the scout in the place teeming with monsters!";
+		mes "[基地調查員]";
+		mes "去魔物橫行的地方找那名偵察兵！";
 		close;
 	}
 	if (ep14_3_fall_bless == 4) {
-		mes "[Base Investigator]";
-		mes "Did you find the scout?";
-		mes "He's resting and rewriting his scout journal?";
+		mes "[基地調查員]";
+		mes "你找到偵察兵了嗎？";
+		mes "他正在休息，順便重寫他的偵察日誌？";
 		next;
-		mes "[Base Investigator]";
-		mes "He does not disappoint me.";
-		mes "He's a good soldier!";
+		mes "[基地調查員]";
+		mes "他沒有讓我失望。";
+		mes "他是個好士兵！";
 		emotion 21;
 		emotion 4, playerattached();
 		next;
-		mes "[Base Investigator]";
-		mes "Now that we've found the missing scout,";
-		mes "I want you to move on to the next mission.";
+		mes "[基地調查員]";
+		mes "既然我們已找到失蹤的偵察兵，";
+		mes "我要你進行下一項任務。";
 		next;
-		mes "[Base Investigator]";
-		mes "You know the number of mysterious monsters";
-		mes "in this Flaming Basin has been continuously increasing.";
+		mes "[基地調查員]";
+		mes "你知道神秘魔物的數量";
+		mes "在這個烈焰盆地裡一直在持續增加。";
 		next;
 		select("資訊。");
-		mes "[Base Investigator]";
-		mes "Things could quickly go out of control";
-		mes "if they expand to the outside world.";
-		mes "If they encounter other monsters in Midgard or the Other World,";
-		mes "they could go on a rampage,";
+		mes "[基地調查員]";
+		mes "事情可能很快就會失控";
+		mes "如果牠們擴散到外面的世界。";
+		mes "如果牠們遇到米德加爾或異世界的其他魔物，";
+		mes "牠們可能會大肆破壞，";
 		next;
-		mes "[Base Investigator]";
-		mes "could spread deadly virus,";
-		mes "could procreate powerful mutants,";
-		mes "or worse.";
+		mes "[基地調查員]";
+		mes "可能會散播致命病毒，";
+		mes "可能會繁衍出強大的變異體，";
+		mes "甚至更糟。";
 		next;
-		mes "[Base Investigator]";
-		mes "For now, the best solution would be";
-		mes "a large cull, and I want you to do it.";
+		mes "[基地調查員]";
+		mes "眼下，最好的解決方法是";
+		mes "大規模撲殺，而我要你去執行。";
 		next;
-		mes "[Base Investigator]";
-		mes "Please exterminate";
-		mes "20 ^0000FFFire Sandmen^000000";
-		mes "and ^0000FFFire Frilldoras^000000.";
+		mes "[基地調查員]";
+		mes "請殲滅";
+		mes "20隻^0000FF火焰沙人^000000";
+		mes "以及^0000FF火焰弗利多拉^000000。";
 		next;
-		if (select( "Do it yourself!", "I'll do my best." ) == 1) {
-			mes "[Base Investigator]";
-			mes "I hate to repeat myself,";
-			mes "but like everyone else from a noble background,";
-			mes "I only know how to command others.";
+		if (select( "你自己去做！", "我會盡力的。" ) == 1) {
+			mes "[基地調查員]";
+			mes "我不想重複，";
+			mes "但就像其他出身貴族的人一樣，";
+			mes "我只會指揮別人。";
 			emotion 19, playerattached();
 			close;
 		}
-		mes "[Base Investigator]";
-		mes "Hurry, those monsters are breeding even as we speak.";
+		mes "[基地調查員]";
+		mes "快點，那些魔物正在繁殖！";
 		next;
-		mes "[Base Investigator]";
-		mes "Please exterminate";
-		mes "20 ^0000FFFire Sandmen^000000";
-		mes "and 20 ^0000FFFire Frilldoras^000000.";
+		mes "[基地調查員]";
+		mes "請殲滅";
+		mes "20隻^0000FF火焰沙人^000000";
+		mes "以及20隻^0000FF火焰弗利多拉^000000。";
 		completequest 1267;	// Flaming Basin and Doom Prayers
 		setquest 1268;	// Flaming Basin and Doom Prayers
 		setquest 1269;	// Flaming Basin and Doom Prayers
@@ -3518,16 +3518,16 @@ moro_vol,131,103,3	script	Base Investigator#bl	4_M_KY_HEAD,{
 	}
 	if (ep14_3_fall_bless == 5) {
 		if (checkquest(1268,HUNTING) == 2 && checkquest(1269,HUNTING) == 2) {
-			mes "[Base Investigator]";
-			mes "You exterminated";
-			mes "20 ^0000FFFire Sandmen^000000";
-			mes "and 20 ^0000FFFire Frilldoras^000000 as I ordered.";
+			mes "[基地調查員]";
+			mes "你殲滅了";
+			mes "20隻^0000FF火焰沙人^000000";
+			mes "以及20隻^0000FF火焰弗利多拉^000000，正如我所命令的。";
 			next;
-			mes "[Base Investigator]";
-			mes "Thanks to you we've found an effective wayto deal with the monsters.";
+			mes "[基地調查員]";
+			mes "多虧了你，我們找到了對付魔物的有效方法。";
 			next;
-			mes "[Base Investigator]";
-			mes "From this moment on, my soldiers will take over.";
+			mes "[基地調查員]";
+			mes "從現在開始，我的士兵會接手。";
 			completequest 1268;	// Flaming Basin and Doom Prayers
 			completequest 1269;	// Flaming Basin and Doom Prayers
 			setquest 1297;	// Flaming Basin and Doom Prayers
@@ -3535,23 +3535,23 @@ moro_vol,131,103,3	script	Base Investigator#bl	4_M_KY_HEAD,{
 			getexp 0,100000;
 			close;
 		}
-		mes "[Base Investigator]";
-		mes "Hurry, those monsters are";
-		mes "multiplying themselves even as we speak.";
+		mes "[基地調查員]";
+		mes "快點，那些魔物";
+		mes "正在我們說話的同時不斷繁殖。";
 		next;
-		mes "[Base Investigator]";
-		mes "Please exterminate";
-		mes "20 ^0000FFFire Sandmen^000000";
-		mes "and 20 ^0000FFFire Frilldoras^000000.";
+		mes "[基地調查員]";
+		mes "請殲滅";
+		mes "20隻^0000FF火焰沙人^000000";
+		mes "以及20隻^0000FF火焰弗利多拉^000000。";
 		close;
 	}
-	mes "[Base Investigator]";
-	mes "So leave it to us to take care of this area, and you go ahead and head north.";
-	mes "I want you to do something about that strange group of people over there.";
+	mes "[基地調查員]";
+	mes "所以這一帶交給我們處理，你就繼續往北走吧。";
+	mes "我要你去處理那邊那群奇怪的人。";
 	next;
-	mes "[Base Investigator]";
-	mes "They've appeared out of nowhere.";
-	mes "doing everything they can to pester us.";
+	mes "[基地調查員]";
+	mes "他們憑空冒了出來。";
+	mes "想盡辦法來騷擾我們。";
 	emotion 28;
 	close;
 
@@ -3561,77 +3561,77 @@ OnInit:
 }
 
 //gef_fild02,106,225,4	script	Scout#bl	4_M_CRU_SOLD,{
-moro_vol,234,301,3	script	Scout#bl	4_M_CRU_SOLD,{
+moro_vol,234,301,3	script	偵察兵#bl::Scout#bl	4_M_CRU_SOLD,{
 	if (checkweight(1301,3) == 0) {
 		mes "- 你的道具太多，無法繼續對話。 -";
 		close;
 	}
 	if (ep14_3_fall_bless == 0) {
-		mes "[Scout]";
-		mes "I was sent to investigate these monsters.";
-		mes "It's unfair that I'm alone";
-		mes "in this dangerous place with no backup!";
+		mes "[偵察兵]";
+		mes "我被派來調查這些魔物。";
+		mes "我一個人孤零零的，太不公平了";
+		mes "在這危險的地方，身邊連個支援都沒有！";
 		close;
 	}
 	if (ep14_3_fall_bless == 1) {
-		mes "[Scout]";
-		mes "I was sent to investigate these monsters.";
-		mes "It's unfair that I'm alone";
-		mes "in this dangerous place with no backup!";
+		mes "[偵察兵]";
+		mes "我被派來調查這些魔物。";
+		mes "我一個人孤零零的，太不公平了";
+		mes "在這危險的地方，身邊連個支援都沒有！";
 		next;
-		mes "[Scout]";
-		mes "Argh, I'm just gonna go AWOL!";
+		mes "[偵察兵]";
+		mes "啊，我乾脆擅離職守算了！";
 		close;
 	}
 	if (ep14_3_fall_bless == 2) {
-		mes "[Scout]";
+		mes "[偵察兵]";
 		mes "歡迎！";
-		mes "I'm in dire need of help!";
+		mes "我急需幫忙！";
 		next;
-		mes "[Scout]";
-		mes "I came here alone on a recon mission.";
-		mes "A horde of monsters surrounded me, keeping me from leaving,";
-		mes "so I had no choice but to hang around.";
+		mes "[偵察兵]";
+		mes "我獨自來這裡執行偵察任務。";
+		mes "一大群怪物把我團團包圍，讓我無法離開，";
+		mes "所以我只好待在這裡。";
 		next;
-		if (select("Stay chilling then.", "Let's go back with me.") == 1) {
-			mes "[Scout]";
-			mes "You're afraid I might ask for help,";
+		if (select("那就繼續待著吧。", "跟我一起回去吧。") == 1) {
+			mes "[偵察兵]";
+			mes "你是怕我會請你幫忙吧，";
 			mes "我知道了。";
 			close;
 		}
-		mes "[Scout]";
-		mes "I'm not injured, save a few scrapes,";
-		mes "but ^0000FFFire Sandmen^000000 stole";
-		mes "my ^FF0000scout journal^000000.";
+		mes "[偵察兵]";
+		mes "我沒有受傷，只有幾處擦傷，";
+		mes "但是^0000FF火沙人^000000偷走了";
+		mes "我的^FF0000偵查日誌^000000。";
 		next;
-		mes "[Scout]";
-		mes "Without the ^FF0000scout journal^000000, I can't go back.";
-		mes "I'll be lucky";
-		mes "if my superiors don't court-martial me.";
+		mes "[偵察兵]";
+		mes "沒有^FF0000偵查日誌^000000，我不能回去。";
+		mes "我算是幸運的";
+		mes "如果上級不把我送上軍事法庭的話。";
 		next;
-		mes "[Scout]";
-		mes "Don't I sound pitiful?";
-		mes "Doesn't it inspire you to help me?";
+		mes "[偵察兵]";
+		mes "我聽起來是不是很可憐？";
+		mes "這樣是不是讓你很想幫我？";
 		next;
-		if (select("Neh.", "It does.") == 1) {
-			mes "[Scout]";
-			mes "All right, then I'll just have to";
-			mes "stay here and chill until help arrives.";
+		if (select("哼。", "確實有。") == 1) {
+			mes "[偵察兵]";
+			mes "好吧，那我只好";
+			mes "待在這裡，等到救兵來為止。";
 			close;
 		}
-		mes "[Scout]";
-		mes "Okay, here's what you can do to help:";
-		mes "Please bring ^FF0000Scout Journals^000000";
-		mes "from ^0000FFFire Sandmen^000000.";
+		mes "[偵察兵]";
+		mes "好吧，你可以這樣幫我:";
+		mes "請幫我帶來^FF0000偵查日誌^000000";
+		mes "從^0000FF火沙人^000000身上。";
 		next;
-		mes "[Scout]";
-		mes "The journal could have been separated into pages, snapped at by those feral monsters.";
-		mes "I don't care; I still need them to show to my superiors.";
+		mes "[偵察兵]";
+		mes "日誌可能是被那些凶暴的怪物撕成了好幾頁。";
+		mes "我不管；我還是需要它們向上級交代。";
 		mes "請帶來給我";
-		mes "20 ^FF0000Scout Journals^000000.";
+		mes "20本^FF0000偵查日誌^000000。";
 		next;
-		mes "[Scout]";
-		mes "Be careful--they can ambush you and snatch away ^FF0000Scout Journals^000000 before you know it.";
+		mes "[偵察兵]";
+		mes "小心——他們可能會埋伏你，在你還沒察覺之前就搶走^FF0000偵查日誌^000000。";
 		completequest 1265;	// Flaming Basin and Doom Prayers
 		setquest 1266;	// Flaming Basin and Doom Prayers
 		ep14_3_fall_bless = 3;
@@ -3639,27 +3639,27 @@ moro_vol,234,301,3	script	Scout#bl	4_M_CRU_SOLD,{
 	}
 	if (ep14_3_fall_bless == 3) {
 		if (countitem(6692) < 20) {
-			mes "[Scout]";
-			mes "Please bring 20 ^FF0000Scout Journals^000000";
-			mes "from ^0000FFFire Sandmen^000000.";
+			mes "[偵察兵]";
+			mes "請帶來20本^FF0000偵查日誌^000000";
+			mes "從^0000FF火沙人^000000身上。";
 			next;
-			mes "[Scout]";
-			mes "Be careful--they can ambush you and snatch away ^FF0000Scout Journals^000000 before you know it.";
+			mes "[偵察兵]";
+			mes "小心——他們可能會埋伏你，在你還沒察覺之前就搶走^FF0000偵查日誌^000000。";
 			close;
 		}
-		mes "[Scout]";
-		mes "Did you already find";
-		mes "20 ^FF0000Scout Journals^000000?";
-		mes "If I knew you're so fast, I would have asked you for 100 pages instead.";
+		mes "[偵察兵]";
+		mes "你已經找到";
+		mes "20本^FF0000偵查日誌^000000了嗎？";
+		mes "早知道你這麼快，我就該請你找100頁才對。";
 		next;
-		mes "[Scout]";
-		mes "My wounds are throbbing from the thought of punishment";
-		mes "that might await me at the base.";
+		mes "[偵察兵]";
+		mes "一想到可能在基地等著我的懲處，";
+		mes "我的傷口就隱隱作痛。";
 		next;
-		mes "[Scout]";
-		mes "I'll follow you as soon as I'm done reorganizing these pages.";
-		mes "Please report to the Investigator";
-		mes "and put in a good word";
+		mes "[偵察兵]";
+		mes "等我整理完這些頁面就跟你走。";
+		mes "請向調查員報告，";
+		mes "並替我美言幾句。";
 		mes "替我做到。";
 		delitem 6692,20;// PatrolLog
 		completequest 1266;	// Flaming Basin and Doom Prayers
@@ -3668,17 +3668,17 @@ moro_vol,234,301,3	script	Scout#bl	4_M_CRU_SOLD,{
 		close;
 	}
 	if (ep14_3_fall_bless == 4) {
-		mes "[Scout]";
-		mes "I'll follow you as soon as I'm done reorganizing these pages.";
-		mes "Please report to the Investigator";
-		mes "and put in a good word";
+		mes "[偵察兵]";
+		mes "等我整理完這些頁面就跟你走。";
+		mes "請向調查員報告，";
+		mes "並替我美言幾句。";
 		mes "替我做到。";
 		close;
 	}
-	mes "[Scout]";
-	mes "I was sent to investigate these monsters.";
-	mes "It's unfair that I'm alone";
-	mes "in this dangerous place with no backup!";
+	mes "[偵察兵]";
+	mes "我被派來調查這些魔物。";
+	mes "我一個人孤零零的，太不公平了";
+	mes "在這危險的地方，身邊連個支援都沒有！";
 	close;
 }
 
@@ -3698,7 +3698,7 @@ OnTouch:
 	else
 		.@count = 2;
 	if (countitem(6692) >= .@count) {
-		mes "You have been ambushed by Fire Sandmen!";
+		mes "你遭到了火沙人的埋伏！";
 		delitem 6692, .@count;// PatrolLog
 		monster "moro_vol",.@x,(.@y-2)," ",3021,1;
 		monster "moro_vol",.@x,(.@y-1)," ",3021,1;
@@ -3719,126 +3719,126 @@ moro_vol,232,266,0	duplicate(#bg1)	#bg10	HIDDEN_WARP_NPC,2,2
 
 
 // moro_vol,104,141,3	script	Doom Prayers Leader#bl	4_M_BELIEVER01,{
-moro_vol,91,197,3	script	Doom Prayers Leader#bl	4_M_BELIEVER01,{
+moro_vol,91,197,3	script	末日祈禱團長#bl::Doom Prayers Leader#bl	4_M_BELIEVER01,{
 	if (checkweight(1301,3) == 0) {
 		mes "- 你的道具太多，無法繼續對話。 -";
 		close;
 	}
 	if (ep14_3_fall_bless < 6) {
-		mes "[Doom Prayers Leader]";
-		mes "Finally, doomsday has come!";
-		mes "Destruction is a blessing!";
+		mes "[末日祈禱團長]";
+		mes "末日終於降臨了！";
+		mes "毀滅就是祝福！";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "Guide us to the inside!";
-		mes "We're chosen by the gods!";
-		mes "The day when the destruction of the world begins.";
+		mes "[末日祈禱團長]";
+		mes "帶我們進入裡面！";
+		mes "我們是被神明選中的！";
+		mes "世界毀滅開始的那一天。";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "Blood for the blood go~~";
-		mes "I mean destruction is good!";
-		mes "Destruction is a blessing!";
+		mes "[末日祈禱團長]";
+		mes "以血還血吧~~";
+		mes "我是說毀滅是好事！";
+		mes "毀滅就是祝福！";
 		close;
 	}
 	if (ep14_3_fall_bless == 6) {
-		mes "[Doom Prayers Leader]";
-		mes "Finally, doomsday has come!";
-		mes "Destruction is a blessing!";
+		mes "[末日祈禱團長]";
+		mes "末日終於降臨了！";
+		mes "毀滅就是祝福！";
 		next;
-		mes "[Doom Prayers]";
-		mes "Destruction! Is! A! Blessing!";
-		mes "Destruction! Is! A! Blessing!";
+		mes "[末日祈禱團]";
+		mes "毀滅！就是！祝福！";
+		mes "毀滅！就是！祝福！";
 		next;
-		mes "[Doom Prayers]";
-		mes "Destruction! Blessing!";
-		mes "We are the chosen ones!";
+		mes "[末日祈禱團]";
+		mes "毀滅！祝福！";
+		mes "我們是被選中的人！";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "Guide us to the inside!";
-		mes "We're chosen by the gods!";
-		mes "The day when the destruction of the world begins,";
+		mes "[末日祈禱團長]";
+		mes "帶我們進入裡面！";
+		mes "我們是被神明選中的！";
+		mes "世界毀滅開始的那一天，";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "The gun is good!";
-		mes "The HODE is evil!";
+		mes "[末日祈禱團長]";
+		mes "神是善良的！";
+		mes "HODE 是邪惡的！";
 		next;
-		switch( select( "What god do you serve?", "你是誰？", "返回！" ) ) {
+		switch( select( "你信奉哪位神明？", "你是誰？", "返回！" ) ) {
 		case 1:
-			mes "[Doom Prayers Leader]";
-			mes "We serve the God of Destruction!";
-			mes "He oversees the destruction of everything--from the destruction of a star to that of an entire galaxy,";
-			mes "and from the spoilage of my breakfast to that of my dinner.";
+			mes "[末日祈禱團長]";
+			mes "我們信奉毀滅之神！";
+			mes "祂掌管萬物的毀滅——從一顆星辰的毀滅，到整個星系的毀滅，";
+			mes "從我早餐的腐壞，到晚餐的腐壞。";
 			close;
 		case 2:
-			mes "[Doom Prayers Leader]";
-			mes "We're the Doom Prayers!";
-			mes "We serve the God of Destruction,";
-			mes "and pray to him to bless us with the end of the world.";
+			mes "[末日祈禱團長]";
+			mes "我們是末日祈禱團！";
+			mes "我們信奉毀滅之神，";
+			mes "並祈求祂賜予我們世界的終結作為祝福。";
 			next;
-			mes "[Doom Prayers Leader]";
-			mes "Only after everything else is destroyed,";
-			mes "we can be truly blessed.";
+			mes "[末日祈禱團長]";
+			mes "唯有一切都被摧毀之後，";
+			mes "我們才能真正受到祝福。";
 			next;
-			mes "[Doom Prayers Leader]";
-			mes "Those sudden cracks";
-			mes "in the ground.";
-			mes "Those talking Cats.";
-			mes "Those green giants.";
+			mes "[末日祈禱團長]";
+			mes "那些突如其來的裂痕";
+			mes "出現在地面上。";
+			mes "那些會說話的貓。";
+			mes "那些綠色的巨人。";
 			next;
-			mes "[Doom Prayers Leader]";
-			mes "They prove the end is near!";
-			mes "Oh, doomsday has arrived!";
-			mes "Destruction is a blessing!";
+			mes "[末日祈禱團長]";
+			mes "它們證明了末日將近！";
+			mes "噢，末日已經來臨！";
+			mes "毀滅就是祝福！";
 			close;
 		case 3:
-			mes "[Doom Prayers Leader]";
-			mes "No, we won't!";
-			mes "Finally, doomsday has arrived!";
-			mes "We've been dying for the blessing!";
-			mes "I want to be there before everyone else!";
+			mes "[末日祈禱團長]";
+			mes "不，我們才不會！";
+			mes "末日終於來臨了！";
+			mes "我們一直渴望這份祝福！";
+			mes "我要比其他人先到那裡！";
 			next;
-			mes "[Doom Prayers Leader]";
-			mes "Hell no, we won't go!";
-			mes "Let us in there!";
-			mes "We've been chosen by the God of Destruction.";
-			mes "Unlike you, we're invincible!";
+			mes "[末日祈禱團長]";
+			mes "死都不去！我們才不走！";
+			mes "讓我們進去！";
+			mes "我們已被毀滅之神選中。";
+			mes "和你不同，我們是無敵的！";
 			next;
-			select("Can you prove it?");
-			mes "[Doom Prayers Leader]";
-			mes "How dare you challenge me?!";
-			mes "All right, I'll prove it to you!";
+			select("你能證明嗎？");
+			mes "[末日祈禱團長]";
+			mes "你竟敢挑戰我？！";
+			mes "好吧，我來向你證明！";
 			next;
-			mes "[Doom Prayers Leader]";
-			mes "Search this Doomsland and find ^FF000040 Blessing Stones^000000.";
-			mes "Throw them at us, and you'll see.";
+			mes "[末日祈禱團長]";
+			mes "搜尋這片末日之地，找到^FF000040 祝福之石^000000。";
+			mes "把它們丟向我們，你就會知道。";
 			next;
-			mes "[Doom Prayers Leader]";
-			mes "The moment they hit our bodies,";
-			mes "they'll turn into flower petals with a loud pop!";
-			mes "Destruction is a blessing!";
+			mes "[末日祈禱團長]";
+			mes "它們一撞上我們的身體，";
+			mes "就會砰的一聲變成花瓣！";
+			mes "毀滅就是祝福！";
 			next;
-			select("Doomsland?");
+			select("末日之地？");
 			mes "[衛兵]";
-			mes "That's what those crazy people call this Flaming Basin.";
+			mes "那些瘋子是這樣稱呼這片烈焰盆地的。";
 			next;
 			mes "[衛兵]";
-			mes "And what they call ^FF0000Blessing Stones^000000 are simply the debris fell off ^0000FFFire Golems^000000.";
+			mes "而他們所謂的^FF0000祝福之石^000000，其實只是從^0000FF火焰魔像^000000身上掉落的碎片。";
 			next;
-			mes "The only way to send away these crazy people must be prove them they're wrong.";
-			mes "Do you want to hunt ^0000FFFire Golems^000000";
-			mes "and collect 40 ^FF0000Blessing Stones^000000?";
+			mes "要讓這些瘋子離開，唯一的辦法就是證明他們是錯的。";
+			mes "你想獵殺^0000FF火焰魔像^000000";
+			mes "並收集40個^FF0000祝福之石^000000嗎？";
 			next;
-			if (select( "No, I couldn't care less!", "I'll collect the stones." ) == 1) {
-				mes "[Doom Prayers Leader]";
-				mes "I see you're afraid of witnessing the grace of our god lest that might change your mind.";
-				mes "Stop bothering me and scram!";
-				mes "Destruction is a blessing!";
+			if (select( "不，我才不在乎！", "我來收集那些石頭。" ) == 1) {
+				mes "[末日祈禱團長]";
+				mes "我看你是怕親眼見證我們神明的恩典，會改變你的想法。";
+				mes "別煩我，快滾！";
+				mes "毀滅就是祝福！";
 				close;
 			}
-			mes "[Doom Prayers Leader]";
-			mes "Go ahead, bring ^FF0000Blessing Stones^000000 and throw them at us!";
-			mes "You'll see those stones turning into falling flower petals!";
-			mes "Then you'll cry and beg me to let you join us.";
+			mes "[末日祈禱團長]";
+			mes "去吧，帶來^FF0000祝福之石^000000，丟向我們！";
+			mes "你會看到那些石頭變成飄落的花瓣！";
+			mes "到時候你就會哭著求我讓你加入我們。";
 			completequest 1297;	// Flaming Basin and Doom Prayers
 			setquest 1270;	// Flaming Basin and Doom Prayers
 			ep14_3_fall_bless = 7;
@@ -3847,37 +3847,37 @@ moro_vol,91,197,3	script	Doom Prayers Leader#bl	4_M_BELIEVER01,{
 	}
 	if (ep14_3_fall_bless == 7) {
 		if (countitem(6693) < 39) {	// Stone_Of_Blessing
-			mes "[Doom Prayers Leader]";
-			mes "Search this Doomsland and find ^FF000040 Blessing Stones^000000.";
-			mes "Throw them at us, and you'll see.";
+			mes "[末日祈禱團長]";
+			mes "搜尋這片末日之地，找到^FF000040 祝福之石^000000。";
+			mes "把它們丟向我們，你就會知道。";
 			next;
-			mes "[Doom Prayers Leader]";
-			mes "The moment they hit our bodies, they'll turn into flower petals with a loud pop!";
-			mes "Destruction is a blessing!";
+			mes "[末日祈禱團長]";
+			mes "它們一撞上我們的身體，就會砰的一聲變成花瓣！";
+			mes "毀滅就是祝福！";
 			next;
-			mes "Hunt ^0000FFFire Golems^000000 and collect 40 ^FF0000Blessing Stones^000000.";
+			mes "獵殺^0000FF火焰魔像^000000，收集40個^FF0000祝福之石^000000。";
 			close;
 		}
-		mes "[Doom Prayers Leader]";
-		mes "You brought 40 ^FF0000Blessing Stones^000000.";
-		mes "Okay, we're ready.";
-		mes "Throw the stones at us!";
+		mes "[末日祈禱團長]";
+		mes "你帶來了40個^FF0000祝福之石^000000。";
+		mes "好了，我們準備好了。";
+		mes "把石頭丟向我們！";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "Be prepared for the miracle!";
-		mes "Come on, hit us hard!";
-		mes "Destruction is a blessing!";
+		mes "[末日祈禱團長]";
+		mes "準備好迎接奇蹟吧！";
+		mes "來吧，狠狠地打我們！";
+		mes "毀滅就是祝福！";
 		next;
-		mes "*Whiz*";
-		mes "*WHIZZ*";
+		mes "*咻*";
+		mes "*咻咻*";
 		next;
-		mes "*Whiz*";
-		mes "*WHIZZ*";
-		mes "*WHIZZ*";
-		mes "*WHIZZ*";
+		mes "*咻*";
+		mes "*咻咻*";
+		mes "*咻咻*";
+		mes "*咻咻*";
 		next;
-		mes "[Doom Prayers]";
-		mes "Yelp!";
+		mes "[末日祈禱團]";
+		mes "哎喲！";
 		emotion 19;
 		emotion 19, getnpcid(0, "Doom Prayers Second-in-command#bl");
 		emotion 28, getnpcid(0, "Doom Prayer#bl1");
@@ -3885,9 +3885,9 @@ moro_vol,91,197,3	script	Doom Prayers Leader#bl	4_M_BELIEVER01,{
 		emotion 19, getnpcid(0, "Doom Prayer#bl3");
 		emotion 28, getnpcid(0, "Doom Prayer#bl4");
 		next;
-		mes "[Doom Prayers]";
-		mes "Yelp!";
-		mes "Ouch! Geez!";
+		mes "[末日祈禱團]";
+		mes "哎喲！";
+		mes "好痛！天啊！";
 		emotion 19;
 		emotion 19, getnpcid(0, "Doom Prayers Second-in-command#bl");
 		emotion 28, getnpcid(0, "Doom Prayer#bl1");
@@ -3899,9 +3899,9 @@ moro_vol,91,197,3	script	Doom Prayers Leader#bl	4_M_BELIEVER01,{
 		emotion 28, getnpcid(0, "Doom Prayer#bl0");
 		emotion 19, getnpcid(0, "Doom Prayer#bl12");
 		next;
-		mes "[Doom Prayers]";
-		mes "Kyaah-!";
-		mes "Aww! Err!";
+		mes "[末日祈禱團]";
+		mes "呀啊-！";
+		mes "哎呀！唔！";
 		emotion 19;
 		emotion 19, getnpcid(0, "Doom Prayers Second-in-command#bl");
 		emotion 28, getnpcid(0, "Doom Prayer#bl1");
@@ -3917,24 +3917,24 @@ moro_vol,91,197,3	script	Doom Prayers Leader#bl	4_M_BELIEVER01,{
 		emotion 19, getnpcid(0, "Doom Prayer#bl11");
 		emotion 19, getnpcid(0, "Doom Prayer#bl12");
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "That hurts!";
-		mes "That hurts like hell!";
-		mes "STOP! Stop hitting me in the face!";
+		mes "[末日祈禱團長]";
+		mes "好痛！";
+		mes "痛死了！";
+		mes "住手！別打我的臉！";
 		next;
-		if (select( "Keep throwing.", "Stop throwing.") == 2) {
-			mes "Instead of turning into flower petals, the stones inflicted immense pain on those who got hit.";
-			mes "You decided to stop throwing the stones.";
+		if (select( "繼續丟。", "別丟了。") == 2) {
+			mes "石頭沒有變成花瓣，反而給被擊中的人帶來了劇烈的疼痛。";
+			mes "你決定停止丟石頭。";
 			delitem 6693,40;// Stone_Of_Blessing
 			completequest 1270;	// Flaming Basin and Doom Prayers
 			setquest 1271;	// Flaming Basin and Doom Prayers
 			ep14_3_fall_bless = 8;
 			close;
 		}
-		mes "[Doom Prayers]";
-		mes "Yelp!";
+		mes "[末日祈禱團]";
+		mes "哎喲！";
 		mes "我的頭！";
-		mes "Aww! Kyaaooh-!";
+		mes "哎呀！呀啊喔-！";
 		emotion 19;
 		emotion 19, getnpcid(0, "Doom Prayers Second-in-command#bl");
 		emotion 28, getnpcid(0, "Doom Prayer#bl1");
@@ -3942,10 +3942,10 @@ moro_vol,91,197,3	script	Doom Prayers Leader#bl	4_M_BELIEVER01,{
 		emotion 19, getnpcid(0, "Doom Prayer#bl3");
 		emotion 28, getnpcid(0, "Doom Prayer#bl4");
 		next;
-		mes "[Doom Prayers]";
-		mes "Kyaah-!";
-		mes "My nose!";
-		mes "Kyaah-! Kyaarrr-!";
+		mes "[末日祈禱團]";
+		mes "呀啊-！";
+		mes "我的鼻子！";
+		mes "呀啊-！呀啊啊-！";
 		emotion 19;
 		emotion 19, getnpcid(0, "Doom Prayers Second-in-command#bl");
 		emotion 28, getnpcid(0, "Doom Prayer#bl1");
@@ -3961,24 +3961,24 @@ moro_vol,91,197,3	script	Doom Prayers Leader#bl	4_M_BELIEVER01,{
 		emotion 19, getnpcid(0, "Doom Prayer#bl11");
 		emotion 19, getnpcid(0, "Doom Prayer#bl12");
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "Hurt!";
-		mes "Hurt like hell!";
-		mes "I wasn't ready!";
-		mes "Stop! Let's do over!";
+		mes "[末日祈禱團長]";
+		mes "好痛！";
+		mes "痛死了！";
+		mes "我還沒準備好！";
+		mes "停！我們重來！";
 		close;
 	}
 	if (ep14_3_fall_bless == 8) {
-		mes "[Doom Prayers Leader]";
-		mes "Brothers and sisters, calm down!";
-		mes "That heretic has fooled us with the wrong stones!";
+		mes "[末日祈禱團長]";
+		mes "兄弟姊妹們，冷靜下來！";
+		mes "那個異端用錯的石頭騙了我們！";
 		next;
-		mes "[Doom Prayers]";
+		mes "[末日祈禱團]";
 		mes "我就知道！";
 		next;
-		mes "[Doom Prayers]";
-		mes "Boo!";
-		mes "Boo!";
+		mes "[末日祈禱團]";
+		mes "噓！";
+		mes "噓！";
 		emotion 32;
 		emotion 32, getnpcid(0, "Doom Prayers Second-in-command#bl");
 		emotion 6, getnpcid(0, "Doom Prayer#bl1");
@@ -3994,42 +3994,42 @@ moro_vol,91,197,3	script	Doom Prayers Leader#bl	4_M_BELIEVER01,{
 		emotion 6, getnpcid(0, "Doom Prayer#bl11");
 		emotion 6, getnpcid(0, "Doom Prayer#bl12");
 		next;
-		mes "[Doom Prayers]";
-		mes "Destruction is a blessing!";
-		mes "Destruction is a blessing!";
+		mes "[末日祈禱團]";
+		mes "毀滅就是祝福！";
+		mes "毀滅就是祝福！";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "You're a coward!";
-		mes "I command you again.";
+		mes "[末日祈禱團長]";
+		mes "你這個膽小鬼！";
+		mes "我再次命令你。";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "Bring the blood of the monsters that roam Doomsland.";
-		mes "I shall drink it and levitate to guide you all to the true faith!";
+		mes "[末日祈禱團長]";
+		mes "去帶回在末日之地遊蕩的怪物之血。";
+		mes "我會把它喝下，升空引領你們走向真正的信仰！";
 		next;
 		mes "[衛兵]";
-		mes "He means the ^FF0000Monster Bloods^000000";
-		mes "from ^0000FFFire Frilldoras^000000 and and ^0000FFFire Sandmen^000000.";
-		mes "I presume 30 bottles should suffice.";
+		mes "他指的是^FF0000怪物血^000000";
+		mes "來自^0000FF火焰弗利朵拉^000000和^0000FF火沙人^000000。";
+		mes "我想30瓶應該夠了。";
 		next;
-		if (select( "No, I couldn't care less!", "I'll collect Monster Bloods.") == 1) {
-			mes "[Doom Prayers Leader]";
-			mes "I knew you'd say yes!";
-			mes "I can sense your fear about the possibility of witnessing the grace of the God of Destruction.";
+		if (select( "不，我才不在乎！", "我去收集怪物血。") == 1) {
+			mes "[末日祈禱團長]";
+			mes "我就知道你會答應！";
+			mes "我感受得到你害怕親眼見證毀滅之神恩典的那份恐懼。";
 			next;
-			mes "[Doom Prayers Leader]";
-			mes "Stop bothering me and scram!";
-			mes "Destruction is a blessing!";
+			mes "[末日祈禱團長]";
+			mes "別煩我，快滾！";
+			mes "毀滅就是祝福！";
 			close;
 		}
-		mes "[Doom Prayers Leader]";
-		mes "Now go bring me Monster Bloods!";
-		mes "Hunt those heinous ^0000FFFire Frilldoras^000000 and and ^0000FFFire Sandmen^000000, and bring me 30 ^FF0000Monster Bloods^000000.";
+		mes "[末日祈禱團長]";
+		mes "現在去幫我把怪物血帶來！";
+		mes "去獵殺那些可惡的^0000FF火焰弗利朵拉^000000和^0000FF火沙人^000000，給我帶來30瓶^FF0000怪物血^000000。";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "This is a perilous task.";
-		mes "I'll understand if you want to run.";
-		mes "If you really want to do this against my advice, then do as you wish.";
-		mes "Mwah hah hah!";
+		mes "[末日祈禱團長]";
+		mes "這是個危險的任務。";
+		mes "如果你想逃跑，我可以理解。";
+		mes "如果你真的不聽我的勸告，那就隨你便吧。";
+		mes "嘿哈哈哈！";
 		completequest 1271;	// Flaming Basin and Doom Prayers
 		setquest 1272;	// Flaming Basin and Doom Prayers
 		ep14_3_fall_bless = 9;
@@ -4037,48 +4037,48 @@ moro_vol,91,197,3	script	Doom Prayers Leader#bl	4_M_BELIEVER01,{
 	}
 	if (ep14_3_fall_bless == 9) {
 		if (countitem(6694) < 29) {
-			mes "[Doom Prayers Leader]";
-			mes "Now go bring me Monster Bloods!";
-			mes "Hunt those heinous ^0000FFFire Frilldoras^000000 and and ^0000FFFire Sandmen^000000, and bring me 30 ^FF0000Monster Bloods^000000.";
+			mes "[末日祈禱團長]";
+			mes "現在去幫我把怪物血帶來！";
+			mes "去獵殺那些可惡的^0000FF火焰弗利朵拉^000000和^0000FF火沙人^000000，給我帶來30瓶^FF0000怪物血^000000。";
 			next;
-			mes "[Doom Prayers Leader]";
-			mes "This is a perilous task.";
-			mes "I'll understand if you want to run.";
-			mes "If you really want to do this against my advice, then do as you wish.";
-			mes "Mwah hah hah!";
+			mes "[末日祈禱團長]";
+			mes "這是個危險的任務。";
+			mes "如果你想逃跑，我可以理解。";
+			mes "如果你真的不聽我的勸告，那就隨你便吧。";
+			mes "嘿哈哈哈！";
 			close;
 		}
-		mes "[Doom Prayers Leader]";
-		mes "You must have too much time on your hands, heretic: you really brought all the ^FF0000Monster Bloods^000000.";
+		mes "[末日祈禱團長]";
+		mes "異端，你一定是閒得發慌: 居然真的把所有^FF0000怪物血^000000都帶來了。";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "Lo and behold!";
-		mes "I'll drink this and levitate myself with its power!";
+		mes "[末日祈禱團長]";
+		mes "瞧瞧這是什麼！";
+		mes "我要喝下這個，借它的力量升空！";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "*Gulp Gulp*";
+		mes "[末日祈禱團長]";
+		mes "*咕嘟*";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "*Slosh Slosh*";
+		mes "[末日祈禱團長]";
+		mes "*咕嚕咕嚕*";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "*Guzzle Guzzle*";
+		mes "[末日祈禱團長]";
+		mes "*咕嘟咕嘟*";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "*Burp*";
+		mes "[末日祈禱團長]";
+		mes "*打嗝*";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "*Rumble*";
+		mes "[末日祈禱團長]";
+		mes "*咕嚕嚕*";
 		next;
-		mes "[Doom Prayers Leader]";
+		mes "[末日祈禱團長]";
 		mes "...";
 		mes "唔……";
 		emotion 4;
 		next;
-		mes "The color drains from his face.";
-		mes "You catch a whiff of what smells like diarrhea.";
+		mes "他的臉色瞬間刷白。";
+		mes "你聞到一股像是拉肚子的臭味。";
 		next;
-		mes "His lips thin in silent embarrassment.";
+		mes "他抿緊嘴唇，尷尬得說不出話。";
 		emotion 28;
 		delitem 6694,30;// Monster_Blood
 		completequest 1272;	// Flaming Basin and Doom Prayers
@@ -4087,39 +4087,39 @@ moro_vol,91,197,3	script	Doom Prayers Leader#bl	4_M_BELIEVER01,{
 		close;
 	}
 	if (ep14_3_fall_bless < 12) {
-		mes "Enveloped in a cloud of vile stink, he remains silent.";
+		mes "被一片惡臭包圍，他保持沉默。";
 		next;
-		mes "His second-in-command is angrily pointing his finger at you.";
-		mes "You should talk to him.";
+		mes "他的副手正憤怒地指著你。";
+		mes "你應該去跟他談談。";
 		close;
 	}
 	if (ep14_3_fall_bless == 12) {
-		mes "[Doom Prayers Leader]";
-		mes "Sigh, the world hasn't ended, again.";
-		mes "What I wouldn't give to go back home now and change to some fresh underwear...";
+		mes "[末日祈禱團長]";
+		mes "唉，世界又沒有毀滅。";
+		mes "我現在多想回家換條乾淨的內褲……";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "I'll wait for the next natural disaster and gather more followers to call forth the God of Destruction!";
+		mes "[末日祈禱團長]";
+		mes "我會等下一次天災，再召集更多信徒，把毀滅之神喚醒！";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "Thanks to you, though, that whether accident has shocked everyone and put them in their place.";
+		mes "[末日祈禱團長]";
+		mes "不過多虧了你，那場天候意外震懾了所有人，讓他們乖乖各安其位。";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "My followers have been doubting their faith in me, and haven't paid their memberships for months.";
-		mes "I should reward you for your help.";
+		mes "[末日祈禱團長]";
+		mes "我的信徒們一直懷疑對我的信仰，已經好幾個月沒繳會費了。";
+		mes "我應該為你的幫助給予獎勵。";
 		next;
-		mes "[Doom Prayers Leader]";
-		mes "I hope you'll come to our next gathering and work your whether miracle again.";
+		mes "[末日祈禱團長]";
+		mes "希望你能來參加我們下次的聚會，再次施展你的天候奇蹟。";
 		completequest 1275;	// Flaming Basin and Doom Prayers
 		ep14_3_fall_bless = 13;
 		getexp 2000000,0;
 		close;
 	}
-	mes "[Doom Prayers Leader]";
-	mes "Thanks to you, that whether accident has shocked everyone and put them in their place.";
+	mes "[末日祈禱團長]";
+	mes "多虧了你，那場天候意外震懾了所有人，讓他們各安其位。";
 	next;
-	mes "[Doom Prayers Leader]";
-	mes "I hope you'll come to our next gathering and work your whether miracle again.";
+	mes "[末日祈禱團長]";
+	mes "希望你能來參加我們下次的聚會，再次施展你的天候奇蹟。";
 	close;
 
 OnInit:
@@ -4127,75 +4127,75 @@ OnInit:
 	end;
 }
 
-moro_vol,95,195,3	script	Doom Prayers Second-in-command#bl	4_F_BELIEVER01,{
+moro_vol,95,195,3	script	末日祈禱團副手#bl::Doom Prayers Second-in-command#bl	4_F_BELIEVER01,{
 	if (checkweight(1301,3) == 0) {
 		mes "- 你的道具太多，無法繼續對話。 -";
 		close;
 	}
 	if (ep14_3_fall_bless < 10) {
-		mes "[Doom Prayers Second-in-command]";
-		mes "Doom Prayers!";
-		mes "Pray Harder!";
-		mes "Destruction! Blessing!";
+		mes "[末日祈禱團副手]";
+		mes "末日祈禱團！";
+		mes "再更虔誠地祈禱！";
+		mes "毀滅！祝福！";
 		next;
-		mes "[Doom Prayers]";
-		mes "Destruction! Blessing!";
-		mes "Destruction! Blessing!";
+		mes "[末日祈禱團]";
+		mes "毀滅！祝福！";
+		mes "毀滅！祝福！";
 		close;
 	}
 	if (ep14_3_fall_bless == 10) {
-		mes "[Doom Prayers Second-in-command]";
-		mes "Doom Prayers, don't panic! Stay calm!";
+		mes "[末日祈禱團副手]";
+		mes "末日祈禱團，別慌！保持冷靜！";
 		next;
-		mes "[Doom Prayers Second-in-command]";
-		mes "Soon the judgment will begin and we'll be blessed.";
-		mes "We'll want for nothing!";
+		mes "[末日祈禱團副手]";
+		mes "審判很快就會開始，我們將會受到祝福。";
+		mes "我們將一無所缺！";
 		next;
-		mes "[Doom Prayers Second-in-command]";
-		mes "Let's pray together and raise the Blessing Gate!";
-		mes "Destruction! Blessing!";
+		mes "[末日祈禱團副手]";
+		mes "讓我們一起祈禱，開啟祝福之門！";
+		mes "毀滅！祝福！";
 		next;
-		mes "[Doom Prayers]";
-		mes "Destruction! Blessing!";
-		mes "Destruction! Blessing!";
+		mes "[末日祈禱團]";
+		mes "毀滅！祝福！";
+		mes "毀滅！祝福！";
 		next;
-		mes "[Doom Prayers Second-in-command]";
-		mes "Oh, I see a light!";
-		mes "If only I can hold 30 ^FF0000Fire Golem's Stone Teeth^000000 and 30 ^FF0000Fire Frilldora's Napes^000000 in my hands!";
+		mes "[末日祈禱團副手]";
+		mes "噢，我看到光了！";
+		mes "要是我能手握30顆^FF0000火焰魔像的石牙^000000和30塊^FF0000火焰弗利朵拉的後頸肉^000000就好了！";
 		next;
-		mes "[Doom Prayers Second-in-command]";
-		mes "The tall Blessing Gate will appear itself before us, wide open for us!";
+		mes "[末日祈禱團副手]";
+		mes "高聳的祝福之門會自行出現在我們面前，為我們敞開大門！";
 		next;
-		mes "[Doom Prayers]";
+		mes "[末日祈禱團]";
 		mes "喔！";
 		next;
-		mes "[Doom Prayers Second-in-command]";
-		mes "Doom Prayers, charge forward, break everything in your path, and fearlessly swing your bare hands at those dangerous monsters!";
+		mes "[末日祈禱團副手]";
+		mes "末日祈禱團，向前衝！撞碎擋路的一切，無所畏懼地用赤手攻擊那些危險的怪物！";
 		next;
-		mes "[Doom Prayers Second-in-command]";
-		mes "Bring me 30 ^FF0000Fire Golem's Stone Teeth^000000 and 30 ^FF0000Fire Frilldora's Napes^000000.";
+		mes "[末日祈禱團副手]";
+		mes "給我帶來30顆^FF0000火焰魔像的石牙^000000和30塊^FF0000火焰弗利朵拉的後頸肉^000000。";
 		next;
-		if (select( "No, I couldn't care less!", "I'll bring them." ) == 1) {
-			mes "[Doom Prayers Second-in-command]";
-			mes "Listen up, Doom Prayers!";
-			mes "That heartless heretic couldn't care less about us.";
-			mes "What a relief!";
+		if (select( "不，我才不在乎！", "我去帶來。" ) == 1) {
+			mes "[末日祈禱團副手]";
+			mes "末日祈禱團，聽好了！";
+			mes "那個冷血的異端根本不在乎我們。";
+			mes "真是鬆了一口氣！";
 			next;
-			mes "[Doom Prayers Second-in-command]";
-			mes "Now, hunt those heinous monsters with your bare hands and get me the materials!";
+			mes "[末日祈禱團副手]";
+			mes "現在，徒手獵殺那些可惡的怪物，把材料給我弄來！";
 			next;
-			mes "[Doom Prayers Second-in-command]";
-			mes "Don't be afraid if you can't fight even Porings;";
-			mes "I know in your mind, you're as strong as Baphomet!";
+			mes "[末日祈禱團副手]";
+			mes "就算連波利都打不過也別害怕；";
+			mes "我知道在你們心裡，你們都跟巴風特一樣強！";
 			emotion 19, playerattached();
 			close;
 		}
-		mes "[Doom Prayers Second-in-command]";
-		mes "All right, Doom Prayers!";
-		mes "Let's give this heretic one more chance at the blessing!";
+		mes "[末日祈禱團副手]";
+		mes "好了，末日祈禱團！";
+		mes "讓我們再給這個異端一次領受祝福的機會！";
 		next;
-		mes "[Doom Prayers Second-in-command]";
-		mes "Now go bring me 30 ^FF0000Fire Golem's Stone Teeth^000000 and 30 ^FF0000Fire Frilldora's Napes^000000.";
+		mes "[末日祈禱團副手]";
+		mes "現在去給我帶來30顆^FF0000火焰魔像的石牙^000000和30塊^FF0000火焰弗利朵拉的後頸肉^000000。";
 		completequest 1273;	// Flaming Basin and Doom Prayers
 		setquest 1274;	// Flaming Basin and Doom Prayers
 		ep14_3_fall_bless = 11;
@@ -4203,34 +4203,34 @@ moro_vol,95,195,3	script	Doom Prayers Second-in-command#bl	4_F_BELIEVER01,{
 	}
 	if (ep14_3_fall_bless == 11) {
 		if (countitem(6695) < 30 || countitem(6696) < 30) {
-			mes "[Doom Prayers Second-in-command]";
-			mes "Now go bring me 30 ^FF0000Fire Golem's Stone Teeth^000000 and 30 ^FF0000Fire Frilldora's Napes^000000.";
+			mes "[末日祈禱團副手]";
+			mes "現在去給我帶來30顆^FF0000火焰魔像的石牙^000000和30塊^FF0000火焰弗利朵拉的後頸肉^000000。";
 			close;
 		}
-		mes "[Doom Prayers Second-in-command]";
-		mes "Oh Doom Prayers, be joyous--finally we have all the materials!";
-		mes "Destruction! Blessing!";
+		mes "[末日祈禱團副手]";
+		mes "噢，末日祈禱團，歡喜吧——材料終於全都到齊了！";
+		mes "毀滅！祝福！";
 		next;
-		mes "[Doom Prayers]";
-		mes "Destruction is a blessing!";
-		mes "Destruction is a blessing!";
+		mes "[末日祈禱團]";
+		mes "毀滅就是祝福！";
+		mes "毀滅就是祝福！";
 		next;
-		mes "[Doom Prayers Second-in-command]";
-		mes "Let's pray together and raise the Blessing Gate!";
+		mes "[末日祈禱團副手]";
+		mes "讓我們一起祈禱，開啟祝福之門！";
 		next;
-		mes "[Doom Prayers]";
-		mes "Destruction is a blessing!";
-		mes "Destruction is a blessing!";
+		mes "[末日祈禱團]";
+		mes "毀滅就是祝福！";
+		mes "毀滅就是祝福！";
 		next;
-		mes "[Doom Prayers]";
+		mes "[末日祈禱團]";
 		mes "...";
 		next;
-		mes "[Doom Prayers]";
+		mes "[末日祈禱團]";
 		mes "!!!";
 		next;
-		mes "[Doom Prayers]";
-		mes "Kyaah-!";
-		mes "Aww! Err!";
+		mes "[末日祈禱團]";
+		mes "呀啊-！";
+		mes "哎呀！唔！";
 		specialeffect EF_SUI_EXPLOSION, AREA, "Doom Prayers Leader#bl";
 		specialeffect EF_SUI_EXPLOSION;
 		specialeffect EF_SUI_EXPLOSION, AREA, "Doom Prayer#bl1";
@@ -4246,10 +4246,10 @@ moro_vol,95,195,3	script	Doom Prayers Second-in-command#bl	4_F_BELIEVER01,{
 		specialeffect EF_SUI_EXPLOSION, AREA, "Doom Prayer#bl11";
 		specialeffect EF_SUI_EXPLOSION, AREA, "Doom Prayer#bl12";
 		next;
-		mes "[Doom Prayers]";
-		mes "Kyaah-!";
-		mes "It really is the end of the world!";
-		mes "We're going to die! Kyaah-!";
+		mes "[末日祈禱團]";
+		mes "呀啊-！";
+		mes "世界真的要毀滅了！";
+		mes "我們要死了！呀啊-！";
 		specialeffect EF_SUI_EXPLOSION, AREA, "Doom Prayers Leader#bl";
 		specialeffect EF_SUI_EXPLOSION;
 		specialeffect EF_SUI_EXPLOSION, AREA, "Doom Prayer#bl1";
@@ -4265,8 +4265,8 @@ moro_vol,95,195,3	script	Doom Prayers Second-in-command#bl	4_F_BELIEVER01,{
 		specialeffect EF_SUI_EXPLOSION, AREA, "Doom Prayer#bl11";
 		specialeffect EF_SUI_EXPLOSION, AREA, "Doom Prayer#bl12";
 		next;
-		mes "Whether the God of Destruction really exists or not, this small group of fanatics aren't as special as they'd like to believe.";
-		mes "You should talk to Doom Prayers Leader again.";
+		mes "不管毀滅之神是否真的存在，這群狂熱分子並沒有他們想像中那麼特別。";
+		mes "你應該再去找末日祈禱團長談談。";
 		delitem 6695,30;// ToothOfFlameGolem
 		delitem 6696,30;// ToothOfFlameFrilldora
 		completequest 1274;	// Flaming Basin and Doom Prayers
@@ -4274,184 +4274,184 @@ moro_vol,95,195,3	script	Doom Prayers Second-in-command#bl	4_F_BELIEVER01,{
 		ep14_3_fall_bless = 12;
 		close;
 	}
-	mes "[Doom Prayers Second-in-command]";
-	mes "Aww... I'm scared...";
-	mes "I could have run already if only I were alone.";
-	mes "This is just too scary. I'm gonna cry a little more...";
+	mes "[末日祈禱團副手]";
+	mes "嗚哇……我好害怕……";
+	mes "要是我一個人的話，早就跑了。";
+	mes "這實在太可怕了。我還要再哭一會兒……";
 	close;
 }
 
-moro_vol,100,183,1	script	Base Sentry#bl	4_M_KY_SOLD,{
-	mes "[Base Sentry]";
-	mes "This area is dangerous.";
-	mes "Please refrain from exploring it alone.";
+moro_vol,100,183,1	script	基地哨兵#bl::Base Sentry#bl	4_M_KY_SOLD,{
+	mes "[基地哨兵]";
+	mes "這個區域很危險。";
+	mes "請不要獨自前往探索。";
 	close;
 }
-moro_vol,102,188,1	duplicate(Base Sentry#bl)	Base Sentry#bl1	4_M_KY_SOLD
-moro_vol,104,193,1	duplicate(Base Sentry#bl)	Base Sentry#bl2	4_M_KY_SOLD
-moro_vol,95,182,1	duplicate(Base Sentry#bl)	Base Sentry#bl3	4_M_KY_SOLD
-moro_vol,90,181,7	duplicate(Base Sentry#bl)	Base Sentry#bl4	4_M_KY_SOLD
+moro_vol,102,188,1	duplicate(Base Sentry#bl)	基地哨兵#bl1::Base Sentry#bl1	4_M_KY_SOLD
+moro_vol,104,193,1	duplicate(Base Sentry#bl)	基地哨兵#bl2::Base Sentry#bl2	4_M_KY_SOLD
+moro_vol,95,182,1	duplicate(Base Sentry#bl)	基地哨兵#bl3::Base Sentry#bl3	4_M_KY_SOLD
+moro_vol,90,181,7	duplicate(Base Sentry#bl)	基地哨兵#bl4::Base Sentry#bl4	4_M_KY_SOLD
 
-moro_vol,85,196,7	script	Doom Prayer#bl1	4_M_BELIEVER02,{
+moro_vol,85,196,7	script	末日祈禱者#bl1::Doom Prayer#bl1	4_M_BELIEVER02,{
 	if (ep14_3_fall_bless < 12) {
-		mes "[Doom Prayer]";
-		mes "Destruction is a blessing!";
-		mes "Destruction is a blessing!";
+		mes "[末日祈禱者]";
+		mes "毀滅就是祝福！";
+		mes "毀滅就是祝福！";
 		close;
 	}
-	mes "[Doom Prayer]";
-	mes "Aww, scary!";
-	mes "I really want to go home!";
+	mes "[末日祈禱者]";
+	mes "哎呀，好可怕！";
+	mes "我真想回家！";
 	close;
 }
 
-moro_vol,87,193,7	script	Doom Prayer#bl2	4_M_BELIEVER02,{
+moro_vol,87,193,7	script	末日祈禱者#bl2::Doom Prayer#bl2	4_M_BELIEVER02,{
 	if (ep14_3_fall_bless < 12) {
-		mes "[Doom Prayer]";
-		mes "Destruction! Blessing!";
-		mes "We are the chosen ones!";
+		mes "[末日祈禱者]";
+		mes "毀滅！祝福！";
+		mes "我們是被選中的人！";
 		close;
 	}
-	mes "[Doom Prayer]";
-	mes "How terrifying!";
-	mes "I'm gonna run first chance I get!";
+	mes "[末日祈禱者]";
+	mes "太可怕了！";
+	mes "一有機會我就跑！";
 	close;
 }
 
-moro_vol,90,191,7	script	Doom Prayer#bl3	4_M_BELIEVER02,{
+moro_vol,90,191,7	script	末日祈禱者#bl3::Doom Prayer#bl3	4_M_BELIEVER02,{
 	if (ep14_3_fall_bless < 12) {
-		mes "[Doom Prayer]";
-		mes "Destruction is a blessing!";
-		mes "Destruction is a blessing!";
+		mes "[末日祈禱者]";
+		mes "毀滅就是祝福！";
+		mes "毀滅就是祝福！";
 		close;
 	}
-	mes "[Doom Prayer]";
-	mes "I've relinquished everything I had to the Leader, but for what?!";
+	mes "[末日祈禱者]";
+	mes "我把所有東西都交給了團長，可是為了什麼？！";
 	next;
-	mes "[Doom Prayer]";
+	mes "[末日祈禱者]";
 	mes "...";
-	mes "Maybe I didn't pray hard enough.";
+	mes "也許是我祈禱得不夠虔誠。";
 	close;
 }
 
-moro_vol,93,189,7	script	Doom Prayer#bl4	4_M_BELIEVER02,{
+moro_vol,93,189,7	script	末日祈禱者#bl4::Doom Prayer#bl4	4_M_BELIEVER02,{
 	if (ep14_3_fall_bless < 12) {
-		mes "[Doom Prayer]";
-		mes "Destruction! Blessing!";
-		mes "We are the chosen ones!";
+		mes "[末日祈禱者]";
+		mes "毀滅！祝福！";
+		mes "我們是被選中的人！";
 		close;
 	}
-	mes "[Doom Prayer]";
-	mes "Aww, scary!";
-	mes "I really want to go home!";
+	mes "[末日祈禱者]";
+	mes "哎呀，好可怕！";
+	mes "我真想回家！";
 	close;
 }
 
-moro_vol,83,193,7	script	Doom Prayer#bl5	4_M_BELIEVER02,{
+moro_vol,83,193,7	script	末日祈禱者#bl5::Doom Prayer#bl5	4_M_BELIEVER02,{
 	if (ep14_3_fall_bless < 12) {
-		mes "[Doom Prayer]";
-		mes "Destruction is a blessing!";
-		mes "Destruction is a blessing!";
+		mes "[末日祈禱者]";
+		mes "毀滅就是祝福！";
+		mes "毀滅就是祝福！";
 		close;
 	}
-	mes "[Doom Prayer]";
-	mes "*Wail*";
-	mes "Argh, I'm scared!";
+	mes "[末日祈禱者]";
+	mes "*哀號*";
+	mes "啊，我好害怕！";
 	close;
 }
 
-moro_vol,86,190,7	script	Doom Prayer#bl6	4_M_BELIEVER02,{
+moro_vol,86,190,7	script	末日祈禱者#bl6::Doom Prayer#bl6	4_M_BELIEVER02,{
 	if (ep14_3_fall_bless < 12) {
-		mes "[Doom Prayer]";
-		mes "Destruction is a blessing!";
-		mes "Destruction is a blessing!";
+		mes "[末日祈禱者]";
+		mes "毀滅就是祝福！";
+		mes "毀滅就是祝福！";
 		close;
 	}
-	mes "[Doom Prayer]";
-	mes "Aww, scary!";
-	mes "I really want to go home!";
+	mes "[末日祈禱者]";
+	mes "哎呀，好可怕！";
+	mes "我真想回家！";
 	close;
 }
 
-moro_vol,89,188,7	script	Doom Prayer#bl7	4_M_BELIEVER02,{
+moro_vol,89,188,7	script	末日祈禱者#bl7::Doom Prayer#bl7	4_M_BELIEVER02,{
 	if (ep14_3_fall_bless < 12) {
-		mes "[Doom Prayer]";
-		mes "Destruction! Blessing!";
-		mes "We are the chosen ones!";
+		mes "[末日祈禱者]";
+		mes "毀滅！祝福！";
+		mes "我們是被選中的人！";
 		close;
 	}
-	mes "[Doom Prayer]";
-	mes "Err, I'm scared!";
-	mes "I shouldn't have come!";
+	mes "[末日祈禱者]";
+	mes "唔，我好害怕！";
+	mes "我真不該來的！";
 	close;
 }
 
-moro_vol,93,185,7	script	Doom Prayer#bl8	4_M_BELIEVER02,{
+moro_vol,93,185,7	script	末日祈禱者#bl8::Doom Prayer#bl8	4_M_BELIEVER02,{
 	if (ep14_3_fall_bless < 12) {
-		mes "[Doom Prayer]";
-		mes "Destruction is a blessing!";
-		mes "Destruction is a blessing!";
+		mes "[末日祈禱者]";
+		mes "毀滅就是祝福！";
+		mes "毀滅就是祝福！";
 		close;
 	}
-	mes "[Doom Prayer]";
-	mes "Aww, scary!";
-	mes "I really want to go home!";
-	mes "I hate the Leader!";
+	mes "[末日祈禱者]";
+	mes "哎呀，好可怕！";
+	mes "我真想回家！";
+	mes "我討厭團長！";
 	close;
 }
 
-moro_vol,81,197,7	script	Doom Prayer#bl9	4_M_BELIEVER02,{
+moro_vol,81,197,7	script	末日祈禱者#bl9::Doom Prayer#bl9	4_M_BELIEVER02,{
 	if (ep14_3_fall_bless < 12) {
-		mes "[Doom Prayer]";
-		mes "Destruction! Blessing!";
-		mes "We are the chosen ones!";
+		mes "[末日祈禱者]";
+		mes "毀滅！祝福！";
+		mes "我們是被選中的人！";
 		close;
 	}
-	mes "[Doom Prayer]";
-	mes "I can't believe the Leader anymore!";
-	mes "I'll probably make a better leader than him!";
+	mes "[末日祈禱者]";
+	mes "我再也不相信團長了！";
+	mes "我大概比他更會當領袖！";
 	close;
 }
 
-moro_vol,84,201,5	script	Doom Prayer#bl0	4_M_BELIEVER02,{
+moro_vol,84,201,5	script	末日祈禱者#bl0::Doom Prayer#bl0	4_M_BELIEVER02,{
 	if (ep14_3_fall_bless < 12) {
-		mes "[Doom Prayer]";
-		mes "Destruction is a blessing!";
-		mes "Destruction is a blessing!";
+		mes "[末日祈禱者]";
+		mes "毀滅就是祝福！";
+		mes "毀滅就是祝福！";
 		close;
 	}
-	mes "[Doom Prayer]";
-	mes "Aww, scary!";
-	mes "So scary, I'm gonna wet my pants!";
+	mes "[末日祈禱者]";
+	mes "哎呀，好可怕！";
+	mes "好可怕，我都快尿褲子了！";
 	close;
 }
 
-moro_vol,97,187,5	script	Doom Prayer#bl11	4_M_BELIEVER02,{
+moro_vol,97,187,5	script	末日祈禱者#bl11::Doom Prayer#bl11	4_M_BELIEVER02,{
 	if (ep14_3_fall_bless < 12) {
-		mes "[Doom Prayer]";
-		mes "Destruction! Blessing!";
-		mes "We are the chosen ones!";
+		mes "[末日祈禱者]";
+		mes "毀滅！祝福！";
+		mes "我們是被選中的人！";
 		close;
 	}
-	mes "[Doom Prayer]";
-	mes "This is all too terrifying...";
-	mes "Maybe my faith isn't deep enough...";
-	mes "I'd better offer more money!";
+	mes "[末日祈禱者]";
+	mes "這一切都太恐怖了……";
+	mes "也許是我的信仰還不夠深……";
+	mes "我最好多奉獻一點錢！";
 	close;
 }
 
-moro_vol,82,189,7	script	Doom Prayer#bl12	4_M_BELIEVER02,{
+moro_vol,82,189,7	script	末日祈禱者#bl12::Doom Prayer#bl12	4_M_BELIEVER02,{
 	if (ep14_3_fall_bless < 12) {
-		mes "[Doom Prayer]";
-		mes "Oh, God of Destruction!";
-		mes "Let your wrath fall unto this world!";
-		mes "Let me be the sole benefactor of your blessing!";
+		mes "[末日祈禱者]";
+		mes "噢，毀滅之神！";
+		mes "請降下你的憤怒，降臨到這個世界上吧！";
+		mes "讓我成為你祝福的唯一受惠者！";
 		close;
 	}
-	mes "[Doom Prayer]";
-	mes "This is all too terrifying...";
-	mes "Maybe my faith isn't deep enough...";
-	mes "I'd better offer more money!";
+	mes "[末日祈禱者]";
+	mes "這一切都太恐怖了……";
+	mes "也許是我的信仰還不夠深……";
+	mes "我最好多奉獻一點錢！";
 	close;
 }
 
@@ -4473,48 +4473,48 @@ moro_vol,78,185,0	duplicate(#bp1)	#bp6	HIDDEN_WARP_NPC,2,2
 moro_vol,5,1,3	script	#timemaster	CLEAR_NPC,{
 	if (callfunc("F_GM_NPC",1854,0,0,9999) < 1)
 		end;
-	mes "Current server experience status: " + $ep143_3_expbuff;
-	mes "Currently elapsed: " + $ep143_3_exptime;
+	mes "目前伺服器經驗值狀態: " + $ep143_3_expbuff;
+	mes "目前已經過: " + $ep143_3_exptime;
 	mes "你想做什麼？";
 	next;
-	switch( select( "Adjust the timer", "Pause timer", "Restart timer", "Initialization" ) ) {
+	switch( select( "調整計時器", "暫停計時器", "重新開始計時器", "初始化" ) ) {
 	case 1:
-		mes "Please enter the timer.";
+		mes "請輸入計時器時間。";
 		next;
 		input .@input,0,9999;
-		mes "Time is set to " + .@input;
+		mes "時間已設定為 " + .@input;
 		$ep143_3_exptime = .@input;
 		close;
 	case 2:
-		mes "Timer in pause.";
+		mes "計時器已暫停。";
 		stopnpctimer "Guardian Nidhogg#143nyd01";
 		close;
 	case 3:
-		mes "Restart the clock.";
+		mes "重新開始時鐘。";
 		initnpctimer "Guardian Nidhogg#143nyd01";
 		close;
 	case 4:
-		mes "Clock initialized.";
+		mes "時鐘已初始化。";
 		donpcevent "Guardian Nidhogg#143nyd01::OnStop";
 		close;
 	}
 }
 
 // gef_fild02,98,226,4	script	Perishing Blessing Assistant#bl	4_FROG,{
-moro_vol,1,3,4	script	Perishing Blessing Assistant#bl	4_FROG,{
+moro_vol,1,3,4	script	滅亡祝福助手#bl::Perishing Blessing Assistant#bl	4_FROG,{
 	if (callfunc("F_GM_NPC",1854,0) < 1) {
 		mes "咳！";
 		close;
 	}
-	mes "[Perishing Blessing Assistant]";
+	mes "[滅亡祝福助手]";
 	mes "您想做什麼？";
-	mes "Speak out loud!";
+	mes "大聲說出來！";
 	next;
 	switch( select(
 		"Task initialization", "Flame feather 15", "Patrol log 20", "Before hunting",
 		"Blessing Stone 40", "Monster Blood 30", "Final Reward", "Before the door of blessing is opened" ) ) {
 	case 1:
-		mes "[Perishing Blessing Assistant]";
+		mes "[滅亡祝福助手]";
 		mes "完成！";
 		ep14_3_fall_bless = 0;
 		for ( .@i = 1264; .@i <= 1275; .@i++ ) {
@@ -4525,17 +4525,17 @@ moro_vol,1,3,4	script	Perishing Blessing Assistant#bl	4_FROG,{
 			erasequest 1297;
 		close;
 	case 2:
-		mes "[Perishing Blessing Assistant]";
+		mes "[滅亡祝福助手]";
 		mes "完成！";
 		getitem 6691,15;// BurningFeather
 		close;
 	case 3:
-		mes "[Perishing Blessing Assistant]";
+		mes "[滅亡祝福助手]";
 		mes "完成！";
 		getitem 6692,20;// PatrolLog
 		close;
 	case 4:
-		mes "[Perishing Blessing Assistant]";
+		mes "[滅亡祝福助手]";
 		mes "完成！";
 		setquest 1268;
 		setquest 1269;
@@ -4552,23 +4552,23 @@ moro_vol,1,3,4	script	Perishing Blessing Assistant#bl	4_FROG,{
 		ep14_3_fall_bless = 4;
 		close;
 	case 5:
-		mes "[Perishing Blessing Assistant]";
+		mes "[滅亡祝福助手]";
 		mes "完成！";
 		getitem 6693,40;// Stone_Of_Blessing
 		close;
 	case 6:
-		mes "[Perishing Blessing Assistant]";
+		mes "[滅亡祝福助手]";
 		mes "完成！";
 		getitem 6694,30;// Monster_Blood
 		close;
 	case 7:
-		mes "[Perishing Blessing Assistant]";
+		mes "[滅亡祝福助手]";
 		mes "完成！";
 		getitem 6695,30;// ToothOfFlameGolem
 		getitem 6696,30;// ToothOfFlameFrilldora
 		close;
 	case 8:
-		mes "[Perishing Blessing Assistant]";
+		mes "[滅亡祝福助手]";
 		mes "完成！";
 		setquest 1274;
 		ep14_3_fall_bless = 11;

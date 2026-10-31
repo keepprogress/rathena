@@ -20,92 +20,92 @@
 //= 2.3 Added use of F_HasEdenGroupMark function. [Ragno]
 //============================================================
 
-moc_para01,25,35,4	script	Instructor Boya#para01	4_M_KNIGHT_GOLD,{
-	mes "[Boya]";
+moc_para01,25,35,4	script	波亞教官#para01::Instructor Boya#para01	4_M_KNIGHT_GOLD,{
+	mes "[博雅]";
 	if (!callfunc("F_HasEdenGroupMark")) {
-		mes "You are not in my group are you?";
-		mes "I don't have anything to say to outsiders.";
-		mes "If you want something register with my group.";
+		mes "你不是我們團的人，對吧？";
+		mes "我對外人沒什麼好說的。";
+		mes "如果你想要什麼，就來跟我們團體登記。";
 		next;
-		mes "[Boya]";
-		mes "To register with the Eden Group ask Laime Evenor next to me.";
+		mes "[博雅]";
+		mes "要登記加入伊甸團，請問我旁邊的萊姆·伊凡諾。";
 		close;
 	}
 	if (para_suv01 == 0) {
 		mes "怎麼了？";
-		mes "If you have any normal missions use the bulletin board.";
+		mes "如果有一般任務，請使用公告板。";
 		next;
-		switch (select("What is your responsibility?:Don't you have equipment?:Ignore.")) {
-			mes "[Boya]";
+		switch (select("你的職責是什麼？:你沒有裝備嗎？:無視")) {
+			mes "[博雅]";
 		case 1:
-			mes "I give training missions to members.";
-			mes "That's why they participate in it.";
-			mes "If they don't want to get in trouble, it's essential.";
+			mes "我會派發訓練任務給成員。";
+			mes "所以他們才會參加。";
+			mes "如果不想惹麻煩，這是必要的。";
 			next;
-			mes "[Boya]";
-			mes "Through battle training they can improve their real experience.";
-			mes "The members that prove themselves will even get a reward.";
+			mes "[博雅]";
+			mes "透過戰鬥訓練，他們能提升真正的實戰經驗。";
+			mes "表現出色的成員甚至會獲得獎勵。";
 			next;
-			mes "[Boya]";
-			mes "We gave them special equipmant that we have made.";
-			mes "These gifts are for people who are really doing their best.";
+			mes "[博雅]";
+			mes "我們會把自己製作的特製裝備發給他們。";
+			mes "這些獎勵是給真正全力以赴的人。";
 			next;
-			mes "[Boya]";
-			mes "If you are curious, you can join.";
-			mes "The training battle course is not very difficult.";
-			mes "There's nothing to worry about.";
+			mes "[博雅]";
+			mes "如果你有興趣，可以加入。";
+			mes "這個戰鬥訓練課程不太困難。";
+			mes "沒什麼好擔心的。";
 			next;
-			mes "[Boya]";
-			mes "If you want to join, don't hesitate.";
+			mes "[博雅]";
+			mes "如果想加入，別猶豫。";
 			next;
-			switch (select("Participate in the training.:Ignore.")) {
-				mes "[Boya]";
+			switch (select("參加訓練。:無視")) {
+				mes "[博雅]";
 			case 1:
 				callsub S_Quest1;
 				callsub S_Quest2;
 				callsub S_Quest3;
 			case 2:
-				mes "It's all your decision.";
-				mes "It's not my business but you should probably reconsider.";
+				mes "一切都由你決定。";
+				mes "這不關我的事，但你還是重新考慮比較好。";
 				close;
 			}
 		case 2:
 			mes "啥？";
-			mes "You are so honest!";
-			mes "Gosh. You wanted to know something about equipment?";
+			mes "你真誠實！";
+			mes "天啊。你想問關於裝備的事情？";
 			next;
-			mes "[Boya]";
-			mes "I have a uniform set which is free for our group members.";
-			mes "But, I can't give it for free.";
+			mes "[博雅]";
+			mes "我們團體的成員可以免費領取一套制服。";
+			mes "不過，我不能免費給你。";
 			next;
-			mes "[Boya]";
-			mes "We give it to great participants who do their best in the training.";
+			mes "[博雅]";
+			mes "我們會發給在訓練中全力以赴的優秀參加者。";
 			next;
-			mes "-Boya eyes you from top to bottom.";
-			mes "Hmm... he seems to think something is wrong.-";
+			mes "-波雅上上下下地打量你。";
+			mes "嗯……他好像覺得哪裡不對勁。-";
 			next;
-			mes "[Boya]";
-			mes "Due to emotion.";
+			mes "[博雅]";
+			mes "因為情緒激動。";
 			next;
 			select("什麼？！");
-			mes "[Boya]";
-			mes "So, will you join the training or not?";
-			mes "I look a little bit funny, actually I am really busy I was called shining Rune Knight.";
-			mes "Make a decision, hurry.";
+			mes "[博雅]";
+			mes "那麼，你要不要參加訓練？";
+			mes "我看起來有點怪，其實我很忙。大家都叫我閃耀的符文騎士。";
+			mes "快做決定。";
 			next;
-			switch (select("Participate in the training.:Refuse!!")) {
-				mes "[Boya]";
+			switch (select("參加訓練。:拒絕！！")) {
+				mes "[博雅]";
 			case 1:
 				callsub S_Quest1;
 				callsub S_Quest2;
 				callsub S_Quest3;
 			case 2:
-				mes "You are so rude!";
+				mes "你好無禮！";
 				specialeffect2 EF_HIT1;
 				percentheal -50,0;
 				next;
-				mes "-Beats quickly and this shining Rune Knight turns invisible.";
-				mes "It hurts too much-";
+				mes "-迅速一擊，這位閃耀的符文騎士便隱形了。";
+				mes "好痛啊……-";
 				close;
 			}
 		case 3:
@@ -114,343 +114,343 @@ moc_para01,25,35,4	script	Instructor Boya#para01	4_M_KNIGHT_GOLD,{
 		}
 	}
 	else if (para_suv01 < 5) {
-		mes "Hey, I already talked all about the training areas.";
-		mes "I will explain again please concentrate.";
+		mes "喂，我已經把訓練地點都說明過了。";
+		mes "我再解釋一次，請專心聽。";
 		next;
-		mes "[Boya]";
-		mes "An oasis souteast of Morocc.";
-		mes "There is a big dog in the center.";
-		mes "The detailed story is written in the log, see?";
+		mes "[博雅]";
+		mes "夢羅克東南方的綠洲。";
+		mes "綠洲中央有一隻大狗。";
+		mes "詳細經過都寫在紀錄上了，看到了嗎？";
 	}
 	else if (para_suv01 == 5) {
-		mes "Oh you've come back.";
+		mes "哦，你回來了。";
 		mes "做得不錯。";
-		mes "Now you are adapting.";
+		mes "很好，你正在適應了。";
 		next;
-		mes "[Boya]";
-		mes "Completed step 1.";
+		mes "[博雅]";
+		mes "完成第一階段。";
 		mes "恭喜。";
-		mes "We will give you a uniform and some equipment.";
+		mes "我們會給你一套制服和一些裝備。";
 		next;
-		mes "[Boya]";
-		mes "Can you see a large blue gate next to the board?";
-		mes "Go inside then keep walking until the end of the right passage. There is an equipment storage there.";
+		mes "[博雅]";
+		mes "看得到告示板旁邊的大藍色門嗎？";
+		mes "進去之後，沿著右邊通道一直走到底。那裡有裝備倉庫。";
 		next;
-		mes "[Boya]";
-		mes "Inform the manager that I sent you. He will give you some stuff.";
-		mes "Go go go!";
+		mes "[博雅]";
+		mes "告訴管理員是我派你來的，他會給你一些東西。";
+		mes "快去快去快去！";
 		para_suv01 = 11;
 		completequest 7132;
 	}
 	else if (para_suv01 < 10) {
-		mes "The training name was 'Conquer the Culvert!.";
-		mes "Did you explore the culvert fully?";
+		mes "訓練名稱是「征服下水道！」";
+		mes "你把下水道都探索完了嗎？";
 		next;
-		mes "[Boya]";
-		mes "Come back when you've completed all the courses from the local trainer.";
+		mes "[博雅]";
+		mes "完成當地教官的所有課程後再回來。";
 	}
 	else if (para_suv01 == 10) {
-		mes "Oh you're back.";
+		mes "哦，你回來了。";
 		mes "做得不錯。";
-		mes "Now you are adapting.";
+		mes "很好，你正在適應了。";
 		next;
-		mes "[Boya]";
-		mes "Completed step 1.";
+		mes "[博雅]";
+		mes "完成第一階段。";
 		mes "恭喜。";
-		mes "My team will give you a uniform and some equipment.";
+		mes "我的團隊會給你一套制服和一些裝備。";
 		next;
-		mes "[Boya]";
-		mes "Can you see a large blue gate next to the board?";
-		mes "Go inside then keep walking until the end of the right passage. There is an equipment storage there.";
+		mes "[博雅]";
+		mes "看得到告示板旁邊的大藍色門嗎？";
+		mes "進去之後，沿著右邊通道一直走到底。那裡有裝備倉庫。";
 		next;
-		mes "[Boya]";
-		mes "Inform the manager that I sent you. He will give you some stuff.";
-		mes "Go go go!";
+		mes "[博雅]";
+		mes "告訴管理員是我派你來的，他會給你一些東西。";
+		mes "快去快去快去！";
 		para_suv01 = 11;
 		completequest 7137;
 	}
 	else if (para_suv01 == 11) {
 		mes "你在做什麼？";
-		mes "Get the equipment from the storage manager.";
-		mes "Our uniform is pretty awesome haha.";
+		mes "去向倉庫管理員領取裝備。";
+		mes "我們的制服超酷的，哈哈。";
 	}
 	else if (para_suv01 == 12) {
-		mes "Um, did you like the supplies?";
-		mes "I like the red hat.";
-		mes "The red ribbon is really cute.";
+		mes "呃，你喜歡那些物資嗎？";
+		mes "我喜歡那頂紅帽子。";
+		mes "紅色緞帶真可愛。";
 		next;
-		mes "[Boya]";
+		mes "[博雅]";
 		if (BaseLevel > 25) {
-			mes "And you seem to.";
-			mes "Able to take upper class, now.";
-			mes "What about it, do you want?";
+			mes "你好像也是。";
+			mes "現在你可以換上上級的制服了。";
+			mes "怎麼樣，你要嗎？";
 			next;
-			switch (select("No, way.:Absolutely, I will.")) {
-				mes "[Boya]";
+			switch (select("不要。:當然要！")) {
+				mes "[博雅]";
 			case 1:
 				mes "真的嗎？";
-				mes "Actually I don't care but the uniform will be changed as upper class.";
+				mes "其實我不在乎，不過制服會換成上級版本。";
 				close;
 			case 2:
-				mes "Cool.";
-				mes "Let me choose a proper place for you.";
+				mes "很酷。";
+				mes "讓我為你選一個合適的地方。";
 				next;
-				mes "[Boya]";
+				mes "[博雅]";
 				callsub S_Quest2;
 				callsub S_Quest3;
 			}
 		}
 		else {
-			mes "The battle training is organized into steps.";
-			mes "When you able to join next step come back again after leveling more.";
+			mes "戰鬥訓練分成幾個階段。";
+			mes "等級提升到能參加下一階段後，再回來找我。";
 			next;
-			mes "[Boya]";
-			mes "The next training step is available for those over Level 26.";
-			mes "When you reach that level, come by again. get it?";
+			mes "[博雅]";
+			mes "下一階段的訓練是給 26 級以上的人。";
+			mes "等達到那個等級後再來找我，懂了嗎？";
 		}
 	}
 	else if (para_suv01 < 16) {
-		mes "The training area is at the north cave of Payon.";
-		mes "A staff member is already dispatched there.";
-		mes "Find him and follow his directions.";
+		mes "訓練地點在斐揚北邊的洞穴。";
+		mes "那裡已經派了一名工作人員。";
+		mes "找到他並聽從他的指示。";
 	}
 	else if (para_suv01 == 16) {
-		mes "You finished the second step of training.";
-		mes "Now do you understand how this world is organized?";
+		mes "你完成了第二階段的訓練。";
+		mes "現在你明白這個世界是怎麼運作的了嗎？";
 		next;
-		mes "[Boya]";
-		mes "I will certify that you completed the training.";
-		mes "The person in charge of equipment storage will supply you with what you need.";
+		mes "[博雅]";
+		mes "我會證明你已完成訓練。";
+		mes "負責裝備倉庫的人會提供你所需要的東西。";
 		next;
-		mes "[Boya]";
-		mes "Choose an equipment that fits your particular set of skills.";
+		mes "[博雅]";
+		mes "選一件適合你技能特色的裝備。";
 		para_suv01 = 22;
 		completequest 7141;
 	}
 	else if (para_suv01 < 21) {
-		mes "The training area is southwest of Morocc.";
-		mes "Enter the Saint Darmain Fortress to reach it directly.";
+		mes "訓練地點在夢羅克西南方。";
+		mes "進入聖達曼要塞就能直接到達。";
 		next;
-		mes "[Boya]";
-		mes "There's someone there named... Uh... he is waiting for you to follow his direction.";
+		mes "[博雅]";
+		mes "那裡有個人叫……呃……他正在等你，聽從他的指示。";
 	}
 	else if (para_suv01 == 21) {
-		mes "You finished the second step of training.";
-		mes "Now do you understand how this world is organized?";
+		mes "你完成了第二階段的訓練。";
+		mes "現在你明白這個世界是怎麼運作的了嗎？";
 		next;
-		mes "[Boya]";
-		mes "I will certify that you completed the training.";
-		mes "The person in charge of equipment storage will supply you with what you need.";
+		mes "[博雅]";
+		mes "我會證明你已完成訓練。";
+		mes "負責裝備倉庫的人會提供你所需要的東西。";
 		para_suv01 = 22;
 		completequest 7146;
 	}
 	else if (para_suv01 == 22) {
-		mes "We serve trainees with equipment and armor after passing the second step of training.";
-		mes "Go to the storage and meet the person in charge there.";
+		mes "通過第二階段訓練後，我們會為受訓者提供裝備和護甲。";
+		mes "去倉庫找那裡負責的人。";
 		next;
-		mes "[Boya]";
-		mes "To find the storage pass the blue gate next to the mission board then at the end of the hallway to the right side.";
+		mes "[博雅]";
+		mes "要找到倉庫，請穿過任務告示板旁的藍色大門，再走到走廊右側的盡頭。";
 	}
 	else if (para_suv01 == 23) {
-		mes "Hey long time no see.";
+		mes "嘿，好久不見。";
 		mes "所以怎麼了？";
 		next;
-		switch (select("I want to join training.:Nothing.")) {
-			mes "[Boya]";
+		switch (select("我想參加訓練。:沒什麼。")) {
+			mes "[博雅]";
 		case 1:
-			mes "Hmm... really?";
-			mes "Let me see... which step is good for you...";
+			mes "嗯……真的嗎？";
+			mes "讓我看看……哪個階段適合你……";
 			next;
-			mes "[Boya]";
+			mes "[博雅]";
 			if (BaseLevel < 40) {
-				mes "Sooo sorry but to join this training You need to be at least level 40.";
-				mes "Concentrate to become higher level then come back.";
+				mes "非常抱歉，要參加這個訓練，你至少需要 40 級。";
+				mes "專心練到更高等級後再回來。";
 				close;
 			}
 			callsub S_Quest3;
 		case 2:
-			mes "Did you come to see me?";
-			mes "Just that? Without anything?";
-			mes "At could have least brought some chocolate...";
+			mes "你是來找我的嗎？";
+			mes "就這樣？什麼都不帶？";
+			mes "至少也該帶點巧克力吧……";
 			next;
-			mes "[Boya]";
-			mes "Banana roll or stripe straw... anything.";
-			mes "Oh, I don't eat snacks with cinnamon...";
+			mes "[博雅]";
+			mes "香蕉捲或草莓條……什麼都好。";
+			mes "哦，我不吃有肉桂的零食……";
 			close;
 		}
 	}
 	else if (para_suv01 < 28) {
-		mes "Umm. Orc village has a Kafra Employee there so you can use the Kafra services.";
+		mes "呃，獸人村有卡普拉職員，所以你可以使用卡普拉的服務。";
 		next;
-		mes "[Boya]";
-		mes "One of our dispatched members is waiting in the building near the Kafra Employee.";
+		mes "[博雅]";
+		mes "我們派去的一名成員正在卡普拉職員附近的建築裡等你。";
 	}
 	else if (para_suv01 == 28) {
-		mes "Cool! You passed the third step of training.";
-		mes "I will certify that you completed the training.";
-		mes "The person in charge of equipment storage will supply you with some equipment.";
+		mes "很酷！你通過了第三階段的訓練。";
+		mes "我會證明你已完成訓練。";
+		mes "負責裝備倉庫的人會提供你一些裝備。";
 		next;
-		mes "[Boya]";
-		mes "We serve trainees with equipment and armor after passing the second step of training.";
-		mes "Go to the storage and meet the person in charge there.";
+		mes "[博雅]";
+		mes "通過第二階段訓練後，我們會為受訓者提供裝備和護甲。";
+		mes "去倉庫找那裡負責的人。";
 		next;
-		mes "[Boya]";
-		mes "To find the storage pass the blue gate next to the mission board then at the end of the hallway to the right side.";
+		mes "[博雅]";
+		mes "要找到倉庫，請穿過任務告示板旁的藍色大門，再走到走廊右側的盡頭。";
 		para_suv01 = 37;
 		completequest 7151;
 	}
 	else if (para_suv01 < 32) {
-		mes "Umm. Orc village has a Kafra Employee there so you can use the Kafra services there.";
+		mes "呃，獸人村那裡有卡普拉職員，你可以在那裡使用卡普拉服務。";
 		next;
-		mes "[Boya]";
-		mes "One of our dispatched members is waiting in the building near the Kafra Employee.";
+		mes "[博雅]";
+		mes "我們派去的一名成員正在卡普拉職員附近的建築裡等你。";
 	}
 	else if (para_suv01 == 32) {
-		mes "Cool! You passed the third step of training.";
-		mes "I will certify that you completed the training.";
-		mes "The person in charge of equipment storage will supply you with some equipment.";
+		mes "很酷！你通過了第三階段的訓練。";
+		mes "我會證明你已完成訓練。";
+		mes "負責裝備倉庫的人會提供你一些裝備。";
 		next;
-		mes "[Boya]";
-		mes "We serve trainees with equipment and armor after passing the second step of training.";
-		mes "Go to the storage and meet the person in charge there.";
+		mes "[博雅]";
+		mes "通過第二階段訓練後，我們會為受訓者提供裝備和護甲。";
+		mes "去倉庫找那裡負責的人。";
 		next;
-		mes "[Boya]";
-		mes "To find the storage pass the blue gate next to the mission board then at the end of the hallway to the right side.";
+		mes "[博雅]";
+		mes "要找到倉庫，請穿過任務告示板旁的藍色大門，再走到走廊右側的盡頭。";
 		para_suv01 = 37;
 		completequest 7155;
 	}
 	else if (para_suv01 < 36) {
-		mes "First take a ship toward to Bayalan from Izlude!";
-		mes "There is an underground cave. Go in and get to the bottom floor where you will find a historic underwater city..";
+		mes "先從依斯魯得搭船前往拜歐蘭島！";
+		mes "有一個地下洞穴。進去之後一直走到最底層，你會找到一座歷史悠久的海底古城……";
 		next;
-		mes "[Boya]";
-		mes "There is a dispatched trainee around the entrance of the Ocean City.";
+		mes "[博雅]";
+		mes "海底城入口附近有一名派駐的受訓者。";
 	}
 	else if (para_suv01 == 36) {
-		mes "Cool! You passed the third step of training.";
-		mes "I will certify that you completed the training.";
-		mes "The person in charge of equipment storage will supply you with some equipment.";
+		mes "很酷！你通過了第三階段的訓練。";
+		mes "我會證明你已完成訓練。";
+		mes "負責裝備倉庫的人會提供你一些裝備。";
 		next;
-		mes "[Boya]";
-		mes "We serve trainees with equipment and armor after passing the second step of training.";
-		mes "Go to the storage and meet the person in charge there.";
+		mes "[博雅]";
+		mes "通過第二階段訓練後，我們會為受訓者提供裝備和護甲。";
+		mes "去倉庫找那裡負責的人。";
 		next;
-		mes "[Boya]";
-		mes "To find the storage pass the blue gate next to the mission board then at the end of the hallway to the right side.";
+		mes "[博雅]";
+		mes "要找到倉庫，請穿過任務告示板旁的藍色大門，再走到走廊右側的盡頭。";
 		para_suv01 = 37;
 		completequest 7159;
 	}
 	else if (para_suv01 == 37) {
-		mes "[Boya]";
-		mes "If you finish all of the steps go and get your supplies.";
-		mes "We offer equipment to those who complete the training.";
+		mes "[博雅]";
+		mes "完成所有階段後，去領取你的物資。";
+		mes "我們會發放裝備給完成訓練的人。";
 		next;
-		mes "[Boya]";
-		mes "We might serve you other things.";
-		mes "If you have any questions, ask the person in charge of the arsenal.";
+		mes "[博雅]";
+		mes "我們或許還會提供其他東西。";
+		mes "有任何問題，請詢問軍械庫的負責人。";
 		next;
-		mes "[Boya]";
-		mes "The arsenal is past the blue gate and at the end of the right side of the passage.";
+		mes "[博雅]";
+		mes "軍械庫在藍色大門後面，走廊右側的盡頭。";
 	}
 	else if (para_suv01 >= 38) {
-		mes "My boss created all the courses for the training.";
-		mes "After he manufactured the uniform and supplies he changed his mind and said that he can't give them for free.";
+		mes "我的老闆設計了所有訓練課程。";
+		mes "他製作完制服和物資後改變了主意，說不能免費給。";
 		next;
-		mes "[Boya]";
-		mes "People who show their effort for my team and the world can get some supplies.";
-		mes "That's why these courses were made.";
+		mes "[博雅]";
+		mes "為我們團隊和世界付出努力的人，可以領到一些物資。";
+		mes "這些課程就是為此而設的。";
 		next;
-		mes "[Boya]";
-		mes "Basically we are supposed to offer these supplies for beginners";
-		mes "but if experts want to participate this training, we accept them.";
+		mes "[博雅]";
+		mes "基本上，這些物資是要提供給新手的，";
+		mes "但如果高手想參加這個訓練，我們也歡迎。";
 		next;
-		mes "[Boya]";
-		mes "Although the uniform and equipment might be useless.";
-		mes "participating in this training means they want to become a member of our group.";
+		mes "[博雅]";
+		mes "雖然制服和裝備可能派不上用場。";
+		mes "參加這個訓練，就代表他們想成為我們團體的成員。";
 		next;
-		mes "[Boya]";
-		mes "Yes that's all.";
-		mes "That's why when we decided a hat design it was really difficult.";
+		mes "[博雅]";
+		mes "對，就是這樣。";
+		mes "所以我們決定帽子設計時，真的非常困難。";
 		next;
-		mes "[Boya]";
-		mes "Remember this when you use the equipment.";
-		mes "But if you decide to sell or trade them off, it is none of our concern.";
+		mes "[博雅]";
+		mes "使用裝備時請記住這點。";
+		mes "不過如果你決定賣掉或交易，那就不關我們的事了。";
 	}
 	else {
 		mes "您想做什麼？";
-		mes "I doubt that you need more training.";
+		mes "我看你應該不需要再訓練了。";
 		next;
-		mes "[Boya]";
-		mes "There is nothing more I can teach a battle master such as yourself.";
+		mes "[博雅]";
+		mes "像你這樣的戰鬥大師，我已經沒什麼可以教的了。";
 	}
 	close;
 S_Quest1:
-	mes "Really? You already seem ready.";
-	mes "We have a total of 3 steps for the training.";
+	mes "真的嗎？你看起來已經準備好了。";
+	mes "訓練總共分為 3 個階段。";
 	mes "讓我看看……";
 	next;
-	mes "[Boya]";
+	mes "[博雅]";
 	if (BaseLevel < 12) {
-		mes "Umm. You should raise your level more!";
-		mes "You need to be at least level 12!";
-		mes "I'm sorry but those are the rules.";
+		mes "呃，你應該再多練練等級！";
+		mes "你至少需要 12 級！";
+		mes "抱歉，這是規定。";
 		close;
 	}
 	if (BaseLevel < 20) {
-		mes "The first step is course A.";
-		mes "Course A is called 'Conquer the Desert!'.";
-		mes "It's the most proper mission for your level.";
+		mes "第一階段是課程 A。";
+		mes "課程 A 名為「征服沙漠！」。";
+		mes "這是最適合你等級的任務。";
 		next;
-		mes "[Boya]";
-		mes "^4d4dffThere is a desert town called Morocc.";
-		mes "From there go south and then east. There is small oasis in the center of that field.^000000";
+		mes "[博雅]";
+		mes "^4d4dff沙漠中有一座叫夢羅克的城鎮。";
+		mes "從那裡往南再往東走。那片原野中央有一座小綠洲。^000000";
 		next;
-		mes "[Boya]";
-		mes "If you go there, you will find a dog around the oasis.";
-		mes "He is really mysterious and he can speak so don't be suprised.";
+		mes "[博雅]";
+		mes "去到那裡，你會在綠洲附近找到一隻狗。";
+		mes "他非常神秘，而且會說話，所以不要驚訝。";
 		next;
-		mes "[Boya]";
-		mes "Tell the dog ^4d4dffBoya is really great.^000000";
-		mes "If you have any questions ask that dog.";
+		mes "[博雅]";
+		mes "跟狗說 ^4d4dff波雅真的很棒。^000000";
+		mes "有任何問題就去問那隻狗。";
 		next;
-		mes "[Boya]";
+		mes "[博雅]";
 		mes "你為什麼一直盯著我看？";
-		mes "I had to come up with a password right?";
-		mes "What's wrong with that password?";
+		mes "我得想個暗號，對吧？";
+		mes "那個暗號有什麼問題嗎？";
 		next;
-		mes "[Boya]";
-		mes "Anyway, that place is not far from here so, it is a reasonable place for a beginner like you.";
-		mes "Ok, may Freya bless you~!";
+		mes "[博雅]";
+		mes "總之，那裡離這裡不遠，對你這種新手來說是很合適的地方。";
+		mes "好了，願芙蕾雅保佑你~！";
 		para_suv01 = 1;
 		setquest 7128;
 		close;
 	}
 	if (BaseLevel < 26) {
-		mes "I'll send you to the first step of course B.";
-		mes "Course B is called 'Conquer the Culvert!'.";
-		mes "It's the most proper mission for your level.";
+		mes "我會送你去課程 B 的第一階段。";
+		mes "課程 B 名為「征服下水道！」。";
+		mes "這是最適合你等級的任務。";
 		next;
-		mes "[Boya]";
-		mes "You need to register to explore the culvert in Prontera at the Knight Guild.";
-		mes "After registering there go to the western gate of Prontera. The manager of the culvert is near the entrance.";
+		mes "[博雅]";
+		mes "要探索普隆德拉的下水道，你需要先到騎士公會登記。";
+		mes "在那裡登記後，前往普隆德拉西門。下水道的管理員就在入口附近。";
 		next;
-		mes "[Boya]";
-		mes "Once you enter the culvert you can find a dispatched cat. Don't be surprised if he talks to you.";
+		mes "[博雅]";
+		mes "進入下水道後，你會找到一隻派駐的貓。如果牠跟你說話，不要驚訝。";
 		next;
-		mes "[Boya]";
-		mes "Tell the cat ^4d4dffBoya's help is like a giant and beautiful tuna^000000.";
-		mes "He is really mysterious and he can speak so don't be suprised.";
-		mes "He will give you a battle target when you tell him that.";
-		mes "If you have any questions ask the cat.";
+		mes "[博雅]";
+		mes "跟貓說 ^4d4dff波雅的幫助就像一條巨大又美麗的鮪魚^000000。";
+		mes "他非常神秘，而且會說話，所以不要驚訝。";
+		mes "你這樣說了之後，牠會給你一個戰鬥目標。";
+		mes "有任何問題就去問貓。";
 		next;
-		mes "[Boya]";
-		mes "Why are you staring at me like that?";
-		mes "It's just a password that I made up.";
+		mes "[博雅]";
+		mes "你為什麼那樣盯著我看？";
+		mes "那只是我隨便想的暗號。";
 		next;
-		mes "[Boya]";
+		mes "[博雅]";
 		mes "總之……";
-		mes "That place is nor far from here so, it is a reasonable place for a beginner like you.";
-		mes "Ok, may Freya bless you~!";
+		mes "那裡離這裡不遠，對你這種新手來說是很合適的地方。";
+		mes "好了，願芙蕾雅保佑你~！";
 		para_suv01 = 6;
 		setquest 7133;
 		close;
@@ -458,71 +458,71 @@ S_Quest1:
 	return;
 S_Quest2:
 	if (BaseLevel < 33) {
-		mes "Cool.";
-		mes "Let me choose a proper place for you.";
+		mes "很酷。";
+		mes "讓我為你選一個合適的地方。";
 		next;
-		mes "[Boya]";
-		mes "I'll send you to the second step of course A.";
-		mes "This course is called 'Conquer the Ghost Cave!'.";
-		mes "It's the most proper mission for your level.";
+		mes "[博雅]";
+		mes "我會送你去課程 A 的第二階段。";
+		mes "這個課程名為「征服幽靈洞穴！」。";
+		mes "這是最適合你等級的任務。";
 		next;
-		mes "[Boya]";
-		mes "There is a small archer village north of Payon.";
-		mes "There is a cave on the western hill of the archer village.";
+		mes "[博雅]";
+		mes "斐揚北邊有一座小小的弓箭手村。";
+		mes "弓箭手村西邊的小丘上有一個洞穴。";
 		next;
-		mes "[Boya]";
-		mes "We have dispatched someone in front of the cave.";
-		mes "His name is... um...";
+		mes "[博雅]";
+		mes "我們已在洞穴前派了一個人。";
+		mes "他叫……呃……";
 		mes "...";
 		next;
-		mes "[Boya]";
-		mes "Anyway he is one of us so he will know me.";
-		mes "He will give you a mission.";
-		mes "If you have questions ask him.";
+		mes "[博雅]";
+		mes "總之，他是我們的人，所以會認得我。";
+		mes "他會交給你一個任務。";
+		mes "有問題就去問他。";
 		next;
-		mes "[Boya]";
+		mes "[博雅]";
 		mes "你為什麼一直盯著我看？";
-		mes "We haven't met for a long time that's why I can't remember his name!";
+		mes "我們很久沒見了，所以我想不起他的名字！";
 		next;
-		mes "[Boya]";
+		mes "[博雅]";
 		mes "總之……";
-		mes "That place is not far from here so, come back quickly.";
-		mes "Ok, may Freya bless you~!";
+		mes "那裡離這裡不遠，快點回來。";
+		mes "好了，願芙蕾雅保佑你~！";
 		para_suv01 = 13;
 		setquest 7138;
 		close;
 	}
 	if (BaseLevel < 40) {
-		mes "I'll send you to the 2nd step of course B.";
-		mes "This course is called 'Conquer Anthell!'.";
-		mes "It's the most proper mission for your level.";
+		mes "我會送你去課程 B 的第二階段。";
+		mes "這個課程名為「征服蟻穴！」。";
+		mes "這是最適合你等級的任務。";
 		next;
-		mes "[Boya]";
-		mes "Travel just southwest of Morocc City.";
-		mes "There you will find a hole in the ground to a cave called Anthell.";
+		mes "[博雅]";
+		mes "往夢羅克西南方向前進就對了。";
+		mes "那裡會有一個通往蟻穴的地洞。";
 		next;
-		mes "[Boya]";
-		mes "There are lots of ants in there. kk?";
-		mes "It is also covered in sand so be careful in there ok.";
+		mes "[博雅]";
+		mes "裡面有很多螞蟻，懂嗎？";
+		mes "裡面還覆滿沙子，所以要小心，好嗎。";
 		next;
-		mes "[Boya]";
-		mes "That's why it's called ant hell.";
-		mes "One of our members will be waiting there.";
-		mes "His name is... K? M? Hmm? Anyway I can't remember.";
+		mes "[博雅]";
+		mes "所以才叫螞蟻地獄。";
+		mes "我們的一名成員會在那裡等你。";
+		mes "他叫……K？M？嗯？總之我想不起來。";
 		next;
-		mes "[Boya]";
-		mes "He is one of us so he will know me.";
-		mes "He will give you a mission.";
-		mes "If you have any questions ask him.";
+		mes "[博雅]";
+		mes "他是我們的人，會認得我。";
+		mes "他會交給你一個任務。";
+		mes "有任何問題就去問他。";
 		next;
-		mes "[Boya]";
+		mes "[博雅]";
 		mes "你為什麼一直盯著我看？";
-		mes "We haven't met for a long time that's why I can't remember his name!";
+		mes "我們很久沒見了，所以我想不起他的名字！";
 		next;
-		mes "[Boya]";
+		mes "[博雅]";
 		mes "總之……";
-		mes "That place is not far from here so, come back quickly.";
-		mes "Ok, blessing you~!!";
+		mes "那裡離這裡不遠，快點回來。";
+		mes "好，祝福你~！！";
 		para_suv01 = 17;
 		setquest 7142;
 		close;
@@ -530,370 +530,370 @@ S_Quest2:
 	return;
 S_Quest3:
 	if (BaseLevel < 50) {
-		mes "You are on the third step of course A.";
-		mes "This course is called 'Conquer Orc village!'.";
+		mes "你正在課程 A 的第三階段。";
+		mes "這個課程名為「征服獸人村！」。";
 		mes "讓我看看……";
 		next;
-		mes "[Boya]";
-		mes "Go through the gate of Prontera and keep walking to the west. Orc Village is in that direction.";
-		mes "Or you can go out through the western gate of Geffen and keep heading southeast..";
+		mes "[博雅]";
+		mes "穿過普隆德拉的大門，一直往西走。獸人村就在那個方向。";
+		mes "或者你也可以從吉芬的西門出去，一直往東南方向前進……";
 		next;
-		mes "[Boya]";
-		mes "Umm. Orc village has a Kafra Employee dispatched there so you could use the Kafra services..";
-		mes "It's up to you.";
+		mes "[博雅]";
+		mes "呃，獸人村那裡派駐了卡普拉職員，所以你可以使用卡普拉的服務……";
+		mes "由你決定。";
 		next;
-		mes "[Boya]";
-		mes "One of our dispatched members is waiting in the building near the Kafra Employee.";
+		mes "[博雅]";
+		mes "我們派去的一名成員正在卡普拉職員附近的建築裡等你。";
 		next;
-		mes "[Boya]";
-		mes "She will explain what needs to be done there.";
-		mes "If you have any questions ask her.";
+		mes "[博雅]";
+		mes "她會說明那裡需要做什麼。";
+		mes "有任何問題就去問她。";
 		next;
-		mes "[Boya]";
-		mes "Ok, may Freya bless you!";
+		mes "[博雅]";
+		mes "好，願芙蕾雅保佑你！";
 		para_suv01 = 24;
 		setquest 7147;
 	}
 	else if (BaseLevel < 60) {
-		mes "You are on the third step of course B.";
-		mes "This course is called 'Conquer Orc dungeon!'.";
-		mes "It's the most proper mission for your level.";
+		mes "你正在課程 B 的第三階段。";
+		mes "這個課程名為「征服獸人地下城！」。";
+		mes "這是最適合你等級的任務。";
 		next;
-		mes "[Boya]";
-		mes "Go through the gate of Prontera and keep walking to the west. Orc Village is in that direction.";
-		mes "Or you can go out through the western gate of Geffen and keep heading southeast..";
+		mes "[博雅]";
+		mes "穿過普隆德拉的大門，一直往西走。獸人村就在那個方向。";
+		mes "或者你也可以從吉芬的西門出去，一直往東南方向前進……";
 		next;
-		mes "[Boya]";
-		mes "Umm. Orc village has a Kafra Employee dispatched there so you could use the Kafra services..";
-		mes "It's up to you.";
+		mes "[博雅]";
+		mes "呃，獸人村那裡派駐了卡普拉職員，所以你可以使用卡普拉的服務……";
+		mes "由你決定。";
 		next;
-		mes "[Boya]";
-		mes "One of our dispatched members is waiting in the building near the Kafra Employee.";
+		mes "[博雅]";
+		mes "我們派去的一名成員正在卡普拉職員附近的建築裡等你。";
 		next;
-		mes "[Boya]";
-		mes "She will explain what needs to be done there.";
-		mes "If you have any questions ask her.";
+		mes "[博雅]";
+		mes "她會說明那裡需要做什麼。";
+		mes "有任何問題就去問她。";
 		next;
-		mes "[Boya]";
-		mes "Ok, may Freya bless you!";
+		mes "[博雅]";
+		mes "好，願芙蕾雅保佑你！";
 		para_suv01 = 29;
 		setquest 7152;
 	}
 	else {
-		mes "You are on the last step.";
-		mes "This course is called 'Conquer the Ocean City!'.";
-		mes "I don't know if it is the proper course or not, but anyway it's the last course of our training.";
+		mes "你正在最後一個階段。";
+		mes "這個課程名為「征服海底城！」。";
+		mes "我不確定這是不是正確的課程，但總之這是我們訓練的最後一門課。";
 		next;
-		mes "[Boya]";
-		mes "First take a ship to Byalan Island from Izlude!";
-		mes "There is an underground cave. Go in and get to the bottom floor where you will find a historic underwater city..";
+		mes "[博雅]";
+		mes "先從依斯魯得搭船前往拜歐蘭島！";
+		mes "有一個地下洞穴。進去之後一直走到最底層，你會找到一座歷史悠久的海底古城……";
 		next;
-		mes "[Boya]";
-		mes "Although it's underwater, you can breath so don't worry.";
-		mes "There is a dispatched trainee around the entrance of the Ocean City.";
+		mes "[博雅]";
+		mes "雖然是在水下，但你能呼吸，所以不用擔心。";
+		mes "海底城入口附近有一名派駐的受訓者。";
 		next;
-		mes "[Boya]";
-		mes "Tell him that I sent you and follow his directions.";
-		mes "Ok, may Freya bless you!";
+		mes "[博雅]";
+		mes "告訴他是我派你來的，並聽從他的指示。";
+		mes "好，願芙蕾雅保佑你！";
 		para_suv01 = 33;
 		setquest 7156;
 	}
 	close;
 }
 
-moc_fild11,180,253,5	script	Talking Dog#para03	972,{
+moc_fild11,180,253,5	script	會說話的狗#para03::Talking Dog#para03	972,{
 	if (para_suv01 == 1) {
-		mes "[Talking Dog]";
+		mes "[會說話的狗]";
 		mes "kkkkuuuuahhh.";
 		mes "rrrrrruuuuhh.";
 		mes "bowwow..";
 		next;
-		mes "[Talking Dog]";
+		mes "[會說話的狗]";
 		mes "怎麼了？";
-		mes "You are!";
-		mes "A member of the Eden Group.";
-		mes "Have you come to give me a meal? I don't like drinks.";
+		mes "你就是！";
+		mes "伊甸團的成員。";
+		mes "你是來給我送餐的嗎？我不喜歡飲料。";
 		next;
-		switch (select("Boya is really perfect.:Boya is really great.:Boya is really soft.")) {
+		switch (select("波雅真是完美。:波雅真的很棒。:波雅真是溫柔。")) {
 		case 1:
-			mes "[Talking Dog]";
+			mes "[會說話的狗]";
 			mes "呃……";
-			mes "What are you saying.";
+			mes "你在說什麼。";
 			close;
 		case 2:
-			mes "[Talking Dog]";
-			mes "Ahh... um...";
-			mes "Gosh, did you come here to participate in the training?";
-			mes "If Boya sent you then you know that it's battle training.";
-			mes "Bow wow...";
+			mes "[會說話的狗]";
+			mes "啊……呃……";
+			mes "天啊，你是來參加訓練的嗎？";
+			mes "如果是波雅派你來的，那你就知道這是戰鬥訓練。";
+			mes "汪汪……";
 			next;
-			mes "[Talking Dog]";
-			mes "If so, should I start securing this oasis more clearly?";
-			mes "Can you see a Condor flying?";
+			mes "[會說話的狗]";
+			mes "如果是這樣，我是不是該開始更明確地守住這片綠洲？";
+			mes "你看得到禿鷹在飛嗎？";
 			next;
-			mes "[Talking Dog]";
-			mes "Can you scare them away for me?";
-			mes "So people can use this oasis safer and more comfortably.";
+			mes "[會說話的狗]";
+			mes "你能幫我把牠們嚇跑嗎？";
+			mes "這樣人們就能更安全、更舒適地使用這片綠洲。";
 			next;
-			mes "[Talking Dog]";
-			mes "We should hunt at least 10 Condors, ok?";
-			mes "I will sleep for a while.";
-			mes "Krrrr woo bow...";
+			mes "[會說話的狗]";
+			mes "我們至少該獵殺 10 隻禿鷹，好嗎？";
+			mes "我要睡一下。";
+			mes "咕嚕嚕 汪嗚……";
 			set para_suv01,2;
 			changequest 7128,7129;
 			close;
 		case 3:
-			mes "[Talking Dog]";
+			mes "[會說話的狗]";
 			mes "你還好嗎？";
-			mes "Haven't you seen a talking dog before?";
+			mes "你沒見過會說話的狗嗎？";
 			mes "你在說什麼？";
 			close;
 		}
 	}
 	if (para_suv01 == 2) {
 		if (checkquest(7129,HUNTING) == 2) {
-			mes "[Talking Dog]";
-			mes "Woooohh...";
+			mes "[會說話的狗]";
+			mes "嗚哇……";
 			mes "太好了！";
-			mes "I can feel my youth from you.";
+			mes "我能從你身上感受到青春的氣息。";
 			next;
-			mes "[Talking Dog]";
+			mes "[會說話的狗]";
 			mes "算了。";
-			mes "Let's find the next target kk!";
-			mes "Ok. Let's drive the Desert Wolves out of here.";
+			mes "來找下一個目標吧！";
+			mes "好，我們把沙漠狼趕出這裡。";
 			next;
-			mes "[Talking Dog]";
-			mes "If they grow up they will become dangerous.";
+			mes "[會說話的狗]";
+			mes "牠們要是長大了，就會變得很危險。";
 			mes "......";
 			next;
-			mes "[Talking Dog]";
-			mes "Why, why are you looking at me like that?";
-			mes "They are wolves and I am a nice dog.";
-			mes "But I haven't always been a dog my entire life.";
+			mes "[會說話的狗]";
+			mes "為什麼，為什麼你那樣看著我？";
+			mes "牠們是狼，而我是一隻好狗。";
+			mes "但我不是一輩子都是狗。";
 			next;
-			mes "[Talking Dog]";
-			mes "I will show you that don't have to pity me at all.";
+			mes "[會說話的狗]";
+			mes "我會讓你看看，根本不需要同情我。";
 			next;
-			mes "[Talking Dog]";
-			mes "They pee wherever and have no shame.";
-			mes "Just waving their tails when they grow up and biting people without any care!";
+			mes "[會說話的狗]";
+			mes "牠們到處亂撒尿，毫不知羞。";
+			mes "長大之後就只會搖搖尾巴，毫不在乎地咬人！";
 			next;
-			mes "[Talking Dog]";
-			mes "You must hunt at least 10!";
-			mes "Exactly 10!";
-			mes "Go go go!";
+			mes "[會說話的狗]";
+			mes "你至少要獵殺 10 隻！";
+			mes "正好 10 隻！";
+			mes "快去快去快去！";
 			set para_suv01,3;
 			changequest 7129,7130;
 			close;
 		}
-		mes "[Talking Dog]";
-		mes "First lets follow the bald and noisy bird.";
-		mes "Yes Condors.";
-		mes "Kill 10 Condors. It seems to easy, right?";
-		mes "Oh, if you are tired I will help you.";
+		mes "[會說話的狗]";
+		mes "先跟著那隻禿頭又吵鬧的鳥吧。";
+		mes "對，就是禿鷹。";
+		mes "獵殺 10 隻禿鷹。看起來很簡單，對吧？";
+		mes "哦，如果你累了，我會幫你。";
 		next;
-		mes "-When the dog barked, your HP and SP recovered.-";
+		mes "-狗一叫，你的 HP 與 SP 就恢復了。-";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 == 3) {
 		if (checkquest(7130,HUNTING) == 2) {
-			mes "[Talking Dog]";
-			mes "You are so perfect.";
+			mes "[會說話的狗]";
+			mes "你真是完美。";
 			next;
-			mes "[Talking Dog]";
-			mes "Or not. Hehe, anyway thanks for your help.";
-			mes "The oasis has almost been secured now.";
-			mes "Ok, it's the last step!";
+			mes "[會說話的狗]";
+			mes "也不是。嘿嘿，總之謝謝你的幫忙。";
+			mes "綠洲幾乎已經守住了。";
+			mes "好了，最後一個階段！";
 			next;
-			mes "[Talking Dog]";
-			mes "There's an annoying monster that hides in the sand and poisons people out of nowhere.";
+			mes "[會說話的狗]";
+			mes "有一種討厭的怪物會藏在沙子裡，無緣無故地毒害人。";
 			next;
-			mes "[Talking Dog]";
-			mes "All beautiful things have some poison inside but these actually kill.";
-			mes "Kill Scorpions which are called the poison of the desert!";
+			mes "[會說話的狗]";
+			mes "美麗的東西大多都帶點毒，但這些可是真的會致命。";
+			mes "獵殺被稱為沙漠之毒的蠍子！";
 			next;
-			mes "[Talking Dog]";
-			mes "It's the last step so let's make it simple";
-			mes "Just hunt 5!";
-			mes "Bow wow!";
+			mes "[會說話的狗]";
+			mes "這是最後一個階段，所以就簡單一點吧";
+			mes "只要獵殺 5 隻就好！";
+			mes "汪汪！";
 			set para_suv01,4;
 			changequest 7130,7131;
 			close;
 		}
-		mes "[Talking Dog]";
-		mes "I don't want you to show any pity.";
-		mes "I am dog with a golden heart.";
+		mes "[會說話的狗]";
+		mes "我不想讓你有任何同情。";
+		mes "我是一隻有著黃金之心的狗。";
 		next;
-		mes "[Talking Dog]";
-		mes "After hunting the 10 Desert Wolves come back again.";
-		mes "Oh, if you are tired I will help you.";
+		mes "[會說話的狗]";
+		mes "獵殺 10 隻沙漠狼後再回來。";
+		mes "哦，如果你累了，我會幫你。";
 		next;
-		mes "-When the dog barked, your HP and SP recovered.-";
+		mes "-狗一叫，你的 HP 與 SP 就恢復了。-";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 == 4) {
 		if (checkquest(7131,HUNTING) == 2) {
-			mes "[Talking Dog]";
-			mes "Um. Excellent.";
-			mes "You are awesome!";
+			mes "[會說話的狗]";
+			mes "呃，太好了。";
+			mes "你太厲害了！";
 			next;
-			mes "[Talking Dog]";
-			mes "Thanks to your effort the oasis is secure.";
-			mes "Don't look around!";
-			mes "If I say it's secure!";
-			mes "Uhuhuhuh aaaang!";
+			mes "[會說話的狗]";
+			mes "多虧你的努力，綠洲已經安全了。";
+			mes "別東張西望！";
+			mes "說安全就是安全！";
+			mes "嗚嗚嗚啊！";
 			next;
-			mes "[Talking Dog]";
-			mes "Here here here.";
-			mes "If I dig more and more, I can find Scorpions but";
-			mes "this oasis will be safer for sure.";
+			mes "[會說話的狗]";
+			mes "來來來。";
+			mes "如果我繼續挖，就能挖到蠍子，但是";
+			mes "這片綠洲一定會更安全。";
 			next;
-			mes "[Talking Dog]";
-			mes "You can be proud and confident by yourself and do your best.";
-			mes "You've helped a lot to make my rest comfortable.";
+			mes "[會說話的狗]";
+			mes "你可以為自己感到驕傲、充滿自信，並全力以赴。";
+			mes "你幫了我很大的忙，讓我能舒服地休息。";
 			next;
-			mes "[Talking Dog]";
-			mes "You've helped to conquer the desert,";
-			mes "and passed the beginner training steps so I will stamp my feet.";
-			mes "krrrrreuung. hup.";
+			mes "[會說話的狗]";
+			mes "你幫忙征服了沙漠，";
+			mes "並通過了新手訓練的階段，所以我要跺跺腳。";
+			mes "呼嚕嚕……嗝。";
 			next;
-			mes "[Talking Dog]";
-			mes "Go back to the Eden Group headquarters and show it to the flashy Rune Knight.";
-			mes "Let me say again that you are great!";
-			mes "Hooooohooo~";
+			mes "[會說話的狗]";
+			mes "回伊甸團總部，把這個拿給那位耀眼的符文騎士看。";
+			mes "我再說一次，你真的很棒！";
+			mes "呼呼呼~";
 			set para_suv01,5;
 			changequest 7131,7132;
 			close;
 		}
-		mes "[Talking Dog]";
-		mes "Let's hunt only 5 Scorpions.";
-		mes "So we can make peace in this oasis.";
+		mes "[會說話的狗]";
+		mes "我們只獵殺 5 隻蠍子吧。";
+		mes "這樣我們才能在這片綠洲和平共處。";
 		next;
-		mes "[Talking Dog]";
-		mes "When I take a nap they won't chew my tail any more.";
-		mes "Due to his mistake my feet won't be hurt at all.";
+		mes "[會說話的狗]";
+		mes "我睡午覺時，牠們就不會再咬我的尾巴了。";
+		mes "因為他的失誤，我的腳完全不會受傷了。";
 		next;
-		mes "[Talking Dog]";
-		mes "You can fight.";
-		mes "I can rest more comfortably.";
-		mes "Other people are going to be safer too.";
+		mes "[會說話的狗]";
+		mes "你可以戰鬥了。";
+		mes "我能休息得更舒服了。";
+		mes "其他人也會更安全。";
 		next;
-		mes "[Talking Dog]";
-		mes "Everyone will think fondly of the Eden Group.";
-		mes "Oh, if you are tired I will help you.";
+		mes "[會說話的狗]";
+		mes "大家都會對伊甸團抱持好感。";
+		mes "哦，如果你累了，我會幫你。";
 		next;
-		mes "-When the dog barked, your HP and SP recovered.-";
+		mes "-狗一叫，你的 HP 與 SP 就恢復了。-";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 == 5) {
-		mes "[Talking Dog]";
+		mes "[會說話的狗]";
 		mes "kkkkkaaaaauuuunnng.";
-		mes "oopssss kup.";
+		mes "哎呀……嗝。";
 		next;
-		mes "[Talking Dog]";
+		mes "[會說話的狗]";
 		mes "你怎麼還在這裡？";
-		mes "You are done here.";
-		mes "Hooooo bow wow.";
+		mes "你在這裡的事情已經完成了。";
+		mes "呼呼~汪汪。";
 		close;
 	}
 	if (para_suv01 > 5) {
-		mes "[Talking Dog]";
-		mes "Hey man~ What's going on?";
-		mes "What about the Rune Knight?";
-		mes "Krrrrr...";
-		mes "Hyuk huk...";
+		mes "[會說話的狗]";
+		mes "嘿，老兄~發生什麼事了？";
+		mes "符文騎士呢？";
+		mes "咕嚕嚕……";
+		mes "哈嗚哈嗚……";
 		next;
-		mes "[Talking Dog]";
-		mes "The Eden Group is cool.";
-		mes "They're a really good group.";
-		mes "They accepted a wandering talking dog.";
-		mes "Take care and good luck.";
+		mes "[會說話的狗]";
+		mes "伊甸團很酷。";
+		mes "他們是很棒的團體。";
+		mes "他們收留了一隻流浪的會說話的狗。";
+		mes "保重，祝你好運。";
 		close;
 	}
-	mes "Hey look.";
-	mes "I'm a talking dog.";
-	mes "Not a wolf.";
-	mes "I wasn't a dog originally...";
+	mes "嘿，你看。";
+	mes "我是一隻會說話的狗。";
+	mes "不是狼。";
+	mes "我原本不是狗……";
 	next;
 	if (callfunc("F_HasEdenGroupMark")) {
-		mes "[Talking Dog]";
-		mes "Anyway are you a Eden Group member?";
-		mes "Oh good to see you.";
-		mes "I am also a member of Eden Group.";
-		mes "Take care and good luck.";
+		mes "[會說話的狗]";
+		mes "總之，你是伊甸團的成員嗎？";
+		mes "哦，很高興見到你。";
+		mes "我也是伊甸團的成員。";
+		mes "保重，祝你好運。";
 		close;
 	}
-	mes "[Talking Dog]";
-	mes "Why are you looking at me like that?";
+	mes "[會說話的狗]";
+	mes "你為什麼那樣看著我？";
 	mes "......";
 	close;
 }
 
-prt_sewb1,131,262,3	script	Timid Cat#para04	422,{
+prt_sewb1,131,262,3	script	膽小的貓#para04::Timid Cat#para04	422,{
 	if (para_suv01 < 6) {
-		mes "[Timid Cat]";
+		mes "[膽小的貓]";
 		mes "喵……";
-		mes "Who are you meow?";
-		mes "Why are you here meow?";
+		mes "你是誰喵？";
+		mes "你為什麼在這裡喵？";
 		close;
 	}
 	if (para_suv01 == 6) {
-		mes "[Timid Cat]";
-		mes "Come on meow...";
-		mes "I may be standing here and talking to you like this meow but I am a still a cat meow...";
+		mes "[膽小的貓]";
+		mes "來嘛喵……";
+		mes "我雖然站在這裡像這樣跟你說話喵，但我還是一隻貓喵……";
 		next;
-		mes "[Timid Cat]";
-		mes "Dear human you are";
-		mes "a member of my group?";
-		mes "Re... really...!";
-		mes "Dear Boya's help is like a giant and...";
+		mes "[膽小的貓]";
+		mes "親愛的人類，你是";
+		mes "我們團體的成員嗎？";
+		mes "真……真的嗎……！";
+		mes "親愛的，波雅的幫助就像一條巨大的……";
 		next;
-		switch (select("Beautiful Saury:Fresh Mackerel:Beautiful Tuna")) {
+		switch (select("美麗的秋刀魚:新鮮的鯖魚:美麗的鮪魚")) {
 		case 1:
-			mes "[Timid Cat]";
-			mes "Big and beautiful Saury...";
-			mes "I am shy.";
+			mes "[膽小的貓]";
+			mes "又大又美的秋刀魚……";
+			mes "我很害羞。";
 			close;
 		case 2:
-			mes "[Timid Cat]";
-			mes "I want to eat mackerel.";
-			mes "Where are the big and fresh mackerel meow?";
+			mes "[膽小的貓]";
+			mes "我想吃鯖魚。";
+			mes "又大又新鮮的鯖魚在哪裡喵？";
 			close;
 		case 3:
-			mes "[Timid Cat]";
-			mes "Do you know the big and beautiful tuna?";
-			mes "Dear Boya sent you here for sure.";
-			mes "How do I explain this...?";
+			mes "[膽小的貓]";
+			mes "你知道又大又美的鮪魚嗎？";
+			mes "親愛的，波雅一定是派你來這裡的。";
+			mes "我該怎麼解釋呢……？";
 			next;
-			mes "[Timid Cat]";
-			mes "Did something pass under my feet just now meow?";
-			mes "Do you want to kill a cat.";
-			mes "The environment here is terrible.";
+			mes "[膽小的貓]";
+			mes "剛剛是不是有東西從我腳下經過喵？";
+			mes "你想殺貓嗎。";
+			mes "這裡的環境糟透了。";
 			next;
-			mes "[Timid Cat]";
-			mes "Anyway I'm doing what I was assigned to do.";
-			mes "So hi, hello and welcome.";
+			mes "[膽小的貓]";
+			mes "總之，我正在做我被分配的工作。";
+			mes "那麼，嗨，你好，歡迎。";
 			next;
-			mes "[Timid Cat]";
-			mes "Did you come here to have a battle?";
-			mes "Hunt those Thief Bugs, hurry up!";
-			mes "Hunt at least 10!";
-			mes "Meooow!";
+			mes "[膽小的貓]";
+			mes "你是來戰鬥的嗎？";
+			mes "快去獵殺那些盜賊蟲！";
+			mes "至少獵殺 10 隻！";
+			mes "喵嗚！";
 			next;
-			mes "[Timid Cat]";
-			mes "I really don't like those nasty crawlers...";
-			mes "Meow~!";
+			mes "[膽小的貓]";
+			mes "我真的很討厭那些噁心的爬蟲……";
+			mes "喵~！";
 			next;
-			mes "^4d4dffThe cat was suprised by";
-			mes "a thief bug and froze in";
-			mes "place. Hunt those";
-			mes "Thief Bugs around here.^000000";
+			mes "^4d4dff貓咪被";
+			mes "一隻盜賊蟲嚇到，僵在";
+			mes "原地。請獵殺";
+			mes "這附近的盜賊蟲。^000000";
 			set para_suv01,7;
 			changequest 7133,7134;
 			close;
@@ -901,184 +901,184 @@ prt_sewb1,131,262,3	script	Timid Cat#para04	422,{
 	}
 	if (para_suv01 == 7) {
 		if (checkquest(7134,HUNTING) == 2) {
-			mes "[Timid Cat]";
-			mes "Now do you understand the dirty and humid underground sewers?";
-			mes "Eeeh look what's next meow.";
+			mes "[膽小的貓]";
+			mes "現在你懂這骯髒又潮濕的地下下水道了嗎？";
+			mes "欸，看看下一個是什麼喵。";
 			next;
-			mes "[Timid Cat]";
-			mes "It's a symbol of dirt next to those Thief Bugs.";
-			mes "Hunt some Tarou to make the sewers cleaner.";
+			mes "[膽小的貓]";
+			mes "盜賊蟲旁邊有個髒汙的象徵喵。";
+			mes "獵殺一些白鼠，讓下水道變乾淨一點。";
 			next;
-			mes "[Timid Cat]";
-			mes "For our members joining this mission.";
-			mes "Hunt 10 Tarou.";
-			mes "Easy, ain't it?";
+			mes "[膽小的貓]";
+			mes "給參加這個任務的成員。";
+			mes "獵殺 10 隻白鼠。";
+			mes "很簡單，不是嗎？";
 			next;
-			mes "[Timid Cat]";
-			mes "Why didn't I ask you at once? kkk..??";
-			mes "Umm........";
-			mes "Because it's just a training mission.";
+			mes "[膽小的貓]";
+			mes "我怎麼沒一開始就問你呢？呵呵……？";
+			mes "呃……";
+			mes "因為這只是一個訓練任務。";
 			next;
-			mes "[Timid Cat]";
-			mes "Training missions are hard and anoying.";
-			mes "So go hurry and hunt 10 Tarou.";
+			mes "[膽小的貓]";
+			mes "訓練任務又難又煩人。";
+			mes "所以快去獵殺 10 隻白鼠。";
 			set para_suv01,8;
 			changequest 7134,7135;
 			close;
 		}
-		mes "[Timid Cat]";
-		mes "Clean the sewers. Now the first step is hunting Thief Bugs.";
-		mes "Isn't that simple, meow?";
+		mes "[膽小的貓]";
+		mes "清理下水道。現在第一步是獵殺盜賊蟲。";
+		mes "很簡單吧，喵？";
 		next;
-		mes "[Timid Cat]";
-		mes "Take care to check your map so you don't get lost.";
-		mes "It's a service meeow.";
+		mes "[膽小的貓]";
+		mes "記得看地圖，別迷路了。";
+		mes "這是服務喵。";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 == 8) {
 		if (checkquest(7135,HUNTING) == 2) {
-			mes "[Timid Cat]";
-			mes "Great job~!";
-			mes "How'd you get rid of those dirty bugs and Tarou. You are brave.";
+			mes "[膽小的貓]";
+			mes "幹得好~！";
+			mes "你是怎麼擺脫那些髒蟲和白鼠的？你真勇敢。";
 			next;
-			mes "[Timid Cat]";
-			mes "Now have courage because I'm sending you to a stronger opponent.";
-			mes "But first in order to test your courage, hunt Familiars.";
+			mes "[膽小的貓]";
+			mes "現在鼓起勇氣吧，因為我要派你去對付更強的對手。";
+			mes "不過，首先為了測試你的勇氣，去獵殺使魔。";
 			next;
-			mes "[Timid Cat]";
-			mes "Familiars will bite you so be careful.";
-			mes "They are mean.";
-			mes "They scare me so just hunt 5 and that should be enough.";
+			mes "[膽小的貓]";
+			mes "使魔會咬人，所以要小心。";
+			mes "牠們很凶。";
+			mes "牠們讓我很害怕，所以只要獵殺 5 隻就夠了。";
 			next;
-			mes "[Timid Cat]";
-			mes "That will show me that you are brave.";
-			mes "Meow~!";
+			mes "[膽小的貓]";
+			mes "那樣就能證明你很勇敢。";
+			mes "喵~！";
 			next;
-			mes "[Timid Cat]";
-			mes "I don't have anything...";
+			mes "[膽小的貓]";
+			mes "我沒有什麼……";
 			mes "......";
-			mes "What do you want meow? Familiars are waiting to fight with you, hurry up, move~!";
+			mes "你想要什麼喵？使魔正等著跟你戰鬥，快點，動起來~！";
 			set para_suv01,9;
 			changequest 7135,7136;
 			close;
 		}
-		mes "[Timid Cat]";
-		mes "If you can't kill the Tarou you might get all kinds of dirty diseases.";
-		mes "So be proud of yourself and do your best to kill them.";
+		mes "[膽小的貓]";
+		mes "如果你殺不了白鼠，可能會染上各種髒病。";
+		mes "所以要為自己感到驕傲，全力把牠們消滅。";
 		next;
-		mes "[Timid Cat]";
-		mes "I will help you a little.";
-		mes "Here, I have recovered your strengh meow..";
+		mes "[膽小的貓]";
+		mes "我會稍微幫你一下。";
+		mes "來，我已經幫你恢復體力了喵……";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 == 9) {
 		if (checkquest(7136,HUNTING) == 2) {
-			mes "[Timid Cat]";
-			mes "You are great meow~";
-			mes "You killed them so quickly!";
+			mes "[膽小的貓]";
+			mes "你真厲害喵~";
+			mes "你好快就把牠們解決了！";
 			mes "喵……";
 			next;
-			mes "[Timid Cat]";
-			mes "Now you are not scared of bugs and tarou at all.";
-			mes "Thanks for participating in the Conquer the Culvert training mission.";
+			mes "[膽小的貓]";
+			mes "現在你一點也不怕蟲子和白鼠了。";
+			mes "感謝你參與「征服下水道」訓練任務。";
 			next;
-			mes "[Timid Cat]";
-			mes "Now go back to the headquarters and ask Instructor Boya to make sure he has the beautiful tuna...";
-			mes "I will be waiting here.";
+			mes "[膽小的貓]";
+			mes "現在回總部，去問波雅教官，確認他有美麗的鮪魚……";
+			mes "我會在這裡等你。";
 			next;
-			mes "[Timid Cat]";
-			mes "Do you know how to get to the Eden Group Headquarters?";
-			mes "Prontera is the closest city from here.";
-			mes "Go to Prontera and find an Eden Group Teleporter.";
+			mes "[膽小的貓]";
+			mes "你知道怎麼去伊甸團總部嗎？";
+			mes "普隆德拉是離這裡最近的城市。";
+			mes "前往普隆德拉，找到伊甸團的傳送員。";
 			set para_suv01,10;
 			changequest 7136,7137;
 			close;
 		}
-		mes "[Timid Cat]";
-		mes "Familiars are really scary.";
-		mes "They're always flying.";
+		mes "[膽小的貓]";
+		mes "使魔真的很可怕。";
+		mes "牠們總是在飛。";
 		next;
-		mes "[Timid Cat]";
-		mes "It's the last course so cheer up.";
-		mes "I will help you a little.";
-		mes "Here, I have recovered your strengh meow..";
+		mes "[膽小的貓]";
+		mes "這是最後一門課了，打起精神來。";
+		mes "我會稍微幫你一下。";
+		mes "來，我已經幫你恢復體力了喵……";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 >= 10) {
-		mes "[Timid Cat]";
-		mes "You've completed 'Conquer the Culvert'.";
-		mes "Go back to the Eden Group headquarters to report to Boya.";
+		mes "[膽小的貓]";
+		mes "你已完成「征服下水道」。";
+		mes "回伊甸團總部向波雅回報。";
 		next;
-		mes "[Timid Cat]";
-		mes "Boya might eat my tuna while he is waiting for you.";
+		mes "[膽小的貓]";
+		mes "波雅等你的時候，可能會把我的鮪魚吃掉。";
 		close;
 	}
-	mes "[Timid Cat]";
-	mes "How are you meeow?";
-	mes "Did you volunteer to conquer the Culvert?";
-	mes "You are a member of the Edgen Group for sure.";
-	mes "You are helping to make the world a better place.";
+	mes "[膽小的貓]";
+	mes "你好嗎喵？";
+	mes "你是自願來征服下水道的嗎？";
+	mes "你一定是伊甸團的成員。";
+	mes "你正在幫助讓世界變得更美好。";
 	close;
 }
 
-pay_arche,41,136,3	script	Eden Member Karl#para05	904,{
+pay_arche,41,136,3	script	伊甸成員卡爾#para05::Eden Member Karl#para05	904,{
 	if (para_suv01 < 13) {
 		if (callfunc("F_HasEdenGroupMark")) {
 			mes "[卡爾]";
 			mes "嘿，你最近好嗎？";
-			mes "Good to see you~";
-			mes "Are you going inside?";
+			mes "很高興見到你~";
+			mes "你要進去嗎？";
 			close;
 		}
 		mes "[卡爾]";
 		mes "嗯……？";
-		mes "You are not the one I am waiting for.";
+		mes "你不是我在等的人。";
 		close;
 	}
 	if (para_suv01 == 13) {
 		mes "[卡爾]";
 		mes "喂？";
-		mes "Since I got a report, I was waiting for you.";
-		mes "You came here to join the training mission, right?";
+		mes "我接到通報，所以一直在等你。";
+		mes "你是來參加訓練任務的，對吧？";
 		next;
 		mes "[卡爾]";
-		mes "Have you ever entered this cave before?";
-		mes "I don't know if you already heard some stories in this village.";
+		mes "你以前進過這個洞穴嗎？";
+		mes "不知道你是否已經在這個村子裡聽過一些傳聞。";
 		next;
 		mes "[卡爾]";
-		mes "There are many of dead souls that change their appearance as if they are real people and make threatening remarks.";
-		mes "It's too bad, isn't it?";
+		mes "有很多亡靈會變成活人的模樣，並說出威脅的話。";
+		mes "真糟糕，不是嗎？";
 		next;
 		mes "[卡爾]";
-		mes "That's why we chose this place as step 2 of the battle training mission.";
-		mes "This step is called 'Conquer Ghost Cave~'.";
-		mes "Help people to enjoy their nights comfortably.";
+		mes "所以我們才把這裡選為戰鬥訓練任務的第二階段。";
+		mes "這個階段名為「征服幽靈洞穴~」。";
+		mes "幫助人們舒適地度過夜晚。";
 		next;
 		mes "[卡爾]";
-		mes "There are many dangerous things there. Hmm...";
-		mes "To you the 1st floor is enough.";
+		mes "那裡有很多危險的東西。嗯……";
+		mes "對你來說，一樓就夠了。";
 		next;
 		mes "[卡爾]";
-		mes "Lets conquer the dangerous ghost cave...";
-		mes "Kill the bone Skeletons in there.";
+		mes "來征服危險的幽靈洞穴吧……";
+		mes "去把那裡的邪骸戰士殺掉吧。";
 		next;
 		mes "[卡爾]";
-		mes "The bones are from Skeletons.";
-		mes "Actually Skeletons or just normal bones are all the same but...";
+		mes "骨頭是邪骸戰士掉的。";
+		mes "其實邪骸戰士或普通骨頭都一樣，只是……";
 		next;
 		mes "[卡爾]";
-		mes "Skeletons are one of the basic undead classes.";
-		mes "Undead never ever. Hunt 15 undead Skeletons.";
+		mes "邪骸戰士是最基本的不死族之一。";
+		mes "不死族永遠不會死亡。去獵殺 15 隻邪骸戰士。";
 		next;
 		mes "[卡爾]";
-		mes "If you feel like you're in danger don't hesitate to just leave.";
-		mes "You're not worried about getting hurt are you?";
+		mes "如果覺得有危險，別猶豫，立刻離開。";
+		mes "你不擔心會受傷嗎？";
 		set para_suv01,14;
 		changequest 7138,7139;
 		close;
@@ -1086,38 +1086,38 @@ pay_arche,41,136,3	script	Eden Member Karl#para05	904,{
 	if (para_suv01 == 14) {
 		if (checkquest(7139,HUNTING) == 2) {
 			mes "[卡爾]";
-			mes "Did you get how the undead work?";
-			mes "As you know undead never die so, blessing of live person it's same as curse to them.";
+			mes "你有了解不死族的運作方式嗎？";
+			mes "你也知道，不死族本來就不會死，所以對他們來說，活人的祝福等同於詛咒。";
 			next;
 			mes "[卡爾]";
-			mes "So... skills which can save people like Heal and Resurrection.";
-			mes "Those things are really strong attacks to undead class.";
+			mes "所以……像治癒術和復活術這類能救人的技能……";
+			mes "這些對不死族來說是非常強的攻擊。";
 			next;
 			mes "[卡爾]";
-			mes "Anyway... that's it..";
-			mes "Next... I guess you already see while you were killing Skeletons.";
-			mes "Some green things are picking up all of the stuff dropped by the dead monsters.";
+			mes "總之……就是這樣……";
+			mes "接下來……你應該已經在殺邪骸戰士的時候看到了吧。";
+			mes "有些綠色的東西會把死掉的怪物掉落的東西全都撿走。";
 			next;
 			mes "[卡爾]";
-			mes "Do you know Porings? Maybe they are related to them.";
-			mes "They look really bad, maybe they have been eating poison or something.";
+			mes "你知道波利嗎？也許它們跟這些有關。";
+			mes "它們看起來很糟，或許是吃了毒什麼的。";
 			next;
 			mes "[卡爾]";
-			mes "Ok if you're ready go and kill those Poporings.";
-			mes "You should hunt 10 of them.";
+			mes "好，準備好的話就去把那些波波利殺掉吧。";
+			mes "你應該獵殺 10 隻。";
 			next;
 			set para_suv01,15;
 			changequest 7139,7140;
 			close;
 		}
 		mes "[卡爾]";
-		mes "Skeletons are basic undead.";
-		mes "Use the Heal or Resurrection skill.";
-		mes "If you can.";
+		mes "邪骸戰士是基本的不死族。";
+		mes "使用治癒術或復活術。";
+		mes "如果你做得到的話。";
 		next;
 		mes "[卡爾]";
-		mes "Just in case I will recover all your energy.";
-		mes "It's the last step so be careful.";
+		mes "以防萬一，我會把你的體力全部恢復。";
+		mes "這是最後一步，小心點。";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
@@ -1125,431 +1125,431 @@ pay_arche,41,136,3	script	Eden Member Karl#para05	904,{
 	if (para_suv01 == 15) {
 		if (checkquest(7140,HUNTING) == 2) {
 			mes "[卡爾]";
-			mes "Did you get back what the Poporing stole?";
-			mes "This cave is really deep and there are lots of precious things that they could have picked up.";
+			mes "你有拿回波波利偷走的東西嗎？";
+			mes "這個洞窟非常深，裡面有很多他們可能撿走的珍貴東西。";
 			next;
 			mes "[卡爾]";
-			mes "You did really great job. Excellent.";
-			mes "The 1st floor is safer now. Thanks for helping.";
+			mes "你做得非常好，太棒了。";
+			mes "第一層現在安全多了，謝謝你的幫忙。";
 			next;
 			mes "[卡爾]";
-			mes "You've completed all of the training missions so go back to the headquarters and get approval from the flashy Rune Knight.";
+			mes "你已完成所有訓練任務，回總部去向那位風光的符文騎士取得認可吧。";
 			next;
 			mes "[卡爾]";
-			mes "You might get a new uniform.";
-			mes "Haha. I will keep tabs on your progression.";
+			mes "你可能會拿到新制服喔。";
+			mes "哈哈，我會持續關注你的進展。";
 			set para_suv01,16;
 			changequest 7140,7141;
 			close;
 		}
 		mes "[卡爾]";
-		mes "Poporings are stronger than you expect.";
-		mes "If you treat them the same as a normal Poring it will get you in trouble.";
+		mes "波波利比你想像的還要強。";
+		mes "如果把它們當成普通的波利來對待，你會惹上麻煩。";
 		next;
 		mes "[卡爾]";
-		mes "Just in case I will recover all your energy.";
-		mes "It's the last step so be careful.";
+		mes "以防萬一，我會把你的體力全部恢復。";
+		mes "這是最後一步，小心點。";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 >= 16) {
 		mes "[卡爾]";
-		mes "I already informed Boya at the Eden Group headquarters.";
-		mes "If you go there he will give you a big welcome.";
+		mes "我已經跟伊甸團總部的波雅說過了。";
+		mes "你去那裡的話，他會熱烈歡迎你。";
 		next;
 		mes "[卡爾]";
-		mes "You will get a new uniform, aren't you excited?";
-		mes "Hahaha..";
+		mes "你會拿到新制服，不覺得很期待嗎？";
+		mes "哈哈哈……";
 		close;
 	}
 	mes "[卡爾]";
-	mes "Killing undead?";
-	mes "Do your best to make the world safer.";
-	mes "It's one of the goals of the Eden Group.";
+	mes "獵殺不死族？";
+	mes "盡你所能讓世界變得更安全吧。";
+	mes "這也是伊甸團的目標之一。";
 	close;
 }
 
-anthell01,29,264,5	script	Eden Member Cloud#para06	899,{
+anthell01,29,264,5	script	伊甸成員克勞德#para06::Eden Member Cloud#para06	899,{
 	if (para_suv01 < 17) {
 		if (callfunc("F_HasEdenGroupMark")) {
-			mes "[Cloud]";
-			mes "Oops.";
-			mes "You are a member of my group.";
-			mes "Why did you come here, are you looking for danger?";
+			mes "[克勞德]";
+			mes "糟糕。";
+			mes "你是我們團裡的一員。";
+			mes "你為什麼來這裡？是來找危險的嗎？";
 			next;
-			mes "[Cloud]";
-			mes "One of the strongest boss monsters is in here.";
-			mes "Be careful when exploring here.";
+			mes "[克勞德]";
+			mes "這裡有一隻最強的頭目怪物。";
+			mes "在這裡探索時要小心。";
 			close;
 		}
-		mes "[Cloud ]";
+		mes "[克勞德 ]";
 		mes "你在看什麼？";
-		mes "We are not related to each other, are we...";
+		mes "我們之間沒什麼關係，對吧……";
 		close;
 	}
 	if (para_suv01 == 17) {
-		mes "[Cloud]";
+		mes "[克勞德]";
 		mes "喂？";
-		mes "Why did you come here, looking for danger?";
+		mes "你為什麼跑來這裡，是在找危險嗎？";
 		next;
-		switch (select("Conquer Ant Hell:Just wanted to meet you:Where am I?")) {
+		switch (select("征服螞蟻地獄:只是想見見你:我在哪裡？")) {
 		case 1:
-			mes "[Cloud]";
-			mes "Uh. Conquer Ant Hell? Did you say that?";
-			mes "You are a trainee.";
-			mes "You have come to the right place.";
+			mes "[克勞德]";
+			mes "呃，征服螞蟻地獄？你是這麼說的嗎？";
+			mes "你是見習生。";
+			mes "你來對地方了。";
 			next;
-			mes "[Cloud]";
-			mes "At first I will explain about Ant Hell.";
-			mes "Ants dug a cave in the sand and it is linked to the surface. That's Ant Hell.";
+			mes "[克勞德]";
+			mes "首先，我來說明一下螞蟻地獄。";
+			mes "螞蟻在沙地裡挖了一個洞穴，並與地表相通。那就是螞蟻地獄。";
 			next;
-			mes "[Cloud]";
-			mes "Sand flowed into the hole gradually.";
-			mes "If anyone steps on the hole they will fall into the cave through the hole in the sand..";
+			mes "[克勞德]";
+			mes "沙子逐漸流入洞口。";
+			mes "如果有人踩到洞口，就會透過沙地上的洞掉進洞穴裡……";
 			next;
-			mes "[Cloud]";
-			mes "It's hard to survive from there.";
-			mes "To us it seems like a normal happening so it isn't a matter of survival like to normal people.";
+			mes "[克勞德]";
+			mes "從那裡掉下去很難活著出來。";
+			mes "對我們來說這只是常見的事，所以不像一般人那樣會攸關生死。";
 			next;
-			mes "[Cloud]";
-			mes "Many kinds of ants have come to live here.";
-			mes "There is a boss monster named Maya so you should be more cautious.";
+			mes "[克勞德]";
+			mes "許多種螞蟻都聚居在這裡。";
+			mes "這裡有個名叫蟻后的頭目怪物，所以你要更加小心。";
 			next;
-			mes "[Cloud]";
-			mes "Ok let's try to hunt the weakest ant first.";
-			mes "Pierre is the name of the weakest ant.";
-			mes "They are just down here.";
+			mes "[克勞德]";
+			mes "好，我們先來獵殺最弱的螞蟻吧。";
+			mes "最弱的螞蟻叫皮耶爾。";
+			mes "它們就在下面。";
 			next;
-			mes "[Cloud]";
-			mes "In the case of ants, they assist eachother when attacked.";
-			mes "Be careful and kill 15 Pierre ants.";
+			mes "[克勞德]";
+			mes "螞蟻遭受攻擊時會互相支援。";
+			mes "小心點，去殺 15 隻皮耶爾。";
 			set para_suv01,18;
 			changequest 7142,7143;
 			close;
 		case 2:
-			mes "[Cloud]";
+			mes "[克勞德]";
 			mes "......";
-			mes "Haha... are you joking?";
-			mes "You are exhausted from the extremely hot weather in the desert.";
+			mes "哈哈……你在開玩笑嗎？";
+			mes "你被沙漠的酷熱折磨得筋疲力盡。";
 			next;
-			mes "[Cloud]";
-			mes "I am a busy man.";
-			mes "One of the trainees was planning to visit me but that person still hasn't showed yet. I am getting nervous.";
+			mes "[克勞德]";
+			mes "我很忙的。";
+			mes "有位見習生原本打算來找我，但那人到現在還沒出現。我開始緊張了。";
 			close;
 		case 3:
-			mes "[Cloud]";
-			mes "Where you are?";
-			mes "You are in Anth Hell southwest of Morocc.";
-			mes "Morocc is the closest city, northeast of here.";
+			mes "[克勞德]";
+			mes "你人在哪裡？";
+			mes "你現在在夢羅克西南方的螞蟻地獄。";
+			mes "夢羅克是最近的城市，在這裡的東北方。";
 			close;
 		}
 	}
 	if (para_suv01 == 18) {
 		if (checkquest(7143,HUNTING) == 2) {
-			mes "[Cloud]";
-			mes "Hey, what was it?";
-			mes "Maybe you saw an Andre when you were hunting Pierre.";
+			mes "[克勞德]";
+			mes "喂，剛才是什麼？";
+			mes "你獵殺皮耶爾的時候，說不定有看到白蟻。";
 			next;
-			mes "[Cloud]";
-			mes "Well, now let's hunt Andre aswel.";
-			mes "Ahah the way you're looking at me, ''why didn't I ask you to do this all at once'' right?";
+			mes "[克勞德]";
+			mes "那麼，現在也來獵殺白蟻吧。";
+			mes "啊哈，你那眼神，是在想「為什麼不一次全部叫我做完」對吧？";
 			next;
-			mes "[Cloud]";
-			mes "Ain't it more fun this way?";
-			mes "Hey, now your next target is 15 Andre!";
-			mes "You are strong so it will be fine!";
+			mes "[克勞德]";
+			mes "這樣不是更有趣嗎？";
+			mes "喂，你下一個目標是 15 隻白蟻！";
+			mes "你很強，沒問題的！";
 			next;
-			mes "[Cloud]";
-			mes "If you can't find Andre go deeper into the cave.";
-			mes "Ah, and be careful of Maya.";
+			mes "[克勞德]";
+			mes "如果找不到白蟻，就再往洞穴深處走。";
+			mes "啊，還有，小心蟻后。";
 			set para_suv01,19;
 			changequest 7143,7144;
 			close;
 		}
-		mes "[Cloud]";
-		mes "What do you think of Ant Hell?";
-		mes "Can you stay longer?";
-		mes "Ok, I will recover your strengh so, keep going.";
+		mes "[克勞德]";
+		mes "你覺得螞蟻地獄怎麼樣？";
+		mes "你能再多待一會兒嗎？";
+		mes "好，我來幫你恢復體力，繼續加油。";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 == 19) {
 		if (checkquest(7144,HUNTING) == 2) {
-			mes "[Cloud]";
-			mes "Great. You seem to have killed all of the Andre.";
-			mes "How do you think about fighting ants?";
-			mes "Was it good?";
+			mes "[克勞德]";
+			mes "很好。你看起來已經把所有白蟻都殺光了。";
+			mes "你覺得跟螞蟻戰鬥的感覺如何？";
+			mes "感覺還不錯吧？";
 			next;
-			mes "[Cloud]";
-			mes "Hey, cheer up.";
-			mes "To conquer Ant Hell you have one step left.";
-			mes "You might have guessed your next target already.";
+			mes "[克勞德]";
+			mes "喂，打起精神來。";
+			mes "要征服螞蟻地獄，你只剩最後一步了。";
+			mes "你可能已經猜到下一個目標了。";
 			next;
-			mes "[Cloud]";
-			mes "Vitata!";
-			mes "How can I say... He seems like honey.";
-			mes "Pierre is a worker. Andre is a guardian and so... Vitata is like a mother.";
+			mes "[克勞德]";
+			mes "是黑蟻！";
+			mes "該怎麼說呢……他感覺就像蜂蜜一樣甜。";
+			mes "皮耶爾是工蟻，白蟻是守衛，所以……黑蟻就像母親一樣。";
 			next;
-			mes "[Cloud]";
-			mes "They are really kind to kids and women but don't show any pity to ants.";
-			mes "Hunt the Vitata who takes care of the ant eggs.";
+			mes "[克勞德]";
+			mes "它們對孩童和女性非常溫柔，但對螞蟻可是毫不留情。";
+			mes "去獵殺負責照顧蟻卵的黑蟻。";
 			next;
-			mes "[Cloud]";
-			mes "If somebody falls into Ant Hell it might be a bit safer than before.";
-			mes "Now it's the last step so cheer up and let's kill 10 Vitata.";
+			mes "[克勞德]";
+			mes "如果有人掉進螞蟻地獄，應該比以前安全一點了。";
+			mes "現在是最後一步，打起精神，來殺 10 隻黑蟻吧。";
 			next;
-			mes "[Cloud]";
-			mes "If you feel you're in too much danger. Just come back.";
-			mes "I will heal you.";
+			mes "[克勞德]";
+			mes "如果覺得太危險，就回來吧。";
+			mes "我來治療你。";
 			set para_suv01,20;
 			changequest 7144,7145;
 			close;
 		}
-		mes "[Cloud]";
-		mes "See, to cheer you up I will heal you until you finish the training.";
-		mes "Chin up and cheer up.";
+		mes "[克勞德]";
+		mes "你看，為了幫你打起精神，我會一直治療你直到訓練結束。";
+		mes "打起精神，振作起來。";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 == 20) {
 		if (checkquest(7145,HUNTING) == 2) {
-			mes "[Cloud]";
-			mes "Oh... it might have been an anoying fight.";
-			mes "You finished so fast.";
+			mes "[克勞德]";
+			mes "喔……這場戰鬥可能很煩人吧。";
+			mes "你完成得真快。";
 			next;
-			mes "[Cloud]";
-			mes "Good job. Go back to the headquarters and report.";
-			mes "You've completed the training quickly.";
+			mes "[克勞德]";
+			mes "做得好。回總部去回報吧。";
+			mes "你很快就完成了訓練。";
 			next;
-			mes "[Cloud]";
-			mes "You will get good news.";
-			mes "You did a really good job even under the hot weather.";
+			mes "[克勞德]";
+			mes "你會得到好消息的。";
+			mes "即使在炎熱的天氣下，你還是做得非常好。";
 			set para_suv01,21;
 			changequest 7145,7146;
 			close;
 		}
-		mes "[Cloud]";
-		mes "See, to cheer up I will heal you until you finish the training.";
-		mes "Chin up and cheer up.";
+		mes "[克勞德]";
+		mes "你看，為了幫你打起精神，我會治療你直到訓練結束。";
+		mes "打起精神，振作起來。";
 		next;
-		mes "[Cloud]";
-		mes "Just Vitata, isn't that an easy opponent?";
-		mes "If you see Maya just run away.";
+		mes "[克勞德]";
+		mes "只是黑蟻而已，不是很好對付的對手嗎？";
+		mes "如果看到蟻后就直接逃跑。";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 >= 21) {
-		mes "[Cloud]";
-		mes "It's enough to say that you've conquered Ant Hell.";
-		mes "Aren't you getting used to it here?";
+		mes "[克勞德]";
+		mes "可以說你已經征服了螞蟻地獄了。";
+		mes "你在這裡是不是已經習慣了？";
 		next;
-		mes "[Cloud]";
-		mes "Go back to the headquarters and report that you completed the mission, hurry up";
-		mes "you will receive good news.";
-		mes "You will receive the Eden Group uniform aswel.";
+		mes "[克勞德]";
+		mes "快回總部去回報你已完成任務吧。";
+		mes "你會收到好消息的。";
+		mes "你也會拿到伊甸團制服。";
 		close;
 	}
-	mes "[Cloud]";
-	mes "I am really proud of the Eden Group.";
-	mes "Does the uniform look good on me?";
+	mes "[克勞德]";
+	mes "我真的很以伊甸團為榮。";
+	mes "這套制服穿在我身上好看嗎？";
 	mes "哈哈……";
 	close;
 }
 
-in_orcs01,38,175,3	script	Eden Member Hooksha	803,{
+in_orcs01,38,175,3	script	伊甸成員胡克莎::Eden Member Hooksha	803,{
 	if (para_suv01 < 24) {
 		if (callfunc("F_HasEdenGroupMark")) {
-			mes "[Hooksha]";
-			mes "Unbelievable why did you come here?";
-			mes "Um... You are not on the third step of the training?";
-			mes "Yeeee~ I'm excited~";
+			mes "[霍克夏]";
+			mes "真不敢相信，你怎麼會來這裡？";
+			mes "嗯……你不是還在訓練的第三步嗎？";
+			mes "耶～我好興奮～";
 			next;
-			mes "[Hooksha]";
-			mes "I am a little bored waiting for trainees. Where are they?";
+			mes "[霍克夏]";
+			mes "等見習生等得有點無聊。他們人呢？";
 			close;
 		}
-		mes "[Hooksha]";
+		mes "[霍克夏]";
 		mes "你好。";
 		mes "你為什麼來這裡？";
-		mes "Umm... Aaaaa...";
+		mes "嗯……啊啊啊……";
 		next;
-		mes "[Hooksha]";
-		mes "Why don't you join my group?";
-		mes "If you have interest in joining us,";
-		mes "you won't regret your decision.";
+		mes "[霍克夏]";
+		mes "要不要加入我們的團？";
+		mes "如果你有興趣加入我們，";
+		mes "你不會後悔這個決定的。";
 		close;
 	}
 	if (para_suv01 == 24) {
-		mes "[Hooksha]";
+		mes "[霍克夏]";
 		mes "你好。";
-		mes "Are you a trainee?";
-		mes "Yeah I can tell.";
-		mes "So shall we begin?";
+		mes "你是見習生嗎？";
+		mes "嗯，看得出來。";
+		mes "那我們開始吧？";
 		next;
-		mes "[Hooksha]";
-		mes "Actually I don't like this training mission much but anyway let me explain it to you.";
+		mes "[霍克夏]";
+		mes "其實我不太喜歡這個訓練任務，但總之還是讓我向你說明吧。";
 		next;
-		mes "[Hooksha]";
-		mes "As you know this is Orc Village.";
-		mes "Orcs don't like humans.";
-		mes "They don't try to communicate with us. When they see humans they immediately attack us.";
+		mes "[霍克夏]";
+		mes "你也知道，這裡是獸人村。";
+		mes "獸人不喜歡人類。";
+		mes "他們從不嘗試與我們溝通。一看到人類就立刻攻擊。";
 		next;
-		mes "[Hooksha]";
-		mes "Sadly humans don't want to communicate with them either.";
-		mes "So we decided to take a strong approach towards them.";
-		mes "Actually we'd like to get rid of them all.";
+		mes "[霍克夏]";
+		mes "可悲的是，人類也不想跟他們溝通。";
+		mes "所以我們決定對他們採取強硬手段。";
+		mes "其實我們想把他們全部剷除。";
 		next;
-		mes "[Hooksha]";
-		mes "We're trying to conquer Orc Village.";
-		mes "It's the proper place to finish the beginners training mission for an adventurer like you.";
+		mes "[霍克夏]";
+		mes "我們正試圖征服獸人村。";
+		mes "對你這樣的冒險者來說，這裡正是完成新手訓練任務的好地方。";
 		next;
-		mes "[Hooksha]";
-		mes "That's why we've chosen this place for this mission.";
-		mes "Ok, we don't have a lot of time so let's begin.";
-		mes "First let's eliminate the weakest one.";
+		mes "[霍克夏]";
+		mes "所以我們才選這裡作為這次任務的地點。";
+		mes "好，我們時間不多，開始吧。";
+		mes "先從最弱的開始清除吧。";
 		next;
-		mes "[Hooksha]";
-		mes "It's better to kill them before they grow up.";
-		mes "Hunt 10 Orc Babies.";
-		mes "Don't pity them because when they grow up they become aggressive Orc Warriors.";
+		mes "[霍克夏]";
+		mes "趁他們還沒長大之前殺掉比較好。";
+		mes "獵殺 10 隻獸人寶寶。";
+		mes "別對他們心軟，因為他們長大後會變成好戰的獸人戰士。";
 		next;
-		mes "[Hooksha]";
-		mes "Good or bad this is how it is going to be.";
-		mes "Even if they are babies don't hesitate.";
+		mes "[霍克夏]";
+		mes "不管好壞，事情就是這樣。";
+		mes "即使是寶寶，也別猶豫。";
 		set para_suv01,25;
 		changequest 7147,7148;
 		close;
 	}
 	if (para_suv01 == 25) {
 		if (checkquest(7148,HUNTING) == 2) {
-			mes "[Hooksha]";
-			mes "Great. Awesome.";
-			mes "It's not very pleasant so let's move on.";
+			mes "[霍克夏]";
+			mes "很好。太棒了。";
+			mes "這不太愉快，我們繼續吧。";
 			next;
-			mes "[Hooksha]";
-			mes "On the next step we will fight with Orc Warriors.";
-			mes "When Orc Babies grow up they become strong Orc Warriors.";
+			mes "[霍克夏]";
+			mes "下一步我們要跟獸人戰士戰鬥。";
+			mes "獸人寶寶長大後會變成強壯的獸人戰士。";
 			next;
-			mes "[Hooksha]";
-			mes "They all are powerful warriors.";
-			mes "When you were fighting Orc Babies, you probably have been attacked by them.";
+			mes "[霍克夏]";
+			mes "他們個個都是強大的戰士。";
+			mes "你在跟獸人寶寶戰鬥時，應該也被他們攻擊過吧。";
 			next;
-			mes "[Hooksha]";
-			mes "Now it's time to hunt 10 Orc Warriors.";
-			mes "If you are in trouble just come back here to safety.";
+			mes "[霍克夏]";
+			mes "現在該獵殺 10 隻獸人戰士了。";
+			mes "如果有麻煩，就回到這裡的安全地帶。";
 			mes "懂了嗎？";
 			set para_suv01,26;
 			changequest 7148,7149;
 			close;
 		}
-		mes "[Hooksha]";
-		mes "There are Orc Warriors, Orc Ladies and Orc Babies in Orc Village.";
-		mes "They are really aggressive.";
+		mes "[霍克夏]";
+		mes "獸人村裡有獸人戰士、獸人女戰士和獸人寶寶。";
+		mes "他們非常好戰。";
 		next;
-		mes "[Hooksha]";
-		mes "You look tired I will recover your health.";
-		mes "If you are in trouble just come back here to safety.";
+		mes "[霍克夏]";
+		mes "你看起來累了，我來幫你恢復生命值。";
+		mes "如果有麻煩，就回到這裡的安全地帶。";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 == 26) {
 		if (checkquest(7149,HUNTING) == 2) {
-			mes "[Hooksha]";
-			mes "Now you can move on to the next step.";
+			mes "[霍克夏]";
+			mes "現在你可以進入下一步了。";
 			next;
-			mes "[Hooksha]";
-			mes "Exactly... now it's time to hunt Orc Ladies.";
-			mes "If you want to conquer Orc Village completely, you should kill them before they have more Orc Babies.";
+			mes "[霍克夏]";
+			mes "沒錯……現在該獵殺獸人女戰士了。";
+			mes "如果你想徹底征服獸人村，就該在他們生出更多寶寶之前把他們殺掉。";
 			next;
-			mes "[Hooksha]";
-			mes "But you don't need to kill all of them.";
-			mes "Go and hunt 10 Orc Ladies.";
+			mes "[霍克夏]";
+			mes "但你不必全部殺光。";
+			mes "去獵殺 10 隻獸人女戰士。";
 			next;
-			mes "[Hooksha]";
-			mes "You can already feel the strong power from outside...";
-			mes "Don't hesitate to attack them.";
+			mes "[霍克夏]";
+			mes "從外面就能感受到強大的力量……";
+			mes "攻擊他們時別猶豫。";
 			set para_suv01,27;
 			changequest 7149,7150;
 			close;
 		}
-		mes "[Hooksha]";
-		mes "You should be exhausted by now.";
-		mes "But you still have more targets, understand.";
+		mes "[霍克夏]";
+		mes "你現在應該已經筋疲力盡了。";
+		mes "但你還有更多目標，明白嗎？";
 		next;
-		mes "[Hooksha]";
-		mes "You look tired, I will recover your health.";
-		mes "If you are in trouble just come back here to safety.";
+		mes "[霍克夏]";
+		mes "你看起來很累，我來幫你恢復生命值。";
+		mes "如果有麻煩，就回到這裡的安全地帶。";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 == 27) {
 		if (checkquest(7150,HUNTING) == 2) {
-			mes "[Hooksha]";
-			mes "Great job.";
-			mes "Now you should understand how the orc tribe works here in Orc Village.";
-			mes "You've followed the training mission well under hot and humid circumstances.";
-			mes "You have now completed the 'Conquer Orc Village!' training mission. Congratulations.";
+			mes "[霍克夏]";
+			mes "幹得好。";
+			mes "現在你應該了解獸人村裡獸人部族的運作方式了。";
+			mes "你在又熱又悶的環境下，把訓練任務完成得很好。";
+			mes "你已完成「征服獸人村！」訓練任務。恭喜。";
 			next;
-			mes "[Hooksha]";
-			mes "Go back and report to the Eden Group headquarters.";
-			mes "I'm sure they will have good news for you.";
+			mes "[霍克夏]";
+			mes "回伊甸團總部去回報吧。";
+			mes "我相信他們會有好消息要給你的。";
 			set para_suv01,28;
 			changequest 7150,7151;
 			close;
 		}
-		mes "[Hooksha]";
-		mes "Orc Lady is the last target.";
-		mes "Cheer up~!";
+		mes "[霍克夏]";
+		mes "獸人女戰士是最後的目標。";
+		mes "打起精神～！";
 		next;
-		mes "[Hooksha]";
-		mes "You look tired, I will recover your health.";
-		mes "If you are in trouble just come back here to safety.";
+		mes "[霍克夏]";
+		mes "你看起來很累，我來幫你恢復生命值。";
+		mes "如果有麻煩，就回到這裡的安全地帶。";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 == 28) {
-		mes "[Hooksha]";
-		mes "You have completed the training mission.";
-		mes "Go back to the Eden Group headquarters and report there.";
+		mes "[霍克夏]";
+		mes "你已完成訓練任務。";
+		mes "回伊甸團總部去回報吧。";
 		close;
 	}
 	if (para_suv01 == 29) {
-		mes "[Hooksha]";
-		mes "Have you come here to join in the training?";
-		mes "You look like an expert.";
+		mes "[霍克夏]";
+		mes "你是來參加訓練的嗎？";
+		mes "你看起來像個專家。";
 		next;
-		mes "[Hooksha]";
-		mes "This isn't a good place to talk so let's hurry.";
-		mes "This place is linked with the dungeon of Orc Village.";
+		mes "[霍克夏]";
+		mes "這裡不是適合說話的地方，我們快走吧。";
+		mes "這裡與獸人村的地城相連。";
 		next;
-		mes "[Hooksha]";
-		mes "Can you see that way.";
-		mes "There is a cave under the ground, normal orcs don't come here.";
+		mes "[霍克夏]";
+		mes "你看得到那邊嗎。";
+		mes "地底下有個洞穴，一般獸人不會來這裡。";
 		next;
-		mes "[Hooksha]";
-		mes "The safest place is in here.";
-		mes "There are many undead monsters down there.";
+		mes "[霍克夏]";
+		mes "這裡是最安全的地方。";
+		mes "下面有很多不死族怪物。";
 		next;
-		mes "[Hooksha]";
-		mes "The undead monsters are dangerous and threatening.";
-		mes "Don't hesitate when fighting them.";
+		mes "[霍克夏]";
+		mes "不死族怪物既危險又具威脅。";
+		mes "與它們戰鬥時別猶豫。";
 		next;
-		mes "[Hooksha]";
-		mes "Now hunt those undead monsters down there.";
+		mes "[霍克夏]";
+		mes "現在去獵殺下面那些不死族怪物吧。";
 		next;
-		mes "[Hooksha]";
-		mes "Try to hunt 20 Orc zombies in the dungeon.";
-		mes "They are really well organized.";
+		mes "[霍克夏]";
+		mes "試著在地城裡獵殺 20 隻獸人殭屍。";
+		mes "他們組織得非常嚴密。";
 		next;
-		mes "[Hooksha]";
-		mes "They will attack you anywhere without hesitating.";
+		mes "[霍克夏]";
+		mes "他們會毫不猶豫地在任何地方攻擊你。";
 		mes "願弗蕾亞保佑你。";
 		set para_suv01,30;
 		changequest 7152,7153;
@@ -1557,249 +1557,249 @@ in_orcs01,38,175,3	script	Eden Member Hooksha	803,{
 	}
 	if (para_suv01 == 30) {
 		if (checkquest(7153,HUNTING) == 2) {
-			mes "[Hooksha]";
-			mes "It's different from what you saw in Payon, right?";
-			mes "Although you managed to kill the Orc Zombies, you can't be sure you are much stronger..";
+			mes "[霍克夏]";
+			mes "跟你在斐揚看到的不一樣吧？";
+			mes "雖然你成功殺掉了獸人殭屍，但你也不能確定自己變得強多少……";
 			next;
-			mes "[Hooksha]";
-			mes "So don't go deeper into that cave or you will die for sure.";
+			mes "[霍克夏]";
+			mes "所以別往洞穴深處走，否則你一定會死。";
 			next;
-			mes "[Hooksha]";
-			mes "The next target is the Orc Skeleton who was walking next to the Orc Zombies.";
-			mes "Hunt 20 Orc Skeletons.";
+			mes "[霍克夏]";
+			mes "下一個目標是跟獸人殭屍走在一起的邪骸獸人。";
+			mes "獵殺 20 隻邪骸獸人。";
 			next;
-			mes "[Hooksha]";
-			mes "It's the last step of the training mission in the Orc Dungeon.";
-			mes "It's all up to you.";
+			mes "[霍克夏]";
+			mes "這是獸人地城訓練任務的最後一步。";
+			mes "就看你的了。";
 			next;
-			mes "[Hooksha]";
-			mes "Ok, cheer up and see you again.";
-			mes "Hunt 20 Orc Skeletons.";
+			mes "[霍克夏]";
+			mes "好，打起精神，下次再見。";
+			mes "獵殺 20 隻邪骸獸人。";
 			set para_suv01,31;
 			changequest 7153,7154;
 			close;
 		}
-		mes "[Hooksha]";
-		mes "Can you stay longer?";
-		mes "You look tired, I will recover your health.";
-		mes "If you are in trouble just come back here to safety.";
+		mes "[霍克夏]";
+		mes "你能再多待一會兒嗎？";
+		mes "你看起來很累，我來幫你恢復生命值。";
+		mes "如果有麻煩，就回到這裡的安全地帶。";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 == 31) {
 		if (checkquest(7154,HUNTING) == 2) {
-			mes "[Hooksha]";
-			mes "Your training mission has been completed.";
-			mes "Go back to the Eden Group headquarters and report.";
-			mes "I would like to say more in detail but I'm getting so tired.";
+			mes "[霍克夏]";
+			mes "你的訓練任務已經完成。";
+			mes "回伊甸團總部去回報吧。";
+			mes "我本來想說得更詳細一點，但我真的好累。";
 			next;
-			mes "[Hooksha]";
-			mes "Recently trainees have come here more and more so, I can't sleep at all.";
-			mes "I mean not due to you.";
-			mes "Anyway I will inform the group so go there and report.";
+			mes "[霍克夏]";
+			mes "最近見習生來得越來越多，我根本睡不著。";
+			mes "我的意思不是怪你。";
+			mes "總之我會通知團裡，你去那裡回報吧。";
 			next;
 			set para_suv01,32;
 			changequest 7154,7155;
 			close;
 		}
-		mes "[Hooksha]";
-		mes "Can you stay longer?";
-		mes "You look tired I will recover your health.";
-		mes "If you are in trouble just come back here to safety.";
+		mes "[霍克夏]";
+		mes "你能再多待一會兒嗎？";
+		mes "你看起來累了，我來幫你恢復生命值。";
+		mes "如果有麻煩，就回到這裡的安全地帶。";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 == 32) {
-		mes "[Hooksha]";
-		mes "Don't you have to report back to the Eden Group headquarters?";
-		mes "I am so tired leave me alone.";
+		mes "[霍克夏]";
+		mes "你不用回伊甸團總部回報嗎？";
+		mes "我好累，別來煩我。";
 		close;
 	}
 	if (para_suv01 > 32) {
-		mes "[Hooksha]";
-		mes "Uh? What Orc? Explore the dungeon?";
-		mes "You are having such a hard time.";
+		mes "[霍克夏]";
+		mes "呃？什麼獸人？去探索地城？";
+		mes "你真是辛苦。";
 		next;
-		mes "[Hooksha]";
-		mes "This place is really good to take a rest because Orcs don't come here.";
-		mes "Ho hum...";
+		mes "[霍克夏]";
+		mes "這裡是很好的休息處，因為獸人不會來這裡。";
+		mes "唉……";
 		close;
 	}
 }
 
-iz_dun04,43,46,3	script	Eden Member Callandiva	745,{
+iz_dun04,43,46,3	script	伊甸成員卡蘭::Eden Member Callandiva	745,{
 	if (para_suv01 < 33) {
 		if (callfunc("F_HasEdenGroupMark")) {
-			mes "[Callandiva]";
-			mes "How did you get so deep in this ocean city?";
-			mes "Ah, that symbol is of our group.";
-			mes "You're a trainee for sure.";
+			mes "[卡蘭迪娃]";
+			mes "你怎麼會深入到這座海底城市裡來？";
+			mes "啊，那個標誌是我們團的。";
+			mes "你一定是見習生吧。";
 			next;
-			mes "[Callandiva]";
-			mes "What? You aren't?";
-			mes "I... see... I see...";
-			mes "Ok... keep going.";
+			mes "[卡蘭迪娃]";
+			mes "什麼？你不是？";
+			mes "我……知道了……我知道了……";
+			mes "好……繼續吧。";
 			close;
 		}
-		mes "[Callandiva]";
-		mes "Mysteriously although we're under the sea you can still breathe here.";
-		mes "Do you know why?";
+		mes "[卡蘭迪娃]";
+		mes "奇妙的是，雖然身處海底，在這裡還是能呼吸。";
+		mes "你知道為什麼嗎？";
 		next;
-		mes "[Callandiva]";
-		mes "Let's see due to the moisture my skin is so soft.";
-		mes "My fingers and toes are not attached to each other amazing.";
+		mes "[卡蘭迪娃]";
+		mes "讓我看看……因為潮濕的關係，我的皮膚變得好滑嫩。";
+		mes "我的手指和腳趾不再連在一起，很神奇吧。";
 		next;
-		mes "[Callandiva]";
-		mes "I was really shocked and scared when the Eden Group dispatched me here.";
-		mes "Now I love this environment so much.";
-		mes "It's really calm...";
+		mes "[卡蘭迪娃]";
+		mes "伊甸團派我來這裡的時候，我真的又震驚又害怕。";
+		mes "現在我非常喜歡這個環境。";
+		mes "真的好平靜……";
 		close;
 	}
 	if (para_suv01 == 33) {
-		mes "[Callandiva]";
-		mes "How did you get so deep in this ocean city?";
-		mes "Ah, that symbol is of our group.";
-		mes "You're a trainee for sure.";
+		mes "[卡蘭迪娃]";
+		mes "你怎麼會深入到這座海底城市裡來？";
+		mes "啊，那個標誌是我們團的。";
+		mes "你一定是見習生吧。";
 		next;
-		mes "[Callandiva]";
-		mes "Good to see you!";
-		mes "Alright, look down.";
-		mes "Ancient buildings are sleeping under the water. They were actually built under the sea.";
+		mes "[卡蘭迪娃]";
+		mes "很高興見到你！";
+		mes "好，往下看。";
+		mes "古老的建築沉睡在水底。它們其實是建在海底的。";
 		next;
-		mes "[Callandiva]";
-		mes "As you know we don't have any trouble living here.";
-		mes "But if you see over there... yes right there.";
+		mes "[卡蘭迪娃]";
+		mes "你也知道，我們在這裡生活毫無困難。";
+		mes "但如果你看到那邊……對，就是那裡。";
 		next;
-		mes "[Callandiva]";
-		mes "Can you see a humanoid fish with a very threatening spear?";
-		mes "He is called a Merman and is a really professional warrior.";
+		mes "[卡蘭迪娃]";
+		mes "你看得到那隻拿著威猛長矛的半人半魚嗎？";
+		mes "他叫人魚士兵，是非常專業的戰士。";
 		next;
-		mes "[Callandiva]";
-		mes "Okay, go and hunt 15 Merman.";
-		mes "That will be your 1st training mission here.";
+		mes "[卡蘭迪娃]";
+		mes "好，去獵殺 15 隻人魚士兵。";
+		mes "那就是你在這裡的第一個訓練任務。";
 		set para_suv01,34;
 		changequest 7156,7157;
 		close;
 	}
 	if (para_suv01 == 34) {
 		if (checkquest(7157,HUNTING) == 2) {
-			mes "[Callandiva]";
-			mes "Oh, you came back~!";
-			mes "What did you think of those threatening Mermans?";
-			mes "Actually, I thought that you would chicken out~";
+			mes "[卡蘭迪娃]";
+			mes "喔，你回來啦～！";
+			mes "那些有威脅性的人魚士兵，你覺得如何？";
+			mes "其實，我還以為你會臨陣脫逃呢～";
 			next;
-			mes "[Callandiva]";
-			mes "Good your next opponent will be...~";
-			mes "Yes, this one...";
-			mes "The monster that is holding a trident.";
+			mes "[卡蘭迪娃]";
+			mes "很好，你的下一個對手是……～";
+			mes "對，就是這個……";
+			mes "拿著三叉戟的那隻怪物。";
 			next;
-			mes "[Callandiva]";
-			mes "His main abilities are magical.";
-			mes "The monster is called Strouf!";
-			mes "Now, it's time to fight with a real magician!";
+			mes "[卡蘭迪娃]";
+			mes "它的主要能力是魔法。";
+			mes "那隻怪物叫海神！";
+			mes "現在，是時候跟真正的魔法師戰鬥了！";
 			next;
-			mes "[Callandiva]";
-			mes "Try avoiding the Mermans and hunt 10 Strouf, kill them.";
+			mes "[卡蘭迪娃]";
+			mes "試著避開人魚士兵，獵殺 10 隻海神。";
 			set para_suv01,35;
 			changequest 7157,7158;
 			close;
 		}
-		mes "[Callandiva]";
-		mes "Oh are you tired?";
-		mes "Mermans are not easy opponents.";
-		mes "I will help you recover so cheer up.";
+		mes "[卡蘭迪娃]";
+		mes "喔，你累了嗎？";
+		mes "人魚士兵可不是好對付的對手。";
+		mes "我來幫你恢復，打起精神。";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 == 35) {
 		if (checkquest(7158,HUNTING) == 2) {
-			mes "[Callandiva]";
-			mes "Did you kill all the Strouf already?";
-			mes "I wasn't counting that you'd make it.";
-			mes "I have eyes on the top of my head haha.";
+			mes "[卡蘭迪娃]";
+			mes "你已經把所有海神都殺光了嗎？";
+			mes "我沒想到你真的做到了。";
+			mes "我的後腦勺長了眼睛，哈哈。";
 			next;
-			mes "[Callandiva]";
-			mes "Of course I'm just kidding.";
-			mes "Don't look at me like that~ it was a joke~!";
-			mes "Now you're feeling more at ease about this.";
+			mes "[卡蘭迪娃]";
+			mes "當然，我只是開玩笑的。";
+			mes "別那樣看著我～只是個玩笑～！";
+			mes "現在你對這件事比較安心了吧。";
 			next;
-			mes "[Callandiva]";
-			mes "Go back to the headquarters and report it.~";
-			mes "You will receive the last uniform from the Eden Group headquarters.";
+			mes "[卡蘭迪娃]";
+			mes "回總部去回報吧～";
+			mes "你會從伊甸團總部拿到最後一套制服。";
 			next;
-			mes "[Callandiva]";
-			mes "This training mission is made for beginners.";
-			mes "So it might be useless to you or not.";
+			mes "[卡蘭迪娃]";
+			mes "這個訓練任務是為新手設計的。";
+			mes "所以對你來說可能沒什麼用，也可能有用。";
 			next;
-			mes "[Callandiva]";
-			mes "Anyway you did great job!";
+			mes "[卡蘭迪娃]";
+			mes "總之你做得很棒！";
 			set para_suv01,36;
 			changequest 7158,7159;
 			close;
 		}
-		mes "[Callandiva]";
-		mes "Oh are you tired?";
-		mes "Strouf are not easy opponents.";
-		mes "I can help you recover so cheer up.";
+		mes "[卡蘭迪娃]";
+		mes "喔，你累了嗎？";
+		mes "海神可不是好對付的對手。";
+		mes "我可以幫你恢復，打起精神。";
 		npcskill "AL_HEAL",11,99,60;
 		percentheal 100,100;
 		close;
 	}
 	if (para_suv01 >= 36) {
-		mes "[Callandiva]";
-		mes "I won't give help to you anymore.";
-		mes "Go back to our headquarters and report about this training mission.";
+		mes "[卡蘭迪娃]";
+		mes "我不會再幫你了。";
+		mes "回我們的總部，去回報這次的訓練任務吧。";
 		close;
 	}
-	mes "[Callandiva]";
-	mes "Mysteriously although we're under the sea you can still breathe here.";
-	mes "Do you know why?";
+	mes "[卡蘭迪娃]";
+	mes "奇妙的是，雖然身處海底，在這裡還是能呼吸。";
+	mes "你知道為什麼嗎？";
 	next;
-	mes "[Callandiva]";
-	mes "Let's see due to the moisture my skin is so soft.";
-	mes "My fingers and toes are not attached to each other amazing.";
+	mes "[卡蘭迪娃]";
+	mes "讓我看看……因為潮濕的關係，我的皮膚變得好滑嫩。";
+	mes "我的手指和腳趾不再連在一起，很神奇吧。";
 	next;
-	mes "[Callandiva]";
-	mes "I was really shocked and scared when the Eden Group dispatched me here.";
-	mes "Now I love this environment so much.";
-	mes "It's really calm...";
+	mes "[卡蘭迪娃]";
+	mes "伊甸團派我來這裡的時候，我真的又震驚又害怕。";
+	mes "現在我非常喜歡這個環境。";
+	mes "真的好平靜……";
 	close;
 }
 
-moc_para01,112,96,5	script	Administrator Michael	4_M_RUSMAN1,{
-	mes "[Michael]";
+moc_para01,112,96,5	script	管理員麥可::Administrator Michael	4_M_RUSMAN1,{
+	mes "[麥可]";
 	mes "你為什麼來這裡？";
 	next;
-	switch (select("To get supplies:Where is here?:Upgrade equipment")) {
-		mes "[Michael]";
+	switch (select("領取補給:請問這裡是哪裡？:升級裝備")) {
+		mes "[麥可]";
 	case 1:
 		if (para_suv01 == 11) {
-			mes "If you've completed step 1";
-			mes "we can supply you with a Eden Group Hat, Uniform, Manteau and Boots.";
-			mes "^4d4dffCheck your inventory first.^000000";
+			mes "如果你已完成第一步";
+			mes "我們可以提供你伊甸團漁夫帽、制服、斗篷和戰士長靴。";
+			mes "^4d4dff先檢查你的背包。^000000";
 			next;
-			if (select("Let me check my inventory:I have enough room.") == 1) {
-				mes "[Michael]";
-				mes "Make sure you have enough room for the supplies.";
+			if (select("讓我確認一下我的背包:我的空間夠。") == 1) {
+				mes "[麥可]";
+				mes "請確認你的背包有足夠的空間放補給品。";
 				close;
 			}
-			mes "[Michael]";
-			mes "Two of the supplies, the ^4d4dffHat and Manteau^000000,";
-			mes "will only be given out once.";
-			mes "So treat them with caution and care.";
+			mes "[麥可]";
+			mes "補給品中的兩件，^4d4dff漁夫帽和斗篷^000000，";
+			mes "只會發放一次。";
+			mes "所以請小心珍惜。";
 			next;
-			mes "[Michael]";
-			mes "As for the Boots and the Uniforms, you will receive better quality ones based on your course grades.";
+			mes "[麥可]";
+			mes "至於長靴和制服，會依你的課程成績發放品質更好的。";
 			next;
-			mes "[Michael]";
-			mes "One Eden Group Hat.";
-			mes "One Eden Group Uniform I.";
-			mes "One pair of Eden Group Boots I.";
-			mes "One Eden Group Manteau.";
-			mes "A total of 4 supplies, that's all.";
+			mes "[麥可]";
+			mes "伊甸團漁夫帽一頂。";
+			mes "伊甸團制服 I 一件。";
+			mes "伊甸團戰士長靴 I 一雙。";
+			mes "伊甸團斗篷一件。";
+			mes "總共 4 項補給品，就這些。";
 			para_suv01 = 12;
 			para_suv02 = 1;
 			getitem 5583,1; //Para_Team_Hat1
@@ -1807,36 +1807,36 @@ moc_para01,112,96,5	script	Administrator Michael	4_M_RUSMAN1,{
 			getitem 2456,1; //Para_Team_Boots1
 			getitem 15009,1; //Para_Team_Uniform1
 			next;
-			mes "[Michael]";
-			mes "Is that correct?";
-			mes "It is manufactured for beginners so they don't have the best effect but they're still cheaper than equipment in the shops.";
+			mes "[麥可]";
+			mes "這樣正確嗎？";
+			mes "這是為新手製作的，效果不是最好，但仍比商店裡的裝備便宜。";
 			next;
-			mes "[Michael]";
-			mes "We made them especially for the Eden Group.";
+			mes "[麥可]";
+			mes "這些是我們專為伊甸團製作的。";
 		}
 		else if (para_suv01 == 22) {
-			mes "If you've completed step 2, we offer extra weapons including the basic equipment.";
+			mes "如果你已完成第二步，我們會另外提供包含基礎裝備在內的武器。";
 			next;
-			mes "[Michael]";
-			mes "We have chosen the proper weapon for each class.";
-			mes "But we can't support some classes that can't join us.";
+			mes "[麥可]";
+			mes "我們為每個職業挑選了適合的武器。";
+			mes "但有些無法加入我們的職業，我們無法提供支援。";
 			next;
-			mes "[Michael]";
-			mes "We can't manufacture all of the weapons in the world, don't you agree?";
+			mes "[麥可]";
+			mes "世上的武器我們不可能全部製作出來，你說是吧？";
 			next;
-			mes "[Michael]";
-			mes "We will supply 1 Weapon, Shoes and Uniform so a total of three things.";
-			mes "Also we supply extra things to consider some members who can't use some of the supplies.";
+			mes "[麥可]";
+			mes "我們會提供 1 件武器、長靴和制服，共三項。";
+			mes "另外，我們也會為無法使用部分補給品的成員準備額外的物品。";
 			next;
-			mes "[Michael]";
-			mes "^4d4dffPlease check your inventory to get those items.^000000";
+			mes "[麥可]";
+			mes "^4d4dff請確認你的背包，領取這些物品。^000000";
 			next;
-			if (select("I will make more space.:I have got enough space.") == 1) {
-				mes "[Michael]";
-				mes "Make enough space.";
+			if (select("我來騰出更多空間。:我的空間已經足夠了。") == 1) {
+				mes "[麥可]";
+				mes "請騰出足夠的空間。";
 				close;
 			}
-			mes "[Michael]";
+			mes "[麥可]";
 			if (Class == Job_Swordman || Class == Job_Swordman_High || Class == Job_Knight || Class == Job_Crusader) {
 				callsub S_Select,"We have one and Two-handed swords",
 					1192,"Eden Slayer I","Two-handed sword","Attack 162","",//P_Slayer1
@@ -1872,52 +1872,52 @@ moc_para01,112,96,5	script	Administrator Michael	4_M_RUSMAN1,{
 				callsub S_Select,"",
 					1699,"Eden Foxtail Staff I","Staff","MATK+135, attack 120","";//P_Foxtail1
 			}
-			mes "Let me see... you will receive..";
-			mes "the Eden Group Boots II and Uniform II.";
+			mes "讓我看看……你會領到……";
+			mes "伊甸團戰士長靴 II 和制服 II。";
 			next;
-			mes "[Michael]";
+			mes "[麥可]";
 			para_suv01 = 23;
 			getitem 13050,1; //P_Dagger1
 			getitem 2457,1; //Para_Team_Boots2
 			getitem 15010,1; //Para_Team_Uniform2
 			if (para_suv02 == 0) {
-				mes "I don't know what weapon will suit you so, you'll get a Dagger.";
-				mes "You don't have a record of receiving any supplies";
-				mes "so, you'll receive the Eden Group Hat and Manteau aswell.";
+				mes "我不知道什麼武器適合你，所以你會拿到一把匕首。";
+				mes "你沒有領取任何補給品的紀錄";
+				mes "所以，你也會領到伊甸團漁夫帽和斗篷。";
 				getitem 5583,1; //Para_Team_Hat
 				getitem 2560,1; //Para_Team_Manteau
 				para_suv02 = 2;
 				next;
-				mes "[Michael]";
-				mes "Check your supplies again and look after it.";
+				mes "[麥可]";
+				mes "再確認一次你的補給品，並好好保管。";
 				close;
 			}
 			para_suv02 = 2;
-			mes "A Weapon, Uniform and Boots all 3 supplies.";
-			mes "I don't know what weapon will suit you so, you'll get a Dagger.";
-			mes "Please check it again.";
+			mes "武器、制服和長靴，共 3 項補給品。";
+			mes "我不知道什麼武器適合你，所以你會拿到一把匕首。";
+			mes "請再確認一次。";
 			next;
-			mes "[Michael]";
-			mes "I hope they're useful to you.";
+			mes "[麥可]";
+			mes "希望這些對你有用。";
 		}
 		else if (para_suv01 == 37) {
-			mes "You've completed the last training course.";
-			mes "It's time for you to receive a new weapon.";
+			mes "你已完成最後一堂訓練課程。";
+			mes "是時候讓你領取新武器了。";
 			next;
-			mes "[Michael]";
-			mes "We have more upgraded weapons, uniforms and boots.";
-			mes "Ah, in case of the weapon that was made only for 1st jobs.";
-			mes "So, I can't offer them to higher jobs.";
+			mes "[麥可]";
+			mes "我們有更多升級版的武器、制服和長靴。";
+			mes "啊，至於那些只為一轉職業製作的武器……";
+			mes "所以，我無法提供給高階職業。";
 			next;
-			mes "[Michael]";
-			mes "^4d4dffPlease check you inventory to get those supplies.^000000";
+			mes "[麥可]";
+			mes "^4d4dff請確認你的背包，領取這些補給品。^000000";
 			next;
-			if (select("I'll come back.:I have enough room.") == 1) {
-				mes "[Michael]";
-				mes "Make sure you have enough room.";
+			if (select("我待會再來。:我的空間夠了。") == 1) {
+				mes "[麥可]";
+				mes "請確認你有足夠的空間。";
 				close;
 			}
-			mes "[Michael]";
+			mes "[麥可]";
 			if (Class == Job_Swordman || Class == Job_Swordman_High || Class == Job_Knight || Class == Job_Crusader) {
 				callsub S_Select,"We have one and Two-handed swords",
 					13424,"Eden Saber II","One-handed sword","Attack 170","",///P_Sabre2
@@ -1953,66 +1953,66 @@ moc_para01,112,96,5	script	Administrator Michael	4_M_RUSMAN1,{
 				callsub S_Select,"",
 					26100,"Eden Foxtail Staff II","Staff","MATK+165, attack 135","";//P_Foxtail1
 			}
-			mes "Let me see... you will receive..";
-			mes "the Eden Group Boots III and Uniform III.";
+			mes "讓我看看……你會領到……";
+			mes "伊甸團戰士長靴 III 和制服 III。";
 			next;
 			para_suv01 = 38;
 			getitem 2458,1; //Para_Team_Boots3
 			getitem 15011,1; //Para_Team_Uniform3
-			mes "[Michael]";
+			mes "[麥可]";
 			if (para_suv02 == 0) {
-				mes "You don't have a record of receiving any supplies";
-				mes "so, you'll receive the Eden Group Hat and Manteau aswell.";
+				mes "你沒有領取任何補給品的紀錄";
+				mes "所以，你也會領到伊甸團漁夫帽和斗篷。";
 				para_suv02 = 3;
 				getitem 5583,1; //Para_Team_Hat
 				getitem 2560,1; //Para_Team_Manteau
 				next;
-				mes "[Michael]";
-				mes "Check your supplies again and look after it.";
+				mes "[麥可]";
+				mes "再確認一次你的補給品，並好好保管。";
 				close;
 			}
 			para_suv02 = 3;
-			mes "A Uniform and Boots all 2 supplies.";
-			mes "Please check it again.";
+			mes "制服和長靴，共 2 項補給品。";
+			mes "請再確認一次。";
 			next;
-			mes "[Michael]";
-			mes "I hope they're useful to you.";
+			mes "[麥可]";
+			mes "希望這些對你有用。";
 		}
 		else {
-			mes "Wait...I will check the record...";
+			mes "等等……我來查一下紀錄……";
 			mes "...";
 			mes "...hummmm.";
 			next;
-			mes "[Michael]";
-			mes "Sorry, but I can't find any record that you can obtain supplies.";
+			mes "[麥可]";
+			mes "抱歉，我找不到你可以領取補給品的任何紀錄。";
 			mes "你確定嗎？";
 		}
 		close;
 	case 2:
-		mes "We store weapons, armor and other goods which were created by the Eden Group here.";
-		mes "We also have a lot of special stuff.";
+		mes "這裡存放著伊甸團製作的武器、防具和其他物品。";
+		mes "我們這裡也有許多特殊的東西。";
 		next;
-		mes "[Michael]";
-		mes "To prepare for emergencies, we hav enough equipment and supplies for an entire army.";
-		mes "Frankly... we don't have a use for it now but in case soemthing happens like in Morocc.";
+		mes "[麥可]";
+		mes "為了應付緊急狀況，我們備有足夠整支軍隊使用的裝備和補給。";
+		mes "說實話……現在用不到，但以防萬一發生像夢羅克那樣的事情。";
 		next;
-		mes "[Michael]";
-		mes "Just take a look around and don't touch anything.";
+		mes "[麥可]";
+		mes "四處看看就好，別碰任何東西。";
 		next;
-		mes "[Michael]";
-		mes "If I make a mistake, Reke will punish me.";
+		mes "[麥可]";
+		mes "如果我出了差錯，雷克會處罰我的。";
 		close;
 	case 3:
-		mes "You mean upgrading equipment, right?";
-		mes "We can only upgrade the Eden Group Hat.";
+		mes "你是說升級裝備，對吧？";
+		mes "我們只能升級伊甸團漁夫帽。";
 		next;
-		mes "[Michael]";
+		mes "[麥可]";
 		if (para_suv02 == 3) {
 			if (countitem(5583) > 0) {
 				disable_items;
-				mes "What status bonus do you want to upgrade?";
+				mes "你想升級哪項能力值？";
 				next;
-				switch (select("Upgrade STR:Upgrade AGI:Upgrade VIT:Upgrade INT:Upgrade DEX:Upgrade LUK:Nevermind.")) {
+				switch (select("升級力量:升級敏捷:升級體力:升級智力:升級靈巧:升級幸運:算了。")) {
 				case 1: callsub S_Upgrade,"STR",4701;
 				case 2: callsub S_Upgrade,"AGI",4731;
 				case 3: callsub S_Upgrade,"VIT",4741;
@@ -2020,116 +2020,116 @@ moc_para01,112,96,5	script	Administrator Michael	4_M_RUSMAN1,{
 				case 5: callsub S_Upgrade,"DEX",4721;
 				case 6: callsub S_Upgrade,"LUK",4751;
 				case 7:
-					mes "[Michael]";
-					mes "Why? It'll be beter than it is.";
-					mes "Anyway, we can only offer you one Hat.";
+					mes "[麥可]";
+					mes "為什麼？升級後會比現在更好。";
+					mes "總之，我們只能提供你一頂帽子。";
 					next;
-					mes "[Michael]";
-					mes "What you do with it is up to you.";
+					mes "[麥可]";
+					mes "你要怎麼用它，就看你自己了。";
 					close;
 				}
 			}
-			mes "First come with a Hat that you want me to upgrade.";
-			mes "Make sure that it's in your inventory, got it?";
+			mes "先拿一頂你想讓我升級的帽子過來。";
+			mes "確定它在你的背包裡，懂了嗎？";
 			close;
 		}
 		if (para_suv02 == 4) {
-			mes "Umm, didn't you upgrade this already?";
-			mes "According to the records";
-			mes ""+strcharinfo(0)+": Has already upgraded their Hat.";
+			mes "嗯，這個你不是已經升級過了嗎？";
+			mes "根據紀錄";
+			mes ""+strcharinfo(0)+": 已經升級過帽子了。";
 			next;
-			mes "[Michael]";
-			mes "We can only offer 1 upgrade.";
-			mes "Sorry but I can't do it twice.";
+			mes "[麥可]";
+			mes "我們只能提供 1 次升級。";
+			mes "抱歉，我不能做兩次。";
 			close;
 		}
-		mes "You haven't received all the supplies up to step 3.";
-		mes "Upgrading your Hat is a special service.";
+		mes "你還沒領到第三步為止的所有補給品。";
+		mes "升級帽子是特殊服務。";
 		next;
-		mes "[Michael]";
-		mes "Sorry but I can't help you.";
+		mes "[麥可]";
+		mes "抱歉，我幫不了你。";
 		close;
 	}
 S_Upgrade:
-	mes "[Michael]";
+	mes "[麥可]";
 	mes "我知道了。";
-	mes "I will ^4d4dffUpgrade "+ getarg(0) +"^000000.";
+	mes "我會^4d4dff升級 "+ getarg(0) +"^000000.";
 	mes "你確定嗎？";
 	next;
-	switch (select("Yes I am.:No wait.")) {
+	switch (select("是的。:等一下。")) {
 	case 1:
-		mes "[Michael]";
-		mes "I will start to upgrade.";
+		mes "[麥可]";
+		mes "我要開始升級了。";
 		next;
-		mes "[Michael]";
+		mes "[麥可]";
 		mes "給你。";
 		para_suv02 = 4;
 		delitem 5583,1;
 		getitem2 5583,1,1,0,0,0,0,0,getarg(1);
 		close;
 	case 2:
-		mes "[Michael]";
-		mes "Don't you want to upgrade?";
+		mes "[麥可]";
+		mes "你不想升級嗎？";
 		close;
 	}
 
 S_Select:
 	.@total_arg = getargcount();
 	if (.@total_arg < 7)
-		mes "We only have 1 weapon for you.";
+		mes "我們只有 1 件武器可以給你。";
 	else {
-		mes "What kind of weapon do you want?";
+		mes "你想要哪種武器？";
 		mes getarg(0);
-		mes "Here are the options.";
+		mes "選項在這裡。";
 	}
 	next;
-	mes "[Michael]";
+	mes "[麥可]";
 	for ( .@i = 1; .@i < .@total_arg; .@i += 5 ) {
 		set .@menu$, .@menu$ + getarg(.@i+1) + ":";
 		mes getarg(.@i+1)+": "+ getarg(.@i+2) +". "+ getarg(.@i+3) +".";
 	}
 	if (.@total_arg < 7)
-		mes "It is Lv. 2 and the required level is "+ (para_suv01 == 22 ? "26" : "40") +".";
+		mes "這是 Lv. 2 的武器，需要等級為 "+ (para_suv01 == 22 ? "26" : "40") +".";
 	else
-		mes "Both of them are Lv. 2 weapons and the required level is "+ (para_suv01 == 22 ? "26" : "40") +".";
+		mes "兩者都是 Lv. 2 的武器，需要等級為 "+ (para_suv01 == 22 ? "26" : "40") +".";
 	next;
-	mes "[Michael]";
-	mes "They also can't be traded with other players or be refined.";
+	mes "[麥可]";
+	mes "而且無法與其他玩家交易，也無法精煉。";
 	next;
 	//			callsub S_Select,"We have one and Two-handed swords",
 		//			13424,"Eden Saber II","One-handed sword","Attack 170","",///P_Sabre2
 			//		1193,"Eden Slayer II","Two-handed sword","Attack 185","";//P_Slayer2
 	if (.@total_arg < 7) {
 		.@i = 1;
-		mes "[Michael]";
-		mes "You'll receive the "+ getarg(.@i+1) +".";
+		mes "[麥可]";
+		mes "你將會領到 "+ getarg(.@i+1) +".";
 		next;
-		mes "[Michael]";
+		mes "[麥可]";
 	}
 	else {
 		.@i = (select(.@menu$) -1) *5 +1;
-		mes "[Michael]";
-		mes "You've chosen the "+ getarg(.@i+1) +".";
+		mes "[麥可]";
+		mes "你選擇了 "+ getarg(.@i+1) +".";
 	}
 	if (para_suv01 == 22) {
-		mes "Additionally you'll receive the Eden Group Boots II and Uniform II.";
+		mes "另外你還會領到伊甸團戰士長靴 II 和制服 II。";
 		next;
 		getitem 2457,1;	// Para_Team_Boots2
 		getitem 15010,1;// Para_Team_Uniform2
 		para_suv01 = 23;
 	}
 	else {
-		mes "Additionally you'll receive the Eden Group Boots III and Uniform III.";
+		mes "另外你還會領到伊甸團戰士長靴 III 和制服 III。";
 		next;
 		getitem 2458,1;// Para_Team_Boots3
 		getitem 15011,1;// Para_Team_Uniform3
 		para_suv01 = 38;
 	}
 	getitem getarg(.@i),1;
-	mes "[Michael]";
+	mes "[麥可]";
 	if (para_suv02 == 0) {
-		mes "You don't have a record of receiving any supplies";
-		mes "so, you'll receive the Eden Group Hat and Manteau aswell.";
+		mes "你沒有領取任何補給品的紀錄";
+		mes "所以，你也會領到伊甸團漁夫帽和斗篷。";
 		getitem 5583,1;// Para_Team_Hat
 		getitem 2560,1;// Para_Team_Manteau
 		if (para_suv01 == 22)
@@ -2137,19 +2137,19 @@ S_Select:
 		else
 			para_suv02 = 3;
 		next;
-		mes "[Michael]";
-		mes "Check your supplies again and look after it.";
+		mes "[麥可]";
+		mes "再確認一次你的補給品，並好好保管。";
 	}
 	else {
 		if (para_suv01 == 22)
 			para_suv02 = 2;
 		else
 			para_suv02 = 3;
-		mes "A "+ getarg(.@i+2) +", Uniform and Boots all 3 supplies.";
-		mes "Please check it again.";
+		mes "一把 "+ getarg(.@i+2) +"，制服和長靴，共 3 項補給品。";
+		mes "請再確認一次。";
 		next;
-		mes "[Michael]";
-		mes "I hope they're useful to you.";
+		mes "[麥可]";
+		mes "希望這些對你有用。";
 		mes getarg(.@i+4);
 	}
 	close;
@@ -2158,413 +2158,413 @@ S_Select:
 moc_para01,179,44,3	script	主廚::Chef	820,{
 	mes "[主廚]";
 	mes "怎麼了？";
-	mes "Do you want a Meal? Or do you have other business?";
+	mes "你要點餐嗎？還是有其他事情？";
 	next;
-	switch (select("Order a meal.:Talk.")) {
+	switch (select("點餐。:聊聊。")) {
 	case 1:
 		mes "[主廚]";
-		mes "Choose one of the three course meals A, B or C.";
-		mes "Do you want a explanation?";
+		mes "請從 A、B、C 三種套餐中選擇一種。";
+		mes "需要說明嗎？";
 		next;
-		switch (select("I want a explanation.:Order course meal A:Order course meal B:Order course meal C:End Conversation.")) {
+		switch (select("我想聽說明。:點套餐 A:點套餐 B:點套餐 C:結束對話。")) {
 		case 1:
 			mes "[主廚]";
-			mes "Uh? what do you want to know?";
+			mes "呃？你想知道什麼？";
 			next;
-			switch (select("About course meal A.:About course meal B.:About course meal C.:End Conversation.")) {
+			switch (select("關於套餐 A。:關於套餐 B。:關於套餐 C。:結束對話。")) {
 			case 1:
 				mes "[主廚]";
-				mes "Course meal A is for nomal people.";
-				mes "It has three kinds of dishes and the main is....";
+				mes "套餐 A 是給一般人的。";
+				mes "它有三種料理，主菜是……";
 				mes " ";
-				mes "-Chef is trying to point to a dish in the picture. There is a black roll.-";
+				mes "-主廚正在指著圖片上的一道料理。那是一個黑色的捲。-";
 				next;
 				mes "[主廚]";
-				mes "It's made of sea grass so, it's dry like paper.";
-				mes "It's a roll with steamed rice, vegetables and meat inside.";
-				mes "It seems simple but it is really good and healthy.";
+				mes "它是用海苔做的，所以乾乾的，像紙一樣。";
+				mes "裡面包著蒸飯、蔬菜和肉的捲。";
+				mes "看起來簡單，但非常美味又健康。";
 				next;
 				mes "[主廚]";
-				mes "The ingredients mix well with the spicy sauce.";
-				mes "It is also mixed with chopped meat like sausages.";
+				mes "食材與辣醬非常搭。";
+				mes "還混有像香腸一樣切碎的肉。";
 				next;
 				mes "[主廚]";
-				mes "It's simple and cheap so it is really popular with everyone.";
-				mes "Just 3,000 Zeny.";
-				mes "You will feel satisfied after eating it.";
+				mes "簡單又便宜，所以非常受大家歡迎。";
+				mes "只要 3,000 Zeny。";
+				mes "吃完會覺得很滿足。";
 				close;
 			case 2:
 				mes "[主廚]";
-				mes "Um course meal B is.";
-				mes "I make a sauce with aromatic vegetables and meat in a soup.";
+				mes "嗯，套餐 B 是……";
+				mes "我用香味蔬菜和肉類在湯裡熬製醬汁。";
 				next;
 				mes "[主廚]";
-				mes "The meat is boiled so it is fork tender in the soup.";
-				mes "When the soup is almost done I add noodles for the finishing touch.";
+				mes "肉在湯中燉煮到軟嫩，用叉子就能輕鬆叉開。";
+				mes "湯快煮好時，我會加入麵條作為收尾。";
 				next;
 				mes "[主廚]";
-				mes "It's a good dish to share with your friends.";
-				mes "It's 4,000 Zeny.";
-				mes "It's a very fun dish to enjoy.";
+				mes "這道菜很適合和朋友一起分享。";
+				mes "是4,000 Zeny。";
+				mes "這道菜吃起來很有樂趣。";
 				close;
 			case 3:
 				mes "[主廚]";
-				mes "Now for course meal C...";
-				mes "It's a masterpiece of meat... Legend of the meat class!";
+				mes "接下來是C套餐……";
+				mes "這是肉類的傑作……肉類界的傳說！";
 				next;
 				mes "[主廚]";
-				mes "Beef, bacon,";
-				mes "strip loin,";
-				mes "rib eye roll";
+				mes "牛肉、培根，";
+				mes "沙朗牛排，";
+				mes "肋眼牛排捲";
 				mes "...";
 				next;
 				mes "[主廚]";
-				mes "Do you need more information?";
+				mes "需要更多資訊嗎？";
 				mes "別擔心。";
-				mes "I use the besk oak to smoke it.";
-				mes "Ah, it's 5,000 Zeny. Cheap isn't it? I only use the best meat so don't worry.";
+				mes "我用貝斯克橡木來燻製。";
+				mes "啊，是5,000 Zeny。便宜吧？我只用最好的肉，所以不用擔心。";
 				close;
 			case 4:
 				mes "[主廚]";
-				mes "I don't have enough time to chat with you...";
+				mes "我沒有足夠的時間跟你聊天……";
 				close;
 			}
 		case 2:
 			mes "[主廚]";
-			mes "Course meal A?";
-			mes "Ah, Kim-dduck-soon.";
-			mes "It's the representative meal for normal citizens.";
+			mes "A套餐？";
+			mes "啊，是金年糕湯。";
+			mes "這是平民百姓的代表性餐點。";
 			next;
 			if (callfunc("F_HasEdenGroupMark")) {
 				if (Zeny > 2699) {
 					mes "[主廚]";
 					mes "喂，給你。";
-					mes "Enjoy your meal.";
+					mes "請慢用。";
 					next;
-					mes "- After eating the meal, You feel a little bit full.";
-					mes "You've recovered some HP and SP. -";
+					mes "- 用餐後，你會感到有點飽足。";
+					mes "你恢復了一些HP和SP。 -";
 					set Zeny, Zeny - 2700;
 					percentheal 50,0;
 					percentheal 0,50;
 					close;
 				}
 				mes "[主廚]";
-				mes "This meal costs 3,000 zeny but I will serve it for 2,700.";
-				mes "Since you are a eden member you get a 10% discount so, it's 2,700 zeny.";
+				mes "這份餐點要3,000 zeny，但我會以2,700 zeny供應。";
+				mes "因為你是伊甸集團成員，可享9折優惠，所以是2,700 zeny。";
 				close;
 			}
 			if (Zeny > 2999) {
 				mes "[主廚]";
 				mes "喂，給你。";
-				mes "Enjoy your meal.";
+				mes "請慢用。";
 				next;
-				mes "- After eating the meal, You feel a little bit full.";
-				mes "You've recovered some HP and SP. -";
+				mes "- 用餐後，你會感到有點飽足。";
+				mes "你恢復了一些HP和SP。 -";
 				set Zeny, Zeny - 3000;
 				percentheal 50,0;
 				percentheal 0,50;
 				close;
 			}
 			mes "[主廚]";
-			mes "This meal costs 3,000 zeny.";
-			mes "How many times do I have to tell you?";
+			mes "這份餐點要3,000 zeny。";
+			mes "我到底要跟你說幾次？";
 			close;
 		case 3:
 			mes "[主廚]";
-			mes "Course meal B?";
-			mes "This food with meat and vegetables in hot soup has it's origins from nomadic life under the cold and dry nature.";
+			mes "B套餐？";
+			mes "這道以肉類和蔬菜煮成的熱湯，源自寒冷乾燥大自然中的遊牧生活。";
 			next;
 			if (callfunc("F_HasEdenGroupMark")) {
 				if (Zeny > 3599) {
 					mes "[主廚]";
 					mes "喂，給你。";
-					mes "Enjoy your meal.";
+					mes "請慢用。";
 					next;
-					mes "- After eating the meal, You feel a little bit full.";
-					mes "You've recovered some HP and SP. -";
+					mes "- 用餐後，你會感到有點飽足。";
+					mes "你恢復了一些HP和SP。 -";
 					set Zeny, Zeny - 3600;
 					percentheal 75,0;
 					percentheal 0,75;
 					close;
 				}
 				mes "[主廚]";
-				mes "This meal costs 4,000 zeny but I will serve it for 3,600.";
-				mes "Since you are a eden member you get a 10% discount so, it's 3,600 zeny.";
+				mes "這份餐點要4,000 zeny，但我會以3,600 zeny供應。";
+				mes "因為你是伊甸集團成員，可享9折優惠，所以是3,600 zeny。";
 				close;
 			}
 			if (Zeny > 3999) {
 				mes "[主廚]";
 				mes "喂，給你。";
-				mes "Enjoy your meal.";
+				mes "請慢用。";
 				next;
-				mes "- After eating the meal, You feel a little bit full.";
-				mes "You've recovered some HP and SP. -";
+				mes "- 用餐後，你會感到有點飽足。";
+				mes "你恢復了一些HP和SP。 -";
 				set Zeny, Zeny - 4000;
 				percentheal 75,0;
 				percentheal 0,75;
 				close;
 			}
 			mes "[主廚]";
-			mes "This meal costs 4,000 zeny.";
-			mes "How many times do I have to tell you?";
+			mes "這份餐點要4,000 zeny。";
+			mes "我到底要跟你說幾次？";
 			close;
 		case 4:
 			if (callfunc("F_HasEdenGroupMark")) {
 				if (Zeny > 4499) {
 					mes "[主廚]";
 					mes "喂，給你。";
-					mes "Enjoy your meal.";
+					mes "請慢用。";
 					next;
-					mes "- The Rib Eye Roll is grilled on the oak.";
-					mes "- After eating the meal, You feel a little bit full.";
-					mes "You've recovered your HP and SP. -";
+					mes "- 肋眼牛排捲是用橡木燒烤的。";
+					mes "- 用餐後，你會感到有點飽足。";
+					mes "你的HP和SP已恢復。 -";
 					set Zeny, Zeny - 4500;
 					percentheal 100,0;
 					percentheal 0,100;
 					close;
 				}
 				mes "[主廚]";
-				mes "This meal costs 5,000 zeny but I will serve it for 4,500.";
-				mes "Since you are a eden member you get a 10% discount so, it's 4,500 zeny.";
+				mes "這份餐點要5,000 zeny，但我會以4,500 zeny供應。";
+				mes "因為你是伊甸集團成員，可享9折優惠，所以是4,500 zeny。";
 				close;
 			}
 			if (Zeny > 4999) {
 				mes "[主廚]";
 				mes "喂，給你。";
-				mes "Enjoy your meal.";
+				mes "請慢用。";
 				next;
 				mes "喂，給你。";
-				mes "- The Rib Eye Roll is grilled on the oak.";
-				mes "- After eating the meal, You feel a little bit full.";
-				mes "You've recovered your HP and SP. -";
+				mes "- 肋眼牛排捲是用橡木燒烤的。";
+				mes "- 用餐後，你會感到有點飽足。";
+				mes "你的HP和SP已恢復。 -";
 				set Zeny, Zeny - 5000;
 				percentheal 100,0;
 				percentheal 0,100;
 				close;
 			}
 			mes "[主廚]";
-			mes "This meal costs 5,000 zeny.";
-			mes "How many times do I have to tell you?";
+			mes "這份餐點要5,000 zeny。";
+			mes "我到底要跟你說幾次？";
 			close;
 		case 5:
 			mes "[主廚]";
-			mes "It's up to you.";
+			mes "由你決定。";
 			close;
 		}
 	case 2:
 		if (callfunc("F_HasEdenGroupMark")) {
 			mes "[主廚]";
-			mes "Most jobs should be managed by yourself. So it might be difficult, right?";
-			mes "Actually it's harmful so they have requested continuously.";
+			mes "大部分的工作都該自己處理，所以可能有點困難，對吧？";
+			mes "其實那很有害，所以他們才一再提出請求。";
 			next;
 			mes "[主廚]";
-			mes "Can't we all work together by helping each other out?";
-			mes "Anyway, you...";
+			mes "我們不能互相幫忙，一起合作嗎？";
+			mes "總之，你……";
 			next;
 			if (para_suv01 == 0) {
 				if (BaseLevel < 41) {
 					mes "[主廚]";
 					mes "你好嗎？";
-					mes "Ah... now you don't look like a beginner.";
-					mes "Do you want to know some good information?";
+					mes "啊……你現在看起來不像新手了。";
+					mes "想知道一些有用的情報嗎？";
 					next;
 					mes "[主廚]";
-					mes "The Eden Group... sometimes receives jobs.";
-					mes "But they also manufacture armor and weapons by themselves.";
+					mes "伊甸集團……偶爾會接一些委託。";
+					mes "但他們也會自己製作盔甲和武器。";
 					next;
 					mes "[主廚]";
-					mes "If you want, you can get a uniform from the Eden Group.";
+					mes "如果你想要，可以向伊甸集團領取制服。";
 					next;
 					mes "[主廚]";
-					mes "To get it you need to complete their missions.";
-					mes "If you have any interest, meet Instructor Boya at the desk.";
+					mes "要拿到的話，你必須完成他們的任務。";
+					mes "如果有興趣，請到櫃檯找波雅教官。";
 					close;
 				}
 				mes "[主廚]";
-				mes "You look like an expert...";
-				mes "umm emm.. ";
-				mes "umm emm.. ummm..";
+				mes "你看起來像個專家……";
+				mes "嗯……呃…… ";
+				mes "嗯……呃……嗯……";
 				next;
 				mes "[主廚]";
-				mes "Yes! I found a thing that you are missing!";
-				mes "You didn't get eden group uniform?";
+				mes "是的！我找到了你缺少的東西！";
+				mes "你還沒拿到伊甸集團制服嗎？";
 				next;
 				mes "[主廚]";
-				mes "Hmm, it's not necessary but if you remain with the eden group, it would be a good symbol.";
+				mes "嗯，不是必要的，但如果你持續待在伊甸集團，那會是很好的象徵。";
 				next;
 				mes "[主廚]";
-				mes "You can't get it easily but..";
-				mes "If you have an interest, ask Instructor Boya at the desk.";
+				mes "不是那麼容易拿到，但是……";
+				mes "如果有興趣，請到櫃檯詢問波雅教官。";
 				close;
 			}
 			mes "[主廚]";
-			mes "Sure, the uniform goes well with you.";
+			mes "當然，這套制服很適合你。";
 			mes "噢，當然。";
-			mes "The leader makes the designs these days.";
+			mes "最近都是隊長在設計的。";
 			next;
 			mes "[主廚]";
-			mes "Ahah..especially the hat.";
-			mes "To.. me.. the hat... um.";
-			mes "It goes well with Laime but with Luke... I don't know..";
+			mes "啊哈……尤其是帽子。";
+			mes "對……我來說……那頂帽子……嗯。";
+			mes "跟萊姆很搭，但跟路克……我不知道……";
 			next;
-			switch (select("What about the hat?:Luke?")) {
+			switch (select("帽子怎麼樣？:路克？")) {
 			case 1:
 				mes "[主廚]";
-				mes "Nothing. It's so cute.";
-				mes "I am concerned about the ribbon.";
-				mes "But, it is essential that I wear this hat..";
+				mes "沒什麼。它超可愛的。";
+				mes "我很在意那條緞帶。";
+				mes "但是，我非戴這頂帽子不可……";
 				next;
 				mes "[主廚]";
-				mes "Hahahah I don't care.";
-				mes "I don't care at all!";
-				mes "Hahaha.. aaaahahahaha... ";
+				mes "哈哈哈，我才不在乎。";
+				mes "我完全不在乎！";
+				mes "哈哈……啊哈哈哈哈…… ";
 				close;
 			case 2:
 				mes "[主廚]";
-				mes "He is a knife expert.";
-				mes "One of our guard leaders.";
-				mes "Who is also in charge of the security in this office.";
+				mes "他是刀術專家。";
+				mes "是我們的守衛隊長之一。";
+				mes "同時也負責這間辦公室的安全。";
 				next;
 				mes "[主廚]";
-				mes "Almost everyone just hired wonders about him.";
-				mes "But Laime and Luke are totally different.";
+				mes "幾乎所有剛被錄用的人都對他很好奇。";
+				mes "但萊姆和路克完全不同。";
 				next;
 				mes "[主廚]";
-				mes "The leaders have worked together for a long time.";
-				mes "But the leader wants to hide his past...";
+				mes "隊長們已經共事很久了。";
+				mes "但那位隊長想隱藏他的過去……";
 				next;
 				mes "[主廚]";
-				mes "What I guess is... he might be a son of a rich family.";
-				mes "Rumor is that Luke was the family guard.";
-				mes "Laime was a servant? Wasn't she?";
-				mes "What do you think about my story?";
+				mes "我猜……他可能是富貴人家的兒子。";
+				mes "傳言說路克以前是那個家族的護衛。";
+				mes "萊姆是僕人？不是嗎？";
+				mes "你覺得我說的故事怎麼樣？";
 				next;
 				select(".....");
 				mes "[主廚]";
 				mes "............";
-				mes "Ahah..hey~ even if I talked useless things don't look at me like that";
-				mes "but it's really true that three people established this Eden Group.";
+				mes "啊哈……嘿～就算我說了些無聊的話，也別那樣看我嘛";
+				mes "但三個人創立伊甸集團，這可是真的。";
 				close;
 			}
 		}
 		mes "[主廚]";
-		mes "Uh? Missions. Did you find the right place?";
-		mes "Also let me se... you are not one of our members. How can I give you work?";
+		mes "呃？任務嗎？你找對地方了嗎？";
+		mes "讓我看看……你也不是我們的成員。我怎麼能給你工作？";
 		next;
 		mes "[主廚]";
-		mes "Just eat in the restaurant.";
-		mes "We serve meals to everyone.";
-		mes "I am pretty sure they taste great!";
+		mes "在餐廳吃飯就好。";
+		mes "我們為所有人提供餐點。";
+		mes "我很確定它們非常好吃！";
 		close;
 	}
 }
 
-moc_para01,23,35,5	script	Instructor Ur#2nd01	4_M_KNIGHT_BLACK,{
-	mes "[Instructor Ur]";
+moc_para01,23,35,5	script	烏爾教官#2nd01::Instructor Ur#2nd01	4_M_KNIGHT_BLACK,{
+	mes "[烏爾教官]";
 	if (!callfunc("F_HasEdenGroupMark")) {
 		mes "嘿，你好！";
-		mes "I see you're not one of our agents?";
-		mes "Are you interested in joining us?";
+		mes "我看你不是我們的探員吧？";
+		mes "你有興趣加入我們嗎？";
 		next;
-		mes "[Instructor Ur]";
-		mes "There are no fees to join!";
-		mes "We are brokers that send help where help is needed. More adventurers like you means more profit.";
+		mes "[烏爾教官]";
+		mes "加入完全免費！";
+		mes "我們是仲介，把援助送到需要的地方。像你這樣的冒險者越多，我們獲利就越多。";
 		next;
-		mes "[Instructor Ur]";
-		mes "If you're interested, talk to Raim.";
-		mes "Raim's a good guy.";
-		mes "Hahaha..";
+		mes "[烏爾教官]";
+		mes "如果有興趣，去找雷姆談談。";
+		mes "雷姆是個好人。";
+		mes "哈哈哈……";
 	}
 	else if (para_2nd01 == 0) {
 		mes "喂？";
 		mes "需要幫忙嗎？";
-		mes "This is a general request in order to receive the next board's request.";
+		mes "這是一般委託，為了接取下一張委託板上的任務。";
 		next;
 		if (select( "你在這裡做什麼？", "沒什麼。" ) == 2) {
-			mes "[Instructor Ur]";
-			mes "I guess I have no business with you then.";
+			mes "[烏爾教官]";
+			mes "那看來我跟你沒什麼好談的了。";
 			close;
 		}
-		mes "[Instructor Ur]";
-		mes "Well, I'm an instructor for Eden Group.";
+		mes "[烏爾教官]";
+		mes "嗯，我是伊甸集團的教官。";
 		next;
-		mes "[Instructor Ur]";
-		mes "I'm here to give you missions based on your current base level.";
-		mes "These missions are not very difficult to do.";
+		mes "[烏爾教官]";
+		mes "我是依你目前的基本等級來發放任務的。";
+		mes "這些任務並不太難。";
 		next;
-		mes "[Instructor Ur]";
-		mes "I am the senior instructor here at Eden Group.";
-		mes "What do you say are you up for the challenge?";
+		mes "[烏爾教官]";
+		mes "我是伊甸集團這裡的資深教官。";
+		mes "怎麼樣，你有勇氣接受挑戰嗎？";
 		next;
-		if (select( "Not today I'm not.", "Okay, I'll try." ) == 1) {
-			mes "[Instructor Ur]";
+		if (select( "今天不了。", "好，我試試看。" ) == 1) {
+			mes "[烏爾教官]";
 			mes "真的嗎？";
-			mes "That's so sad.";
-			mes "When you finish these missions I will even give you a pretty decent reward.";
+			mes "真可惜。";
+			mes "完成這些任務後，我還會給你相當不錯的獎勵。";
 			close;
 		}
-		mes "[Instructor Ur]";
+		mes "[烏爾教官]";
 		mes "沒錯！";
-		mes "Ok, let me check what mission you should get ok?";
+		mes "好，讓我看看你該接什麼任務，好嗎？";
 		next;
-		mes "[Instructor Ur]";
+		mes "[烏爾教官]";
 		if (BaseLevel < 60) {
-			mes "Well... I know that you've got the heart but you're just a little too weak to help.";
+			mes "嗯……我知道你有心，但你的實力還太弱，幫不上忙。";
 			next;
-			mes "[Instructor Ur]";
-			mes "Sorry, but your basic level should be at least 60 to help with these missions.";
+			mes "[烏爾教官]";
+			mes "抱歉，要協助這些任務，你的基本等級至少要60。";
 		}
 		else if (BaseLevel < 70) {
-			mes "Ok, I guess you're the bare minimum level for these missions.";
+			mes "好吧，我想你剛好達到這些任務的最低等級。";
 			next;
-			mes "[Instructor Ur]";
-			mes "Based on your level, I think that the Comodo area suits you.";
+			mes "[烏爾教官]";
+			mes "以你的等級來看，我認為克魔島地區適合你。";
 			next;
-			mes "[Instructor Ur]";
-			mes "Do you know where Comodo is?";
-			mes "You can get there by going to Morocc and then through Pharos Lighthouse.";
+			mes "[烏爾教官]";
+			mes "你知道克魔島在哪裡嗎？";
+			mes "你可以先到夢羅克，再經過法羅斯燈塔前往。";
 			next;
-			mes "[Instructor Ur]";
-			mes "Comodo is a small city on the coast with many caves.";
+			mes "[烏爾教官]";
+			mes "克魔島是沿海的小城市，有很多洞穴。";
 			next;
-			mes "[Instructor Ur]";
-			mes "Look for the cave located to the north. There's someone there named Romeo.";
-			mes "You know? As in Romeo, Romeo, wherefore art thou Romeo.";
+			mes "[烏爾教官]";
+			mes "去找北邊的洞穴。那裡有個叫羅密歐的人。";
+			mes "你知道嗎？就是「羅密歐、羅密歐，你為何是羅密歐」那句。";
 			next;
-			mes "[Instructor Ur]";
-			mes "Go there are get the mission from him.";
-			mes "Well, then come back here alive when you're done!";
+			mes "[烏爾教官]";
+			mes "去那裡向他領取任務吧。";
+			mes "那麼，完成後要平安回來！";
 			para_2nd01 = 1;
 			setquest 7214;// Advanced Training at Comodo
 		}
 		else if (BaseLevel < 80) {
 			mes "我看看……";
-			mes "Your level would suggest that Comodo is just too easy for you.";
-			mes "Yeah, here we go.";
+			mes "以你的等級來看，克魔島對你來說太簡單了。";
+			mes "好，就這樣吧。";
 			next;
-			mes "[Instructor Ur]";
-			mes "Do you know where Glast Heim is?";
-			mes "If there was a tragic accident now, the capital of the Rune-Midgarts Kingdom could revert back to there.";
+			mes "[烏爾教官]";
+			mes "你知道克雷斯特漢姆古城在哪裡嗎？";
+			mes "如果現在發生什麼悲劇，符文米德加德王國的首都可能會遷回那裡。";
 			next;
-			mes "[Instructor Ur]";
-			mes "Well, if it wasn't infested with undead monsters, it would become the new capitol of Rune-Midgarts.";
+			mes "[烏爾教官]";
+			mes "嗯，要是那裡沒有被不死怪物佔據，它就會成為符文米德加德的新首都。";
 			next;
-			mes "[Instructor Ur]";
-			mes "Please, come back alive.";
+			mes "[烏爾教官]";
+			mes "請平安歸來。";
 			para_2nd01 = 7;
 			setquest 7219;// Advanced Training at Glast Heim
 		}
 		else if (BaseLevel < 90) {
-			mes "Ah, ok so for you...";
-			mes "Hmm where do I send you?";
+			mes "啊，好，那對你來說……";
+			mes "嗯，我該把你派到哪裡去呢？";
 			next;
-			mes "[Instructor Ur]";
-			mes "There an industrial city called Einbroch.";
-			mes "You know it? It's a city covered in smog.";
-			mes "It's a pretty gloomy city come to think of it.";
+			mes "[烏爾教官]";
+			mes "有一座叫艾音布羅克的工業城市。";
+			mes "你知道嗎？那是一座被煙霧籠罩的城市。";
+			mes "想想看，那真是座陰沉的城市。";
 			next;
-			mes "[Instructor Ur]";
-			mes "Anyways, go to Einbroch and find the Dispatched Instructor there. He should be in the field south of the main city.";
+			mes "[烏爾教官]";
+			mes "總之，去艾音布羅克找那裡的派遣教官。他應該在主城南邊的原野上。";
 			setquest 7223;// Advanced Training in Einbroch
 			para_2nd01 = 12;
 		}
@@ -2572,58 +2572,58 @@ moc_para01,23,35,5	script	Instructor Ur#2nd01	4_M_KNIGHT_BLACK,{
 			callsub S_Quest89100;
 	}
 	else if (para_2nd01 == 5) {
-		mes "Oh, there he is.";
-		mes "Romeo seems to be back from his field report.";
+		mes "喔，他在那裡。";
+		mes "羅密歐似乎已經回報完野外任務了。";
 		next;
-		mes "[Instructor Ur]";
-		mes "We have rewards for you.";
-		mes "I'm sure Romeo gave you some items, but we brought more useful things.";
+		mes "[烏爾教官]";
+		mes "我們有獎勵要給你。";
+		mes "羅密歐應該已經給你一些道具了，但我們準備了更有用的東西。";
 		next;
-		mes "[Instructor Ur]";
-		mes "Do you know where the weapon storage is at?";
-		mes "Go out through that large blue door and walk to the end of the hallway.";
-		mes "Ask the Blacksmith, and he will give you new equipment.";
+		mes "[烏爾教官]";
+		mes "你知道武器倉庫在哪裡嗎？";
+		mes "穿過那扇大藍門，一直走到走廊盡頭。";
+		mes "去找鐵匠，他會給你新裝備。";
 		next;
-		mes "[Instructor Ur]";
-		mes "And the 2nd stage training and missions start at level 70, so come back then.";
-		mes "Don't forget, I'll be waiting for you.";
+		mes "[烏爾教官]";
+		mes "第二階段的訓練與任務從70級開始，到時再回來吧。";
+		mes "別忘了，我會在這裡等你。";
 		para_2nd01 = 6;
 		para_2nd02 = 1;
 		erasequest 7218;// Report to Instructor Ur
 	}
 	else if (para_2nd01 == 6) {
 		if (BaseLevel > 69) {
-			mes "Hey, buddy~";
+			mes "嘿，夥伴～";
 			mes "發生什麼事了？";
 			next;
-			switch( select( "I want to start training.", "I'm just visiting." ) ) {
-				mes "[Instructor Ur]";
+			switch( select( "我想開始訓練。", "我只是來參觀的。" ) ) {
+				mes "[烏爾教官]";
 			case 1:
-				mes "Hmm... You have a good form!";
-				mes "Let me see....";
-				mes "Which location would suit you...?";
+				mes "嗯……你的姿勢很好！";
+				mes "讓我看看……";
+				mes "哪個地點適合你呢……？";
 				next;
-				mes "[Instructor Ur]";
+				mes "[烏爾教官]";
 				if (BaseLevel < 80) {
-					mes "Ah, this place should be good!";
-					mes "Do you know where Glast Heim is?";
-					mes "If it wasn't for that terrible accident, Glast Heim would still be";
-					mes "the capital of Rune-Midgarts, not Prontera.";
+					mes "啊，這裡應該不錯！";
+					mes "你知道克雷斯特漢姆古城在哪裡嗎？";
+					mes "要不是那場可怕的意外，克雷斯特漢姆古城現在仍會是";
+					mes "符文米德加德的首都，而不是普隆德拉。";
 					next;
-					mes "[Instructor Ur]";
-					mes "Anyways, that ancient castle is now full of undead monsters .";
-					mes "It's especially bad around the Abbey in the south.";
+					mes "[烏爾教官]";
+					mes "總之，那座古老的城堡現在充滿了不死怪物。";
+					mes "南邊的修道院一帶特別嚴重。";
 					next;
-					mes "[Instructor Ur]";
-					mes "All of those undead monsters come from the underground graveyard";
-					mes "Well... I guess you don't have to go all the way into the graveyard...";
+					mes "[烏爾教官]";
+					mes "那些不死怪物都是從地下墓園來的";
+					mes "嗯……我想你不用一路深入墓園……";
 					next;
-					mes "[Instructor Ur]";
-					mes "Once you get to the Abbey you'll see our unit member stationed in front of the entrance.";
-					mes "Follow his instructions to help clear out that area.";
+					mes "[烏爾教官]";
+					mes "抵達修道院後，你會看到我們的隊員守在入口前。";
+					mes "聽從他的指示，幫忙清理那一帶。";
 					next;
-					mes "[Instructor Ur]";
-					mes "Please come back alive.";
+					mes "[烏爾教官]";
+					mes "請平安歸來。";
 					para_2nd01 = 7;
 					setquest 7219;// Advanced Training at Glast Heim
 				}
@@ -2633,148 +2633,148 @@ moc_para01,23,35,5	script	Instructor Ur#2nd01	4_M_KNIGHT_BLACK,{
 					callsub S_Quest89100;
 				close;
 			case 2:
-				mes "Really? At your level, I think you can easily complete the top class missions..";
-				mes "I'll be here if you change your mind.";
+				mes "真的嗎？以你的等級，我想你應該能輕鬆完成高階任務……";
+				mes "如果你改變主意，我都會在這裡。";
 				close;
 			}
 		}
 		else {
-			mes "2nd stage training missions start at level 70.";
-			mes "I'll see you then.";
-			mes "Did you pick up the necessary equipment from the storage?";
+			mes "第二階段的訓練任務從70級開始。";
+			mes "到時見。";
+			mes "你有從倉庫拿到必要的裝備了嗎？";
 			mes "哈哈哈！";
 		}
 	}
 	else if (para_2nd01 == 10) {
-		mes "Oh! You're here!";
-		mes "I just got a message from Johan.";
-		mes "I think he's not telling me something, but I can't figure out what that is.";
+		mes "喔！你來了！";
+		mes "我剛收到約翰的訊息。";
+		mes "我覺得他有事瞞著我，但我想不出來是什麼。";
 		next;
-		mes "[Instructor Ur]";
-		mes "Anyways, good job. I'm glad you're not hurt";
-		mes "The Blacksmith BK said he'll reinforce your weapon.";
+		mes "[烏爾教官]";
+		mes "總之，辛苦了。很高興你沒受傷";
+		mes "鐵匠BK說他會幫你強化武器。";
 		next;
 		callsub S_Para2;
-		mes "[Instructor Ur]";
-		mes "You know where the Blacksmith is at right??";
-		mes "Go out through the blue door, to the end of the hallway.";
-		mes "BK is a great blacksmith, he'll make your weapon stronger.";
+		mes "[烏爾教官]";
+		mes "你知道鐵匠在哪裡吧？？";
+		mes "穿過藍門，走到走廊盡頭。";
+		mes "BK是很厲害的鐵匠，他會讓你的武器變得更強。";
 		mes "你在等什麼？";
 		para_2nd01 = 11;// Report to Instructor Ur
 		erasequest 7222;
 	}
 	else if (para_2nd01 == 11) {
 		if (BaseLevel > 79) {
-			mes "Ah, ever so improving "+ strcharinfo(0) +"?";
-			mes "To what do I owe this pleasure?";
+			mes "啊，進步得真多 "+ strcharinfo(0) +"?";
+			mes "今天是什麼風把你吹來了？";
 			next;
-			switch( select( "I came for more training.", "I'm just visiting." ) ) {
-				mes "[Instructor Ur]";
+			switch( select( "我來繼續訓練。", "我只是來參觀的。" ) ) {
+				mes "[烏爾教官]";
 			case 1:
-				mes "Hmm... You have a good form!";
-				mes "Let me see....";
+				mes "嗯……你的姿勢很好！";
+				mes "讓我看看……";
 				next;
-				mes "[Instructor Ur]";
+				mes "[烏爾教官]";
 				if (BaseLevel < 90)
 					callsub S_Quest7990;
 				else
 					callsub S_Quest89100;
 				close;
 			case 2:
-				mes "Really? At your level, I think you can easily complete the top class missions..";
-				mes "I'll be here if you change your mind.";
+				mes "真的嗎？以你的等級，我想你應該能輕鬆完成高階任務……";
+				mes "如果你改變主意，我都會在這裡。";
 				close;
 			}
 		}
 		else {
-			mes "3rd stage training starts at level 80.";
-			mes "I'll see you then.";
-			mes "Oh, if you haven't reinforced your weapon yet, go talk to BK.";
+			mes "第三階段的訓練從80級開始。";
+			mes "到時見。";
+			mes "喔，如果你還沒強化武器，去找BK談談。";
 		}
 	}
 	else if (para_2nd01 == 15) {
-		mes "Ah, you've come.";
-		mes "I just received a message from Kiren.";
-		mes "How was he? He didn't throw a tantrum for waking him up?";
-		mes "I wouldn't be surprised if he did";
+		mes "啊，你來了。";
+		mes "我剛收到基倫的訊息。";
+		mes "他怎麼樣？被叫醒的時候沒有發脾氣吧？";
+		mes "他要是發脾氣，我也不會意外";
 		next;
-		mes "[Instructor Ur]";
-		mes "Anyways, good job. I'm glad you're not hurt.";
-		mes "The Blacksmith BK said he'll reinforce your weapon.";
+		mes "[烏爾教官]";
+		mes "總之，辛苦了。很高興你沒受傷。";
+		mes "鐵匠BK說他會幫你強化武器。";
 		next;
 		callsub S_Para2;
-		mes "[Instructor Ur]";
-		mes "You know where the Blacksmith is at right??";
-		mes "Go out through the blue door, to the end of the hallway.";
-		mes "BK is a great blacksmith, he'll make your weapon stronger.";
+		mes "[烏爾教官]";
+		mes "你知道鐵匠在哪裡吧？？";
+		mes "穿過藍門，走到走廊盡頭。";
+		mes "BK是很厲害的鐵匠，他會讓你的武器變得更強。";
 		mes "你在等什麼？";
 		erasequest 7228;// Report to Instructor Ur
 		para_2nd01 = 16;
 	}
 	else if (para_2nd01 == 16) {
 		if (BaseLevel > 89) {
-			mes "It's nice to see you still strong!";
-			mes "What brings you today?";
+			mes "很高興看到你依然強大！";
+			mes "今天有什麼事？";
 			next;
-			if (select( "I want to continue training.", "I'm just visiting." ) == 2) {
-				mes "[Instructor Ur]";
-				mes "Really? At your level, I think you can easily complete the top class missions..";
-				mes "I'll be here if you change your mind.";
+			if (select( "我想繼續訓練。", "我只是來參觀的。" ) == 2) {
+				mes "[烏爾教官]";
+				mes "真的嗎？以你的等級，我想你應該能輕鬆完成高階任務……";
+				mes "如果你改變主意，我都會在這裡。";
 				close;
 			}
-			mes "[Instructor Ur]";
+			mes "[烏爾教官]";
 			callsub S_Quest89100;
 		}
 		else {
-			mes "4th stage training starts at level 90.";
-			mes "I'll see you then.";
-			mes "Oh, if you haven't reinforced your weapon yet, go talk to BK.";
+			mes "第四階段的訓練從90級開始。";
+			mes "到時見。";
+			mes "喔，如果你還沒強化武器，去找BK談談。";
 		}
 	}
 	else if (para_2nd01 == 20) {
-		mes "Congratulations on completing all training stages!";
-		mes "That took quite a bit of time huh?";
-		mes "The Blacksmith BK said he'll reinforce your weapon.";
+		mes "恭喜完成所有訓練階段！";
+		mes "花了不少時間吧？";
+		mes "鐵匠BK說他會幫你強化武器。";
 		next;
 		callsub S_Para2;
-		mes "[Instructor Ur]";
-		mes "You know where the Blacksmith is at right??";
-		mes "Go out through the blue door, to the end of the hallway.";
-		mes "BK is a great blacksmith, he'll make your weapon stronger.";
+		mes "[烏爾教官]";
+		mes "你知道鐵匠在哪裡吧？？";
+		mes "穿過藍門，走到走廊盡頭。";
+		mes "BK是很厲害的鐵匠，他會讓你的武器變得更強。";
 		next;
-		mes "[Instructor Ur]";
+		mes "[烏爾教官]";
 		mes "做得好！";
 		para_2nd01 = 30;
 		erasequest 7232;//Report to Instructor Ur
 	}
 	else if (para_2nd01 == 29) {
-		mes "Congratulations on completing all training stages!";
-		mes "How was the Expedition? From the looks of it, it must've been pretty tough.";
+		mes "恭喜完成所有訓練階段！";
+		mes "遠征怎麼樣？看起來一定很辛苦。";
 		next;
-		mes "[Instructor Ur]";
-		mes "Good job..";
-		mes "The Blacksmith BK said he'll reinforce your weapon.";
+		mes "[烏爾教官]";
+		mes "辛苦了……";
+		mes "鐵匠BK說他會幫你強化武器。";
 		next;
 		callsub S_Para2;
-		mes "[Instructor Ur]";
-		mes "You know where the Blacksmith is at right??";
-		mes "Go out through the blue door, to the end of the hallway.";
-		mes "BK is a great blacksmith, he'll make your weapon stronger.";
+		mes "[烏爾教官]";
+		mes "你知道鐵匠在哪裡吧？？";
+		mes "穿過藍門，走到走廊盡頭。";
+		mes "BK是很厲害的鐵匠，他會讓你的武器變得更強。";
 		next;
-		mes "[Instructor Ur]";
-		mes "By the way, it looked like Michael had something to tell you as well";
-		mes "Go talk to him, he's at the weapon storage as well.";
+		mes "[烏爾教官]";
+		mes "對了，麥可好像也有話要跟你說";
+		mes "去找他談談，他也在武器倉庫。";
 		mes "去吧。";
 		para_2nd01 = 30;
 		erasequest 7237;// Report to Instructor Ur
 	}
 	else if (para_2nd01 == 30) {
 		mes "做得不錯。";
-		mes "Oh, if you haven't reinforced your weapon yet, go talk to BK.";
+		mes "喔，如果你還沒強化武器，去找BK談談。";
 		next;
-		mes "[Instructor Ur]";
-		mes "Also, sometimes Michael needs help, so if you have time try to help him out.";
-		mes "I'm sure he'll reward you for your time.";
+		mes "[烏爾教官]";
+		mes "另外，麥可有時需要幫忙，如果你有空就去幫幫他。";
+		mes "我相信他會為你的付出給予回報。";
 	}
 	else if (para_2nd01 < 5)
 		callsub S_Direction,"Comodo";
@@ -2785,92 +2785,92 @@ moc_para01,23,35,5	script	Instructor Ur#2nd01	4_M_KNIGHT_BLACK,{
 	else if (para_2nd01 < 20)
 		callsub S_Direction,"Ice Dungeon";
 	else if (para_2nd01 < 29) {
-		mes "You have to travel very far to get to the ^4d4dffMidgard Expedition Camp^000000!";
-		mes "If you want to stay there then earn your keep by doing missions. Got it?";
+		mes "你得長途跋涉，才能抵達^4d4dff米德加德遠征營地^000000！";
+		mes "如果想待在那裡，就得靠做任務來賺取生活費。明白了嗎？";
 	}
 	close;
 S_Para2:
 	if (para_2nd02 == 0) {
-		mes "[Instructor Ur]";
-		mes "I just realized... this was your first mission, wasn't it?";
-		mes "You must not have gotten the basic equipments yet, right?";
-		mes "Pick them up at the weapon storage.";
-		mes "Ask the Blacksmith Michael and he'll give you the equipment.";
+		mes "[烏爾教官]";
+		mes "我剛想到……這是你的第一個任務，對吧？";
+		mes "你應該還沒拿到基本裝備吧？";
+		mes "去武器倉庫拿吧。";
+		mes "去找鐵匠麥可，他會給你裝備。";
 		para_2nd02 = 1;
 		next;
 	}
 	return;
 S_Direction:
-	mes "So, have you been in ^4d4dff"+ getarg(0) +"^000000 yet?";
-	mes "Didn't I tell you to go there?";
-	mes "Go there first and then come back to me. Okay?";
+	mes "所以，你去過^4d4dff"+ getarg(0) +"^000000了嗎？";
+	mes "我不是叫你去那裡嗎？";
+	mes "先去那裡，然後再回來找我。好嗎？";
 	return;
 
 S_Quest7990:
-	mes "Hmm.. Not bad ...";
-	mes "You must be getting a hang of this..";
-	mes "Let's go with a simple mission this time";
+	mes "嗯……不錯嘛……";
+	mes "你應該已經上手了……";
+	mes "這次就來個簡單的任務吧";
 	next;
-	mes "[Instructor Ur]";
-	mes "There is a industrial city called Einbroch.";
-	mes "You've heard of it? It's a city clouded with pollution.";
-	mes "You'll appreciate the environment here so much more after visiting that city...";
-	mes "We should all be thankful.";
+	mes "[烏爾教官]";
+	mes "有一座叫艾音布羅克的工業城市。";
+	mes "你聽過嗎？那是個被污染籠罩的城市。";
+	mes "去過那座城市之後，你就會更加珍惜這裡的環境……";
+	mes "我們都應該要心存感激。";
 	next;
-	mes "[Instructor Ur]";
-	mes "Anyways, go out to the field south of Einbroch and you'll see the Dispatched Instructor.";
-	mes "I'm sure he'll recognize you first.";
-	mes "Don't forget to bring the Eden Group badge.";
+	mes "[烏爾教官]";
+	mes "總之，到艾音布羅克南邊的原野，你就會看到派遣教官。";
+	mes "我相信他會先認出你。";
+	mes "別忘了帶上伊甸集團的徽章。";
 	next;
-	mes "[Instructor Ur]";
-	mes "The city's pollution is unbearable";
-	mes "But the surrounding fields are relatively clean...";
-	mes "This should be pretty easy for you.";
+	mes "[烏爾教官]";
+	mes "那座城市的污染實在令人難以忍受";
+	mes "但周圍的原野相對乾淨……";
+	mes "這對你來說應該很簡單。";
 	para_2nd01 = 12;
 	setquest 7223;// Advanced Training in Einbroch
 	return;
 
 S_Quest89100:
 	if (BaseLevel < 100) {
-		mes "Uh-huh....";
+		mes "嗯哼……";
 		mes "嗯……";
-		mes "You seem like a cool-headed person. What do you think about the ice caves?";
+		mes "你看起來是個冷靜的人。你覺得冰洞怎麼樣？";
 		next;
-		mes "[Instructor Ur]";
-		mes "North of the city of Rachel is a cave filled with ice.";
-		mes "Find the Dispatched Instructor there.";
+		mes "[烏爾教官]";
+		mes "拉赫城北邊有一座充滿冰塊的洞穴。";
+		mes "去那裡找派遣教官。";
 		para_2nd01 = 17;
 		setquest 7229;// Advanced Training in Ice Dungeon
 	}
 	else {
-		mes "Well, well...";
-		mes "I don't even know where to send you now.";
-		mes "I'm sure you are familiar with most places around here";
+		mes "嗯嗯……";
+		mes "我現在連該把你派去哪裡都不知道。";
+		mes "我想你對這附近大多數地方都很熟悉";
 		next;
-		mes "[Instructor Ur]";
-		mes "Then, should I send you somewhere farther this time?";
-		mes "There is a Cat Paw Agent here.";
-		mes "Do you see him over there?";
+		mes "[烏爾教官]";
+		mes "那麼，這次要不要派你去更遠的地方？";
+		mes "這裡有一位貓爪探員。";
+		mes "你看到他在那邊嗎？";
 		next;
-		mes "[Instructor Ur]";
-		mes "Through him, you can get to Ash Vacuum pretty easily .";
-		mes "Since there is a Expedition Camp there...";
+		mes "[烏爾教官]";
+		mes "透過他，你可以很輕鬆地前往艾許真空區。";
+		mes "因為那裡有遠征營地……";
 		next;
-		mes "[Instructor Ur]";
-		mes "All you have to do is find the Eden Group agent there.";
-		mes "Tell him I sent you, and he'll give you instructions.";
-		mes "You can explore the new world";
-		mes "It's like a vacation isn't it?";
+		mes "[烏爾教官]";
+		mes "你只需要在那裡找到伊甸集團的探員。";
+		mes "跟他說是我派你來的，他會給你指示。";
+		mes "你可以去探索新世界";
+		mes "這就像度假一樣，不是嗎？";
 		next;
-		mes "[Instructor Ur]";
+		mes "[烏爾教官]";
 		mes "哈哈哈！";
-		mes ".. Maybe I'll go instead of sending you.";
-		mes "Anyways, their names are Ma~ something... I don't know.";
+		mes "……或許我應該親自去，而不是派你去。";
+		mes "總之，他們的名字好像是Ma～什麼的……我不太確定。";
 		next;
-		mes "[Instructor Ur]";
-		mes "So, the mission, once again, is finding our agent at the Midgard Expedition Camp.";
-		mes "Isn't this the easiest mission you've ever had?";
-		mes "Don't forget my present when you come back~!";
+		mes "[烏爾教官]";
+		mes "所以，任務還是一樣：在米德加德遠征營地找到我們的探員。";
+		mes "這不是你接過最簡單的任務嗎？";
+		mes "回來的時候別忘了我的禮物哦～！";
 		para_2nd01 = 22;
 		setquest 7233;// Advanced Training at Ash Vacuum
 	}
@@ -2879,133 +2879,133 @@ S_Quest89100:
 
 //--60~69
 // comodo,173,354,5	script	Dispatched Instructor#2nd02	1_M_JOBTESTER,{
-comodo,173,354,5	script	Dispatched Instructor#02	1_M_JOBTESTER,{
-	mes "[Romeo]";
+comodo,173,354,5	script	被派遣的教官#02::Dispatched Instructor#02	1_M_JOBTESTER,{
+	mes "[羅密歐]";
 	if (para_2nd01 < 1) {
 		mes "你好嗎？";
-		mes "Comodo has the best weather in the whole world.";
-		mes "Even during the winter, Comodo has great weather.";
+		mes "克魔島擁有全世界最好的天氣。";
+		mes "即使在冬天，克魔島的天氣也很好。";
 		next;
-		mes "[Romeo]";
-		mes "Do you know why?";
-		mes "Comodo is surrounded by the ocean and caves.";
-		mes "Seasonal changes don't make any difference in the temperature here.";
+		mes "[羅密歐]";
+		mes "你知道為什麼嗎？";
+		mes "克魔島被大海和洞穴環繞。";
+		mes "這裡的氣溫不會因季節而有所不同。";
 		next;
-		mes "[Romeo]";
-		mes "Take it easy here.";
-		mes "This area is a place for relaxation.";
+		mes "[羅密歐]";
+		mes "在這裡放輕鬆吧。";
+		mes "這一帶是讓人放鬆的地方。";
 	}
 	else if (para_2nd01 == 1) {
 		mes "你好嗎？";
-		mes "You were sent here by Instructor Ur right?";
-		mes "Did you come here for a quest?";
+		mes "你是被烏爾教官派來的，對吧？";
+		mes "你是為了任務來的嗎？";
 		next;
-		mes "[Romeo]";
-		mes "I don't know if this will fit you well";
-		mes "Why don't you just try it.";
+		mes "[羅密歐]";
+		mes "不知道這個適不適合你";
+		mes "你就試試看吧。";
 		next;
-		mes "[Romeo]";
-		mes "The thing about this cave is that, many monsters are created from stones.";
-		mes "If you stay cautious, they shouldn't be too threatning...";
+		mes "[羅密歐]";
+		mes "這個洞穴的特色是，很多怪物都是由石頭形成的。";
+		mes "只要保持警戒，它們應該不會太有威脅……";
 		next;
-		mes "[Romeo]";
-		mes "But most of them have range attacks..";
-		mes "And sometimes a really strong one roams around.";
+		mes "[羅密歐]";
+		mes "但它們大多有遠程攻擊……";
+		mes "偶爾還會有非常強的一隻到處遊蕩。";
 		next;
-		mes "[Romeo]";
-		mes "Well... this is the reason why you train right?";
-		mes "Let's try taking on one of the big monsters";
+		mes "[羅密歐]";
+		mes "嗯……這就是你來訓練的原因，對吧？";
+		mes "我們來挑戰一隻大型怪物吧";
 		next;
-		mes "[Romeo]";
-		mes "'They are called 'Stalactic Golem'.";
-		mes "Try defeating some of them.";
-		mes "Not too difficult, right?";
+		mes "[羅密歐]";
+		mes "它們被稱為「鐘乳石魔像」。";
+		mes "試著擊敗幾隻吧。";
+		mes "不會太難吧？";
 		para_2nd01 = 2;
 		erasequest 7214;
 		setquest 7215;
 	}
 	else if (para_2nd01 == 2) {
 		if (checkquest(7215,HUNTING) == 2) {
-			mes "So, how good of an explorer are you now?";
-			mes "You've fought these before, so clearing this cave should be possible.";
+			mes "那麼，你現在的探索能力如何呢？";
+			mes "你之前打過這些，所以清除這個洞穴應該沒問題。";
 			next;
-			mes "[Romeo]";
-			mes "As I said before, since Komodo is a city inside a cave..";
-			mes "Access to the outside world is mostly done through the east entrance, but...";
+			mes "[羅密歐]";
+			mes "如我之前所說，克魔島是一座位於洞穴內的城市……";
+			mes "對外的出入大多是經由東邊的入口，但是……";
 			next;
-			mes "[Romeo]";
-			mes "Let's try going out through the north.";
-			mes "There should be things you can hunt out there.";
+			mes "[羅密歐]";
+			mes "我們來試試從北邊出去吧。";
+			mes "外面應該有可以狩獵的東西。";
 			next;
-			mes "[Romeo]";
-			mes "And instead of just walking out,";
-			mes "Let's kill about 10 Stalactic Golems on the way out.";
+			mes "[羅密歐]";
+			mes "而且與其只是走出去，";
+			mes "我們在出去的路上順便擊殺大約10隻鐘乳石魔像吧。";
 			next;
-			mes "[Romeo]";
-			mes "So that, travelers coming from the north can safely walk through.";
-			mes "Remember, 10 Stalactic Golems. Then come to the other side of northern part of the cave";
+			mes "[羅密歐]";
+			mes "這樣一來，從北方來的旅人就能安全通過了。";
+			mes "記住，是10隻鐘乳石魔像。然後到洞穴北側的另一邊來";
 			next;
-			mes "[Romeo]";
-			mes "I'll be waiting outside.";
+			mes "[羅密歐]";
+			mes "我會在外面等你。";
 			para_2nd01 = 3;
 			getexp 10000,10000;
 			erasequest 7215;// Stalactic Golem Hunt
 			setquest 7216;// More Golem Hunting
 		}
 		else {
-			mes "As a test of the difficulty of this cave";
-			mes "Go defeat 3 Stalactic Golems.";
-			mes "Watch out for other monsters as well.";
+			mes "作為對這個洞穴難度的測試";
+			mes "去擊敗3隻鐘乳石魔像。";
+			mes "也要小心其他怪物。";
 			next;
-			mes "[Romeo]";
-			mes "Let me help you recover if you are tired.";
+			mes "[羅密歐]";
+			mes "如果你累了，我會幫你恢復。";
 			npcskill "AL_HEAL",10,99,60;
 			percentheal 0,100;
 		}
 	}
 	else if (para_2nd01 == 3) {
-		mes "You must go through this cave to the outside.";
-		mes "Don't forget to defeat the Stalactic Golems you run into on the way.";
+		mes "你必須穿過這個洞穴到外面去。";
+		mes "別忘了擊敗途中遇到的鐘乳石魔像。";
 	}
 	else {
-		mes "I always give the same test to the trainees that come here..";
-		mes "I've never seen anyone pass it so perfectly like you did.";
+		mes "來這裡的學員，我總是給他們同樣的測驗……";
+		mes "我從沒見過有人像你這樣完美通過。";
 	}
 	close;
 }
 
-um_fild01,34,280,5	script	Instructor Romeo#2nd02	1_M_JOBTESTER,{
-	mes "[Romeo]";
+um_fild01,34,280,5	script	羅密歐教官#2nd02::Instructor Romeo#2nd02	1_M_JOBTESTER,{
+	mes "[羅密歐]";
 	if (para_2nd01 < 2) {
-		mes "If you were sent from the Eden Group for training, wait for me at the town.";
-		mes "I'm waiting for a different trainee right now.";
+		mes "如果你是伊甸集團派來受訓的，就在城裡等我。";
+		mes "我現在正在等另一位學員。";
 	}
 	else if (para_2nd01 == 2) {
-		mes "No no.. Not here.";
-		mes "I'm waiting for a different trainee right now.";
+		mes "不不……不是這裡。";
+		mes "我現在正在等另一位學員。";
 		mes "退回去。";
 	}
 	else if (para_2nd01 == 3) {
 		if (checkquest(7216,HUNTING) == 2) {
-			mes "Ah, I see you didn't get lost.";
-			mes "Your skills at defeating those Stalactic Golems were better than I expected.";
-			mes "Just means you've improved that much.";
+			mes "啊，我看你沒有迷路嘛。";
+			mes "你擊敗那些鐘乳石魔像的身手，比我預期的還要好。";
+			mes "這就表示你進步了很多。";
 			next;
-			mes "[Romeo]";
-			mes "Now look around here";
-			mes "We're in a dense forest now.";
-			mes "There are Dryads and Wootans here...";
+			mes "[羅密歐]";
+			mes "現在看看這裡";
+			mes "我們現在身處茂密的森林中。";
+			mes "這裡有德律阿德和烏丹……";
 			next;
-			mes "[Romeo]";
-			mes "Next task is to clearing this area of monsters.";
-			mes "Bring me the following from the monsters.";
+			mes "[羅密歐]";
+			mes "下一個任務是清除這一帶的怪物。";
+			mes "從怪物身上帶來以下物品給我。";
 			next;
-			mes "[Romeo]";
-			mes "5 Wootan Fighter's Shoulderguard";
-			mes "7 Dryad's Sharp Leaf";
+			mes "[羅密歐]";
+			mes "5個烏丹戰士的肩甲";
+			mes "7片德律阿德的尖銳葉子";
 			next;
-			mes "[Romeo]";
-			mes "This is the last test.";
+			mes "[羅密歐]";
+			mes "這是最後的測驗。";
 			mes "祝你好運。";
 			para_2nd01 = 4;
 			erasequest 7216;// More Golem Hunting
@@ -3013,24 +3013,24 @@ um_fild01,34,280,5	script	Instructor Romeo#2nd02	1_M_JOBTESTER,{
 			getexp 10000,10000;
 		}
 		else {
-			mes "I see you didn't get lost.";
-			mes "But you didn't defeat enough Stalactic Golems..";
-			mes "Go back and defeat them.";
+			mes "我看你沒有迷路。";
+			mes "但你擊敗的鐘乳石魔像還不夠……";
+			mes "回去把它們打倒。";
 			next;
-			mes "[Romeo]";
-			mes "I'll help you recover if you are tired.";
+			mes "[羅密歐]";
+			mes "如果你累了，我會幫你恢復。";
 			npcskill "AL_HEAL",10,99,60;
 			percentheal 0,100;
 		}
 	}
 	else if (para_2nd01 == 4) {
 		if (countitem(7196) > 4 && countitem(7100) > 6) {// Shoulder_Protection, Sharp_Leaf
-			mes "You really got these by defeating the monsters?";
-			mes "I believe you. I want to get out of here anyways.";
+			mes "這些真的是你打倒怪物得來的？";
+			mes "我相信你。反正我也想離開這裡。";
 			next;
-			mes "[Romeo]";
-			mes "There are no more training tasks here.";
-			mes "Go back and report to Ur.";
+			mes "[羅密歐]";
+			mes "這裡已經沒有其他訓練任務了。";
+			mes "回去向烏爾回報吧。";
 			delitem 7196,5;
 			delitem 7100,7;
 			para_2nd01 = 5;
@@ -3039,94 +3039,94 @@ um_fild01,34,280,5	script	Instructor Romeo#2nd02	1_M_JOBTESTER,{
 			getexp 10000,10000;
 		}
 		else {
-			mes "Didn't I already tell you the last task?";
-			mes "Defeat the monsters in this forest, and bring me the items I asked for.";
+			mes "我不是已經告訴過你最後的任務了嗎？";
+			mes "擊敗這片森林裡的怪物，並把我要的物品帶來給我。";
 			next;
-			mes "[Romeo]";
-			mes "5 Wootan Fighter's Shoulderguard";
-			mes "7 Dryad's Sharp Leaf";
-			mes "You must bring me those to pass this test.";
+			mes "[羅密歐]";
+			mes "5個烏丹戰士的肩甲";
+			mes "7片德律阿德的尖銳葉子";
+			mes "你必須把那些東西帶來，才能通過這個測驗。";
 			next;
-			mes "[Romeo]";
-			mes "I'll help you recover if you are tired.";
+			mes "[羅密歐]";
+			mes "如果你累了，我會幫你恢復。";
 			npcskill "AL_HEAL",10,99,60;
 			percentheal 0,100;
 		}
 	}
 	else {
-		mes "Ugh, It's way too hot here.";
-		mes "You can leave now.";
+		mes "唉，這裡太熱了。";
+		mes "你現在可以離開了。";
 	}
 	close;
 }
 
 //--70~79
 // glast_01,195,131,5	script	Dispatched Instructor#2nd03	4_F_SISTER,{
-glast_01,195,131,5	script	Dispatched Instructor#03	4_F_SISTER,{
-	mes "[Johan]";
+glast_01,195,131,5	script	被派遣的教官#03::Dispatched Instructor#03	4_F_SISTER,{
+	mes "[約翰]";
 	if (para_2nd01 < 7) {
-		mes "Ah~ So bored.";
-		mes "You're not the one Ur sent, are you?";
-		mes "Oh~ That's okay.";
+		mes "啊～好無聊。";
+		mes "你不是烏爾派來的人，對吧？";
+		mes "喔～沒關係。";
 		next;
-		mes "[Johan]";
-		mes "This is Glast Heim Abbey.";
-		mes "Be careful, there are a lot of lost souls around here.";
+		mes "[約翰]";
+		mes "這裡是克雷斯特漢姆古城修道院。";
+		mes "小心，這附近有很多迷失的靈魂。";
 	}
 	else if (para_2nd01 == 7) {
-		mes "Oh oh!!";
-		mes "You're finally here!";
-		mes "I asked Ur to send someone to help me here!";
+		mes "喔喔！！";
+		mes "你終於來了！";
+		mes "我請烏爾派人來幫我！";
 		next;
-		select("What? I came for training..");
-		mes "[Johan]";
-		mes "No no, that's the same thing!";
-		mes "Your training mission is to help me clear out this Abbey!";
+		select("什麼？我是來訓練的……");
+		mes "[約翰]";
+		mes "不不，這不就是同一件事嗎！";
+		mes "你的訓練任務就是幫我清除這座修道院！";
 		next;
-		mes "[Johan]";
-		mes "Phew... It's been so tough.";
-		mes "I can't run in by myself, but then Gargoyles attack me out here..";
+		mes "[約翰]";
+		mes "呼……真是辛苦。";
+		mes "我一個人沒辦法衝進去，但外面又有石像鬼來攻擊我……";
 		mes "哈哈哈……";
 		next;
-		mes "[Johan]";
-		mes "This abbey is our responsibilty.";
-		mes "Just like other monasteries, this one has an underground graveryad as well, but..";
+		mes "[約翰]";
+		mes "這座修道院是我們的責任。";
+		mes "就像其他修道院一樣，這裡也有地下墓園，只是……";
 		next;
-		mes "[Johan]";
-		mes "As you well know, this castle... is not at a normal state.";
-		mes "I think that's causing these souls from being able to rest in peace.";
+		mes "[約翰]";
+		mes "如你所知，這座城堡……狀況並不正常。";
+		mes "我想這就是導致這些靈魂無法安息的原因。";
 		next;
-		mes "[Johan]";
-		mes "Let's defeat the ones around here first, since going underground may be too much for just us.";
-		mes "I'll be testing how skilled you are as well...";
+		mes "[約翰]";
+		mes "我們先擊敗這附近的怪物吧，畢竟只靠我們倆去地下可能太吃力了。";
+		mes "我也會順便測試你的實力……";
 		next;
-		mes "[Johan]";
-		mes "First target are the Wraiths.";
-		mes "You can tell them apart by their strange laugh.";
-		mes "They look like demons, but we can't tell for sure...";
+		mes "[約翰]";
+		mes "首先的目標是怨靈。";
+		mes "你可以從它們怪異的笑聲來分辨。";
+		mes "它們看起來像惡魔，但我們還不能確定……";
 		next;
-		mes "[Johan]";
-		mes "Defeat 20 Wraiths.";
-		mes "I'll assist you from here!";
+		mes "[約翰]";
+		mes "擊敗20隻怨靈。";
+		mes "我會從這裡支援你！";
 		para_2nd01 = 8;
 		erasequest 7219;// Advanced Training at Glast Heim
 		setquest 7220;// Wraith Hunt
 	}
 	else if (para_2nd01 == 8) {
 		if (checkquest(7220,HUNTING) == 2) {
-			mes "Oh~ You are pretty strong!";
-			mes "I'm so glad that someone strong like you came.";
-			mes "I wouldn't have last long here by myself.";
+			mes "喔～你還挺強的！";
+			mes "很高興像你這樣強的人來了。";
+			mes "我一個人在這裡撐不了多久。";
 			next;
-			mes "[Johan]";
-			mes "By the way, did you see those other monsters besides the Wraiths?";
-			mes "They are the corrupted souls of priests.";
-			mes "They are called 'Evil Druid' as well.";
+			mes "[約翰]";
+			mes "對了，你有看到怨靈以外的那些怪物嗎？";
+			mes "它們是墮落神官的靈魂。";
+			mes "它們也被稱為「邪惡的德魯伊」。";
 			next;
-			mes "[Johan]";
-			mes "Let's take care of these Evil Druids this time.";
-			mes "10 of them.";
-			mes "You can do it right?";
+			mes "[約翰]";
+			mes "這次我們來解決這些邪惡的德魯伊吧。";
+			mes "總共10隻。";
+			mes "你做得到吧？";
 			mes "我相信你！";
 			para_2nd01 = 9;
 			erasequest 7220;// Wraith Hunt
@@ -3134,57 +3134,57 @@ glast_01,195,131,5	script	Dispatched Instructor#03	4_F_SISTER,{
 			getexp 20000,20000;
 		}
 		else {
-			mes "20 Wraiths!";
-			mes "I'll watch your back!.";
-			mes "... Of.. Course.. I'll fight too!";
+			mes "20隻怨靈！";
+			mes "我會保護你的背後！";
+			mes "……當……當然……我也會戰鬥！";
 			npcskill "AL_HEAL",10,99,60;
 			percentheal 0,100;
 		}
 	}
 	else if (para_2nd01 == 9) {
 		if (checkquest(7221,HUNTING) == 2) {
-			mes "...Oh you're back!";
-			mes "(Johan Opens the door and checks)";
+			mes "……喔，你回來了！";
+			mes "（約翰打開門查看）";
 			mes "....!";
-			mes "Okay!!";
+			mes "好！！";
 			next;
-			mes "[Johan]";
-			mes "Thank you! I really appreciate it!";
-			mes "I think I can enter without any worries now!";
-			mes "I hope those evil souls left it alone..";
+			mes "[約翰]";
+			mes "謝謝！我真的很感激！";
+			mes "我想現在我可以毫無顧慮地進去了！";
+			mes "希望那些邪惡的靈魂沒有動它……";
 			next;
-			mes "[Johan]";
-			mes "Hehe, I'll put in a good word to Ur!";
-			mes "You're a valient and skilled exorcist!";
+			mes "[約翰]";
+			mes "嘿嘿，我會替你向烏爾美言幾句！";
+			mes "你是一位英勇又技術高超的驅魔師！";
 			next;
-			mes "[Johan]";
-			mes "You can go back to Eden now";
-			mes "I'll stay and clean up the rest, hehe";
+			mes "[約翰]";
+			mes "你現在可以回伊甸去了";
+			mes "剩下的我留下來收拾，嘿嘿";
 			para_2nd01 = 10;
 			erasequest 7221;// Evil Druid hunt
 			setquest 7222;// Report to Instructor Ur
 			getexp 20000,20000;
 		}
 		else {
-			mes "10 Evil Druids!";
-			mes "I'll watch your back, like last time.";
-			mes "... Of... Course... I'll fight them too!";
+			mes "10隻邪惡的德魯伊！";
+			mes "像上次一樣，我會保護你的背後。";
+			mes "……當……當然……我也會和它們戰鬥！";
 			npcskill "AL_HEAL",10,99,60;
 			percentheal 0,100;
 		}
 	}
 	else if (para_2nd01 == 10) {
-		mes "Go back and report to Ur.";
-		mes "That Glast Heim Abbey is clear now.";
-		mes "I need to stay and look for something... Good bye.";
+		mes "回去向烏爾回報吧。";
+		mes "克雷斯特漢姆古城修道院現在已經清除乾淨了。";
+		mes "我得留下來找些東西……再見。";
 	}
 	else {
-		mes "Ugh, I still haven't found the thing I lost.";
-		mes "Hmm... I may need to wait for the next trainee before I can start looking again... Eep!";
+		mes "唉，我還沒找到我弄丟的東西。";
+		mes "嗯……我可能得等下一位學員來，才能再開始找……哇！";
 		next;
-		mes "[Johan]";
-		mes "Uh... You didn't hear that did you?";
-		mes "Hahahahahahaha!!!";
+		mes "[約翰]";
+		mes "呃……你沒聽到剛才的話吧？";
+		mes "哈哈哈哈哈哈！！！";
 		mes "哈哈哈哈哈！！";
 	}
 	close;
@@ -3192,75 +3192,75 @@ glast_01,195,131,5	script	Dispatched Instructor#03	4_F_SISTER,{
 
 //--80~89
 // ein_fild08,172,359,3	script	Dispatched Instructor#2nd02	4_M_4THPRIN1,{
-ein_fild08,172,359,3	script	Dispatched Instructor#04	4_M_4THPRIN1,{
-	mes "[Kiren]";
+ein_fild08,172,359,3	script	被派遣的教官#04::Dispatched Instructor#04	4_M_4THPRIN1,{
+	mes "[基倫]";
 	if (para_2nd01 < 12) {
 		mes "你在看什麼？";
-		mes "You want something from me?";
-		mes "Mind your own business, go away..";
+		mes "你有什麼事找我？";
+		mes "管好你自己的事，走開……";
 	}
 	else if (para_2nd01 == 12) {
 		mes "什麼？";
 		mes "....";
-		mes "Hmm, Ur sent you?";
-		mes "Oh, that training mission thing.";
+		mes "嗯，烏爾派你來的？";
+		mes "喔，那個訓練任務啊。";
 		next;
-		mes "[Kiren]";
-		mes "You've came a long way, I won't make you do anything too tough, don't worry.";
-		mes "The fields outside of Einbroch isn't too bad.";
+		mes "[基倫]";
+		mes "你遠道而來，我不會讓你做太困難的事，別擔心。";
+		mes "艾音布羅克外的原野還不錯。";
 		next;
-		mes "[Kiren]";
-		mes "And monsters here usually leaves me alone, so I can nap all day.";
-		mes "But there are some that bother me.";
+		mes "[基倫]";
+		mes "而且這裡的怪物通常不會來打擾我，所以我可以整天睡覺。";
+		mes "不過也有些會來煩我。";
 		next;
-		mes "[Kiren]";
-		mes "Do you know Porcellios are?";
-		mes "Ugly looking insects... They steal too..";
+		mes "[基倫]";
+		mes "你知道球鼠是什麼嗎？";
+		mes "長得很醜的昆蟲……而且它們還會偷東西……";
 		next;
-		mes "[Kiren]";
-		mes "Let's defeat some of them as a warm up.";
-		mes "There are plenty of them around here. 30 shouldn't be too hard right?";
+		mes "[基倫]";
+		mes "我們先來擊敗幾隻當作熱身吧。";
+		mes "這附近有很多。30隻應該不難吧？";
 		next;
-		mes "[Kiren]";
-		mes "I'm not holding a grudge just because they ate my lunch.";
-		mes "I'll be resting here until you're done.";
+		mes "[基倫]";
+		mes "我可不是因為它們吃了我的午餐才記恨。";
+		mes "你完成之前，我會在這裡休息。";
 		para_2nd01 = 13;
 		erasequest 7223;// Advanced Training in Einbroch
 		setquest 7224;// Porcellio hunting
 	}
 	else if (para_2nd01 == 13) {
 		if (checkquest(7224,HUNTING) == 2) {// Porcellio hunting
-			mes "What, You're done already?";
-			mes "I was just about to fall asleep... Oh well..";
-			mes "It can't be helped, I guess. Let's go to a different spot..";
+			mes "什麼，你已經完成了？";
+			mes "我正要睡著……算了……";
+			mes "沒辦法，我想。我們換個地方吧……";
 			next;
-			mes "[Kiren]";
-			mes "No, what are you talking about?";
-			mes "Go... with you?";
-			mes "You can by yourself right?";
+			mes "[基倫]";
+			mes "不，你在說什麼？";
+			mes "和你……一起去？";
+			mes "你一個人可以吧？";
 			next;
-			mes "[Kiren]";
-			mes "Okay, next task!";
-			mes "People of Einbroch say that the pollution is really bad in the north.";
-			mes "They are worried that pollution will drift into the town.";
+			mes "[基倫]";
+			mes "好，下一個任務！";
+			mes "艾音布羅克的人說北邊的污染非常嚴重。";
+			mes "他們擔心污染會飄進城鎮裡。";
 			next;
-			mes "[Kiren]";
-			mes "It's probably all those factories right there...";
-			mes "I guess I should still look into it.";
-			mes "The cause for the pollution... Find it and destroy it.";
+			mes "[基倫]";
+			mes "大概都是那邊那些工廠造成的……";
+			mes "看來我還是得去調查一下。";
+			mes "污染的源頭……找到它並加以摧毀。";
 			next;
-			mes "[Kiren]";
-			mes "30 Venomous and 5 Teddy Bears.";
-			mes "That should be good enough.";
+			mes "[基倫]";
+			mes "30 隻毒液魔和 5 隻泰迪熊。";
+			mes "這樣應該就夠了。";
 			next;
-			mes "[Kiren]";
-			mes "I'm sure you'll do fine without me watching.";
-			mes "To show my support, let me give you some EXP and HP recovery.";
+			mes "[基倫]";
+			mes "我相信你不用我盯著也能做得很好。";
+			mes "為了表示支持，讓我給你一些經驗值和 HP 回復。";
 			next;
-			mes "[Kiren]";
-			mes "The monsters are at the northern fields of Einbroch.";
-			mes "Okay then, be safe.";
-			mes "I'm going to take a nap.";
+			mes "[基倫]";
+			mes "怪物就在艾音布羅克北邊的原野上。";
+			mes "那好，路上小心。";
+			mes "我要去睡一下。";
 			para_2nd01 = 14;
 			erasequest 7224;// Porcellio hunting
 			setquest 7226;// Venomous hunting
@@ -3268,11 +3268,11 @@ ein_fild08,172,359,3	script	Dispatched Instructor#04	4_M_4THPRIN1,{
 			getexp 30000,30000;
 		}
 		else {
-			mes "So, have you punished those Porcellio's yet?";
-			mes "I don't think you're done yet right?";
+			mes "所以，那些鼠婦你教訓過了嗎？";
+			mes "我想你還沒完成吧？";
 			next;
-			mes "[Kiren]";
-			mes "If you're hurt I'll heal you a bit.";
+			mes "[基倫]";
+			mes "如果你受傷了，我用治癒術幫你回復一點。";
 		}
 		npcskill "AL_HEAL",10,99,60;
 		percentheal 0,100;
@@ -3280,17 +3280,17 @@ ein_fild08,172,359,3	script	Dispatched Instructor#04	4_M_4THPRIN1,{
 	else if (para_2nd01 == 14) {
 		if (checkquest(7226,HUNTING) == 2 && checkquest(7227,HUNTING) == 2) {
 			mes "嗯……";
-			mes "I'm getting it done.";
+			mes "我正在處理中。";
 			mes "嗯……";
-			mes "I'm still tired to finish...";
+			mes "我還是很累，沒辦法做完……";
 			next;
-			mes "[Kiren]";
-			mes "Good. Those monsters have been bothering the Einbroch workers.";
-			mes "That was great..";
+			mes "[基倫]";
+			mes "很好。那些怪物一直在騷擾艾音布羅克的工人。";
+			mes "太棒了……";
 			next;
-			mes "[Kiren]";
-			mes "I have some things to report to Instructor Ur.";
-			mes "I've been watching you closely and you've done well. Go back to Ur and deliver this report.";
+			mes "[基倫]";
+			mes "我有些事情要向烏爾教官報告。";
+			mes "我一直在仔細觀察你，你表現得很好。回去找烏爾，把這份報告交給他。";
 			para_2nd01 = 15;
 			erasequest 7226;// Venomous hunting
 			erasequest 7227;// Teddy Bear hunting
@@ -3299,121 +3299,121 @@ ein_fild08,172,359,3	script	Dispatched Instructor#04	4_M_4THPRIN1,{
 			// erasequest 7225;
 		}
 		else {
-			mes "The monsters are at the northern fields of Einbroch.";
-			mes "Find the Noxious...";
-			mes "Don't try to lie to me that you've finished hunting them.";
+			mes "怪物就在艾音布羅克北邊的原野上。";
+			mes "找到有毒的……";
+			mes "別想騙我說你已經把他們都獵完了。";
 			next;
 			// if (isbegin_quest(7225) > 0)
 				// erasequest 7225;
 			// else {
-			mes "[Kiren]";
-			mes "Yeah, if this is okay?";
-			mes "Ugh this is difficult.";
-			mes "I'll make you feel better though.";
+			mes "[基倫]";
+			mes "嗯，這樣可以嗎？";
+			mes "唉，這好難。";
+			mes "不過我會讓你好受一點的。";
 			// }
 			npcskill "AL_HEAL",10,99,60;
 			percentheal 0,100;
 		}
 	}
 	else if (para_2nd01 == 15) {
-		mes "What serious?";
-		mes "Have you made your report to Instructor Ur?";
-		mes "Einbroch has commissioned work out so that means more training.";
+		mes "什麼嚴重？";
+		mes "你已經向烏爾教官報告了嗎？";
+		mes "艾音布羅克委託了工作，也就表示要多加訓練。";
 	}
 	else {
-		mes "I'm not a thief...";
-		mes "It's a hard living.";
-		mes "Nor is there any real ambition.";
+		mes "我又不是小偷……";
+		mes "這是份辛苦的差事。";
+		mes "也沒有什麼真正的抱負。";
 		next;
-		mes "[Kiren]";
-		mes "Come practitioners?";
-		mes "Make things.";
-		mes "How convenient witchinya.";
-		mes "Heumnya. I'll sleep in one breath..";
+		mes "[基倫]";
+		mes "來修行者嗎？";
+		mes "製作東西。";
+		mes "真是剛好呢，witchinya。";
+		mes "Heumnya。我一口氣就睡著……";
 	}
 	close;
 }
 
 //--90~99
 // ice_dun01,154,13,5	script	Dispatched Instructor#2nd02	4_F_JOB_BLACKSMITH,{
-ice_dun01,154,13,5	script	Dispatched Instructor#05	4_F_JOB_BLACKSMITH,{
-	mes "[Naomi]";
+ice_dun01,154,13,5	script	被派遣的教官#05::Dispatched Instructor#05	4_F_JOB_BLACKSMITH,{
+	mes "[娜奧米]";
 	if (para_2nd01 <= 17) {
-		mes "It's more than that~";
-		mes "Now where did the time go~";
-		mes "I thought you said you sent me~!";
+		mes "不只是那樣哦～";
+		mes "時間都跑哪去了呢～";
+		mes "你不是說過已經派我來了嗎～！";
 		next;
-		mes "[Naomi]";
+		mes "[娜奧米]";
 		if (para_2nd01 < 17) {
-			mes "What is it? You'll help me. Is that right?";
-			mes "No, you don't have to do that.";
-			mes "I'm waiting for someone scheduled to help me.";
+			mes "怎麼了？你會幫我，對吧？";
+			mes "不，你不必這麼做。";
+			mes "我正在等一個預定來幫我的人。";
 			close;
 		}
-		mes "And you are?";
-		mes "Oh, you were sent here by Ur?";
-		mes "I don't know how long I've been waiting here in the snow.";
+		mes "那你是？";
+		mes "喔，你是烏爾派來的？";
+		mes "我不知道自己在雪地裡等了多久。";
 		next;
-		mes "[Naomi]";
-		mes "This is the ice dungeon of the northern plains.";
-		mes "Nothing like a cave that's cold the entire year.";
+		mes "[娜奧米]";
+		mes "這裡是北方原野的冰之洞窟。";
+		mes "沒有哪個洞窟像這裡一樣終年寒冷。";
 		next;
-		mes "[Naomi]";
-		mes "So this is where the people of Rachel go for their ice supply.";
-		mes "But, this area is crawling with dangerous monsters.";
+		mes "[娜奧米]";
+		mes "所以拉赫的人就是來這裡取冰的。";
+		mes "不過，這一帶有很多危險的怪物。";
 		next;
-		mes "[Naomi]";
-		mes "One of those monsters is known as a Siroma.";
-		mes "They should be a good challenge for you.";
+		mes "[娜奧米]";
+		mes "其中一種怪物叫做小雪獸。";
+		mes "應該能給你不錯的挑戰。";
 		next;
-		mes "[Naomi]";
-		mes "Okay, then go in the cave and find those Siroma.";
-		mes "It's cold in there but this job has to be done.";
+		mes "[娜奧米]";
+		mes "好，那就進洞窟去找那些小雪獸吧。";
+		mes "裡面很冷，但這份工作非做不可。";
 		next;
-		mes "[Naomi]";
-		mes "OH, sometimes";
-		mes "You be careful in there.";
-		mes "Well, good luck~!";
+		mes "[娜奧米]";
+		mes "喔，有時候……";
+		mes "裡面要小心。";
+		mes "那，祝你好運～！";
 		para_2nd01 = 18;
 		erasequest 7229;// Advanced Training in Ice Dungeon
 		setquest 7230;// Siroma hunting
 	}
 	else if (para_2nd01 == 18) {
 		if (checkquest(7230,HUNTING) == 2) {
-			mes "Ah... It's over...";
+			mes "啊……結束了……";
 			mes "很好！";
-			mes "Your skills have been verified.";
+			mes "你的實力已經確認了。";
 			next;
-			mes "[Naomi]";
-			mes "Now, what have I happened to do next.";
-			mes "Those Siromas seem to be growing at a faster rate.";
-			mes "As before go and hunt 30 more Siromas and bring me some materials.";
+			mes "[娜奧米]";
+			mes "那麼，接下來我該做什麼來著。";
+			mes "那些小雪獸好像長得越來越快了。";
+			mes "跟之前一樣，再去獵 30 隻小雪獸，把素材帶回來給我。";
 			next;
-			mes "[Naomi]";
-			mes "And get this... Well...";
+			mes "[娜奧米]";
+			mes "而且還要這些……嗯……";
 			mes "請仔細聽好";
-			mes "30 Ice Cubic";
-			mes "1 Sweet Sauce";
-			mes "1 Milk";
+			mes "30 個冰塊一角";
+			mes "1 個甜調味料";
+			mes "1 瓶牛奶";
 			next;
-			mes "[Naomi]";
-			mes "I'm not just doing this for myself you know.";
-			mes "I'm doing this for everyone.";
+			mes "[娜奧米]";
+			mes "你知道的，我可不是只為了自己才這麼做。";
+			mes "我是為了大家。";
 			next;
-			mes "[Naomi]";
-			mes "That's the last of it anyways.";
-			mes "So hunt those Siromas and get the materials.";
-			mes "We understand each other?";
+			mes "[娜奧米]";
+			mes "總之，這就是最後一項了。";
+			mes "所以去獵那些小雪獸，把素材拿回來。";
+			mes "我們說好了？";
 			next;
 			select("那你呢？");
-			mes "[Naomi]";
-			mes "Me? Well of course... I'm going to stand guard here.";
-			mes "I... I'm a busy person!";
-			mes "Besides this is training so who are you to ask me what about me?";
+			mes "[娜奧米]";
+			mes "我？嗯，當然是……我要在這裡守著。";
+			mes "我……我可是很忙的人！";
+			mes "再說這是訓練，你又有什麼資格過問我的事？";
 			next;
-			mes "[Naomi]";
-			mes "Go now!";
-			mes "Those Siromas are going to just get rowdier by the minute.";
+			mes "[娜奧米]";
+			mes "快去！";
+			mes "那些小雪獸只會越來越囂張。";
 			para_2nd01 = 19;
 			erasequest 7230;// Siroma hunting
 			setquest 7231;// Hunting and Gathering
@@ -3422,39 +3422,39 @@ ice_dun01,154,13,5	script	Dispatched Instructor#05	4_F_JOB_BLACKSMITH,{
 			percentheal 0,100;
 		}
 		else {
-			mes "The biggest stumbling block is dealing with the Siromas.";
-			mes "Have you hunted 30 yet?";
+			mes "最大的障礙就是對付那些小雪獸。";
+			mes "你獵夠 30 隻了嗎？";
 			next;
-			mes "[Naomi]";
-			mes "Oh, you want help recovering your HP/SP huh?";
-			mes "You'll get nothing from me~!";
-			mes "What challenge would that be if I did that?";
+			mes "[娜奧米]";
+			mes "喔，你想要恢復 HP/SP 是吧？";
+			mes "你什麼都別想從我這裡拿到～！";
+			mes "要是我那麼做，還算什麼挑戰？";
 		}
 	}
 	else if (para_2nd01 == 19) {
 		if (checkquest(7231,HUNTING) == 2 && countitem(7066) > 29 && countitem(7453) > 0 && countitem(519) > 0) {// Ice_Piece, Sweet_Sauce, Milk
 			mes "喔！";
-			mes "You've brought everything.";
-			mes "Okay, so just one last thing...!";
+			mes "東西都帶齊了。";
+			mes "好，那就只剩最後一件事了……！";
 			next;
-			select("...... Look");
-			mes "[Naomi]";
-			mes "Yes, yes? Why not?";
+			select("……看吧");
+			mes "[娜奧米]";
+			mes "是啊，怎麼樣？為什麼不行？";
 			mes "...";
-			mes "Oh, that's right! I'm supposed to give you something.";
-			mes "You've done enough, I know.";
+			mes "喔，對了！我該給你點東西的。";
+			mes "我知道，你已經做得夠多了。";
 			next;
-			mes "[Naomi]";
-			mes "I'll inform Instructor Ur.";
-			mes "A few more stages left to go so don't worry!";
+			mes "[娜奧米]";
+			mes "我會通知烏爾教官。";
+			mes "還剩幾個階段，別擔心！";
 			next;
-			mes "[Naomi]";
-			mes "Oh and congratulations!";
-			mes "This is the last training stage prepared!";
+			mes "[娜奧米]";
+			mes "喔，還有恭喜你！";
+			mes "這是準備好的最後一個訓練階段！";
 			next;
-			mes "[Naomi]";
-			mes "I guess I should do some of this myself~";
-			mes "Muahaha~";
+			mes "[娜奧米]";
+			mes "看來我也該親自動手做一些了～";
+			mes "哈哈哈～";
 			delitem 7066,30;
 			delitem 7453,1;
 			delitem 519,1;
@@ -3464,97 +3464,97 @@ ice_dun01,154,13,5	script	Dispatched Instructor#05	4_F_JOB_BLACKSMITH,{
 			getexp 40000,40000;
 		}
 		else {
-			mes "Have you finished hunting the 30 Siroma yet?";
-			mes "You've already done it once so this shouldn't be difficult...";
+			mes "你已經獵完 30 隻小雪獸了嗎？";
+			mes "你已經做過一次了，應該不難吧……";
 			next;
-			mes "[Naomi]";
-			mes "And don't forget the 30 Ice Cubic, 1 Sweet Sauce, and 1 Milk.";
+			mes "[娜奧米]";
+			mes "別忘了 30 個冰塊一角、1 個甜調味料，還有 1 瓶牛奶。";
 		}
 	}
 	else if (para_2nd01 == 20) {
-		mes "Were you there yet?";
-		mes "Other people have come and go since you've been here last.";
-		mes "Now I don't have to get the materials myself.";
+		mes "你到那裡了嗎？";
+		mes "你上次來之後，其他人來來去去的。";
+		mes "這下我不用自己去拿素材了。";
 		next;
-		mes "[Naomi]";
-		mes "Report back to Instructor Ur and report that the job is done.";
-		mes "Don't procrastinate.";
+		mes "[娜奧米]";
+		mes "回去向烏爾教官回報，說工作已經完成。";
+		mes "別拖拖拉拉的。";
 	}
 	else
-		mes "Alas, is there anywhere where the buildup of ice caps is more than here?";
+		mes "唉，還有哪裡的冰層堆積得比這裡還厚嗎？";
 	close;
 }
 
 // mid_camp,212,229,3	script	Dispatched Instructor#2nd02	4_F_HUWOMAN,{
-mid_camp,212,229,3	script	Dispatched Instructor#06	4_F_HUWOMAN,{
-	mes "[Margaret]";
+mid_camp,212,229,3	script	被派遣的教官#06::Dispatched Instructor#06	4_F_HUWOMAN,{
+	mes "[瑪格麗特]";
 	if (para_2nd01 < 22) {
 		mes "喔，抱歉。";
-		mes "I don't know much about the life of an adventurer.";
-		mes "I'm just a member of Eden Group...";
+		mes "我對冒險者的生活不太了解。";
+		mes "我只是伊甸園的一名成員……";
 	}
 	else if (para_2nd01 == 22) {
-		mes "The proof that you have there.";
-		mes "You're here in paradise.";
-		mes "Instructor Ur sent you?";
+		mes "你手上那個證明。";
+		mes "你來到樂園了。";
+		mes "是烏爾教官派你來的？";
 		next;
 		if (select( "是的。", "不要。" ) == 2) {
-			mes "[Margaret]";
-			mes "Oh, my mistake.";
+			mes "[瑪格麗特]";
+			mes "喔，是我搞錯了。";
 			close;
 		}
-		mes "[Margaret]";
-		mes "How do you do?";
-		mes "Oh, so you're here for the training from Instructor Ur.";
+		mes "[瑪格麗特]";
+		mes "你好嗎？";
+		mes "喔，所以你是來接受烏爾教官的訓練的。";
 		next;
-		mes "[Margaret]";
-		mes "Ok, I'm in a bit of a situation right now so I asked Instructor Ur to use his missions to help.";
+		mes "[瑪格麗特]";
+		mes "好，我現在有點狀況，所以拜託烏爾教官用他的任務來幫忙。";
 		next;
-		select("A situation?");
-		mes "[Margaret]";
-		mes "Yes, ";
-		mes "Find Mine and do what he asks you.";
+		select("什麼狀況？");
+		mes "[瑪格麗特]";
+		mes "是的， ";
+		mes "去找邁恩，照他說的去做。";
 		next;
-		mes "[Margaret]";
-		mes "We dispatched him to do something and he hasn't done it yet so I'm guessing he's either chickened out or failed.";
+		mes "[瑪格麗特]";
+		mes "我們派他去做一件事，但他到現在還沒做，我猜他不是臨陣脫逃，就是失敗了。";
 		next;
-		mes "[Margaret]";
-		mes "So can you find him out there in Splendide Field?";
+		mes "[瑪格麗特]";
+		mes "所以你能在史波浪壯麗原野找到他嗎？";
 		next;
-		mes "[Margaret]";
-		mes "Find him and figure out what the heck he's up to please.";
+		mes "[瑪格麗特]";
+		mes "拜託找到他，搞清楚他到底在搞什麼鬼。";
 		para_2nd01 = 23;
 		erasequest 7233;//  Advanced Training at Ash Vacuum
 		setquest 7234;// Margaret's favor
 	}
 	else if (para_2nd01 < 27) {
-		mes "Can you find those two brothers?";
-		mes "Find out what's up with them.";
+		mes "你能找到那兩兄弟嗎？";
+		mes "查清楚他們到底怎麼了。";
 	}
 	else if (para_2nd01 == 27) {
-		mes "So what's up?!";
+		mes "所以到底怎麼回事？！";
 		next;
-		mes "- You tell her about Meeru and Mine. -";
+		mes "- 你把米魯和邁恩的事告訴她。 -";
 		next;
-		mes "[Margaret]";
-		mes "Yeah? Oh what?";
-		mes "This is not really...";
-		mes "Ok I'll go deal with them.";
+		mes "[瑪格麗特]";
+		mes "是嗎？喔，什麼事？";
+		mes "這其實不是……";
+		mes "好，我去處理他們。";
 		next;
-		mes "[Margaret]";
-		mes "Well, whatever the Nepenthes and Pinguicula proof has been collected.";
+		mes "[瑪格麗特]";
+		mes "嗯，豬籠草和捕蟲堇妖的證明已經收集好了。";
 		next;
-		mes "[Margaret]";
-		mes "Your training is done so go back and talk to Instructor Ur.";
+		mes "[瑪格麗特]";
+		mes "你的訓練已經完成，回去找烏爾教官談談吧。";
 		para_2nd01 = 29;
 		erasequest 7234;// Margaret's favor
 		setquest 7237;// Report to Instructor Ur
 	}
 	else if (para_2nd01 == 29) {
-		mes "Well, whatever the Nepenthes and Pinguicula proof has been collected.";
+		mes "嗯，豬籠草和捕蟲堇妖的證明已經收集好了。";
 		next;
-		mes "[Margaret]";
-		mes "Your training is done so go back and talk to Instructor Ur.";
+		mes "[瑪格麗特]";
+		mes "你的訓練已經完成，回去找烏爾教官談談吧。";
 	}
 	else
 		mes "........";
@@ -3562,145 +3562,145 @@ mid_camp,212,229,3	script	Dispatched Instructor#06	4_F_HUWOMAN,{
 }
 
 // man_fild01,43,234,3	script	Dispatched Instructor#2nd02	4_DST_SOLDIER,{
-man_fild01,43,234,3	script	Dispatched Instructor#07	4_DST_SOLDIER,{
-	mes "[Meeru]";
+man_fild01,43,234,3	script	被派遣的教官#07::Dispatched Instructor#07	4_DST_SOLDIER,{
+	mes "[米魯]";
 	if (para_2nd01 < 23) {
-		mes "You think I'll lose!";
+		mes "你以為我會輸！";
 		mes "...?";
-		mes "All of them... Who're you?!";
-		mes "Mine is a stooge?";
-		mes "He sent you to watch me!?";
+		mes "全都是……你是誰？！";
+		mes "邁恩是個跑腿的？";
+		mes "他派你來監視我的！？";
 		next;
-		mes "[Meeru]";
-		mes "What? Isn't that it?";
+		mes "[米魯]";
+		mes "什麼？難道不是嗎？";
 		mes "... ...";
-		mes "Mine didn't send you did he?";
+		mes "邁恩沒有派你來吧？";
 	}
 	else if (para_2nd01 == 23) {
-		mes "You think I'll lose!";
+		mes "你以為我會輸！";
 		mes "...?";
-		mes "All of them... Who're you?!";
-		mes "Mine is a stooge?";
-		mes "He sent you to watch me!?";
+		mes "全都是……你是誰？！";
+		mes "邁恩是個跑腿的？";
+		mes "他派你來監視我的！？";
 		next;
-		mes "[Meeru]";
-		mes "What? Isn't that it?";
+		mes "[米魯]";
+		mes "什麼？難道不是嗎？";
 		mes "... ...";
-		mes "Mine didn't send you did he?";
-		mes "So why are you here?";
+		mes "邁恩沒有派你來吧？";
+		mes "那你為什麼會在這裡？";
 		next;
-		select("Margaret sent me");
-		mes "[Meeru]";
-		mes "Ah, Margaret!";
-		mes "Mine and Margaret are always trying to mess with me because of my win-!";
-		mes "Gosh...";
+		select("是瑪格麗特派我來的");
+		mes "[米魯]";
+		mes "啊，瑪格麗特！";
+		mes "邁恩跟瑪格麗特老是因為我的勝—！一直找我麻煩！";
+		mes "天啊……";
 		next;
-		select( "發生什麼事了？", "What do you win?" );
-		mes "[Meeru]";
-		mes "It all started with them bickering.";
-		mes "Margaret was asked to scout for both of us. It's like what you're doing now.";
+		select( "發生什麼事了？", "你到底贏了什麼？" );
+		mes "[米魯]";
+		mes "一切都是從他們吵架開始的。";
+		mes "瑪格麗特被請去幫我們兩個偵察，就像你現在做的一樣。";
 		next;
-		mes "[Meeru]";
-		mes "Mine said that he was strong enough to defeat any monster.";
-		mes "So I insisted that he go to either East or West of the camp and show me.";
+		mes "[米魯]";
+		mes "邁恩說他強到能打敗任何怪物。";
+		mes "所以我堅持要他去營地的東邊或西邊，當面證明給我看。";
 		next;
-		mes "[Meeru]";
-		mes "Mine made an idle threat and huffed and puffed but didn't do anything.";
+		mes "[米魯]";
+		mes "邁恩放了空話，氣呼呼地喘個不停，卻什麼也沒做。";
 		next;
-		mes "[Meeru]";
-		mes "Basically, Margaret didn't believe him and challenged him to kill 1 Nepenthes.";
+		mes "[米魯]";
+		mes "總之，瑪格麗特不相信他，就向他挑戰去獵 1 隻豬籠草。";
 		next;
-		mes "[Meeru]";
-		mes "So anyways now I'm charged with asking people to go and hunt 1 Nepenthes because of that bickering incident.";
+		mes "[米魯]";
+		mes "所以因為那場爭吵，現在我得負責請人去獵 1 隻豬籠草。";
 		next;
-		mes "[Meeru]";
-		mes "It's really not that difficult to hunt 1 so just go to the field East of here and kill one of them.";
+		mes "[米魯]";
+		mes "獵 1 隻其實不難，去這裡東邊的原野，殺一隻就行了。";
 		para_2nd01 = 24;
 		setquest 7235;// Nepenthes Hunt
 	}
 	else if (para_2nd01 == 24) {
 		if (checkquest(7235,HUNTING) == 2) {
-			mes "Hmm yes I saw.";
-			mes "I knew I should've asked you to hunt more than 1.";
+			mes "嗯，對，我看到了。";
+			mes "我就知道應該請你獵一隻以上的。";
 			next;
-			mes "[Meeru]";
-			mes "Anyways you've proven that you're stronger than Mine ever made himself out to be.";
+			mes "[米魯]";
+			mes "總之，你已經證明了你比邁恩自己吹噓的還要強。";
 			next;
-			mes "[Meeru]";
-			mes "Well anyways here's a small reward.";
+			mes "[米魯]";
+			mes "總之，這是一點小獎勵。";
 			next;
-			mes "[Meeru]";
-			mes "I'll just be here making sure other people hunt the Nepenthes. I might ask them to hunt more than 1 who knows.";
+			mes "[米魯]";
+			mes "我會待在這裡，確保其他人去獵豬籠草。說不定我會請他們獵一隻以上，誰知道呢。";
 			para_2nd01 = 25;
 			erasequest 7235;// Nepenthes Hunt
 			getexp 50000,50000;
 		}
 		else {
-			mes "Is hunting the Nepenthes too much for you?";
-			mes "You seem a bit flushed.";
-			mes "Fine I'll heal you!";
+			mes "獵豬籠草對你來說太難了嗎？";
+			mes "你看起來有點臉紅。";
+			mes "好吧，我用治癒術幫你！";
 			npcskill "AL_HEAL",10,99,60;
 			percentheal 0,100;
 		}
 	}
 	else if (para_2nd01 == 25)
-		mes "I'll just be here making sure other people hunt the Nepenthes. I might ask them to hunt more than 1 who knows.";
+		mes "我會待在這裡，確保其他人去獵豬籠草。說不定我會請他們獵一隻以上，誰知道呢。";
 	else {
-		mes "Something wrong?";
-		mes "Did you have trouble with that Nepenthes...";
-		mes ".........hyuk huk.";
+		mes "怎麼了？";
+		mes "那隻豬籠草讓你很頭痛嗎……";
+		mes "…………嗚嗚。";
 	}
 	close;
 }
 
 // spl_fild02,377,149,3	script	Dispatched Instructor#2nd02	4_M_DST_MASTER,{
-spl_fild02,377,149,3	script	Dispatched Instructor#08	4_M_DST_MASTER,{
-	mes "[Mine]";
+spl_fild02,377,149,3	script	被派遣的教官#08::Dispatched Instructor#08	4_M_DST_MASTER,{
+	mes "[邁恩]";
 	if (para_2nd01 < 25) {
-		mes "Oh cruel world.";
+		mes "這世界真殘酷。";
 		mes "...";
-		mes "Way to go passing by.";
-		mes "What a fiasco this has turned out to be";
+		mes "你還真會挑時機經過啊。";
+		mes "這整件事真是一場鬧劇";
 	}
 	else if (para_2nd01 == 25) {
-		mes "Oh cruel world...";
+		mes "這世界真殘酷……";
 		mes "...";
 		mes "你是誰？";
 		next;
-		if (select( "Margaret sent me.", "Yeah I'm here..." ) == 1) {
-			mes "[Mine]";
-			mes "Eh? Who!";
-			mes "I see. Is it that time already?";
-			mes "This has been difficult.";
-			mes "I'm in a crisis here!";
+		if (select( "是瑪格麗特派我來的。", "對，我來了……" ) == 1) {
+			mes "[邁恩]";
+			mes "咦？誰啊！";
+			mes "原來如此。已經到時間了嗎？";
+			mes "這段時間真是辛苦。";
+			mes "我這裡可是危機重重！";
 		}
 		else {
-			mes "[Mine]";
-			mes "Oh so you're not here by your own will eh?";
-			mes "So why even bother coming?";
+			mes "[邁恩]";
+			mes "喔，所以你不是自願來的，對吧？";
+			mes "那你幹嘛還要來？";
 			next;
-			mes "[Mine]";
-			mes "You didn't want to be here right?";
-			mes "Margaret sent you instead of someone else I bet.";
-			mes "Whatever, anyway I'm in a crisis here!";
+			mes "[邁恩]";
+			mes "你不想來這裡，對吧？";
+			mes "我敢說，瑪格麗特是派你來代替別人的吧。";
+			mes "算了，總之我這裡危機重重！";
 		}
 		next;
-		mes "[Mine]";
-		mes "Ok I don't want to admit it but you gotta help me out here.";
+		mes "[邁恩]";
+		mes "好吧，我不想承認，但你一定得幫我這次。";
 		next;
-		mes "[Mine]";
-		mes "Ok just because I was complaining doesn't mean they have to send me here!";
+		mes "[邁恩]";
+		mes "好吧，就算我抱怨過，也不代表他們就得把我派來這裡啊！";
 		next;
-		mes "[Mine]";
-		mes "I mean they've asked for too much of a simple person like myself.";
+		mes "[邁恩]";
+		mes "我是說，他們對我這種普通人要求太多了。";
 		next;
-		mes "[Mine]";
-		mes "Ok here's the deal.";
-		mes "I'm supposed to hunt those Pinguiculas. Just 5 of 'em.";
-		mes "But you'll do that for me yeah?";
+		mes "[邁恩]";
+		mes "好，條件是這樣的。";
+		mes "我本來該去獵那些捕蟲堇妖，就 5 隻。";
+		mes "但你會幫我做的，對吧？";
 		next;
-		mes "[Mine]";
-		mes "I promise you I'll give you something good.";
+		mes "[邁恩]";
+		mes "我保證會給你好東西。";
 		mes "謝謝。";
 		para_2nd01 = 26;
 		setquest 7236;// Pinguicula Hunt
@@ -3708,123 +3708,123 @@ spl_fild02,377,149,3	script	Dispatched Instructor#08	4_M_DST_MASTER,{
 	else if (para_2nd01 == 26) {
 		if (checkquest(7236,HUNTING) == 2) {
 			mes "太棒了！";
-			mes "Now I can go back to the camp and...";
+			mes "這樣我就能回營地去……";
 			next;
-			mes "[Mine]";
-			mes "I mean, can you tell Margaret that it's all done?";
+			mes "[邁恩]";
+			mes "我是說，你能跟瑪格麗特說一聲都搞定了嗎？";
 			next;
-			mes "[Mine]";
-			mes "Oh don't worry she won't mind. I'll just go back to doing what I was doing. Here's your reward.";
+			mes "[邁恩]";
+			mes "喔別擔心，她不會介意的。我會回去做我原本在做的事。這是您的獎勵。";
 			para_2nd01 = 27;
 			erasequest 7236;// Pinguicula Hunt
 			getexp 50000,50000;
 		}
 		else {
-			mes "Come on 5 Pinguicula.";
-			mes "Really how did you get here then?";
+			mes "拜託了，5 隻捕蟲堇妖。";
+			mes "那你到底是怎麼來到這裡的？";
 			next;
-			mes "[Mine]";
-			mes "You're not lying about being a real adventurer are you?";
+			mes "[邁恩]";
+			mes "你不是在騙我說你是真正的冒險者吧？";
 			npcskill "AL_HEAL",10,99,60;
 			percentheal 0,100;
 		}
 	}
 	else if (para_2nd01 == 27) {
-		mes "Margaret gets everything she wants back at the camp.";
-		mes "Don't you worry, I'm going back soon.";
+		mes "瑪格麗特在營地裡想要什麼都能得到。";
+		mes "你別擔心，我很快就會回去。";
 	}
 	else
 		mes ".........";
 	close;
 }
 
-moc_para01,111,83,3	script	Blacksmith Thorn#2nd10	2_M_OLDBLSMITH,{
+moc_para01,111,83,3	script	鐵匠索恩#2nd10::Blacksmith Thorn#2nd10	2_M_OLDBLSMITH,{
 	if (checkweight(2571,5) == 0) {
-		mes "- You have too many items in your inventory to continue -";
+		mes "- 你的背包物品太多，無法繼續 -";
 		close;
 	}
-	mes "[Thorn]";
+	mes "[索恩]";
 	if (!callfunc("F_HasEdenGroupMark")) {
-		mes "Hmm, are you a member of Eden Group?";
-		mes "You need to be one of our members to use my services.";
+		mes "嗯，你是伊甸園的成員嗎？";
+		mes "你必須是我們的成員，才能使用我的服務。";
 		close;
 	}
 	mes "發生什麼事了？";
 	next;
-	switch( select( "Strengthen Equipment", "Personal Request", "Give me new equipment." ) ) {
-		mes "[Thorn]";
+	switch( select( "強化裝備", "私人委託", "給我新的裝備。" ) ) {
+		mes "[索恩]";
 	case 1:
 		if (para_2nd01 < 6) {
-			mes "Hmm equipment strengthening.";
-			mes "I don't exactly do that for just anyone.";
-			mes "The first step is at least a higher degree of training so have you done the Eden Group training yet?";
+			mes "嗯，裝備強化。";
+			mes "我可不是隨便誰都會幫忙的。";
+			mes "第一步至少要接受更高程度的訓練，所以你完成伊甸園的訓練了嗎？";
 			next;
-			mes "[Thorn]";
-			mes "You have not awakened yet.";
-			mes "First do the missions set forth by Instructor Ur and I'll help you strengthen your equipment.";
+			mes "[索恩]";
+			mes "你還沒有覺醒。";
+			mes "先完成烏爾教官交付的任務，我才會幫你強化裝備。";
 			next;
-			mes "[Thorn]";
-			mes "I won't help you unless you do that first!";
+			mes "[索恩]";
+			mes "你先完成那些，我才會幫你！";
 		}
 		else if (para_2nd04 == 3) {
-			mes "Strengthen your equipment eh?";
-			mes "I'll strengthen the new Eden Group equipment for you by giving it a random stat boost.";
+			mes "你想強化裝備嗎？";
+			mes "我會給新的伊甸園裝備加上隨機的能力提升來幫你強化。";
 			next;
-			mes "[Thorn]";
-			mes "So what equipment do you want to enhance?";
+			mes "[索恩]";
+			mes "那你想強化哪件裝備？";
 			next;
-			switch( select( "Eden Group Manteau II", "Eden Group Armor IV", "Eden Group Boots IV" ) ) {
+			switch( select( "伊甸園斗篷 II", "伊甸園鎧甲 IV", "伊甸園戰士長靴 IV" ) ) {
 				case 1: callsub S_Enchant,2571,"Manteau";// Para_Team_Manteau2
 				case 2: callsub S_Enchant,15031,"Armor";// Para_Team_Armor
 				case 3: callsub S_Enchant,2473,"Boots";// Para_Team_Boots4
 			}
 		}
 		else {
-			mes "I will strengthen your equipment after you've done a personal request of mine.";
+			mes "等你完成我的一個私人委託之後，我就會幫你強化裝備。";
 			next;
-			mes "[Thorn]";
-			mes "I just want to be sure that you're worthy of using my services.";
+			mes "[索恩]";
+			mes "我只是想確認你有資格使用我的服務。";
 		}
 		close;
 	case 2:
 		if (para_2nd02 < 2) {
-			mes "Have you started the request of Instructor Ur?";
-			mes "I'm lending my services to those who are worthy.";
+			mes "你開始做烏爾教官的委託了嗎？";
+			mes "我只把服務提供給有資格的人。";
 			next;
-			mes "[Thorn]";
-			mes "Besides, you won't have the equipment that I can enhance until you do those missions.";
+			mes "[索恩]";
+			mes "再說，你完成那些任務之前，是拿不到我能強化的裝備的。";
 		}
 		else if (para_2nd04 == 0) {
-			mes "Glad you're here.";
-			mes "As a blacksmith I am in need of Iron materials constantly.";
+			mes "很高興你來了。";
+			mes "身為鐵匠，我一直都需要鐵材料。";
 			next;
-			mes "[Thorn]";
-			mes "Of course there will be a reward eventually...";
+			mes "[索恩]";
+			mes "當然，最後會有獎勵的……";
 			mes "所以……";
 			next;
-			mes "[Thorn]";
+			mes "[索恩]";
 			if (BaseLevel < 80) {
-				mes "Bring me some materials.";
-				mes "I need 20 Iron Ore, and 10 Iron.";
+				mes "把一些素材帶來給我。";
+				mes "我需要 20 個鐵礦石，還有 10 個鐵。";
 			}
 			else {
-				mes "Bring me some materials.";
-				mes "Bring 20 Used Iron Plate.";
+				mes "把一些素材帶來給我。";
+				mes "再帶 20 個用過的鐵板來。";
 				.@add = 1;
 			}
-			mes "It shouldn't be hard to get these can you bring them right away?";
+			mes "這些應該不難弄到，你能馬上帶來嗎？";
 			next;
-			switch( select( "Sure thing.", "I don't want to." ) ) {
-				mes "[Thorn]";
+			switch( select( "沒問題。", "我不想。" ) ) {
+				mes "[索恩]";
 			case 1:
-				mes "I appreciate it.";
-				mes "So take your time and I'll be waiting.";
+				mes "非常感謝。";
+				mes "慢慢來，我會等你的。";
 				para_2nd04 = 1 + .@add;
 				setquest (7238 + .@add);// Errands for Thorn (easy/hard)
 				close;
 			case 2:
 				mes "咦……？";
-				mes "Guess you're too busy to help me.";
+				mes "看來你太忙，沒辦法幫我了。";
 				close;
 			}
 		}
@@ -3844,15 +3844,15 @@ moc_para01,111,83,3	script	Blacksmith Thorn#2nd10	2_M_OLDBLSMITH,{
 			}
 			if (.@countitem[0] >= .@amount[0] && .@countitem[1] >= .@amount[1]) {
 				mes "讓我猜猜……";
-				mes "You've brought me the best quality materials.";
+				mes "你帶來了最高品質的素材。";
 				mes "很好。";
 				next;
-				mes "[Thorn]";
-				mes "I can always use more Iron materials.";
-				mes "Instead of a normal reward I'll give you an advanced equipment.";
+				mes "[索恩]";
+				mes "鐵材料我永遠嫌不夠。";
+				mes "我不給你一般的獎勵，改給你一件進階裝備。";
 				next;
-				mes "[Thorn]";
-				mes "If at any time you think you have equipment that you need to strengthen come by me again.";
+				mes "[索恩]";
+				mes "之後如果你覺得有需要強化的裝備，就再來找我。";
 				delitem .@item[0],.@amount[0];
 				if (.@countitem[1])
 					delitem .@item[1],.@amount[1];
@@ -3862,27 +3862,27 @@ moc_para01,111,83,3	script	Blacksmith Thorn#2nd10	2_M_OLDBLSMITH,{
 			}
 			else {
 				mes .@string$;
-				mes "I'm pretty sure that it isn't that difficult to do.";
+				mes "我很確定這並不難做。";
 			}
 		}
 		else if (para_2nd04 == 3) {
-			mes "Now, that's it.";
-			mes "That's enough for today.";
-			mes "For now, ask me to strengthen your equipment and I'll do it for you.";
+			mes "好了，就這樣。";
+			mes "今天就到這裡。";
+			mes "目前只要請我強化裝備，我就會幫你做。";
 			next;
-			mes "[Thorn]";
-			mes "If you have one of these bring them to me.";
-			mes "Eden Group Manteau II, Eden Group Armor IV, Eden Group Boots IV.";
+			mes "[索恩]";
+			mes "如果你有其中一件，就拿來給我。";
+			mes "伊甸園斗篷 II、伊甸園鎧甲 IV、伊甸園戰士長靴 IV。";
 		}
 		else if (para_2nd04 == 4) {
 			if (checkquest(7241,PLAYTIME) == 0) {
 				mes "之後再來吧。";
-				mes "You have to wait for some time first.";
+				mes "你得先等一段時間。";
 			}
 			else {
-				mes "Uh-huh...";
-				mes "What are we going to... oh don't worry.";
-				mes "Come to me later.";
+				mes "嗯哼……";
+				mes "我們要怎麼……喔，別擔心。";
+				mes "之後再來找我。";
 				erasequest 7241;// Errands for Thorn timer
 				para_2nd04 = 0;
 			}
@@ -3890,23 +3890,23 @@ moc_para01,111,83,3	script	Blacksmith Thorn#2nd10	2_M_OLDBLSMITH,{
 		close;
 	case 3:
 		if (para_2nd02 < 1) {
-			mes "I'm not permitted to do this by Instructor Ur.";
-			mes "Don't mess with me.";
+			mes "烏爾教官不允許我這麼做。";
+			mes "別跟我耍花樣。";
 		}
 		else if (para_2nd02 == 1) {
-			mes "Okay, I'll give you equipment.";
-			mes "I'll give you good armor and equipment that you'll be proud of.";
+			mes "好，我給你裝備。";
+			mes "我會給你讓你引以為傲的好鎧甲和裝備。";
 			next;
-			mes "[Thorn]";
-			mes "So now, ^4d4dffmake sure that you have enough free inventory space.^000000";
+			mes "[索恩]";
+			mes "所以現在，^4d4dff請確認背包有足夠的空位。^000000";
 			next;
-			if (select( "Let me organize my inventory.", "I have free space." ) == 1) {
-				mes "[Thorn]";
-				mes "You do that.";
-				mes "Free up your inventory so that you can get the weapons, boots, and all the other equipment.";
+			if (select( "讓我整理一下我的背包。", "我有空位了。" ) == 1) {
+				mes "[索恩]";
+				mes "你去做吧。";
+				mes "清出背包空間，才能拿到武器、長靴和其他所有裝備。";
 				close;
 			}
-			mes "[Thorn]";
+			mes "[索恩]";
 			if (BaseJob == Job_Knight || BaseJob == Job_Crusader) {
 				callsub L_Select,"One-handed sword, two-handed sword or spear.",
 					1197,"Eden Group Slayer III","Two-handed Sword, Attack 200",
@@ -3973,11 +3973,11 @@ moc_para01,111,83,3	script	Blacksmith Thorn#2nd10	2_M_OLDBLSMITH,{
 			else if (Class == Job_Summoner)
 				getitem 26101,1; //P.Foxtail III
 			else {
-				mes "Hmm, you are eligible to receive equipment.";
-				mes "Yeah I understand that.";
+				mes "嗯，你有資格領取裝備了。";
+				mes "嗯，我明白了。";
 				next;
-				mes "[Thorn]";
-				mes "Hmm something went wrong though. I'm not sure what...";
+				mes "[索恩]";
+				mes "嗯，但好像出了點問題。我不太確定是什麼……";
 				close;
 			}
 			para_2nd02 = 2;
@@ -3985,41 +3985,41 @@ moc_para01,111,83,3	script	Blacksmith Thorn#2nd10	2_M_OLDBLSMITH,{
 			getitem 2571,1;// Paradise Mantle II
 			getitem 2473,1;// Paradise Boots IV
 			getitem 15031,1;// Paradise Uniform IV
-			mes "Here's your equipment.";
-			mes "I'll also give you the other gear that comes along with this set.";
+			mes "這是你的裝備。";
+			mes "我也會把這套裝備的其他配件一併給你。";
 		}
 		else if (para_2nd02 == 2) {
-			mes "You can strengthen the equipment that I gave you.";
-			mes "Weapons Expert BK is at Eden Group Headquarters and he can do that for you.";
+			mes "你可以強化我給你的裝備。";
+			mes "武器專家 BK 在伊甸園總部，他可以幫你做。";
 			next;
-			mes "[Thorn]";
-			mes "So go to him and he can make your equipment stronger.";
+			mes "[索恩]";
+			mes "去找他，他能讓你的裝備變得更強。";
 		}
 		else {
-			mes "Have you gotten your gear yet?";
-			mes "I can give you the gear but I can't strengthen it for you.";
+			mes "你已經拿到裝備了嗎？";
+			mes "我可以給你裝備，但沒辦法幫你強化。";
 			next;
-			mes "[Thorn]";
-			mes "Your armor can be strengthened by someone else.";
-			mes "I wish I could but I can't.";
+			mes "[索恩]";
+			mes "你的鎧甲可以找別人強化。";
+			mes "我很想，但我做不到。";
 		}
 	}
 	close;
 L_Select:
-	mes "Choose a weapon.";
+	mes "選擇一把武器。";
 	mes getarg(0);
-	mes "Choose from the following.";
+	mes "從以下選項中選擇。";
 	for ( .@i = 1; .@i < getargcount(); .@i += 3 ) {
 		set .@menu$, .@menu$ + getarg(.@i+1) + ":";
 		mes getarg(.@i+1)+" : "+ getarg(.@i+2);
 	}
 	next;
 	.@i = (select(.@menu$) -1) *3 +1;
-	mes "[Toren]";
+	mes "[托倫]";
 	getitem getarg(.@i),1;
 	return;
 S_Enchant:
-	mes "[Thorn]";
+	mes "[索恩]";
 	if (countitem(getarg(0)) > 0) {
 		// .@1st = rand(1,12);
 		// .@2nd = rand(1,12);
@@ -4064,20 +4064,20 @@ S_Enchant:
 			4741;// Vitality2
 		.@1st = .@bonus[ rand(1,12) ];
 		.@2nd = .@bonus[ rand(1,12) ];
-		mes "Eden Group "+ getarg(1) +"?";
+		mes "伊甸園 "+ getarg(1) +"?";
 		mes "我懂了。";
-		mes "Remember the stats that are enhanced will be random.";
-		mes "You sure you want me to enhance this?";
+		mes "記住，被強化的能力值是隨機的。";
+		mes "你確定要我強化這件嗎？";
 		next;
-		switch( select( "我改變主意了。", "Yes, enhance it." ) ) {
-			mes "[Thorn]";
+		switch( select( "我改變主意了。", "是的，強化吧。" ) ) {
+			mes "[索恩]";
 		case 1:
-			mes "You sure you don't want to enhance it?";
-			mes "It's your choice.";
+			mes "你確定不想強化它嗎？";
+			mes "由你決定。";
 			close;
 		case 2:
 			mes "我懂了。";
-			mes "Let's begin the enhancement.";
+			mes "那就開始強化吧。";
 			next;
 			specialeffect EF_REPAIRWEAPON;
 			progressbar "ffff00",3;
@@ -4087,18 +4087,18 @@ S_Enchant:
 			// setquest 7241;// Errands for Thorn timer
 			changequest 7240,7241;
 			getitem2 getarg(0),1,1,0,0,0,0,.@1st,.@2nd;						
-			mes "[Thorn]";
-			mes "Ok, seems that the enhancement went well.";
-			mes "If you don't like the result then you can come back again tomorrow.";
+			mes "[索恩]";
+			mes "好，看來強化很順利。";
+			mes "如果你不喜歡這個結果，明天可以再來。";
 			close;
 		}
 	}
-	mes "Hmm... Don't you have the "+ getarg(1) +"?";
-	mes "I don't think you have it with you.";
+	mes "嗯……你不是有 "+ getarg(1) +"?";
+	mes "我想你身上沒有那個吧。";
 	close;
 }
 
-moc_para01,112,79,3	script	Weapons Expert BK#2nd11	4_M_REPAIR,{
+moc_para01,112,79,3	script	武器專家 BK#2nd11::Weapons Expert BK#2nd11	4_M_REPAIR,{
 	setarray .@wplist[0],
 		1197,	// P_Slayer3
 		13434,	// P_Saber3
@@ -4136,12 +4136,12 @@ moc_para01,112,79,3	script	Weapons Expert BK#2nd11	4_M_REPAIR,{
 		"Eden Group Foxtail III";
 	mes "[BK]";
 	mes "發生什麼事了？";
-	mes "No way?!";
+	mes "不會吧？！";
 	next;
-	if (select( "Enhancing weapons.", "什麼？" ) == 2) {
+	if (select( "強化武器。", "什麼？" ) == 2) {
 		mes "[BK]";
 		mes "是嗎？";
-		mes "Are you asking me what I know?";
+		mes "你是在問我知道什麼嗎？";
 		next;
 		select("...??");
 		mes "[BK]";
@@ -4149,36 +4149,36 @@ moc_para01,112,79,3	script	Weapons Expert BK#2nd11	4_M_REPAIR,{
 		close;
 	}
 	mes "[BK]";
-	mes "Ah, you're here to enhance your gear.";
-	mes "Okay, shall we?";
+	mes "啊，你是來強化裝備的吧。";
+	mes "好，我們開始吧？";
 	next;
 	mes "[BK]";
 	if (para_2nd02 < 2) {
-		mes "You have to have the equipment first in order for me to do anything.";
-		mes "Didn't you get anything from Thorn yet?";
+		mes "你得先把裝備帶來，我才能做任何事。";
+		mes "你還沒從索恩那裡拿到東西嗎？";
 	}
 	else if (para_2nd02 == 2) {
 		if (para_2nd01 < 11) {
 			mes "嗯，不是。";
-			mes "I don't have permission from Instructor Ur.";
-			mes "You have to finish your training.";
+			mes "我沒有烏爾教官的許可。";
+			mes "你得先完成你的訓練。";
 			next;
 			mes "[BK]";
-			mes "Once you do that I can help you.";
-			mes "Until then I won't talk to you.";
+			mes "做完之後我就能幫你。";
+			mes "在那之前，我不會跟你說話。";
 		}
 		else {
-			mes "Okay, what weapon do you want to enhance?";
+			mes "好，你想強化哪把武器？";
 			next;
 			.@s = select(.@menu$) -1;
 			mes "[BK]";
 			if (countitem(.@wplist[.@s]) > 0) {
-				mes "Ok for the first reinforcement.";
-				mes "ATK + 3% or MATK + 3%?";
-				mes "I'll give you the option to grant this effect on the selected gear.";
+				mes "好，進行第一次強化。";
+				mes "ATK + 3% 還是 MATK + 3%？";
+				mes "我會讓你選擇要把這個效果套用在選定的裝備上。";
 				next;
 				mes "[BK]";
-				mes "You can't change your mind after so choose wisely.";
+				mes "選完之後就不能反悔了，請慎重選擇。";
 				next;
 				if (select( "ATK +3%","MATK +3%" ) == 1) {
 					.@string$ = "Ok, you've chosen to raise physical attack.";
@@ -4191,7 +4191,7 @@ moc_para01,112,79,3	script	Weapons Expert BK#2nd11	4_M_REPAIR,{
 				}
 				mes "[BK]";
 				mes .@string$;
-				mes "Would you look at that. Your weapon will now be stronger.";
+				mes "你看看。你的武器現在變強了。";
 				para_2nd03 = 1 + .@add;
 				next;
 				specialeffect EF_REPAIRWEAPON;
@@ -4200,37 +4200,37 @@ moc_para01,112,79,3	script	Weapons Expert BK#2nd11	4_M_REPAIR,{
 				delitem .@wplist[.@s],1;
 				getitem2 .@wplist[.@s],1,1,0,0,0,0,0,.@card;
 				mes "[BK]";
-				mes "Isn't it magnificent?";
-				mes "I know, I know, I'm pretty amazing!";
+				mes "是不是很厲害？";
+				mes "我知道，我知道，我真是太厲害了！";
 			}
 			else {
 				mes "你在開玩笑嗎？";
-				mes "You don't seem to have that weapon in your possession.";
+				mes "你身上好像沒有那把武器。";
 			}
 		}
 	}
 	else if (para_2nd02 == 3) {
 		if (para_2nd01 < 16) {
-			mes "Hmm, I'm not sure you're ready.";
-			mes "All 3 steps of Instructor Ur's missions have to be completed first.";
+			mes "嗯，我不確定你準備好了沒有。";
+			mes "必須先完成烏爾教官任務的全部三個步驟。";
 			next;
 			mes "[BK]";
-			mes "You get what I'm saying?";
-			mes "Finish the third mission from Instructor Ur.";
+			mes "你懂我的意思吧？";
+			mes "完成烏爾教官的第三個任務。";
 		}
 		else {
-			mes "Good. So you previously received an addition to Atk or Matk.";
-			mes "For this option you can choose from Brute, Plant, Fish, Dragon, Increased Heal.";
+			mes "很好。所以你之前已經獲得了攻擊或魔攻的加成。";
+			mes "這個選項你可以從猛獸、植物、魚類、龍族和治癒術效果提升中選擇。";
 			next;
 			mes "[BK]";
-			mes "Once you've chosen you can't change your mind again.";
-			mes "But your weapon will increase damage to the type of enhancement you pick.";
+			mes "選定之後就不能再改變主意了。";
+			mes "但你的武器會對你選定的類型增加傷害。";
 			next;
 			mes "[BK]";
-			mes "Basically I will add a random monster card with the property type that you choose.";
+			mes "簡單來說，我會加入一張你所選種族類型的隨機怪物卡。";
 			mes "祝你好運！";
 			next;
-			switch( select( "Brute Type", "Plant Type", "Insect Type", "Fish Type", "Dragon Type", "Increased Heal" ) ) {
+			switch( select( "猛獸型", "植物型", "昆蟲型", "魚類型", "龍族型", "治癒術效果提升" ) ) {
 			case 1:
 				setarray .@arg[0],4060,4472,111;// Goblin_Card, Bradium_Goram_Card
 				.@type$ = "Brute";
@@ -4258,9 +4258,9 @@ moc_para01,112,79,3	script	Weapons Expert BK#2nd11	4_M_REPAIR,{
 			for ( .@i = 0; .@i < .@wplist_size; .@i++ ) {
 				if (countitem(.@wplist[.@i]) > 0) {
 					if (.@arg[0] == 4805)
-						mes "Good. Your weapon will now increase Heal effectiveness.";
+						mes "很好。你的武器現在會提升治癒術的效果。";
 					else
-						mes "Good. Your weapon will increase attacks to "+ .@type$ +" type monsters.";
+						mes "很好。你的武器會增加對 "+ .@type$ +" 型怪物的攻擊傷害。";
 					next;
 					specialeffect EF_REPAIRWEAPON;
 					progressbar "ffff00",3;
@@ -4275,38 +4275,38 @@ moc_para01,112,79,3	script	Weapons Expert BK#2nd11	4_M_REPAIR,{
 						getitem2 .@wplist[.@i],1,1,0,0,0,0,.@arg[1],4806;
 					}
 					mes "[BK]";
-					mes "Isn't it magnificent?";
-					mes "I know, I know, I'm pretty amazing!";
+					mes "是不是很厲害？";
+					mes "我知道，我知道，我真是太厲害了！";
 					close;
 				}
 			}
-			mes "Sorry, but it doesn't seem like you have a weapon that can be enhanced.";
-			mes "How did this happen?";
+			mes "抱歉，你好像沒有可以強化的武器。";
+			mes "這是怎麼回事？";
 			close;
 		}
 	}
 	else if (para_2nd02 == 4) {
 		if (para_2nd01 < 30) {
-			mes "Instructor Ur has a lot of training missions doesn't he?";
-			mes "There's only one more stage.";
-			mes "Reach the final stage of training.";
+			mes "烏爾教官的訓練任務還真多，不是嗎？";
+			mes "只剩最後一個階段了。";
+			mes "達到最後的訓練階段。";
 		}
 		else {
-			mes "Okay, this is the last step.";
-			mes "I will make your weapon even more enhanced.";
+			mes "好，這是最後一步了。";
+			mes "我會讓你的武器變得更強。";
 			next;
 			mes "[BK]";
-			mes "The card added from the previous step will be doubled.";
-			mes "And if you have a healing weapon it will increase it's healing efficiency.";
+			mes "上一步加入的卡片效果會加倍。";
+			mes "如果你用的是治療武器，還會提升它的治療效率。";
 			mes "明白了嗎？";
 			next;
 			mes "[BK]";
-			mes "Ok what weapon did you have now?";
+			mes "好，你現在拿的是哪把武器？";
 			next;
 			.@s = select(.@menu$) -1;
 			mes "[BK]";
 			if (countitem(.@wplist[.@s]) > 0) {
-				mes "Doubling the strength of your bonus stat.";
+				mes "加倍你的能力加成強度。";
 				next;
 				specialeffect EF_REPAIRWEAPON;
 				progressbar "ffff00",3;
@@ -4337,26 +4337,26 @@ moc_para01,112,79,3	script	Weapons Expert BK#2nd11	4_M_REPAIR,{
 				else if (para_2nd03 == 261)
 					getitem2 .@wplist[.@s],1,1,0,0,0,4805,4805,4806;// Heal_Amount2, Heal_Amount2, Matk3
 				mes "[BK]";
-				mes "Isn't it magnificent?";
-				mes "I know, I know, I'm pretty amazing!";
+				mes "是不是很厲害？";
+				mes "我知道，我知道，我真是太厲害了！";
 			}
 			else {
-				mes "Hey, you think I'm joking?";
-				mes "Do you have the weapons or not?";
+				mes "喂，你以為我在開玩笑嗎？";
+				mes "你到底有沒有武器？";
 			}
 		}
 	}
 	else if (para_2nd02 > 4) {
-		mes "How do you like your enhanced weapon?";
-		mes "Hopefully it has helped you.";
+		mes "你對強化後的武器滿意嗎？";
+		mes "希望對你有幫助。";
 		next;
 		mes "[BK]";
-		mes "I've given you the peak of your weapon's efficiency.";
-		mes "Weapons aren't the only things that need strength, though, don't you agree?";
+		mes "我已經把你武器的效率發揮到極致了。";
+		mes "不過，需要強化的可不只有武器吧，你不這麼認為嗎？";
 		next;
 		mes "[BK]";
-		mes "Come on admit it.";
-		mes "Thorn gave inspiration and I intend on providing strong equipment, that's how to live life.";
+		mes "承認吧。";
+		mes "索恩給了我靈感，而我打算提供強力的裝備，這就是生存之道。";
 		mes "哈哈哈！";
 	}
 	close;
@@ -4367,17 +4367,17 @@ sec_in02,25,33,4	script	助手#para_suvquest::Assistant#para_suvquest	422,{
 	mes "密碼";
 	next;
 	if (callfunc("F_GM_NPC",1854,0) == 1) {
-		mes "Please select the variable you want to modify.";
+		mes "請選擇你想修改的變數。";
 		next;
 		set .@var, select("para_suv01:para_suv02");
-		mes "Enter the modified value";
+		mes "輸入修改後的數值";
 		next;
 		input .@input,0,9999;
-		mes "Value of para_suv0"+.@var+" has been changed to "+.@input+".";
+		mes "para_suv0 的值"+.@var+" 已被改為 "+.@input+".";
 		setd "para_suv0"+.@var,.@input;
 		close;
 	} else {
-		mes "......meow wee.";
+		mes "……喵嗚咿。";
 		close;
 	}
 }
