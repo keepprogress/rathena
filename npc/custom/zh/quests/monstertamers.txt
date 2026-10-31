@@ -19,423 +19,423 @@
 //= 1.5 Moved Izlude NPC to pre-re/re paths.
 //============================================================
 
-alberta_in,173,76,4	script	Monster Tamer#alb	125,{
-	mes "[Iwado]";
-	mes "This is the height of the era of Monster Taming! Don't you feel the need to gather monster items to be able to connect and to communicate with the Cute Monsters!?";
+alberta_in,173,76,4	script	怪物馴養師#alb::Monster Tamer#alb	125,{
+	mes "[伊瓦多]";
+	mes "這是怪物馴養的全盛時代！難道你不覺得，為了能與可愛的怪物們溝通交流，有必要蒐集怪物道具嗎！？";
 	next;
-	switch(select("^3355FF' Monster Taming '^000000 ?:Order ^3355FF' Monster Juice '^000000:Order ^3355FF' Singing Flower '^000000:Order ^3355FF' Wild Flower '^000000:Cancel")) {
+	switch(select("^3355FF' 怪物馴養 '^000000 ？:製作 ^3355FF' 魔物飲料 '^000000:製作 ^3355FF' 呢喃花 '^000000:製作 ^3355FF' 野生花 '^000000:取消")) {
 	case 1:
-		mes "[Iwado]";
-		mes "These monster items, necessary to communicate with monsters, are a must have! We, the members of the Monster Tamer Guild, have a very reasonable offer.";
+		mes "[伊瓦多]";
+		mes "與怪物溝通必不可少的這些怪物道具，你絕對需要！我們怪物馴養師公會，有個非常合理的提議。";
 		next;
-		mes "[Iwado]";
-		mes "We have a system that allows you";
-		mes "to get your hands on these";
-		mes "cool items without burden!";
-		mes "Monster Juice !";
-		mes "Singing Flower !";
-		mes "Aaand....Wild Flower !";
+		mes "[伊瓦多]";
+		mes "我們有個制度，能讓你";
+		mes "輕鬆取得這些";
+		mes "很酷的道具，毫不費力！";
+		mes "魔物飲料！";
+		mes "呢喃花！";
+		mes "接下來是……野生花！";
 		next;
-		mes "[Iwado]";
-		mes "To make";
-		mes "Monster Juice, you need";
-		mes "^3355FF1 Animal Gore^000000 and";
-		mes "^3355FF2 Apple^000000.";
+		mes "[伊瓦多]";
+		mes "要製作";
+		mes "魔物飲料，需要";
+		mes "^3355FF1 個家畜血^000000 和";
+		mes "^3355FF2 個蘋果^000000。";
 		next;
-		mes "[Iwado]";
-		mes "For 1 Singing Flower,";
-		mes "you will need";
-		mes "^3355FF1 Singing Plant^000000.";
+		mes "[伊瓦多]";
+		mes "製作 1 朵呢喃花，";
+		mes "你需要";
+		mes "^3355FF1 個哀唱草^000000。";
 		next;
-		mes "[Iwado]";
-		mes "If you want me to make";
-		mes "1 Wild Flower,";
-		mes "just give me";
-		mes "^3355FF1 Fancy Flower^000000 and";
-		mes "^3355FF1 Clover^000000.";
+		mes "[伊瓦多]";
+		mes "如果你想要我製作";
+		mes "1 朵野生花，";
+		mes "只要給我";
+		mes "^3355FF1 個花朵頭飾^000000 和";
+		mes "^3355FF1 個三葉幸運草^000000。";
 		close;
 	case 2:
-		mes "[Iwado]";
-		mes "This is an item that is far beyond";
-		mes "anything we humans can drink!";
-		mes "Its name? ^3355FFMonster Juice^000000 !!";
-		mes "The extremely sour taste";
-		mes "is perfect for monsters. . .";
+		mes "[伊瓦多]";
+		mes "這是一種遠超";
+		mes "人類所能飲用的任何東西！";
+		mes "它的名字是？^3355FF魔物飲料^000000！！";
+		mes "極度酸澀的味道";
+		mes "正適合怪物們享用……";
 		next;
 		if ((countitem(702) > 0) && (countitem(512) > 1)) {
-			mes "[Iwado]";
-			mes "Oh ! You have all the items to make 1 Monster Juice! Good, good! With all my pride as a monster tamer, I will make one for you right now.";
+			mes "[伊瓦多]";
+			mes "喔！你已經有製作 1 瓶魔物飲料所需的全部材料了！很好，很好！我身為怪物馴養師，以我的驕傲發誓，現在就為你做一瓶。";
 			next;
-			mes "[Iwado]";
-			mes "Got to twist these apples...";
-			mes "Just right...";
+			mes "[伊瓦多]";
+			mes "得把這些蘋果扭開……";
+			mes "正好……";
 			next;
-			mes "^3355FF*Splash splash swoosh swhoosh splash splash*^000000";
+			mes "^3355FF*嘩啦嘩啦 嗖嗖 嘩啦嘩啦*^000000";
 			next;
-			mes "[Iwado]";
-			mes "Okay. All done!";
-			mes "Please take it for the";
-			mes "cute monster you";
-			mes "are raising.";
-			mes "Monster Juice!";
+			mes "[伊瓦多]";
+			mes "好了，完成了！";
+			mes "請把這個拿去給";
+			mes "你飼養的可愛";
+			mes "怪物吧。";
+			mes "魔物飲料！";
 			delitem 512,2;  //Apple
 			delitem 702,1;  //Animal_Blood
 			getitem 626,1; // Monster_Juice
 			close;
 		}
 		else {
-			mes "[Iwado]";
-			mes "For the monster owner";
-			mes "that loves to use monster juice...";
-			mes "I have mastered the recipe for Monster Juice!";
+			mes "[伊瓦多]";
+			mes "給";
+			mes "愛用魔物飲料的怪物飼主……";
+			mes "我已經精通魔物飲料的配方了！";
 			next;
-			mes "[Iwado]";
+			mes "[伊瓦多]";
 			mes "如果您帶來";
-			mes "^3355FF1 Animal Gore^000000 and";
-			mes "^3355FF2 Apple^000000";
-			mes "With all my pride as a monster tamer, I will make it for you!";
+			mes "^3355FF1 個家畜血^000000 和";
+			mes "^3355FF2 個蘋果^000000";
+			mes "我身為怪物馴養師，以我的驕傲發誓，一定會為你做出來！";
 			close;
 		}
 	case 3:
-		mes "[Iwado]";
-		mes "A flower with a song that is";
-		mes "far beyond human comprehension!";
-		mes "Its name? ^3355FFSinging Flower^000000!!";
-		mes "A scent that makes you dizzy with pleasure. A perfect item for monsters...";
+		mes "[伊瓦多]";
+		mes "一朵歌聲";
+		mes "遠超人類理解的花！";
+		mes "它的名字是？^3355FF呢喃花^000000！！";
+		mes "散發的香氣會讓人陶醉得頭暈目眩。是怪物們的完美道具……";
 		next;
 		if (countitem(707) > 0) {
-			mes "[Iwado]";
-			mes "Oh! You have all the items necessary to make 1 Singing Flower!! Good, good! With all my pride as a monster tamer, I will make it for you right away.";
+			mes "[伊瓦多]";
+			mes "喔！你已經有製作 1 朵呢喃花所需的全部材料了！！很好，很好！我身為怪物馴養師，以我的驕傲發誓，馬上為你做出來。";
 			next;
-			mes "[Iwado]";
-			mes "Got to...";
-			mes "Twist this...";
-			mes "Just right...";
+			mes "[伊瓦多]";
+			mes "得要……";
+			mes "扭開這個……";
+			mes "正好……";
 			next;
-			mes "^3355FF*Crumble crumble scratch scratch*^000000";
+			mes "^3355FF*喀啦喀啦 刷刷刷*^000000";
 			next;
-			mes "[Iwado]";
-			mes "Okay. All done!";
-			mes "Please take it for the";
-			mes "cute monster you";
-			mes "are raising.";
-			mes "Singing Flower!";
+			mes "[伊瓦多]";
+			mes "好了，完成了！";
+			mes "請把這個拿去給";
+			mes "你飼養的可愛";
+			mes "怪物吧。";
+			mes "呢喃花！";
 			delitem 707,1;  //Singing_Plant
 			getitem 629,1; // Singing_Flower
 			close;
 		}
 		else {
-			mes "[Iwado]";
-			mes "For the monster owner";
-			mes "that loves to use Singing Flower...";
-			mes "I provide a way to make";
-			mes "1 Singing Flower!";
+			mes "[伊瓦多]";
+			mes "給";
+			mes "愛用呢喃花的怪物飼主……";
+			mes "我提供一種製作方法，";
+			mes "製作 1 朵呢喃花！";
 			next;
-			mes "[Iwado]";
+			mes "[伊瓦多]";
 			mes "如果您帶來";
-			mes "^3355FF1 Singing Plant ^000000,";
-			mes "With all my pride as a monster tamer, I will make one for you right away!";
+			mes "^3355FF1 個哀唱草 ^000000，";
+			mes "我身為怪物馴養師，以我的驕傲發誓，馬上為你做一個！";
 			close;
 		}
 	case 4:
-		mes "[Iwado]";
-		mes "This is a flower that is far beyond what humans can gaze at! Its name? ^3355FFWild Flower^000000 !! A troublesome design, but perfect for monsters!";
+		mes "[伊瓦多]";
+		mes "這是一種遠超人類所能凝視的花！它的名字是？^3355FF野生花^000000 ！！設計上雖然麻煩，但對怪物來說是完美的！";
 		next;
 		if ((countitem(2207) > 0) && (countitem(705) > 0)) {
-			mes "[Iwado]";
-			mes "Oh! You have all the items necessary to make 1 Wild Flower! Good! Good! With all my pride as a monster tamer, I will make one for you right away.";
+			mes "[伊瓦多]";
+			mes "喔！你已經有製作 1 朵野生花所需的全部材料了！很好！很好！我身為怪物馴養師，以我的驕傲發誓，馬上為你做一朵。";
 			next;
-			mes "[IWado]";
-			mes "Got to twist this...";
-			mes "Just right...";
+			mes "[伊瓦多]";
+			mes "得把這個扭開……";
+			mes "正好……";
 			next;
-			mes "^3355FF*Crumble crumble rip rip*^000000";
+			mes "^3355FF*喀啦喀啦 撕撕*^000000";
 			next;
-			mes "[Iwado]";
-			mes "Okay. All done!";
-			mes "Please take it for the";
-			mes "cute monsters you";
-			mes "are raising.";
-			mes "Wild Flower!";
+			mes "[伊瓦多]";
+			mes "好了，完成了！";
+			mes "請把這個拿去給";
+			mes "你飼養的可愛怪物";
+			mes "怪物吧。";
+			mes "野生花！";
 			delitem 2207,1;  //Fancy_Flower
 			delitem 705,1;  //Clover
 			getitem 10009,1; // Wild_Flower
 			close;
 		}
 		else {
-			mes "[Iwado]";
-			mes "For the monster owner";
-			mes "that loves to use Wild Flower...";
-			mes "I provide a way to make";
-			mes "1 Wild Flower!";
+			mes "[伊瓦多]";
+			mes "給";
+			mes "愛用野生花的怪物飼主……";
+			mes "我提供一種製作方法，";
+			mes "1 朵野生花！";
 			next;
-			mes "[Iwado]";
-			mes "^3355FF1 Fancy Flower^000000 and";
-			mes "^3355FF1 Clover^000000";
-			mes "is all I need! If you bring those to me, I will make one for you with all my pride as a monster tamer!";
+			mes "[伊瓦多]";
+			mes "^3355FF1 個花朵頭飾^000000 和";
+			mes "^3355FF1 個三葉幸運草^000000";
+			mes "就是我需要的全部！如果你把這些帶來給我，我會以怪物馴養師的驕傲，為你做一個！";
 			close;
 		}
 	case 5:
-		mes "[Iwado]";
+		mes "[伊瓦多]";
 		mes "啊……！";
-		mes "You must have not decided which Monster you want to raise.";
+		mes "你似乎還沒決定要飼養哪一種怪物。";
 		next;
-		mes "[Iwado]";
-		mes "Definitely not a decision to be made carelessly! Your pet monster will accompany you throughout your life. Please take your time and return when you have decided.";
+		mes "[伊瓦多]";
+		mes "這可不是能隨便做的決定！你的寵物怪物會陪伴你一生。請慢慢考慮，決定之後再回來。";
 		close;
 	}
 }
 
 
-aldeba_in,168,175,4	script	Monster Tamer#alde	125,{
-	mes "[YuU]";
-	mes "You must be looking for monster items! In making monster items, there is no monster tamer in Rune-Midgarts that's better than me.";
+aldeba_in,168,175,4	script	怪物馴養師#alde::Monster Tamer#alde	125,{
+	mes "[尤烏]";
+	mes "你是在找怪物道具吧！論製作怪物道具，整個盧恩-米德嘉茲大陸上，沒有哪個怪物馴養師比我更厲害。";
 	next;
-	mes "[YuU]";
-	mes "I can make all sorts of neat things for your Cute Pet monster.";
-	mes "Just ask~";
+	mes "[尤烏]";
+	mes "我能為你可愛的寵物怪物製作各式各樣的好東西。";
+	mes "儘管來找我吧～";
 	next;
-	switch(select("^3355FF' Monster Taming '^000000?:Order ^3355FF' Skull Helm '^000000:Order ^3355FF' Monster Oxygen Mask '^000000:Order ^3355FF' Silk Ribbon '^000000:Order ^3355FF' Stellar Hairpin '^000000:Order ^3355FF' Tiny Egg Shell '^000000:Order ^3355FF' Rocker Glasses '^000000:Cancel")) {
+	switch(select("^3355FF' 怪物馴養 '^000000？:製作 ^3355FF' 牛角骨盔 '^000000:製作 ^3355FF' 寵物防毒面具 '^000000:製作 ^3355FF' 寵物髮帶 '^000000:製作 ^3355FF' 寵物髮夾 '^000000:製作 ^3355FF' 寵物蛋殼帽 '^000000:製作 ^3355FF' 蝗蟲眼鏡 '^000000:取消")) {
 	case 1:
-		mes "[YuU]";
-		mes "The monster items that are";
-		mes "necessary to communicate";
-		mes "with monsters...";
-		mes "These are a must have!";
-		mes "We Monster Tamer guild members'";
-		mes "have a very reasonable offer.";
+		mes "[尤烏]";
+		mes "能與怪物溝通、";
+		mes "不可或缺的怪物道具，";
+		mes "絕對少不了……";
+		mes "這些絕對少不了！";
+		mes "我們怪物馴養師公會的成員";
+		mes "提出了非常合理的方案。";
 		next;
-		mes "[YuU]";
-		mes "We provide a system that allows you to get your hands on these cool items with less of the hassle!";
-		mes "Silk Ribbon !";
-		mes "Monster Oxygen Mask !";
-		mes "Skull Helm !";
+		mes "[尤烏]";
+		mes "我們提供一套制度，讓你不必那麼費事，就能取得這些很酷的道具！";
+		mes "寵物髮帶！";
+		mes "寵物防毒面具！";
+		mes "牛角骨盔！";
 		next;
-		mes "[YuU]";
-		mes "Stellar Hairpin !";
-		mes "Tiny Egg Shell !!";
-		mes "Rocker Glasses !!!";
+		mes "[尤烏]";
+		mes "寵物髮夾！";
+		mes "寵物蛋殼帽！！";
+		mes "蝗蟲眼鏡！！！";
 		next;
-		mes "[YuU]";
-		mes "1 Skull Helm requires";
-		mes "1 ^3355FFBone Helm^000000";
+		mes "[尤烏]";
+		mes "1 個牛角骨盔需要";
+		mes "1 個^3355FF骨製頭盔^000000";
 		next;
-		mes "[YuU]";
-		mes "1 Monster Oxygen Mask requires";
-		mes "1 ^3355FFOxygen Mask^000000.";
+		mes "[尤烏]";
+		mes "1 個寵物防毒面具需要";
+		mes "1 個^3355FF氧氣罩^000000。";
 		next;
-		mes "[YuU]";
-		mes "1 Silk Ribbon requires";
-		mes "1 ^3355FFRibbon^000000.";
+		mes "[尤烏]";
+		mes "1 個寵物髮帶需要";
+		mes "1 個^3355FF紫蝶髮帶^000000。";
 		next;
-		mes "[YuU]";
-		mes "1 Stellar Hairpin requires";
-		mes "1 ^3355FFStellar^000000.";
+		mes "[尤烏]";
+		mes "1 個寵物髮夾需要";
+		mes "1 個^3355FF星星髮夾^000000。";
 		next;
-		mes "[YuU]";
-		mes "1 Tiny Egg Shell requires";
-		mes "1 ^3355FFEgg Shell^000000.";
+		mes "[尤烏]";
+		mes "1 個寵物蛋殼帽需要";
+		mes "1 個^3355FF蛋殼帽^000000。";
 		next;
-		mes "[YuU]";
-		mes "1 Rocker Glassess requires";
+		mes "[尤烏]";
+		mes "1 副蝗蟲眼鏡需要";
 		mes "^3355FF400 Zeny^000000,";
-		mes "2 ^3355FFZargon^000000 and";
-		mes "1 ^3355FFRibbon^000000. ";
+		mes "2 個^3355FF剎勒空結晶^000000 和";
+		mes "1 個^3355FF紫蝶髮帶^000000。 ";
 		next;
-		mes "[YuU]";
-		mes "Try your best to find these items so that you can raise a Cute Monster! Good luck!";
+		mes "[尤烏]";
+		mes "請務必找齊這些道具，好讓你能飼養可愛的怪物！祝你好運！";
 		close;
 	case 2:
-		mes "[YuU]";
-		mes "This is an item far beyond what humans can wear! Its name? ^3355FFSkull Helm^000000! Disgusting on humans, but cute on monsters.";
+		mes "[尤烏]";
+		mes "這是一件遠超人類所能穿戴的道具！它的名字是？^3355FF牛角骨盔^000000！穿在人類身上很噁心，但穿在怪物身上很可愛。";
 		next;
 		if (countitem(5017) > 0) {
-			mes "[YuU]";
-			mes "Oh! You have all the items necessary to make Skull Helm! Good, good! With all my pride as a monster tamer, I will make it for you right away.";
+			mes "[尤烏]";
+			mes "喔！你已經有製作牛角骨盔所需的全部材料了！很好，很好！我身為怪物馴養師，以我的驕傲發誓，馬上為你做。";
 			next;
-			mes "[YuU]";
-			mes "Got to rub";
-			mes "this Bone Helm";
-			mes "just right...";
+			mes "[尤烏]";
+			mes "得要把";
+			mes "這個骨製頭盔";
+			mes "剛剛好……";
 			next;
-			mes "[YuU]";
-			mes "Okay. All done!";
-			mes "Please take this for";
-			mes "the cute monster you";
-			mes "are raising.";
-			mes "Skull Helm!";
+			mes "[尤烏]";
+			mes "好了，完成了！";
+			mes "請把這個拿去給";
+			mes "你飼養的可愛怪物";
+			mes "怪物吧。";
+			mes "牛角骨盔！";
 			delitem 5017,1;  //Bone_Helm
 			getitem 10001,1; // Skull_Helm
 			close;
 		}
 		else {
-			mes "[YuU]";
-			mes "For the monster owner that loves to spoil his or her monster, we provide one way to make a Skull Helm.";
+			mes "[尤烏]";
+			mes "給喜歡寵愛自己怪物的飼主，我們提供一種製作牛角骨盔的方法。";
 			next;
-			mes "[YuU]";
-			mes "Just bring me...";
-			mes "^3355FF1 Bone Helm^000000!";
-			mes "With all my pride as a monster tamer, I will make it for you!";
+			mes "[尤烏]";
+			mes "只要帶來給我……";
+			mes "^3355FF1 個骨製頭盔^000000！";
+			mes "我身為怪物馴養師，以我的驕傲發誓，一定會為你做出來！";
 			close;
 		}
 	case 3:
-		mes "[YuU]";
-		mes "This item is far beyond what humans can wear. Its name? ^3355FFMonster Oxygen Mask^000000! Show your monster that you care with this special gift.";
+		mes "[尤烏]";
+		mes "這件道具遠超人類所能穿戴的範圍。它的名字是？^3355FF寵物防毒面具^000000！用這份特別的禮物，向你的怪物表達你的關愛吧。";
 		next;
 		if (countitem(5004) > 0) {
-			mes "[YuU]";
-			mes "Oh! You have all the items necessary to make 1 Monster Oxygen Mask! Good, Good! With all my pride as a monster tamer, I will make it for you right away.";
+			mes "[尤烏]";
+			mes "喔！你已經有製作 1 個寵物防毒面具所需的全部材料了！很好，很好！我身為怪物馴養師，以我的驕傲發誓，馬上為你做。";
 			next;
-			mes "[YuU]";
-			mes "Got to pull apart";
-			mes "this Oxygen Mask";
-			mes "just right...";
+			mes "[尤烏]";
+			mes "得要把";
+			mes "這個氧氣罩拆開……";
+			mes "剛剛好……";
 			next;
-			mes "^3355FF*Flip flop... Zowie!*^000000";
+			mes "^3355FF*啪嗒啪嗒……咻！*^000000";
 			next;
-			mes "[YuU]";
-			mes "Okay. All done.";
-			mes "Please take it for";
-			mes "the cute monster you";
-			mes "are raising...";
-			mes "Monster Oxygen Mask!";
+			mes "[尤烏]";
+			mes "好了，完成了。";
+			mes "請把它拿去給";
+			mes "你飼養的可愛怪物";
+			mes "你飼養的怪物……";
+			mes "寵物防毒面具！";
 			delitem 5004,1;  //Oxygen_Mask
 			getitem 10002,1; // Monster_Oxygen_Mask
 			close;
 		}
 		else {
-			mes "[YuU]";
-			mes "For the monster owner that wants to pamper his or her monster with its very own breathing apparatus, we provide a way to create 1 Monster Oxygen Mask!";
+			mes "[尤烏]";
+			mes "給想用專屬呼吸裝置寵愛自己怪物的飼主，我們提供一種製作 1 個寵物防毒面具的方法！";
 			next;
-			mes "[YuU]";
-			mes "Bring me...";
-			mes "^3355FF1 Oxygen Mask^000000.";
-			mes "With all my pride as a monster tamer, I will make it for you right away!";
+			mes "[尤烏]";
+			mes "帶來給我……";
+			mes "^3355FF1 個氧氣罩^000000。";
+			mes "我身為怪物馴養師，以我的驕傲發誓，馬上為你做！";
 			close;
 		}
 	case 4:
-		mes "[YuU]";
-		mes "This is not an item that a normal human would dare to wear! Its name? ^3355FFSilk Ribbon^000000! Its perfect for monsters!";
+		mes "[尤烏]";
+		mes "這是一般人類絕不敢戴的道具！它的名字是？^3355FF寵物髮帶^000000！對怪物來說再完美不過了！";
 		next;
 		if (countitem(2208) > 0) {
-			mes "[YuU]";
-			mes "Oh! You have all the items necessary to make 1 Silk Ribbon! Good, good! With all my pride as a monster tamer, I will make it for you right away!";
+			mes "[尤烏]";
+			mes "喔！你已經有製作 1 個寵物髮帶所需的全部材料了！很好，很好！我身為怪物馴養師，以我的驕傲發誓，馬上為你做！";
 			next;
-			mes "[YuU]";
-			mes "Got to unravel";
-			mes "this ribbon";
-			mes "just right...";
+			mes "[尤烏]";
+			mes "得要拆開";
+			mes "這條髮帶";
+			mes "剛剛好……";
 			next;
-			mes "[YuU]";
-			mes "Okay. All done.";
-			mes "Please take it for";
-			mes "the cute monster you";
-			mes "are raising.";
-			mes "Silk Ribbon!";
+			mes "[尤烏]";
+			mes "好了，完成了。";
+			mes "請把它拿去給";
+			mes "你飼養的可愛怪物";
+			mes "怪物吧。";
+			mes "寵物髮帶！";
 			delitem 2208,1;  //Ribbon
 			getitem 10007,1; // Silk_Ribbon
 			close;
 		}
 		else {
-			mes "[YuU]";
-			mes "For the monster owner that is fond of elegantly dressing their pets, we provide a way to create 1 Silk Ribbon!";
+			mes "[尤烏]";
+			mes "給喜歡為寵物打扮得優雅十足的飼主，我們提供一種製作 1 個寵物髮帶的方法！";
 			next;
-			mes "[YuU]";
-			mes "Just bring me...";
-			mes "^3355FF1 Ribbon^000000!";
-			mes "with all my pride as a monster tamer, I will make it for you!";
+			mes "[尤烏]";
+			mes "只要帶來給我……";
+			mes "^3355FF1 個紫蝶髮帶^000000！";
+			mes "我身為怪物馴養師，以我的驕傲發誓，一定為你做出來！";
 			close;
 		}
 	case 5:
-		mes "[YuU]";
-		mes "This is an item far beyond the fashion sense of humans! Its name? ^3355FFStellar Hairpin^000000! It's dangerous for humans to wear, but fashionable of monsters.";
+		mes "[尤烏]";
+		mes "這是一件遠超人類時尚感的道具！它的名字是？^3355FF寵物髮夾^000000！人類戴上很危險，但對怪物來說卻很時尚。";
 		next;
 		if (countitem(2294) > 0) {
-			mes "[YuU]";
-			mes "Oh! You have all the items necessary to make 1 Stellar! Good, good! With all my pride as a monster tamer, I will make it for you right away.";
+			mes "[尤烏]";
+			mes "喔！你已經有製作 1 個星星髮夾所需的全部材料了！很好，很好！我身為怪物馴養師，以我的驕傲發誓，馬上為你做。";
 			next;
-			mes "[YuU]";
-			mes "Now, if I can";
-			mes "only peel this";
-			mes "without breaking it...";
+			mes "[尤烏]";
+			mes "現在，只要我能";
+			mes "把這個剝開";
+			mes "而不把它弄壞……";
 			next;
-			mes "^3355FF*Shine shine*^000000";
+			mes "^3355FF*閃閃發光*^000000";
 			next;
-			mes "[YuU]";
-			mes "Okay. All done.";
-			mes "Please take it for";
-			mes "the cute monster you";
-			mes "are raising";
-			mes "Stellar Hairpin!";
+			mes "[尤烏]";
+			mes "好了，完成了。";
+			mes "請把它拿去給";
+			mes "你飼養的可愛怪物";
+			mes "你飼養的";
+			mes "寵物髮夾！";
 			delitem 2294,1;  // Stellar
 			getitem 10011,1; // Stellar_Hairpin
 			close;
 		}
 		else {
-			mes "[YuU]";
-			mes "For the monster owner that want the best for their cute pet, we provide a wait to create 1 Stellar Hairpin!";
+			mes "[尤烏]";
+			mes "給一心為可愛寵物著想的飼主，我們提供一種製作 1 個寵物髮夾的方法！";
 			next;
-			mes "[YuU]";
-			mes "Just bring me...";
-			mes "^3355FF 1 Stellar !^000000";
-			mes "with all my pride as a monster tamer, I will make it for you!";
+			mes "[尤烏]";
+			mes "只要帶來給我……";
+			mes "^3355FF 1 個星星髮夾！^000000";
+			mes "我身為怪物馴養師，以我的驕傲發誓，一定為你做出來！";
 			close;
 		}
 	case 6:
-		mes "[YuU]";
-		mes "This is far beyond what the headwear that humans can don. Its name? ^3355FFTiny Egg Shell^000000! It has the shine of marble and the glow of youth!";
+		mes "[尤烏]";
+		mes "這遠超人類所能戴上的頭飾。它的名字是？^3355FF寵物蛋殼帽^000000！它有大理石般的光澤，還有青春的光輝！";
 		next;
 		if (countitem(5015) > 0) {
-			mes "[YuU]";
-			mes "Oh! You have all the items necessary to make 1 Tiny Egg Shell! Good, good! With all my pride as a monster tamer, I will make it for you right away!";
+			mes "[尤烏]";
+			mes "喔！你已經有製作 1 個寵物蛋殼帽所需的全部材料了！很好，很好！我身為怪物馴養師，以我的驕傲發誓，馬上為你做！";
 			next;
-			mes "[YuU]";
-			mes "Got to";
-			mes "shatter this";
-			mes "just right...";
+			mes "[尤烏]";
+			mes "得要";
+			mes "把這個敲碎";
+			mes "剛剛好……";
 			next;
-			mes "^3355FF*Scrub scrub squeeze squeeze*^000000";
+			mes "^3355FF*刷刷 擠擠*^000000";
 			next;
-			mes "[YuU]";
-			mes "Okay. All done.";
-			mes "Please take it for";
-			mes "the cute monster you";
-			mes "are raising";
-			mes "Tiny Egg Shell!";
+			mes "[尤烏]";
+			mes "好了，完成了。";
+			mes "請把它拿去給";
+			mes "你飼養的可愛怪物";
+			mes "你飼養的";
+			mes "寵物蛋殼帽！";
 			delitem 5015,1;  //Egg_Shell
 			getitem 10012,1; // Tiny_Egg_Shell
 			close;
 		}
 		else {
-			mes "[YuU]";
-			mes "For the monster owner that is fond of eggs and fonder of egg shells, we provide a way to create 1 Tiny Egg Shell!";
+			mes "[尤烏]";
+			mes "給喜歡蛋、更喜歡蛋殼的飼主，我們提供一種製作 1 個寵物蛋殼帽的方法！";
 			next;
-			mes "[YuU]";
-			mes "Just bring me...";
-			mes "^3355FF1 Tiny Egg Shell^000000!";
-			mes "with all my pride as a monster tamer, I will make it for you!";
+			mes "[尤烏]";
+			mes "只要帶來給我……";
+			mes "^3355FF1 個寵物蛋殼帽^000000！";
+			mes "我身為怪物馴養師，以我的驕傲發誓，一定為你做出來！";
 			close;
 		}
 	case 7:
-		mes "[YuU]";
-		mes "Ah yes, this is eyewear far beyond the glasses of normal humans. Its name? ^3355FFRocker Glasses^000000! Suave eyewear for suave monsters~";
+		mes "[尤烏]";
+		mes "啊，沒錯，這是遠超一般人類眼鏡的眼飾。它的名字是？^3355FF蝗蟲眼鏡^000000！瀟灑的怪物，就要戴瀟灑的眼鏡～";
 		next;
 		if ((countitem(912) > 1) && (countitem(2208) > 0) && (Zeny > 399)) {
-			mes "[YuU]";
-			mes "Oh! You have all the items necessary to make 1 Rocker Glasses! Good, good! With all my pride as a monster tamer, I will make it for you right away!";
+			mes "[尤烏]";
+			mes "喔！你已經有製作 1 副蝗蟲眼鏡所需的全部材料了！很好，很好！我身為怪物馴養師，以我的驕傲發誓，馬上為你做！";
 			next;
-			mes "[YuU]";
-			mes "Okay, now all I gotta do is take this Zargon and, um, make glasses lenses out of them. Somehow.";
+			mes "[尤烏]";
+			mes "好，現在我只要拿這個剎勒空結晶，嗯，把它們做成眼鏡鏡片。不知怎的，就是做得到。";
 			next;
-			mes "^3355FF*Squeak squeak crush snap*^000000";
+			mes "^3355FF*吱吱 喀嚓 咔啦*^000000";
 			next;
-			mes "[YuU]";
-			mes "Whew! Lucky!";
-			mes "Somehow I did it.";
-			mes "Please take this for";
-			mes "the cute monster you";
-			mes "are raising.";
-			mes "Rocker Glasses!";
+			mes "[尤烏]";
+			mes "呼！好險！";
+			mes "不知怎的，我做到了。";
+			mes "請把這個拿去給";
+			mes "你飼養的可愛怪物";
+			mes "怪物吧。";
+			mes "蝗蟲眼鏡！";
 			delitem 912,2;  //Zargon
 			delitem 2208,1;  //Ribbon
 			set Zeny,Zeny-400;
@@ -443,321 +443,321 @@ aldeba_in,168,175,4	script	Monster Tamer#alde	125,{
 			close;
 		}
 		else {
-			mes "[YuU]";
-			mes "For the monster owner that likes monster glasses, we provide a way to make Rocker Glasses!";
+			mes "[尤烏]";
+			mes "給喜愛怪物眼鏡的飼主，我們提供一種製作蝗蟲眼鏡的方法！";
 			next;
-			mes "[YuU]";
-			mes "Just bring me...";
-			mes "^3355FF2 Zargon^000000";
-			mes "^3355FF1 Ribbon^000000 and";
+			mes "[尤烏]";
+			mes "只要帶來給我……";
+			mes "^3355FF2 個剎勒空結晶^000000";
+			mes "^3355FF1 個紫蝶髮帶^000000 和";
 			mes "^3355FF400 zeny^000000. ";
-			mes "I will make it for you, with all my pride as a monster tamer!";
+			mes "我身為怪物馴養師，以我的驕傲發誓，會為你做出來！";
 			close;
 		}
 	case 8:
-		mes "[YuU]";
+		mes "[尤烏]";
 		mes "啊……！";
-		mes "You must have not decided which Monster you want to raise.";
+		mes "你似乎還沒決定要飼養哪一種怪物。";
 		next;
-		mes "[YuU]";
-		mes "Definitely not a decision to be made carelessly! Your pet monster will accompany you throughout your life. Please take your time and return when you have decided.";
+		mes "[尤烏]";
+		mes "這可不是能隨便做的決定！你的寵物怪物會陪伴你一生。請慢慢考慮，決定之後再回來。";
 		close;
 	}
 }
 
 -	script	::MonsterTamer_izlude	-1,{
-	mes "[Shogo]";
-	mes "Are you pre-occupied with";
-	mes "gathering items for monsters";
-	mes "and want a break? ";
-	mes "We will gather items";
-	mes "for your Cute Pets.";
+	mes "[尚吾]";
+	mes "你是不是忙於";
+	mes "替怪物蒐集道具";
+	mes "想休息一下嗎？ ";
+	mes "我們會為";
+	mes "你可愛的寵物蒐集道具。";
 	next;
-	switch(select("^3355FF' Monster Taming '^000000?:Order ^3355FF' Book of Devil '^000000:Order ^3355FF' No Recipient '^000000:Order ^3355FF' Orc Trophy '^000000:Cancel")) {
+	switch(select("^3355FF' 怪物馴養 '^000000？:製作 ^3355FF' 惡魔之書 '^000000:製作 ^3355FF' 魔物信件 '^000000:製作 ^3355FF' 魔物之證 '^000000:取消")) {
 	case 1:
-		mes "[Shogo]";
-		mes "The monster taming items are necessary to communicate with the monster of your choice! We Monster Tamer guild members have a very reasonable offer...";
+		mes "[尚吾]";
+		mes "與你所選的怪物溝通，必須要有怪物馴養道具！我們怪物馴養師公會，提出了非常合理的方案……";
 		next;
-		mes "[Shogo]";
-		mes "We provide a system that allows you to get your hands on these cool items with less of the hassle!";
-		mes "Book of Devil!";
-		mes "No Recipient!";
-		mes "Orc Trophy!";
+		mes "[尚吾]";
+		mes "我們提供一套制度，讓你不必那麼費事，就能取得這些很酷的道具！";
+		mes "惡魔之書！";
+		mes "魔物信件！";
+		mes "魔物之證！";
 		next;
-		mes "[Shogo]";
-		mes "For 1 Book of Devil, you can exchange:";
-		mes "^3355FF1 Old Magic Book^000000";
-		mes "^3355FF2 Horrendous Mouth^000000.";
+		mes "[尚吾]";
+		mes "1 本惡魔之書，可以交換:";
+		mes "^3355FF1 本古魔法書^000000";
+		mes "^3355FF2 個亡者牙齒^000000。";
 		next;
-		mes "[Shogo]";
-		mes "For 1 No Recipient, you can exchange ^3355FF1 Old Portrait^000000.";
+		mes "[尚吾]";
+		mes "1 個魔物信件，可以交換 ^3355FF1 張破舊畫像^000000。";
 		next;
-		mes "[Shogo]";
-		mes "Lastly, you can exchange";
-		mes "^3355FF1 Chivalry Emblem^000000 and";
-		mes "^3355FF1 Scorpion Tail^000000";
-		mes "for 1 Orc Trophy.";
-		mes "Try these fantastic items!";
+		mes "[尚吾]";
+		mes "最後，你可以交換";
+		mes "^3355FF1 個忠誠之證^000000 和";
+		mes "^3355FF1 條蠍子尾巴^000000";
+		mes "換取 1 個魔物之證。";
+		mes "快試試這些超棒的道具吧！";
 		close;
 	case 2:
-		mes "[Shogo]";
-		mes "This is an item far beyond what humans can read! Its name? ^3355FFBook of Devil^000000! A very mysterious item that can supposedly summon demons...";
+		mes "[尚吾]";
+		mes "這是一件遠超人類所能閱讀的道具！它的名字是？^3355FF惡魔之書^000000！據說是能召喚惡魔的神秘道具……";
 		next;
 		if ((countitem(1006) > 0) && (countitem(958) > 1)) {
-			mes "[Shogo]";
-			mes "Oh! You have all the items necessary to make 1 Book of Devil! Good, good! With all my pride as a monster tamer, I will make one for you right away.";
+			mes "[尚吾]";
+			mes "喔！你已經有製作 1 本惡魔之書所需的全部材料了！很好，很好！我身為怪物馴養師，以我的驕傲發誓，馬上為你做一本。";
 			next;
-			mes "[Shogo]";
+			mes "[尚吾]";
 			mes "我看看……";
-			mes "Hmm, this is going to be hard.";
+			mes "嗯，這可不好辦。";
 			next;
-			mes "^3355FF*Knock knock scrape scrape*^000000";
+			mes "^3355FF*叩叩 刮刮*^000000";
 			next;
-			mes "[Shogo]";
-			mes "Okay. All done.";
-			mes "Please take it for";
-			mes "the cute monster you";
-			mes "are raising.";
-			mes "Book of Devil!";
+			mes "[尚吾]";
+			mes "好了，完成了。";
+			mes "請把它拿去給";
+			mes "你飼養的可愛怪物";
+			mes "怪物吧。";
+			mes "惡魔之書！";
 			delitem 958,2;  //Horrendous_Mouth
 			delitem 1006,1;  //Old_Magic_Book
 			getitem 642,1; // Book_Of_Devil
 			close;
 		}
 		else {
-			mes "[Shogo]";
-			mes "For the owner that wishes to raise a monster that can be summoned using the Book of Devil, we provide a way to create 1 Book of Devil!";
+			mes "[尚吾]";
+			mes "給想飼養可由惡魔之書召喚之怪物的飼主，我們提供一種製作 1 本惡魔之書的方法！";
 			next;
-			mes "[Shogo]";
-			mes "Just bring me...";
-			mes "^3355FF1 Old Magicbook^000000 and";
-			mes "^3355FF2 Horrendous Mouth^000000!";
-			mes "If you bring me these items, with all my pride as a monster tamer, I will make it for you!";
+			mes "[尚吾]";
+			mes "只要帶來給我……";
+			mes "^3355FF1 本古魔法書^000000 和";
+			mes "^3355FF2 個亡者牙齒^000000！";
+			mes "只要你把這些道具帶來給我，我就以怪物馴養師的驕傲，為你做出來！";
 			close;
 		}
 	case 3:
-		mes "[Shogo]";
-		mes "This is an item which expresses feelings beyond what a human can feel. Its name? ^3355FFNo Recipient^000000! Who sent this letter, and who was supposed to receive it?";
+		mes "[尚吾]";
+		mes "這是一件表達了人類無法感受之情感的道具。它的名字是？^3355FF魔物信件^000000！是誰寄出這封信？又該寄給誰呢？";
 		next;
 		if (countitem(7014) > 0) {
-			mes "[Shogo]";
-			mes "Oh! You have all the items necessary to make No Recipient! Good, good! With all my pride as a monster tamer, I will make one for you right away.";
+			mes "[尚吾]";
+			mes "喔！你已經有製作魔物信件所需的全部材料了！很好，很好！我身為怪物馴養師，以我的驕傲發誓，馬上為你做一封。";
 			next;
-			mes "[Shogo]";
-			mes "Got to fold this Old Portrait just right...";
+			mes "[尚吾]";
+			mes "得要把這張破舊畫像折得剛剛好……";
 			next;
-			mes "^3355FF*Scrape scrape brush brush*^000000";
+			mes "^3355FF*刮刮 刷刷*^000000";
 			next;
-			mes "[Shogo]";
-			mes "Okay. All done.";
-			mes "Please take this item";
-			mes "for the cute monster";
-			mes "you are raising.";
-			mes "No Recipient!";
+			mes "[尚吾]";
+			mes "好了，完成了。";
+			mes "請把這件道具";
+			mes "拿去給你可愛的";
+			mes "怪物。";
+			mes "魔物信件！";
 			delitem 7014,1;  //Old_Portrait
 			getitem 636,1; // No_Recipient
 			close;
 		}
 		else {
-			mes "[Shogo]";
-			mes "For the monster owner that is fond of No Recipient, we provide a way to create to special item!";
+			mes "[尚吾]";
+			mes "給喜愛魔物信件的飼主，我們提供一種製作這項特殊道具的方法！";
 			next;
-			mes "[Shogo]";
-			mes "Just bring me...";
-			mes "^3355FF1 Old Portrait^000000!";
-			mes "If you bring this to me, with all my pride as a monster tamer, I will make it for you!";
+			mes "[尚吾]";
+			mes "只要帶來給我……";
+			mes "^3355FF1 張破舊畫像^000000！";
+			mes "只要你把這個帶來給我，我就以怪物馴養師的驕傲，為你做出來！";
 			close;
 		}
 	case 4:
-		mes "[Shogo]";
-		mes "This is an item far beyond the pride of humans!";
-		mes "Its name?";
-		mes "^3355FFOrc Trophy^000000!";
+		mes "[尚吾]";
+		mes "這是一件遠超人類驕傲的道具！";
+		mes "它的名字是？";
+		mes "^3355FF魔物之證^000000！";
 		next;
 		if ((countitem(1004) > 0) && (countitem(904) > 0)) {
-			mes "[Shogo]";
-			mes "Oh! You have all the items necessary to make an Orc Trophy! Good, good! With all my pride as a monster tamer, let me make one for you right away!";
+			mes "[尚吾]";
+			mes "喔！你已經有製作魔物之證所需的全部材料了！很好，很好！讓我以怪物馴養師的驕傲，馬上為你做一個！";
 			next;
-			mes "[Shogo]";
-			mes "Got to...";
-			mes "Fit this Scorpion Tail...";
-			mes "Just right...";
+			mes "[尚吾]";
+			mes "得要……";
+			mes "把這條蠍子尾巴裝上……";
+			mes "正好……";
 			next;
-			mes "^3355FF*Clang clang Boong*^000000";
+			mes "^3355FF*哐啷哐啷 咚*^000000";
 			next;
-			mes "[Shogo]";
-			mes "Okay. All done.";
-			mes "Please take this for";
-			mes "the cute monster";
-			mes "you are raising...";
-			mes "Orc Trophy!";
+			mes "[尚吾]";
+			mes "好了，完成了。";
+			mes "請把這個拿去給";
+			mes "可愛的怪物";
+			mes "你所飼養的……";
+			mes "魔物之證！";
 			delitem 904,1;  //Scorpion's_Tail
 			delitem 1004,1;  //Patriotism_Marks
 			getitem 635,1; // Horror_Of_Tribe
 			close;
 		}
 		else {
-			mes "[Shogo]";
-			mes "For the monster owner";
-			mes "who is fond of Horror of Tribe...";
-			mes "One way to make Horror of Tribe !";
-			mes "^3355FF 1 Chivalry Emblem^000000!";
-			mes "^3355FF 1 Scorpion Tail^000000!";
+			mes "[尚吾]";
+			mes "給";
+			mes "喜愛部族恐懼的……";
+			mes "製作部族恐懼的一種方法！";
+			mes "^3355FF 1 個忠誠之證^000000！";
+			mes "^3355FF 1 條蠍子尾巴^000000！";
 			next;
-			mes "[Shogo]";
-			mes "If you bring these items to me,";
-			mes "with all my pride as a monster";
-			mes "tamer, I will make it for you!";
+			mes "[尚吾]";
+			mes "只要你把這些道具帶來給我，";
+			mes "我以怪物";
+			mes "馴養師的驕傲，為你做出來！";
 			close;
 		}
 	case 5:
-		mes "[Shogo]";
+		mes "[尚吾]";
 		mes "啊……！";
-		mes "You must have not decided which Monster you want to raise.";
+		mes "你似乎還沒決定要飼養哪一種怪物。";
 		next;
-		mes "[Shogo]";
-		mes "Definitely not a decision to be made carelessly! Your pet monster will accompany you throughout your life. Please take your time and return when you have decided.";
+		mes "[尚吾]";
+		mes "這可不是能隨便做的決定！你的寵物怪物會陪伴你一生。請慢慢考慮，決定之後再回來。";
 		close;
 	}
 }
 
-comodo,112,182,0	script	Munak's Grandma	103,{
+comodo,112,182,0	script	蒙納克的奶奶::Munak's Grandma	103,{
 	if (countitem(1558) > 0) {
-		mes "[Munak's grandma]";
+		mes "[蒙納克的奶奶]";
 		mes "哎呀……";
-		mes "Have you seen my granddaughter,";
+		mes "你有看到我的孫女嗎，";
 		if (Sex == SEX_MALE) {
-			mes "boy? My poor granddaughter";
+			mes "小夥子？我可憐的孫女";
 		}
 		else {
-			mes "young lady? My poor granddaughter";
+			mes "姑娘？我可憐的孫女";
 		}
-		mes "has been missing...";
+		mes "失蹤了……";
 		next;
-		mes "[Munak's Grandma]";
-		mes "I can't remember exactly when it";
-		mes "was, but when I lived in Payon, I";
-		mes "had a cute granddaughter. She";
-		mes "was really happy when I made her";
-		mes "hair like ^000077Danggie^000000...";
+		mes "[蒙納克的奶奶]";
+		mes "我記不太清楚是什麼時候了";
+		mes "，但我住在斐揚的時候，";
+		mes "有個可愛的孫女。她";
+		mes "真的很開心，每次我替她";
+		mes "梳成像^000077團子^000000那樣的髮型……";
 		next;
-		mes "[Munak's Grandma]";
-		mes "She was alwaying working with the";
-		mes "village chief... She was such a sweet";
-		mes "girl, and always got along with";
-		mes "chief's son...";
+		mes "[蒙納克的奶奶]";
+		mes "她總是跟著村長";
+		mes "做事……她是個很甜美的";
+		mes "女孩，總是和";
+		mes "村長的兒子相處融洽……";
 		next;
-		mes "[Munak's Grandma]";
-		mes "But one day our deity became angry";
-		mes "and cursed the chief's son with a";
-		mes "sickness! The village had to offer";
-		mes "my granddaughter to him as a";
-		mes "companion to lift the curse...";
+		mes "[蒙納克的奶奶]";
+		mes "但有一天，我們的神明發怒了";
+		mes "詛咒了村長的兒子，讓他染上";
+		mes "重病！村子只好把";
+		mes "我的孫女獻給他，當作";
+		mes "陪伴，才解除了詛咒……";
 		next;
-		mes "[Munak's Grandma]";
-		mes "The chief's son regained his";
-		mes "health, but I lost my";
-		mes "granddaughter! I can't look at him";
-		mes "and not think of her, so I tried to";
-		mes "leave my misery behind and came";
-		mes "here to Comodo...";
+		mes "[蒙納克的奶奶]";
+		mes "村長的兒子恢復了";
+		mes "健康，我卻失去了";
+		mes "我的孫女！我一看到他";
+		mes "就會想起她，所以我試著";
+		mes "拋開痛苦，來到了";
+		mes "這裡，克魔島……";
 		next;
-		switch(select("Oh come on! Cheer up!:Um, is this diary...?")) {
+		switch(select("哎喲，振作一點！:呃，這本日記是……？")) {
 		case 1:
-			mes "[Munak's Grandma]";
-			mes "It seems my granddaughter haunts my";
-			mes "dreams every night. I believe I've";
-			mes "been trying to cheer up for years";
+			mes "[蒙納克的奶奶]";
+			mes "我的孫女每晚都";
+			mes "出現在我的夢裡。我想我";
+			mes "這些年來一直試著振作起來";
 			mes "now...";
 			close;
 		case 2:
 			if (countitem(901) > 0) {
-				mes "[Munak's Grandma]";
-				mes "Oh god!";
-				mes "It's my granddaughter's diary!";
-				mes "Th-This is her writing! Oh my...!";
+				mes "[蒙納克的奶奶]";
+				mes "天啊！";
+				mes "這是我孫女的日記！";
+				mes "這……這是她的字跡！天哪……！";
 				next;
-				mes "[Munak's Grandma]";
+				mes "[蒙納克的奶奶]";
 				if (Sex == SEX_MALE) {
-					mes "Young man... I'll read this to you if";
+					mes "年輕人……如果你";
 				}
 				else {
-					mes "Young lady... I'll read this to you if";
+					mes "姑娘……如果你";
 				}
-				mes "you give it to me with a Danggie,";
-				mes "please. I no longer have anything";
-				mes "that belonged to her now...";
+				mes "用一個團子跟我換，";
+				mes "我就唸給你聽。我已經沒有任何";
+				mes "屬於她的東西了……";
 				next;
-				switch(select("No way.:Ok, I will.")) {
+				switch(select("不行。:好，我願意。")) {
 				case 1:
-					mes "[Munak's Grandma]";
+					mes "[蒙納克的奶奶]";
 					mes "喔……？";
 					if (Sex == SEX_MALE) {
-						mes "Alright, young man.";
-						mes "Thank you anyway.";
+						mes "好吧，年輕人。";
+						mes "還是謝謝你。";
 					}
 					else {
-						mes "Thank you anyway,";
-						mes "young lady";
+						mes "還是謝謝你，";
+						mes "姑娘";
 					}
 					next;
-					mes "[Munak's Grandma]";
-					mes "It's alright...";
-					mes "I can only hope that the deity is";
-					mes "taking good care of her!";
+					mes "[蒙納克的奶奶]";
+					mes "沒關係……";
+					mes "我只希望神明";
+					mes "能好好照顧她！";
 					close;
 				case 2:
 					delitem 1558,1;
 					delitem 901,1;
-					mes "[Munak's Grandma]";
+					mes "[蒙納克的奶奶]";
 					if (Sex == SEX_MALE) {
 						mes "喔！";
 						mes "謝謝您，";
-						mes "young man~!";
+						mes "年輕人～！";
 					}
 					else {
-						mes "Goodness!";
+						mes "天哪！";
 						mes "謝謝您，";
-						mes "young lady...";
+						mes "姑娘……";
 					}
 					next;
-					mes "[Munak's Grandma]";
+					mes "[蒙納克的奶奶]";
 					mes "好吧……";
-					mes "I'll read this.";
+					mes "我就唸給你聽吧。";
 					mes "讓我看看……";
 					next;
-					mes "[Munak's Grandma]";
-					mes "It seems that my granddaughter was";
-					mes "treated by the chief like his own";
-					mes "child! There are so many happy";
-					mes "memories in this book!";
+					mes "[蒙納克的奶奶]";
+					mes "看來我的孫女曾經被";
+					mes "村長當作自己的";
+					mes "孩子對待！這裡有好多快樂的";
+					mes "回憶都在這本書裡！";
 					next;
 					getitem 659,1;
-					mes "[Munak's Grandma]";
-					mes "Oh, thank you. I now have a good";
-					mes "keepsake of my granddaughter. Thank";
-					mes "you so much! May God-Poing bless";
-					mes "you!";
+					mes "[蒙納克的奶奶]";
+					mes "噢，謝謝你。我現在有一件好的";
+					mes "孫女的紀念品了。謝";
+					mes "謝你！願波因神保佑";
+					mes "你！";
 					close;
 				}
 			}
 			else {
-				mes "[Munak's Grandma]";
-				mes "What? A diary? What's that diary...?";
-				mes "I don't... I can't remember, oh my...";
+				mes "[蒙納克的奶奶]";
+				mes "什麼？日記？那本日記是……？";
+				mes "我不……我想不起來了，天哪……";
 				next;
-				mes "[Munak's Grandma]";
-				mes "I really wish I could make her hair";
-				mes "into a ^000077Danggie^000000 again. I really";
-				mes "wish... Oh, oh my granddaughter...";
+				mes "[蒙納克的奶奶]";
+				mes "我真希望能把她的頭髮";
+				mes "再梳成^000077團子^000000的樣子。我真的";
+				mes "好希望……噢，我的孫女……";
 				close;
 			}
 		}
 	}
 	else {
-		mes "[Munak's Grandma]";
-		mes "My own granddaughter...";
-		mes "Why did she have to leave...?";
+		mes "[蒙納克的奶奶]";
+		mes "我親愛的孫女……";
+		mes "她為什麼非得離開不可……？";
 		close;
 	}
 }

@@ -106,7 +106,7 @@ ecl_fild01,97,322,0	script	#ep14_2Entrance	WARPNPC,3,3,{
 	end;
 OnTouch:
 	if (ep14_2_oliver < 3) {
-		mes "[Security Guard]";
+		mes "[警衛]";
 		mes "Please wait a minute.";
 		mes "All first-time visitors to Eclage must fill out the necessary forms before entering.";
 		close;
@@ -115,23 +115,23 @@ OnTouch:
 	end;
 }
 
-ecl_fild01,94,322,5	script	Security Guard#ep14_2	4_M_FAIRYSOLDIER,{
-	mes "[Security Guard]";
+ecl_fild01,94,322,5	script	警衛#ep14_2::Security Guard#ep14_2	4_M_FAIRYSOLDIER,{
+	mes "[警衛]";
 	if (ep14_2_oliver == 0) {
 		mes "All first-time visitors to Eclage must fill out the necessary forms here before entering.";
 		next;
-		mes "[Security Guard]";
+		mes "[警衛]";
 		mes "Please understand because of a recent increase in the influx of people from Midgard through Bifrost, we had to create this process.";
 		next;
-		mes "[Security Guard]";
+		mes "[警衛]";
 		mes "Of course, the documents will be secured away after their use in access regulations, so you don't have to worry.";
 		next;
 		if (select("Fill out the forms.:Forget it.") == 2) {
-			mes "[Security Guard]";
+			mes "[警衛]";
 			mes "Please note that you would not be able to enter the city without filling out the forms.";
 			close;
 		}
-		mes "[Security Guard]";
+		mes "[警衛]";
 		mes "Please fill out your name, occupation, and level here.";
 		next;
 		mes "Write your name.";
@@ -143,7 +143,7 @@ ecl_fild01,94,322,5	script	Security Guard#ep14_2	4_M_FAIRYSOLDIER,{
 		mes "Write your level.";
 		input .@inputstr$;
 		next;
-		mes "[Security Guard]";
+		mes "[警衛]";
 		mes "If you completed your forms, please submit them to the administrator over there.";
 		mes "There may be some waiting time, so take your time.";
 		ep14_2_oliver = 1;
@@ -155,10 +155,10 @@ ecl_fild01,94,322,5	script	Security Guard#ep14_2	4_M_FAIRYSOLDIER,{
 		mes "Great, you completed the forms.";
 		mes "Welcome to Eclage, the capital of the Laphines.";
 		next;
-		mes "[Security Guard]";
+		mes "[警衛]";
 		mes "Since Eclage is under the influence of Bifrost, there is fluent communication among the races.";
 		next;
-		mes "[Security Guard]";
+		mes "[警衛]";
 		mes "There would be no need for any separate translation, and there are enough bridges for on-foot races, so I hope you have a comfortable visit.";
 		ep14_2_oliver = 3;
 		completequest 11311;
@@ -168,15 +168,15 @@ ecl_fild01,94,322,5	script	Security Guard#ep14_2	4_M_FAIRYSOLDIER,{
 	} else {
 		mes "Welcome to Eclage, the capital of the Laphines.";
 		next;
-		mes "[Security Guard]";
+		mes "[警衛]";
 		mes "Since Eclage is under the influence of Bifrost, there is fluent communication among the races.";
 		next;
-		mes "[Security Guard]";
+		mes "[警衛]";
 		mes "There would be no need for any separate translation, and there are enough bridges for on-foot races, so I hope you have a comfortable visit.";
 	}
 	close;
 }
-ecl_fild01,100,323,3	duplicate(Security Guard#ep14_2)	Security Guard#ep14_2_2	4_M_FAIRYSOLDIER
+ecl_fild01,100,323,3	duplicate(Security Guard#ep14_2)	警衛#ep14_2_2::Security Guard#ep14_2_2	4_M_FAIRYSOLDIER
 
 ecl_fild01,111,320,3	script	Immigration Officer#ep14	4_M_FAIRYKID4,{
 	mes "[Immigration Officer]";
@@ -235,7 +235,7 @@ ecl_fild01,111,320,3	script	Immigration Officer#ep14	4_M_FAIRYKID4,{
 		cutin "bu_du4",2;
 		next;
 		mes "[???]";
-		mes "I'm so sorry.";
+		mes "真的很抱歉。";
 		mes "My stupid friend here is causing trouble.";
 		cutin "bu_mark3",0;
 		next;
@@ -1151,7 +1151,7 @@ eclage,283,275,4	script	Glaces#ep14_2	4_F_FAIRYKID3,{
 		cutin "bu_oliver3",0;
 		next;
 		mes "[Du Lian]";
-		mes "What are you saying?";
+		mes "你在說什麼？";
 		mes "Your clothes stick out like a sore thumb.";
 		mes "Where are you from really?";
 		cutin "bu_du1",2;
@@ -1821,7 +1821,7 @@ ecl_in01,60,71,4	script	老先生#ep14_2::Old Man#ep14_2	4_M_FAIRYKID2,{
 		next;
 		switch( select("No, I don't think so.:Yes, I have.")) {
 			mes "[老先生]";
-			mes "Huhuhu...";
+			mes "呼呼呼……";
 		case 1:
 			mes "He's a hero from so long ago that this generation wouldn't even know who he is.";
 			mes "He is probably long forgotten...";
@@ -1942,7 +1942,7 @@ ecl_fild01,97,315,4	script	旅人#ep14_2::Traveler#ep14_2	4_M_JOB_HUNTER,{
 	mes "[旅人]";
 	if (ep14_2_oliver == 19) {
 		mes "你是誰？";
-		mes "I've never seen you before.";
+		mes "我從來沒見過你。";
 		next;
 		mes "[旅人]";
 		mes "Oh, you came to ask me about the feather, too?";
@@ -2099,7 +2099,7 @@ ecl_fild01,97,315,4	script	旅人#ep14_2::Traveler#ep14_2	4_M_JOB_HUNTER,{
 	}
 	else {
 		mes "你是誰？";
-		mes "I've never seen you before.";
+		mes "我從來沒見過你。";
 		next;
 		mes "[旅人]";
 		mes "Oh, you came to ask me about the feather, too?";
@@ -2144,7 +2144,7 @@ ecl_in01,70,88,4	script	Sack Merchant#ep14_2	4_M_MERCAT1,{
 		emotion ET_HUK;
 		next;
 		mes "[Sack Merchant]";
-		mes "Actually...";
+		mes "其實……";
 		mes "The feather is real for sure, but I modified just a tinyyy~tiny biteow...";
 		next;
 		mes "[Sack Merchant]";
@@ -2157,7 +2157,7 @@ ecl_in01,70,88,4	script	Sack Merchant#ep14_2	4_M_MERCAT1,{
 		next;
 		cutin "",255;
 		mes "[Sack Merchant]";
-		mes "Hmm..";
+		mes "嗯……";
 		mes "It was from here to thereow.";
 		next;
 		mes "[Sack Merchant]";
@@ -2684,7 +2684,7 @@ ecl_in04,226,231,4	script	Du Lian#ep14_2in2	4_M_REDMAN,{
 			next;
 			mes "[Du Lian]";
 			mes "Why are you hitting me, calling it a dream and all!";
-			mes "It hurts!";
+			mes "好痛！";
 			emotion ET_PROFUSELY_SWEAT, getnpcid(0, "Du Lian#ep14_2in2");
 			cutin "bu_du4",2;
 			next;
@@ -2775,7 +2775,7 @@ eclage,282,255,4	script	Wuhari#eclbig	4_M_FAIRYKID6,{
 				next;
 				emotion ET_CRY;
 				mes "[Wuhari]";
-				mes "Sorry to bother you.";
+				mes "抱歉打擾你了。";
 				close;
 			}
 			mes "[Wuhari]";
@@ -2904,7 +2904,7 @@ eclage,282,255,4	script	Wuhari#eclbig	4_M_FAIRYKID6,{
 			mes "Yeah... He's pretty talkative, isn't he?";
 			next;
 			mes "[Wuhari]";
-			mes "What did he say?";
+			mes "他說了什麼？";
 			next;
 			mes "- Wuhari is told about Wuhuru -";
 			next;
@@ -2963,7 +2963,7 @@ eclage,282,255,4	script	Wuhari#eclbig	4_M_FAIRYKID6,{
 				close;
 			}
 			mes "[Wuhari]";
-			mes "Will you really?";
+			mes "你真的會送嗎？";
 			mes "Are you doing this because I look so sad?";
 			next;
 			mes "[Wuhari]";
@@ -3464,7 +3464,7 @@ ecl_in02,149,117,4	script	Wuhuru#eclbig	4_M_FAIRYFREAK,{
 			mes "And then he was murdered.";
 			next;
 			mes "[Wuhuru]";
-			mes "What are you trying to say?";
+			mes "你到底想說什麼？";
 			mes "Are you telling me that I am a murderer?";
 			next;
 			select("Did you murder him out of anger?");
@@ -4357,7 +4357,7 @@ ecl_in04,81,106,6	script	#hidden2_eclage	HIDDEN_NPC,2,2,{
 OnTouch:
 	if (ep14_2_detect == 1) {
 		mes "[Daughter Luen]";
-		mes "What just happened?";
+		mes "剛才發生了什麼事？";
 		next;
 		mes "[Father Dames]";
 		mes "There's no way the house is";
@@ -4555,7 +4555,7 @@ OnTouch:
 				mes "buy her a necklace, but he refused.";
 				mes "That's why he suspects her.";
 			}
-			mes "And..";
+			mes "還有……";
 		}
 		else if (isbegin_quest(9248) == 1 || isbegin_quest(9249) == 1 ||isbegin_quest(9250) == 1 || isbegin_quest(9251) == 1) {
 			mes "Rosa was coming back from shopping.";
@@ -4885,10 +4885,10 @@ ecl_in04,78,108,5	script	Daughter Luen#eclage	4_F_FAIRYKID2,{
 		}
 		mes "You finished with all of the";
 		mes "field examination!";
-		mes "Did you find anything?";
+		mes "你有找到什麼嗎？";
 		next;
 		mes "[Daughter Luen]";
-		mes "Maybe...";
+		mes "或許……";
 		mes "The necklace wasn't stolen, but";
 		mes "was just lost somewhere in the house...";
 		next;
@@ -4907,7 +4907,7 @@ ecl_in04,78,108,5	script	Daughter Luen#eclage	4_F_FAIRYKID2,{
 		mes "you've already done...";
 		next;
 		mes "[Mother Rosa]";
-		mes "What are you saying?";
+		mes "你在說什麼？";
 		mes "No matter what! My necklace!";
 		mes "And the thief who took it!";
 		mes "We have to find them!";
@@ -5631,7 +5631,7 @@ ecl_fild01,98,299,5	script	Balumin#eclage	4_M_FAIRYSOLDIER2,{
 		if (isbegin_quest(9232) != 1 || checkquest(9259,HUNTING) < 1) end;
 		if (checkquest(9259,HUNTING) == 1) {
 			mes "很抱歉，";
-			mes "I'm kind of busy right now.";
+			mes "我現在有點忙。";
 			mes "I'm in the middle of hunting monsters...";
 			mes "It seems like you're also in the middle of hunting..";
 			mes "Come back to me";
@@ -5693,7 +5693,7 @@ ecl_fild01,98,299,5	script	Balumin#eclage	4_M_FAIRYSOLDIER2,{
 	mes "[Balumin]";
 	if (ep14_2_detect <= 5) {
 		mes "很抱歉，";
-		mes "I'm kind of busy right now.";
+		mes "我現在有點忙。";
 		mes "I'm in the middle of hunting monsters...";
 		mes "Come back to me later.";
 	}
@@ -7041,7 +7041,7 @@ ecl_in02,160,36,4	script	Eirinn#nk	4_F_FAIRYKID6,{
 			close;
 		}
 		mes "[Eirinn]";
-		mes "I need";
+		mes "我需要";
 		mes "^ff000010 Green Herbs^000000";
 		mes "I hope you hurry before Eclage is filled with the sounds of my groaning.";
 		setquest 4254;
@@ -7489,7 +7489,7 @@ ecl_in01,26,88,5	script	Cecilia#nk	4_F_FAIRYKID5,{
 		mes "[Cecilia]";
 		mes "It can't be that we have thieves in Eclage.";
 		mes "The more I think about it seems like an outsider is responsible for this.";
-		mes "Don't you think?";
+		mes "你不這麼覺得嗎？";
 		next;
 		mes "[Cecilia]";
 		mes "For that reason you, who knows that our supplies are missing and who happens to be an outsider as well.";
@@ -7569,7 +7569,7 @@ ecl_in01,26,88,5	script	Cecilia#nk	4_F_FAIRYKID5,{
 			next;
 			mes "[Cecilia]";
 			mes "You need to find Piles of Acorns, Worn Out Pages, and Mould Powders, 10 of each.";
-			mes "Don't forget this time.";
+			mes "這次可別忘了。";
 			next;
 			mes "[Cecilia]";
 			mes "When you come back again you'd better be bringing everything we need.";
@@ -9375,7 +9375,7 @@ ecl_in04,109,215,3	script	Hiel#pa0829	4_M_FAIRYSCHOLAR,{
 		mes "Hmm...Hmm...";
 		next;
 		mes "[Hiel]";
-		mes "Maybe...";
+		mes "或許……";
 		mes "This is just a maybe.";
 		next;
 		mes "[Hiel]";
@@ -10521,7 +10521,7 @@ ecl_in04,105,216,4	script	Hiel's Workshop#pa0829	HIDDEN_NPC,{
 		next;
 		cutin "EP14_robert3",1;
 		mes "[Robert]";
-		mes "I see. That's what happened.";
+		mes "我知道了。事情就是這樣。";
 		next;
 		cutin "",255;
 		mes "["+ strcharinfo(0) +"]";
@@ -10881,7 +10881,7 @@ ecl_in04,105,216,4	script	Hiel's Workshop#pa0829	HIDDEN_NPC,{
 			next;
 			cutin "EP14_etran7",1;
 			mes "[Etran]";
-			mes "Sob...";
+			mes "嗚……";
 			next;
 			cutin "EP14_robert3",1;
 			mes "[Robert]";
@@ -13917,7 +13917,7 @@ ecl_in03,245,93,3	script	參謀長#tl01::Chief of Staff#tl01	4_F_FAIRY,{
 	}
 	if (ep14_2_mylord > 29) {
 		mes "[Stranger Laphine]";
-		mes "What is it you want?";
+		mes "你想要什麼？";
 		mes "If you're looking for Shenime, that's too bad. I'm newly appointed to his position since he disappeared out of the blue.";
 		mes "I have to work. So, if it's not anything important, I would like you to not bother me.";
 		close;
@@ -13989,7 +13989,7 @@ ecl_in03,245,93,3	script	參謀長#tl01::Chief of Staff#tl01	4_F_FAIRY,{
 		mes "If it's okay, can you do me a favor?";
 		mes "Of course I'll give you a big reward.";
 		next;
-		switch( select("Sure.:Sorry, I can't.") ) {
+		switch( select("當然。:抱歉，我不行。") ) {
 			mes "[謝尼梅]";
 		case 1:
 			mes "I was worried since it's something unexpected for you. I'm so glad.";
@@ -14421,7 +14421,7 @@ ecl_in03,41,90,3	script	Mayor Jun Kardui#tl01	4_M_FARIYKING,{
 		next;
 		cutin "kardui01",1;
 		mes "[Kardui]";
-		mes "Don't you understand?";
+		mes "你不明白嗎？";
 		mes "Here, in Eclage, You have to get more recognition from Laphines.";
 		next;
 		if (select("Do I have to make a contribution?:It's about Yggdrasil!") == 1) {
@@ -14433,7 +14433,7 @@ ecl_in03,41,90,3	script	Mayor Jun Kardui#tl01	4_M_FARIYKING,{
 		cutin "kardui04",1;
 		mes "[Kardui]";
 		mes "Um.";
-		mes "I know.";
+		mes "資訊。";
 		next;
 		mes "[Kardui]";
 		mes "You don't have to make a face.";
@@ -14543,7 +14543,7 @@ ecl_in03,41,90,3	script	Mayor Jun Kardui#tl01	4_M_FARIYKING,{
 		mes "[Kardui]";
 		mes "I even knew through Yggdrasil that the strange incident that happened inside the tree was not because of the excessive mining.";
 		next;
-		select("Then why?");
+		select("那為什麼？");
 		mes "[Kardui]";
 		mes "It's only natural for you to wonder why.";
 		mes "But when they detected something strange inside Yggdrasil, I couldn't communicate with Yggdrasil for some reason.";
@@ -15004,12 +15004,12 @@ ecl_in03,41,90,3	script	Mayor Jun Kardui#tl01	4_M_FARIYKING,{
 				mes "[Kardui]";
 			case 1:
 				cutin "kardui01",2;
-				mes "I'm glad to hear that.";
+				mes "聽你這麼說我很高興。";
 				mes "The Orb is going to be alright if you help us.";
 				break;
 			case 2:
 				cutin "kardui01",2;
-				mes "Whatever.";
+				mes "隨便吧。";
 				mes "You have to keep what you've seen and heard to yourself.";
 				mes "明白了嗎？";
 				break;
@@ -16372,7 +16372,7 @@ ecl_tdun04,32,35,3	script	希西#tlord::Hisie#tlord	4_M_FARIY_HISIE,{
 			mes "There was one more thing Kar mentioned in the letter besides introducing you.";
 			next;
 			mes "[希西]";
-			mes "But then...";
+			mes "可是……";
 			mes "Why is he looking for Avant now?";
 			next;
 			if (select("Avant?:One more thing?") == 2) {
@@ -16469,7 +16469,7 @@ ecl_tdun04,32,35,3	script	希西#tlord::Hisie#tlord	4_M_FARIY_HISIE,{
 	}
 	else if (ep14_2_mylord == 17) {
 		cutin "hisie01",0;
-		mes "Did you find anything?";
+		mes "你有找到什麼嗎？";
 		mes "A scholar of magics sponsored by the Chief of Staff?";
 		mes "We'd better ask who he is and where he came from.";
 		next;
@@ -16697,7 +16697,7 @@ eclage,307,237,0	script	Normal Yai#tllb	CLEAR_NPC,{
 				mes "[A voice from inside]";
 				mes "...Who's this?";
 				mes "Is it a human being?";
-				mes "Interesting.";
+				mes "有趣。";
 				next;
 				cutin "avant01",1;
 				mes "The door of the Yai opened and a golden-haired Laphine came outside.";
@@ -16853,7 +16853,7 @@ OnStop:
 	end;
 }
 
-que_avan01,18,38,0	script	Desk#tl01	CLEAR_NPC,{
+que_avan01,18,38,0	script	書桌#tl01::Desk#tl01	CLEAR_NPC,{
 	if (ep14_2_mylord == 21) {
 		mes "It's a desk full of various experimental tools and documents.";
 		mes "What should we do?";

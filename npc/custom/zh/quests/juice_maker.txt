@@ -18,158 +18,158 @@
 //= 2.1 Fixed dialog for if your missing the needed items (He always said the dialog for grape juice). [Kisuka]
 //============================================================
 
-prt_in,49,172,3	script	Marianne#juice	53,{
+prt_in,49,172,3	script	瑪莉安#juice::Marianne#juice	53,{
 	if ((MISC_QUEST&1) || morison_meat == 15) {
-		mes "[Housewife Marianne]";
-		mes "Whew...!";
-		mes "Still, he won't eat anything unless it's Meat. But maybe he will eat fruit if it was cut so that it was easy to eat. Like, if it was blended into juice...";
+		mes "[家庭主婦瑪莉安]";
+		mes "呼……！";
+		mes "不過，他除非是肉，否則什麼都不吃。但也許他會吃切得方便入口的水果。比如說，如果把它打成果汁……";
 		next;
 		set mother_marienu,0;
 		set morison_meat,0;
 		set MISC_QUEST,MISC_QUEST | 1;
-		mes "[Housewife Marianne]";
-		mes "Ah! Come to think of it, I heard they were making fruit juice somewhere. Now where was it... Payon Village, or Morocc?";
+		mes "[家庭主婦瑪莉安]";
+		mes "啊！這麼說來，我聽說哪裡有人在做果汁。是哪裡來著……斐揚村，還是夢羅克？";
 		close;
 	}
 	if (mother_marienu == 1) {
-		mes "[Housewife Marianne]";
-		mes "Morrison!! Eat some fruits!! You don't want to become a slobby fat pig when you grow up, do you?";
+		mes "[家庭主婦瑪莉安]";
+		mes "莫里森！！吃點水果吧！！你長大後不想變成邋遢的胖豬吧？";
 		next;
 		if (select("交談:取消") == 1) {
-			mes "[Housewife Marianne]";
-			mes "Hm? ...You!";
-			mes "You're the one who gave, my little Morrison that Meat?! Did you come here thinking I wouldn't know about it?!";
+			mes "[家庭主婦瑪莉安]";
+			mes "嗯？……是你！";
+			mes "就是你給了我的小莫里森肉嗎？！你以為我不會知道嗎？！";
 			next;
-			mes "[Housewife Marianne]";
-			mes "Go away, get out of my house NOW!!";
+			mes "[家庭主婦瑪莉安]";
+			mes "快走，立刻給我離開我家！！";
 			close;
 		}
-		mes "[Housewife Marianne]";
-		mes "Morrison!! I'm going to be very very mad if you keep doing this!";
+		mes "[家庭主婦瑪莉安]";
+		mes "莫里森！！如果你再這樣下去，我會非常非常生氣！";
 		close;
 	}
 	if (morison_meat > 0) {
 		set mother_marienu,1;
-		mes "[Housewife Marianne]";
-		mes "Oh!!.... This...";
-		mes "what is this...??";
-		mes "How could you do something like this to my boy?!";
+		mes "[家庭主婦瑪莉安]";
+		mes "喔！！……這個……";
+		mes "這是什麼……？？";
+		mes "你怎麼可以對我的孩子做這種事？！";
 		next;
-		mes "[Housewife Marianne]";
-		mes "Argh! Get out of my house right this instant!";
+		mes "[家庭主婦瑪莉安]";
+		mes "啊！馬上給我離開我的家！";
 		close;
 	}
-	mes "[Housewife Marianne]";
-	mes "Morrison!! Please eat some fruits!! Please~!";
+	mes "[家庭主婦瑪莉安]";
+	mes "莫里森！！拜託吃點水果吧！！拜託~！";
 	next;
-	mes "[Housewife Marinaa]";
-	mes "Sigh~!! Like father, like son...";
+	mes "[家庭主婦瑪琳娜]";
+	mes "唉~！！真是有其父必有其子……";
 	next;
 	switch(select("交談:取消")) {
-		mes "[Housewife Marianne]";
-		mes "*Sigh*... This is Morrison...";
-		mes "My one and only son.";
+		mes "[家庭主婦瑪莉安]";
+		mes "*唉*……這就是莫里森……";
+		mes "我唯一的兒子。";
 		next;
-		mes "[Housewife Marianne]";
-		mes "But these days, he just won't eat fruits. His face is so dull because he refuses to eat healthy. He just wants to eat Meat. I need to find a way to feed him fruits or vegetables....";
+		mes "[家庭主婦瑪莉安]";
+		mes "可是最近他就是不肯吃水果。因為不肯吃健康的東西，臉色都暗沉了。他只想吃肉。我得想辦法讓他吃水果或蔬菜……";
 		close;
 	}
-	mes "[Housewife Marianne]";
-	mes "Morrison!! You're going to be in big trouble if you keep this up!";
+	mes "[家庭主婦瑪莉安]";
+	mes "莫里森！！你再這樣下去，會有大麻煩的！";
 	close;
 }
 
-prt_in,47,173,3	script	Morrison#juice	97,{
+prt_in,47,173,3	script	莫里森#juice::Morrison#juice	97,{
 	if ((MISC_QUEST&1) || morison_meat == 15) {
-		mes "[Little Morrison]";
-		mes "Bleh... Forget it.";
-		mes "I'm just going to shrivel to death just eating fruits. Don't bother worrying about me .";
+		mes "[小莫里森]";
+		mes "呸……算了。";
+		mes "光吃水果，我遲早會乾癟而死。不用擔心我啦。";
 		close;
 	}
 	if (morison_meat > 9) {
-		mes "[Little Morrison]";
-		mes "Ah... so full~";
-		mes "I think I can live now.";
-		mes "You don't have to give me any more Meat. I feel like I'm going to explode if I eat any more.";
+		mes "[小莫里森]";
+		mes "啊……好飽~";
+		mes "我想我現在可以活下去了。";
+		mes "不用再給我肉了。再吃下去，我覺得自己會爆炸。";
 		if (morison_meat == 10) {
 			next;
 			set morison_meat,morison_meat+1;
-			mes "[Little Morrison]";
-			mes "Oh... and... um.";
-			mes "Take this.";
+			mes "[小莫里森]";
+			mes "喔……還有……嗯。";
+			mes "拿去吧。";
 			next;
-			mes "[Little Morrison]";
-			mes "It's a little something I've been saving to eat for later, but since you gave me Meat, I think I can pass on the sweets.";
+			mes "[小莫里森]";
+			mes "這是我本來留著之後吃的一點零食，不過既然你給了我肉，我想這些甜點就不用了。";
 			close;
 			getitem 529,3; //Candy
 			getitem 530,1; //Candy_Striper
 		}
 		close;
 	}
-	mes "[Little Morrison]";
-	mes "Agh....Noooo!!!";
-	mes "No, don't make me eat it! I can't bear to taste fruits!";
+	mes "[小莫里森]";
+	mes "啊……不要！！！";
+	mes "不要，別逼我吃！我實在受不了水果的味道！";
 	next;
 	if (countitem(517) > 0) {
-		switch(select("Talk:Show the Meat:Cancel")) {
+		switch(select("交談:出示肉:取消")) {
 		case 1:
-			mes "[Little Morrison]";
-			mes "Aaaagh!! Once or twice is enough!! I refuse to eat any more fruits! You have to peel them and there's so much juice that it makes you feel icky...";
+			mes "[小莫里森]";
+			mes "啊啊啊！！一兩次就夠了！！我拒絕再吃水果了！要削皮，汁又多得讓人噁心……";
 			next;
-			mes "[Little Morrison]";
-			mes "And they're all slippery and sour... Even if I eat it, I still feel hungry. Aaaah~! Give me Meat!";
+			mes "[小莫里森]";
+			mes "而且又滑又酸……吃了還是覺得餓。啊~！給我肉！";
 			close;
 		case 2:
-			mes "[Little Morrison]";
-			mes "Ooh! M-Meaaat~";
-			mes "Ah... hu...hungry...";
-			mes "The scent of Meat...";
+			mes "[小莫里森]";
+			mes "喔！肉、肉~";
+			mes "啊……好、好餓……";
+			mes "肉的香味……";
 			mes "不好意思……";
-			mes "C-can I please have one?";
+			mes "可、可以給我一塊嗎？";
 			next;
-			if (select("Give Meat:Don't Give Meat") == 1) {
+			if (select("給肉:不給肉") == 1) {
 				delitem 517,1; //Meat
 				set morison_meat,morison_meat+1;
-				mes "[Little Morrison]";
-				mes "Wow~!!! Meat!!";
-				mes "So yummy!";
+				mes "[小莫里森]";
+				mes "哇~！！！肉！！";
+				mes "好好吃！";
 				mes "謝謝您，";
-				mes "I think I can";
-				mes "live now.";
-				mes "*Chew chew*";
+				mes "我想我可以";
+				mes "活下去了。";
+				mes "*咕嚕咕嚕*";
 				close;
 			}
 			set morison_meat,15;
-			mes "[Little Morrison]";
-			mes "Waah...!";
-			mes "Fine, I get it now.";
-			mes "Adults are all the same!";
+			mes "[小莫里森]";
+			mes "哇……！";
+			mes "好吧，我明白了。";
+			mes "大人都一個樣！";
 			close;
 		case 3:
-			mes "[Little Morrison]";
-			mes "Aaaaah!!! No matter what, I'm not going to eat fruits and vegetables!";
+			mes "[小莫里森]";
+			mes "啊啊啊！！！無論如何，我都不吃水果和蔬菜！";
 			close;
 		}
 	}
 	if (select("交談:取消") == 1) {
-		mes "[Little Morrison]";
-		mes "Aaah!! I can't eat any more fruits!";
+		mes "[小莫里森]";
+		mes "啊！！我再也吃不下水果了！";
 		next;
-		mes "[Little Morrison]";
-		mes "I refuse to eat any more fruits! You have to peel them and there's so much juice that it makes you feel icky...";
+		mes "[小莫里森]";
+		mes "我拒絕再吃水果了！要削皮，汁又多得讓人噁心……";
 		next;
-		mes "[Little Morrison]";
-		mes "And they're all slippery and sour... Even if I eat it, I still feel hungry.";
-		mes "Aaaah~!";
-		mes "Give me Meat!";
+		mes "[小莫里森]";
+		mes "而且又滑又酸……吃了還是覺得餓。";
+		mes "啊~！";
+		mes "給我肉！";
 		close;
 	}
-	mes "[Little Morrison]";
-	mes "Aaaaah!!! No matter what, I'm not going to eat fruits and vegetables!";
+	mes "[小莫里森]";
+	mes "啊啊啊！！！無論如何，我都不吃水果和蔬菜！";
 	close;
 }
 
-payon_in03,188,146,5	script	Marx Hansen#juice	86,{
+payon_in03,188,146,5	script	馬克斯·韓森#juice::Marx Hansen#juice	86,{
 	if (checkweight(1201,1) == 0) {
 		mes "- 請稍等！ -";
 		mes "- 你目前攜帶的 -";
@@ -179,17 +179,17 @@ payon_in03,188,146,5	script	Marx Hansen#juice	86,{
 		close;
 	}
 	if (MISC_QUEST&1) {
-		mes "[Merchant Marx Hansen]";
+		mes "[商人馬克斯漢森]";
 		mes "歡迎。";
 		mes "你是來";
-		mes "process fruits as well?";
+		mes "也會加工水果嗎？";
 		next;
-		switch(select("Make Juice.:Talk and get information about fruit processing.:Cancel.")) {
+		switch(select("製作果汁。:交談並取得水果加工資訊。:取消。")) {
 		case 1:
-			mes "[Merchant Marx Hansen]";
-			mes "What kind of fruit juice would you like to make?";
+			mes "[商人馬克斯漢森]";
+			mes "你想製作哪種果汁？";
 			next;
-			switch(select("Apple Juice:Banana Juice:Carrot Juice:Grape Juice:Cancel")) {
+			switch(select("蘋果汁:香蕉汁:紅蘿蔔汁:葡萄汁:取消")) {
 			case 1:
 				set .@fruit,512;
 				set .@juice,531;
@@ -207,45 +207,45 @@ payon_in03,188,146,5	script	Marx Hansen#juice	86,{
 				set .@juice,533;
 				break;
 			case 5:
-				mes "[Merchant Marx Hansen]";
+				mes "[商人馬克斯漢森]";
 				mes "那麼……";
 				mes "下次見。";
 				close;
 			}
 			if (countitem(.@fruit) == 0 || countitem(713) == 0 || Zeny < 3) {
-				mes "[Merchant Marx Hansen]";
+				mes "[商人馬克斯漢森]";
 				mes "糟糕……";
-				mes "You don't have all the necessary materials. To make "+getitemname(.@juice)+", I need 1 "+getitemname(.@fruit)+" and 1 Empty Bottle. I will also need a 3 zeny fee.";
+				mes "你的材料不齊。要製作 "+getitemname(.@juice)+"，我需要 1 個 "+getitemname(.@fruit)+" 和 1 個空瓶，還需要 3 Zeny 的費用。";
 				next;
-				mes "[Merchant Marx Hansen]";
-				mes "When you have prepared everything, I will blend the fruit to give you delicious juice.";
+				mes "[商人馬克斯漢森]";
+				mes "材料都準備好之後，我會把水果打成美味的果汁給你。";
 				close;
 			}
 
-			mes "[Merchant Marx Hansen]";
+			mes "[商人馬克斯漢森]";
 			mes "你要買多少？";
 			next;
-			switch(select("As many as I can.:I want a certain amount.:Cancel.")) {
+			switch(select("能做多少做多少。:我要指定數量。:取消。")) {
 			case 1:
 				set .@make,countitem(.@fruit);
 				if (countitem(713) < .@make) set .@make, countitem(713);
 				if (Zeny/3 < .@make) set .@make, Zeny/3;
 				break;
 			case 2:
-				mes "[Merchant Marx Hansen]";
-				mes "Choose a number less than 100. If you don't want to, put '0'. You can make up to " + countitem(.@fruit) + " bottles of juice.";
+				mes "[商人馬克斯漢森]";
+				mes "請選擇小於 100 的數字。不想指定的話，請輸入「0」。最多可以製作 " + countitem(.@fruit) + " 瓶果汁。";
 				next;
 				while(1) {
 					input .@input;
 					if (.@input == 0) {
-						mes "[Merchant Marx Hansen]";
+						mes "[商人馬克斯漢森]";
 						mes "那麼……";
 						mes "下次再來。";
 						close;
 					}
 					else if (.@input > 100) {
-						mes "[Merchant Marx Hansen]";
-						mes "More than 100 bottles is impossible. Choose a different amount.";
+						mes "[商人馬克斯漢森]";
+						mes "超過 100 瓶是不可能的。請重新選擇數量。";
 						next;
 					}
 					else {
@@ -255,7 +255,7 @@ payon_in03,188,146,5	script	Marx Hansen#juice	86,{
 				set .@make,.@input;
 				break;
 			case 3:
-				mes "[Merchant Marx Hansen]";
+				mes "[商人馬克斯漢森]";
 				mes "那麼……";
 				mes "下次再來。";
 				close;
@@ -264,9 +264,9 @@ payon_in03,188,146,5	script	Marx Hansen#juice	86,{
 			set .@total_zeny,3 * .@make;
 
 			if (countitem(.@fruit) < .@make || countitem(713) < .@make || Zeny < .@total_zeny) {
-				mes "[Merchant Marx Hansen]";
+				mes "[商人馬克斯漢森]";
 				mes "糟糕……";
-				mes "You don't have all the necessary materials. I can't help a situation like this. I guess you collect what you need.";
+				mes "你的材料不齊。我幫不了這種情況。你還是把需要的東西先收集齊吧。";
 				close;
 			}
 			delitem .@fruit,.@make;
@@ -274,61 +274,61 @@ payon_in03,188,146,5	script	Marx Hansen#juice	86,{
 			set Zeny, Zeny-.@total_zeny;
 			getitem .@juice,.@make;
 
-			mes "[Merchant Marx Hansen]";
-			mes "Here you go! Fresh and delicious juice as promised. It should be very refreshing and palatable.";
+			mes "[商人馬克斯漢森]";
+			mes "給你！如約送上新鮮美味的果汁。應該非常清爽可口。";
 			next;
-			mes "[Merchant Marx Hansen]";
+			mes "[商人馬克斯漢森]";
 			mes "那麼……";
 			mes "下次再來。";
 			close;
 		case 2:
-			mes "[Merchant Marx Hansen]";
-			mes "Before humans were able to develop such vast societies, they gathered fruit from trees to survive. Fruits may have been nature's blessing that allowed us to exist in the world.";
+			mes "[商人馬克斯漢森]";
+			mes "在人類能夠發展出如此龐大的社會之前，人們靠採集樹上的果實維生。水果或許是大自然的恩賜，讓我們得以在這個世界生存。";
 			next;
-			mes "[Merchant Marx Hansen]";
-			mes "Since life became so prosperous, the younger generation seems not to eat fruit any more. So, I started thinking of ways to make fruit easier to eat.";
+			mes "[商人馬克斯漢森]";
+			mes "生活變得富足之後，年輕一代似乎就不再吃水果了。所以我開始思考，該怎麼讓水果更容易入口。";
 			next;
-			mes "[Merchant Marx Hansen]";
-			mes "I realized that when you make fruit juice, it's more convenient to eat and has a much better taste.";
+			mes "[商人馬克斯漢森]";
+			mes "我發現把水果做成果汁，不但更方便食用，口感也好得多。";
 			next;
-			mes "# Fruit Juice Information #";
-			mes "^CC4E5C- Apple Juice -^000000";
-			mes "Apple x 1 ea, Empty Bottle x 1 ea, 3 zeny.";
-			mes "^E3CF57- Banana Juice -^000000";
-			mes "Banana x 1 ea, Empty Bottle x 1 ea, 3 zeny.";
-			mes "^ED9121- Carrot Juice -^000000";
-			mes "Carrot x 1 ea, Empty Bottle x 1 ea, 3 zeny.";
-			mes "^CC00FF- Grape Juice -^000000";
-			mes "Grape x 1 ea, Empty Bottle x 1 ea, 3 zeny.";
+			mes "果汁資訊";
+			mes "^CC4E5C- 蘋果汁 -^000000";
+			mes "蘋果 x 1 個，空瓶 x 1 個，3 Zeny。";
+			mes "^E3CF57- 香蕉汁 -^000000";
+			mes "香蕉 x 1 個，空瓶 x 1 個，3 Zeny。";
+			mes "^ED9121- 紅蘿蔔汁 -^000000";
+			mes "紅蘿蔔 x 1 個，空瓶 x 1 個，3 Zeny。";
+			mes "^CC00FF- 葡萄汁 -^000000";
+			mes "葡萄 x 1 個，空瓶 x 1 個，3 Zeny。";
 			close;
 		case 3:
-			mes "[Merchant Marx Hansen]";
+			mes "[商人馬克斯漢森]";
 			mes "嘿！";
-			mes "If you visit";
-			mes "somebody, talk to them!";
+			mes "如果你去拜訪";
+			mes "別人，記得找他們聊聊！";
 			close;
 		}
 	}
 	else {
-		mes "[Merchant Marx Hansen]";
+		mes "[商人馬克斯漢森]";
 		mes "歡迎。";
 		mes "有什麼可以為您效勞的嗎？";
 		next;
 		if (select("交談:取消") == 1) {
-			mes "[Merchant Marx Hansen]";
-			mes "Before humans were able to develop such vast societies, they gathered fruit from trees to survive. Fruits may have been nature's blessing that allowed us to exist in the world.";
+			mes "[商人馬克斯漢森]";
+			mes "在人類能夠發展出如此龐大的社會之前，人們靠採集樹上的果實維生。水果或許是大自然的恩賜，讓我們得以在這個世界生存。";
 			next;
-			mes "[Merchant Marx Hansen]";
-			mes "Since life became so prosperous, the younger generation seems not to eat fruit any more. So, I started thinking of ways to make fruit easier to eat.";
+			mes "[商人馬克斯漢森]";
+			mes "生活變得富足之後，年輕一代似乎就不再吃水果了。所以我開始思考，該怎麼讓水果更容易入口。";
 			next;
-			mes "[Merchant Marx Hansen]";
-			mes "I realized that when you make fruit juice, it's more convenient to eat and has a much better taste.";
+			mes "[商人馬克斯漢森]";
+			mes "我發現把水果做成果汁，不但更方便食用，口感也好得多。";
 			close;
 		}
-		mes "[Merchant Marx Hansen]";
+		mes "[商人馬克斯漢森]";
 		mes "嘿！";
-		mes "If you vist";
-		mes "somebody, talk to them!";
+		mes "如果你去拜訪";
+		mes "別人，記得找他們聊聊！";
 		close;
 	}
 }

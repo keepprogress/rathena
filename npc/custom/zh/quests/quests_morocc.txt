@@ -144,16 +144,16 @@
 			getitem 2296,1; // Binoculars
 			next;
 			mes "[馬流斯]";
-			mes "Just remember...";
+			mes "但記得……";
 			mes "Don't peep at something you shouldn't look at. Well, at least try not to.";
 			close;
 		}
 		else {
 			mes "[馬流斯]";
 			mes "Argggghhhhhhh!!";
-			mes "You didn't bring";
+			mes "你沒有帶來";
 			mes "enough items!!!!";
-			mes "How dare you";
+			mes "你竟敢";
 			mes "disgrace me!!!";
 			mes "Baaaadddd !!";
 			close;
@@ -194,7 +194,7 @@ morocc,43,108,5	script	Sharp-Looking Kid#dan_07	82,{
 	}
 }
 
-morocc,45,110,0	script	que_job01#01	45,2,2,{
+morocc,45,110,0	script	que_job01#01::que_job01#01	45,2,2,{
 OnTouch_:
 	if (BaseClass == Job_Assassin) {
 		warp "que_job01",9,94;
@@ -219,7 +219,7 @@ que_job01,6,94,0	warp	morocc#01	2,2,morocc,45,103
 que_job01,17,48,0	warp	que_job01#02	2,2,que_job01,68,92
 que_job01,68,96,0	warp	que_job01#03	2,2,que_job01,17,53
 
-que_job01,80,77,0	script	que_job01#04	45,2,2,{
+que_job01,80,77,0	script	que_job01#04::que_job01#04	45,2,2,{
 OnTouch_:
 	if (BaseClass == Job_Assassin) {
 		warp "que_job01",61,50;
@@ -320,7 +320,7 @@ OnTouch_:
 
 que_job01,65,50,0	warp	que_job01#05	2,2,que_job01,84,77
 
-que_job01,81,79,5	script	Idle Knight#dan_08	733,{
+que_job01,81,79,5	script	閒置騎士#dan_08::Idle Knight#dan_08	733,{
 	mes "[Litheron]";
 	mes "What's the matter?";
 	mes "Oh, I see... You're";
@@ -337,7 +337,7 @@ que_job01,81,79,5	script	Idle Knight#dan_08	733,{
 	close;
 }
 
-que_job01,82,95,3	script	Bar Master#moc_main01	46,{
+que_job01,82,95,3	script	酒吧老闆#moc_main01::Bar Master#moc_main01	46,{
 	if (checkweight(908,200) == 0) {
 		mes "^3355FFWait a second!";
 		mes "Right now, you're carrying";
@@ -585,7 +585,7 @@ que_job01,82,95,3	script	Bar Master#moc_main01	46,{
 	}
 }
 
-que_job01,49,49,5	script	Tao#dan_09	877,{
+que_job01,49,49,5	script	陶#dan_09::Tao#dan_09	877,{
 	if (BaseClass == Job_Assassin) {
 		mes "[Tao]";
 		mes "Welcome, meow~";
@@ -666,7 +666,7 @@ que_job01,49,49,5	script	Tao#dan_09	877,{
 	}
 }
 
-que_job01,51,55,0	script	que_job01#room_1	45,1,1,{
+que_job01,51,55,0	script	que_job01#room_1::que_job01#room_1	45,1,1,{
 
 OnReset:
 	set $@maobar_room,0;
@@ -788,7 +788,7 @@ OnTouch_:
 
 que_job01,51,44,0	warp	que_job01#room_2	1,1,que_job01,80,23
 
-que_job01,11,4,0	script	que_job01#room1_out	45,1,1,{
+que_job01,11,4,0	script	que_job01#room1_out::que_job01#room1_out	45,1,1,{
 OnTouch_:
 	warp "que_job01",52,50;
 	donpcevent " #room1timer::OnStop";
@@ -797,7 +797,7 @@ OnTouch_:
 
 que_job01,80,27,0	warp	que_job01#room2_1_out	1,1,que_job01,52,50
 
-que_job01,16,21,5	script	Valdes#moc_master_1	55,{
+que_job01,16,21,5	script	瓦爾德斯#moc_master_1::Valdes#moc_master_1	55,{
 	if (BaseClass == Job_Assassin) {
 		mes "[Valdes]";
 		mes "What is it? I have nothing to ask you to do.";
@@ -847,7 +847,7 @@ yuno_in04,180,106,3	script	Reading Girl#moc_girl1	73,{
 	mes "Eh? Oh, I'm sorry, I was";
 	mes "so busy reading this book!";
 	mes "So, uh, what exactly did";
-	mes "you want to ask me?";
+	mes "你想問我的事情？";
 	next;
 	select("What are you reading?");
 	mes "[Yunia]";
@@ -1901,7 +1901,7 @@ moc_fild21,178,239,0	script	Group of Evil#edq	844,1,1,{
 		mes "You can feel the power of the darkness rise from the gap where light and darkness are mingled.";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "Wah...!";
+		mes "哇……！";
 		close2;
 		if($@re_moc == 1) {
 			set $@re_moc,2;
@@ -3129,7 +3129,7 @@ yuno_in04,169,123,3	script	可疑男人#oliver_h::Suspicious Man#oliver_h	407,{
 		case 1:
 			cutin "oliver_smile",2;
 			mes "[Oliver Hilpert]";
-			mes "Wow, thanks!";
+			mes "哇，謝謝！";
 			next;
 			mes "[Oliver Hilpert]";
 			mes "Umm... I haven't received my publishing advance yet, but do you mind taking this instead?";
@@ -3265,7 +3265,7 @@ yuno_in04,169,123,3	script	可疑男人#oliver_h::Suspicious Man#oliver_h	407,{
 		switch(select("It was cursed by the pebble.:The crow has something to do with Oliver.")) {
 		case 1:
 			mes "["+ strcharinfo(0) +"]";
-			mes "Ah, I see.";
+			mes "啊，我明白了。";
 			mes "I think when the crow was hit by the pebble, its wisdom must have turned into disaster.";
 			next;
 			mes "["+ strcharinfo(0) +"]";
@@ -3456,7 +3456,7 @@ yuno_in04,167,120,3	script	Worn-out Book#garas	111,{
 		mes ".................";
 		next;
 		mes "[Oliver Hilpert]";
-		mes "...Oh!";
+		mes "……啊！";
 		cutin "mami01",4;
 		emotion ET_THROB;
 		next;
@@ -3498,7 +3498,7 @@ yuno_in04,167,120,3	script	Worn-out Book#garas	111,{
 		switch(select("Sell:Don't Sell")) {
 		case 1:
 			mes "[Oliver Hilpert]";
-			mes "Wow, thanks!";
+			mes "哇，謝謝！";
 			next;
 			mes "[Oliver Hilpert]";
 			mes "Umm... I haven't received my publishing advance yet, but do you mind taking this instead?";
@@ -3591,7 +3591,7 @@ que_ba,257,39,3	script	Female Researcher#bpast	744,{
 		mes "Hey, where am I...?";
 		specialeffect2 EF_VENOMDUST;
 		next;
-		mes "- Pzzzz -";
+		mes "- 噗茲茲 -";
 		specialeffect EF_CLOAKING;
 		next;
 		mes "^660000Surprisingly, your arm passed through her body.^000000";
@@ -3755,13 +3755,13 @@ OnTouch:
 		next;
 		mes "^660000He didn't seem to care that he'd perish along with the mansion, and was talking slowly in a low, sad voice.^000000";
 		next;
-		mes "[Mysterious Man]";
+		mes "[神秘男人]";
 		mes ".....................";
 		mes "After all, God has trifled with me...";
 		mes "This was his plan all long...";
 		mes "Even my best friends were his puppets...";
 		next;
-		mes "[Mysterious Man]";
+		mes "[神秘男人]";
 		mes "I strongly resent my fate...";
 		mes "But I'm ready to accept the end... Of everything...";
 		next;
@@ -3788,18 +3788,18 @@ OnTouch:
 	mes "..................";
 	mes "..................";
 	next;
-	mes "[Mysterious Man]";
+	mes "[神秘男人]";
 	mes "..................";
 	mes "..................";
 	mes "..................";
 	mes "E...Eva, no!";
 	next;
-	mes "[Mysterious Man]";
+	mes "[神秘男人]";
 	mes "Was it a dream?";
 	mes "..................";
 	mes "...Gosh, that was strange.";
 	next;
-	mes "[Mysterious Man]";
+	mes "[神秘男人]";
 	mes "Mother was... She was a regular human.";
 	mes "Was I standing next to her?";
 	mes "..................";
@@ -3813,36 +3813,36 @@ OnTouch:
 	mes "^660000You put your guard down, and stare at him.";
 	mes "Suddenly his face distorted in anger as he looked right back at you.^000000";
 	next;
-	mes "[Mysterious Man]";
+	mes "[神秘男人]";
 	mes "How the hell did you find me?!";
 	next;
 	mes "["+ strcharinfo(0) +"]";
 	mes "...Wah! He can see me! He can see me!";
 	next;
 	enablenpc "#barmut_onna";
-	mes "[Mysterious Woman]";
+	mes "[神秘女子]";
 	mes "You don't have to be so angry at me, sir.";
 	next;
 	mes "^660000As soon as you heard her voice,";
 	mes "you turned around and found a woman standing there.^000000";
 	next;
-	mes "[Mysterious Woman]";
+	mes "[神秘女子]";
 	mes "It was almost done, but then you broke all of them -- even ^FF00FFBEEP^000000 and ^FF00FFBEEP^000000 -- and were hiding in here.";
 	next;
-	mes "[Mysterious Man]";
+	mes "[神秘男人]";
 	mes "They weren't supposed to exist in this world!";
 	next;
-	mes "[Mysterious Woman]";
+	mes "[神秘女子]";
 	mes "It's his decision. Your fate is on his...";
 	next;
-	mes "[Mysterious Man]";
+	mes "[神秘男人]";
 	mes "閉嘴！";
 	next;
 	mes "^660000The raging man drew a sword, and pointed it at her. She then suddenly transformed into a crow and flew away. The echos of her laughter could be heard outside the window.^000000";
 	disablenpc "#barmut_onna";
 	specialeffect EF_BAT;
 	next;
-	mes "[Echoing Voice]";
+	mes "[回響之聲]";
 	mes "You are bound to your fate, no matter how hard you try to escape...";
 	soundeffect "loli_ruri_stand.wav",0;
 	next;

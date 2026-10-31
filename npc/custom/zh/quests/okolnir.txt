@@ -27,67 +27,67 @@ function	script	F_Okolnir	{
 	if (getcharid(2) == .@GID) {
 		if (getd("$siz_"+.@sub$+"_on") == 0) {
 			mes "[嚮導]";
-			mes "This castle has a hidden secret.";
-			mes "That is the ^4d4dff'Okolnir'^000000.";
+			mes "這座城堡藏著一個秘密。";
+			mes "那就是^4d4dff「奧克諾爾」^000000。";
 			next;
-			switch(select("About Okolnir.:Go to Okolnir.:Cancel.")) {
+			switch(select("關於奧克諾爾。:前往奧克諾爾。:取消。")) {
 			case 1:
 				mes "[嚮導]";
-				mes "Okolnir is a kind of virtual realm...";
-				mes "I don't know how Okolnir exists, but I guess only Valkyrie knows.";
+				mes "奧克諾爾是一種虛擬的領域……";
+				mes "我不清楚奧克諾爾是如何存在的，不過我想只有蘭特克力斯知道。";
 				next;
 				mes "[嚮導]";
-				mes "As you know this is a place to test the adventurers made by Valkyrie...";
-				mes "...you know the qualifications to enter Okolnir.";
+				mes "如你所知，這裡是測試蘭特克力斯所造就的冒險者的地方……";
+				mes "……你知道進入奧克諾爾的資格吧。";
 				next;
-				select("Qualifications?");
+				select("資格？");
 				mes "[嚮導]";
-				mes "Yes, Valkyrie definitely prefers strong adventurers.";
-				mes "Only the qualified can enter Okolnir and Valhalla.";
-				next;
-				mes "[嚮導]";
-				mes "It only opens when everyone comes together to work it out.";
-				mes "The key is in the castle.";
+				mes "是的，蘭特克力斯當然偏好強大的冒險者。";
+				mes "只有具備資格的人，才能進入奧克諾爾與瓦爾哈拉。";
 				next;
 				mes "[嚮導]";
-				mes "If a castle's ^4d4dffeconomy is over 65 and defense also over 30^000000, this will be acceptable to access Okolnir.";
+				mes "只有大家齊心協力解開它，才會開啟。";
+				mes "鑰匙就在城堡裡。";
 				next;
 				mes "[嚮導]";
-				mes "And, if you pass all of the tests given by Valkyrie in Okolnir!";
-				mes "You will also receive a mysterious gift.";
+				mes "如果城堡的^4d4dff經濟超過65且防禦也超過30^000000，就能進入奧克諾爾。";
 				next;
 				mes "[嚮導]";
-				mes "Would you like to try to enter here?";
+				mes "而且，若你通過了奧克諾爾中蘭特克力斯所設下的所有試煉！";
+				mes "你還會獲得一份神秘的禮物。";
+				next;
+				mes "[嚮導]";
+				mes "要試著從這裡進入嗎？";
 				close;
 			case 2:
 				set .@Defence,GetCastleData(strnpcinfo(4),3);
 				set .@Economy,GetCastleData(strnpcinfo(4),2);
 				if ((.@Economy > 64) && (.@Defence > 29)) {
 					mes "[嚮導]";
-					mes "Great! Economy and Defense are OK.";
-					mes "You can enter Okolnir now....";
-					mes "Do you want to go there?";
+					mes "太好了！經濟與防禦都合格了。";
+					mes "你現在可以進入奧克諾爾了……";
+					mes "你想去那裡嗎？";
 					next;
-					switch(select("Sure let's go there.:No.")) {
+					switch(select("好啊，我們去吧。:不要。")) {
 					case 1:
 						if (countitem(7839)) delitem 7839,countitem(7839); //Crystal_Key
 						mes "[嚮導]";
-						mes "Ok......";
-						mes "Please follow me...";
+						mes "好……";
+						mes "請跟我來……";
 						close2;
 						warp "que_q"+.@sub$,346,32;
 						end;
 					case 2:
 						mes "[嚮導]";
-						mes "You can try this anytime in the future...";
-						mes "If you are ready to protect this castle.";
+						mes "你之後隨時都可以再試。";
+						mes "如果你已經準備好守護這座城堡。";
 						close;
 					}
 				}
 				else {
 					mes "[嚮導]";
-					mes "You are not qualified yet.";
-					mes "Please develop your castle more...";
+					mes "你還不具備資格。";
+					mes "請再發展你的城堡……";
 					close;
 				}
 			case 3:
@@ -96,45 +96,45 @@ function	script	F_Okolnir	{
 		}
 		else if (getd("$siz_"+.@sub$+"_on") == 1) {
 			mes "[嚮導]";
-			mes "... OK...";
+			mes "……好吧……";
 			mes "祝你好運。";
 			next;
-			switch(select("Enter now.:No.")) {
+			switch(select("現在進入。:不要。")) {
 			case 1:
 				if (countitem(7839) > 0) {
 					delitem 7839,countitem(7839); //Crystal_Key
 				}
 				mes "[嚮導]";
-				mes "Hope you get everything you want...";
+				mes "希望你能得到你想要的一切……";
 				close2;
 				warp "que_q"+.@sub$,346,32;
 				end;
 			case 2:
 				mes "[嚮導]";
 				mes "真的嗎？";
-				mes "Sorry to hear that.";
+				mes "聽到這樣真遺憾。";
 				close;
 			}
 		}
 		else if (getd("$siz_"+.@sub$+"_on") == 2) {
 			mes "[嚮導]";
-			mes "Building Okolnir needs quite a long time.";
-			mes "....even though it's only virtual...";
+			mes "建造奧克諾爾需要相當長的時間。";
+			mes "……雖然只是虛擬的……";
 			next;
 			mes "[嚮導]";
-			mes "It takes about 12 - 13 hours to create the virtual realm.";
+			mes "創造這個虛擬領域大約需要12至13個小時。";
 			close;
 		}
 		else {
 			mes "[嚮導]";
-			mes "You'll have to wait.";
+			mes "你得等一等了。";
 			close;
 		}
 	}
 	else {
 		mes "[嚮導]";
-		mes "... I've never seen you before.";
-		mes "You are strangers here. You'd better get out of here right now.";
+		mes "……我從沒見過你。";
+		mes "你在這裡是陌生人。你最好立刻離開這裡。";
 		close;
 	}
 	end;
@@ -175,10 +175,10 @@ que_qsch05,345,23,0	warp	Gate02#gq_sch05	1,1,schg_cas05,369,306
 	if (getcharid(2) == .@GID) {
 		cutin "wish_maiden31",1;
 		if (is_guild_leader() == true) {
-			mes "[Wish Maiden]";
-			mes "I am... Wish maiden.";
-			mes "Mourning in this virtual realm, Okolnir.";
-			mes "On behalf of the humanbeings who defeated God here.";
+			mes "[願望少女]";
+			mes "我是……願望少女。";
+			mes "在這個虛擬領域奧克諾爾中哀悼著。";
+			mes "代表在此擊敗神明的人類。";
 			next;
 			if (compare(.@sub$,"aru")) {
 				setarray .@n, 7835,1,7836,1,7837,1,7838,1,2513,1,7291,10,7293,10,7063,100,985,20;
@@ -191,152 +191,152 @@ que_qsch05,345,23,0	warp	Gate02#gq_sch05	1,1,schg_cas05,369,306
 			}
 			if (.@check >= 9) {
 				cutin "wish_maiden11",1;
-				mes "[Wish Maiden]";
-				mes "Are you ready to endure the trials to get the Goddess' glory?";
+				mes "[願望少女]";
+				mes "你準備好承受試煉，以取得女神的榮耀了嗎？";
 				next;
-				switch(select("Yes, I am:Sorry, I'll try later")) {
+				switch(select("是的，我準備好了:抱歉，我待會再試。")) {
 				case 1:
 					cutin "wish_maiden12",1;
-					mes "[Wish Maiden]";
-					mes "I will test whether or not you deserve the Goddess shine...";
-					mes "Isn't it simple?";
+					mes "[願望少女]";
+					mes "我將測試你是否配得上女神的光輝……";
+					mes "很簡單吧？";
 					next;
-					mes "[Wish Maiden]";
-					mes "Okolnir is a virtual place.";
-					mes "There is no room for error there.";
-					mes "^ff0000You only have one hour.^000000";
+					mes "[願望少女]";
+					mes "奧克諾爾是虛擬的地方。";
+					mes "那裡容不得半點差錯。";
+					mes "^ff0000你只有一個小時。^000000";
 					next;
 					cutin "wish_maiden31",1;
-					mes "[Wish Maiden]";
-					mes "If you have not finished in that time, Okolnir will be destroyed, and I will go to rest.";
-					mes "You will have to wait again...";
+					mes "[願望少女]";
+					mes "如果你在那段時間內沒有完成，奧克諾爾將會被摧毀，而我也會去休息。";
+					mes "你又得再等一次……";
 					next;
-					mes "[Wish Maiden]";
-					mes "Are you ready to go through?";
-					mes "^4d4dffYou need to have 16 to 20 members present^000000.";
+					mes "[願望少女]";
+					mes "你準備好通過了嗎？";
+					mes "^4d4dff需要有16至20名成員在場^000000。";
 					next;
 					cutin "wish_maiden11",1;
-					mes "[Wish Maiden]";
-					mes "I will open the gate of Okolnir if your members are ready.";
+					mes "[願望少女]";
+					mes "若你的成員都準備好了，我就會開啟奧克諾爾之門。";
 					next;
-					switch(select("We are ready.:We need more time.")) {
+					switch(select("我們準備好了。:我們需要更多時間。")) {
 					case 1:
 						set .@saram,getmapusers("que_q"+.@sub$);
 						if (((.@saram > 15) && (.@saram < 21))) {
 							cutin "wish_maiden12",1;
-							mes "[Wish Maiden]";
-							mes "Now I will open the gate of Okolnir where I am.";
-							mes "I will wait for you on the top of Okolnir...";
+							mes "[願望少女]";
+							mes "現在，我將在此開啟奧克諾爾之門。";
+							mes "我會在奧克諾爾的頂端等你……";
 							next;
-							mes "[Wish Maiden]";
-							mes "I hope that you can complete all of the trials before the virtual Okolnir is destroyed...";
+							mes "[願望少女]";
+							mes "希望你能在虛擬的奧克諾爾被摧毀前完成所有試煉……";
 							mes "祝你好運。";
-							mapannounce "que_q"+.@sub$,"Wish Maiden: The gate of Okolnir is open! Don't forget you only have one hour.",bc_map,"0x00ff00";
+							mapannounce "que_q"+.@sub$,"願望少女:奧克諾爾之門已經開啟！別忘了你只有一個小時。",bc_map,"0x00ff00";
 							close2;
 							setd "$@gqse_"+.@sub$+"_pcc",.@saram;
 							setd "$siz_"+.@sub$+"_on",1;
 							donpcevent "#okolnir_"+.@sub$+"::OnEnable";
 							disablenpc "Wish Maiden#gq_"+.@sub$;
 							cutin "wish_maiden11",255;
-							announce "["+ strcharinfo(0) +"], of the guild ["+ GetGuildName(.@GID) +"] has opened the gates to the realm of Okolnir.",bc_all,"0x70dbdb";
+							announce "["+ strcharinfo(0) +"]，公會["+ GetGuildName(.@GID) +"]已開啟了通往奧克諾爾領域的大門。",bc_all,"0x70dbdb";
 							end;
 						}
 						else {
 							cutin "wish_maiden13",1;
-							mes "[Wish Maiden]";
-							mes "You need to have 16 to 20 members present to open the gate of Okolnir.";
+							mes "[願望少女]";
+							mes "需要有16至20名成員在場，才能開啟奧克諾爾之門。";
 							mes "準備好了再回來吧。";
 							close2;
 						}
 						break;
 					case 2:
 						cutin "wish_maiden13",1;
-						mes "[Wish Maiden]";
-						mes "Don't hesitate to try.";
-						mes "You should catch the chance when it comes to you.";
-						mes "Just gather your fellow members.";
+						mes "[願望少女]";
+						mes "別猶豫，試試看吧。";
+						mes "機會來臨時，你應該好好把握。";
+						mes "去召集你的夥伴吧。";
 						close2;
 					}
 					break;
 				case 2:
 					cutin "wish_maiden32",1;
-					mes "[Wish Maiden]";
-					mes "... Are you afraid of";
-					mes "the trials facing you?";
+					mes "[願望少女]";
+					mes "……你害怕";
+					mes "眼前的試煉嗎？";
 					mes "....";
 					next;
 					cutin "wish_maiden13",1;
-					mes "[Wish Maiden]";
-					mes "Do you think that you can defeat the Goddess shine easily?";
-					mes "I feel disappointed by all of you.";
-					mes "Just go away...";
+					mes "[願望少女]";
+					mes "你以為你能輕易擊敗女神的光輝嗎？";
+					mes "我對你們所有人都感到失望。";
+					mes "快走開……";
 					close2;
 				}
 			}
 			else {
 				cutin "wish_maiden11",1;
-				mes "[Wish Maiden]";
-				mes "Do you wish to enter?";
-				mes "Only those prepared may enter here.";
-				mes "You must bring several items to enter Okolnir.";
+				mes "[願望少女]";
+				mes "你想進入嗎？";
+				mes "只有做好準備的人才能進入這裡。";
+				mes "你必須帶來幾樣道具，才能進入奧克諾爾。";
 				next;
-				mes "[Wish Maiden]";
+				mes "[願望少女]";
 				if (compare(.@sub$,"aru")) {
-					mes "Dusk Glow";
-					mes "Dawn Essence";
-					mes "Cold Moonlight";
-					mes "Hazy Starlight.";
+					mes "黃昏的光芒";
+					mes "黎明的清水";
+					mes "冰冷的月光";
+					mes "朦朧的星光。";
 					next;
-					mes "[Wish Maiden]";
-					mes "Please bring those four things, 10 Agate, 10 Rose Quartz, and 20 Elunium,";
-					mes "a Heavenly Maiden's Robe, as well as 100 Soft feathers.";
+					mes "[願望少女]";
+					mes "請帶來這四樣東西：10個瑪瑙、10個玫瑰石英，以及20個鋁，";
+					mes "一件天界少女的長袍，以及100根柔軟的羽毛。";
 				} else {
-					mes "Goddess Tear";
-					mes "Valkyrie's Token";
-					mes "Brynhild Armor Piece";
-					mes "Hero Remains";
-					mes "Valkyrie Armor";
-					mes "Andvari's Ring.";
+					mes "女神的眼淚";
+					mes "巴基力的象徵";
+					mes "布林喜德的鎧甲一角";
+					mes "英雄的遺骸";
+					mes "蘭特克力斯的鎧甲";
+					mes "安德瓦利的戒指。";
 					next;
-					mes "[Wish Maiden]";
-					mes "You must bring those six things, 10 Gold, and 20 Elunium.";
-					mes "Many Valhala's Flowers are also required as an offering.";				
+					mes "[願望少女]";
+					mes "你必須帶來那六樣東西，10個黃金，以及20個鋁。";
+					mes "另外還需要許多瓦爾哈拉之花作為獻禮。";				
 				}
 				next;
-				mes "[Wish Maiden]";
-				mes "Once all of those are prepared, the gate will open.";
+				mes "[願望少女]";
+				mes "全部準備妥當後，大門就會開啟。";
 				next;
-				mes "[Wish Maiden]";
+				mes "[願望少女]";
 				mes ".... ";
-				mes "...........The Goddess shines brightly down on you, you should be stronger to deserve it...";
+				mes "……女神的光輝正照耀著你，你必須變得更強，才配得上它……";
 				next;
-				mes "[Wish Maiden]";
+				mes "[願望少女]";
 				mes "記住……";
-				mes "You need to collect many soft feathers.";
-				mes "I hope that your dreams come true.";
+				mes "你需要收集許多柔軟的羽毛。";
+				mes "希望你的夢想成真。";
 				next;
-				mes "[Wish Maiden]";
-				mes "I will answer all your requests if you bring these to me.";
+				mes "[願望少女]";
+				mes "如果你把這些帶來給我，我就會答應你的所有要求。";
 				close2;
 			}
 		}
 		else {
 			cutin "wish_maiden31",1;
-			mes "[Wish Maiden]";
-			mes "I am... Wish maiden.";
-			mes "Mourning in this virtual realm, Okolnir.";
-			mes "On behalf of the humanbeings who defeated God here.";
+			mes "[願望少女]";
+			mes "我是……願望少女。";
+			mes "在這個虛擬領域奧克諾爾中哀悼著。";
+			mes "代表在此擊敗神明的人類。";
 			next;
-			mes "[Wish Maiden]";
-			mes "Bring me the one who brought you to this place.";
-			mes ".. Deliver him to my will.";
+			mes "[願望少女]";
+			mes "把帶你來到這裡的人帶來給我。";
+			mes "……把他交給我處置。";
 			close2;
 		}
 	}
 	else {
 		cutin "wish_maiden13",1;
-		mes "[Wish Maiden]";
-		mes "...You are not qualified.";
+		mes "[願望少女]";
+		mes "……你不具備資格。";
 		close2;
 		percentheal -100,0;
 		cutin "wish_maiden11",255;
@@ -355,16 +355,16 @@ OnInit:
 	end;
 }
 
-que_qaru01,345,82,3	duplicate(Wish Maiden#gq_main)	Wish Maiden#gq_aru01	403
-que_qaru02,345,82,3	duplicate(Wish Maiden#gq_main)	Wish Maiden#gq_aru02	403
-que_qaru03,345,82,3	duplicate(Wish Maiden#gq_main)	Wish Maiden#gq_aru03	403
-que_qaru04,345,82,3	duplicate(Wish Maiden#gq_main)	Wish Maiden#gq_aru04	403
-que_qaru05,345,82,3	duplicate(Wish Maiden#gq_main)	Wish Maiden#gq_aru05	403
-que_qsch01,345,82,3	duplicate(Wish Maiden#gq_main)	Wish Maiden#gq_sch01	403
-que_qsch02,345,82,3	duplicate(Wish Maiden#gq_main)	Wish Maiden#gq_sch02	403
-que_qsch03,345,82,3	duplicate(Wish Maiden#gq_main)	Wish Maiden#gq_sch03	403
-que_qsch04,345,82,3	duplicate(Wish Maiden#gq_main)	Wish Maiden#gq_sch04	403
-que_qsch05,345,82,3	duplicate(Wish Maiden#gq_main)	Wish Maiden#gq_sch05	403
+que_qaru01,345,82,3	duplicate(Wish Maiden#gq_main)	願望少女#gq_aru01::Wish Maiden#gq_aru01	403
+que_qaru02,345,82,3	duplicate(Wish Maiden#gq_main)	願望少女#gq_aru02::Wish Maiden#gq_aru02	403
+que_qaru03,345,82,3	duplicate(Wish Maiden#gq_main)	願望少女#gq_aru03::Wish Maiden#gq_aru03	403
+que_qaru04,345,82,3	duplicate(Wish Maiden#gq_main)	願望少女#gq_aru04::Wish Maiden#gq_aru04	403
+que_qaru05,345,82,3	duplicate(Wish Maiden#gq_main)	願望少女#gq_aru05::Wish Maiden#gq_aru05	403
+que_qsch01,345,82,3	duplicate(Wish Maiden#gq_main)	願望少女#gq_sch01::Wish Maiden#gq_sch01	403
+que_qsch02,345,82,3	duplicate(Wish Maiden#gq_main)	願望少女#gq_sch02::Wish Maiden#gq_sch02	403
+que_qsch03,345,82,3	duplicate(Wish Maiden#gq_main)	願望少女#gq_sch03::Wish Maiden#gq_sch03	403
+que_qsch04,345,82,3	duplicate(Wish Maiden#gq_main)	願望少女#gq_sch04::Wish Maiden#gq_sch04	403
+que_qsch05,345,82,3	duplicate(Wish Maiden#gq_main)	願望少女#gq_sch05::Wish Maiden#gq_sch05	403
 
 -	script	Gate01#gq_main	-1,{
 	function	SMonster;
@@ -414,7 +414,7 @@ OnTouch_:
 		end;
 	}
 	else {
-		mes "There are too many people, you can't enter.";
+		mes "人數太多了，你無法進入。";
 		close;
 	}
 	
@@ -452,16 +452,16 @@ OnInit:
 	end;
 }
 
-que_qaru01,346,81,0	duplicate(Gate01#gq_main)	Gate01#gq_aru01	45,1,1
-que_qaru02,346,81,0	duplicate(Gate01#gq_main)	Gate01#gq_aru02	45,1,1
-que_qaru03,346,81,0	duplicate(Gate01#gq_main)	Gate01#gq_aru03	45,1,1
-que_qaru04,346,81,0	duplicate(Gate01#gq_main)	Gate01#gq_aru04	45,1,1
-que_qaru05,346,81,0	duplicate(Gate01#gq_main)	Gate01#gq_aru05	45,1,1
-que_qsch01,346,81,0	duplicate(Gate01#gq_main)	Gate01#gq_sch01	45,1,1
-que_qsch02,346,81,0	duplicate(Gate01#gq_main)	Gate01#gq_sch02	45,1,1
-que_qsch03,346,81,0	duplicate(Gate01#gq_main)	Gate01#gq_sch03	45,1,1
-que_qsch04,346,81,0	duplicate(Gate01#gq_main)	Gate01#gq_sch04	45,1,1
-que_qsch05,346,81,0	duplicate(Gate01#gq_main)	Gate01#gq_sch05	45,1,1
+que_qaru01,346,81,0	duplicate(Gate01#gq_main)	傳送門01#gq_aru01::Gate01#gq_aru01	45,1,1
+que_qaru02,346,81,0	duplicate(Gate01#gq_main)	傳送門01#gq_aru02::Gate01#gq_aru02	45,1,1
+que_qaru03,346,81,0	duplicate(Gate01#gq_main)	傳送門01#gq_aru03::Gate01#gq_aru03	45,1,1
+que_qaru04,346,81,0	duplicate(Gate01#gq_main)	傳送門01#gq_aru04::Gate01#gq_aru04	45,1,1
+que_qaru05,346,81,0	duplicate(Gate01#gq_main)	傳送門01#gq_aru05::Gate01#gq_aru05	45,1,1
+que_qsch01,346,81,0	duplicate(Gate01#gq_main)	傳送門01#gq_sch01::Gate01#gq_sch01	45,1,1
+que_qsch02,346,81,0	duplicate(Gate01#gq_main)	傳送門01#gq_sch02::Gate01#gq_sch02	45,1,1
+que_qsch03,346,81,0	duplicate(Gate01#gq_main)	傳送門01#gq_sch03::Gate01#gq_sch03	45,1,1
+que_qsch04,346,81,0	duplicate(Gate01#gq_main)	傳送門01#gq_sch04::Gate01#gq_sch04	45,1,1
+que_qsch05,346,81,0	duplicate(Gate01#gq_main)	傳送門01#gq_sch05::Gate01#gq_sch05	45,1,1
 
 -	script	#Gate_manager_main	-1,{
 	end;
@@ -496,12 +496,12 @@ OnEnable:
 
 OnTimer1000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Wish Maiden: How does it feel to see shadows of the past. This is only the beginning.",bc_map,"0x00ff00";
+	mapannounce "que_q"+.@sub$,"願望少女:看見過往的幻影，感覺如何？這只是開始。",bc_map,"0x00ff00";
 	end;
 
 OnTimer6000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Wish Maiden: The things you seeing are not real, don't be caught in the Mystic garden.",bc_map,"0x00ff00";
+	mapannounce "que_q"+.@sub$,"願望少女:你所看見的並非真實，別被神秘花園困住。",bc_map,"0x00ff00";
 	setarray .@mobname$, "Seyren Windsor","Kathryne Keyron","Cecil Damon","Margaretha Sorin","Eremes Guile","Howard Alt-Eisen";
 	setarray .@num, 72,271,1640,63,282,1645,59,294,1644,46,300,1643,51,285,1641,51,262,1642;
 	set .@c, 0;
@@ -522,7 +522,7 @@ OnReset:
 OnMyMobDead:
 	set .@sub$,callfunc("F_Okolnir");
 	if (mobcount("que_q"+.@sub$,"#gq_miromob2_"+.@sub$+"::OnMyMobDead") == 0) {
-		mapannounce "que_qaru05","The Mystic garden exit is now open.",bc_map,"0x00ff00";
+		mapannounce "que_qaru05","神秘花園的出口現在已經開啟。",bc_map,"0x00ff00";
 		setcell "que_q"+.@sub$,58,302,63,302,cell_walkable,1;
 		setcell "que_q"+.@sub$,58,302,63,302,cell_shootable,1;
 		donpcevent "#Maze_Manager_"+.@sub$+"::OnDisable";
@@ -615,52 +615,52 @@ OnStop:
 
 OnTimer1000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Wish Maiden : Do your best, Okolnir will disappear in one hour!",bc_map,"0x00ff00";
+	mapannounce "que_q"+.@sub$,"願望少女 : 盡力吧，奧克諾爾將在一小時後消失！",bc_map,"0x00ff00";
 	end;
 
 OnTimer1800000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Okolnir will disappear in 30 minutes.",bc_map,"0xff0000";
+	mapannounce "que_q"+.@sub$,"奧克諾爾將在30分鐘後消失。",bc_map,"0xff0000";
 	end;
 
 OnTimer2400000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Okolnir will disappear in 20 minutes.",bc_map,"0xff0000";
+	mapannounce "que_q"+.@sub$,"奧克諾爾將在20分鐘後消失。",bc_map,"0xff0000";
 	end;
 
 OnTimer3000000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Okolnir will disappear in 10 minutes.",bc_map,"0xff0000";
+	mapannounce "que_q"+.@sub$,"奧克諾爾將在10分鐘後消失。",bc_map,"0xff0000";
 	end;
 
 OnTimer3300000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Okolnir will disappear in 5 minutes.",bc_map,"0xff0000";
+	mapannounce "que_q"+.@sub$,"奧克諾爾將在5分鐘後消失。",bc_map,"0xff0000";
 	end;
 
 OnTimer3360000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Okolnir will disappear in 4 minutes.",bc_map,"0xff0000";
+	mapannounce "que_q"+.@sub$,"奧克諾爾將在4分鐘後消失。",bc_map,"0xff0000";
 	end;
 
 OnTimer3420000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Okolnir will disappear in 3 minutes.",bc_map,"0xff0000";
+	mapannounce "que_q"+.@sub$,"奧克諾爾將在3分鐘後消失。",bc_map,"0xff0000";
 	end;
 
 OnTimer3480000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Okolnir will disappear in 2 minutes.",bc_map,"0xff0000";
+	mapannounce "que_q"+.@sub$,"奧克諾爾將在2分鐘後消失。",bc_map,"0xff0000";
 	end;
 
 OnTimer3540000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Okolnir will disappear in 1 minutes.",bc_map,"0xff0000";
+	mapannounce "que_q"+.@sub$,"奧克諾爾將在1分鐘後消失。",bc_map,"0xff0000";
 	end;
 
 OnTimer3600000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Okolnir has begun to disappear.",bc_map,"0x4d4dff";
+	mapannounce "que_q"+.@sub$,"奧克諾爾已開始消失。",bc_map,"0x4d4dff";
 	disablenpc "Wish Maiden#gq_"+.@sub$;
 	donpcevent "#gq_miromob2_"+.@sub$+"::OnReset";
 	disablenpc "Piamette#"+.@sub$;
@@ -703,12 +703,12 @@ OnTimer3600000:
 
 OnTimer3605000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Wish Maiden: ... You will fall into a deep sleep within Okolnir... ",bc_map,"0x00ff00";
+	mapannounce "que_q"+.@sub$,"願望少女:……你將在奧克諾爾中陷入深沉的沉睡…… ",bc_map,"0x00ff00";
 	end;
 
 OnTimer3608000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Wish Maiden: ..Have courage ... and await your chance again... ",bc_map,"0x00ff00";
+	mapannounce "que_q"+.@sub$,"願望少女:……請保持勇氣……等待你的下一次機會…… ",bc_map,"0x00ff00";
 	end;
 
 OnTimer3610000:
@@ -940,25 +940,25 @@ que_qsch05,2,3,0	duplicate(#miro_yf_main)	#miro_yf_sch05	844
 OnTouch_:
 	set .@sub$,callfunc("F_Okolnir");
 	if (countitem(7839)) {
-		mes "The Warp Gate responds to the Crystal Key.";
+		mes "傳送門回應了水晶鑰匙。";
 		delitem 7839,1; //Crystal_Key
 		close2;
 		warp "que_q"+.@sub$,114,158;
 		end;
 	}
-	mes "You need the Crystal Key to activate the Warp Gate.";
+	mes "你需要水晶鑰匙才能啟動傳送門。";
 	close;
 }
-que_qaru01,132,172,0	duplicate(windpath01_main)	windpath01_aru01	45,1,1
-que_qaru02,132,172,0	duplicate(windpath01_main)	windpath01_aru02	45,1,1
-que_qaru03,132,172,0	duplicate(windpath01_main)	windpath01_aru03	45,1,1
-que_qaru04,132,172,0	duplicate(windpath01_main)	windpath01_aru04	45,1,1
-que_qaru05,132,172,0	duplicate(windpath01_main)	windpath01_aru05	45,1,1
-que_qsch01,132,172,0	duplicate(windpath01_main)	windpath01_sch01	45,1,1
-que_qsch02,132,172,0	duplicate(windpath01_main)	windpath01_sch02	45,1,1
-que_qsch03,132,172,0	duplicate(windpath01_main)	windpath01_sch03	45,1,1
-que_qsch04,132,172,0	duplicate(windpath01_main)	windpath01_sch04	45,1,1
-que_qsch05,132,172,0	duplicate(windpath01_main)	windpath01_sch05	45,1,1
+que_qaru01,132,172,0	duplicate(windpath01_main)	windpath01_aru01::windpath01_aru01	45,1,1
+que_qaru02,132,172,0	duplicate(windpath01_main)	windpath01_aru02::windpath01_aru02	45,1,1
+que_qaru03,132,172,0	duplicate(windpath01_main)	windpath01_aru03::windpath01_aru03	45,1,1
+que_qaru04,132,172,0	duplicate(windpath01_main)	windpath01_aru04::windpath01_aru04	45,1,1
+que_qaru05,132,172,0	duplicate(windpath01_main)	windpath01_aru05::windpath01_aru05	45,1,1
+que_qsch01,132,172,0	duplicate(windpath01_main)	windpath01_sch01::windpath01_sch01	45,1,1
+que_qsch02,132,172,0	duplicate(windpath01_main)	windpath01_sch02::windpath01_sch02	45,1,1
+que_qsch03,132,172,0	duplicate(windpath01_main)	windpath01_sch03::windpath01_sch03	45,1,1
+que_qsch04,132,172,0	duplicate(windpath01_main)	windpath01_sch04::windpath01_sch04	45,1,1
+que_qsch05,132,172,0	duplicate(windpath01_main)	windpath01_sch05::windpath01_sch05	45,1,1
 
 que_qaru01,113,165,0	warp	windpath02_aru01	1,1,que_qaru01,139,172
 que_qaru02,113,165,0	warp	windpath02_aru02	1,1,que_qaru02,139,172
@@ -980,16 +980,16 @@ OnInit:
 	end;
 }
 
-que_qaru01,131,136,3	duplicate(Piamette#main)	Piamette#aru01	1930
-que_qaru02,131,136,3	duplicate(Piamette#main)	Piamette#aru02	1930
-que_qaru03,131,136,3	duplicate(Piamette#main)	Piamette#aru03	1930
-que_qaru04,131,136,3	duplicate(Piamette#main)	Piamette#aru04	1930
-que_qaru05,131,136,3	duplicate(Piamette#main)	Piamette#aru05	1930
-que_qsch01,131,136,3	duplicate(Piamette#main)	Piamette#sch01	1930
-que_qsch02,131,136,3	duplicate(Piamette#main)	Piamette#sch02	1930
-que_qsch03,131,136,3	duplicate(Piamette#main)	Piamette#sch03	1930
-que_qsch04,131,136,3	duplicate(Piamette#main)	Piamette#sch04	1930
-que_qsch05,131,136,3	duplicate(Piamette#main)	Piamette#sch05	1930
+que_qaru01,131,136,3	duplicate(Piamette#main)	皮亞梅特#aru01::Piamette#aru01	1930
+que_qaru02,131,136,3	duplicate(Piamette#main)	皮亞梅特#aru02::Piamette#aru02	1930
+que_qaru03,131,136,3	duplicate(Piamette#main)	皮亞梅特#aru03::Piamette#aru03	1930
+que_qaru04,131,136,3	duplicate(Piamette#main)	皮亞梅特#aru04::Piamette#aru04	1930
+que_qaru05,131,136,3	duplicate(Piamette#main)	皮亞梅特#aru05::Piamette#aru05	1930
+que_qsch01,131,136,3	duplicate(Piamette#main)	皮亞梅特#sch01::Piamette#sch01	1930
+que_qsch02,131,136,3	duplicate(Piamette#main)	皮亞梅特#sch02::Piamette#sch02	1930
+que_qsch03,131,136,3	duplicate(Piamette#main)	皮亞梅特#sch03::Piamette#sch03	1930
+que_qsch04,131,136,3	duplicate(Piamette#main)	皮亞梅特#sch04::Piamette#sch04	1930
+que_qsch05,131,136,3	duplicate(Piamette#main)	皮亞梅特#sch05::Piamette#sch05	1930
 
 -	script	#event_start01_main	-1,{
 	end;
@@ -1013,22 +1013,22 @@ OnTouch_:
 
 OnTimer2000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Piamette mumblings : ..There were six birds, Teo. But one is....",bc_map,"0xdb7093";
+	mapannounce "que_q"+.@sub$,"皮亞梅特喃喃自語 : ……有六隻鳥，提歐。可是……有一隻不見了……",bc_map,"0xdb7093";
 	end;
 
 OnTimer6000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Piamette mumblings : ...Shh.. Teo. The birds have returned..Are they birds that ran away before...? Or breakers who disguises themselves as good adventurers?",bc_map,"0xdb7093";
+	mapannounce "que_q"+.@sub$,"皮亞梅特喃喃自語 : ……噓……提歐。鳥兒們回來了……是之前逃走的那些鳥嗎……？還是偽裝成好冒險者的破壞者？",bc_map,"0xdb7093";
 	end;
 
 OnTimer10000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Piamette mumblings : Ha! They are caged in.",bc_map,"0xdb7093";
+	mapannounce "que_q"+.@sub$,"皮亞梅特喃喃自語 : 哈！它們都被關在籠子裡了。",bc_map,"0xdb7093";
 	end;
 
 OnTimer14000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Piamette : Teo, Catch the birds! Put the cage away from here!",bc_map,"0x00ff00";
+	mapannounce "que_q"+.@sub$,"皮亞梅特 : 提歐，抓住那些鳥！把籠子搬離這裡！",bc_map,"0x00ff00";
 	donpcevent "#gdtimer01_"+.@sub$+"::OnEnable";
 	stopnpctimer;
 	end;
@@ -1114,7 +1114,7 @@ OnTimer70000:
 OnTimer75000:
 	set .@sub$,callfunc("F_Okolnir");
 	if (getd("$@gqse_"+.@sub$+"_gd") < 6) {
-		mapannounce "que_q"+.@sub$+"","Piamette : Silly birds! Silly Teo! Why can't you put away the cage at once?!",bc_map,"0x00ff00";
+		mapannounce "que_q"+.@sub$+"","皮亞梅特 : 笨鳥！笨提歐！你為什麼不馬上把籠子收走？！",bc_map,"0x00ff00";
 		for (set .@i, 1; .@i <= 6; set .@i, .@i + 1)
 			enablenpc "#"+.@sub$+"_cage0"+.@i;
 		setd "$@gqse_"+.@sub$+"_gd",0;
@@ -1158,17 +1158,17 @@ OnStop:
 
 OnTimer4000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Piamette : All of them are caught!",bc_map,"0xdb7093";
+	mapannounce "que_q"+.@sub$,"皮亞梅特 : 全都抓到了！",bc_map,"0xdb7093";
 	end;
 
 OnTimer8000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Piamette : Let's call out the keeper of the key not to let the birds go far away.",bc_map,"0xdb7093";
+	mapannounce "que_q"+.@sub$,"皮亞梅特 : 叫鑰匙守護者來，別讓鳥兒飛遠了。",bc_map,"0xdb7093";
 	end;
 
 OnTimer12000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Piamette : The keeper of the key is protecting my cage.",bc_map,"0xdb7093";
+	mapannounce "que_q"+.@sub$,"皮亞梅特 : 鑰匙守護者正在保護我的籠子。",bc_map,"0xdb7093";
 	setarray .@xy, 108,151,109,135,115,116,158,106,163,133,150,154;
 	for (set .@i, 0; .@i < getarraysize(.@xy); set .@i, .@i + 2)
 		monster "que_q"+.@sub$,.@xy[.@i],.@xy[.@i+1],"Key Stone",1905,1,"#gdtimer02_"+.@sub$+"::OnMyMobDead";
@@ -1176,7 +1176,7 @@ OnTimer12000:
 
 OnTimer112000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Piamette : Whooping fun times are back! Now, Go! I'll get back to!!",bc_map,"0xdb7093";
+	mapannounce "que_q"+.@sub$,"皮亞梅特 : 歡樂的時光又回來了！現在，出發！我要去做我的事了！！",bc_map,"0xdb7093";
 	killmonster "que_q"+.@sub$,"#gdtimer02_"+.@sub$+"::OnMyMobDead";
 	for (set .@i, 1; .@i <= 6; set .@i, .@i + 1)
 		enablenpc "#"+.@sub$+"_cage0"+.@i;
@@ -1230,12 +1230,12 @@ OnReset:
 
 OnTimer1000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Piamette : All the keeper of keys are dead now? Who freed my birds? Teo, who did it?",bc_map,"0xdb7093";
+	mapannounce "que_q"+.@sub$,"皮亞梅特 : 鑰匙守護者全都死了？誰放走了我的鳥？提歐，是你做的嗎？",bc_map,"0xdb7093";
 	end;
 
 OnTimer5000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Piamette : I'm pissed off now!",bc_map,"0xdb7093";
+	mapannounce "que_q"+.@sub$,"皮亞梅特 : 我現在火大了！",bc_map,"0xdb7093";
 	disablenpc "Piamette#"+.@sub$;
 	monster "que_q"+.@sub$,131,135,"Angry Piamette",1930,1,"#piamette_"+.@sub$+"::OnMyMobDead";
 	stopnpctimer;
@@ -1243,7 +1243,7 @@ OnTimer5000:
 
 OnMyMobDead:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Piamette has been released, so the warp gate toward the South is working now.",bc_map,"0x00ff00";
+	mapannounce "que_q"+.@sub$,"皮亞梅特已被釋放，所以通往南方的傳送門現在可以使用了。",bc_map,"0x00ff00";
 	enablenpc "windpath03_"+.@sub$;
 	enablenpc "windpath04_"+.@sub$;
 	donpcevent "#nm_switch_"+.@sub$+"::OnEnable";
@@ -1572,17 +1572,17 @@ OnDisable:
 
 OnTimer1000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Wish Maiden: Did you have a good time with Piamette?",bc_map,"0x00ff00";
+	mapannounce "que_q"+.@sub$,"願望少女:你和皮亞梅特玩得開心嗎？",bc_map,"0x00ff00";
 	end;
 
 OnTimer4000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Wish Maiden: But it's the end. There will be summoned monsters coming soon...",bc_map,"0x00ff00";
+	mapannounce "que_q"+.@sub$,"願望少女:但這就是終點了。被召喚的怪物很快就會來……",bc_map,"0x00ff00";
 	end;
 
 OnTimer9000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Wish Maiden: So come here to me safely...",bc_map,"0x00ff00";
+	mapannounce "que_q"+.@sub$,"願望少女:那就平安地來到我這裡吧……",bc_map,"0x00ff00";
 	end;
 
 OnTimer10000:
@@ -1636,7 +1636,7 @@ OnDisable:
 OnTimer5000:
 	set .@sub$,callfunc("F_Okolnir");
 	setarray .@xy, 226,288,227,289,228,290,229,291,230,292,231,293,232,294,233,295,234,296,235,297,228,286,229,287,230,288,231,289,232,290,233,291,234,292,235,293,236,294,237,295,230,284,231,285,232,286,233,287,234,288,235,289,236,290,237,291,238,292,239,293;
-	mapannounce "que_q"+.@sub$,"The Western magic formation is working to summon Guard of Shadow.",bc_map,"0x4d4dff";
+	mapannounce "que_q"+.@sub$,"西方的魔法陣正在召喚暗影守衛。",bc_map,"0x4d4dff";
 	for (set .@i, 0; .@i < getarraysize(.@xy); set .@i, .@i + 2)
 		monster "que_q"+.@sub$,.@xy[.@i],.@xy[.@i+1],"Guard of Shadow",1752,1,"#nmsom"+.@sub$+"_jin01::OnMyMobDead";
 	end;
@@ -1719,7 +1719,7 @@ OnDisable:
 
 OnTimer5000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"The Eastern magic formation is working to summon Bloody Hunter.",bc_map,"0x4d4dff";
+	mapannounce "que_q"+.@sub$,"東方的魔法陣正在召喚血腥獵人。",bc_map,"0x4d4dff";
 	setarray .@xy, 263,292,264,291,265,290,266,289,267,288,268,287,269,286,270,285,271,284,272,283,265,294,266,293,267,292,268,291,269,290,270,289,271,288,272,287,273,286,274,285,267,296,268,295,269,294,270,283,271,282,272,281,273,280,274,279,275,276,276,275;
 	for (set .@i, 0; .@i < getarraysize(.@xy); set .@i, .@i + 2)
 		monster "que_q"+.@sub$,.@xy[.@i],.@xy[.@i+1],"Bloody Hunter",1753,1,"#nmsom"+.@sub$+"_jin02::OnMyMobDead";
@@ -1803,7 +1803,7 @@ OnDisable:
 
 OnTimer5000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"The Northern magic formation is working to summon Keeper of the Temple.",bc_map,"0x4d4dff";
+	mapannounce "que_q"+.@sub$,"北方的魔法陣正在召喚神殿守護者。",bc_map,"0x4d4dff";
 	setarray .@xy, 247,329,249,329,251,329,253,329,255,329,243,339,245,337,247,335,247,333,254,333,256,335,258,337,260,339;
 	for (set .@i, 0; .@i < getarraysize(.@xy); set .@i, .@i + 2)
 		monster "que_q"+.@sub$,.@xy[.@i],.@xy[.@i+1],"Keeper Of The Temple",1933,1,"#nmsom"+.@sub$+"_jin03::OnMyMobDead";
@@ -1916,46 +1916,46 @@ OnInit:
 		disablenpc "Guard of Shadow#"+.@sub$+"_0"+.@i;
 	end;
 }
-que_qaru01,235,285,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru01_01	1752,4,4
-que_qaru01,224,290,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru01_02	1752,4,4
-que_qaru01,236,296,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru01_03	1752,4,4
-que_qaru01,225,303,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru01_04	1752,4,4
-que_qaru02,235,285,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru02_01	1752,4,4
-que_qaru02,224,290,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru02_02	1752,4,4
-que_qaru02,236,296,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru02_03	1752,4,4
-que_qaru02,225,303,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru02_04	1752,4,4
-que_qaru03,235,285,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru03_01	1752,4,4
-que_qaru03,224,290,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru03_02	1752,4,4
-que_qaru03,236,296,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru03_03	1752,4,4
-que_qaru03,225,303,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru03_04	1752,4,4
-que_qaru04,235,285,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru04_01	1752,4,4
-que_qaru04,224,290,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru04_02	1752,4,4
-que_qaru04,236,296,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru04_03	1752,4,4
-que_qaru04,225,303,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru04_04	1752,4,4
-que_qaru05,235,285,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru05_01	1752,4,4
-que_qaru05,224,290,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru05_02	1752,4,4
-que_qaru05,236,296,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru05_03	1752,4,4
-que_qaru05,225,303,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#aru05_04	1752,4,4
-que_qsch01,235,285,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch01_01	1752,4,4
-que_qsch01,224,290,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch01_02	1752,4,4
-que_qsch01,236,296,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch01_03	1752,4,4
-que_qsch01,225,303,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch01_04	1752,4,4
-que_qsch02,235,285,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch02_01	1752,4,4
-que_qsch02,224,290,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch02_02	1752,4,4
-que_qsch02,236,296,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch02_03	1752,4,4
-que_qsch02,225,303,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch02_04	1752,4,4
-que_qsch03,235,285,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch03_01	1752,4,4
-que_qsch03,224,290,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch03_02	1752,4,4
-que_qsch03,236,296,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch03_03	1752,4,4
-que_qsch03,225,303,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch03_04	1752,4,4
-que_qsch04,235,285,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch04_01	1752,4,4
-que_qsch04,224,290,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch04_02	1752,4,4
-que_qsch04,236,296,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch04_03	1752,4,4
-que_qsch04,225,303,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch04_04	1752,4,4
-que_qsch05,235,285,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch05_01	1752,4,4
-que_qsch05,224,290,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch05_02	1752,4,4
-que_qsch05,236,296,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch05_03	1752,4,4
-que_qsch05,225,303,5	duplicate(Guard of Shadow#main_all)	Guard of Shadow#sch05_04	1752,4,4
+que_qaru01,235,285,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru01_01::Guard of Shadow#aru01_01	1752,4,4
+que_qaru01,224,290,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru01_02::Guard of Shadow#aru01_02	1752,4,4
+que_qaru01,236,296,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru01_03::Guard of Shadow#aru01_03	1752,4,4
+que_qaru01,225,303,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru01_04::Guard of Shadow#aru01_04	1752,4,4
+que_qaru02,235,285,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru02_01::Guard of Shadow#aru02_01	1752,4,4
+que_qaru02,224,290,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru02_02::Guard of Shadow#aru02_02	1752,4,4
+que_qaru02,236,296,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru02_03::Guard of Shadow#aru02_03	1752,4,4
+que_qaru02,225,303,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru02_04::Guard of Shadow#aru02_04	1752,4,4
+que_qaru03,235,285,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru03_01::Guard of Shadow#aru03_01	1752,4,4
+que_qaru03,224,290,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru03_02::Guard of Shadow#aru03_02	1752,4,4
+que_qaru03,236,296,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru03_03::Guard of Shadow#aru03_03	1752,4,4
+que_qaru03,225,303,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru03_04::Guard of Shadow#aru03_04	1752,4,4
+que_qaru04,235,285,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru04_01::Guard of Shadow#aru04_01	1752,4,4
+que_qaru04,224,290,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru04_02::Guard of Shadow#aru04_02	1752,4,4
+que_qaru04,236,296,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru04_03::Guard of Shadow#aru04_03	1752,4,4
+que_qaru04,225,303,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru04_04::Guard of Shadow#aru04_04	1752,4,4
+que_qaru05,235,285,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru05_01::Guard of Shadow#aru05_01	1752,4,4
+que_qaru05,224,290,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru05_02::Guard of Shadow#aru05_02	1752,4,4
+que_qaru05,236,296,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru05_03::Guard of Shadow#aru05_03	1752,4,4
+que_qaru05,225,303,5	duplicate(Guard of Shadow#main_all)	暗影守衛#aru05_04::Guard of Shadow#aru05_04	1752,4,4
+que_qsch01,235,285,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch01_01::Guard of Shadow#sch01_01	1752,4,4
+que_qsch01,224,290,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch01_02::Guard of Shadow#sch01_02	1752,4,4
+que_qsch01,236,296,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch01_03::Guard of Shadow#sch01_03	1752,4,4
+que_qsch01,225,303,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch01_04::Guard of Shadow#sch01_04	1752,4,4
+que_qsch02,235,285,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch02_01::Guard of Shadow#sch02_01	1752,4,4
+que_qsch02,224,290,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch02_02::Guard of Shadow#sch02_02	1752,4,4
+que_qsch02,236,296,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch02_03::Guard of Shadow#sch02_03	1752,4,4
+que_qsch02,225,303,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch02_04::Guard of Shadow#sch02_04	1752,4,4
+que_qsch03,235,285,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch03_01::Guard of Shadow#sch03_01	1752,4,4
+que_qsch03,224,290,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch03_02::Guard of Shadow#sch03_02	1752,4,4
+que_qsch03,236,296,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch03_03::Guard of Shadow#sch03_03	1752,4,4
+que_qsch03,225,303,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch03_04::Guard of Shadow#sch03_04	1752,4,4
+que_qsch04,235,285,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch04_01::Guard of Shadow#sch04_01	1752,4,4
+que_qsch04,224,290,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch04_02::Guard of Shadow#sch04_02	1752,4,4
+que_qsch04,236,296,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch04_03::Guard of Shadow#sch04_03	1752,4,4
+que_qsch04,225,303,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch04_04::Guard of Shadow#sch04_04	1752,4,4
+que_qsch05,235,285,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch05_01::Guard of Shadow#sch05_01	1752,4,4
+que_qsch05,224,290,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch05_02::Guard of Shadow#sch05_02	1752,4,4
+que_qsch05,236,296,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch05_03::Guard of Shadow#sch05_03	1752,4,4
+que_qsch05,225,303,5	duplicate(Guard of Shadow#main_all)	暗影守衛#sch05_04::Guard of Shadow#sch05_04	1752,4,4
 
 -	script	Bloody Hunter#main_all	-1,{
 	end;
@@ -1990,46 +1990,46 @@ OnInit:
 		disablenpc "Bloody Hunter#"+.@sub$+"_ac0"+.@i;
 	end;
 }
-que_qaru01,266,296,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru01_ac01	1753,4,4
-que_qaru01,271,283,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru01_ac02	1753,4,4,
-que_qaru01,270,307,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru01_ac03	1753,4,4,
-que_qaru01,279,300,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru01_ac04	1753,4,4,
-que_qaru02,266,296,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru02_ac01	1753,4,4,
-que_qaru02,271,283,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru02_ac02	1753,4,4
-que_qaru02,270,307,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru02_ac03	1753,4,4
-que_qaru02,279,300,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru02_ac04	1753,4,4
-que_qaru03,266,296,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru03_ac01	1753,4,4
-que_qaru03,271,283,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru03_ac02	1753,4,4
-que_qaru03,270,307,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru03_ac03	1753,4,4
-que_qaru03,279,300,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru03_ac04	1753,4,4
-que_qaru04,266,296,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru04_ac01	1753,4,4
-que_qaru04,271,283,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru04_ac02	1753,4,4
-que_qaru04,270,307,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru04_ac03	1753,4,4
-que_qaru04,279,300,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru04_ac04	1753,4,4
-que_qaru05,266,296,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru05_ac01	1753,4,4
-que_qaru05,271,283,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru05_ac02	1753,4,4
-que_qaru05,270,307,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru05_ac03	1753,4,4
-que_qaru05,279,300,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#aru05_ac04	1753,4,4
-que_qsch01,266,296,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch01_ac01	1753,4,4
-que_qsch01,271,283,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch01_ac02	1753,4,4
-que_qsch01,270,307,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch01_ac03	1753,4,4
-que_qsch01,279,300,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch01_ac04	1753,4,4
-que_qsch02,266,296,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch02_ac01	1753,4,4
-que_qsch02,271,283,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch02_ac02	1753,4,4
-que_qsch02,270,307,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch02_ac03	1753,4,4
-que_qsch02,279,300,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch02_ac04	1753,4,4
-que_qsch03,266,296,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch03_ac01	1753,4,4
-que_qsch03,271,283,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch03_ac02	1753,4,4
-que_qsch03,270,307,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch03_ac03	1753,4,4
-que_qsch03,279,300,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch03_ac04	1753,4,4
-que_qsch04,266,296,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch04_ac01	1753,4,4
-que_qsch04,271,283,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch04_ac02	1753,4,4
-que_qsch04,270,307,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch04_ac03	1753,4,4
-que_qsch04,279,300,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch04_ac04	1753,4,4
-que_qsch05,266,296,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch05_ac01	1753,4,4
-que_qsch05,271,283,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch05_ac02	1753,4,4
-que_qsch05,270,307,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch05_ac03	1753,4,4
-que_qsch05,279,300,3	duplicate(Bloody Hunter#main_all)	Bloody Hunter#sch05_ac04	1753,4,4
+que_qaru01,266,296,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru01_ac01::Bloody Hunter#aru01_ac01	1753,4,4
+que_qaru01,271,283,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru01_ac02::Bloody Hunter#aru01_ac02	1753,4,4,
+que_qaru01,270,307,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru01_ac03::Bloody Hunter#aru01_ac03	1753,4,4,
+que_qaru01,279,300,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru01_ac04::Bloody Hunter#aru01_ac04	1753,4,4,
+que_qaru02,266,296,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru02_ac01::Bloody Hunter#aru02_ac01	1753,4,4,
+que_qaru02,271,283,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru02_ac02::Bloody Hunter#aru02_ac02	1753,4,4
+que_qaru02,270,307,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru02_ac03::Bloody Hunter#aru02_ac03	1753,4,4
+que_qaru02,279,300,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru02_ac04::Bloody Hunter#aru02_ac04	1753,4,4
+que_qaru03,266,296,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru03_ac01::Bloody Hunter#aru03_ac01	1753,4,4
+que_qaru03,271,283,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru03_ac02::Bloody Hunter#aru03_ac02	1753,4,4
+que_qaru03,270,307,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru03_ac03::Bloody Hunter#aru03_ac03	1753,4,4
+que_qaru03,279,300,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru03_ac04::Bloody Hunter#aru03_ac04	1753,4,4
+que_qaru04,266,296,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru04_ac01::Bloody Hunter#aru04_ac01	1753,4,4
+que_qaru04,271,283,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru04_ac02::Bloody Hunter#aru04_ac02	1753,4,4
+que_qaru04,270,307,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru04_ac03::Bloody Hunter#aru04_ac03	1753,4,4
+que_qaru04,279,300,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru04_ac04::Bloody Hunter#aru04_ac04	1753,4,4
+que_qaru05,266,296,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru05_ac01::Bloody Hunter#aru05_ac01	1753,4,4
+que_qaru05,271,283,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru05_ac02::Bloody Hunter#aru05_ac02	1753,4,4
+que_qaru05,270,307,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru05_ac03::Bloody Hunter#aru05_ac03	1753,4,4
+que_qaru05,279,300,3	duplicate(Bloody Hunter#main_all)	血腥獵人#aru05_ac04::Bloody Hunter#aru05_ac04	1753,4,4
+que_qsch01,266,296,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch01_ac01::Bloody Hunter#sch01_ac01	1753,4,4
+que_qsch01,271,283,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch01_ac02::Bloody Hunter#sch01_ac02	1753,4,4
+que_qsch01,270,307,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch01_ac03::Bloody Hunter#sch01_ac03	1753,4,4
+que_qsch01,279,300,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch01_ac04::Bloody Hunter#sch01_ac04	1753,4,4
+que_qsch02,266,296,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch02_ac01::Bloody Hunter#sch02_ac01	1753,4,4
+que_qsch02,271,283,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch02_ac02::Bloody Hunter#sch02_ac02	1753,4,4
+que_qsch02,270,307,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch02_ac03::Bloody Hunter#sch02_ac03	1753,4,4
+que_qsch02,279,300,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch02_ac04::Bloody Hunter#sch02_ac04	1753,4,4
+que_qsch03,266,296,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch03_ac01::Bloody Hunter#sch03_ac01	1753,4,4
+que_qsch03,271,283,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch03_ac02::Bloody Hunter#sch03_ac02	1753,4,4
+que_qsch03,270,307,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch03_ac03::Bloody Hunter#sch03_ac03	1753,4,4
+que_qsch03,279,300,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch03_ac04::Bloody Hunter#sch03_ac04	1753,4,4
+que_qsch04,266,296,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch04_ac01::Bloody Hunter#sch04_ac01	1753,4,4
+que_qsch04,271,283,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch04_ac02::Bloody Hunter#sch04_ac02	1753,4,4
+que_qsch04,270,307,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch04_ac03::Bloody Hunter#sch04_ac03	1753,4,4
+que_qsch04,279,300,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch04_ac04::Bloody Hunter#sch04_ac04	1753,4,4
+que_qsch05,266,296,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch05_ac01::Bloody Hunter#sch05_ac01	1753,4,4
+que_qsch05,271,283,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch05_ac02::Bloody Hunter#sch05_ac02	1753,4,4
+que_qsch05,270,307,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch05_ac03::Bloody Hunter#sch05_ac03	1753,4,4
+que_qsch05,279,300,3	duplicate(Bloody Hunter#main_all)	血腥獵人#sch05_ac04::Bloody Hunter#sch05_ac04	1753,4,4
 
 -	script	Temple Keeper#main_all	-1,{
 	end;
@@ -2062,26 +2062,26 @@ OnInit:
 		disablenpc "Temple Keeper#"+.@sub$+"_ac0"+.@i;
 	end;
 }
-que_qaru01,247,330,5	duplicate(Temple Keeper#main_all)	Temple Keeper#aru01_ac01	1933,4,4
-que_qaru01,255,330,3	duplicate(Temple Keeper#main_all)	Temple Keeper#aru01_ac02	1933,4,4
-que_qaru02,247,330,5	duplicate(Temple Keeper#main_all)	Temple Keeper#aru02_ac01	1933,4,4
-que_qaru02,255,330,3	duplicate(Temple Keeper#main_all)	Temple Keeper#aru02_ac02	1933,4,4
-que_qaru03,247,330,5	duplicate(Temple Keeper#main_all)	Temple Keeper#aru03_ac01	1933,4,4
-que_qaru03,255,330,3	duplicate(Temple Keeper#main_all)	Temple Keeper#aru03_ac02	1933,4,4
-que_qaru04,247,330,5	duplicate(Temple Keeper#main_all)	Temple Keeper#aru04_ac01	1933,4,4
-que_qaru04,255,330,3	duplicate(Temple Keeper#main_all)	Temple Keeper#aru04_ac02	1933,4,4
-que_qaru05,247,330,5	duplicate(Temple Keeper#main_all)	Temple Keeper#aru05_ac01	1933,4,4
-que_qaru05,255,330,3	duplicate(Temple Keeper#main_all)	Temple Keeper#aru05_ac02	1933,4,4
-que_qsch01,247,330,5	duplicate(Temple Keeper#main_all)	Temple Keeper#sch01_ac01	1933,4,4
-que_qsch01,255,330,3	duplicate(Temple Keeper#main_all)	Temple Keeper#sch01_ac02	1933,4,4
-que_qsch02,247,330,5	duplicate(Temple Keeper#main_all)	Temple Keeper#sch02_ac01	1933,4,4
-que_qsch02,255,330,3	duplicate(Temple Keeper#main_all)	Temple Keeper#sch02_ac02	1933,4,4
-que_qsch03,247,330,5	duplicate(Temple Keeper#main_all)	Temple Keeper#sch03_ac01	1933,4,4
-que_qsch03,255,330,3	duplicate(Temple Keeper#main_all)	Temple Keeper#sch03_ac02	1933,4,4
-que_qsch04,247,330,5	duplicate(Temple Keeper#main_all)	Temple Keeper#sch04_ac01	1933,4,4
-que_qsch04,255,330,3	duplicate(Temple Keeper#main_all)	Temple Keeper#sch04_ac02	1933,4,4
-que_qsch05,247,330,5	duplicate(Temple Keeper#main_all)	Temple Keeper#sch05_ac01	1933,4,4
-que_qsch05,255,330,3	duplicate(Temple Keeper#main_all)	Temple Keeper#sch05_ac02	1933,4,4
+que_qaru01,247,330,5	duplicate(Temple Keeper#main_all)	神殿守護者#aru01_ac01::Temple Keeper#aru01_ac01	1933,4,4
+que_qaru01,255,330,3	duplicate(Temple Keeper#main_all)	神殿守護者#aru01_ac02::Temple Keeper#aru01_ac02	1933,4,4
+que_qaru02,247,330,5	duplicate(Temple Keeper#main_all)	神殿守護者#aru02_ac01::Temple Keeper#aru02_ac01	1933,4,4
+que_qaru02,255,330,3	duplicate(Temple Keeper#main_all)	神殿守護者#aru02_ac02::Temple Keeper#aru02_ac02	1933,4,4
+que_qaru03,247,330,5	duplicate(Temple Keeper#main_all)	神殿守護者#aru03_ac01::Temple Keeper#aru03_ac01	1933,4,4
+que_qaru03,255,330,3	duplicate(Temple Keeper#main_all)	神殿守護者#aru03_ac02::Temple Keeper#aru03_ac02	1933,4,4
+que_qaru04,247,330,5	duplicate(Temple Keeper#main_all)	神殿守護者#aru04_ac01::Temple Keeper#aru04_ac01	1933,4,4
+que_qaru04,255,330,3	duplicate(Temple Keeper#main_all)	神殿守護者#aru04_ac02::Temple Keeper#aru04_ac02	1933,4,4
+que_qaru05,247,330,5	duplicate(Temple Keeper#main_all)	神殿守護者#aru05_ac01::Temple Keeper#aru05_ac01	1933,4,4
+que_qaru05,255,330,3	duplicate(Temple Keeper#main_all)	神殿守護者#aru05_ac02::Temple Keeper#aru05_ac02	1933,4,4
+que_qsch01,247,330,5	duplicate(Temple Keeper#main_all)	神殿守護者#sch01_ac01::Temple Keeper#sch01_ac01	1933,4,4
+que_qsch01,255,330,3	duplicate(Temple Keeper#main_all)	神殿守護者#sch01_ac02::Temple Keeper#sch01_ac02	1933,4,4
+que_qsch02,247,330,5	duplicate(Temple Keeper#main_all)	神殿守護者#sch02_ac01::Temple Keeper#sch02_ac01	1933,4,4
+que_qsch02,255,330,3	duplicate(Temple Keeper#main_all)	神殿守護者#sch02_ac02::Temple Keeper#sch02_ac02	1933,4,4
+que_qsch03,247,330,5	duplicate(Temple Keeper#main_all)	神殿守護者#sch03_ac01::Temple Keeper#sch03_ac01	1933,4,4
+que_qsch03,255,330,3	duplicate(Temple Keeper#main_all)	神殿守護者#sch03_ac02::Temple Keeper#sch03_ac02	1933,4,4
+que_qsch04,247,330,5	duplicate(Temple Keeper#main_all)	神殿守護者#sch04_ac01::Temple Keeper#sch04_ac01	1933,4,4
+que_qsch04,255,330,3	duplicate(Temple Keeper#main_all)	神殿守護者#sch04_ac02::Temple Keeper#sch04_ac02	1933,4,4
+que_qsch05,247,330,5	duplicate(Temple Keeper#main_all)	神殿守護者#sch05_ac01::Temple Keeper#sch05_ac01	1933,4,4
+que_qsch05,255,330,3	duplicate(Temple Keeper#main_all)	神殿守護者#sch05_ac02::Temple Keeper#sch05_ac02	1933,4,4
 
 -	script	Wish Maiden#main_boss	-1,{
 	end;
@@ -2099,12 +2099,12 @@ OnFight:
 
 OnTimer1000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Wish Maiden : You guys reached here.. Are your guardians dead...?",bc_map,"0x00ff00";
+	mapannounce "que_q"+.@sub$,"願望少女 : 你們終於來到這裡了……你們的守護者都死了嗎……？",bc_map,"0x00ff00";
 	end;
 
 OnTimer4000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Wish Maiden : I sincerely welcome all your best efforts!",bc_map,"0x00ff00";
+	mapannounce "que_q"+.@sub$,"願望少女 : 我誠摯歡迎你們全力以赴！",bc_map,"0x00ff00";
 	end;
 
 OnTimer5000:
@@ -2121,7 +2121,7 @@ OnMyMobDead:
 	if (!mobcount("que_q"+.@sub$,"Wish Maiden#"+.@sub$+"_boss::OnMyMobDead")) {
 		donpcevent "#okolnir_"+.@sub$+"::OnStop";
 		donpcevent "Wish Maiden#"+.@sub$+"_gift::OnEnable";
-		mapannounce "que_q"+.@sub$,"Wish Maiden : ..Good, you deserve the Goddess' shine.",bc_map,"0x00ff00";
+		mapannounce "que_q"+.@sub$,"願望少女 : ……很好，你配得上女神的光輝。",bc_map,"0x00ff00";
 	}
 	end;
 	
@@ -2130,16 +2130,16 @@ OnInit:
 		hideonnpc "Wish Maiden#"+.@sub$+"_boss";	
 	end;
 }
-que_qaru01,251,255,3	duplicate(Wish Maiden#main_boss)	Wish Maiden#aru01_boss	1931
-que_qaru02,251,255,3	duplicate(Wish Maiden#main_boss)	Wish Maiden#aru02_boss	1931
-que_qaru03,251,255,3	duplicate(Wish Maiden#main_boss)	Wish Maiden#aru03_boss	1931
-que_qaru04,251,255,3	duplicate(Wish Maiden#main_boss)	Wish Maiden#aru04_boss	1931
-que_qaru05,251,255,3	duplicate(Wish Maiden#main_boss)	Wish Maiden#aru05_boss	1931
-que_qsch01,251,255,3	duplicate(Wish Maiden#main_boss)	Wish Maiden#sch01_boss	1931
-que_qsch02,251,255,3	duplicate(Wish Maiden#main_boss)	Wish Maiden#sch02_boss	1931
-que_qsch03,251,255,3	duplicate(Wish Maiden#main_boss)	Wish Maiden#sch03_boss	1931
-que_qsch04,251,255,3	duplicate(Wish Maiden#main_boss)	Wish Maiden#sch04_boss	1931
-que_qsch05,251,255,3	duplicate(Wish Maiden#main_boss)	Wish Maiden#sch05_boss	1931
+que_qaru01,251,255,3	duplicate(Wish Maiden#main_boss)	願望少女#aru01_boss::Wish Maiden#aru01_boss	1931
+que_qaru02,251,255,3	duplicate(Wish Maiden#main_boss)	願望少女#aru02_boss::Wish Maiden#aru02_boss	1931
+que_qaru03,251,255,3	duplicate(Wish Maiden#main_boss)	願望少女#aru03_boss::Wish Maiden#aru03_boss	1931
+que_qaru04,251,255,3	duplicate(Wish Maiden#main_boss)	願望少女#aru04_boss::Wish Maiden#aru04_boss	1931
+que_qaru05,251,255,3	duplicate(Wish Maiden#main_boss)	願望少女#aru05_boss::Wish Maiden#aru05_boss	1931
+que_qsch01,251,255,3	duplicate(Wish Maiden#main_boss)	願望少女#sch01_boss::Wish Maiden#sch01_boss	1931
+que_qsch02,251,255,3	duplicate(Wish Maiden#main_boss)	願望少女#sch02_boss::Wish Maiden#sch02_boss	1931
+que_qsch03,251,255,3	duplicate(Wish Maiden#main_boss)	願望少女#sch03_boss::Wish Maiden#sch03_boss	1931
+que_qsch04,251,255,3	duplicate(Wish Maiden#main_boss)	願望少女#sch04_boss::Wish Maiden#sch04_boss	1931
+que_qsch05,251,255,3	duplicate(Wish Maiden#main_boss)	願望少女#sch05_boss::Wish Maiden#sch05_boss	1931
 
 -	script	Wish Maiden#main_gift	-1,{
 	set .@sub$,callfunc("F_Okolnir");
@@ -2160,29 +2160,29 @@ que_qsch05,251,255,3	duplicate(Wish Maiden#main_boss)	Wish Maiden#sch05_boss	193
 			}
 			if (.@check >= 9) {
 				cutin "wish_maiden12",1;
-				mes "[Wish Maiden]";
-				mes "As I declared, I will give the Goddess' shine to you.";
-				mes "You have the requirements to carry it...";
+				mes "[願望少女]";
+				mes "正如我所宣告的，我會把女神的光輝賜予你。";
+				mes "你具備承載它的條件……";
 				next;
-				mes "[Wish Maiden]";
-				mes "You will be granted the power of the great Valkyrie...";
+				mes "[願望少女]";
+				mes "你將獲得偉大的蘭特克力斯的力量……";
 				next;
-				mes "[Wish Maiden]";
-				mes "I will give you some things for fun.";
-				mes "All of you enjoy them together...";
+				mes "[願望少女]";
+				mes "我會給你一些東西，當作娛樂。";
+				mes "你們所有人一起享用吧……";
 				next;
-				mes "[Wish Maiden]";
-				mes "Go to Rachel and Juno to meet the Ravies sisters.";
+				mes "[願望少女]";
+				mes "前往拉赫與朱諾，去見雷維斯姊妹。";
 				next;
 				cutin "wish_maiden32",1;
-				mes "[Wish Maiden]";
-				mes "I will open the gate for you to come back here.";
-				mes "...Okolnir won't last forever...";
+				mes "[願望少女]";
+				mes "我會為你開啟返回這裡的大門。";
+				mes "……奧克諾爾不會永遠持續下去……";
 				for (set .@i, 0; .@i < getarraysize(.@n); set .@i, .@i + 2)
 					delitem .@n[.@i],.@n[.@i+1];
 				getitem .@rwd,1;
 				getitem 7840,1; //Valkyrie_Gift
-				announce "["+ strcharinfo(0) +"], of guild ["+ GetGuildName(.@GID) +"] has brought a "+getitemname(.@rwd)+" into this world.",bc_all,"0x70dbdb";
+				announce "["+ strcharinfo(0) +"]，公會["+ GetGuildName(.@GID) +"]帶來了一個 "+getitemname(.@rwd)+" 來到這個世界。",bc_all,"0x70dbdb";
 				close2;
 				cutin "wish_maiden11",255;
 				disablenpc "Wish Maiden#"+.@sub$+"_gift";
@@ -2191,28 +2191,28 @@ que_qsch05,251,255,3	duplicate(Wish Maiden#main_boss)	Wish Maiden#sch05_boss	193
 			}
 			else {
 				cutin "wish_maiden13",1;
-				mes "[Wish Maiden]";
-				mes "As I declared, you are worthy of holding the "+getitemname(.@rwd)+".";
-				mes "However, you do not have the requirements on you...";
+				mes "[願望少女]";
+				mes "正如我所宣告，你配得上持有 "+getitemname(.@rwd)+".";
+				mes "但是，你並不具備條件……";
 				next;
-				mes "[Wish Maiden]";
-				mes "...Did you forget something?";
+				mes "[願望少女]";
+				mes "……你忘了什麼嗎？";
 				close2;
 			}
 		}
 		else {
 			cutin "wish_maiden12",1;
-			mes "[Wish Maiden]";
-			mes "All of you worked together as a team...";
-			mes "Humans are strong when they are united, but are easily swayed by lust.";
+			mes "[願望少女]";
+			mes "你們所有人都同心協力……";
+			mes "人類團結時很強大，但也容易被慾望所動搖。";
 			next;
-			mes "[Wish Maiden]";
-			mes "Humans are imperfect, so their chief god is there for them when they need help.";
+			mes "[願望少女]";
+			mes "人類並不完美，所以主神會在他們需要幫助時守護他們。";
 			mes "....";
 			next;
-			mes "[Wish Maiden]";
-			mes "Always be real.";
-			mes "Do not regret your actions...";
+			mes "[願望少女]";
+			mes "永遠保持真誠。";
+			mes "不要對你的行為感到後悔……";
 			close2;
 		}
 	}
@@ -2233,7 +2233,7 @@ OnDisable:
 
 OnTimer280000:
 	set .@sub$,callfunc("F_Okolnir");
-	mapannounce "que_q"+.@sub$,"Wish Maiden : ... Okolnir will soon disappear... I will send you back to where you originally came from.",bc_map,"0x00ff00";
+	mapannounce "que_q"+.@sub$,"願望少女 : ……奧克諾爾很快就會消失……我會把你送回你原本來的地方。",bc_map,"0x00ff00";
 	end;
 
 OnTimer290000:
@@ -2259,16 +2259,16 @@ OnInit:
 		disablenpc "Wish Maiden#"+.@sub$+"_gift";
 	end;
 }
-que_qaru01,252,340,3	duplicate(Wish Maiden#main_gift)	Wish Maiden#aru01_gift	403
-que_qaru02,252,340,3	duplicate(Wish Maiden#main_gift)	Wish Maiden#aru02_gift	403
-que_qaru03,252,340,3	duplicate(Wish Maiden#main_gift)	Wish Maiden#aru03_gift	403
-que_qaru04,252,340,3	duplicate(Wish Maiden#main_gift)	Wish Maiden#aru04_gift	403
-que_qaru05,252,340,3	duplicate(Wish Maiden#main_gift)	Wish Maiden#aru05_gift	403
-que_qsch01,252,340,3	duplicate(Wish Maiden#main_gift)	Wish Maiden#sch01_gift	403
-que_qsch02,252,340,3	duplicate(Wish Maiden#main_gift)	Wish Maiden#sch02_gift	403
-que_qsch03,252,340,3	duplicate(Wish Maiden#main_gift)	Wish Maiden#sch03_gift	403
-que_qsch04,252,340,3	duplicate(Wish Maiden#main_gift)	Wish Maiden#sch04_gift	403
-que_qsch05,252,340,3	duplicate(Wish Maiden#main_gift)	Wish Maiden#sch05_gift	403
+que_qaru01,252,340,3	duplicate(Wish Maiden#main_gift)	願望少女#aru01_gift::Wish Maiden#aru01_gift	403
+que_qaru02,252,340,3	duplicate(Wish Maiden#main_gift)	願望少女#aru02_gift::Wish Maiden#aru02_gift	403
+que_qaru03,252,340,3	duplicate(Wish Maiden#main_gift)	願望少女#aru03_gift::Wish Maiden#aru03_gift	403
+que_qaru04,252,340,3	duplicate(Wish Maiden#main_gift)	願望少女#aru04_gift::Wish Maiden#aru04_gift	403
+que_qaru05,252,340,3	duplicate(Wish Maiden#main_gift)	願望少女#aru05_gift::Wish Maiden#aru05_gift	403
+que_qsch01,252,340,3	duplicate(Wish Maiden#main_gift)	願望少女#sch01_gift::Wish Maiden#sch01_gift	403
+que_qsch02,252,340,3	duplicate(Wish Maiden#main_gift)	願望少女#sch02_gift::Wish Maiden#sch02_gift	403
+que_qsch03,252,340,3	duplicate(Wish Maiden#main_gift)	願望少女#sch03_gift::Wish Maiden#sch03_gift	403
+que_qsch04,252,340,3	duplicate(Wish Maiden#main_gift)	願望少女#sch04_gift::Wish Maiden#sch04_gift	403
+que_qsch05,252,340,3	duplicate(Wish Maiden#main_gift)	願望少女#sch05_gift::Wish Maiden#sch05_gift	403
 
 -	script	#to_agit_main_gate	-1,{
 	end;

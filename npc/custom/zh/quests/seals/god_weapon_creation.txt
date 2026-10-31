@@ -16,335 +16,335 @@
 //=     Added GM management function.
 //============================================================
 
-gld_dun01,28,85,0	script	Grunburti#1::GodDwarf	826,{
-	mes "[Dwarf Grunburti]";
-	mes "A human?!";
-	mes "This land is full";
-	mes "of your kind. What";
-	mes "brings you here?";
+gld_dun01,28,85,0	script	格朗布爾蒂#1::GodDwarf	826,{
+	mes "[矮人格朗布爾蒂]";
+	mes "人類？！";
+	mes "這片土地上滿是";
+	mes "你們這種人。你";
+	mes "來這裡做什麼？";
 	next;
-	mes "[Dwarf Grunburti]";
-	mes "Living in Midgard and away from";
-	mes "my home town is painful enough, let alone facing a whiny human. Leave me alone!";
+	mes "[矮人格朗布爾蒂]";
+	mes "住在米德加德，遠離";
+	mes "我的家鄉已經夠痛苦了，更別說還要面對一個愛抱怨的人類。別來煩我！";
 	next;
-	switch(select("Ask him about Dwarves.:Ask him what he is doing.:Request weapon creation.:Cancel.")) {
+	switch(select("詢問他關於矮人的事。:詢問他在做什麼。:請求打造武器。:取消。")) {
 	case 1:
-		mes "[Dwarf Grunburti]";
-		mes "What's to know about Dwarves?";
-		mes "We're the toughest race. After all, we can live anywhere, no matter";
-		mes "how harsh the environment may be.";
+		mes "[矮人格朗布爾蒂]";
+		mes "關於矮人有什麼好知道的？";
+		mes "我們是最堅韌的種族。畢竟，無論";
+		mes "環境多麼嚴酷，我們都能生存。";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "I doubt your feeble mind can comprehend the how unendurable";
-		mes "it must be for you to live in my homeland, but you can try.";
-		mes "Try to imagine.";
+		mes "[矮人格朗布爾蒂]";
+		mes "我懷疑你那脆弱的腦袋能否理解";
+		mes "在我的故鄉生活對你來說會有多難以忍受，不過你可以試試看。";
+		mes "試著想像看看。";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "Most of the knowledge and skills that you humans are so proud of were probably handed down from Dwarves.";
+		mes "[矮人格朗布爾蒂]";
+		mes "你們人類引以為傲的大部分知識與技藝，很可能都是從矮人那裡傳承下來的。";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "This is especially true in the";
-		mes "case of smithing. Even the tools and weapons of the gods were made by my ancestors. You know that?";
+		mes "[矮人格朗布爾蒂]";
+		mes "這在";
+		mes "鍛造方面尤其如此。連神明的工具與武器都是我的祖先打造的。你知道嗎？";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "We have the greatest knowlege and skills, but have accepted our fate to live in the cold, barren lands of the Giants.";
+		mes "[矮人格朗布爾蒂]";
+		mes "我們擁有最偉大的知識與技藝，卻已接受了命運，只能生活在巨人那寒冷荒蕪的土地上。";
 		close;
 	case 2:
-		mes "[Dwarf Grunburti]";
-		mes "Did you just ask what I am doing here? Mwahahaha! Waiting for any humans stupid enough to come";
-		mes "here so I can kick their ass!";
+		mes "[矮人格朗布爾蒂]";
+		mes "你剛才是問我在這裡做什麼？哈哈哈！我在等那些蠢到敢來這裡的人類，";
+		mes "好讓我痛扁他們一頓！";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "Oh don't worry. I'd only humiliate myself by fighting with a weakling like you. Humans are so fragile, but they stubbornly cling to their arrogance and fight amongst";
-		mes "each other.";
+		mes "[矮人格朗布爾蒂]";
+		mes "喔，別擔心。跟你這種弱者打，只會讓我丟臉。人類是如此脆弱，卻固執地抱著傲慢，在";
+		mes "彼此之間爭鬥不休。";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "As a race, your people are just hopeless. I wouldn't even share the same continent with a human! But alas, I have no choice.";
+		mes "[矮人格朗布爾蒂]";
+		mes "就種族而言，你們真是無可救藥。我根本不想與人類共享同一塊大陸！但可惜，我別無選擇。";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "The path to my hometown";
-		mes "disappeared after the war 1,000 years ago. Somehow, I can no longer find the way through the Yggdrasil Tree that will take me back...";
+		mes "[矮人格朗布爾蒂]";
+		mes "通往我故鄉的路";
+		mes "在一千年前的戰爭後就消失了。不知為何，我再也找不到穿過世界樹、通往故鄉的道路……";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "I'm stuck here in Midgard.";
-		mes "At least I was fortunate enough to find this cave. We Dwarves are most cozy living underground, after all.";
+		mes "[矮人格朗布爾蒂]";
+		mes "我被困在米德加德了。";
+		mes "至少我很幸運地找到了這個洞穴。畢竟，我們矮人最習慣住在地底下了。";
 		close;
 	case 3:
 		set .@GID,getcharid(2);
 		if (($God1 < $@god_check2) || ($God2 < $@god_check2) || ($God3 < $@god_check2) || ($God4 < $@god_check2)){
 			if (($God1 >= $@god_check1) && ($God2 >= $@god_check1) && ($God3 >= $@god_check1) && ($God4 >= $@god_check1) && (is_guild_leader() == true)) {
-				mes "[Dwarf Grunburti]";
+				mes "[矮人格朗布爾蒂]";
 				mes "嗯……";
-				mes "I'll need some things to make a weapon for you. What exactly were you interested in having?";
+				mes "我需要一些材料來為你打造武器。你究竟想要哪一種？";
 				next;
-				switch(select("Brisingamen:Megingjard:Sleipnir:Mjolnir")) {
+				switch(select("女神頸鍊:雷神腰帶:史雷普尼爾之靴:雷神之錘")) {
 				case 1:
-					mes "[Dwarf Grunburti]";
-					mes "I will need...";
-					mes "^0000FF4 Freya's Jewel";
-					mes "4 Silver Ornament";
-					mes "3 Snow Crystal";
-					mes "3 Ripple";
-					mes "3 Drifting Air";
-					mes "2 Sapphire";
-					mes "3 Pearl";
-					mes "10 Opal";
-					mes "5 Cursed Ruby";
-					mes "20 Gold^000000";
-					mes "1 Necklace^000000...";
+					mes "[矮人格朗布爾蒂]";
+					mes "我需要……";
+					mes "^0000FF4 菲力亞寶石";
+					mes "4 銀飾品";
+					mes "3 雪的結晶";
+					mes "3 安靜的水波";
+					mes "3 空氣雕像";
+					mes "2 藍寶石";
+					mes "3 珍珠";
+					mes "10 白寶石";
+					mes "5 詛咒紅寶石";
+					mes "20 黃金^000000";
+					mes "1 體力項鏈^000000……";
 					next;
-					mes "[Dwarf Grunburti]";
-					mes "However, the time for me to create this Brisingamen has not yet come. You'll have to wait until the seals are released. Mwahahaha!";
+					mes "[矮人格朗布爾蒂]";
+					mes "然而，我打造這條女神頸鍊的時機尚未到來。你得等到封印解除才行。哈哈哈！";
 					close;
 				case 2:
-					mes "[Dwarf Grunburti]";
-					mes "I will need...";
-					mes "^0000FF1 Gleipnir";
-					mes "20 Gold";
-					mes "10 Sapphire";
-					mes "10 Oridecon";
-					mes "1 Belt^000000";
+					mes "[矮人格朗布爾蒂]";
+					mes "我需要……";
+					mes "^0000FF1 魔法鐵鏈";
+					mes "20 黃金";
+					mes "10 藍寶石";
+					mes "10 神之金屬";
+					mes "1 皮帶^000000";
 					next;
-					mes "[Dwarf Grunburti]";
-					mes "However, the seals on Megingjard have not yet been released. Until then, you'll have to wait! Bwahahaha!";
+					mes "[矮人格朗布爾蒂]";
+					mes "然而，雷神腰帶上的封印尚未解除。在那之前，你只能等待！哇哈哈！";
 					close;
 				case 3:
-					mes "[Dwarf Grunburti]";
-					mes "I will need...";
-					mes "^0000FF3 Wheel of the Unknown";
-					mes "5 Feather of Angel Wing";
-					mes "3 Sprit of Fish";
-					mes "4 Amblem of the Sun God";
-					mes "3 Breath of Spirit";
-					mes "20 Gold";
-					mes "10 Elunium";
-					mes "1 Slotted Boots^000000";
+					mes "[矮人格朗布爾蒂]";
+					mes "我需要……";
+					mes "^0000FF3 未知的鋸齒輪子";
+					mes "5 天使翅膀羽毛";
+					mes "3 魚的靈魂";
+					mes "4 太陽神的徽章";
+					mes "3 靈魂的呼吸聲音";
+					mes "20 黃金";
+					mes "10 鋁";
+					mes "1 有插槽的長靴^000000";
 					next;
-					mes "[Dwarf Grunburti]";
-					mes "But even so, I can't create Sleipnir until the seals have been broken. Otherwise, you're out of luck, human. Hahaha~!";
+					mes "[矮人格朗布爾蒂]";
+					mes "即使如此，在封印被破解之前，我也無法打造史雷普尼爾之靴。否則，人類，你就只能認栽了。哈哈哈～！";
 					close;
 				case 4:
-					mes "[Dwarf Grunburti]";
-					mes "I will need...";
-					mes "^0000FF2 Thor's Gauntlets";
-					mes "4 Iron Maiden";
-					mes "5 Wrath of Valkyrie";
-					mes "5 Omen of Tempest";
-					mes "5 Billow";
-					mes "20 Oridecon";
-					mes "5 Elunium";
-					mes "40 Gold";
-					mes "1 Stunner^000000";
+					mes "[矮人格朗布爾蒂]";
+					mes "我需要……";
+					mes "^0000FF2 拖爾的鐵手套";
+					mes "4 拷問器具";
+					mes "5 巴基力的憤怒";
+					mes "5 暴風雨的徵兆";
+					mes "5 海浪雕像";
+					mes "20 神之金屬";
+					mes "5 鋁";
+					mes "40 黃金";
+					mes "1 昏迷之錘^000000";
 					next;
-					mes "[Dwarf Grunburti]";
-					mes "But I can't even create a replica of Mjolnir if the seals are still in place. Until they're released, you'll just have to wait. Bwahaha!";
+					mes "[矮人格朗布爾蒂]";
+					mes "但如果封印仍然存在，我甚至無法打造雷神之錘的複製品。在封印解除之前，你只能等待。哇哈哈！";
 					close;
 				}
 			} 
-			mes "[Dwarf Grunburti]";
-			mes "We Dwarves have too much pride to demonstrate our skills in front of a lowly human!";
+			mes "[矮人格朗布爾蒂]";
+			mes "我們矮人太過驕傲，不會在低賤的人類面前展示我們的技藝！";
 			next;
-			mes "[Dwarf Grunburti]";
-			mes "Stop bothering me and get out of here! Go play with some monsters, you simple minded fool!";
+			mes "[矮人格朗布爾蒂]";
+			mes "別來煩我，給我滾出去！去跟怪物玩吧，你這個頭腦簡單的傻瓜！";
 			close;
 		}
 		if (is_guild_leader() == false) {
-			mes "[Dwarf Grunburti]";
-			mes "I'll only present";
-			mes "my magnificent skills";
-			mes "to a human of incredibly";
-			mes "high standing!";
+			mes "[矮人格朗布爾蒂]";
+			mes "我只會把";
+			mes "我精湛的技藝";
+			mes "展現給身分";
+			mes "極其尊貴的人類！";
 			next;
-			mes "[Dwarf Grunburti]";
-			mes "Although I hate";
-			mes "most humans, I have";
-			mes "no choice but to respect the ones chosen by destiny. Go and bring your ^0000FFguildmaster^000000!";
+			mes "[矮人格朗布爾蒂]";
+			mes "雖然我很討厭";
+			mes "大多數人類，但";
+			mes "我別無選擇，只能尊重命運所選定的人。去把你的^0000FF公會會長^000000帶來！";
 			close;
 		}
-		mes "[Dwarf Grunburti]";
-		mes "Although it is very humiliating to present my valuable skills to a human being...";
+		mes "[矮人格朗布爾蒂]";
+		mes "雖然要把我寶貴的技藝展示給人類，實在是非常屈辱……";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "All the seals have been released, and he who holds the Emperium is chosen by destiny. I have no choice but to respect you.";
+		mes "[矮人格朗布爾蒂]";
+		mes "所有封印都已解除，而持有華麗金屬的人是命運所選之人。我別無選擇，只能尊重你。";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "First of all, I shall confirm whether or not you have brought all the necessary materials to forge a godly item! I hate it when humans come here without any purpose!";
+		mes "[矮人格朗布爾蒂]";
+		mes "首先，我要確認你有沒有帶來鍛造神聖道具所需的全部材料！我最討厭人類毫無目的地來到這裡！";
 		next;
 		if ((countitem(7073) > 3) && (countitem(7077) > 3) && (countitem(7088) > 2) && (countitem(7090) > 2) && (countitem(7092) > 2) && (countitem(726) > 1) && (countitem(722) > 2) && (countitem(727) > 9) && (countitem(724) > 4) && (countitem(969) > 19) && (countitem(2603) > 0)) {
-			mes "[Dwarf Grunburti]";
+			mes "[矮人格朗布爾蒂]";
 			mes "嗯……";
 			mes "看來你";
-			mes "want to have";
-			mes "^0000FFBrisingamen^000000!";
+			mes "你想要";
+			mes "^0000FF女神頸鍊^000000！";
 			next;
 		}
 		else if ((countitem(7058) > 0) && (countitem(969) > 19) && (countitem(726) > 9) && (countitem(984) > 9) && (countitem(2627) > 0)){ //Gullraifnir Gold Blue_Jewel Oridecon Belt 
-			mes "[Dwarf Grunburti]";
+			mes "[矮人格朗布爾蒂]";
 			mes "嗯……";
 			mes "看來你";
-			mes "want to have";
-			mes "^0000FFMegingjard^000000!";
+			mes "你想要";
+			mes "^0000FF雷神腰帶^000000！";
 			next;
 		}
 		else if ((countitem(7076) > 2) && (countitem(7079) > 4) && (countitem(7083) > 2) && (countitem(7086) > 3) && (countitem(7087) > 2) && (countitem(969) > 19) && (countitem(985) > 9) && (countitem(2406) > 0)) {
-			mes "[Dwarf Grunburti]";
+			mes "[矮人格朗布爾蒂]";
 			mes "嗯……";
 			mes "看來你";
-			mes "want to have";
-			mes "^0000FFSleipnir^000000!";
+			mes "你想要";
+			mes "^0000FF史雷普尼爾之靴^000000！";
 			next;
 		}
 		else if ((countitem(7074) > 1) && (countitem(7075) > 3) && (countitem(7078) > 4) && (countitem(7089) > 4) && (countitem(7091) > 4) && (countitem(984) > 19) && (countitem(985) > 4) && (countitem(969) > 39) && (countitem(1522) > 0)) {
-			mes "[Dwarf Grunburti]";
+			mes "[矮人格朗布爾蒂]";
 			mes "嗯……";
 			mes "看來你";
-			mes "want to have";
-			mes "^0000FFMjolnir^000000!";
+			mes "你想要";
+			mes "^0000FF雷神之錘^000000！";
 			next;
 		}
 		else {
-			mes "[Dwarf Grunburti]";
+			mes "[矮人格朗布爾蒂]";
 			mes "...";
 			mes "......";
 			next;
-			mes "[Dwarf Grunburti]";
+			mes "[矮人格朗布爾蒂]";
 			mes "...";
 			mes "......";
 			mes ".........";
 			next;
-			mes "[Dwarf Grunburti]";
+			mes "[矮人格朗布爾蒂]";
 			mes "...";
 			mes "......";
 			mes ".........";
 			mes ".............";
 			next;
-			mes "[Dwarf Grunburti]";
-			mes "How dare you come here unprepared?! Did you forget what you needed to bring? Listen carefully this time!";
+			mes "[矮人格朗布爾蒂]";
+			mes "你竟敢毫無準備地來到這裡？！你忘了該帶什麼了嗎？這次給我仔細聽好！";
 			next;
-			switch(select("Brisingamen:Megingjard:Sleipnir:Mjolnir")) {
+			switch(select("女神頸鍊:雷神腰帶:史雷普尼爾之靴:雷神之錘")) {
 			case 1:
-				mes "[Dwarf Grunburti]";
-				mes "I will need...";
-				mes "^0000FF4 Freya's Jewel";
-				mes "4 Silver Ornament";
-				mes "3 Snow Crystal";
-				mes "3 Ripple";
-				mes "3 Drifting Air";
-				mes "2 Sapphire";
-				mes "3 Pearl";
-				mes "10 Opal";
-				mes "5 Cursed Ruby";
-				mes "20 Gold^000000";
-				mes "1 Necklace^000000...";
+				mes "[矮人格朗布爾蒂]";
+				mes "我需要……";
+				mes "^0000FF4 菲力亞寶石";
+				mes "4 銀飾品";
+				mes "3 雪的結晶";
+				mes "3 安靜的水波";
+				mes "3 空氣雕像";
+				mes "2 藍寶石";
+				mes "3 珍珠";
+				mes "10 白寶石";
+				mes "5 詛咒紅寶石";
+				mes "20 黃金^000000";
+				mes "1 體力項鏈^000000……";
 				next;
-				mes "[Dwarf Grunburti]";
-				mes "Hmmm, but now";
-				mes "that the seals have";
-				mes "been released, you must hurry before another human can claim";
-				mes "one of the godly items...";
+				mes "[矮人格朗布爾蒂]";
+				mes "嗯……不過現在";
+				mes "既然封印已經";
+				mes "解除了，你必須趕在其他人類搶先之前，";
+				mes "取得其中一件神聖道具……";
 				next;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人格朗布爾蒂]";
 				mes "快點……！";
-				mes "Once I forge";
-				mes "Brisingamen,";
-				mes "the seals will";
-				mes "activate again!";
+				mes "等我打造完";
+				mes "女神頸鍊，";
+				mes "封印就會";
+				mes "再次啟動！";
 				close;
 			case 2:
-				mes "[Dwarf Grunburti]";
-				mes "I will need...";
-				mes "^0000FF1 Gleipnir";
-				mes "20 Gold";
-				mes "10 Sapphire";
-				mes "10 Oridecon";
-				mes "1 Belt^000000";
+				mes "[矮人格朗布爾蒂]";
+				mes "我需要……";
+				mes "^0000FF1 魔法鐵鏈";
+				mes "20 黃金";
+				mes "10 藍寶石";
+				mes "10 神之金屬";
+				mes "1 皮帶^000000";
 				next;
-				mes "[Dwarf Grunburti]";
-				mes "Hmmm, but now";
-				mes "that the seals have";
-				mes "been released, you must hurry before another human can claim";
-				mes "one of the godly items...";
+				mes "[矮人格朗布爾蒂]";
+				mes "嗯……不過現在";
+				mes "既然封印已經";
+				mes "解除了，你必須趕在其他人類搶先之前，";
+				mes "取得其中一件神聖道具……";
 				next;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人格朗布爾蒂]";
 				mes "快點……！";
-				mes "Once I forge";
-				mes "Megingjard,";
-				mes "the seals will";
-				mes "activate again!";
+				mes "等我打造完";
+				mes "雷神腰帶，";
+				mes "封印就會";
+				mes "再次啟動！";
 				close;
 			case 3:
-				mes "[Dwarf Grunburti]";
-				mes "I will need...";
-				mes "^0000FF3 Wheel of the Unknown";
-				mes "5 Feather of Angel Wing";
-				mes "3 Sprit of Fish";
-				mes "4 Amblem of the Sun God";
-				mes "3 Breath of Spirit";
-				mes "20 Gold";
-				mes "10 Elunium";
-				mes "1 Slotted Boots^000000";
+				mes "[矮人格朗布爾蒂]";
+				mes "我需要……";
+				mes "^0000FF3 未知的鋸齒輪子";
+				mes "5 天使翅膀羽毛";
+				mes "3 魚的靈魂";
+				mes "4 太陽神的徽章";
+				mes "3 靈魂的呼吸聲音";
+				mes "20 黃金";
+				mes "10 鋁";
+				mes "1 有插槽的長靴^000000";
 				next;
-				mes "[Dwarf Grunburti]";
-				mes "Hmmm, but now";
-				mes "that the seals have";
-				mes "been released, you must hurry before another human can claim";
-				mes "one of the godly items...";
+				mes "[矮人格朗布爾蒂]";
+				mes "嗯……不過現在";
+				mes "既然封印已經";
+				mes "解除了，你必須趕在其他人類搶先之前，";
+				mes "取得其中一件神聖道具……";
 				next;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人格朗布爾蒂]";
 				mes "快點……！";
-				mes "Once I forge";
-				mes "Sleipnir,";
-				mes "the seals will";
-				mes "activate again!";
+				mes "等我打造完";
+				mes "史雷普尼爾之靴，";
+				mes "封印就會";
+				mes "再次啟動！";
 				close;
 			case 4:
-				mes "[Dwarf Grunburti]";
-				mes "I will need...";
-				mes "^0000FF2 Thor's Gauntlets";
-				mes "4 Iron Maiden";
-				mes "5 Wrath of Valkyrie";
-				mes "5 Omen of Tempest";
-				mes "5 Billow";
-				mes "20 Oridecon";
-				mes "5 Elunium";
-				mes "40 Gold";
+				mes "[矮人格朗布爾蒂]";
+				mes "我需要……";
+				mes "^0000FF2 拖爾的鐵手套";
+				mes "4 拷問器具";
+				mes "5 巴基力的憤怒";
+				mes "5 暴風雨的徵兆";
+				mes "5 海浪雕像";
+				mes "20 神之金屬";
+				mes "5 鋁";
+				mes "40 黃金";
 				next;
-				mes "[Dwarf Grunburti]";
-				mes "Hmmm, but now";
-				mes "that the seals have";
-				mes "been released, you must hurry before another human can claim";
-				mes "one of the godly items...";
+				mes "[矮人格朗布爾蒂]";
+				mes "嗯……不過現在";
+				mes "既然封印已經";
+				mes "解除了，你必須趕在其他人類搶先之前，";
+				mes "取得其中一件神聖道具……";
 				next;
-				mes "[Dwarf Grunburti]";
+				mes "[矮人格朗布爾蒂]";
 				mes "快點……！";
-				mes "Once I forge";
-				mes "the Mjolnir,";
-				mes "the seals will";
-				mes "activate again!";
+				mes "等我打造完";
+				mes "雷神之錘，";
+				mes "封印就會";
+				mes "再次啟動！";
 				close;
 			}
 		}
-		mes "[Dwarf Grunburti]";
+		mes "[矮人格朗布爾蒂]";
 		mes "哼。";
-		mes "I can't get any work done in here. Come with me to the ^0000FFunderground laboratory^000000 as my guest, human.";
+		mes "我在這裡根本沒辦法工作。人類，作為我的客人，跟我來^0000FF地下研究室^000000吧。";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "Now hurry up! ^0000FFOnly one of each godly item^000000 will be given to the humans ^FF0000right after all the seals are released^000000!";
+		mes "[矮人格朗布爾蒂]";
+		mes "快點！^0000FF每種神聖道具只會交給人類^000000，^FF0000就在所有封印解除之後^000000！";
 		close2;
 		warp "que_god01",214,63;
 		end;
 	case 4:
-		mes "[Dwarf Grunburti]";
+		mes "[矮人格朗布爾蒂]";
 		mes "穆哈哈哈哈！";
-		mes "Out of my sight,";
-		mes "you dirty, filthy";
-		mes "human...!";
+		mes "滾出我的視線，";
+		mes "你這骯髒、齷齪的";
+		mes "人類……！";
 		close;
 	}
 }
-gld_dun02,85,84,0	duplicate(GodDwarf)	Grunburti#2	826
-gld_dun03,92,105,0	duplicate(GodDwarf)	Grunburti#3	826
-gld_dun04,268,230,0	duplicate(GodDwarf)	Grunburti#4	826
+gld_dun02,85,84,0	duplicate(GodDwarf)	格朗布爾蒂#2::Grunburti#2	826
+gld_dun03,92,105,0	duplicate(GodDwarf)	格朗布爾蒂#3::Grunburti#3	826
+gld_dun04,268,230,0	duplicate(GodDwarf)	格朗布爾蒂#4::Grunburti#4	826
 
 que_god01,215,127,0	script	#god_hopewarp1	111,{
 	end;
@@ -366,118 +366,118 @@ OnReset:
 }
 
 que_god01,214,128,0	script	 #que_godnpc1::GodEntrance	111,{
-	mes "[Entrance Notice]";
-	mes "Only the most";
-	mes "worthy of humans";
-	mes "will possess the";
-	mes "power of the gods.";
+	mes "[入口告示]";
+	mes "只有最";
+	mes "配得上人類";
+	mes "的人，才能擁有";
+	mes "神明的力量。";
 	close;
 }
 que_god01,215,128,0	duplicate(GodEntrance)	 #que_godnpc2	111
 que_god01,213,128,0	duplicate(GodEntrance)	 #que_godnpc3	111
 
-que_god01,154,112,4	script	Grunburti#god	826,{
+que_god01,154,112,4	script	格朗布爾蒂#god::Grunburti#god	826,{
 	if (($God1 < $@god_check2) || ($God2 < $@god_check2) || ($God3 < $@god_check2) || ($God4 < $@god_check2)){
-		mes "[Dwarf Grunburti]";
-		mes "One of the godly";
-		mes "items has been created,";
-		mes "and the seals have been";
-		mes "restored. You'll have to";
-		mes "wait until they're all";
-		mes "released again...!";
+		mes "[矮人格朗布爾蒂]";
+		mes "其中一件神聖";
+		mes "道具已經被打造出來，";
+		mes "封印已經";
+		mes "重新封印。你必須";
+		mes "等到它們全部";
+		mes "再次解除……！";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "Bwahahahahahahaa!";
-		mes "Even though you're";
-		mes "just a human, I feel";
-		mes "pity for you~";
+		mes "[矮人格朗布爾蒂]";
+		mes "哇哈哈哈哈哈哈哈！";
+		mes "雖然你只是";
+		mes "一個人類，我卻";
+		mes "替你感到可憐～";
 		close;
 	}
 	set .@GID,getcharid(2);
 	if (is_guild_leader() == false) {
-		mes "[Dwarf Grunburti]";
-		mes "How in the...";
+		mes "[矮人格朗布爾蒂]";
+		mes "這到底是怎麼……";
 		mes "滾出去！";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "How did one of you";
-		mes "stupid humans get in";
-		mes "here?! Only those who";
-		mes "hold the Emperium can";
-		mes "even think of entering";
-		mes "this place...!";
+		mes "[矮人格朗布爾蒂]";
+		mes "你們這些";
+		mes "愚蠢的人類是怎麼";
+		mes "進來這裡的？！只有那些";
+		mes "持有華麗金屬的人";
+		mes "才有資格想著";
+		mes "進入這個地方……！";
 		close;
 	}
-	mes "[Dwarf Grunburti]";
-	mes "It's incredibly";
-	mes "humiliating to do work for a human. But since destiny has chosen you as the bearer of an Emperium, I have no choice but to oblige your requests.";
+	mes "[矮人格朗布爾蒂]";
+	mes "這實在是";
+	mes "替人類做事實在是奇恥大辱。但既然命運選中你成為華麗金屬的持有者，我別無選擇，只能答應你的要求。";
 	next;
-	mes "[Dwarf Grunburti]";
-	mes "We only have";
-	mes "^FF000010 minutes^000000 to recreate one godly treasure. After that, the seals will restore themselves and I won't be able to create anything until they're released again...";
+	mes "[矮人格朗布爾蒂]";
+	mes "我們只有";
+	mes "^FF000010分鐘^000000的時間來重新打造一件神聖寶物。之後，封印會自行恢復，在它們再次被解除之前，我都無法打造任何東西……";
 	next;
-	mes "[Dwarf Grunburti]";
-	mes "^FF0000Don't be too slow^000000,";
-	mes "otherwise ^FF0000I will give";
-	mes "the chance to another";
-	mes "human^000000 right away!";
+	mes "[矮人格朗布爾蒂]";
+	mes "^FF0000別太慢^000000，";
+	mes "否則^FF0000我就會把";
+	mes "機會給別的";
+	mes "人類^000000，立刻！";
 	next;
-	mes "[Dwarf Grunburti]";
-	mes "Now...!";
-	mes "Choose the item";
-	mes "you wish for me";
-	mes "to create!";
+	mes "[矮人格朗布爾蒂]";
+	mes "現在……！";
+	mes "選擇你想讓我";
+	mes "打造的";
+	mes "道具！";
 	next;
-	switch(select("Brisingamen:Megingjard:Sleipnir:Mjolnir")) {
+	switch(select("女神頸鍊:雷神腰帶:史雷普尼爾之靴:雷神之錘")) {
 	case 1:
-		mes "[Dwarf Grunburti]";
-		mes "B-Brisingamen?!";
-		mes "I've never expected";
-		mes "such insolence...!";
-		mes "This necklace will never have any meaning in my eyes unless it's worn by the goddess Freya.";
+		mes "[矮人格朗布爾蒂]";
+		mes "女、女神頸鍊？！";
+		mes "我從沒想到";
+		mes "竟會有如此的放肆……！";
+		mes "這條項鍊在我眼中永遠毫無意義，除非由女神芙蕾雅佩戴。";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "But who am I to judge your worthiness? These treasures";
-		mes "select their owners with their own will. Let's see if Brisingamen will find you worthy!";
+		mes "[矮人格朗布爾蒂]";
+		mes "但我又有什麼資格評斷你是否配得上？這些寶物";
+		mes "會憑自己的意志選擇主人。讓我們看看女神頸鍊是否會認可你！";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "Once again, I need following materials in order to reproduce";
-		mes "this godly treasure...";
+		mes "[矮人格朗布爾蒂]";
+		mes "我再次需要以下材料，才能重現";
+		mes "這件神聖寶物……";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "^0000FF4 Freya's Jewel";
-		mes "4 Silver Ornament";
-		mes "3 Snow Crystal";
-		mes "3 Ripple";
-		mes "3 Drifting Air";
-		mes "2 Sapphire";
-		mes "3 Pearl";
-		mes "10 Opal";
-		mes "5 Cursed Ruby";
-		mes "20 Gold";
-		mes "1 Necklace^000000";
+		mes "[矮人格朗布爾蒂]";
+		mes "^0000FF4 菲力亞寶石";
+		mes "4 銀飾品";
+		mes "3 雪的結晶";
+		mes "3 安靜的水波";
+		mes "3 空氣雕像";
+		mes "2 藍寶石";
+		mes "3 珍珠";
+		mes "10 白寶石";
+		mes "5 詛咒紅寶石";
+		mes "20 黃金";
+		mes "1 體力項鏈^000000";
 		next;
-		switch(select("Make Brisingamen.:Cancel.")) {
+		switch(select("打造女神頸鍊。:取消。")) {
 		case 1:
 			if ((countitem(7073) > 3) && (countitem(7077) > 3) && (countitem(7088) > 2) && (countitem(7090) > 2) && (countitem(7092) > 2) && (countitem(726) > 1) && (countitem(722) > 2) && (countitem(727) > 9) && (countitem(724) > 4) && (countitem(969) > 19) && (countitem(2603) > 0)){ //Jewel_Of_Prayer Silver_Fancy Crystal_Of_Snow Slilince_Wave Air_Stream Blue_Jewel Scarlet_Jewel White_Jewel Cardinal_Jewel_ Gold Necklace 
-				mes "[Dwarf Grunburti]";
-				mes "Never in my wildest";
-				mes "imaginings have I thought that I'd be crafting this masterpiece for a mere human. Give me a moment.";
+				mes "[矮人格朗布爾蒂]";
+				mes "我做夢也";
+				mes "沒想過，會為一個普通人類打造這件傑作。請給我一點時間。";
 				next;
 				if (($God1 < $@god_check2) || ($God2 < $@god_check2) || ($God3 < $@god_check2) || ($God4 < $@god_check2)){
-					mes "[Dwarf Grunburti]";
+					mes "[矮人格朗布爾蒂]";
 					mes "但是……";
-					mes "The seals";
-					mes "have just been";
-					mes "restored. You'll have to";
-					mes "wait until they're all";
-					mes "released again...!";
+					mes "封印";
+					mes "剛剛才被";
+					mes "重新封印。你必須";
+					mes "等到它們全部";
+					mes "再次解除……！";
 					next;
-					mes "[Dwarf Grunburti]";
-					mes "Bwahahahahahahaa!";
-					mes "Even though you're";
-					mes "just a human, I feel";
-					mes "pity for you~";
+					mes "[矮人格朗布爾蒂]";
+					mes "哇哈哈哈哈哈哈哈！";
+					mes "雖然你只是";
+					mes "一個人類，我卻";
+					mes "替你感到可憐～";
 					close;
 				}
 				delitem 7073,4;  //Jewel_Of_Prayer
@@ -496,68 +496,68 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 				set $God2,0;
 				set $God3,0;
 				set $God4,0;
-				announce "[Brisingamen] has come into the hands of [" + strcharinfo(0) + "], master of the [" + getguildname(.@GID) + "] 公會攻占。",bc_all;
-				mes "[Dwarf Grunburti]";
-				mes "Ah, just look at this dazzling beauty. No other piece of jewelry complemented Freya as well as Brisingamen.";
+				announce "[女神頸鍊]已落入[" + strcharinfo(0) + "]手中，[" + getguildname(.@GID) + "] 公會攻占。",bc_all;
+				mes "[矮人格朗布爾蒂]";
+				mes "啊，看看這耀眼的美麗。沒有任何其他飾品能像女神頸鍊那樣襯托芙蕾雅。";
 				close;
 			}
 			else {
-				mes "[Dwarf Grunburti]";
-				mes "Idiot human!";
-				mes "You didn't bring";
-				mes "everything I need to";
-				mes "recreate Brisingamen!";
+				mes "[矮人格朗布爾蒂]";
+				mes "笨蛋人類！";
+				mes "你沒有帶來";
+				mes "我需要的全部材料，";
+				mes "無法重現女神頸鍊！";
 				mes "快點……！";
 				close;
 			}
 		case 2:
-			mes "[Dwarf Grunburti]";
-			mes "Muhahahaha~";
-			mes "Somehow, I figured";
-			mes "you'd back out, human!";
+			mes "[矮人格朗布爾蒂]";
+			mes "穆哈哈哈哈~";
+			mes "我就猜";
+			mes "你會臨陣脫逃，人類！";
 			close;
 		}
 	case 2:
-		mes "[Dwarf Grunburti]";
-		mes "M- Megingjard?!";
-		mes "The girdle of might?!";
+		mes "[矮人格朗布爾蒂]";
+		mes "雷、雷神腰帶？！";
+		mes "力量的腰帶？！";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "This belt was worn long ago by Thor, the mightest warrior ever. But since these treasures select their owners, we'll see whether or not it recognizes you as worthy!";
+		mes "[矮人格朗布爾蒂]";
+		mes "這條腰帶很久以前是由史上最強的戰士拖爾所佩戴。但既然這些寶物會選擇主人，我們就看看它是否認可你！";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "Once again, I need following materials in order to reproduce";
-		mes "this godly treasure...";
+		mes "[矮人格朗布爾蒂]";
+		mes "我再次需要以下材料，才能重現";
+		mes "這件神聖寶物……";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "^0000FF1 Gleipnir";
-		mes "20 Gold";
-		mes "10 Sapphire";
-		mes "10 Oridecon";
-		mes "1 Belt^000000...";
+		mes "[矮人格朗布爾蒂]";
+		mes "^0000FF1 魔法鐵鏈";
+		mes "20 黃金";
+		mes "10 藍寶石";
+		mes "10 神之金屬";
+		mes "1 皮帶^000000……";
 		next;
-		switch(select("Make Megingjard.:Cancel.")) {
+		switch(select("打造雷神腰帶。:取消。")) {
 		case 1:
 			if ((countitem(7058) > 0) && (countitem(969) > 19) && (countitem(726) > 9) && (countitem(984) > 9) && (countitem(2627) > 0)) {
-				mes "[Dwarf Grunburti]";
-				mes "Twenty years ago,";
-				mes "I'd never believe that";
-				mes "something so powerful and dangerous as Megingjard would end up in the hands of a human...";
+				mes "[矮人格朗布爾蒂]";
+				mes "二十年前，";
+				mes "我絕不會相信";
+				mes "雷神腰帶這樣強大而危險的東西，竟會落入人類手中……";
 				next;
 				if (($God1 < $@god_check2) || ($God2 < $@god_check2) || ($God3 < $@god_check2) || ($God4 < $@god_check2)){
-					mes "[Dwarf Grunburti]";
+					mes "[矮人格朗布爾蒂]";
 					mes "但是……";
-					mes "The seals";
-					mes "have just been";
-					mes "restored. You'll have to";
-					mes "wait until they're all";
-					mes "released again...!";
+					mes "封印";
+					mes "剛剛才被";
+					mes "重新封印。你必須";
+					mes "等到它們全部";
+					mes "再次解除……！";
 					next;
-					mes "[Dwarf Grunburti]";
-					mes "Bwahahahahahahaa!";
-					mes "Even though you're";
-					mes "just a human, I feel";
-					mes "pity for you~";
+					mes "[矮人格朗布爾蒂]";
+					mes "哇哈哈哈哈哈哈哈！";
+					mes "雖然你只是";
+					mes "一個人類，我卻";
+					mes "替你感到可憐～";
 					close;
 				}
 				delitem 7058,1;  //Gullraifnir
@@ -570,81 +570,81 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 				set $God2,0;
 				set $God3,0;
 				set $God4,0;
-				announce "[Megingjard] the godly item has been given to [" + strcharinfo(0) + "], the master of the guild [" + getguildname(.@GID) + "].",bc_all;
-				mes "[Dwarf Grunburti]";
+				announce "[雷神腰帶]這件神聖道具已交給[" + strcharinfo(0) + "]，公會會長[" + getguildname(.@GID) + "].",bc_all;
+				mes "[矮人格朗布爾蒂]";
 				mes "給你……";
-				mes "Be careful with how";
-				mes "you use the strength";
-				mes "of a god. Just a fair";
-				mes "warning, human...";
+				mes "使用";
+				mes "神明力量的方式";
+				mes "要小心。這只是";
+				mes "善意的提醒，人類……";
 				close;
 			}
 			else {
-				mes "[Dwarf Grunburti]";
-				mes "Idiot human!";
-				mes "You didn't bring";
-				mes "everything I need to";
-				mes "recreate Megingjard!";
+				mes "[矮人格朗布爾蒂]";
+				mes "笨蛋人類！";
+				mes "你沒有帶來";
+				mes "我需要的全部材料，";
+				mes "重現雷神腰帶！";
 				mes "快點……！";
 				close;
 			}
 		case 2:
-			mes "[Dwarf Grunburti]";
-			mes "Muhahahaha~";
-			mes "Somehow, I figured";
-			mes "you'd back out, human!";
+			mes "[矮人格朗布爾蒂]";
+			mes "穆哈哈哈哈~";
+			mes "我就猜";
+			mes "你會臨陣脫逃，人類！";
 			close;
 		}
 	case 3:
-		mes "[Dwarf Grunburti]";
-		mes "Sleipnir...";
-		mes "Now, understand";
-		mes "that I can't create";
-		mes "the eight-legged stallion";
-		mes "of legend. However...";
+		mes "[矮人格朗布爾蒂]";
+		mes "史雷普尼爾之靴……";
+		mes "現在，請理解";
+		mes "我無法打造";
+		mes "八足神馬";
+		mes "傳說中的神駒。不過……";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "I can create a pair";
-		mes "of shoes that will possess the power of Sleipnir. It's a strange, but feasible process...";
+		mes "[矮人格朗布爾蒂]";
+		mes "我可以打造一雙";
+		mes "擁有史雷普尼爾力量的鞋子。這個過程雖然奇特，但可行……";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "Once again, I need following materials in order to reproduce";
-		mes "this godly treasure...";
+		mes "[矮人格朗布爾蒂]";
+		mes "我再次需要以下材料，才能重現";
+		mes "這件神聖寶物……";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "^0000FF3 Wheel of the Unknown";
-		mes "5 Feather of Angel Wing";
-		mes "3 Sprit of Fish";
-		mes "4 Amblem of the Sun God";
-		mes "3 Breath of Spirit";
-		mes "20 Gold";
-		mes "10 Elunium";
-		mes "1 Slotted Boots^000000...";
+		mes "[矮人格朗布爾蒂]";
+		mes "^0000FF3 未知的鋸齒輪子";
+		mes "5 天使翅膀羽毛";
+		mes "3 魚的靈魂";
+		mes "4 太陽神的徽章";
+		mes "3 靈魂的呼吸聲音";
+		mes "20 黃金";
+		mes "10 鋁";
+		mes "1 有插槽的長靴^000000……";
 		next;
-		switch(select("Make Sleipnir.:Cancel.")) {
+		switch(select("打造史雷普尼爾之靴。:取消。")) {
 		case 1:
 			if ((countitem(7076) > 2) && (countitem(7079) > 4) && (countitem(7083) > 2) && (countitem(7086) > 3) && (countitem(7087) > 2) && (countitem(969) > 19) && (countitem(985) > 9) && (countitem(2406) > 0)) {
-				mes "[Dwarf Grunburti]";
-				mes "I never believed";
-				mes "that the speed of";
-				mes "Sleipnir would be";
-				mes "used by a human.";
-				mes "Give me a moment...";
+				mes "[矮人格朗布爾蒂]";
+				mes "我從未想過";
+				mes "速度如同";
+				mes "史雷普尼爾的";
+				mes "竟會被人類使用。";
+				mes "請給我一點時間……";
 				next;
 				if (($God1 < $@god_check2) || ($God2 < $@god_check2) || ($God3 < $@god_check2) || ($God4 < $@god_check2)){
-					mes "[Dwarf Grunburti]";
+					mes "[矮人格朗布爾蒂]";
 					mes "但是……";
-					mes "The seals";
-					mes "have just been";
-					mes "restored. You'll have to";
-					mes "wait until they're all";
-					mes "released again...!";
+					mes "封印";
+					mes "剛剛才被";
+					mes "重新封印。你必須";
+					mes "等到它們全部";
+					mes "再次解除……！";
 					next;
-					mes "[Dwarf Grunburti]";
-					mes "Bwahahahahahahaa!";
-					mes "Even though you're";
-					mes "just a human, I feel";
-					mes "pity for you~";
+					mes "[矮人格朗布爾蒂]";
+					mes "哇哈哈哈哈哈哈哈！";
+					mes "雖然你只是";
+					mes "一個人類，我卻";
+					mes "替你感到可憐～";
 					close;
 				}
 				delitem 7076,3;  //Mystery_Wheel
@@ -660,79 +660,79 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 				set $God2,0;
 				set $God3,0;
 				set $God4,0;
-				announce "[Sleipnir] the godly item has been given to [" + strcharinfo(0) + "], the master of the guild [" + getguildname(.@GID) + "].",bc_all;
-				mes "[Dwarf Grunburti]";
-				mes "There...";
-				mes "Wear these, and";
-				mes "move with the speed of";
-				mes "the legendary Sleipnir...";
+				announce "[史雷普尼爾之靴]這件神聖道具已交給[" + strcharinfo(0) + "]，公會會長[" + getguildname(.@GID) + "].",bc_all;
+				mes "[矮人格朗布爾蒂]";
+				mes "好了……";
+				mes "穿上它們，";
+				mes "移動的速度堪比";
+				mes "傳說中的史雷普尼爾……";
 				close;
 			}
 			else {
-				mes "[Dwarf Grunburti]";
-				mes "Idiot human!";
-				mes "You didn't bring";
-				mes "everything I need to";
-				mes "recreate Sleipnir!";
+				mes "[矮人格朗布爾蒂]";
+				mes "笨蛋人類！";
+				mes "你沒有帶來";
+				mes "我需要的全部材料，";
+				mes "重現史雷普尼爾之靴！";
 				mes "快點……！";
 				close;
 			}
 		case 2:
-			mes "[Dwarf Grunburti]";
-			mes "Muhahahaha~";
-			mes "Somehow, I figured";
-			mes "you'd back out, human!";
+			mes "[矮人格朗布爾蒂]";
+			mes "穆哈哈哈哈~";
+			mes "我就猜";
+			mes "你會臨陣脫逃，人類！";
 			close;
 		}
 	case 4:
-		mes "[Dwarf Grunburti]";
-		mes "M-M-Mjolnir!?";
-		mes "Even though the";
-		mes "moment is at hand,";
-		mes "I can scarcely believe...";
+		mes "[矮人格朗布爾蒂]";
+		mes "雷、雷、雷神之錘！？";
+		mes "儘管";
+		mes "時刻已經到來，";
+		mes "我幾乎無法相信……";
 		next;
-		mes "[Dwarf Grunburti]";
+		mes "[矮人格朗布爾蒂]";
 		mes "^333333*唉……*^000000";
-		mes "This is almost a disgrace to gods and the Dwarf race. But perhaps, wielding Mjolnir may be your destiny...";
+		mes "這幾乎是對神明與矮人種族的恥辱。不過，或許揮舞雷神之錘正是你的命運……";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "Once again, I need following materials in order to reproduce";
-		mes "this godly treasure...";
+		mes "[矮人格朗布爾蒂]";
+		mes "我再次需要以下材料，才能重現";
+		mes "這件神聖寶物……";
 		next;
-		mes "[Dwarf Grunburti]";
-		mes "^0000FF2 Thor's Gauntlets";
-		mes "4 Iron Maiden";
-		mes "5 Wrath of Valkyrie";
-		mes "5 Omen of Tempest";
-		mes "5 Billow";
-		mes "20 Oridecon";
-		mes "5 Elunium";
-		mes "40 Gold";
-		mes "1 Stunner^000000...";
+		mes "[矮人格朗布爾蒂]";
+		mes "^0000FF2 拖爾的鐵手套";
+		mes "4 拷問器具";
+		mes "5 巴基力的憤怒";
+		mes "5 暴風雨的徵兆";
+		mes "5 海浪雕像";
+		mes "20 神之金屬";
+		mes "5 鋁";
+		mes "40 黃金";
+		mes "1 昏迷之錘^000000……";
 		next;
-		switch(select("Make Mjolnir.:Cancel.")) {
+		switch(select("打造雷神之錘。:取消。")) {
 		case 1:
 			if ((countitem(7074) > 1) && (countitem(7075) > 3) && (countitem(7078) > 4) && (countitem(7089) > 4) && (countitem(7091) > 4) && (countitem(984) > 19) && (countitem(985) > 4) && (countitem(969) > 39) && (countitem(1522) > 0)) {
-				mes "[Dwarf Grunburti]";
-				mes "Do not disgrace";
-				mes "Thor, lord of Thunder,";
-				mes "or you will regret it.";
-				mes "Mark my words...";
+				mes "[矮人格朗布爾蒂]";
+				mes "不可辱沒";
+				mes "雷神拖爾，";
+				mes "否則你會後悔的。";
+				mes "記住我的話……";
 				next;
 				if (($God1 < $@god_check2) || ($God2 < $@god_check2) || ($God3 < $@god_check2) || ($God4 < $@god_check2)){
-					mes "[Dwarf Grunburti]";
+					mes "[矮人格朗布爾蒂]";
 					mes "但是……";
-					mes "The seals";
-					mes "have just been";
-					mes "restored. You'll have to";
-					mes "wait until they're all";
-					mes "released again...!";
+					mes "封印";
+					mes "剛剛才被";
+					mes "重新封印。你必須";
+					mes "等到它們全部";
+					mes "再次解除……！";
 					next;
-					mes "[Dwarf Grunburti]";
-					mes "Bwahahahahahahaa!";
-					mes "Even though you're";
-					mes "just a human, I feel";
-					mes "pity for you~";
+					mes "[矮人格朗布爾蒂]";
+					mes "哇哈哈哈哈哈哈哈！";
+					mes "雖然你只是";
+					mes "一個人類，我卻";
+					mes "替你感到可憐～";
 					close;
 				}
 				delitem 7074,2;  //Iron_Glove
@@ -749,27 +749,27 @@ que_god01,154,112,4	script	Grunburti#god	826,{
 				set $God2,0;
 				set $God3,0;
 				set $God4,0;
-				announce "[Mjolnir] has been bestowed to [" + strcharinfo(0) + "], the master of the [" + getguildname(.@GID) + "] 公會攻占。",bc_all;
-				mes "[Dwarf Grunburti]";
+				announce "[雷神之錘]已被賜予[" + strcharinfo(0) + "]，公會會長[" + getguildname(.@GID) + "] 公會攻占。",bc_all;
+				mes "[矮人格朗布爾蒂]";
 				mes "完成了。";
-				mes "Take it. How does";
-				mes "it feel to hold the world's most powerful weapon in your grasp?";
+				mes "拿去吧。";
+				mes "握著世上最強大的武器，感覺如何？";
 				close;
 			}
 			else {
-				mes "[Dwarf Grunburti]";
-				mes "Idiot human!";
-				mes "You didn't bring";
-				mes "everything I need";
-				mes "to recreate Mjolnir!";
+				mes "[矮人格朗布爾蒂]";
+				mes "笨蛋人類！";
+				mes "你沒有帶來";
+				mes "請帶來我需要的一切，";
+				mes "重現雷神之錘！";
 				mes "快點……！";
 				close;
 			}
 		case 2:
-			mes "[Dwarf Grunburti]";
-			mes "Muhahahaha~";
-			mes "Somehow, I figured";
-			mes "you'd back out, human!";
+			mes "[矮人格朗布爾蒂]";
+			mes "穆哈哈哈哈~";
+			mes "我就猜";
+			mes "你會臨陣脫逃，人類！";
 			close;
 		}
 	}
@@ -780,11 +780,11 @@ OnEnable:
 	end;
 
 OnTimer10000:
-	mapannounce "que_god01","Remember that you only have 10 minutes for this! Hurry up!",bc_map;
+	mapannounce "que_god01","記住，你只有十分鐘！快點！",bc_map;
 	end;
 
 OnTimer610000:
-	mapannounce "que_god01","You're too slow! I'm going to give another human a chance! Next!",bc_map;
+	mapannounce "que_god01","你太慢了！我要把機會給別的人類了！下一位！",bc_map;
 	end;
 
 OnTimer612000:
@@ -798,7 +798,7 @@ OnTimer615000:
 	end;
 }
 
-que_god01,169,82,0	script	god_wep_warpmaster	-1,{
+que_god01,169,82,0	script	god_wep_warpmaster::god_wep_warpmaster	-1,{
 OnEnable:
 	for(set .@i,1; .@i<=6; set .@i,.@i+1)
 		enablenpc "god_failwarp#"+.@i;
@@ -809,7 +809,7 @@ OnDisable:
 	end;
 }
 
-que_god01,154,67,0	script	god_failwarp#1	-1,4,7,{
+que_god01,154,67,0	script	god_failwarp#1::god_failwarp#1	-1,4,7,{
 OnInit:
 	disablenpc();
 	end;
@@ -817,58 +817,58 @@ OnTouch_:
 	warp "prontera",156,324;
 	end;
 }
-que_god01,154,82,0	duplicate(god_failwarp#1)	god_failwarp#2	-1,4,7
-que_god01,145,99,0	duplicate(god_failwarp#1)	god_failwarp#3	-1,9,9
-que_god01,164,99,0	duplicate(god_failwarp#1)	god_failwarp#4	-1,9,9
-que_god01,145,118,0	duplicate(god_failwarp#1)	god_failwarp#5	-1,9,9
-que_god01,164,118,0	duplicate(god_failwarp#1)	god_failwarp#6	-1,9,9
+que_god01,154,82,0	duplicate(god_failwarp#1)	god_failwarp#2::god_failwarp#2	-1,4,7
+que_god01,145,99,0	duplicate(god_failwarp#1)	god_failwarp#3::god_failwarp#3	-1,9,9
+que_god01,164,99,0	duplicate(god_failwarp#1)	god_failwarp#4::god_failwarp#4	-1,9,9
+que_god01,145,118,0	duplicate(god_failwarp#1)	god_failwarp#5::god_failwarp#5	-1,9,9
+que_god01,164,118,0	duplicate(god_failwarp#1)	god_failwarp#6::god_failwarp#6	-1,9,9
 
 // Original name: "Godly Item Quests Related#god"
-que_god01,293,3,0	script	Godly Item Quests#god	90,{
+que_god01,293,3,0	script	神聖道具任務#god::Godly Item Quests#god	90,{
 	callfunc "F_GM_NPC";
-	mes "[Use in case of emergency]";
-	mes "Please enter password.";
-	mes "If you wish to cancel, please enter 0.";
+	mes "[緊急時使用]";
+	mes "請輸入密碼。";
+	mes "如果要取消，請輸入0。";
 	next;
 	set .@i, callfunc("F_GM_NPC",1854,0,0,4000);
 	if (.@i == -2) {
-		mes "[Use in case of emergency]";
+		mes "[緊急時使用]";
 		mes "密碼錯誤。";
 		close;
 	} else if (.@i == -1) {
-		mes "[Use in case of emergency]";
+		mes "[緊急時使用]";
 		mes "您已取消此次請求。";
 		close;
 	} else if (.@i == 0) {
 		close;
 	} else {
-		mes "[Use in case of emergency]";
-		mes "What services would you like to use?";
+		mes "[緊急時使用]";
+		mes "你想使用什麼服務？";
 		next;
-		switch(select("Turn off Warps.:Reset Timer.:Reset chat room.")) {
+		switch(select("關閉傳送門。:重設計時器。:重設聊天室。")) {
 		case 1:
-			mes "[Use in case of emergency]";
-			mes "Press the 'Next' button to turn off warps.";
+			mes "[緊急時使用]";
+			mes "按下「下一步」按鈕以關閉傳送門。";
 			next;
 			donpcevent "god_wep_warpmaster::OnDisable";
-			mes "[Use in case of emergency]";
-			mes "You have successfully turned off warps.";
+			mes "[緊急時使用]";
+			mes "你已成功關閉傳送門。";
 			close;
 		case 2:
-			mes "[Use in case of emergency]";
-			mes "Press the 'Next' button to reset timer.";
+			mes "[緊急時使用]";
+			mes "按下「下一步」按鈕以重設計時器。";
 			next;
 			donpcevent "Grunburti#god::OnEnable";
-			mes "[Use in case of emergency]";
-			mes "You have successfully reset timer.";
+			mes "[緊急時使用]";
+			mes "你已成功重設計時器。";
 			close;
 		case 3:
-			mes "[Use in case of emergency]";
-			mes "Please press the 'Next' button to reset the arena chat room in que_god01.";
+			mes "[緊急時使用]";
+			mes "請按下「下一步」按鈕，以重設 que_god01 中的競技場聊天室。";
 			next;
 			donpcevent "#god_hopewarp1::OnReset";
-			mes "[Use in case of emergency]";
-			mes "You have successfully reset the arena chat room (Laboratory Entrance 1/2).";
+			mes "[緊急時使用]";
+			mes "你已成功重設競技場聊天室（實驗室入口 1/2）。";
 			close;
 		}
 	}

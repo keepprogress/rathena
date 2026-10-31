@@ -649,7 +649,7 @@ prt_cas_q,26,30,3	script	Chamberlain Bell#ep16_main	4_M_RUSMAN1,{
 				mes "Here is some strong mint tea mixed with milk and chocolate chips. A great after-meal treat.";
 			else
 				mes "Here is some cold milk with citron jelly and cream. It is a sweet and sour drink.";
-			mes "Do you like it?";
+			mes "你喜歡嗎？";
 			next;
 			specialeffect2 EF_SANCTUARY;
 			mes "^4d4dff All HP and SP are recovered!";
@@ -893,7 +893,7 @@ prt_cas_q,28,28,3	script	Court Mage Nillem#ep16_wiz01	4_M_JOB_WIZARD,{
 		mes "[Nillem]";
 		mes "Haha, then, let's go to the Past Memories of the Royal Family!";
 		next;
-		if (select( "Move to the Past Memories of the Royal Family", "I don't need it!" ) == 2) {
+		if (select( "Move to the Past Memories of the Royal Family", "我不需要！" ) == 2) {
 			mes "[Nillem]";
 			mes "I like how you refuse so flatly";
 			mes "May I hang out here for a while since I am already here?";
@@ -1435,7 +1435,7 @@ OnTouch:
 		sleep2 2000;
 		cloakoffnpcself( "#ep16_7689_01" );
 		cloakoffnpcself( "#ep16_7689_02" );
-		npctalk "How did it go?", "#ep16_7689_02", bc_self;
+		npctalk "進展如何？", "#ep16_7689_02", bc_self;
 		sleep2 2000;
 		npctalk "Hum... Not as much as I have wanted, but I seem to have a clue now.", "#ep16_7689_01", bc_self;
 		sleep2 3000;
@@ -1447,7 +1447,7 @@ OnTouch:
 		sleep2 1000;
 		unittalk getcharid(3), "" + .@name$ + " : (Lord?)", bc_self;
 		sleep2 3000;
-		npctalk "What should we do now?", "#ep16_7689_02", bc_self;
+		npctalk "我們現在該怎麼辦？", "#ep16_7689_02", bc_self;
 		sleep2 3000;
 		npctalk "Just leave him there. They will think that he is just drunk a little.", "#ep16_7689_01", bc_self;
 		sleep2 3000;
@@ -1587,7 +1587,7 @@ OnInit:
 // prt_lib
 prt_lib,76,80,3	script	Lindt the Librarian#ep16_lindt	1_M_01,{
 	if (ep16_royal == 11) {
-		mes "[Librarian]";
+		mes "[圖書館員]";
 		mes "Do you want to take a look at the material?";
 		mes "It is still here since I haven't taken it away.";
 		next;
@@ -1597,35 +1597,35 @@ prt_lib,76,80,3	script	Lindt the Librarian#ep16_lindt	1_M_01,{
 		mes "There are several blank pages in-between.";
 		unittalk getcharid(3), "" + strcharinfo(0) + " : Why are these blank pages here?", bc_self;
 		next;
-		mes "[Librarian]";
+		mes "[圖書館員]";
 		mes "Read the text written above.";
 		mes "Yes, it's here.";
 		next;
-		mes "[Librarian]";
+		mes "[圖書館員]";
 		mes "^4d4dffOnly the ones who know the truth can read this.^000000";
-		mes "See?";
+		mes "看到了吧？";
 		next;
-		mes "[Librarian]";
+		mes "[圖書館員]";
 		mes "Considering the time which has passed, there must be no one who knows this truth left now.";
 		mes "In other words, this part will remain a mystery forever.";
 		next;
-		mes "[Librarian]";
+		mes "[圖書館員]";
 		mes "That's why Archduke Stoltze gave up and left.";
 		mes "Since you have seen this, let me put this back in place.";
 		ep16_royal = 12;
 		close;
 	}
 	if (ep16_royal == 22) {
-		mes "[Librarian]";
+		mes "[圖書館員]";
 		mes "Oh, you are here.";
 		mes "Archduke Grantz has been waiting for you for a while.";
 		close;
 	}
-	mes "[Librarian]";
+	mes "[圖書館員]";
 	mes "My family has been managing the Past Memories of the Royal Family for generations.";
 	mes "No wonder since it is the exclusive scriptorium for the royal family.";
 	next;
-	mes "[Librarian]";
+	mes "[圖書館員]";
 	mes "It has not been long since I took over this position so I am not really that used to this.";
 	mes "I never expected to be visited by these many archdukes...";
 	close;
@@ -1995,7 +1995,7 @@ prt_lib,80,79,3	script	克朗尼克·海因#ep16_01_lib01::Kronecker G. Heine#ep
 		mes "But not now.";
 		next;
 		npctalk "哇……", "Mage Nillem#ep16_warp", bc_self;
-		mes "[Librarian]";
+		mes "[圖書館員]";
 		mes "Then... How about me?";
 		next;
 		mes "[克朗尼克]";
@@ -2124,7 +2124,7 @@ prt_lib,85,82,5	script	Ian Walther#ep16_lib01	1_M_JOBTESTER,{
 		next;
 		npctalk "Ha... What on earth!", "Kronecker G. Heine#ep16_01_lib01", bc_self;
 		mes "[尼希爾]";
-		mes "That must be...";
+		mes "那一定是……";
 		next;
 		cloakonnpcself( "Kronecker G. Heine#ep16_01_lib01" );
 		cloakoffnpcself( "Kronecker G. Heine#ep16_01_lib02" );
@@ -2518,7 +2518,7 @@ prt_lib_q,91,85,3	script	Nillem#ep16_lib_q	4_M_JOB_WIZARD,{
 		next;
 		select("Don't call me that!");
 		mes "[Nillem]";
-		mes "What about it?";
+		mes "你覺得如何？";
 		mes "We will see each other everyday from now on, won't we?";
 		unittalk getcharid(3), "" + strcharinfo(0) + " : ......Phew..", bc_self;
 		next;
@@ -3803,7 +3803,7 @@ prt_cas,361,142,5	script	塔瑪林#ep16_1::Tamarin#ep16_1	4_EP16_TAMARIN,{
 		next;
 		mes "[塔瑪林]";
 		mes "If you find Dyu in the Banquet Hall, please tell him that I won't be able to go back with food since I am too busy.";
-		mes "Hahahahaha...";
+		mes "哈哈哈哈……";
 		cutin "tama_cook_3",2;
 		erasequest 11413;// Why Should I Prepare for the Banquets?
 		setquest 11414;// Why Should I Prepare for the Banquets?
@@ -3818,7 +3818,7 @@ prt_cas,361,142,5	script	塔瑪林#ep16_1::Tamarin#ep16_1	4_EP16_TAMARIN,{
 		next;
 		mes "[塔瑪林]";
 		mes "If you find Dyu in the Banquet Hall, please tell him that I won't be able to go back with food since I am too busy.";
-		mes "Hahahahaha...";
+		mes "哈哈哈哈……";
 		cutin "tama_cook_3",2;
 		close3;
 	}
@@ -3949,8 +3949,8 @@ prt_cas_q,20,139,3	script	斯皮卡·內里烏斯#ep16_room01::Spica Nerius#ep16
 		switch( isbegin_quest(7684) ) {
 		case 0:
 			mes "[Spica]";
-			mes "You must be " + strcharinfo(0) + " whom everyone talks about.";
-			mes "Thank you for visiting us.";
+			mes "你一定是 " + strcharinfo(0) + " whom everyone talks about.";
+			mes "感謝您的光臨。";
 			mes "I am Spica of the Nerius family.";
 			cutin "ep16_spica_nerius01",1;
 			next;
@@ -4471,7 +4471,7 @@ S_Mysterious:
 		mes "However, you Ian will be in trouble as the same member of the family since there is no witness or proof left now.";
 		next;
 		mes "[Ian]";
-		mes "Are you threatening me?";
+		mes "你在威脅我嗎？";
 		next;
 		mes "[Man from the Richard]";
 		mes "Shh... You'd better keep your voice down. Your heir may hear you.";
@@ -5486,7 +5486,7 @@ prt_cas_q,19,85,4	script	克朗尼克·海因#ep16_01::Kronecker G. Heine#ep16_0
 				next;
 				cutin "ep16_friedrich_stolz_heine",1;
 				mes "[弗里德里希]";
-				mes "Let me introduce myself.";
+				mes "容我自我介紹。";
 				mes "I am the current head of the Heine family, Friedrich Stoltze Heine.";
 				next;
 				mes "[弗里德里希]";
@@ -6643,7 +6643,7 @@ prt_cas_q,96,184,1	script	艾格尼絲·羅根堡#ep16lu::Agnes Roegenburg#ep16l
 		mes "What ?";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "What..?";
+		mes "什麼……？";
 		next;
 		mes "[Agnes]";
 		mes "Why do you prepare to fight?";
@@ -6680,7 +6680,7 @@ prt_cas_q,96,184,1	script	艾格尼絲·羅根堡#ep16lu::Agnes Roegenburg#ep16l
 			mes "I expected you would agree as a woman like me.";
 		}
 		else {
-			mes "Ah....!";
+			mes "啊……！";
 			next;
 			mes "[Agnes]";
 			mes "懂了嗎？";
@@ -11096,11 +11096,11 @@ prt_cas_q,95,9,5	script	尤爾根·威格納#ep16wig::Jurgen Wigner#ep16wig	4_M_
 			next;
 			cloakoffnpcself( "Maid#ep16wig01" );
 			cutin "",255;
-			mes "[Maid]";
+			mes "[女僕]";
 			mes "不好意思。";
 			next;
 			emotion ET_HUK, getnpcid(0, "Maid#ep16wig01");
-			mes "[Maid]";
+			mes "[女僕]";
 			mes "I am sorry. I thought no one was here. I just wanted to clean the room, I am really sorry. I'll come back later.";
 			next;
 			cutin "16jur_nor",0;
@@ -11111,9 +11111,9 @@ prt_cas_q,95,9,5	script	尤爾根·威格納#ep16wig::Jurgen Wigner#ep16wig	4_M_
 			mes "[" + strcharinfo(0) + "]";
 			mes "Hello, long time no see. Sorry about the trouble you went through last time. Fortunately, the box thing has been resolved well.";
 			next;
-			mes "[Maid]";
+			mes "[女僕]";
 			mes "Oh... Yes... I see...";
-			mes "Hello...";
+			mes "你好……";
 			next;
 			cutin "16jur_nor",0;
 			mes "[Jurgen]";
@@ -11126,13 +11126,13 @@ prt_cas_q,95,9,5	script	尤爾根·威格納#ep16wig::Jurgen Wigner#ep16wig	4_M_
 			mes "I am sorry about that. We were desperate and in a hurry. I apologize if you were upset by it.";
 			next;
 			cutin "",255;
-			mes "[Maid]";
+			mes "[女僕]";
 			mes "Thank you for telling me that. Since I am a maid, there are people who suspect me or treat me like a thief.";
 			next;
-			mes "[Maid]";
+			mes "[女僕]";
 			mes "However, you seem different, dear prince. I am a little surprised. I thought people who belong to the high society didn't know how to apologize.";
 			next;
-			mes "[Maid]";
+			mes "[女僕]";
 			mes "Oh, it was very presumptuous of me.";
 			mes "I am sorry.";
 			next;
@@ -11141,7 +11141,7 @@ prt_cas_q,95,9,5	script	尤爾根·威格納#ep16wig::Jurgen Wigner#ep16wig	4_M_
 			mes "No, that's OK.";
 			next;
 			cutin "",255;
-			mes "[Maid]";
+			mes "[女僕]";
 			mes "Then, I should get going.";
 			mes "I am supposed to clean the room when there is no one inside anyway. Please excuse me.";
 			next;
@@ -11906,7 +11906,7 @@ OnInit:
 	cloakonnpc();
 	end;
 }
-prt_cas_q,93,10,4	duplicate(Jurgen Wigner#ep16wig00)	Maid#ep16wig01	1_F_04
+prt_cas_q,93,10,4	duplicate(Jurgen Wigner#ep16wig00)	女僕#ep16wig01::Maid#ep16wig01	1_F_04
 
 prt_cas_q,95,11,4	script	Womenfolk#ep16wig01	1_F_03,{
 	mes "[Womenfolk]";
@@ -12058,93 +12058,93 @@ OnTouch:
 	end;
 }
 
-prt_cas,322,216,5	script	Maid#ep16wig02	1_F_04,{
+prt_cas,322,216,5	script	女僕#ep16wig02::Maid#ep16wig02	1_F_04,{
 	if (checkweight(1304,3) == 0) {
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Oh, you shouldn't bring too much stuff in here.";
 		mes "As you see there are a lot of fragile things.";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "You need to leave some out. It would be a big problem if the bundle touches the dishes and breaks them.";
 		close;
 	}
 	.@name$ = strcharinfo(0);
 	if (ep16_wig == 4) {
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "I am cleaning the kitchen now, which is the hardest place to clean. It is really difficult to get rid of all the dirt in here.";
 		mes "My arms are way too weak to handle it.";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "I happen to see someone with a strong set of arms... Those arms... What brought you here?";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "Hello, I am the adventurer invited to the royal banquet. Are you the maid who have cleaned the Wigner residence this afternoon?";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Yes, I am. What can I do for you?";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "Did you happen to see ^0000cda small box^000000 in the Wigner residence? It was supposed to be on the table next to the bed. The box belongs to Princess Katrin. Have you seen it?";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Yes, I have. It was the box which looked simple but classy. I held it up for a second to clean the table and put it down. I remember it.";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "Did you see it there when you leave the room? Wasn't there anyone else in the room?";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Wait a moment. I know where you are getting with this. We, maids, often get into a situation like this.";
 		next;
 		emotion ET_FRET;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Isn't the box missing and are you ^0000cdsuspecting the maid who has cleaned the room^000000? Am I right?";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "I am not suspecting you. I am just ^0000cdasking you about the situation^000000 to track the box.";
 		next;
 		emotion ET_FRET;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "With an element of suspicion in your mind, right?";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "No, I am not suspecting you. Please don't get me wrong. I am just asking you when you have seen it and if there haven't been anyone else there.";
 		next;
 		emotion ET_ANGER;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Ha, you are not being honest with me. If I say that there was no one around, I would be suspected, right?";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "I can tell you this one though. I didn't take it. If you ask me if there was anyone in the room, well...";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "There was someone in the room, right?";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Was there? This kitchen is too messy that I cannot think straight. ^0000cdI may be able to recall if it is cleaned up^000000.";
 		next;
 		emotion ET_SLEEPY;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Oh, the kitchen is messy and so are the thoughts inside my head. Oh, how dirty and messy!";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "May I help you clean up?";
 		next;
 		emotion ET_SMILE;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Oh, would you do that for me? I would be so grateful. Here is a ^0000cdPoring Scrub Sponge^000000, please scrub every inch of this place clean.";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Since it is a specially-maid Scrub Sponge, it serves multiple purposes. It coaches you on how to clean so make good use of it.";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "You may be surprised by it, but it is a safe Scrub Sponge which doesn't hurt others. Don't worry.";
 		mes "It is a Scrub Sponge developed by a legendary figure.";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Oh, wait! You know, there is a certain protocol when it comes to cleaning. You first need to wipe off the mold on the wall. Then you have to clean up the grease. The last thing for you to do is cleaning the floor.";
 		next;
 		mes "[" + .@name$ + "]";
-		mes "I... I see.";
+		mes "我……我知道了。";
 		erasequest 14478;// Searching for the Clue
 		setquest 14479;// Clean-up out of Apology
 		getitem 6928,3;// Poring_Loofah
@@ -12152,72 +12152,72 @@ prt_cas,322,216,5	script	Maid#ep16wig02	1_F_04,{
 		close;
 	}
 	if (ep16_wig > 4 && ep16_wig < 11) {
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Have you finished it already?";
 		mes "It doesn't seem so. The thoughts in my head haven't cleared up yet.";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "I think I would be able to recall when you come back after cleaning the kitchen with the Scrub Sponge I have given you.";
 		close;
 	}
 	if (ep16_wig == 11) {
 		emotion ET_BEST;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Wow... The kitchen has become so clean! You really need to clean the grease with a strong set of arms!";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "Argh... My arms... Was there anyone else in the room?";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "You must know what kind of family that is. It is the wealthiest family in Rune-Midgarts. Despite being a temporary residence, the room was decorated with so much care.";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "All the gorgeous pieces of furniture and carpets... I have never seen tiger skin as white and huge as that one in there.";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "Why are you talking about the furniture all of a sudden?";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Oh, my, how are you going to deal with the members of the royal families with such slow wit?";
 		mes "Think. Why would I ^0000cdtalk about the furniture^000000 ?";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "...You ^0000cdcan ask the person who was delivering the furniture^000000 .";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "I cannot point it out, but I think I have given you enough clues.";
 		mes "By the way, is the box really missing in the first place?";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "什麼意思？";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "It is not my opinion, but there are these words people say. You know, the rumors.";
 		mes "Since the prince of the Wigner family looks so handsome...";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "He has been the center of the attention since he was young. People say that the lady is stressed about it and does things to draw attention.";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "This could be one of her tricks, they say.";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "The words haven not been spread yet, but I am sure that everyone will be talking about it even before the teatime is over.";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "I don't think that is true. She is not that kind of person.";
 		next;
 		emotion ET_FRET;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "That's what people say. You don't have to reason with me. Anyways, I should get back to my cleaning duty. If you are not going to help me, please leave me alone now.";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "Do you know where the man who have delivered the furniture is?";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "He must be somewhere in Prontera. Why don't you try visiting the area ^0000cdnear the district office^000000. Most stores are located there.";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Oh, by the way, you didn't hear it from me. Not that I said anything to you.";
 		next;
 		mes "[" + .@name$ + "]";
@@ -12230,31 +12230,31 @@ prt_cas,322,216,5	script	Maid#ep16wig02	1_F_04,{
 		close;
 	}
 	if (ep16_wig == 12) {
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Dear adventurer, didn't you say that you were going to visit the delivery man?";
 		mes "He must be somewhere ^0000cdnear the district office^000000.";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Since I need to clean up. please leave now.";
 		mes "You are getting in the way.";
 		close;
 	}
 	if (ep16_wig < 12) {
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Oh, I am sick of cleaning! I have enough things to clean at home. I don't need to do more out here.";
 		mes "I should just give it all up and run away.";
 		close;
 	}
 	if (ep16_wig == 17) {
 		emotion ET_FRET;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Oh, why can't I get it off easily? I guess I won't be able to go home early.";
 		mes "Why should I do this?";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "Hello. Do you have a moment?";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Yes... Well... Hum.. You are...";
 		mes "Aren't you the adventurer who was at the Wigner residence?";
 		next;
@@ -12263,34 +12263,34 @@ prt_cas,322,216,5	script	Maid#ep16wig02	1_F_04,{
 		mes "^0000cdDon't you remember...?^000000";
 		next;
 		emotion ET_KEK;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Oh, I am really sorry. ^0000cdI am not good at remembering faces.^000000";
 		mes "什麼風把你吹來這裡的？";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "Jurgen of the Wigner family has asked me to give it to you.";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "What is it? Why did he give it to me? Is it an invoice? Have I done anything wrong?";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "No, it is not. Please just read it first.";
 		next;
 		emotion ET_BIGTHROB;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Hum... I have fallen in love with you at first sight.";
 		mes "Well... Hum... Please accept my love for... Eh... Umm...";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "He has used some really direct languages here. How very Wigner of him for that he values efficiency... Hahaha...";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Hum... It is... It is... Well, is it what I think it is?";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "Yes, it is a love letter.";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Phew... I am sorry, but you should take it back.";
 		mes "Well... I appreciate his feelings for me... I really do... But please just take it back.";
 		next;
@@ -12300,23 +12300,23 @@ prt_cas,322,216,5	script	Maid#ep16wig02	1_F_04,{
 		mes "[" + .@name$ + "]";
 		mes "Oh, are you in a relationship or engaged? Or are you married?";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "No, no, I am not. Just take it back with you.";
 		mes "I feel rather overwhelmed... And there is the social class issue as well...";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Most of all, I am not in the situation to date anyone. ^0000cdIt is for a personal reason.^000000";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "If you say so, I cannot force it. I'll deliver your words to him.";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Yes. I am really sorry.";
 		next;
 		mes "[" + .@name$ + "]";
 		mes "May I get your name at least?";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Mad... No, ^0000cdMary^000000. My name is Mary.";
 		next;
 		mes "[" + .@name$ + "]";
@@ -12327,10 +12327,10 @@ prt_cas,322,216,5	script	Maid#ep16wig02	1_F_04,{
 		close;
 	}
 	if (ep16_wig == 18) {
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "Well, have you told the prince about it? Please make sure not to hurt his feelings much.";
 		next;
-		mes "[Maid]";
+		mes "[女僕]";
 		mes "麻煩你了。";
 		close;
 	}
@@ -12359,7 +12359,7 @@ prt_cas,322,216,5	script	Maid#ep16wig02	1_F_04,{
 		mes "I won't let go of this, really!";
 		next;
 		mes "[" + .@name$ + "]";
-		mes "Oh, hello.";
+		mes "喔，你好。";
 		mes "Is it a bad time? Should I just go?";
 		next;
 		mes "[Mary]";
@@ -12534,29 +12534,29 @@ prt_cas,322,216,5	script	Maid#ep16wig02	1_F_04,{
 				mes "They are gone! Let me come back later! I have forgotten to bring something!";
 				close;
 			}
-			mes "[Maid]";
+			mes "[女僕]";
 			mes "Adventurer? What brought you here?";
 			next;
 			mes "[" + .@name$ + "]";
 			mes "Jurgen sent me here to deliver his love to you again.";
 			next;
 			emotion ET_CRY;
-			mes "[Maid]";
+			mes "[女僕]";
 			mes "Again... I really hoped he would have given up by today... I guess it must have been a vain hope.";
 			next;
-			mes "[Maid]";
+			mes "[女僕]";
 			mes "Please tell him I appreciate it.";
 			next;
-			mes "[Maid]";
+			mes "[女僕]";
 			mes "I really want the banquet to be over soon. Or my sister could just come back.";
 			next;
-			mes "[Maid]";
+			mes "[女僕]";
 			mes "Anyway, I am sorry to put you in the difficult situation again today.";
 			next;
 			mes "[" + .@name$ + "]";
 			mes "Well then, since I have delivered you what I have to deliver you, I should get going.";
 			next;
-			mes "[Maid]";
+			mes "[女僕]";
 			mes "Yes, please go back safely. I hope he gives up by tomorrow.";
 			delitem 6927, countitem(6927);// Filled_With_SeaStones
 			delitem 748,1;// Witherless Rose
@@ -12566,7 +12566,7 @@ prt_cas,322,216,5	script	Maid#ep16wig02	1_F_04,{
 		}
 		// fall through
 	}
-	mes "[Maid]";
+	mes "[女僕]";
 	mes "Oh, I am sick of cleaning! I have enough things to clean at home. I don't need to do more out here.";
 	mes "I should just give it all up and run away.";
 	close;
@@ -13292,7 +13292,7 @@ prt_cas,78,255,3	script	梅瑟爾#ep16_etc05::Mayssel#ep16_etc05	4_F_MAYSEL,{
 		setpcblock PCBLOCK_NPC, false;
 		cutin "gc_mayssel01.bmp",1;
 		mes "[梅瑟爾]";
-		mes "Who are you...?";
+		mes "你……是誰？";
 		next;
 		mes "[梅瑟爾]";
 		mes "...Oh... You have visited us to change your class, I remember.";
@@ -13461,7 +13461,7 @@ prt_cas,98,231,5	script	Hiba Ajif#ep16	4_M_REDSWORD,{
 	mes "[Avidal the Advisor]";
 	mes "It is the event to praise our contributions. Try to smile a little.";
 	next;
-	mes "[Instructor Igrid]";
+	mes "[教官伊格莉德]";
 	mes "Brother, these shoes hurt my feet. May I go back to the guest room and sleep?";
 	next;
 	mes "[Hiba Ajif]";
@@ -13476,8 +13476,8 @@ prt_cas,100,231,3	script	Avidal the Advisor#ep16	4_M_SAGE_C,{
 	close;
 }
 
-prt_cas,97,229,7	script	Instructor Igrid#ep16	4_M_CRU,{
-	mes "[Instructor Igrid]";
+prt_cas,97,229,7	script	教官伊格莉德#ep16::Instructor Igrid#ep16	4_M_CRU,{
+	mes "[教官伊格莉德]";
 	mes "If they really want to do something for us, they really let us take a rest.";
 	mes "Only the ones who don't work in the field like an event like this. It is true.";
 	close;
@@ -13737,7 +13737,7 @@ prt_cas,343,67,4	script	Uptight Librarian#ep16lug0	1_F_LIBRARYGIRL,{
 			next;
 		}
 		mes "[Uptight Librarian]";
-		mes "Ah, I see.";
+		mes "啊，我明白了。";
 		next;
 		mes "[Uptight Librarian]";
 		mes "Did ^0000cdall royal families^000000 attend the banquet?";
@@ -14042,7 +14042,7 @@ prt_cas,379,124,3	script	Glamorous Girl#pop	4_F_ARUNA_POP,{
 	cutin "ra_bishop",2;
 	mes "[Glamorous Girl]";
 	mes "......";
-	mes "Ah....!";
+	mes "啊……！";
 	next;
 	mes "[Glamorous Girl]";
 	mes "You... At Cheshrumnir...";
@@ -14534,7 +14534,7 @@ prt_q,157,334,3	script	Nillem#ep16_pprt01	4_M_JOB_WIZARD,{
 		next;
 		select("Don't call me that!");
 		mes "[Nillem]";
-		mes "What about it?";
+		mes "你覺得如何？";
 		mes "We will see each other everyday from now on, won't we?";
 		unittalk getcharid(3), "" + strcharinfo(0) + " : ......Phew..", bc_self;
 		next;
@@ -17377,7 +17377,7 @@ prt_prison,267,184,8	script	Prisoner 267BD184#EP161B	4_DRACULA,{
 		next;
 		emotion ET_THINK, playerattached();
 		mes "[" + strcharinfo(0) + "]";
-		mes "Well, uh...";
+		mes "嗯，那個……";
 		next;
 		mes "[Prisoner 267BD184]";
 		mes "Oh? You thought so, too?";
@@ -17464,7 +17464,7 @@ prt_prison,267,184,8	script	Prisoner 267BD184#EP161B	4_DRACULA,{
 				mes "[Prisoner 267BD184]";
 				mes "So I'm asking you ? will you take the blue gems from them again?";
 				next;
-				if (select( "Give a hand.", "Refuse to help." ) == 2) {
+				if (select( "Give a hand.", "拒絕幫忙。" ) == 2) {
 					emotion ET_HNG;
 					mes "[Prisoner 267BD184]";
 					mes "I thought you'd be different. So disappointing.";

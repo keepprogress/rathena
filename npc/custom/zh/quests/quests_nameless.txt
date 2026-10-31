@@ -74,7 +74,7 @@ OnTouch:
 		mes "^6B8E23Priest Bamph^000000 is expecting";
 		mes "your arrival at ^6B8E23Prontera";
 		mes "Church^000000. Please visit him";
-		mes "as soon as you can.";
+		mes "越快越好。";
 		set aru_monas,1;
 		//setquest 17000;
 		close2;
@@ -83,7 +83,7 @@ OnTouch:
 	end;
 }
 
-airplane_01,95,61,3	script	Agent#pc1	899,{
+airplane_01,95,61,3	script	特務#pc1::Agent#pc1	899,{
 	end;
 
 OnInit:
@@ -147,7 +147,7 @@ cmd_in02,111,52,3	script	Ordinary Man#pc2	97,{
 		mes "[Larjes]";
 		mes "^666666*唉……*^000000";
 		mes "This isn't good at all.";
-		mes "I don't know what to do...";
+		mes "我不知道該怎麼辦...";
 		close;
 	}
 	else if (aru_monas == 3) {
@@ -217,7 +217,7 @@ ra_in01,308,59,1	script	Waiter#pc	930,{
 		if (aru_monas == 6) {
 			next;
 			mes "[Waiter]";
-			mes "What would you like";
+			mes "你想讓我";
 			mes "to order? Or... If I'm";
 			mes "not mistaken, you're";
 			mes "here for something else?";
@@ -292,10 +292,10 @@ OnTouch:
 	if (checkweight(907,200) == 0) {
 		mes "^3355FF等一下！";
 		mes "您目前攜帶了";
-		mes "too many things with you.";
+		mes "身上東西太多了。";
 		mes "請先";
-		mes "using the Kafra Service";
-		mes "to store some of your items.^000000";
+		mes "使用卡普拉服務";
+		mes "來存放你的部分道具。^000000";
 		close;
 	}
 	if (aru_monas == 7) {
@@ -840,7 +840,7 @@ ve_fild07,125,128,0	script	Boat#Aru	111,{
 		case 2:
 			mes "[Larjes]";
 			mes "Alright. Just let me know";
-			mes "whenever you're ready.";
+			mes "準備好時再來。";
 			close;
 		}
 	}
@@ -908,7 +908,7 @@ ve_fild07,128,130,1	script	Secret Agent#Aru	97,{
 		case 2:
 			mes "[Larjes]";
 			mes "Alright. Just let me know";
-			mes "whenever you're ready.";
+			mes "準備好時再來。";
 			close;
 		}
 	}
@@ -979,7 +979,7 @@ nameless_i,127,207,0	script	Dead Crow#Aru	111,{
 		mes "crow^3355FF makes you feel";
 		mes "uneasy for some reason.^000000";
 		next;
-		if (select("Ignore:Investigate") == 1) {
+		if (select("忽略:調查") == 1) {
 			mes "^3355FFYou decide not to touch";
 			mes "the animal's carcass.^000000";
 			close;
@@ -1321,10 +1321,10 @@ abbey02,224,70,0	script	Books#Mona1	111,{
 	if (checkweight(7766,1) == 0) {
 		mes "^3355FF等一下！";
 		mes "您目前攜帶了";
-		mes "too many things with you.";
+		mes "身上東西太多了。";
 		mes "請先";
-		mes "using the Kafra Service";
-		mes "to store some of your items.^000000";
+		mes "使用卡普拉服務";
+		mes "來存放你的部分道具。^000000";
 		close;
 	}
 	if (aru_monas < 21) {
@@ -1337,7 +1337,7 @@ abbey02,224,70,0	script	Books#Mona1	111,{
 		mes "with blood amongst all";
 		mes "these old, moldy books.^000000";
 		next;
-		if(select("Examine Book:Ignore")==1) {
+		if(select("檢查書本:忽略")==1) {
 			set aru_monas,22;
 			//changequest 17014,17015;
 			getitem 7755,1; // Reasearch_Note
@@ -1419,10 +1419,10 @@ abbey03,232,232,4	script	死人#King::Dead Man#King	956,{
 	if (checkweight(7766,1) == 0) {
 		mes "^3355FF等一下！";
 		mes "您目前攜帶了";
-		mes "too many things with you.";
+		mes "身上東西太多了。";
 		mes "請先";
-		mes "using the Kafra Service";
-		mes "to store some of your items.^000000";
+		mes "使用卡普拉服務";
+		mes "來存放你的部分道具。^000000";
 		close;
 	}
 	if (aru_monas == 23) {
@@ -1521,10 +1521,10 @@ ra_temple,165,57,5	script	尼倫#ss::Niren#ss	915,{
 	if (checkweight(907,200) == 0) {
 		mes "^3355FF等一下！";
 		mes "您目前攜帶了";
-		mes "too many things with you.";
+		mes "身上東西太多了。";
 		mes "請先";
-		mes "using the Kafra Service";
-		mes "to store some of your items.^000000";
+		mes "使用卡普拉服務";
+		mes "來存放你的部分道具。^000000";
 		close;
 	}
 	cutin "ra_gwoman",2;
@@ -2031,10 +2031,10 @@ ra_temple,165,57,5	script	尼倫#ss::Niren#ss	915,{
 			mes "給你！";
 			cutin "ra_gwoman",255;
 			next;
-			mes "^3355FF*Scribble Scribble*^000000";
-			mes "^3355FF*Scribble Scribble*^000000";
-			mes "^3355FF*Scribble Scribble*^000000";
-			mes "^3355FF*Scribble Scribble*^000000";
+			mes "^3355FF*沙沙寫字*^000000";
+			mes "^3355FF*沙沙寫字*^000000";
+			mes "^3355FF*沙沙寫字*^000000";
+			mes "^3355FF*沙沙寫字*^000000";
 			next;
 			cutin "ra_gwoman",2;
 			mes "[大祭司尼倫]";
@@ -2322,7 +2322,7 @@ moc_ruins,77,167,4	script	Foreign Merchant#aru1	880,5,5,{
 		}
 		else if (aru_em == 7) {
 			mes "[Foreign Merchant]";
-			mes "*Pant Pant*";
+			mes "*喘氣喘氣*";
 			mes "*Sweat*";
 			next;
 			switch(select("Give Fruit Wine:Quietly Watch Him")) {
@@ -2348,14 +2348,14 @@ moc_ruins,77,167,4	script	Foreign Merchant#aru1	880,5,5,{
 				mes "Thank you so much, friend!";
 				next;
 				mes "[Foreign Merchant]";
-				mes "There must be some";
+				mes "一定是有什麼";
 				mes "way I can repay you.";
 				mes "Ah, here we go. Take it.";
 				mes "Isn't your name, "+ strcharinfo(0) +"?";
 				next;
 				mes "["+ strcharinfo(0) +"]";
 				mes "What th--?";
-				mes "How did you know?";
+				mes "你怎麼知道的？";
 				next;
 				mes "^3355FFThe merchant giggled,";
 				mes "note from under his sleeve.";
@@ -2389,7 +2389,7 @@ moc_ruins,77,167,4	script	Foreign Merchant#aru1	880,5,5,{
 				emotion ET_CRY, playerattached();
 				next;
 				mes "["+ strcharinfo(0) +"]";
-				mes "Oh well, thanks for";
+				mes "好吧，謝謝你";
 				mes "bringing me the note.";
 				mes "But I'm not buying you";
 				mes "any more drinks, got it?";
@@ -2434,7 +2434,7 @@ OnTouch:
 	if (aru_vol == 27) {
 		if (aru_em == 0) {
 			mes "[Foreign Merchant]";
-			mes "*Pant Pant*";
+			mes "*喘氣喘氣*";
 			mes "Man, I think I'm going";
 			mes "to die from all this heat!";
 			close;
@@ -2667,10 +2667,10 @@ ra_fild03,139,355,5	script	Ishmael#em	914,{
 	if (checkweight(907,200) == 0) {
 		mes "^3355FF等一下！";
 		mes "您目前攜帶了";
-		mes "too many things with you.";
+		mes "身上東西太多了。";
 		mes "請先";
-		mes "using the Kafra Service";
-		mes "to store some of your items.^000000";
+		mes "使用卡普拉服務";
+		mes "來存放你的部分道具。^000000";
 		close;
 	}
 	if (aru_em < 17) {
@@ -2773,7 +2773,7 @@ ra_fild03,139,355,5	script	Ishmael#em	914,{
 			next;
 			mes "[Ishmael]";
 			mes "Er, but, um...";
-			mes "Would you please";
+			mes "可以請你";
 			mes "not come any closer?";
 			mes "I still... Uh... I don't mean";
 			mes "to be rude... It's just...";
@@ -3446,7 +3446,7 @@ comodo,224,187,3	script	Muff	86,{
 		mes "to fix this somehow!";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "Do you have any ideas?";
+		mes "你有任何想法嗎？";
 		mes "I mean, if we dried the";
 		mes "paper, the letters would";
 		mes "still be faded, right?";
@@ -3669,7 +3669,7 @@ alberta,127,143,3	script	Belder	85,{
 		mes "......";
 		next;
 		mes "[Belder]";
-		mes "What's with that dirty look?";
+		mes "你那副嫌棄的表情是怎樣？";
 		mes "I've got nothing to hide!";
 		mes "你沒看到我正在";
 		mes "the victim here? Me!";
@@ -3700,7 +3700,7 @@ OnTouch_:
 	end;
 }
 
-cmd_fild01,55,160,0	script	Heap of Earth	844,{
+cmd_fild01,55,160,0	script	土堆::Heap of Earth	844,{
 	if (diamond_edq == 1) {
 		mes "^3355FFIt looks like someone";
 		mes "dug a hole in the ground,";
@@ -3991,7 +3991,7 @@ cmd_fild01,55,160,0	script	Heap of Earth	844,{
 				mes "......";
 				next;
 				mes "[Dorian]";
-				mes "I know, I know.";
+				mes "我知道，我知道。";
 				mes "Astounding, isn't it?";
 				close;
 			}
@@ -4026,7 +4026,7 @@ cmd_fild01,55,160,0	script	Heap of Earth	844,{
 			}
 		case 3:
 			mes "[Dorian]";
-			mes "I don't have enough";
+			mes "我還沒有足夠的";
 			mes "time for trivel, so";
 			mes "please leave me to my";
 			mes "artistic endeavors and";
@@ -4148,7 +4148,7 @@ cmd_fild01,55,160,0	script	Heap of Earth	844,{
 	}
 	if (diamond_edq == 10) {
 		mes "[Dorian]";
-		mes "Did you already forget";
+		mes "你已經忘了";
 		mes "my instructions for fixing my";
 		mes "Mystic Dryer de Elegance?";
 		mes "I can't blame you since";
@@ -4726,7 +4726,7 @@ moc_ruins,152,147,5	script	Ibrahim	732,3,3,{
 					mes "[Ibrahim]";
 					mes "Visiting the large";
 					mes "jewelry shops in the";
-					mes "Rune-Midgarts Kingdom";
+					mes "盧恩米德加茲王國";
 					mes "would be a good start.";
 					mes "Their merchants know the";
 					mes "most about those jewels.";
@@ -5096,7 +5096,7 @@ moc_ruins,152,147,5	script	Ibrahim	732,3,3,{
 		else if (jewel_nd == 2) {
 			mes "[Ibrahim]";
 			mes "Ah, you're back~";
-			mes "So were you able to";
+			mes "所以，你有沒有";
 			mes "sell the Unlucky Emerald?";
 			next;
 			select("Everyone seems scared!");
@@ -5170,7 +5170,7 @@ OnTouch:
 if ((diamond_edq == 14) && (BaseLevel > 65)) {
 	mes "[Ibrahim]";
 	mes "Psst, adventurer!";
-	mes "You're " + strcharinfo(0) + "，對吧？";
+	mes "你是 " + strcharinfo(0) + "，對吧？";
 		mes "There's something";
 		mes "I'd like to discuss";
 		mes "with you in private!";
@@ -5276,7 +5276,7 @@ alberta,102,80,3	script	Jhonnita	86,{
 					mes "like a Garlet or a Zargon!";
 					mes "Sometimes you guys make";
 					mes "that kind of mistake.";
-					mes "Okay, let's see...";
+					mes "好，讓我看看……";
 					next;
 					mes "[Jhonnita]";
 					mes "......";
@@ -5689,10 +5689,10 @@ payon_in03,167,149,3	script	Wola	75,2,2,{
 	if (checkweight(907,1) == 0) {
 		mes "^3355FF等一下！";
 		mes "您目前攜帶了";
-		mes "too many things with you.";
+		mes "身上東西太多了。";
 		mes "請先";
-		mes "using the Kafra Service";
-		mes "to store some of your items.^000000";
+		mes "使用卡普拉服務";
+		mes "來存放你的部分道具。^000000";
 		close;
 	}
 	if (diamond_edq == 18) {
@@ -5783,7 +5783,7 @@ payon_in03,167,149,3	script	Wola	75,2,2,{
 		mes "^0000FF5 Empty Bottles^000000,";
 		mes "^0000FF10 Brigans^000000, and";
 		mes "^0000FF10 Soft Blades of Grass^000000.";
-		mes "There's no time to waste!";
+		mes "沒有時間浪費了！";
 		next;
 		mes "["+ strcharinfo(0) +"]";
 		mes "You... You got it.";
@@ -5920,7 +5920,7 @@ payon_in03,167,149,3	script	Wola	75,2,2,{
 			mes "^0000FF5 Empty Bottles^000000,";
 			mes "^0000FF10 Brigans^000000, and";
 			mes "^0000FF10 Soft Blades of Grass^000000.";
-			mes "There's no time to waste!";
+			mes "沒有時間浪費了！";
 			next;
 			mes "["+ strcharinfo(0) +"]";
 			mes "You... You got it.";
@@ -6513,7 +6513,7 @@ prontera,148,326,3	script	Chief Officer#edq	734,{
 		mes "Oh, were you interested";
 		mes "in pursuing the criminals";
 		mes "listed in the Wanted notice?";
-		mes "I'm sorry, but you're not";
+		mes "很抱歉，你還不";
 		mes "ready for that kind of task...";
 		mes "But I encourge you to train!";
 		mes "謝謝。";
@@ -6692,18 +6692,18 @@ prontera,148,326,3	script	Chief Officer#edq	734,{
 	close;
 }
 
-prt_in,168,18,1	script	Valdes	65,2,2,{
+prt_in,168,18,1	script	瓦爾德斯::Valdes	65,2,2,{
 	if (checkweight(907,100) == 0) {
 		mes "^3355FF等一下！";
 		mes "您目前攜帶了";
-		mes "too many things with you.";
+		mes "身上東西太多了。";
 		mes "請先";
-		mes "using the Kafra Service";
-		mes "to store some of your items.^000000";
+		mes "使用卡普拉服務";
+		mes "來存放你的部分道具。^000000";
 		close;
 	}
 	if (zdan_edq == 2) {
-		mes "[Valdes]";
+		mes "[瓦爾德斯]";
 		mes "^666666*Urp*^000000 What?";
 		mes "You here to... ";
 		mes "Um, commiserate";
@@ -6714,21 +6714,21 @@ prt_in,168,18,1	script	Valdes	65,2,2,{
 		mes "I came to ask you";
 		mes "for your help...";
 		next;
-		mes "[Valdes]";
+		mes "[瓦爾德斯]";
 		mes "^666666*Hiccup*^000000 Why~?";
 		mes "I'm-I'm no good";
 		mes "to anybody anymore!";
 		next;
 		switch(select("Ask About Z Gang:The chief officer is worried about you.:Bye!")) {
 		case 1:
-			mes "[Valdes]";
+			mes "[瓦爾德斯]";
 			mes "That Z Gang...";
 			mes "Ruined my life!";
 			mes "My career, my pension...";
 			mes "It's all gone because";
 			mes "of those damn criminals!";
 			next;
-			mes "[Valdes]";
+			mes "[瓦爾德斯]";
 			mes "You? Capture them?";
 			mes "Good luck! Just... Just";
 			mes "try not to end up like me.";
@@ -6736,7 +6736,7 @@ prt_in,168,18,1	script	Valdes	65,2,2,{
 			mes "^666666*Hic*^000000 Heh, scratch my back,";
 			mes "well, you know the rest.";
 			next;
-			mes "[Valdes]";
+			mes "[瓦爾德斯]";
 			mes "Heh, I just ran out of wine!";
 			mes "Gimme, um, ^0000FFMorocc Fruit Wine^000000!";
 			mes "5 bottles! Then... Maybe...";
@@ -6746,13 +6746,13 @@ prt_in,168,18,1	script	Valdes	65,2,2,{
 			set zdan_edq,3;
 			close;
 		case 2:
-			mes "[Valdes]";
+			mes "[瓦爾德斯]";
 			mes "R-really? Well...";
 			mes "I don't care! Just";
 			mes "let me drink in peace!";
 			close;
 		case 3:
-			mes "[Valdes]";
+			mes "[瓦爾德斯]";
 			mes "Wha--? Who do you think";
 			mes "you're messing with, ^666666*Hic!*^000000";
 			mes "just comin' by to say ''bye?!''";
@@ -6763,20 +6763,20 @@ prt_in,168,18,1	script	Valdes	65,2,2,{
 		}
 	}
 	if (zdan_edq == 3) {
-		mes "[Valdes]";
+		mes "[瓦爾德斯]";
 		mes "Heeeey yoooou~";
 		mes "You bring me wine?";
 		next;
 		if (countitem(12049) > 4) {
 			delitem 12049,5; //Int_Dish04
-			mes "[Valdes]";
+			mes "[瓦爾德斯]";
 			mes "^666666*Sniff*^000000 Yeeesh, that";
 			mes "smeells good. This must";
 			mes "be it. Oh, yeah. Knight's";
 			mes "honor. First I talk, then";
 			mes "I can drink theesh...";
 			next;
-			mes "[Valdes]";
+			mes "[瓦爾德斯]";
 			mes "Well, maybe...";
 			mes "Just one tashte~";
 			mes "^666666*Gulp Gulp Gulp*^000000";
@@ -6785,7 +6785,7 @@ prt_in,168,18,1	script	Valdes	65,2,2,{
 			mes "You just...";
 			mes "That was three bottles!";
 			next;
-			mes "[Valdes]";
+			mes "[瓦爾德斯]";
 			mes "Ah, delicious!";
 			mes "Alright, fellow,";
 			mes "now I feel better";
@@ -6794,7 +6794,7 @@ prt_in,168,18,1	script	Valdes	65,2,2,{
 			mes "[" + strcharinfo(0) + "]";
 			mes "(^666666Whaaaat~?^000000)";
 			next;
-			mes "[Valdes]";
+			mes "[瓦爾德斯]";
 			mes "I assume you already know";
 			mes "the basic information about";
 			mes "the Z Gang, their members,";
@@ -6802,7 +6802,7 @@ prt_in,168,18,1	script	Valdes	65,2,2,{
 			mes "they've gone on such a brazen";
 			mes "crime spree so suddenly.";
 			next;
-			mes "[Valdes]";
+			mes "[瓦爾德斯]";
 			mes "Their success is unprecedented:";
 			mes "they've even managed to elude";
 			mes "the Rogue Guild repeatedly.";
@@ -6810,14 +6810,14 @@ prt_in,168,18,1	script	Valdes	65,2,2,{
 			mes "months ago, but I was";
 			mes "dismissed for my failure.";
 			next;
-			mes "[Valdes]";
+			mes "[瓦爾德斯]";
 			mes "I am aware that the Z Gang";
 			mes "has many informers in their";
 			mes "employ, and that the Rogue";
 			mes "Guild are still investigating";
 			mes "the Z Gang on their own.";
 			next;
-			mes "[Valdes]";
+			mes "[瓦爾德斯]";
 			mes "I suggest meeting one";
 			mes "of the Rogue agents,";
 			mes "Marybell, in the Rogue";
@@ -6825,7 +6825,7 @@ prt_in,168,18,1	script	Valdes	65,2,2,{
 			mes "must give her is ''^0000FFThe";
 			mes "dawn is yet to come^000000.''";
 			next;
-			mes "[Valdes]";
+			mes "[瓦爾德斯]";
 			mes "That is all I can tell you.";
 			mes "Please give my regards to";
 			mes "Marybell for me, and catch";
@@ -6837,7 +6837,7 @@ prt_in,168,18,1	script	Valdes	65,2,2,{
 			close;
 		}
 		else {
-			mes "[Valdes]";
+			mes "[瓦爾德斯]";
 			mes "You stinkface!";
 			mes "Where's my wine?!";
 			mes "My ^0000FF5 bottles of";
@@ -6848,7 +6848,7 @@ prt_in,168,18,1	script	Valdes	65,2,2,{
 		}
 	}
 	if (zdan_edq == 4) {
-		mes "[Valdes]";
+		mes "[瓦爾德斯]";
 		mes "I suggest meeting";
 		mes "Marybell in the Rogue";
 		mes "Guild, and giving her the";
@@ -6856,7 +6856,7 @@ prt_in,168,18,1	script	Valdes	65,2,2,{
 		mes "is yet to come^000000.''";
 		close;
 	}
-	mes "[Valdes]";
+	mes "[瓦爾德斯]";
 	mes "^666666*Sigh*^000000 It is my greatest";
 	mes "wish that the knight master";
 	mes "will allow me to rejoin the";
@@ -6867,7 +6867,7 @@ prt_in,168,18,1	script	Valdes	65,2,2,{
 
 OnTouch:
 	if (zdan_edq == 2) {
-		mes "[Valdes]";
+		mes "[瓦爾德斯]";
 		mes "^666666*Sigh*^000000 Goddamn thieves.";
 		mes "Why should I even care";
 		mes "about them?! They're not";
@@ -6966,7 +6966,7 @@ in_rogue,359,116,3	script	Marybell	747,{
 					mes "on to me? I'm down with";
 					mes "any gender, but, heh,";
 					mes "you sure about this?";
-					mes "Hahahahahahahahaha!";
+					mes "哈哈哈哈哈哈哈哈哈哈！";
 					close;
 				}
 			}
@@ -7469,7 +7469,7 @@ payon,244,62,3	script	Moonho Ahn	897,{
 							next;
 							mes "[Moonho Ahn]";
 							mes "Looks like I won!";
-							mes "Hahahahahahaha!";
+							mes "哈哈哈哈哈哈！";
 							next;
 						}
 						else if (.@amuro == 2) {
@@ -7522,7 +7522,7 @@ payon,244,62,3	script	Moonho Ahn	897,{
 							next;
 							mes "[Moonho Ahn]";
 							mes "Looks like I won!";
-							mes "Hahahahahahaha!";
+							mes "哈哈哈哈哈哈！";
 							next;
 						}
 						if (.@number_right_2 == 2) {
@@ -7565,7 +7565,7 @@ payon,244,62,3	script	Moonho Ahn	897,{
 					mes "Heh, you must be very proud.";
 					mes "Hold still for a second.";
 					next;
-					mes "^3355FF*Scribble Scribble*^000000";
+					mes "^3355FF*沙沙寫字*^000000";
 					next;
 					mes "[" + strcharinfo(0) + "]";
 					mes "What does this";
@@ -7702,7 +7702,7 @@ payon,244,62,3	script	Moonho Ahn	897,{
 						mes "Heh, you must be very proud.";
 						mes "Hold still for a second.";
 						next;
-						mes "^3355FF*Scribble Scribble*^000000";
+						mes "^3355FF*沙沙寫字*^000000";
 						next;
 						mes "[" + strcharinfo(0) + "]";
 						mes "What does this";
@@ -7871,7 +7871,7 @@ payon,192,176,3	script	Gooho Ahn	903,{
 			mes "the materials I need?";
 			next;
 			mes "[Gooho Ahn]";
-			mes "I need";
+			mes "我需要";
 			mes "^0000FF20 Live Coals^000000,";
 			mes "^0000FF1 Matchstick^000000,";
 			mes "^0000FF2 Alcohol^000000, and";
@@ -7999,7 +7999,7 @@ payon,192,176,3	script	Gooho Ahn	903,{
 			mes "a clue. Oh, and remember...";
 			next;
 			mes "[Gooho Ahn] ";
-			mes "I need";
+			mes "我需要";
 			mes "^0000FF20 Live Coals^000000,";
 			mes "^0000FF1 Matchstick^000000,";
 			mes "^0000FF2 Alcohol^000000, and";
@@ -8291,7 +8291,7 @@ moc_fild17,209,235,0	script	Odd Slab	111,4,4,{
 		mes "Etner sspawrod.^000000";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "Well, I guess";
+		mes "嗯，我想";
 		mes "I should talk to it. Um...";
 		next;
 		input .@input$;
@@ -8352,9 +8352,9 @@ moc_fild17,209,235,0	script	Odd Slab	111,4,4,{
 						mes "^666666*Pzzzzz*^000000";
 						next;
 						mes "[" + strcharinfo(0) + "]";
-						mes "I think...";
+						mes "我想……";
 						mes "I think I should";
-						mes "try this again.";
+						mes "再試一次吧。";
 						close;
 					}
 				}
@@ -8441,7 +8441,7 @@ OnTouch:
 		mes "[" + strcharinfo(0) + "]";
 		mes "Did I just...";
 		mes "Hear something";
-		mes "around here?";
+		mes "這附近嗎？";
 		close;
 	}
 	end;
@@ -8897,7 +8897,7 @@ OnInit:
 z_agit,95,101,3	script	Catfoii	876,{
 	if (checkweight(907,200) == 0) {
 		mes "[Catfoii]";
-		mes "You're carrying too";
+		mes "你身上帶的";
 		mes "many items: get rid of";
 		mes "your extra stuff, put it in";
 		mes "Kafra Storage, sell it, or";
@@ -9155,7 +9155,7 @@ morocc,143,63,3	script	Ragged Man#nd	929,{
 	}
 	else if (treasure_nd == 1) {
 		mes "[Ragged Man]";
-		mes "Oh, I remember you.";
+		mes "喔，我記得你。";
 		mes "You must really want that";
 		mes "treasure now, do you? Just";
 		mes "give me 1,200 zeny for me";
@@ -9261,13 +9261,13 @@ morocc,102,298,3	script	男人#zgang::Man#zgang	98,{
 	if (treasure_nd < 2) {
 		mes "[男人]";
 		mes "您想做什麼？";
-		mes "Just leave me alone.";
+		mes "拜託讓我一個人靜一靜。";
 		close;
 	}
 	else if (treasure_nd == 2) {
 		mes "[男人]";
 		mes "您想做什麼？";
-		mes "Just leave me alone.";
+		mes "拜託讓我一個人靜一靜。";
 		next;
 		switch(select("Tell me about the treasure.")) {
 		case 1:
@@ -9865,7 +9865,7 @@ moc_fild18,108,116,0	script	#treasure	844,{
 		close;
 	}
 	if (treasure_nd == 5) {
-		mes "^3355FFThere's something";
+		mes "^3355FF有個東西";
 		mes "here, buried just";
 		mes "beneath the ground.^000000";
 		next;
@@ -9938,7 +9938,7 @@ moc_fild18,108,116,0	script	#treasure	844,{
 				close;
 			}
 			else {
-				mes "^3355FFNothing happened.";
+				mes "^3355FF什麼也沒發生。";
 				mes "You might not be";
 				mes "combining the spell";
 				mes "correctly. Perhaps if";
@@ -9999,7 +9999,7 @@ comodo,139,184,3	script	學者#zgang::Scholar#zgang	742,{
 	else if (jewel_nd == 10) {
 		mes "[學者]";
 		mes "Hello, how may";
-		mes "I help you today?";
+		mes "今天為您做些什麼呢？";
 		next;
 		select("Ask About Cursed Jewel");
 		mes "[" + strcharinfo(0) + "]";
@@ -10129,9 +10129,9 @@ comodo,139,184,3	script	學者#zgang::Scholar#zgang	742,{
 	}
 }
 
-alberta_in,70,109,5	script	Shaman	788,{
+alberta_in,70,109,5	script	巫師::Shaman	788,{
 	if (jewel_nd == 0) {
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "The spiritual realm is";
 		mes "the source of my sorcery.";
 		mes "Do not understimate the";
@@ -10139,15 +10139,15 @@ alberta_in,70,109,5	script	Shaman	788,{
 		close;
 	}
 	else if ((jewel_nd > 0) && (jewel_nd < 12)) {
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "Oh? Heh heh!";
-		mes "You're carrying";
+		mes "你身上帶了";
 		mes "something very";
 		mes "valuable, aren't you?";
 		close;
 	}
 	else if (jewel_nd == 12) {
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "You! Yes... I can sense";
 		mes "them... The angry spirits of";
 		mes "your ancestors! You haven't";
@@ -10155,7 +10155,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 		mes "have you? You must appease";
 		mes "them before they torment you!";
 		next;
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "Quickly, now! It is";
 		mes "imperative that you give me";
 		mes "500,000 zeny immediately";
@@ -10164,7 +10164,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 		mes "havoc on your life!";
 		next;
 		select("Actually, I have a Cursed Jewel.");
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "Jewel...? Oh, a Cursed";
 		mes "Jewel! Hahaha! So that's";
 		mes "what that evil aura was!";
@@ -10173,7 +10173,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 		next;
 		if (countitem(7725) > 0) {
 			emotion ET_THINK;
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "So this bauble's the";
 			mes "Unlucky Emerald? Yes,";
 			mes "it's definitely cursed.";
@@ -10181,7 +10181,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 			mes "curse soon, it'll consume";
 			mes "your soul. Not a good thing.";
 			next;
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "I need to perform";
 			mes "a ritual to break the";
 			mes "curse. I'll charge you";
@@ -10192,7 +10192,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 			close;
 		}
 		else {
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "Hm? Did you forget to";
 			mes "bring the jewel? Hurry,";
 			mes "and bring it back to me.";
@@ -10203,7 +10203,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 		}
 	}
 	else if (jewel_nd == 13) {
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "Did you bring the money?";
 		mes "We must appease the spirits";
 		mes "possessing the soul, and to";
@@ -10212,7 +10212,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 		mes "on my body and spirit.";
 		next;
 		if (Zeny > 199999) {
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "Good, good. I see that";
 			mes "you've brought the money.";
 			mes "I can now begin the ritual.";
@@ -10222,14 +10222,14 @@ alberta_in,70,109,5	script	Shaman	788,{
 			set Zeny, Zeny-200000;
 			set jewel_nd,14;
 			next;
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "Please come back soon";
 			mes "after I've completed the";
 			mes "preparations for the ritual.";
 			close;
 		}
 		else {
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "You... You don't have";
 			mes "200,000 zeny? I'm sorry,";
 			mes "but I cannot perform the";
@@ -10239,14 +10239,14 @@ alberta_in,70,109,5	script	Shaman	788,{
 		}
 	}
 	else if (jewel_nd == 14) {
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "Hmm... You know the";
 		mes "money you gave me?";
 		mes "Apparently, it wasn't";
 		mes "enough. One of the spirits";
 		mes "was about to enter me, but...";
 		next;
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "It left in disgust after";
 		mes "it learned that I was trying";
 		mes "to break the curse for only";
@@ -10257,7 +10257,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 		close;
 	}
 	else if (jewel_nd == 15) {
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "Good, you've returned!";
 		mes "Did you bring the 100,000";
 		mes "zeny like I asked? It's a small";
@@ -10265,7 +10265,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 		mes "saving your very soul.";
 		next;
 		if (Zeny > 99999) {
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "Ah, perfect!";
 			mes "Hopefully, the";
 			mes "spirits will be more";
@@ -10273,7 +10273,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 			set Zeny, Zeny-100000;
 			set jewel_nd,16;
 			next;
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "Yes, the vindictive";
 			mes "spirit in this jewel";
 			mes "will be most impressed";
@@ -10281,7 +10281,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 			close;
 		}
 		else {
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "You didn't? Do you know";
 			mes "what it's like to have";
 			mes "your soul consumed? Let";
@@ -10292,20 +10292,20 @@ alberta_in,70,109,5	script	Shaman	788,{
 		}
 	}
 	else if (jewel_nd == 16) {
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "At long last, the";
 		mes "spirits and I are one.";
 		mes "The ritual may now begin.";
 		mes "Ohhhhhhhhhhhmmmmm... ";
 		next;
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "Hhhkkk... Arrrgh...!";
 		emotion ET_HUK;
 		next;
 		mes "[" + strcharinfo(0) +"]";
 		mes ".....?";
 		next;
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "Th-this emerald!";
 		mes "So many lives! Money";
 		mes "alone won't break this";
@@ -10313,7 +10313,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 		mes "serious and suppress";
 		mes "this jewel's power!";
 		next;
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "Remember the items";
 		mes "I tell you to bring, and";
 		mes "come back with them";
@@ -10321,15 +10321,15 @@ alberta_in,70,109,5	script	Shaman	788,{
 		mes "Both of our lives are in";
 		mes "danger until you do!";
 		next;
-		mes "[Shaman]";
-		mes "Bring me";
+		mes "[巫師]";
+		mes "帶來給我";
 		mes "^FF00001 Holy Water^000000,";
 		mes "^FF00001 Red Blood^000000,";
 		mes "^FF00001 Witherless Rose^000000,";
 		mes "^FF00001 Crystal Blue^000000, and";
 		mes "^FF00001 Wind of Verdure^000000.";
 		next;
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "Hurry! Although the spirits";
 		mes "are eternal, they don't like";
 		mes "to be kept waiting! Don't";
@@ -10339,14 +10339,14 @@ alberta_in,70,109,5	script	Shaman	788,{
 		close;
 	}
 	else if (jewel_nd == 17) {
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "You brought the items?!";
 		mes "Quickly! Place them in";
 		mes "my hands! We can't afford";
 		mes "to waste any more time!";
 		next;
 		if (countitem(990) > 0) && (countitem(991) > 0) && (countitem(992) > 0) && (countitem(748) > 0) && (countitem(523) > 0) {
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "Thank goodness.";
 			mes "Now... Let me begin...";
 			mes "Uhhkk... Argh! Wait!";
@@ -10359,7 +10359,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 			delitem 748,1; //Witherless_Rose
 			delitem 523,1; //Holy_Water
 			next;
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "There's a sword behind it.";
 			mes "He's... He's just been in";
 			mes "a fight? I can smell...";
@@ -10367,14 +10367,14 @@ alberta_in,70,109,5	script	Shaman	788,{
 			mes "if he cursed the jewel of";
 			mes "if he's another victim...";
 			next;
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "Damn it! It's not clear";
 			mes "to me! We need to figure";
 			mes "out if what I'm seeing is";
 			mes "the root of the curse...";
 			mes "What can we do to--Right!";
 			next;
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "I'm not sure how helpful";
 			mes "he'll be, but there is an";
 			mes "archaeologist in Juno that";
@@ -10383,7 +10383,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 			mes "he will have the answer.";
 			set jewel_nd,18;
 			next;
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "For now, the jewel's";
 			mes "curse is beyond my power.";
 			mes "However, if you can determine";
@@ -10391,13 +10391,13 @@ alberta_in,70,109,5	script	Shaman	788,{
 			mes "I will be able to help you.";
 			close;		}
 		else {
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "You... Forgot?!";
 			mes "Your body and soul are in";
 			mes "jeopardy and you forgot?!";
 			next;
-			mes "[Shaman]";
-			mes "Bring me";
+			mes "[巫師]";
+			mes "帶來給我";
 			mes "^FF00001 Holy Water^000000,";
 			mes "^FF00001 Red Blood^000000,";
 			mes "^FF00001 Witherless Rose^000000,";
@@ -10407,7 +10407,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 		}
 	}
 	else if (jewel_nd == 18) {
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "That antique appraiser...";
 		mes "He wouldn't know anything";
 		mes "more about the jewel, but";
@@ -10417,8 +10417,8 @@ alberta_in,70,109,5	script	Shaman	788,{
 		close;
 	}
 	else if (jewel_nd == 19) {
-		mes "[Shaman]";
-		mes "Ah, you're back.";
+		mes "[巫師]";
+		mes "啊，你回來了。";
 		mes "So did you learn";
 		mes "anything new about";
 		mes "the Unlucky Emerald?";
@@ -10429,7 +10429,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 		mes "Well, he said that there";
 		mes "is no curse on the jewel.";
 		next;
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "What? How dare he refute";
 		mes "what I just told you?!";
 		mes "Is he calling me a liar?";
@@ -10437,7 +10437,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 		mes "warrior's soul inside";
 		mes "that very emerald!";
 		next;
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "Then again, there's no";
 		mes "point fighting someone";
 		mes "that doesn't believe in";
@@ -10446,7 +10446,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 		mes "as a shaman is at stake!";
 		set jewel_nd,20;
 		next;
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "In fact, I'll prove it to you";
 		mes "by reading the message";
 		mes "inside this emerald. Bring";
@@ -10457,7 +10457,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 	}
 	else if (jewel_nd == 20) {
 		if (countitem(7725) > 0) {
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "Alright. By my pride";
 			mes "as a shaman, I'll provide";
 			mes "this service to you free";
@@ -10465,12 +10465,12 @@ alberta_in,70,109,5	script	Shaman	788,{
 			mes "anyone thinking I'm";
 			mes "some kind of quack...";
 			next;
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "嗯嗯嗯……";
 			mes "嗯嗯嗯……";
-			mes "I... I see.";
+			mes "我……我知道了。";
 			next;
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "Huh. Well, what do you";
 			mes "know? There is no curse.";
 			mes "However, it's not true that";
@@ -10478,7 +10478,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 			mes "was killed over this jewel.";
 			mes "There are many more...";
 			next;
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "Go yonder to the town";
 			mes "of Geffen, head west, and";
 			mes "seek the high ground that";
@@ -10486,13 +10486,13 @@ alberta_in,70,109,5	script	Shaman	788,{
 			mes "Leave Geffen through the west";
 			mes "gate and find a high place.";
 			next;
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "Trust me. You'll find";
 			mes "something there that will";
 			mes "react to the power of that";
 			mes "emerald you possess.";
 			next;
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "Hmpf! That arrogant";
 			mes "archaeologist! He doesn't";
 			mes "know what he's talking about!";
@@ -10500,7 +10500,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 			close;
 		}
 		else {
-			mes "[Shaman]";
+			mes "[巫師]";
 			mes "You don't have the";
 			mes "emerald with you?";
 			mes "I hope you didn't";
@@ -10509,7 +10509,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 		}
 	}
 	else if (jewel_nd == 21) {
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "Go yonder to the town";
 		mes "of Geffen, head west, and";
 		mes "seek the high ground that";
@@ -10517,7 +10517,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 		mes "Leave Geffen through the west";
 		mes "gate and find a high place.";
 		next;
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "Trust me. You'll find";
 		mes "something there that will";
 		mes "react to the power of that";
@@ -10527,7 +10527,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 		close;
 	}
 	else if ((jewel_nd == 22) || (jewel_nd == 23)) {
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "What did I tell you?";
 		mes "That jewel brings very";
 		mes "bad fortune. Though, I'm";
@@ -10537,7 +10537,7 @@ alberta_in,70,109,5	script	Shaman	788,{
 		close;
 	}
 	else {
-		mes "[Shaman]";
+		mes "[巫師]";
 		mes "已經好久沒有";
 		mes "since I've done these";
 		mes "rituals. I feel thoroughly";
@@ -10663,7 +10663,7 @@ yuno_in04,38,48,3	script	Archeologist	55,{
 		mes "I'll see what I can learn.";
 		next;
 		mes "[Archeologist]";
-		mes "That reminds me...";
+		mes "說到這個，我想起來了……";
 		mes "I've got some records about";
 		mes "an adventurer group that died";
 		mes "in the field west of Geffen";
@@ -10698,7 +10698,7 @@ yuno_in04,38,48,3	script	Archeologist	55,{
 		mes "half conscious, but living.^000000''";
 		next;
 		mes "[Archeologist]";
-		mes "Strange, isn't it?";
+		mes "很奇怪吧？";
 		mes "This is from a journal";
 		mes "written by a retired soldier";
 		mes "that lives in Prontera now.";
@@ -10748,7 +10748,7 @@ yuno_in04,38,48,3	script	Archeologist	55,{
 prontera,140,304,5	script	Old Soldier	901,{
 	if (checkweight(907,200) == 0) {
 		mes "[Retired Soldier]";
-		mes "Why are you carrying";
+		mes "你怎麼帶著";
 		mes "so much stuff with you?";
 		mes "Isn't there a Kafra Storage";
 		mes "service for keeping your junk?";
@@ -10831,7 +10831,7 @@ prontera,140,304,5	script	Old Soldier	901,{
 	}
 	else if (jewel_nd == 29) {
 		mes "[Retired Soldier]";
-		mes "Oh, it's you again.";
+		mes "噢，又是你啊。";
 		mes "Did you want to ask me";
 		mes "more about that warrior?";
 		mes "I'm afraid I already told";
@@ -11445,7 +11445,7 @@ prontera,163,204,3	script	Man from Morocc	99,{
 	}
 	else if (rumour_nd == 1) {
 		mes "[Morocc Traveler]";
-		mes "Shouldn't you be";
+		mes "你不是應該要";
 		mes "looking for a Rogue";
 		mes "agent to talk to?";
 		mes "I mean, maybe you";
@@ -11475,7 +11475,7 @@ prontera,163,204,3	script	Man from Morocc	99,{
 in_rogue,355,28,5	script	Rogue Agent	118,{
 	if (checkweight(907,200) == 0) {
 		mes "[公會成員]";
-		mes "You're carrying too";
+		mes "你身上帶的";
 		mes "much stuff on you.";
 		mes "Take a load off, put";
 		mes "your extra stuff in";
@@ -11677,7 +11677,7 @@ in_rogue,355,28,5	script	Rogue Agent	118,{
 
 aldebaran,114,56,5	script	Rogue Agent#nd0	828,{
 	if (rumour_nd < 3) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Listen, I'm working on";
 		mes "an important assignment";
 		mes "for the Rogue Guild.";
@@ -11687,7 +11687,7 @@ aldebaran,114,56,5	script	Rogue Agent#nd0	828,{
 	}
 	else if (rumour_nd == 3) {
 		if (zdan_edq > 12) {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "They sent you to help me?";
 			mes "Eh, thanks for comin' so";
 			mes "far. I've been collecting";
@@ -11695,7 +11695,7 @@ aldebaran,114,56,5	script	Rogue Agent#nd0	828,{
 			mes "I'm pretty sure the Z Gang's";
 			mes "spreading rumors around here.";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "They've been telling";
 			mes "people there's gonna be";
 			mes "a war comin', but... It";
@@ -11703,7 +11703,7 @@ aldebaran,114,56,5	script	Rogue Agent#nd0	828,{
 			mes "The Z Gang's captured so";
 			mes "the rumor'll just die out...";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Do me a favor, and";
 			mes "get this report over";
 			mes "the agent in Geffen?";
@@ -11715,13 +11715,13 @@ aldebaran,114,56,5	script	Rogue Agent#nd0	828,{
 			close;
 		}
 		else {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "They sent you to help me?";
 			mes "Eh, thanks for comin' so";
 			mes "far. I've been collecting";
 			mes "intel here in Al De Baran.";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "There's this rumor goin'";
 			mes "around that war's comin'";
 			mes "but... I don't see any real";
@@ -11729,14 +11729,14 @@ aldebaran,114,56,5	script	Rogue Agent#nd0	828,{
 			mes "airships, they still keep";
 			mes "on doin' what they do.";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "I'm not sure who, but";
 			mes "someone's probably just";
 			mes "spreading this rumor to";
 			mes "get people to panick.";
 			mes "It's kinda workin', though...";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Do me a favor, and";
 			mes "get this report over";
 			mes "the agent in Geffen?";
@@ -11749,7 +11749,7 @@ aldebaran,114,56,5	script	Rogue Agent#nd0	828,{
 		}
 	}
 	else if ((rumour_nd == 4) || (rumour_nd == 24)) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "嘿……";
 		if (rumour_nd == 4) {
 			mes "Would you please get";
@@ -11769,7 +11769,7 @@ aldebaran,114,56,5	script	Rogue Agent#nd0	828,{
 		}
 	}
 	else if (rumour_nd == 16) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "What's this, a report";
 		mes "from the Payon agent?";
 		mes "Um, listen, I don't think";
@@ -11781,7 +11781,7 @@ aldebaran,114,56,5	script	Rogue Agent#nd0	828,{
 	}
 	else if (rumour_nd > 21) {
 		if (zdan_edq > 12) {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Hey, thanks for";
 			mes "helping out. I sure";
 			mes "hope the kingdom can";
@@ -11791,7 +11791,7 @@ aldebaran,114,56,5	script	Rogue Agent#nd0	828,{
 			close;
 		}
 		else {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Well, we've tracked";
 			mes "down the Z Gang. All we";
 			mes "gotta do now is get them!";
@@ -11799,7 +11799,7 @@ aldebaran,114,56,5	script	Rogue Agent#nd0	828,{
 		}
 	}
 	else {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "I still got some";
 		mes "things to do around";
 		mes "here. Them's the breaks.";
@@ -11894,7 +11894,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 				delitem 1060,1; //Golden_Hair
 				delitem 1059,1; //Transparent_Cloth
 				set rumour_nd,6;
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Thanks. This stuff";
 				mes "should help the people";
 				mes "in Geffen calm down a bit.";
@@ -11902,7 +11902,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 				mes "all these things to make them";
 				mes "believe the monsters are loose.";
 				next;
-				mes "[Agent]";
+				mes "[特務]";
 				mes "They've been leavin'";
 				mes "horseprints that look like";
 				mes "they belong to Nightmares,";
@@ -11910,7 +11910,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 				mes "pretending they're Whispers...";
 				mes "They're freakin' hooligans.";
 				next;
-				mes "[Agent]";
+				mes "[特務]";
 				mes "I think the Rogue agent";
 				mes "in Payon should know about";
 				mes "all this. Take this report";
@@ -11919,7 +11919,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 				close;
 			}
 			else {
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Hold on, you're";
 				mes "missing some stuff.";
 				mes "You mind checking if";
@@ -11928,7 +11928,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 				close;
 			}
 		case 2:
-			mes "[Agent]";
+			mes "[特務]";
 			mes "^FF00001 Fabric^000000,";
 			mes "^FF00001 Golden Hair^000000,";
 			mes "^FF00001 Little Evil Horn^000000,";
@@ -11939,7 +11939,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 		}
 	}
 	else if (rumour_nd == 6) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Would you deliver";
 		mes "my report over to";
 		mes "the Rogue agent";
@@ -11947,18 +11947,18 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 		close;
 	}
 	else if (rumour_nd == 25) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Hey, the guild sent";
 		mes "you over to see me?";
 		mes "Oh, hey, you brought";
 		mes "me a message. Let's";
 		mes "take a look-see~";
 		next;
-		mes "[Agent]";
+		mes "[特務]";
 		mes "嗯……";
 		next;
 		if (zdan_edq > 12) {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "So... The Z Gang's";
 			mes "responsible for those";
 			mes "rumors about the ghosts";
@@ -12030,13 +12030,13 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 	}
 	else if (rumour_nd == 26) {
 		if (zdan_edq > 12) {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Hey, while you were";
 			mes "gone, I heard the Z Gang";
 			mes "was finally captured.";
 			mes "Big relief to hear it.";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "But I still want to";
 			mes "reassure the people in";
 			mes "Geffen that the monsters";
@@ -12053,7 +12053,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 					delitem 1060,3; //Golden_Hair
 					delitem 1059,1; //Transparent_Cloth
 					set rumour_nd,6;
-					mes "[Agent]";
+					mes "[特務]";
 					mes "Thanks. This stuff";
 					mes "should help the people";
 					mes "in Geffen calm down a bit.";
@@ -12061,7 +12061,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 					mes "all these things to make them";
 					mes "believe the monsters are loose.";
 					next;
-					mes "[Agent]";
+					mes "[特務]";
 					mes "They've been leavin'";
 					mes "horseprints that look like";
 					mes "they belong to Nightmares,";
@@ -12069,7 +12069,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 					mes "pretending they're Whispers...";
 					mes "They're freakin' hooligans.";
 					next;
-					mes "[Agent]";
+					mes "[特務]";
 					mes "I think the Rogue agent";
 					mes "in Payon should know about";
 					mes "all this. Take this report";
@@ -12078,7 +12078,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 					close;
 				}
 				else {
-					mes "[Agent]";
+					mes "[特務]";
 					mes "Hold on, you're";
 					mes "missing some stuff.";
 					mes "You mind checking if";
@@ -12098,8 +12098,8 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 			}
 		}
 		else {
-			mes "[Agent]";
-			mes "I asked you to bring";
+			mes "[特務]";
+			mes "我請你帶來的";
 			mes "me items that prove that";
 			mes "the monsters in Geffen";
 			mes "Tower are safely locked";
@@ -12114,7 +12114,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 					delitem 1060,3; //Golden_Hair
 					delitem 1059,1; //Transparent_Cloth
 					set rumour_nd,6;
-					mes "[Agent]";
+					mes "[特務]";
 					mes "Thanks. This stuff";
 					mes "should help the people";
 					mes "in Geffen calm down a bit.";
@@ -12122,7 +12122,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 					mes "all these things to make them";
 					mes "believe the monsters are loose.";
 					next;
-					mes "[Agent]";
+					mes "[特務]";
 					mes "They've been leavin'";
 					mes "horseprints that look like";
 					mes "they belong to Nightmares,";
@@ -12130,7 +12130,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 					mes "pretending they're Whispers...";
 					mes "They're freakin' hooligans.";
 					next;
-					mes "[Agent]";
+					mes "[特務]";
 					mes "I think the Rogue agent";
 					mes "in Payon should know about";
 					mes "all this. Take this report";
@@ -12139,7 +12139,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 					close;
 				}
 				else {
-					mes "[Agent]";
+					mes "[特務]";
 					mes "Hold on, you're";
 					mes "missing some stuff.";
 					mes "You mind checking if";
@@ -12148,7 +12148,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 					close;
 				}
 			case 2:
-				mes "[Agent]";
+				mes "[特務]";
 				mes "^FF00001 Fabric^000000,";
 				mes "^FF00001 Golden Hair^000000,";
 				mes "^FF00001 Little Evil Horn^000000,";
@@ -12160,7 +12160,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 	}
 	else if (rumour_nd == 22) {
 		if (zdan_edq > 12) {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Looks like there'll";
 			mes "be some peace and quiet";
 			mes "with the Z Gang all locked up.";
@@ -12169,7 +12169,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 			mes "you ask me. Huh.";
 		}
 		else {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Keep up the good work!";
 			mes "With guys like you on";
 			mes "our side, the Z Gang'll";
@@ -12178,7 +12178,7 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 		close;
 	}
 	else {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "So busy!";
 		close;
 	}
@@ -12186,23 +12186,23 @@ geffen,91,36,5	script	Rogue Guild Agent#nd1	828,{
 
 payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 	if (rumour_nd < 3) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "What? You want somethin'?";
 		next;
 		mes "[" + strcharinfo(0) + "]";
 		mes "?????????????????";
 		next;
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Heh. Thought so.";
 		close;
 	}
 	else if ((rumour_nd > 2) && (rumour_nd < 6)) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "What's up? I got";
 		mes "my hands full, so";
 		mes "make it quick.";
 		next;
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Nothin', huh?";
 		mes "Guess you should";
 		mes "be talking a Rogue";
@@ -12212,25 +12212,25 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		close;
 	}
 	else if (rumour_nd == 6) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Hey. What are you";
 		mes "doin', just loitering";
 		mes "around here? You lookin'";
 		mes "for somebody? Huh?";
 		next;
 		select("I'm here to help a Rogue Agent!");
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Oh, yeah?";
 		next;
 		if (BaseJob == Job_Rogue) {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Heya guy. Always good";
 			mes "to see a fellow Rogue.";
 			mes "You know I'm just messin'";
 			mes "around with you, right?";
 		}
 		else {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "I heard o' you guys,";
 			mes "Rogues workin' undercover.";
 			mes "Don't try to fool me: under";
@@ -12241,11 +12241,11 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		mes "^3355FFYou deliver the";
 		mes "folded note to him.^000000";
 		next;
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Awwww, man!";
 		emotion ET_HUK;
 		next;
-		mes "[Agent]";
+		mes "[特務]";
 		mes "I keep telling that";
 		mes "guy to just send me";
 		mes "pictures! I've told him";
@@ -12253,7 +12253,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		mes "got trouble reading!";
 		mes "That guy's a moron!";
 		next;
-		mes "[Agent]";
+		mes "[特務]";
 		mes "呃……";
 		mes "You mind reading";
 		mes "this note to me?";
@@ -12265,7 +12265,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		next;
 		switch(select("Cooperate with this adventurer.:......")) {
 		case 1:
-			mes "[Agent]";
+			mes "[特務]";
 			mes "So... We're partners?";
 			mes "Cool. Nice to meetcha.";
 			mes "I'm the Payon agent.";
@@ -12274,11 +12274,11 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 			set rumour_nd,8;
 			close;
 		case 2:
-			mes "[Agent]";
+			mes "[特務]";
 			mes "你……";
 			mes "You can't read either?";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Hahaha! Right on, right on.";
 			mes "Well, I'm pretty sure they";
 			mes "sent you to work with me.";
@@ -12290,7 +12290,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		}
 	}
 	else if (rumour_nd == 7) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Hey, I asked you";
 		mes "to read the note,";
 		mes "not run away! Now...";
@@ -12302,7 +12302,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		next;
 		switch(select("Cooperate with this adventurer.:......")) {
 		case 1:
-			mes "[Agent]";
+			mes "[特務]";
 			mes "So... We're partners?";
 			mes "Cool. Nice to meetcha.";
 			mes "I'm the Payon agent.";
@@ -12311,11 +12311,11 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 			set rumour_nd,8;
 			close;
 		case 2:
-			mes "[Agent]";
+			mes "[特務]";
 			mes "你……";
 			mes "You can't read either?";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Hahaha! Right on, right on.";
 			mes "Well, I'm pretty sure they";
 			mes "sent you to work with me.";
@@ -12327,7 +12327,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		}
 	}
 	else if (rumour_nd == 8) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Good, you're back.";
 		mes "We got a pretty big";
 		mes "job to take care of.";
@@ -12335,7 +12335,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		mes "all that jazz. Ready?";
 		next;
 		if (zdan_edq > 12) {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "The Z Gang poisoned";
 			mes "one of the water wells";
 			mes "here in Payon. All the";
@@ -12343,12 +12343,12 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 			mes "use Red Herbs to counter";
 			mes "that poison, okay?";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "So remember to";
 			mes "collect some ^FF0000Red Herbs^000000.";
 			mes "Don't forget: ^FF0000Red herbs^000000.";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Wait, that doesn't";
 			mes "sound right. Did I say";
 			mes "Red Herbs? I'm sorry,";
@@ -12359,7 +12359,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 			close;
 		}
 		else {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Someone's poisoned";
 			mes "Payon's well water...";
 			mes "It's all black and";
@@ -12371,15 +12371,15 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		}
 	}
 	else if (rumour_nd == 9) {
-		mes "[Agent]";
-		mes "Hey, you're back!";
+		mes "[特務]";
+		mes "嘿，你回來啦！";
 		mes "You're much quicker";
 		mes "that I thought you'd be~";
 		next;
 		if (countitem(511) > 0) {
 			delitem 511,1; //Green_Herb
 			set rumour_nd,11;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Alright, it's gonna take";
 			mes "a while to neutralize all";
 			mes "this poison, but I think";
@@ -12389,7 +12389,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 			close;
 		}
 		else {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Err?";
 			mes "Where's that";
 			mes "Green Herb?";
@@ -12397,21 +12397,21 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		}
 	}
 	else if (rumour_nd == 10) {
-		mes "[Agent]";
-		mes "Hey, you're back!";
+		mes "[特務]";
+		mes "嘿，你回來啦！";
 		mes "You're much quicker";
 		mes "that I thought you'd be~";
 		next;
 		if (countitem(507) > 0) {
 			if (countitem(511) > 0) {
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Ah, a Green Herb!";
 				mes "Is that what I told";
 				mes "you to bring? 'Cause";
 				mes "I'm sure this is the";
 				mes "right one. Absolutely~";
 				next;
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Alright, it's gonna take";
 				mes "a while to neutralize all";
 				mes "this poison, but I think";
@@ -12423,12 +12423,12 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 				close;
 			}
 			else {
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Hey, what are you";
 				mes "doin' with the Red Herb?";
 				next;
 				select("You said a Red Herb...");
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Oh, what?! Huh...";
 				mes "I guess I did. Eh, no";
 				mes "biggie. Hey, bring me";
@@ -12440,7 +12440,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		}
 		else {
 			if (countitem(511) > 0) {
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Alright, it's gonna take";
 				mes "a while to neutralize all";
 				mes "this poison, but I think";
@@ -12452,7 +12452,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 				close;
 			}
 			else {
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Err?";
 				mes "Where's that";
 				mes "Green Herb?";
@@ -12461,22 +12461,22 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		}
 	}
 	else if (rumour_nd == 11) {
-		mes "[Agent]";
-		mes "Hey, you know what?";
+		mes "[特務]";
+		mes "嘿，你知道嗎？";
 		mes "The well water is still";
 		mes "black. That means...";
 		mes "If the herb we used is";
 		mes "good... Then it's just";
 		mes "dyed black to scare people.";
 		next;
-		mes "[Agent]";
+		mes "[特務]";
 		mes "So to clean up the";
 		mes "water, we gotta use";
 		mes "a Counteragent, right?";
 		mes "Will you help me out?";
 		mes "I got a Karvodailnirol...";
 		next;
-		mes "[Agent]";
+		mes "[特務]";
 		mes "So if you bring me";
 		mes "^0000FF1 Alcohol^000000, we should";
 		mes "be totally good to";
@@ -12484,22 +12484,22 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		next;
 		if (BaseJob == Job_Alchemist) {
 			select("Wait, Karvodailnirol?!");
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Yeah. Karvodailnirol.";
-			mes "What about it?";
+			mes "你覺得如何？";
 			next;
 			mes "[" + strcharinfo(0) + "]";
 			mes "You need Detrimindexta";
 			mes "to make a Counteragent,";
 			mes "not Karvodailnirol.";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Oh, really? Heh!";
 			mes "You're a lifesaver!";
 			mes "Detrimindexta, huh?";
 			next;
 			emotion ET_KIK;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Don't worry, I got";
 			mes "that one too! All you";
 			mes "gotta do is bring Alcohol~";
@@ -12507,7 +12507,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 			close;
 		}
 		else {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Alright, just bring";
 			mes "me an Alcohol, and";
 			mes "I'll take care of the rest.";
@@ -12516,13 +12516,13 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		}
 	}
 	else if (rumour_nd == 12) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Everything's ready";
 		mes "except for the Alcohol.";
 		mes "東西帶來了嗎？";
 		next;
 		if (countitem(970) > 0) {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Great, now all we";
 			mes "have to do is wait.";
 			mes "Nice work, partner.";
@@ -12531,7 +12531,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 			close;
 		}
 		else {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "You don't have it?";
 			mes "You didn't drink";
 			mes "the alcohol, did you?";
@@ -12539,13 +12539,13 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		}
 	}
 	else if (rumour_nd == 13) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Everything's ready";
 		mes "except for the Alcohol.";
 		mes "東西帶來了嗎？";
 		next;
 		if (countitem(970) > 0) {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Great, now all we";
 			mes "have to do is wait.";
 			mes "Nice work, partner.";
@@ -12554,7 +12554,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 			close;
 		}
 		else {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "You don't have it?";
 			mes "You didn't drink";
 			mes "the alcohol, did you?";
@@ -12562,7 +12562,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		}
 	}
 	else if (rumour_nd == 14) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Um, I made a mistake";
 		mes "making the Counteragent...";
 		mes "I was supposed to use this";
@@ -12570,7 +12570,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		mes "thing, Karvodailnirol, to";
 		mes "make the Counteragent.";
 		next;
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Sorry, they both look";
 		mes "the same to me. And, well,";
 		mes "so do all the letters of";
@@ -12578,7 +12578,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		mes "trying this out again?";
 		mes "Just 1 more Alcohol...";
 		next;
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Hey, I promise!";
 		mes "I won't screw it up";
 		mes "this time. We'll";
@@ -12588,7 +12588,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 	}
 	else if (rumour_nd == 15) {
 		emotion ET_SMILE;
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Heh heh! Looks like";
 		mes "we solved the case!";
 		mes "The water wasn't really";
@@ -12596,14 +12596,14 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		mes "to look suspicious. See?";
 		mes "Completely safe to drink.";
 		next;
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Anyway, looks like";
 		mes "we're done here. You";
 		mes "mind taking my report over";
 		mes "to the next Rogue agent?";
 		next;
 		if (rand(1,2) == 1) {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Make sure to take";
 			mes "this to the guy in";
 			mes "Comodo, okay?";
@@ -12615,7 +12615,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 			close;
 		}
 		else {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Make sure to take";
 			mes "this to the guy in";
 			mes "Al De Baran, okay?";
@@ -12629,7 +12629,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		}
 	}
 	else if (rumour_nd == 16) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Be sure that the";
 		mes "Rogue agent over";
 		mes "in Al De Baran gets";
@@ -12637,7 +12637,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		close;
 	}
 	else if (rumour_nd == 17) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Huh, the guy in";
 		mes "Al De Baran wouldn't";
 		mes "take it? Oh! That's why!";
@@ -12647,7 +12647,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		close;
 	}
 	else if (rumour_nd == 18) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Be sure that the";
 		mes "Rogue agent over";
 		mes "in Comodo gets";
@@ -12655,7 +12655,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 		close;
 	}
 	else {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Hey, partner, how's";
 		mes "it going? I'm sorry";
 		mes "if I'm a bit of a hassle";
@@ -12668,7 +12668,7 @@ payon,209,44,5	script	Rogue Guild Agent#nd2	828,{
 
 comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 	if (checkweight(907,200) == 0) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "You've got too many";
 		mes "things on you. Why";
 		mes "don't you put some";
@@ -12677,14 +12677,14 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 		close;
 	}
 	if (rumour_nd < 1) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "......";
 		mes "......";
 		close;
 	}
 	else if ((rumour_nd > 0) && (rumour_nd < 16)) {
 		if (zdan_edq > 12) {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "You're the one";
 			mes "that helped take";
 			mes "down the Z Gang?";
@@ -12692,13 +12692,13 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 			close;
 		}
 		else {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Who are you? Hm.";
 			close;
 		}
 	}
 	else if ((rumour_nd == 16) || (rumour_nd == 18)) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "You know, Rogues are";
 		mes "tricky and hard to catch,";
 		mes "so I'm gonna teach you to";
@@ -12706,7 +12706,7 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 		mes "self-discipline. Got it?";
 		mes "Discipline! You need it!";
 		next;
-		mes "[Agent]";
+		mes "[特務]";
 		mes "From here on out,";
 		mes "I want you to yell";
 		mes "''Yes, sir!'' when you";
@@ -12716,16 +12716,16 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 		switch(select("Yes, Sir!:...")) {
 		case 1:
 			emotion ET_THINK;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Right on, right on.";
 			mes "Hm. Let's try that again...";
 			mes "Let me hear you say it louder!";
 			next;
 			select("Yes, Sir!");
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Nice!";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Okay, now for your";
 			mes "training instructions...";
 			mes "There's a rumor that a monster";
@@ -12733,7 +12733,7 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 			mes "I'm sure it's just someone";
 			mes "trying to scare the public.";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "I'm pretty sure the, uh,";
 			mes "perp is wearing a mask to";
 			mes "fool people into thinkin'";
@@ -12741,15 +12741,15 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 			mes "Your mission is to bring";
 			mes "me some monsters masks.";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "嘿嘿……";
 			mes "What's your mission?!";
 			next;
 			select("Bring monster masks!");
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Groove.";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Alright, bring me";
 			mes "^FF00002 scary lookin'";
 			mes "monster masks^000000.";
@@ -12758,7 +12758,7 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 			set rumour_nd,19;
 			close;
 		case 2:
-			mes "[Agent]";
+			mes "[特務]";
 			mes "你覺得";
 			mes "you're doin'? I'm";
 			mes "pretty insulted, seeing";
@@ -12769,32 +12769,32 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 		}
 	}
 	else if (rumour_nd == 19) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "So... You bring";
 		mes "the masks like";
 		mes "a good little soldier?";
 		next;
 		switch(select("Uh huh.:Yes, Sir!")) {
 		case 1:
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Hey, remember our";
 			mes "little rule? I even";
 			mes "clued you off when";
 			mes "I said ''soldier!'' Heh~";
 			close;
 		case 2:
-			mes "[Agent]";
-			mes "Okay, let me check.";
+			mes "[特務]";
+			mes "好，讓我查一下。";
 			next;
 			if ((countitem(2278) > 0) || (countitem(2281) > 0) || (countitem(5043) > 0) || (countitem(2288) > 0) || 
 			(countitem(2292) > 0) || (countitem(2297) > 0) || (countitem(5005) > 0) || (countitem(5086) > 0) || 
 			(countitem(5087) > 0) || (countitem(5088) > 0) || (countitem(5089) > 0) || (countitem(5090) > 0) || 
 			(countitem(5176) > 0) || (countitem(5203) > 0) || (countitem(5098) > 0) || (countitem(5121) > 0) || 
 			(countitem(5130) > 0) || (countitem(5177) > 0) || (countitem(5169) > 0) || (countitem(5143) > 0)) {
-				mes "[Agent]";
+				mes "[特務]";
 				mes "太棒了！";
 				next;
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Look, I know I gave you";
 				mes "a hard time. And don't worry,";
 				mes "I'm not gonna take your masks.";
@@ -12802,17 +12802,17 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 				mes "to be the best Rogue that";
 				mes "you can be. Understand?";
 				next;
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Eh? So what's this";
 				mes "note you keep carrying";
 				mes "around in your hand?";
 				next;
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Hmmm... Mmmhmmm...";
 				mes "Hmmm... Mmmhmmm...";
 				mes "Hmmm... Mmmhmmm... Oh!";
 				next;
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Aw, nuts! Why didn't";
 				mes "you say something?";
 				mes "I thought you were";
@@ -12821,7 +12821,7 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 				emotion ET_HUK;
 				next;
 				emotion ET_SORRY;
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Aw man, you came all this";
 				mes "way to help me out, and";
 				mes "I thought I--I'm really,";
@@ -12829,7 +12829,7 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 				mes "that I got you mixed up";
 				mes "with a trainee I'm expecting...";
 				next;
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Do me a favor, and";
 				mes "not tell anyone, yeah?";
 				mes "Consider this... I dunno,";
@@ -12839,7 +12839,7 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 				next;
 				switch(select("Yes, sir!:I won't tell anyone.")) {
 				case 1:
-					mes "[Agent]";
+					mes "[特務]";
 					mes "Whoa! Whoa!";
 					mes "You can knock";
 					mes "that off now.";
@@ -12848,13 +12848,13 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 					next;
 					break;
 				case 2:
-					mes "[Agent]";
+					mes "[特務]";
 					mes "Thanks. I knew I could";
 					mes "trust you somehow!";
 					next;
 					break;
 				}
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Anyway, you've got one";
 				mes "last place to go, Morocc.";
 				mes "Check in with the Rogue";
@@ -12881,7 +12881,7 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 					getitem 12069,1; //Luk_Dish04
 				}
 				else {
-					mes "[Agent]";
+					mes "[特務]";
 					mes "Wait, something";
 					mes "isn't quite right. You";
 					mes "mind coming back";
@@ -12889,7 +12889,7 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 					close;
 				}
 				next;
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Hey, be safe on your";
 				mes "way to Morocc, alright?";
 				mes "Good luck finding that";
@@ -12900,7 +12900,7 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 				close;
 			}
 			else {
-				mes "[Agent]";
+				mes "[特務]";
 				mes "Hey, didja even bother";
 				mes "to bring the masks?";
 				mes "Go back and find them!";
@@ -12909,27 +12909,27 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 		}
 	}
 	else if (rumour_nd == 20) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Oh, hey, you're back?";
 		mes "Weren't you already on";
 		mes "your way to Morocc?";
 		close;
 	}
 	else if (rumour_nd == 22) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Heh, looks like we";
 		mes "solved this case~";
 		next;
 		if (zdan_edq > 12) {
-			mes "[Agent]";
-			mes "Thanks to you,";
+			mes "[特務]";
+			mes "多虧了你，";
 			mes "we don't have to";
 			mes "worry about that";
 			mes "crummy ol' Z Gang.";
 			close;
 		}
 		else {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Until the world is";
 			mes "free of evil and all";
 			mes "that, the Rogues'll";
@@ -12938,8 +12938,8 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 		}
 	}
 	else {
-		mes "[Agent]";
-		mes "Why are you still";
+		mes "[特務]";
+		mes "你怎麼還";
 		mes "sticking around?";
 		mes "你不是還有";
 		mes "something more";
@@ -12950,7 +12950,7 @@ comodo,233,199,5	script	Rogue Guild Agent#nd3	810,{
 
 morocc,116,39,3	script	Rogue Guild Agent#nd4	779,{
 	if (rumour_nd == 1) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "A case? What are you...?";
 		mes "Ask somebody else. I don't";
 		mes "know what you're saying.";
@@ -12959,7 +12959,7 @@ morocc,116,39,3	script	Rogue Guild Agent#nd4	779,{
 		close;
 	}
 	else if ((rumour_nd > 1) && (rumour_nd < 20)) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Ahhh, what'd I do";
 		mes "for a nice jug of";
 		mes "frosty beer now~";
@@ -12967,25 +12967,25 @@ morocc,116,39,3	script	Rogue Guild Agent#nd4	779,{
 		close;
 	}
 	else if (rumour_nd == 20) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Oh, yeah, I'm almost";
 		mes "done with my investigation.";
 		next;
 		if (zdan_edq > 12) {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "The Z Gang has been";
 			mes "causing trouble everywhere.";
 			mes "It's just mischief, but...";
 			mes "If I got my hands on them...";
 			specialeffect EF_BEGINSPELL;
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Anyway, that gang is";
 			mes "drawing a lot of flak";
 			mes "to Morocc. I mean, they";
 			mes "kind of live here, so...";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "God, I want a drink.";
 			mes "Listen, would you just";
 			mes "go report to the Rogue";
@@ -12993,21 +12993,21 @@ morocc,116,39,3	script	Rogue Guild Agent#nd4	779,{
 			mes "my responsibility, but...";
 			mes "It's something for you to do.";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Heh! Keep up";
 			mes "the good work~";
 			set rumour_nd,21;
 			close;
 		}
 		else {
-			mes "[Agent]";
+			mes "[特務]";
 			mes "I don't know who these";
 			mes "pranksters are, but once";
 			mes "I get my hands on them...";
 			mes "I'm gonna--! I'm gonna--!";
 			specialeffect EF_BEGINSPELL;
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "God, I want a drink.";
 			mes "Listen, would you just";
 			mes "go report to the Rogue";
@@ -13015,7 +13015,7 @@ morocc,116,39,3	script	Rogue Guild Agent#nd4	779,{
 			mes "my responsibility, but...";
 			mes "It's something for you to do.";
 			next;
-			mes "[Agent]";
+			mes "[特務]";
 			mes "Heh! Keep up";
 			mes "the good work~";
 			set rumour_nd,21;
@@ -13023,7 +13023,7 @@ morocc,116,39,3	script	Rogue Guild Agent#nd4	779,{
 		}
 	}
 	else if (rumour_nd == 21) {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "Hurry up, and report";
 		mes "for me to the Rogue";
 		mes "Guild. While you do that,";
@@ -13031,16 +13031,16 @@ morocc,116,39,3	script	Rogue Guild Agent#nd4	779,{
 		close;
 	}
 	else {
-		mes "[Agent]";
+		mes "[特務]";
 		mes "*Hiccup*";
 		mes "Ahahaha,";
 		mes "this feels good!";
 		mes "Good ol' beeeer~";
 		next;
-		mes "[Agent]";
+		mes "[特務]";
 		mes "*Hiccup*";
 		next;
-		mes "[Agent]";
+		mes "[特務]";
 		mes "你是什麼東西？";
 		mes "滾開！";
 		close;

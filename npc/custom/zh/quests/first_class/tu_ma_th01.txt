@@ -19,601 +19,601 @@
 
 // Battle Traces 1
 //============================================================
-moc_fild12,166,369,0	script	Trace of Battle#1	CLEAR_NPC,{
+moc_fild12,166,369,0	script	戰鬥痕跡#1::Trace of Battle#1	CLEAR_NPC,{
 	.@class_thief = ( BaseClass == Job_Thief );
 	.@class_mage = ( BaseClass == Job_Mage );
 	if ((.@class_thief == 0 && .@class_mage == 0) || (eaclass()&EAJL_BABY)) {
-		mes "^3355FFThere are signs that show";
-		mes "that some violent scuffle";
-		mes "might have occurred here,";
-		mes "but you can't tell what had";
-		mes "happened exactly...^000000";
+		mes "^3355FF有跡象顯示";
+		mes "某場激烈的衝突";
+		mes "可能曾在此發生，";
+		mes "但你無法分辨";
+		mes "究竟發生了什麼……^000000";
 	} else if ((tu_thief01 < 5 && .@class_thief) || (.@class_mage && tu_magician01 < 8)) {
-		mes "^3355FFYou find traces of poison";
-		mes "used in a battle. You sense";
-		mes "its potency and decide not";
-		mes "to get too close to it.^000000";
+		mes "^3355FF你發現了毒素的痕跡";
+		mes "是戰鬥中使用過的。你感覺到";
+		mes "它的毒性，決定不";
+		mes "要靠得太近。^000000";
 		if (.@class_mage)
 			specialeffect EF_VENOMDUST2;
 	} else if (tu_thief01 == 5 && .@class_thief) {
-		mes "^3355FFYou find traces of poison";
-		mes "used in a battle. A feeling";
-		mes "of acute dizziness overcomes";
-		mes "you after examining the scene.^000000";
+		mes "^3355FF你發現了毒素的痕跡";
+		mes "是戰鬥中使用過的。一陣";
+		mes "劇烈的暈眩襲來，";
+		mes "在你檢查現場後籠罩住你。^000000";
 		tu_thief01 = 6;
 		sc_start SC_Poison,60000,0;
 		specialeffect EF_VENOMDUST2;
 	} else if (tu_thief01 == 6 && .@class_thief) {
-		mes "^3355FFYou find traces of poison";
-		mes "used in a battle. A feeling";
-		mes "of acute dizziness overcomes";
-		mes "you after examining the scene.^000000";
+		mes "^3355FF你發現了毒素的痕跡";
+		mes "是戰鬥中使用過的。一陣";
+		mes "劇烈的暈眩襲來，";
+		mes "在你檢查現場後籠罩住你。^000000";
 		sc_start SC_Poison,60000,0;
 		specialeffect EF_VENOMDUST2;
 	} else if (tu_thief01 == 7 && .@class_thief) {
-		mes "^3355FFYou find traces of poison";
-		mes "used in a battle. You sense";
-		mes "its potency and decide not";
-		mes "to get too close to it.^000000";
+		mes "^3355FF你發現了毒素的痕跡";
+		mes "是戰鬥中使用過的。你感覺到";
+		mes "它的毒性，決定不";
+		mes "要靠得太近。^000000";
 	} else if ((.@class_thief && tu_thief01 == 8) || (.@class_mage && tu_magician01 == 8)) {
-		mes "^3355FFThere are traces of a battle";
-		mes "that seem to be leading in";
-		mes "different directions. From the";
-		mes "peculiar smell that permeates";
-		mes "the area, it seems that some";
-		mes "kind of lethal poison was used.^000000";
+		mes "^3355FF有戰鬥的痕跡，";
+		mes "似乎朝";
+		mes "不同方向延伸。從";
+		mes "瀰漫在此處的";
+		mes "奇特氣味來看，似乎";
+		mes "使用了某種致命的毒素。^000000";
 		next;
-		mes "^3355FFStill...";
-		mes "The trail of this";
-		mes "battle decidedly";
-		mes "heads southward.^000000";
+		mes "^3355FF不過……";
+		mes "這場";
+		mes "戰鬥的痕跡";
+		mes "明顯往南延伸。^000000";
 		if (tu_magician01 == 8)
 			tu_magician01 = 9;
 		else
 			tu_thief01 = 9;
 	} else {
-		mes "^3355FFYou find signs of";
-		mes "a heated pursuit";
-		mes "that head south.";
+		mes "^3355FF你發現有";
+		mes "激烈追逐的";
+		mes "痕跡往南去。";
 	}
 	close;
 }
 
 // Battle Traces 2
 //============================================================
-moc_fild12,173,215,0	script	Trace of Battle#2	CLEAR_NPC,{
+moc_fild12,173,215,0	script	戰鬥痕跡#2::Trace of Battle#2	CLEAR_NPC,{
 	.@class_thief = ( BaseClass == Job_Thief );
 	.@class_mage = ( BaseClass == Job_Mage );
 	if ((.@class_thief == 0 && .@class_mage == 0) || (eaclass()&EAJL_BABY)) {
-		mes "^3355FFThere are signs that show";
-		mes "that some violent scuffle";
-		mes "might have occurred here,";
-		mes "but you can't tell what had";
-		mes "happened exactly...^000000";
+		mes "^3355FF有跡象顯示";
+		mes "某場激烈的衝突";
+		mes "可能曾在此發生，";
+		mes "但你無法分辨";
+		mes "究竟發生了什麼……^000000";
 	} else if ((tu_thief01 < 9 && .@class_thief) || (tu_magician01 < 9 && .@class_mage)) {
-		mes "^3355FFThere are signs";
-		mes "that many people";
-		mes "have traveled through";
-		mes "this particular area.^000000";
+		mes "^3355FF有跡象";
+		mes "顯示許多人";
+		mes "曾經經過";
+		mes "這一帶。^000000";
 	} else if ((tu_thief01 == 9 && .@class_thief) || (tu_magician01 == 9 && .@class_mage)) {
-		mes "^3355FFYou've found traces";
-		mes "of the pursuit which";
-		mes "continue eastward.^000000";
+		mes "^3355FF你找到了痕跡";
+		mes "追逐的痕跡，";
+		mes "往東延伸。^000000";
 		if (tu_magician01 == 9)
 			tu_magician01 = 10;
 		else
 			tu_thief01 = 10;
 	} else {
-		mes "^3355FFThese traces of";
-		mes "the pursuit lead";
-		mes "towards the east.^000000";
+		mes "^3355FF這些";
+		mes "追逐的痕跡";
+		mes "通往東方。^000000";
 	}
 	close;
 }
 
 // Battle Traces 3
 //============================================================
-moc_fild12,276,165,0	script	Trace of Battle#3	CLEAR_NPC,{
+moc_fild12,276,165,0	script	戰鬥痕跡#3::Trace of Battle#3	CLEAR_NPC,{
 	.@class_thief = ( BaseClass == Job_Thief );
 	.@class_mage = ( BaseClass == Job_Mage );
 	if ((.@class_thief == 0 && .@class_mage == 0) || (eaclass()&EAJL_BABY)) {
-		mes "^3355FFThese look like";
-		mes "traces of some kind";
-		mes "of pursuit or battle, but";
-		mes "you can't really tell for sure.^000000";
+		mes "^3355FF這看起來像";
+		mes "某種";
+		mes "追逐或戰鬥的痕跡，但";
+		mes "你無法確定。^000000";
 	} else if ((tu_thief01 < 10 && .@class_thief) || (tu_magician01 < 10 && .@class_mage)) {
-		mes "^3355FFThere are signs";
-		mes "that many people";
-		mes "have traveled through";
-		mes "this particular area.^000000";
+		mes "^3355FF有跡象";
+		mes "顯示許多人";
+		mes "曾經經過";
+		mes "這一帶。^000000";
 	} else if ((tu_thief01 == 10 && .@class_thief) || (tu_magician01 == 10 && .@class_mage)) {
-		mes "^3355FFYou examine these traces";
-		mes "and notice that one set of";
-		mes "footprints looks almost too";
-		mes "pronounced, as if it had been";
-		mes "made for somebody to find.^000000";
+		mes "^3355FF你仔細檢查這些痕跡，";
+		mes "發現其中一組";
+		mes "腳印看起來幾乎太";
+		mes "明顯了，彷彿是";
+		mes "特意留給人發現的。^000000";
 		if (tu_magician01 == 10)
 			tu_magician01 = 11;
 		else
 			tu_thief01 = 11;
 	} else {
-		mes "^3355FFIt's a very";
-		mes "strange looking";
-		mes "set of footprints.^000000";
+		mes "^3355FF這是一組很";
+		mes "奇怪的";
+		mes "腳印。^000000";
 	}
 	close;
 }
 
 // Battle Traces 4
 //============================================================
-moc_fild11,39,163,0	script	Trace of Battle#4	CLEAR_NPC,{
+moc_fild11,39,163,0	script	戰鬥痕跡#4::Trace of Battle#4	CLEAR_NPC,{
 	.@class_thief = ( BaseClass == Job_Thief );
 	.@class_mage = ( BaseClass == Job_Mage );
 	if ((.@class_thief == 0 && .@class_mage == 0) || (eaclass()&EAJL_BABY)) {
-		mes "^3355FFThere are signs that show";
-		mes "that some violent scuffle";
-		mes "might have occurred here,";
-		mes "but you can't tell what had";
-		mes "happened exactly...^000000";
+		mes "^3355FF有跡象顯示";
+		mes "某場激烈的衝突";
+		mes "可能曾在此發生，";
+		mes "但你無法分辨";
+		mes "究竟發生了什麼……^000000";
 	} else if ((tu_thief01 < 11 && .@class_thief) || (tu_magician01 < 11 && .@class_mage)) {
-		mes "^3355FFThere are signs";
-		mes "that many people";
-		mes "have traveled through";
-		mes "this particular area.^000000";
+		mes "^3355FF有跡象";
+		mes "顯示許多人";
+		mes "曾經經過";
+		mes "這一帶。^000000";
 	} else if ((tu_thief01 == 11 && .@class_thief) || (tu_magician01 == 11 && .@class_mage)) {
-		mes "^3355FFFrom these traces,";
-		mes "you see that another";
-		mes "set of footprints has";
-		mes "been added. It looks like";
-		mes "someone else got involved.";
-		mes "These prints are distinctly";
-		mes "clearer and much smaller.^000000";
+		mes "^3355FF從這些痕跡，";
+		mes "你看到另一組";
+		mes "腳印也";
+		mes "加入了。看起來像是";
+		mes "有其他人也參與了其中。";
+		mes "這些腳印明顯";
+		mes "更清楚，而且小得多。^000000";
 		if (tu_magician01 == 11)
 			tu_magician01 = 12;
 		else
 			tu_thief01 = 12;
 	} else {
-		mes "^3355FFFrom these traces,";
-		mes "you see that another";
-		mes "person has gotten involved";
-		mes "in this heated scuffle.^000000";
+		mes "^3355FF從這些痕跡，";
+		mes "你看到另一組";
+		mes "有人也捲入了";
+		mes "這場激烈的衝突中。^000000";
 	}
 	close;
 }
 
 // Battle Traces 5
 //============================================================
-moc_fild11,205,52,0	script	Trace of Battle#5	CLEAR_NPC,{
+moc_fild11,205,52,0	script	戰鬥痕跡#5::Trace of Battle#5	CLEAR_NPC,{
 	.@class_thief = ( BaseClass == Job_Thief );
 	.@class_mage = ( BaseClass == Job_Mage );
 	if ((.@class_thief == 0 && .@class_mage == 0) || (eaclass()&EAJL_BABY)) {
-		mes "^3355FFThese look like";
-		mes "traces of some kind";
-		mes "of pursuit or battle, but";
-		mes "you can't really tell for sure.^000000";
+		mes "^3355FF這看起來像";
+		mes "某種";
+		mes "追逐或戰鬥的痕跡，但";
+		mes "你無法確定。^000000";
 	} else if ((tu_thief01 < 12 && .@class_thief) || (tu_magician01 < 12 && .@class_mage)) {
-		mes "^3355FFThere are signs";
-		mes "that many people";
-		mes "have traveled through";
-		mes "this particular area.^000000";
+		mes "^3355FF有跡象";
+		mes "顯示許多人";
+		mes "曾經經過";
+		mes "這一帶。^000000";
 	} else if ((tu_thief01 == 12 && .@class_thief) || (tu_magician01 == 12 && .@class_mage)) {
-		mes "^3355FFThe traces of the battle";
-		mes "now split and head towards";
-		mes "the north and south. However,^000000";
+		mes "^3355FF戰鬥的痕跡";
+		mes "現在分成兩路，分別朝";
+		mes "北方和南方。然而，^000000";
 		if (countitem(506) == 0) {// Green_Potion
-			mes "^3355FFthere is a puddle of strong poison that you must neutralize before you can investigate this scene.^000000";
+			mes "^3355FF這裡有一灘強烈的毒液，你必須先中和它，才能調查此現場。^000000";
 			close;
 		}
-		mes "^3355FFthere is a puddle of strong poison that you must neutralize before you can investigate this scene.^000000";
+		mes "^3355FF這裡有一灘強烈的毒液，你必須先中和它，才能調查此現場。^000000";
 		next;
-		mes "^3355FFFortunately, you can";
-		mes "temporarily nullify the";
-		mes "poison by using one";
-		mes "of your Green Potions.^000000";
+		mes "^3355FF幸好，你可以";
+		mes "暫時抵消";
+		mes "毒性，只要使用";
+		mes "你的一瓶綠色藥水。^000000";
 		next;
-		switch(select("Use Green Potion.:Don't use it.")) {
+		switch(select("使用綠色藥水。:不使用。")) {
 		case 1:
-			mes "^3355FFThe poison weakens";
-			mes "and some of it evaporates,";
-			mes "revealing a piece of cloth that";
-			mes "was hidden in that puddle.^000000";
+			mes "^3355FF毒性減弱";
+			mes "部分蒸發，";
+			mes "露出一塊布料，";
+			mes "原本藏在那灘毒液之中。^000000";
 			next;
-			switch(select("Don't investigate.:Investigate.")) {
+			switch(select("不調查。:調查。")) {
 			case 1:
 				mes "["+strcharinfo(0)+"]";
-				mes "A piece of cloth";
-				mes "is nothing to be";
-				mes "concerned about.";
+				mes "一塊布料";
+				mes "沒什麼好";
+				mes "擔心的。";
 				close;
 			case 2:
 				mes "["+strcharinfo(0)+"]";
-				mes "Hey... There's";
-				mes "blood on this cloth";
-				mes "and some writing on";
-				mes "it that I can't recognize.";
-				mes "Hopefully, this'll provide";
-				mes "some sort of clue to all this?";
+				mes "嘿……這上面";
+				mes "有血跡，";
+				mes "還有一些";
+				mes "我看不懂的字。";
+				mes "希望這能提供";
+				mes "這一切的線索吧？";
 				if (tu_thief01 == 12)
 					tu_thief01 = 13;
 				else
 					tu_magician01 = 13;
 				next;
-				mes "^3355FFYou take the piece";
-				mes "of cloth from the puddle";
-				mes "of poison and keep it with you.^000000";
+				mes "^3355FF你拿起那塊布";
+				mes "從毒液中";
+				mes "取出，並帶在身上。^000000";
 				close;
 			}
 		case 2:
 			mes "["+strcharinfo(0)+"]";
 			mes "嗯……";
-			mes "It'll probably be";
-			mes "faster if I follow this";
-			mes "trail, rather than stop to";
-			mes "investigate this scene.";
+			mes "這樣應該會";
+			mes "比較快，如果我沿著這條";
+			mes "痕跡追過去，而不是停下來";
+			mes "調查這個現場。";
 			close;
 		}
 	} else {
-		mes "^3355FFYou can't find";
-		mes "anything else here,";
-		mes "aside from the traces";
-		mes "that split and lead both";
-		mes "northward and southward.^000000";
+		mes "^3355FF你找不到";
+		mes "這裡其他";
+		mes "東西，除了那些";
+		mes "分岔的痕跡，它們";
+		mes "分別往北和往南。^000000";
 	}
 	close;
 }
 
 // Battle Traces 6
 //============================================================
-moc_fild11,226,235,0	script	Trace of Battle#6	CLEAR_NPC,{
+moc_fild11,226,235,0	script	戰鬥痕跡#6::Trace of Battle#6	CLEAR_NPC,{
 	.@class_thief = ( BaseClass == Job_Thief );
 	.@class_mage = ( BaseClass == Job_Mage );
 	if ((.@class_thief == 0 && .@class_mage == 0) || (eaclass()&EAJL_BABY)) {
-		mes "^3355FFThese look like";
-		mes "traces of some kind";
-		mes "of pursuit or battle, but";
-		mes "you can't really tell for sure.^000000";
+		mes "^3355FF這看起來像";
+		mes "某種";
+		mes "追逐或戰鬥的痕跡，但";
+		mes "你無法確定。^000000";
 	} else if ((tu_thief01 < 13 && .@class_thief) || (tu_magician01 < 13 && .@class_mage)) {
-		mes "^3355FFThere are signs";
-		mes "that many people";
-		mes "have traveled through";
-		mes "this particular area.^000000";
+		mes "^3355FF有跡象";
+		mes "顯示許多人";
+		mes "曾經經過";
+		mes "這一帶。^000000";
 	} else {
-		mes "^3355FFThese footprints";
-		mes "look like they're";
-		mes "heading towards the";
-		mes "north from the south.";
-		mes "But you can't really";
-		mes "be sure just yet.^000000";
+		mes "^3355FF這些腳印";
+		mes "看起來像是";
+		mes "朝";
+		mes "從南往北走。";
+		mes "但你還無法";
+		mes "確定。^000000";
 	}
 	close;
 }
 
 // Battle Traces 7
 //============================================================
-moc_fild11,184,342,0	script	Trace of Battle#7	CLEAR_NPC,{
+moc_fild11,184,342,0	script	戰鬥痕跡#7::Trace of Battle#7	CLEAR_NPC,{
 	.@class_thief = ( BaseClass == Job_Thief );
 	.@class_mage = ( BaseClass == Job_Mage );
 	if ((.@class_thief == 0 && .@class_mage == 0) || (eaclass()&EAJL_BABY)) {
-		mes "^3355FFThese look like";
-		mes "traces of some kind";
-		mes "of pursuit or battle, but";
-		mes "you can't really tell for sure.^000000";
+		mes "^3355FF這看起來像";
+		mes "某種";
+		mes "追逐或戰鬥的痕跡，但";
+		mes "你無法確定。^000000";
 	} else if ((tu_thief01 < 13 && .@class_thief) || (tu_magician01 < 13 && .@class_mage)) {
-		mes "^3355FFThere are signs";
-		mes "that many people";
-		mes "have traveled through";
-		mes "this particular area.^000000";
+		mes "^3355FF有跡象";
+		mes "顯示許多人";
+		mes "曾經經過";
+		mes "這一帶。^000000";
 	} else {
-		mes "^3355FFThe trail here looks pretty";
-		mes "muddled, since it looks like";
-		mes "they battled here for quite a";
-		mes "while. But the footprints are";
-		mes "definitely heading south.^000000";
+		mes "^3355FF這裡的痕跡看起來相當";
+		mes "混亂，因為看起來";
+		mes "他們在這裡戰鬥了很長一段";
+		mes "時間。不過腳印";
+		mes "明顯是朝南走的。^000000";
 	}
 	close;
 }
 
 // Battle Traces 8
 //============================================================
-moc_fild17,213,358,0	script	Trace of Battle#8	CLEAR_NPC,{
+moc_fild17,213,358,0	script	戰鬥痕跡#8::Trace of Battle#8	CLEAR_NPC,{
 	.@class_thief = ( BaseClass == Job_Thief );
 	.@class_mage = ( BaseClass == Job_Mage );
 	if ((.@class_thief == 0 && .@class_mage == 0) || (eaclass()&EAJL_BABY)) {
-		mes "^3355FFThese look like";
-		mes "traces of some kind";
-		mes "of pursuit or battle, but";
-		mes "you can't really tell for sure.^000000";
+		mes "^3355FF這看起來像";
+		mes "某種";
+		mes "追逐或戰鬥的痕跡，但";
+		mes "你無法確定。^000000";
 	} else if ((tu_thief01 < 13 && .@class_thief) || (tu_magician01 < 13 && .@class_mage)) {
-		mes "^3355FFThere are two";
-		mes "distinct sets of";
-		mes "footprints in this";
-		mes "area, but they don't";
-		mes "hold any significance";
-		mes "right about now.^000000";
+		mes "^3355FF有兩組";
+		mes "明顯不同的";
+		mes "腳印在這";
+		mes "一帶，但它們";
+		mes "目前";
+		mes "並沒有什麼意義。^000000";
 	} else if ((tu_thief01 == 13 && .@class_thief) || (tu_magician01 == 13 && .@class_mage)) {
-		mes "^3355FFAround here, it";
-		mes "looks like there are";
-		mes "only two sets of footprints.";
-		mes "What happened to the other";
-		mes "set that you found earlier?^000000";
+		mes "^3355FF這附近，看起來";
+		mes "只有";
+		mes "兩組腳印。";
+		mes "另一組";
+		mes "你先前發現的腳印去哪了？^000000";
 		if (tu_magician01 == 13)
 			tu_magician01 = 14;
 		else
 			tu_thief01 = 14;
 	} else {
-		mes "^3355FFFrom the evidence";
-		mes "that you've found here,";
-		mes "it looks like the battle";
-		mes "involves only two people";
-		mes "from this point onward.^000000";
+		mes "^3355FF從現有證據";
+		mes "你在這裡找到的，";
+		mes "看起來這場戰鬥";
+		mes "只牽涉兩個人，";
+		mes "從這裡開始。^000000";
 	}
 	close;
 }
 
 // Battle Traces 9
 //============================================================
-moc_fild17,228,274,0	script	Trace of Battle#9	CLEAR_NPC,{
+moc_fild17,228,274,0	script	戰鬥痕跡#9::Trace of Battle#9	CLEAR_NPC,{
 	.@class_thief = ( BaseClass == Job_Thief );
 	.@class_mage = ( BaseClass == Job_Mage );
 	if ((.@class_thief == 0 && .@class_mage == 0) || (eaclass()&EAJL_BABY)) {
-		mes "^3355FFThese look like";
-		mes "traces of some kind";
-		mes "of pursuit or battle, but";
-		mes "you can't really tell for sure.^000000";
+		mes "^3355FF這看起來像";
+		mes "某種";
+		mes "追逐或戰鬥的痕跡，但";
+		mes "你無法確定。^000000";
 	} else if ((tu_thief01 < 14 && .@class_thief) || (tu_magician01 < 14 && .@class_mage)) {
-		mes "^3355FFTraces of some";
-		mes "sort of battle are";
-		mes "scattered all over";
-		mes "this particular area.^000000";
+		mes "^3355FF某種";
+		mes "戰鬥的痕跡";
+		mes "散落各處";
+		mes "這一帶。^000000";
 	} else if ((tu_thief01 == 14 && .@class_thief) || (tu_magician01 == 14 && .@class_mage)) {
-		mes "^3355FFYou follow the trail";
-		mes "and although traces from";
-		mes "the north and southeast mix";
-		mes "together, it looks like the battle continues towards the east.";
-		mes "But you should check this";
-		mes "spot a little bit more...^000000";
+		mes "^3355FF你沿著痕跡走，";
+		mes "雖然來自";
+		mes "北方和東南方的痕跡交錯，";
+		mes "看起來戰鬥仍朝東方延伸。";
+		mes "不過你應該再仔細";
+		mes "檢查這個地點……^000000";
 		if (tu_magician01 == 14)
 			tu_magician01 = 15;
 		else
 			tu_thief01 = 15;
 	} else if ((tu_thief01 == 15 && .@class_thief) || (tu_magician01 == 15 && .@class_mage)) {
 		if (rand(1,10) == 7) {
-			mes "^3355FFAfter investigating this";
-			mes "area more thoroughly,";
-			mes "you find another piece of";
-			mes "cloth stained with blood.";
-			mes "You decide to keep it with";
-			mes "you, hoping that it will";
-			mes "provide more clues.^000000";
+			mes "^3355FF仔細調查這一帶後，";
+			mes "你又";
+			mes "找到一塊";
+			mes "染有血跡的布料。";
+			mes "你決定把它";
+			mes "帶在身上，希望它";
+			mes "能提供更多線索。^000000";
 			if (tu_magician01 == 15)
 				tu_magician01 = 16;
 			else
 				tu_thief01 = 16;
 		} else {
-			mes "^3355FFYou don't find anything,";
-			mes "but you still can't shake";
-			mes "the feeling that there is";
-			mes "some important clue that";
-			mes "you have to find here. It won't hurt to keep investigating here.^000000";
+			mes "^3355FF你沒有找到任何東西，";
+			mes "但你仍然無法擺脫";
+			mes "心中的感覺，這裡";
+			mes "一定有某個重要線索，";
+			mes "你必須找到。繼續在這裡調查也無妨。^000000";
 		}
 	} else {
-		mes "^3355FFYou better continue";
-		mes "following this trail";
-		mes "which leads westward.^000000";
+		mes "^3355FF你最好繼續";
+		mes "沿著這條痕跡";
+		mes "往西前進。^000000";
 	}
 	close;
 }
 
 // Battle Traces 10
 //============================================================
-moc_fild17,34,292,0	script	Trace of Battle#10	CLEAR_NPC,{
+moc_fild17,34,292,0	script	戰鬥痕跡#10::Trace of Battle#10	CLEAR_NPC,{
 	.@class_thief = ( BaseClass == Job_Thief );
 	.@class_mage = ( BaseClass == Job_Mage );
 	if ((.@class_thief == 0 && .@class_mage == 0) || (eaclass()&EAJL_BABY)) {
-		mes "^3355FFThese look like";
-		mes "traces of some kind";
-		mes "of pursuit or battle, but";
-		mes "you can't really tell for sure.^000000";
+		mes "^3355FF這看起來像";
+		mes "某種";
+		mes "追逐或戰鬥的痕跡，但";
+		mes "你無法確定。^000000";
 	} else if ((tu_thief01 < 16 && .@class_thief) || (tu_magician01 < 16 && .@class_mage)) {
-		mes "^3355FFThere are signs";
-		mes "showing that a lot";
-		mes "of people were in";
-		mes "this area earlier.^000000";
+		mes "^3355FF有跡象";
+		mes "顯示這裡";
+		mes "曾有很多人";
+		mes "先前經過。^000000";
 	} else if ((tu_thief01 == 16 && .@class_thief) || (tu_magician01 == 16 && .@class_mage)) {
-		mes "^3355FFThe lead set of footprints,";
-		mes "probably belonging to the one";
-		mes "who was being pursued, look";
-		mes "more erratic, as if exhaustion";
-		mes "and desperation were setting in. These traces lead to the west.^000000";
+		mes "^3355FF走在前面的那組腳印，";
+		mes "大概屬於";
+		mes "被追趕的那人，看起來";
+		mes "更加雜亂，彷彿筋疲力盡";
+		mes "與絕望已經襲來。這些痕跡通往西方。^000000";
 		if (tu_magician01 == 16)
 			tu_magician01 = 17;
 		else
 			tu_thief01 = 17;
 	} else {
-		mes "^3355FFThe trail from";
-		mes "this point heads";
-		mes "towards the west.^000000";
+		mes "^3355FF從這裡";
+		mes "起的痕跡";
+		mes "往西方延伸。^000000";
 	}
 	close;
 }
 
 // Battle Traces 11
 //============================================================
-moc_fild18,346,296,0	script	Trace of Battle#11	CLEAR_NPC,{
+moc_fild18,346,296,0	script	戰鬥痕跡#11::Trace of Battle#11	CLEAR_NPC,{
 	.@class_thief = ( BaseClass == Job_Thief );
 	.@class_mage = ( BaseClass == Job_Mage );
 	if ((.@class_thief == 0 && .@class_mage == 0) || (eaclass()&EAJL_BABY)) {
-		mes "^3355FFThese look like";
-		mes "traces of some kind";
-		mes "of pursuit or battle, but";
-		mes "you can't really tell for sure.^000000";
+		mes "^3355FF這看起來像";
+		mes "某種";
+		mes "追逐或戰鬥的痕跡，但";
+		mes "你無法確定。^000000";
 	} else if ((tu_thief01 < 17 && .@class_thief) || (tu_magician01 < 17 && .@class_mage)) {
-		mes "^3355FFThere are signs";
-		mes "showing that a lot";
-		mes "of people were in";
-		mes "this area earlier.^000000";
+		mes "^3355FF有跡象";
+		mes "顯示這裡";
+		mes "曾有很多人";
+		mes "先前經過。^000000";
 	} else if ((tu_thief01 == 17 && .@class_thief) || (tu_magician01 == 17 && .@class_mage)) {
-		mes "^3355FFFollowing the";
-		mes "trail, you see signs";
-		mes "that blood was spilled";
-		mes "in this area. It looks like";
-		mes "someone was injured";
-		mes "pretty badly around here.^000000";
+		mes "^3355FF沿著";
+		mes "痕跡走，你看見跡象";
+		mes "顯示這附近";
+		mes "曾有血液流出。看起來像是";
+		mes "有人受了";
+		mes "相當嚴重的傷。^000000";
 		if (tu_magician01 == 17)
 			tu_magician01 = 18;
 		else
 			tu_thief01 = 18;
 	} else {
-		mes "^3355FFSince someone involved";
-		mes "in this conflict was bleeding,";
-		mes "further traces of this pursuit";
-		mes "might be easier to find now.^000000";
+		mes "^3355FF既然有參與";
+		mes "衝突的人正在流血，";
+		mes "這場追逐的進一步痕跡";
+		mes "現在應該比較容易找到。^000000";
 	}
 	close;
 }
 
 // Battle Traces 12
 //============================================================
-moc_fild18,309,257,0	script	Trace of Battle#12	CLEAR_NPC,{
+moc_fild18,309,257,0	script	戰鬥痕跡#12::Trace of Battle#12	CLEAR_NPC,{
 	.@class_thief = ( BaseClass == Job_Thief );
 	.@class_mage = ( BaseClass == Job_Mage );
 	if ((.@class_thief == 0 && .@class_mage == 0) || (eaclass()&EAJL_BABY)) {
-		mes "^3355FFThese look like";
-		mes "traces of some kind";
-		mes "of pursuit or battle, but";
-		mes "you can't really tell for sure.^000000";
+		mes "^3355FF這看起來像";
+		mes "某種";
+		mes "追逐或戰鬥的痕跡，但";
+		mes "你無法確定。^000000";
 	} else if ((tu_thief01 < 18 && .@class_thief) || (tu_magician01 < 18 && .@class_mage)) {
-		mes "^3355FFThere are signs";
-		mes "showing that a lot";
-		mes "of people were in";
-		mes "this area earlier.^000000";
+		mes "^3355FF有跡象";
+		mes "顯示這裡";
+		mes "曾有很多人";
+		mes "先前經過。^000000";
 	} else if ((tu_thief01 == 18 && .@class_thief) || (tu_magician01 == 18 && .@class_mage)) {
-		mes "^3355FFThese traces lead";
-		mes "northward and it looks";
-		mes "like whoever is doing";
-		mes "the chasing is getting";
-		mes "much closer to his prey.^000000";
+		mes "^3355FF這些痕跡";
+		mes "通往北方，看起來";
+		mes "追趕的人";
+		mes "正越來越";
+		mes "接近他的獵物。^000000";
 		if (tu_magician01 == 18)
 			tu_magician01 = 19;
 		else
 			tu_thief01 = 19;
 	} else {
-		mes "^3355FFThe trail of this";
-		mes "pursuit now leads";
-		mes "towards the north.^000000";
+		mes "^3355FF這場";
+		mes "追逐的痕跡現在通往";
+		mes "北方。^000000";
 	}
 	close;
 }
 
 // Battle Traces 13
 //============================================================
-moc_fild18,177,333,0	script	Trace of Battle#13	CLEAR_NPC,{
+moc_fild18,177,333,0	script	戰鬥痕跡#13::Trace of Battle#13	CLEAR_NPC,{
 	.@class_thief = ( BaseClass == Job_Thief );
 	.@class_mage = ( BaseClass == Job_Mage );
 	if ((.@class_thief == 0 && .@class_mage == 0) || (eaclass()&EAJL_BABY)) {
-		mes "^3355FFThese look like";
-		mes "traces of some kind";
-		mes "of pursuit or battle, but";
-		mes "you can't really tell for sure.^000000";
+		mes "^3355FF這看起來像";
+		mes "某種";
+		mes "追逐或戰鬥的痕跡，但";
+		mes "你無法確定。^000000";
 	} else if (tu_thief01 < 19 && .@class_thief) {
-		mes "^3355FFThere are signs";
-		mes "showing that a lot";
-		mes "of people were in";
-		mes "this area earlier.^000000";
+		mes "^3355FF有跡象";
+		mes "顯示這裡";
+		mes "曾有很多人";
+		mes "先前經過。^000000";
 	} else if (tu_magician01 < 19 && .@class_mage) {
-		mes "A large group of people seem to have gone by.";
+		mes "似乎有一大群人經過。";
 	} else if ((tu_thief01 == 19 && .@class_thief) || (tu_magician01 == 19 && .@class_mage)) {
-		mes "^3355FFJudging from these";
-		mes "traces, it looks like";
-		mes "even more people have";
-		mes "joined the battle which";
-		mes "now seems to be leading";
-		mes "in the southwest direction.^000000";
+		mes "^3355FF從這些";
+		mes "痕跡判斷，看起來";
+		mes "又有更多人";
+		mes "加入了戰鬥，";
+		mes "現在似乎往";
+		mes "西南方向延伸。^000000";
 		if (tu_magician01 == 19)
 			tu_magician01 = 20;
 		else
 			tu_thief01 = 20;
 	} else {
 		mes "^3355FF看樣子";
-		mes "the battle heads";
-		mes "towards the southwest";
-		mes "from this particular point.^000000";
+		mes "戰鬥往";
+		mes "西南方";
+		mes "從這個地點延伸。^000000";
 	}
 	close;
 }
 
 // Battle Traces 14
 //============================================================
-moc_fild18,111,303,0	script	Trace of Battle#14	CLEAR_NPC,{
+moc_fild18,111,303,0	script	戰鬥痕跡#14::Trace of Battle#14	CLEAR_NPC,{
 	.@class_thief = ( BaseClass == Job_Thief );
 	.@class_mage = ( BaseClass == Job_Mage );
 	if ((.@class_thief == 0 && .@class_mage == 0) || (eaclass()&EAJL_BABY)) {
-		mes "^3355FFThese look like";
-		mes "traces of some kind";
-		mes "of pursuit or battle, but";
-		mes "you can't really tell for sure.^000000";
+		mes "^3355FF這看起來像";
+		mes "某種";
+		mes "追逐或戰鬥的痕跡，但";
+		mes "你無法確定。^000000";
 	} else if ((tu_thief01 < 20 && .@class_thief) || (tu_magician01 < 20 && .@class_mage)) {
-		mes "^3355FFThere are signs";
-		mes "showing that a lot";
-		mes "of people were in";
-		mes "this area earlier.^000000";
+		mes "^3355FF有跡象";
+		mes "顯示這裡";
+		mes "曾有很多人";
+		mes "先前經過。^000000";
 	} else if ((tu_thief01 == 20 && .@class_thief) || (tu_magician01 == 20 && .@class_mage)) {
-		mes "^3355FFIn this area, it looks";
-		mes "like even more people";
-		mes "joined in this battle and";
-		mes "the pursuit clearly heads";
-		mes "towards the south.^000000";
+		mes "^3355FF在這一帶，看起來";
+		mes "又有更多人";
+		mes "加入了這場戰鬥，";
+		mes "追逐的痕跡明顯朝";
+		mes "南方延伸。^000000";
 		if (tu_magician01 == 20)
 			tu_magician01 = 21;
 		else
 			tu_thief01 = 21;
 	} else {
-		mes "^3355FFThe trail of";
-		mes "this battle heads";
-		mes "towards the south.^000000";
+		mes "^3355FF這場";
+		mes "戰鬥的痕跡往";
+		mes "南方延伸。^000000";
 	}
 	close;
 }
 
 // Battle Traces 15
 //============================================================
-moc_fild18,109,197,0	script	Trace of Battle#15	CLEAR_NPC,{
+moc_fild18,109,197,0	script	戰鬥痕跡#15::Trace of Battle#15	CLEAR_NPC,{
 	.@class_thief = ( BaseClass == Job_Thief );
 	.@class_mage = ( BaseClass == Job_Mage );
 	if ((.@class_thief == 0 && .@class_mage == 0) || (eaclass()&EAJL_BABY)) {
-		mes "^3355FFThese look like";
-		mes "traces of some kind";
-		mes "of pursuit or battle, but";
-		mes "you can't really tell for sure.^000000";
+		mes "^3355FF這看起來像";
+		mes "某種";
+		mes "追逐或戰鬥的痕跡，但";
+		mes "你無法確定。^000000";
 	} else if (tu_thief01 < 21 && .@class_thief) {
-		mes "^3355FFThere are signs";
-		mes "showing that a lot";
-		mes "of people were in";
-		mes "this area earlier.^000000";
+		mes "^3355FF有跡象";
+		mes "顯示這裡";
+		mes "曾有很多人";
+		mes "先前經過。^000000";
 	} else if (tu_magician01 < 21 && .@class_mage)
-		mes "A large group of people seem to have gone by.";
+		mes "似乎有一大群人經過。";
 	else if ((tu_thief01 == 21 && .@class_thief) || (tu_magician01 == 21 && .@class_mage)) {
-		mes "^3355FFThis area is clearly";
-		mes "marked with signs";
-		mes "of a violent battle, with";
-		mes "traces of poison strewn";
-		mes "all over the ground.^000000";
+		mes "^3355FF這一帶明顯";
+		mes "留有";
+		mes "激烈戰鬥的跡象，地上";
+		mes "散落著毒素的痕跡";
+		mes "到處都是。^000000";
 		next;
-		switch(select("Continue following the traces.:Further investigate the area.")) {
+		switch(select("繼續追蹤痕跡。:進一步調查這一帶。")) {
 		case 1:
-			mes "^3355FFYou examine the";
-			mes "trail, but can't really";
-			mes "discern the direction";
-			mes "in which the battle";
-			mes "continues...^000000";
+			mes "^3355FF你仔細檢查";
+			mes "痕跡，但無法";
+			mes "分辨";
+			mes "戰鬥";
+			mes "究竟往哪裡延伸……^000000";
 			close;
 		case 2:
-			mes "^3355FFYou find a bunch of";
-			mes "traps that use different";
-			mes "kinds of poison. The ones";
-			mes "that have been set off are";
-			mes "mixed with the ones which";
-			mes "haven't been triggered.^000000";
+			mes "^3355FF你發現了一堆";
+			mes "使用不同";
+			mes "毒素的陷阱。已經觸發的";
+			mes "那些";
+			mes "與尚未觸發的";
+			mes "混雜在一起。^000000";
 			if (tu_thief01 == 21)
 				tu_thief01 = 22;
 			else
@@ -622,27 +622,27 @@ moc_fild18,109,197,0	script	Trace of Battle#15	CLEAR_NPC,{
 		}
 	} else if ((tu_thief01 == 22 && .@class_thief) || (tu_magician01 == 22 && .@class_mage)) {
 		if (rand(1,3) == 3) {
-			mes "^3355FFOne trap in particular";
-			mes "stands out to you more";
-			mes "than the rest. Perhaps";
-			mes "you should pour some";
-			mes "Green Potion on it to";
-			mes "neutralize it first.^000000";
+			mes "^3355FF其中一個陷阱";
+			mes "特別引起你的注意，";
+			mes "比其他的都特別。或許";
+			mes "你應該先倒一些";
+			mes "綠色藥水在上面，";
+			mes "先將它中和。^000000";
 			next;
-			switch(select("Pour Green Potion.:Don't use Green Potion.")) {
+			switch(select("倒入綠色藥水。:不使用綠色藥水。")) {
 			case 1:
 				if (countitem(506) < 1) {// Green_Potion
-					mes "^3355FFUnfortunately, you";
-					mes "don't have a Green";
-					mes "Potion that you can";
-					mes "use to pour on this trap...^000000";
+					mes "^3355FF很遺憾，你";
+					mes "沒有能倒在";
+					mes "陷阱上的";
+					mes "綠色藥水……^000000";
 					close;
 				} else {
-					mes "^3355FFPouring that";
-					mes "Green Potion didn't";
-					mes "really make anything";
-					mes "happen. Perhaps you";
-					mes "should try something else.^000000";
+					mes "^3355FF倒下那瓶";
+					mes "綠色藥水";
+					mes "並沒有";
+					mes "產生任何效果。或許你";
+					mes "應該試試別的方法。^000000";
 					delitem 506,1; //Green_Potion
 					if (tu_thief01 == 22)
 						tu_thief01 = 23;
@@ -653,35 +653,35 @@ moc_fild18,109,197,0	script	Trace of Battle#15	CLEAR_NPC,{
 			case 2:
 				mes "["+strcharinfo(0)+"]";
 				mes "我想……";
-				mes "I'll try investigating";
-				mes "this area a little more?";
+				mes "我試著再";
+				mes "仔細調查這一帶，好嗎？";
 				close;
 			}
 		} else {
-			mes "^3355FFBy sheer accident,";
-			mes "you set off one of";
-			mes "the traps in the area.^000000";
+			mes "^3355FF純屬意外，";
+			mes "你觸發了";
+			mes "這一帶的其中一個陷阱。^000000";
 			sc_start SC_Poison,60000,0;
 			specialeffect EF_VENOMDUST2;
 			percentheal -30,0;
 		}
 	} else if ((tu_thief01 == 23 && .@class_thief) || (tu_magician01 == 23 && .@class_mage)) {
 		if (countitem(511) > 0 && countitem(716) > 0) {
-			mes "^3355FFYou try grinding";
-			mes "a Green Herb and";
-			mes "sprinkling it on the";
-			mes "trap and then place";
-			mes "a Red Gemstone on it.";
-			mes "The gem glows and";
-			mes "slowly melts away...^000000";
+			mes "^3355FF你嘗試把";
+			mes "一株綠色藥草磨碎，";
+			mes "撒在";
+			mes "陷阱上，然後放上";
+			mes "一顆紅色魔力礦石。";
+			mes "寶石發光，";
+			mes "慢慢融化消失了……^000000";
 			next;
-			mes "^3355FFAlthough you don't";
-			mes "fully understand the";
-			mes "science of using poisons";
-			mes "or antidotes, you managed";
-			mes "to successfully dismantle";
-			mes "the trap. Now you can safely";
-			mes "check what might be inside.^000000";
+			mes "^3355FF雖然你不";
+			mes "完全了解";
+			mes "使用毒素";
+			mes "或解毒劑的原理，你仍成功";
+			mes "拆除了";
+			mes "陷阱。現在你可以安全地";
+			mes "檢查裡面可能藏有什麼。^000000";
 			delitem 511,1; //Green_Herb
 			delitem 716,1; //Red_Gemstone
 			if (tu_thief01 == 23)
@@ -689,108 +689,108 @@ moc_fild18,109,197,0	script	Trace of Battle#15	CLEAR_NPC,{
 			else
 				tu_magician01 = 24;
 		} else if (countitem(511) > 0) {
-			mes "^3355FFYou should try to";
-			mes "dismantle this trap";
-			mes "by using other catalysts";
-			mes "related to the curing or";
-			mes "use of poison. You do have";
-			mes "a Green Herb on you, so you";
-			mes "try sprinkling it on the trap.^000000";
+			mes "^3355FF你應該試著";
+			mes "拆除這個陷阱";
+			mes "使用其他";
+			mes "與解毒或";
+			mes "使用毒素有關的催化劑。你身上確實有";
+			mes "一株綠色藥草，所以你";
+			mes "嘗試撒在陷阱上。^000000";
 			next;
-			mes "^3355FFHowever, nothing";
-			mes "happens. It seems that";
-			mes "you need another catalyst";
-			mes "in addition to the Green Herb";
-			mes "that you have in order to";
-			mes "dismantle this trap.^000000";
+			mes "^3355FF然而，什麼";
+			mes "都沒發生。看來";
+			mes "你還需要另一種催化劑";
+			mes "，與綠色藥草";
+			mes "搭配，才能";
+			mes "拆除這個陷阱。^000000";
 		} else if (countitem(716) > 0) {
-			mes "^3355FFYou should try to";
-			mes "dismantle this trap";
-			mes "by using other catalysts";
-			mes "related to the curing or use";
-			mes "of poison. You do have a";
-			mes "Red Gemstone, so you grind";
-			mes "it and sprinkle it on the trap.^000000";
+			mes "^3355FF你應該試著";
+			mes "拆除這個陷阱";
+			mes "使用其他";
+			mes "與解毒或使用";
+			mes "毒素有關的。你身上確實有一顆";
+			mes "紅色魔力礦石，所以你將它磨碎";
+			mes "撒在陷阱上。^000000";
 			next;
-			mes "^3355FFHowever, nothing";
-			mes "happens. It seems that";
-			mes "you need another catalyst to";
-			mes "use with the Red Gemstone";
-			mes "that you have in order to";
-			mes "dismantle this trap.^000000";
+			mes "^3355FF然而，什麼";
+			mes "都沒發生。看來";
+			mes "你還需要另一種催化劑，來";
+			mes "搭配紅色魔力礦石";
+			mes "搭配，才能";
+			mes "拆除這個陷阱。^000000";
 		} else {
-			mes "^3355FFYou should try to";
-			mes "dismantle this trap";
-			mes "by using other catalysts";
-			mes "related to the curing or";
-			mes "use of poison. But what";
-			mes "items should you bring?^000000";
+			mes "^3355FF你應該試著";
+			mes "拆除這個陷阱";
+			mes "使用其他";
+			mes "與解毒或";
+			mes "使用毒素。但是";
+			mes "你應該帶什麼道具？^000000";
 		}
 	} else if ((tu_thief01 == 24 && .@class_thief) || (tu_magician01 == 24 && .@class_mage)) {
-		mes "^3355FFInside the dismantled";
-		mes "trap, you find another";
-		mes "piece of strange cloth";
-		mes "that's stained with blood.";
-		mes "You take it with you in";
-		mes "hopes that it provides";
-		mes "some kind of evidence.^000000";
+		mes "^3355FF在拆除的";
+		mes "陷阱裡，你又找到一塊";
+		mes "奇怪的布料，";
+		mes "上面沾有血跡。";
+		mes "你把它帶在身上，";
+		mes "希望它能";
+		mes "提供某種證據。^000000";
 		if (tu_thief01 == 24)
 			tu_thief01 = 25;
 		else
 			tu_magician01 = 25;
 	} else {
-		mes "^3355FFYou examine the area";
-		mes "a little further and guess";
-		mes "that the battle might head";
-		mes "towards the south.^000000";
+		mes "^3355FF你再仔細檢查這一帶";
+		mes "，並推測";
+		mes "戰鬥可能";
+		mes "南方延伸。^000000";
 	}
 	close;
 }
 
 // Battle Traces 16
 //============================================================
-moc_fild18,156,96,0	script	Trace of Battle#16	CLEAR_NPC,{
+moc_fild18,156,96,0	script	戰鬥痕跡#16::Trace of Battle#16	CLEAR_NPC,{
 	.@class_thief = ( BaseClass == Job_Thief );
 	.@class_mage = ( BaseClass == Job_Mage );
 	if ((.@class_thief == 0 && .@class_mage == 0) || (eaclass()&EAJL_BABY)) {
-		mes "^3355FFThese look like";
-		mes "traces of some kind";
-		mes "of pursuit or battle, but";
-		mes "you can't really tell for sure.^000000";
+		mes "^3355FF這看起來像";
+		mes "某種";
+		mes "追逐或戰鬥的痕跡，但";
+		mes "你無法確定。^000000";
 	} else if ((tu_thief01 < 25 && .@class_thief) || (tu_magician01 < 25 && .@class_mage)) {
-		mes "^3355FFThere are signs";
-		mes "that a large group";
-		mes "of people have been in";
-		mes "this area for some reason.^000000";
+		mes "^3355FF有跡象";
+		mes "有一大群人";
+		mes "曾在";
+		mes "這一帶出沒過。^000000";
 	} else if ((tu_thief01 == 25 && .@class_thief) || (tu_magician01 == 25 && .@class_mage)) {
-		mes "^3355FFThese traces lead";
-		mes "to the edge of the cliff.";
-		mes "marking the end of the trail.";
-		mes "Apparently, the one who was";
-		mes "being chased met his fate here.^000000";
+		mes "^3355FF這些痕跡";
+		mes "前往懸崖邊緣。";
+		mes "痕跡的盡頭就在這裡。";
+		mes "顯然，被追趕的人";
+		mes "在這裡遭遇了不測。^000000";
 		next;
-		mes "^3355FFThere are many footprints";
-		mes "leading to the edge of the";
-		mes "cliff and all of them leave";
-		mes "this scene, save for the set";
-		mes "of footprints that distinctly";
-		mes "belong to the person who";
-		mes "was pursued all this time...^3355FF";
+		mes "^3355FF有許多腳印";
+		mes "通往懸崖";
+		mes "邊緣，全部都";
+		mes "離開了這個現場，只有";
+		mes "明顯屬於";
+		mes "被追趕者的那組腳印";
+		mes "一直都在這裡……^3355FF";
 		next;
-		mes "^3355FFIt looks like you've";
-		mes "learned all that you can";
-		mes "from this investigation. You";
-		mes "better return and report your";
-		mes "findings to Yierhan soon.^000000";
+		mes "^3355FF看來你已經";
+		mes "從這次調查中";
+		mes "學到了所有能學的。";
+		mes "你最好回去向伊爾漢";
+		mes "儘快報告你的發現。^000000";
 		if (tu_magician01 == 25)
 			tu_magician01 = 26;
 		else
 			tu_thief01 = 26;
 	} else {
-		mes "^3355FFThis is the end";
-		mes "of the trail. There";
-		mes "aren't any more traces";
-		mes "of the battle left to find.^000000";
+		mes "^3355FF這裡是痕跡的";
+		mes "盡頭。這裡";
+		mes "已經沒有";
+		mes "其他戰鬥痕跡可供尋找了。^000000";
 	}
 	close;
 }
