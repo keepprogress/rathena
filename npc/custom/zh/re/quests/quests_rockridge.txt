@@ -945,7 +945,7 @@ har_in01,14,24,5	script	Ivoka Skudi#rr03	4_M_EVOKASCUDI,{
 		mes "[Ivoka Skudi]";
 		mes "It worked!";
 		mes "Come on, let's go play Johnny!";
-		mes "*Chuckle*";
+		mes "*輕笑*";
 		close;
 	}
 	mes "[Ivoka Skudi]";
@@ -1172,7 +1172,7 @@ har_in01,89,26,5	script	Johnny James#har_in01	4_M_JOHNNYJAMES,{
 		mes "[Johnny James]";
 		mes "Alright, that makes sense.";
 		mes "When I get out of here, I'll send that guy to join Albert in Hell.";
-		mes "*Chuckle*";
+		mes "*輕笑*";
 		next;
 		mes "[Johnny James]";
 		mes "That traitor thought he'd live longer than I would.";
@@ -1298,7 +1298,7 @@ rockrdg1,156,312,3	script	Unmoving Freight Train#	4_ENERGY_RED,{
 		npctalk "Buffaloes!", "Cactus Gunslinger#revt06", bc_self;
 		npctalk "Buffaloes!", "Cactus Gunslinger#revt07", bc_self;
 		sleep2 2000;
-		npctalk "*Chuckle*", "Wyatt Warp#revt03", bc_self;
+		npctalk "*輕笑*", "Wyatt Warp#revt03", bc_self;
 		npctalk "Everything went just as we planned!", "Ivoka Skudi#revt02", bc_self;
 		sleep2 2000;
 		npctalk "You goddamn Cacti! You were disguised as the plants!", "Johnny James#revt04", bc_self;
@@ -2349,7 +2349,7 @@ rockrdg1,341,133,3	script	Mrs. Cacturon#rrrem01	4_M_CACTUSLADY,{
 			emotion ET_SMILE, getnpcid(0, "Little Lecter#rrrem02");
 			next;
 			mes "[Mrs. Cacturon]";
-			mes "Sigh...";
+			mes "唉……";
 			emotion ET_SCRATCH;
 			next;
 			mes "[" + .@player_name$ + "]";
@@ -2819,7 +2819,7 @@ rockrdg1,305,200,3	script	Cactus Girl#rremef02	4_ENERGY_RED,15,15,{
 		next;
 		mes "[Cactus Girl]";
 		mes "...";
-		mes "...I see.";
+		mes "……我明白了。";
 		mes "You said Mrs. Cacturon has lost it. Who are you?";
 		next;
 		mes "[" + .@player_name$ + "]";
@@ -3130,7 +3130,7 @@ rockrdg1,262,90,7	script	Crouched Horse#rr	4_M_CACTUSMAN1,{
 }
 
 // Collect / hunt quests
-harboro1,231,254,3	script	Exotic Merchant	1_M_MERCHANT,{
+harboro1,231,254,3	script	異國商人::Exotic Merchant	1_M_MERCHANT,{
 	disable_items;
 	if (checkweight(1201,1) == 0) {
 		mes "我身上帶的道具種類太多了，應該先把包包減輕一下。";
@@ -3145,7 +3145,7 @@ harboro1,231,254,3	script	Exotic Merchant	1_M_MERCHANT,{
 		break;
 	case 0:
 	case 1:
-		mes "[Exotic Merchant]";
+		mes "[異國商人]";
 		mes "Oh, I close today. Come back tomorrow.";
 		close;
 	case 2:
@@ -3153,40 +3153,40 @@ harboro1,231,254,3	script	Exotic Merchant	1_M_MERCHANT,{
 		break;
 	}
 	if (isbegin_quest(12410) == 0) {
-		mes "[Exotic Merchant]";
+		mes "[異國商人]";
 		mes "很高興見到你。";
 		mes "I'm Abraham Iven Hudin. I'm originally from different country.";
 		next;
-		mes "[Exotic Merchant]";
+		mes "[異國商人]";
 		mes "So you have things that I might have interest in on buying?";
 		next;
 		if (select( "What kinds of things?", "I'm not selling anything!" ) == 2) {
-			mes "[Exotic Merchant]";
+			mes "[異國商人]";
 			mes "Whoa, whoa! Adventurer is violent. I not do business with barbarians.";
 			close;
 		}
-		mes "[Exotic Merchant]";
+		mes "[異國商人]";
 		mes "I travels the world and bought valuable things. This time I collecting specialty products of this new continent.";
 		next;
 		select("(I can barely understand his English.)");
-		mes "[Exotic Merchant]";
+		mes "[異國商人]";
 		mes "Mm? What have you said?";
 		next;
 		if (select( "Nothing. Go on.", "I said I can't understand what you're saying." ) == 2) {
-			mes "[Exotic Merchant]";
+			mes "[異國商人]";
 			mes "Adventurer have a cold heart!";
 			close;
 		}
-		mes "[Exotic Merchant]";
+		mes "[異國商人]";
 		mes "Anyway, I looking for things that can only find in this place. If you found them, gimme them.";
 		next;
-		mes "[Exotic Merchant]";
+		mes "[異國商人]";
 		mes "I'll pay you good. You welcomes all the time.";
 		setquest 12410;
 		completequest 12410;
 		close;
 	}
-	mes "[Exotic Merchant]";
+	mes "[異國商人]";
 	mes "What have you brought my today?";
 	next;
 	setarray .@item_id[0],
@@ -3211,12 +3211,12 @@ harboro1,231,254,3	script	Exotic Merchant	1_M_MERCHANT,{
 
 	.@s = select( "Cancel:" + .@menu$ ) - 2;
 	if (.@s == -1) {
-		mes "[Exotic Merchant]";
+		mes "[異國商人]";
 		mes "Mm, do you want your things back?";
 		close;
 	}
 	if (countitem(.@item_id[.@s]) < 5) {
-		mes "[Exotic Merchant]";
+		mes "[異國商人]";
 		mes "Mm? Where are they? The things you said will give me.";
 		close;
 	}
@@ -3224,7 +3224,7 @@ harboro1,231,254,3	script	Exotic Merchant	1_M_MERCHANT,{
 	getitem 25250,2;// Coin_Of_Rr
 	getexp 20000,18000;
 	setquest 12411;// Come Back Tomorrow
-	mes "[Exotic Merchant]";
+	mes "[異國商人]";
 	mes "It good business. These I didn't see anywhere else. I like them very much!";
 	close;
 }
@@ -6255,7 +6255,7 @@ harboro1,231,251,4	script	Merchant's Chest	4_TREASURE_BOX,{
 }
 
 harboro1,229,256,7	script	Charlotte	4_DST_CAMEL,{
-	npctalk "*Shriek*";
+	npctalk "*尖叫*";
 	sleep 1000;
 	npctalk "Exotic Merchant: What's wrong, Charlotte?", "Exotic Merchant";
 	end;

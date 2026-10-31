@@ -19,9 +19,9 @@
 ma_fild02,312,317,5	script	衛兵#buwaya_cave::Guard#buwaya_cave	570,{
 	if (BaseLevel < 130) {
 		mes "[衛兵]";
-		mes "People under ^ff0000level 130^000000";
-		mes "cannot enter this place.";
-		mes "This place is dangerous. Please go back.";
+		mes "等級低於 ^ff0000130^000000 的人";
+		mes "無法進入此地。";
+		mes "這裡很危險。請回去吧。";
 		close;
 	}
 
@@ -30,35 +30,35 @@ ma_fild02,312,317,5	script	衛兵#buwaya_cave::Guard#buwaya_cave	570,{
 
 	if (!.@party_id) {
 		mes "[衛兵]";
-		mes "Buwaya is dangerous.";
-		mes "Please come back after you form a";
-		mes "team with other people.";
+		mes "寶箱巨鱷很危險。";
+		mes "請先組成";
+		mes "多人隊伍後再來。";
 		close;
 	}
 	if (is_party_leader() == true) {
 		mes "[衛兵]";
-		mes "This place is dangerous. Please go back.";
-		mes "If you dont have any business here, please go back.";
+		mes "這裡很危險。請回去吧。";
+		mes "如果你在這裡沒有要事，請回去吧。";
 		next;
 		while(1) {
-			switch(select("Why is it so dangerous?:I'm here to hunt down Buwaya.:End conversation.")) {
+			switch(select("為什麼這麼危險？:我是來獵殺寶箱巨鱷的。:結束對話。")) {
 			case 1:
 				mes "[衛兵]";
-				mes "Recently, there has been a case";
-				mes "where villagers have disappeared.";
-				mes "After investigating the tracks, ";
-				mes "we found out the giant monster Buwaya";
-				mes "was responsible.";
+				mes "最近，發生了一樁案件，";
+				mes "村民接連失蹤。";
+				mes "調查了足跡之後， ";
+				mes "我們查出巨大怪物寶箱巨鱷";
+				mes "是罪魁禍首。";
 				next;
 				mes "[衛兵]";
-				mes "Soldiers and mercenaries have been dispatched to ";
-				mes "hunt down Buwaya, but were never";
-				mes "completely successful.";
+				mes "已經派出士兵與傭兵去 ";
+				mes "獵殺寶箱巨鱷，但從未";
+				mes "完全成功過。";
 				next;
 				mes "[衛兵]";
-				mes "Buwaya is still kidnapping";
-				mes "the villagers to this day.";
-				mes "Please gather some people to get rid of Buwaya.";
+				mes "寶箱巨鱷至今仍在綁架";
+				mes "村民。";
+				mes "請集結一些人手，除掉寶箱巨鱷。";
 				next;
 				break;
 			case 2:
@@ -67,9 +67,9 @@ ma_fild02,312,317,5	script	衛兵#buwaya_cave::Guard#buwaya_cave	570,{
 					// fall through
 				} else if (.@playtime == 0 || .@playtime == 1) {
 					mes "[衛兵]";
-					mes "Buwaya is still hiding.";
-					mes "Even if you enter now, Buwaya will not come out. ";
-					mes "Please come back later.";
+					mes "寶箱巨鱷還躲著。";
+					mes "就算現在進去，寶箱巨鱷也不會出來。 ";
+					mes "請稍後再來。";
 					close;
 				} else {
 					erasequest 4229;
@@ -77,38 +77,38 @@ ma_fild02,312,317,5	script	衛兵#buwaya_cave::Guard#buwaya_cave	570,{
 				}
 				if (instance_create(.@md_name$) < 0) {
 					mes "[衛兵]";
-					mes "Party name is... "+getpartyname(.@party_id)+".";
-					mes "Party leader is... "+strcharinfo(0);
-					mes "^0000ff"+.@md_name$+"^000000 cannot be opened now.";
-					mes "Please try a moment later.";
+					mes "隊伍名稱是…… "+getpartyname(.@party_id)+".";
+					mes "隊長是…… "+strcharinfo(0);
+					mes "^0000ff"+.@md_name$+"^000000 現在無法開啟。";
+					mes "請稍後再試。";
 					close;
 				}
 				mes "[衛兵]";
-				mes "I will open up the tunnel to ^0000ff"+.@md_name$+"^000000.";
-				mes "I wish you good luck.";
+				mes "我會把通道打開到 ^0000ff"+.@md_name$+"^000000.";
+				mes "祝你好運。";
 				close;
 			case 3:
 				mes "[衛兵]";
-				mes "This place is dangerous. You cannot enter.";
+				mes "這裡很危險，你不能進入。";
 				close;
 			}
 		}
 	} else {
 		mes "[衛兵]";
-		mes "Let me talk with the party leader.";
-		mes "Please call forth the leader.";
+		mes "讓我跟隊長談談。";
+		mes "請把隊長叫來。";
 		close;
 	}
 }
 
-ma_fild02,315,323,0	script	Cave Entrance#buwaya	45,2,2,{
+ma_fild02,315,323,0	script	洞穴入口#buwaya::Cave Entrance#buwaya	45,2,2,{
 	end;
 OnTouch:
 	if (BaseLevel < 130) {
 		mes "[衛兵]";
-		mes "People under ^ff0000level 130^000000";
-		mes "cannot enter this place.";
-		mes "This place is dangerous. Please go back.";
+		mes "等級低於 ^ff0000130^000000 的人";
+		mes "無法進入此地。";
+		mes "這裡很危險。請回去吧。";
 		close;
 	}
 	set .@playtime, checkquest(4229,PLAYTIME);
@@ -116,40 +116,40 @@ OnTouch:
 		// fall through
 	} else if (.@playtime == 0 || .@playtime == 1) {
 		mes "[衛兵]";
-		mes "Buwaya is still hiding.";
-		mes "Even if you enter now, Buwaya will not come out.";
-		mes "Please come back later.";
+		mes "寶箱巨鱷還躲著。";
+		mes "就算現在進去，寶箱巨鱷也不會出來。";
+		mes "請稍後再來。";
 		close;
 	} else {
 		erasequest 4229;
 		// fall through
 	}
-	switch(select("Enter.:Turn back.")) {
+	switch(select("進入:折返。")) {
 	case 1:
 		switch(instance_enter("Buwaya Cave")) {
 		case IE_OTHER:
 			mes "[衛兵]";
-			mes "Oh, now is not a good time.";
-			mes "Please try again a moment later.";
+			mes "喔，現在不是個好時機。";
+			mes "請稍後再試一次。";
 			close;
 		case IE_NOINSTANCE:
 		case IE_NOMEMBER:
 			mes "[衛兵]";
-			mes "This place is dangerous. Please do not enter.";
+			mes "這裡很危險，請不要進入。";
 			close;
 		case IE_OK:
-			mapannounce "ma_fild02",getpartyname(getcharid(1))+" party's "+strcharinfo(0)+" member began hunting Buwaya in Buwaya Cave.",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+			mapannounce "ma_fild02",getpartyname(getcharid(1))+" 隊伍的 "+strcharinfo(0)+" 成員開始在寶箱巨鱷洞穴獵殺寶箱巨鱷。",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
 			setquest 4229;
 			//warp "1@ma_c",35,57;
 			end;
 		default:
-			mes "- Could not enter due to an unidentified force. -";
+			mes "- 因不明力量而無法進入。 -";
 			close;
 		}
 	case 2:
 		mes "[衛兵]";
-		mes "You must value your life.";
-		mes "It is better to think carefully before you act.";
+		mes "你必須珍惜自己的生命。";
+		mes "行動前最好仔細想清楚。";
 		close;
 	}
 }
@@ -178,26 +178,26 @@ OnTouch:
 	end;
 }
 
-1@ma_c,29,110,5	script	Kidnapped People#1	575,{
-	mes "[Kidnapped Residents]";
-	mes "Buwaya was running around,";
-	mes "and new people got caught.";
-	mes "We will be stuck in here for the rest of our lives.";
+1@ma_c,29,110,5	script	被綁架的人#1::Kidnapped People#1	575,{
+	mes "[被綁架的居民]";
+	mes "寶箱巨鱷四處亂竄，";
+	mes "又有新的人被抓走了。";
+	mes "我們將被困在這裡一輩子了。";
 	next;
-	switch(select("Get me outta here!!:Ca...can't escape?")) {
+	switch(select("快讓我出去！！:逃……逃不掉嗎？")) {
 	case 1:
-		mes "[Kidnapped Residents]";
-		mes "We don't have enough power to destroy it but Buwaya has a weakness.";
-		mes "Look at the wall over there.";
-		mes "If you knock there, Buywaya will feel pain and spit you out.";
+		mes "[被綁架的居民]";
+		mes "我們的力量不足以摧毀它，但寶箱巨鱷有個弱點。";
+		mes "看看那邊的牆壁。";
+		mes "只要敲那裡，寶箱巨鱷就會感到疼痛，把你吐出來。";
 		donpcevent instance_npcname("#box_mob_call")+"::OnEnable";
 		close2;
 		disablenpc instance_npcname("Kidnapped People#1");
 		end;
 	case 2:
-		mes "[Kidnapped People]";
-		mes "Somthing is wrong here...";
-		mes "Have you experienced this before?";
+		mes "[被綁架的人]";
+		mes "這裡有點不對勁……";
+		mes "你以前遇過這種情況嗎？";
 		close;
 	}
 	end;
@@ -210,29 +210,29 @@ OnEnable:
 	end;
 }
 
-1@ma_c,36,110,5	script	Kidnapped People#2	574,{
-	mes "[Kidnapped Residents]";
-	mes "Ahaa! I wish I had a little more power...";
-	mes "I know its weakness...";
+1@ma_c,36,110,5	script	被綁架的人#2::Kidnapped People#2	574,{
+	mes "[被綁架的居民]";
+	mes "啊哈！要是我的力量再強一點就好了……";
+	mes "我知道它的弱點……";
 	next;
-	switch(select("Tell me.:Do you really know?")) {
+	switch(select("告訴我:你真的知道嗎？")) {
 	case 1:
-		mes "[Kidnapped Residents]";
-		mes "Are you sure you can do it...?";
-		mes "Ok, listen carefully,";
-		mes "its weakness is...";
+		mes "[被綁架的居民]";
+		mes "你確定你做得到嗎……？";
+		mes "好，仔細聽好，";
+		mes "它的弱點是……";
 		next;
-		mes "[Kidnapped Residents]";
-		mes "...behind us on the walls.";
+		mes "[被綁架的居民]";
+		mes "……就在我們身後的牆壁上。";
 		sc_start SC_ATKPOTION,60000,45;
 		sc_start SC_MATKPOTION,60000,45;
 		disablenpc instance_npcname("Kidnapped People#2");
 		close;
 	case 2:
-		mes "[Kidnapped Residents]";
+		mes "[被綁架的居民]";
 		mes "什麼？！";
-		mes "Are you ignoring me";
-		mes "because I'm captured in here?";
+		mes "你是無視我嗎";
+		mes "因為我被困在這裡嗎？";
 		close;
 	}
 	end;
@@ -289,7 +289,7 @@ OnInstanceInit:
 	initnpctimer;
 	end;
 OnTimer30000:
-	mapannounce instance_mapname("1@ma_c"),"Buwaya : I will put you in my treasure box!",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@ma_c"),"寶箱巨鱷 : 我要把你放進我的寶箱！",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
 	// Should execute OnTimer33000, but client doesn't render the effect fast enough.
 	for(set .@i,1; .@i<=9; set .@i,.@i+1)
 		donpcevent instance_npcname("#yunobi"+.@i)+"::OnEnable";
@@ -342,19 +342,19 @@ OnInstanceInit:
 	initnpctimer;
 	end;
 OnTimer58000:
-	mapannounce instance_mapname("1@ma_c"),"Buwaya : I had enough with this, let's go till the end!",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@ma_c"),"寶箱巨鱷 : 我受夠了，我們就奮戰到底吧！",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
 	end;
 OnTimer61000:
-	mapannounce instance_mapname("1@ma_c"),"Buwaya : This is!",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@ma_c"),"寶箱巨鱷 : 這就是！",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
 	end;
 OnTimer62000:
-	mapannounce instance_mapname("1@ma_c"),"Buwaya : This is...MY!",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@ma_c"),"寶箱巨鱷 : 這就是……我的！",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
 	end;
 OnTimer63000:
-	mapannounce instance_mapname("1@ma_c"),"Buwaya : This is...MY...Deadly!",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@ma_c"),"寶箱巨鱷 : 這就是……我的……致命的！",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
 	end;
 OnTimer64000:
-	mapannounce instance_mapname("1@ma_c"),"Buwaya : This is...MY...Deadly... ATTACK!",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@ma_c"),"寶箱巨鱷 : 這就是……我的……致命……攻擊！",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
 	end;
 OnTimer65000:
 	set .@label$, instance_npcname("#bunshin")+"::OnMyMobDead";
@@ -365,7 +365,7 @@ OnTimer65000:
 	areamonster .@map$,72,89,82,99,"Buwaya",2332,1,.@label$;
 	end;
 OnTimer66000:
-	mapannounce instance_mapname("1@ma_c"),"Buwaya : Are you scared?",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+	mapannounce instance_mapname("1@ma_c"),"寶箱巨鱷 : 怕了嗎？",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
 	end;
 OnTimer105000:
 	killmonster instance_mapname("1@ma_c"),instance_npcname("#bunshin")+"::OnMyMobDead";
@@ -397,7 +397,7 @@ OnMyMobDead:
 		donpcevent instance_npcname("#bunshin")+"::OnDisable";
 		donpcevent instance_npcname("#exit_mob")+"::OnDisable";
 		donpcevent instance_npcname("#cave_out")+"::OnEnable";
-		mapannounce .@map$,"Guard : You did great work. Please hurry up and escape to the way you came in!",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
+		mapannounce .@map$,"鐵盾 : 你做得很好。請快從你進來的路逃出去！",bc_map,"0x00ff99"; //FW_NORMAL 12 0 0
 	}
 	end;
 }
@@ -436,9 +436,9 @@ OnEnable:
 	enablenpc instance_npcname("#cave_out");
 	end;
 OnTouch:
-	mes "Would like to go out?";
+	mes "要離開嗎？";
 	next;
-	if(select("Yes!:No, I will stay.") == 1)
+	if(select("是！:不，我留下。") == 1)
 		warp "ma_fild02",315,315;
 	close;
 }

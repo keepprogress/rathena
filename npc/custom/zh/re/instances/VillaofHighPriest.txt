@@ -12,47 +12,47 @@ oz_dun01,219,117,5	script(CLOAKED)	Ira#c12_01	4_M_BRZ_JACI,{
 	if (ep18_main == 54) {
 		.@md_name$ = "High Priest's Villa";
 
-		mes "[Ira]";
-		mes "The entrance to the villa? The key is at the entrance.";
-		mes "Some sort of teleportation magic is applied there.";
-		mes "If you're ready, shall I guide you to the villa?";
+		mes "[伊拉]";
+		mes "別墅的入口？鑰匙就在入口處。";
+		mes "那裡施加了某種傳送魔法。";
+		mes "如果你準備好了，要我帶你去別墅嗎？";
 		next;
-		mes "[Ira]";
-		mes "And... We don't know what might happen inside.";
-		mes "If you have companions, I recommend going together.";
+		mes "[伊拉]";
+		mes "而且……我們不知道裡面會發生什麼事。";
+		mes "如果你有同伴，建議一起去。";
 		next;
-		switch( select( "Apply for '" + .@md_name$ + "'.", "Enter '" + .@md_name$ + "'." ) ) {
+		switch( select( "申請進入 '" + .@md_name$ + "'.", "進入 '" + .@md_name$ + "'." ) ) {
 		case 1:
 			if (getcharid(1) == 0 || is_party_leader() == false) {
-				mes "^4d4dff This is a memorial event.";
-				mes "Memorial dungeon requests must be made as a party leader.^000000";
+				mes "^4d4dff 這是一場紀念活動。";
+				mes "紀念副本的申請必須由隊長提出。^000000";
 				close;
 			}
-			mes "[Ira]";
-			mes "Then allow me to escort you.";
+			mes "[伊拉]";
+			mes "那就讓我護送你吧。";
 			if (instance_create(.@md_name$) < 0) {
-				mes "Party: " + getpartyname(getcharid(1)) + "";
-				mes "Leader: " + strcharinfo(0) + "";
-				mes "^0000ff" + .@md_name$ + " ^000000- Unknown error";
+				mes "隊伍: " + getpartyname(getcharid(1)) + "";
+				mes "隊長: " + strcharinfo(0) + "";
+				mes "^0000ff" + .@md_name$ + " ^000000- 未知錯誤";
 				close;
 			}
 			close;
 		case 2:
 			switch( instance_enter(.@md_name$) ) {
 			case IE_OTHER:
-				mes "[Ira]";
+				mes "[伊拉]";
 				mes "^ff0000發生未知的錯誤。^000000";
 				close;
 			case IE_NOINSTANCE:
-				mes "[Ira]";
-				mes "Hm? Could you please check if the party leader has requested entrance to the villa?";
+				mes "[伊拉]";
+				mes "嗯？可以請你確認一下隊長是否已申請進入別墅嗎？";
 				close;
 			case IE_NOMEMBER:
-				mes "[Ira]";
-				mes "^ff0000Only a member of the party can enter the Memorial Dungeon.^000000";
+				mes "[伊拉]";
+				mes "^ff0000只有隊伍成員才能進入紀念副本。^000000";
 				close;
 			case IE_OK:
-				mapannounce "oz_dun01", "" + strcharinfo(0) + " from the " + getpartyname( getcharid(1) ) + "'s party has entered the " + .@md_name$ + ".", bc_map, 0xFF99;
+				mapannounce "oz_dun01", "" + strcharinfo(0) + " 來自 " + getpartyname( getcharid(1) ) + "'的隊伍已進入 " + .@md_name$ + ".", bc_map, 0xFF99;
 				// warp "1@adv",123,17;
 				end;
 			}
@@ -72,8 +72,8 @@ oz_dun01,219,117,5	script(CLOAKED)	Ira#c12_01	4_M_BRZ_JACI,{
 1@adv,123,312,0	warp(DISABLED)	#boss_out	1,1,oz_dun01,220,112
 
 
-1@adv,122,20,5	script	Ira#aira01	4_M_BRZ_JACI,{
-	npctalk "Don't worry about me. I'll stay near the door and leave immediately if it's dangerous.", "Ira#aira01";
+1@adv,122,20,5	script	伊拉#aira01::Ira#aira01	4_M_BRZ_JACI,{
+	npctalk "不用擔心我。我會待在門口附近，如果有危險就立刻離開。", "伊拉#aira01";
 	end;
 
 OnInstanceInit:
@@ -86,10 +86,10 @@ OnInstanceInit:
 	end;
 }
 
-1@adv,125,23,3	script	Miriam#miriam01	EP18_NPC_MIRIAM,{
+1@adv,125,23,3	script	米莉安#miriam01::Miriam#miriam01	EP18_NPC_MIRIAM,{
 	if (is_party_leader() == false) {
-		mes "[Miriam]";
-		mes "Are you all gathered?";
+		mes "[米莉安]";
+		mes "大家都到齊了嗎？";
 		close;
 	}
 	if (ep18_main != 54)
@@ -100,61 +100,61 @@ OnInstanceInit:
 		.@ira$ = instance_npcname("Ira#aira01");
 
 		sleep 2500;
-		npctalk "Ira: Here it is. It should be okay since only users go to the first floor.", .@ira$;
+		npctalk "伊拉: 就是這裡。一樓只有客人會進去，應該沒問題。", .@ira$;
 		sleep 2500;
-		npctalk "Miriam: What about the second floor?";
+		npctalk "米莉安: 那二樓呢？";
 		sleep 2500;
-		npctalk "Ira: Bunch of priests are staying there. I don't know if they're really a priest.", .@ira$;
+		npctalk "伊拉: 一群神官待在那裡。我不知道他們是不是真的神官。", .@ira$;
 		sleep 2500;
-		npctalk "Ira: They seem to be armed.", .@ira$;
+		npctalk "伊拉: 他們似乎都有武裝。", .@ira$;
 		sleep 2500;
-		npctalk "Miriam: Okay. Thanks for the guidance. We'll do the inside search.";
+		npctalk "米莉安: 好的。謝謝你的引導，我們去進行內部搜查。";
 		sleep 2500;
-		npctalk "Ira: Don't worry about me. Be careful, you two.", .@ira$;
+		npctalk "伊拉: 別擔心我。你們兩位小心。", .@ira$;
 		sleep 2500;
-		npctalk "Miriam: Then let's go up carefully.";
+		npctalk "米莉安: 那我們小心地上去吧。";
 		sleep 2500;
-		npctalk "Ira: Find the key to the 2nd floor banquet hall. There must be something beyond that!", .@ira$;
+		npctalk "伊拉: 找到二樓宴會廳的鑰匙吧。那後面一定有什麼！", .@ira$;
 		sleep 2500;
-		npctalk "Miriam: Adventurer, shall we all share our tasks?";
+		npctalk "米莉安: 冒險者，我們要不要分工？";
 		'adv_step = 2;
 		end;
 	}
 	if ('adv_step == 2) {
-		mes "[Miriam]";
-		mes "I think I should check to see if there are other employees and go up to the second floor.";
-		npctalk "Miriam: I think I should check to see if there are other employees and go up to the second floor.", instance_npcname("Miriam#miriam01");
+		mes "[米莉安]";
+		mes "我想我應該去確認還有沒有其他員工，然後上二樓。";
+		npctalk "米莉安: 我想我應該去確認還有沒有其他員工，然後上二樓。", instance_npcname("米莉安#miriam01");
 		cutin "ep18_miriam_01.png",0;
 		next;
-		mes "[Miriam]";
-		mes "I feel a sharp presence beyond the central stairs.";
-		mes "Probably the Heart Hunter who fought in the temple.";
-		npctalk "Miriam: I feel a fierce presence. Probably the Heart Hunter.", instance_npcname("Miriam#miriam01");
+		mes "[米莉安]";
+		mes "我在中央樓梯的另一側感覺到一股銳利的氣息。";
+		mes "大概是在神殿交戰過的邪心獵人。";
+		npctalk "米莉安: 我感覺到一股兇猛的氣息，大概是邪心獵人。", instance_npcname("米莉安#miriam01");
 		cutin "ep18_miriam_03.png",0;
 		next;
-		mes "[Miriam]";
-		mes "I'm worried about the missing piece of Ymir's heart.";
-		mes "If it's about inciting trouble, what happened at the temple is enough.";
-		npctalk "Miriam: I'm worried about the missing Ymir's heart. What happened at the temple is enough.", instance_npcname("Miriam#miriam01");
+		mes "[米莉安]";
+		mes "我很擔心尤彌爾之心缺失的那一塊。";
+		mes "如果是為了挑起事端，神殿發生的那些就已經夠了。";
+		npctalk "米莉安: 我很擔心尤彌爾之心缺失的事，神殿發生的那些就已經夠了。", instance_npcname("米莉安#miriam01");
 		next;
-		mes "[Miriam]";
-		mes "What if my father has other plans...";
-		mes "If you try to go down the wrong path again, I have to stop him.";
-		npctalk "Miriam: If my father has another plan and goes down the wrong path, I have to stop him.", instance_npcname("Miriam#miriam01");
+		mes "[米莉安]";
+		mes "如果我父親還有其他打算呢……";
+		mes "如果他又要走上歧途，我必須阻止他。";
+		npctalk "米莉安: 如果我父親另有打算、走上歧途，我必須阻止他。", instance_npcname("米莉安#miriam01");
 		next;
-		mes "[Miriam]";
-		mes "First, shall we get some information from the villa employees?";
-		mes "I see a male employee over there.";
-		npctalk "Miriam: First, shall we get some information from the remaining employees?", instance_npcname("Miriam#miriam01");
+		mes "[米莉安]";
+		mes "首先，我們要不要先從別墅員工那裡打聽一些消息？";
+		mes "我看到那邊有一位男性員工。";
+		npctalk "米莉安: 首先，我們要不要從剩下的員工那裡打聽消息？", instance_npcname("米莉安#miriam01");
 		cutin "ep18_miriam_02.png",0;
 		next;
-		mes "[Miriam]";
-		mes "I'll go to that employee.";
-		mes "Adventurer, please find another employee and ask him about the mansion.";
-		npctalk "Miriam: I'll go to that employee. Adventurer, please find another employee.", instance_npcname("Miriam#miriam01");
+		mes "[米莉安]";
+		mes "我去找那位員工。";
+		mes "冒險者，請你找另一位員工，問問他關於宅邸的事。";
+		npctalk "米莉安: 我去找那位員工。冒險者，請你找另一位員工。", instance_npcname("米莉安#miriam01");
 		close2;
 		cutin "",255;
-		npctalk "Then I will go to the employee over there.", instance_npcname("Miriam#miriam01");
+		npctalk "那我去那邊的員工那裡。", instance_npcname("米莉安#miriam01");
 		if ('adv_step == 2) {
 			'adv_step = 3;
 			npcwalkto 136,46;
@@ -162,7 +162,7 @@ OnInstanceInit:
 		end;
 	}
 	if ('adv_step == 3) {
-		npctalk "Miriam: Find another employee.";
+		npctalk "米莉安: 去找另一位員工。";
 		end;
 	}
 	if ('adv_step == 4) {
@@ -173,26 +173,26 @@ OnInstanceInit:
 		.@rh01$ = instance_npcname("Heart Hunter#rh01");
 		.@rh02$ = instance_npcname("Heart Hunter#rh02");
 
-		npctalk "Miriam: After all, it must be a Heart Hunter disguised as a priest, right?", instance_npcname("Miriam#miriam01");
+		npctalk "米莉安: 畢竟，那一定是偽裝成神官的邪心獵人，對吧？", instance_npcname("米莉安#miriam01");
 		specialeffect EF_SCREEN_QUAKE;
 		sleep 2000;
 		emotion ET_SURPRISE, getnpcid(0, instance_npcname("Miriam#miriam01"));
 		emotion ET_HUK, getnpcid(0, .@extra02$);
-		mapannounce 'map_adv$, "Crying Voice: Oh my! Why are you like this! Help me!", bc_map, 0xFF99;
+		mapannounce 'map_adv$, "哭喊聲: 天啊！你們怎麼會這樣！救救我！", bc_map, 0xFF99;
 		sleep 1000;
-		npctalk "Miriam: Now there's screaming! What's happening?", instance_npcname("Miriam#miriam01");
+		npctalk "米莉安: 現在有尖叫聲！發生什麼事了？", instance_npcname("米莉安#miriam01");
 		sleep 1000;
-		mapannounce 'map_adv$, "Kyaaaaaaaaaaa-!", bc_map, 0xFF99;
+		mapannounce 'map_adv$, "啊啊啊啊啊啊——！", bc_map, 0xFF99;
 		sleep 1000;
-		npctalk "Miriam: Ira!!", instance_npcname("Miriam#miriam01");
+		npctalk "米莉安: 伊拉！！", instance_npcname("米莉安#miriam01");
 		sleep 2500;
-		npctalk "Miriam: I guess something happened. Let's go to Ira.", instance_npcname("Miriam#miriam01");
+		npctalk "米莉安: 看來發生了什麼事，我們去找伊拉吧。", instance_npcname("米莉安#miriam01");
 		sleep 2500;
-		npctalk "Hans: Miss! Please take me with you!", .@extra02$;
+		npctalk "漢斯: 小姐！請帶我一起走！", .@extra02$;
 		sleep 2500;
-		npctalk "Miriam: Then I will come and see if Ira and the others are safe.", instance_npcname("Miriam#miriam01");
+		npctalk "米莉安: 那我去看看伊拉他們是否平安。", instance_npcname("米莉安#miriam01");
 		sleep 2500;
-		npctalk "Miriam: Adventurer, please enter first. Mr. Hans, let's go together.", instance_npcname("Miriam#miriam01");
+		npctalk "米莉安: 冒險者，請你先進去。漢斯先生，我們一起走吧。", instance_npcname("米莉安#miriam01");
 		sleep 2500;
 		disablenpc .@extra01$;
 		disablenpc .@extra02$;
@@ -200,8 +200,8 @@ OnInstanceInit:
 		enablenpc .@rh01$;
 		enablenpc .@rh02$;
 		sleep 1000;
-		npctalk "Oh, isn't it our old friend?", .@rh01$;
-		npctalk "Thank you for your work on the Wolf Village!", .@rh02$;
+		npctalk "哎呀，這不是我們的老朋友嗎？", .@rh01$;
+		npctalk "感謝你為灰狼村所做的努力！", .@rh02$;
 		sleep 2500;
 		disablenpc .@rh01$;
 		disablenpc .@rh02$;
@@ -211,53 +211,53 @@ OnInstanceInit:
 	}
 }
 
-1@adv,133,43,6	duplicate(dummy_disabled_npc)	Heart Hunter#rh01	EP18_MD_HEARTHUNTER_R
-1@adv,135,41,7	duplicate(dummy_disabled_npc)	Heart Hunter#rh02	EP18_MD_HEARTHUNTER_R
+1@adv,133,43,6	duplicate(dummy_disabled_npc)	邪心獵人#rh01::Heart Hunter#rh01	EP18_MD_HEARTHUNTER_R
+1@adv,135,41,7	duplicate(dummy_disabled_npc)	邪心獵人#rh02::Heart Hunter#rh02	EP18_MD_HEARTHUNTER_R
 
-1@adv,100,24,4	script	Villa Employee#extra01	4_F_SHABBY,{
+1@adv,100,24,4	script	別墅員工#extra01::Villa Employee#extra01	4_F_SHABBY,{
 	if ('adv_step == 3) {
-		mes "[Villa Employee]";
-		mes "This is my first time meeting you. Who are you?";
-		mes "Are you the elder's guest?";
+		mes "[別墅員工]";
+		mes "這是我第一次見到你，你是誰？";
+		mes "你是長老的客人嗎？";
 		next;
-		select( "Where is Amal?" );
-		mes "[Villa Employee]";
-		mes "Wouldn't he be at the chapel?";
-		mes "Whenever you come here, please look for the chapel first...";
+		select( "請問阿馬爾在哪？" );
+		mes "[別墅員工]";
+		mes "他不是在禮拜堂嗎？";
+		mes "每次你來這裡，都請先去找禮拜堂……";
 		next;
-		unittalk getcharid(3), "" + strcharinfo(0) + " : Is there a chapel at the villa?";
-		mes "[Villa Employee]";
-		mes "Yes. He seemed to be a man of faith, so he built a chapel inside the mansion.";
+		unittalk getcharid(3), "" + strcharinfo(0) + " : 別墅裡有禮拜堂嗎？";
+		mes "[別墅員工]";
+		mes "有。他似乎是虔誠的信徒，所以在宅邸裡蓋了一座禮拜堂。";
 		next;
-		select( "What about other people?" );
-		mes "[Villa Employee]";
-		mes "Most were suddenly fired.";
-		mes "I also heard someone tell me to leave a little while ago. Is this a sign of mass layoff!?";
+		select( "其他人呢？" );
+		mes "[別墅員工]";
+		mes "大部分人都突然被解雇了。";
+		mes "我剛才也聽到有人叫我離開。這是大規模裁員的前兆嗎！？";
 		next;
-		mes "[Villa Employee]";
-		mes "The atmosphere was so heavy that I couldn't even ask.";
-		mes "The chapel can be reached by going up the central stairs and past the banquet hall.";
-		mes "Then, go do your business.";
+		mes "[別墅員工]";
+		mes "氣氛太沉重了，我連問都不敢問。";
+		mes "沿中央樓梯上去，經過宴會廳就能到禮拜堂。";
+		mes "那麼，你去辦你的事吧。";
 		if ('adv_step == 3)
 			'adv_step = 4;
 		close;
 	}
-	mes "[Villa Employee]";
-	mes "Sir Amal went to chapel.";
-	mes "Go up the central stairs, pass the banquet hall, and you will reach the chapel.";
+	mes "[別墅員工]";
+	mes "阿馬爾大人去了禮拜堂。";
+	mes "沿中央樓梯上去，經過宴會廳，就會到禮拜堂。";
 	close;
 }
 
-1@adv,138,49,3	script	Villa Employee#extra02	4_M_MIDDLE,{
+1@adv,138,49,3	script	別墅員工#extra02::Villa Employee#extra02	4_M_MIDDLE,{
 	if ('adv_step < 4) {
-		mes "This is the person Miriam decided to investigate. Let's find another one.";
+		mes "這是米莉安決定調查的人，我們去找另一位吧。";
 		close;
 	}
-	npctalk "Hans: The atmosphere of the villa is unusual. All of the attendant priests were armed.", instance_npcname("Villa Employee#extra02");
+	npctalk "漢斯: 別墅的氣氛很不尋常，所有隨從神官都有武裝。", instance_npcname("別墅員工#extra02");
 	end;
 }
 
-1@adv,1,1,5	script	adv_extra_02	-1,{
+1@adv,1,1,5	script	adv_extra_02::adv_extra_02	-1,{
 	end;
 OnStart:
 	.@label$ = instance_npcname("adv_extra_02") + "::OnMobDead";
@@ -280,7 +280,7 @@ OnMobDead:
 1@adv,124,17,7	script(DISABLED)	Miriam#miriam02	EP18_NPC_MIRIAM,{
 	if ('adv_step < 10) {
 		if (is_party_leader() == false || 'adv_step != 7) {
-			npctalk "Miriam: Leave this to me and take care of the Heart Hunter on the 2nd floor.";
+			npctalk "米莉安: 這裡交給我，你去處理二樓的邪心獵人。";
 			end;
 		}
 		'adv_step = 8;
@@ -296,25 +296,25 @@ OnMobDead:
 		enablenpc instance_npcname("Heart Hunter#rh06");
 		enablenpc instance_npcname("Heart Hunter#rh07");
 
-		npctalk "Ha... didn't I clearly tell you to clear everything? Why are there still rats?", instance_npcname("Heart Hunter#rh05");
+		npctalk "哈……我不是明確說過要清掉所有人嗎？怎麼還有老鼠？", instance_npcname("邪心獵人#rh05");
 		sleep2 2500;
-		npctalk "Miriam: Adventurer, I will take care of this.", instance_npcname("Miriam#miriam02");
+		npctalk "米莉安: 冒險者，這個我來處理。", instance_npcname("米莉安#miriam02");
 		sleep2 2500;
-		npctalk "Miriam: Adventurer, please break through the lobby. Let's process it separately.", instance_npcname("Miriam#miriam02");
+		npctalk "米莉安: 冒險者，請你突破大廳，我們分開處理。", instance_npcname("米莉安#miriam02");
 		sleep2 2000;
-		npctalk "You can't just leave like that. Block the stairs!", instance_npcname("Heart Hunter#rh05");
+		npctalk "你們不能就這樣走！堵住樓梯！", instance_npcname("邪心獵人#rh05");
 		unitwalk getnpcid(0,instance_npcname("Heart Hunter#rh03")), 124,40, .@miriam$ + "::OnMove1";
 		unitwalk getnpcid(0,instance_npcname("Heart Hunter#rh07")), 124,41, .@miriam$ + "::OnMove2";
 		sleep2 3000;
-		npctalk "Miriam: Adventurer! Please stop them! I'll take care of this and evacuate everyone!", instance_npcname("Miriam#miriam02");
+		npctalk "米莉安: 冒險者！請攔住他們！我來處理這裡，並疏散所有人！", instance_npcname("米莉安#miriam02");
 		sleep2 1500;
-		npctalk "Are you going alone?", instance_npcname("Heart Hunter#rh05");
+		npctalk "你要一個人去嗎？", instance_npcname("邪心獵人#rh05");
 		sleep2 1500;
-		npctalk "You can't run away!", instance_npcname("Heart Hunter#rh06");
+		npctalk "你們逃不掉的！", instance_npcname("邪心獵人#rh06");
 		sleep2 1000;
-		npctalk "How dare you!", instance_npcname("Heart Hunter#rh04");
+		npctalk "好大的膽子！", instance_npcname("邪心獵人#rh04");
 		sleep2 1500;
-		npctalk "Miriam: Please leave this to me and deal with the Heart Hunter on the second floor.", instance_npcname("Miriam#miriam02");
+		npctalk "米莉安: 這裡交給我，請你處理二樓的邪心獵人。", instance_npcname("米莉安#miriam02");
 		setpcblock PCBLOCK_NPC, false;
 
 		if ('adv_step != 8)
@@ -345,9 +345,9 @@ OnMobDead:
 	if ('adv_step == 11) {
 		'adv_step = 12;
 		setpcblock PCBLOCK_NPC, true;
-		npctalk "Miriam: The door is locked. Shall we split up and search for it?", instance_npcname("Miriam#miriam02");
+		npctalk "米莉安: 門鎖著。我們要不要分頭找找？", instance_npcname("米莉安#miriam02");
 		sleep2 2500;
-		npctalk "Miriam: I'll go to the right hallway. Adventurer, please search the left side.", instance_npcname("Miriam#miriam02");
+		npctalk "米莉安: 我去右側走廊。冒險者，請你搜索左側。", instance_npcname("米莉安#miriam02");
 		setpcblock PCBLOCK_NPC, false;
 		sleep 2500;
 		unitwalk getnpcid(0), 131,97, instance_npcname("Miriam#miriam02") + "::OnRight";
@@ -392,27 +392,27 @@ OnMobDead:
 }
 
 1@adv,119,19,5	script(DISABLED)	Heart Hunter#rh04	EP18_MD_HEARTHUNTER_R,{
-	npctalk "Your courage is imaginary!";
+	npctalk "你的勇氣不過是幻想！";
 	end;
 }
 1@adv,124,21,3	script(DISABLED)	Heart Hunter#rh05	EP18_MD_HEARTHUNTER_R,{
-	npctalk "Are you going to handle it yourself?";
+	npctalk "你打算自己處理嗎？";
 	end;
 }
 1@adv,130,18,3	script(DISABLED)	Heart Hunter#rh06	EP18_MD_HEARTHUNTER_R,{
-	npctalk "You can't escape!";
+	npctalk "你逃不掉！";
 	end;
 }
 
-1@adv,114,14,5	duplicate(dummy_disabled_npc)	Heart Hunter#rh03	EP18_MD_HEARTHUNTER_R,3,5
-1@adv,133,14,3	duplicate(dummy_disabled_npc)	Heart Hunter#rh07	EP18_MD_HEARTHUNTER_R,2,5
+1@adv,114,14,5	duplicate(dummy_disabled_npc)	邪心獵人#rh03::Heart Hunter#rh03	EP18_MD_HEARTHUNTER_R,3,5
+1@adv,133,14,3	duplicate(dummy_disabled_npc)	邪心獵人#rh07::Heart Hunter#rh07	EP18_MD_HEARTHUNTER_R,2,5
 
-1@adv,122,14,7	duplicate(dummy_disabled_npc)	Ira#aira02	4_M_BRZ_JACI
-1@adv,124,14,6	duplicate(dummy_disabled_npc)	Anna#anna01	4_F_SHABBY
+1@adv,122,14,7	duplicate(dummy_disabled_npc)	伊拉#aira02::Ira#aira02	4_M_BRZ_JACI
+1@adv,124,14,6	duplicate(dummy_disabled_npc)	安娜#anna01::Anna#anna01	4_F_SHABBY
 1@adv,126,14,1	duplicate(dummy_disabled_npc)	漢斯#hans01::Hans#hans01	4_M_MIDDLE
 
 
-1@adv,1,1,5	script	adv_key_left	-1,{
+1@adv,1,1,5	script	adv_key_left::adv_key_left	-1,{
 	end;
 OnStart:
 	.@label$ = instance_npcname("adv_key_left") + "::OnMobDead";
@@ -447,15 +447,15 @@ OnMobDead:
 		end;
 	'adv_step = 14;
 	disablenpc instance_npcname("Silver Key#key01");
-	unittalk getcharid(3), "" + strcharinfo(0) + " : I found a small silver key.";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 我找到一把小型白銀鑰匙。";
 	end;
 }
 
-1@adv,63,142,0	script	Locked Door#key01	4_POINT_WHITE,{
+1@adv,63,142,0	script	上鎖的門#key01::Locked Door#key01	4_POINT_WHITE,{
 	if ('adv_step < 14) {
-		mes "Firmly Locked Door.";
-		mes "There is a Silver Key hole.";
-		unittalk getcharid(3), "" + strcharinfo(0) + " : I need a Silver Key.";
+		mes "牢牢上鎖的門。";
+		mes "這裡有白銀鑰匙的鑰匙孔。";
+		unittalk getcharid(3), "" + strcharinfo(0) + " : 我需要白銀鑰匙。";
 		close;
 	}
 	progressbar "4D4DFF",2;
@@ -469,7 +469,7 @@ OnMobDead:
 	end;
 }
 
-1@adv,1,1,5	script	adv_get_key02	-1,{
+1@adv,1,1,5	script	adv_get_key02::adv_get_key02	-1,{
 	end;
 OnStart:
 	.@label$ = instance_npcname("adv_get_key02") + "::OnMobDead";
@@ -495,7 +495,7 @@ OnMobDead:
 		end;
 	'adv_step = 17;
 	disablenpc instance_npcname("Gold Key#key02");
-	unittalk getcharid(3), "" + strcharinfo(0) + " : I found a small golden key.";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 我找到一把小型黃金鑰匙。";
 	end;
 }
 
@@ -506,10 +506,10 @@ OnMobDead:
 	if ('adv_step < 17)
 		end;
 	if ('adv_step == 17) {
-		mes "[Miriam]";
-		mes "You found the key.";
-		mes "It appears that several of the Villa's employees are trapped inside.";
-		mes "I'll be on guard, so go in.";
+		mes "[米莉安]";
+		mes "你找到了鑰匙。";
+		mes "似乎有幾名別墅員工被困在裡面。";
+		mes "我會在門口戒備，你進去吧。";
 		cutin "ep18_miriam_01.png",0;
 		close2;
 		cutin "",255;
@@ -524,20 +524,20 @@ OnMobDead:
 		end;
 	}
 	if ('adv_step == 18) {
-		npctalk "Miriam: I will guard the entrance, so please search the inside of the room.";
+		npctalk "米莉安: 我來守住入口，請你搜查房間裡面。";
 		end;
 	}
 	if ('adv_step == 19) {
-		mes "[Miriam]";
-		mes "If we leave it like this, all of these people will be disposed.";
-		mes "We need to evacuate them before more Heart Hunters come in.";
+		mes "[米莉安]";
+		mes "如果就這樣放著，這些人都會被處理掉。";
+		mes "在更多邪心獵人進來之前，我們必須疏散他們。";
 		cutin "ep18_miriam_01.png",0;
 		next;
-		mes "[Miriam]";
-		mes "Then, I will leave the investigation of the chapel to the adventurer.";
-		mes "I will take those people and evacuate them.";
+		mes "[米莉安]";
+		mes "那麼，禮拜堂的調查就交給冒險者你了。";
+		mes "我會帶那些人去疏散。";
 		mes "麻煩你了。";
-		npctalk "Miriam: People inside. I will escort you. Let's go out.", instance_npcname("Miriam#miriam03");
+		npctalk "米莉安: 裡面的人們，我會護送你們，我們出去吧。", instance_npcname("米莉安#miriam03");
 		close2;
 		cutin "",255;
 		disablenpc instance_npcname("Miriam#miriam03");
@@ -547,55 +547,55 @@ OnMobDead:
 }
 
 1@adv,202,145,3	script(DISABLED)	Villa Employee#ex21	4_F_SHABBY,{
-	npctalk "Villa Employee: Please let me out of here...", instance_npcname("Villa Employee#ex21");
+	npctalk "別墅員工: 請讓我離開這裡……", instance_npcname("別墅員工#ex21");
 	end;
 }
 
 1@adv,204,143,3	script(DISABLED)	Villa Employee#ex22	4_M_RACHMAN2,{
 	if ('adv_step == 18) {
-		mes "[Villa Employee]";
-		mes "You're going to dispose the evidence huh! Murderer!";
+		mes "[別墅員工]";
+		mes "你們打算銷毀證據是吧！殺人犯！";
 		mes "啥？";
 		next;
-		mes "[Villa Employee]";
-		mes "You! You're here to save us, right?";
-		mes "The voice I heard outside was Miriam, right?";
+		mes "[別墅員工]";
+		mes "你！你是來救我們的，對吧？";
+		mes "我在外面聽到的聲音是米莉安，對吧？";
 		next;
-		mes "[Villa Employee]";
-		mes "Investigate the chapel! Something definitely suspicious here!";
-		mes "What? Is the banquet hall closed?";
+		mes "[別墅員工]";
+		mes "去調查禮拜堂！那裡一定有可疑之處！";
+		mes "什麼？宴會廳關了嗎？";
 		next;
-		mes "[Villa Employee]";
-		mes "Here's the key to the side door.";
-		mes "You can leave this room and open the door right in front of you.";
-		mes "I have a spare key because this is the door I usually use to deliver food.";
+		mes "[別墅員工]";
+		mes "這是側門的鑰匙。";
+		mes "你可以離開這個房間，打開正前方的門。";
+		mes "我有備用鑰匙，因為這是我平常送餐用的門。";
 		next;
-		mes "[Villa Employee]";
-		mes "And please save us.";
-		mes "We are not guilty of anything.";
+		mes "[別墅員工]";
+		mes "也請救救我們。";
+		mes "我們什麼罪都沒有犯。";
 		next;
-		mes "You got a ^4d4dffSpare Key^000000.";
+		mes "你取得了^4d4dff備用鑰匙^000000。";
 		if ('adv_step == 18)
 			'adv_step = 19;
 		close;
 	}
-	npctalk "Villa Employee: You can open the door with the spare key.", instance_npcname("Villa Employee#ex22");
+	npctalk "別墅員工: 你可以用備用鑰匙把門打開。", instance_npcname("別墅員工#ex22");
 	end;
 }
 
 1@adv,210,140,6	script(DISABLED)	Villa Employee#ex23	4_M_RACHMAN1,{
-	npctalk "Villa Employee: Are we really going to die?", instance_npcname("Villa Employee#ex23");
+	npctalk "別墅員工: 我們真的會死嗎？", instance_npcname("別墅員工#ex23");
 	end;
 }
 
-1@adv,173,142,0	script	Locked Door#key03	4_POINT_YELLOW,{
+1@adv,173,142,0	script	上鎖的門#key03::Locked Door#key03	4_POINT_YELLOW,{
 	if ('adv_step < 19) {
-		mes "Firmly Locked Door.";
-		mes "There is a small key hole.";
-		unittalk getcharid(3), "" + strcharinfo(0) + " : I need a key.";
+		mes "牢牢上鎖的門。";
+		mes "這裡有一個小鑰匙孔。";
+		unittalk getcharid(3), "" + strcharinfo(0) + " : 我需要鑰匙。";
 		close;
 	}
-	mes "I used a spare key.";
+	mes "我用了備用鑰匙。";
 	progressbar "4D4DFF",2;
 	if ('adv_step != 19)
 		close;
@@ -607,7 +607,7 @@ OnMobDead:
 	close;
 }
 
-1@adv,1,1,5	script	adv_center	-1,{
+1@adv,1,1,5	script	adv_center::adv_center	-1,{
 	end;
 OnStart:
 	.@label$ = instance_npcname("adv_center") + "::OnMobDead";
@@ -632,12 +632,12 @@ OnMobDead:
 	end;
 }
 
-1@adv,124,210,0	script	Ornate Door#door01	4_POINT_WHITE,{
+1@adv,124,210,0	script	華麗的門#door01::Ornate Door#door01	4_POINT_WHITE,{
 	if ('adv_step < 20)
 		end;
 	if ('adv_step < 22) {
-		mes "The door won't budge.";
-		mes "It feels like a strong magical force is blocking the door.";
+		mes "門紋風不動。";
+		mes "感覺有股強大的魔法力量封住了這扇門。";
 		close;
 	}
 	warp 'map_adv$,124,217;
@@ -647,7 +647,7 @@ OnMobDead:
 // custom coordinates
 1@adv,124,213,0	warp	#garden_out	1,1,1@adv,124,206
 
-1@adv,115,208,0	script	Brilliant Article#Knight_left	4_POINT_WHITE,{
+1@adv,115,208,0	script	閃耀的物品#Knight_left::Brilliant Article#Knight_left	4_POINT_WHITE,{
 	if ('adv_step < 20)
 		end;
 	specialeffect EF_BLUELINE;
@@ -655,7 +655,7 @@ OnMobDead:
 	if ('adv_step != 21)
 		end;
 	if ('Knight_left == 1)
-		npctalk "The magic of the splendid knight has already disappeared.";
+		npctalk "那位英勇騎士的魔法早已消失。";
 	else {
 		'Knight_left = 1;
 		if ('Knight_left == 1 && 'Knight_righ == 1) {
@@ -678,7 +678,7 @@ OnMobDead:
 	if ('adv_step != 21)
 		end;
 	if ('Knight_righ == 1)
-		npctalk "The magic of the splendid knight has already disappeared.";
+		npctalk "那位英勇騎士的魔法早已消失。";
 	else {
 		'Knight_righ = 1;
 		if ('Knight_left == 1 && 'Knight_righ == 1) {
@@ -698,10 +698,10 @@ OnMobDead:
 1@adv,159,221,3	script(DISABLED)	#flower01	4_POINT_WHITE,{
 	if ('adv_step < 22)
 		end;
-	mes "There is a flower-shaped device.";
+	mes "這裡有一個花朵形狀的裝置。";
 	next;
-	if (select( "Use it.", "Leave it." ) == 2) {
-		unittalk getcharid(3), "" + strcharinfo(0) + " : Let's find another device.";
+	if (select( "使用它。", "放著不管。" ) == 2) {
+		unittalk getcharid(3), "" + strcharinfo(0) + " : 我們去找另一個裝置吧。";
 		end;
 	}
 	progressbar "4D4DFF",5;
@@ -725,12 +725,12 @@ OnMobDead:
 1@adv,89,225,3	duplicate(#flower01)	#flower03	4_POINT_WHITE
 1@adv,88,244,3	duplicate(#flower01)	#flower04	4_POINT_WHITE
 
-1@adv,124,267,3	script	Elegant Door#door02	4_POINT_WHITE,{
+1@adv,124,267,3	script	典雅的門#door02::Elegant Door#door02	4_POINT_WHITE,{
 	if ('adv_step < 22)
 		end;
 	if ('adv_step == 22) {
-		mes "There is a door with an elegant ^4d4dffLily^000000 engraved on it.";
-		mes "I feel an unknown magical power.";
+		mes "門上刻有優雅的^4d4dff百合^000000花紋。";
+		mes "我感覺到一股未知的魔法力量。";
 		close;
 	}
 	// (23 or more)
@@ -743,60 +743,60 @@ OnMobDead:
 	if ('adv_step != 23)
 		end;
 	if (is_party_leader() == false) {
-		mes "[Schulang]";
-		mes "adventurer... didn't you come alone?";
-		mes "Who is your boss?";
+		mes "[舒朗]";
+		mes "冒險者……你不是一個人來的吧？";
+		mes "你的老闆是誰？";
 		close;
 	}
-	mes "[Schulang]";
-	mes "Coming this far is not normal.";
-	mes "He's a talent you don't want to miss.";
-	mes "How about joining hands with us?";
+	mes "[舒朗]";
+	mes "能走到這裡可不尋常。";
+	mes "他是你不會想錯過的人才。";
+	mes "要不要跟我們合作？";
 	cutin "ep18_shulang.png",2;
 	next;
-	switch( select( "Nonsense.", "What's in it for me?" ) ) {
+	switch( select( "胡說八道。", "我能得到什麼好處？" ) ) {
 	case 1:
-		unittalk getcharid(3), "" + strcharinfo(0) + " : Nonsense.";
-		mes "[Schulang]";
+		unittalk getcharid(3), "" + strcharinfo(0) + " : 胡說八道。";
+		mes "[舒朗]";
 		mes "我知道了。";
-		mes "I didn't think you were this fool.";
+		mes "沒想到你是這麼愚蠢的人。";
 		next;
 		break;
 	case 2:
-		unittalk getcharid(3), "" + strcharinfo(0) + " : What's in it for me?";
+		unittalk getcharid(3), "" + strcharinfo(0) + " : 我能得到什麼好處？";
 		break;
 	}
-	mes "[Schulang]";
-	mes "Adventurers always seek strength.";
-	mes "The strength you want, we can give it to you.";
+	mes "[舒朗]";
+	mes "冒險者總是追求力量。";
+	mes "你想要的力量，我們能給你。";
 	next;
-	select( "Why are you offering me that?" );
-	mes "[Schulang]";
-	mes "I think I can communicate better than that stubborn guy.";
+	select( "你為什麼要給我這些？" );
+	mes "[舒朗]";
+	mes "我覺得跟你溝通比跟那個頑固的傢伙好多了。";
 	next;
-	select( "If you're a stubborn guy, what do you mean?" );
-	mes "[Schulang]";
-	mes "It was that kind of name. A talent who can become stronger if he just changes his old-fashioned personality.";
-	mes "Unfortunately, the opportunity has passed.";
+	select( "你說的那個頑固的傢伙，是什麼意思？" );
+	mes "[舒朗]";
+	mes "就是那種人。一個只要改掉老古板的性格，就能變得更強的人才。";
+	mes "可惜，機會已經過去了。";
 	next;
-	mes "[Schulang]";
-	mes "From the looks of it, it doesn't look like you'll accept our offer huh.";
-	mes "It can't be helped.";
+	mes "[舒朗]";
+	mes "看你的樣子，似乎不打算接受我們的提議吧。";
+	mes "沒辦法了。";
 	close2;
 	cutin "",255;
 	if ('adv_step != 23)
 		end;
 	'adv_step = 24;
-	npctalk "Schulang: You can no longer enter.", instance_npcname("Schulang#shulang01");
+	npctalk "舒朗: 你已經不能再進去了。", instance_npcname("舒朗#shulang01");
 	sleep 2500;
-	npctalk "Schulang: You must die here for the greater good.", instance_npcname("Schulang#shulang01");
+	npctalk "舒朗: 為了更大的利益，你必須死在這裡。", instance_npcname("舒朗#shulang01");
 	sleep 2500;
 	disablenpc instance_npcname("Schulang#shulang01");
 	donpcevent instance_npcname("adv_middle_boss") + "::OnStart";
 	end;
 }
 
-1@adv,1,1,5	script	adv_middle_boss	-1,{
+1@adv,1,1,5	script	adv_middle_boss::adv_middle_boss	-1,{
 	end;
 OnStart:
 	if ('adv_step != 24)
@@ -818,14 +818,14 @@ OnMobDead:
 	end;
 }
 
-1@adv,123,355,5	duplicate(dummy_disabled_npc)	Miriam#miriam04	EP18_NPC_MIRIAM
+1@adv,123,355,5	duplicate(dummy_disabled_npc)	米莉安#miriam04::Miriam#miriam04	EP18_NPC_MIRIAM
 
-1@adv,124,357,3	duplicate(dummy_cloaked_npc)	Twisted God#demigod	4_EP18_DEMIFREYA
-1@adv,122,351,3	duplicate(dummy_cloaked_npc)	Schulang#shulang02	4_EP18_SHULANG
+1@adv,124,357,3	duplicate(dummy_cloaked_npc)	扭曲之神#demigod::Twisted God#demigod	4_EP18_DEMIFREYA
+1@adv,122,351,3	duplicate(dummy_cloaked_npc)	舒朗#shulang02::Schulang#shulang02	4_EP18_SHULANG
 
 // Boss room 1
 1@adv,127,356,3	script(DISABLED)	Illusion Bagot#bagot01	4_EP18_BAGOT,{
-	npctalk "It's fun.";
+	npctalk "很有趣。";
 	end;
 }
 
@@ -833,9 +833,9 @@ OnMobDead:
 	if ('adv_step != 25)
 		end;
 	if (is_party_leader() == false) {
-		mes "[Youth]";
-		mes "Do not touch me! The blasphemy!";
-		npctalk "Youth: Don't touch me! Profane things!";
+		mes "[青年]";
+		mes "不准碰我！瀆神之徒！";
+		npctalk "青年: 別碰我！褻瀆的東西！";
 		close;
 	}
 	.@bagot01$ = instance_npcname("Illusion Bagot#bagot01");
@@ -843,38 +843,38 @@ OnMobDead:
 	.@shulang02$ = instance_npcname("Schulang#shulang02");
 	.@miriam04$ = instance_npcname("Miriam#miriam04");
 
-	mes "[Amal]";
-	mes "These abominable heretics somehow managed to come this far.";
-	mes "But it doesn't matter.";
-	mes "You will soon kneel before the Supreme Divinity.";
-	npctalk "Amal: These abominable heretics somehow managed to come this far. But you will soon kneel before the Supreme Divinity.";
+	mes "[阿馬爾]";
+	mes "這些可憎的異端者居然能走到這裡。";
+	mes "但這無關緊要。";
+	mes "你們很快就會跪倒在至高神明面前。";
+	npctalk "阿馬爾: 這些可憎的異端者居然能走到這裡。但你們很快就會跪倒在至高神明面前。";
 	next;
-	mes "[Amal]";
-	mes "I will show miracles to the arrogant servants of Odin.";
-	mes "Bagot, please continue with the ritual.";
-	npctalk "Amal: I will show miracles to the arrogant servants of Odin. Bagot, please continue with the ritual.";
+	mes "[阿馬爾]";
+	mes "我要向傲慢的奧丁信徒展示奇蹟。";
+	mes "巴戈特，請繼續進行儀式。";
+	npctalk "阿馬爾: 我要向傲慢的奧丁信徒展示奇蹟。巴戈特，請繼續進行儀式。";
 	next;
-	mes "[Amal]";
-	mes "They will personally witness Freyja's miracles.";
-	mes "Bow down at the feet of God and be reborn as a servant of God!";
-	npctalk "Amal: They will personally witness Freyja's miracles. Bow down and be reborn as a servant of God!";
+	mes "[阿馬爾]";
+	mes "他們將親眼見證芙蕾雅的奇蹟。";
+	mes "跪伏在神的腳下，重生為神的僕人吧！";
+	npctalk "阿馬爾: 他們將親眼見證芙蕾雅的奇蹟。跪下，重生為神的僕人吧！";
 	next;
 	cutin "ep18_bagot_01.png",2;
-	mes "[Bagot]";
-	mes "Wow... the way you talk.. such inspiration. Anyway,";
-	mes "I made a promise, so I will keep it. Do you understand?";
-	npctalk "Bagot: Wow... the way you talk.. such inspiration. Anyway, I made a promise, so I will keep it.", .@bagot01$;
+	mes "[巴戈特]";
+	mes "哇……你說話的方式……真令人振奮。總之，";
+	mes "我既然答應了，就會遵守。你明白嗎？";
+	npctalk "巴戈特: 哇……你說話的方式……真令人振奮。總之，我既然答應了，就會遵守。", .@bagot01$;
 	next;
 	cutin "ep18_bagot_03.png",2;
-	mes "[Bagot]";
-	mes "First of all, are you THE adventurer?";
-	mes "Would you like to take a look at my work?";
-	mes "You too can experience the feeling of taking beautifully crafted pottery out of the kiln.";
-	npctalk "Bagot: Are you THE adventurer? Would you like to take a look at my work?", .@bagot01$;
+	mes "[巴戈特]";
+	mes "首先，您就是那位冒險者嗎？";
+	mes "您想看看我的作品嗎？";
+	mes "您也能體驗從窯中取出精美陶器的感覺。";
+	npctalk "巴戈特: 您就是那位冒險者嗎？您想看看我的作品嗎？", .@bagot01$;
 	close2;
 
 	setpcblock PCBLOCK_NPC, true;
-	npctalk "Bagot: It feels great to be able to check the results of the experiment right away.", .@bagot01$;
+	npctalk "巴戈特: 能立刻確認實驗的結果，真是太棒了。", .@bagot01$;
 	specialeffect EF_DQ9_CHARGE3, AREA, .@demigod$;
 	sleep2 500;
 	specialeffect EF_SCREEN_QUAKE, AREA, .@demigod$;
@@ -884,67 +884,67 @@ OnMobDead:
 	cloakoffnpc .@demigod$;	// cloakoffnpc to display effect on rAthena
 	setpcblock PCBLOCK_NPC, false;
 
-	mes "[Bagot]";
-	mes "Ta-da~ The essence of science and magic is right here!";
-	mes "I will descend a being in the form of a god!";
-	npctalk "Bagot: Ta-da~ The essence of science and magic is right here!", .@bagot01$;
+	mes "[巴戈特]";
+	mes "看哪~ 科學與魔法的精髓就在這裡！";
+	mes "我要讓神之形態的存在降臨！";
+	npctalk "巴戈特: 看哪~ 科學與魔法的精髓就在這裡！", .@bagot01$;
 	next;
-	mes "[Bagot]";
-	mes "Being a vessel for God to descend on is no problem for this bar!";
-	npctalk "Bagot: Being a vessel for God to descend on is no problem for this bar!", .@bagot01$;
+	mes "[巴戈特]";
+	mes "要成為神降臨的容器，對這具身體來說完全沒問題！";
+	npctalk "巴戈特: 要成為神降臨的容器，對這具身體來說完全沒問題！", .@bagot01$;
 	next;
 	cutin "ep18_demifreya.png",1;
-	mes "[A Being Called God]";
+	mes "[名為神的存在]";
 	mes "....";
-	npctalk "A Being Called God: ....", .@demigod$;
+	npctalk "名為神的存在: ....", .@demigod$;
 	next;
-	mes "[Amal]";
-	mes "Oh.. .Oooh...! Beautiful Freyja... ! Are you my God?";
-	npctalk "Amal: Oh.. .Oooh...! Beautiful Freyja... ! Are you my God?";
+	mes "[阿馬爾]";
+	mes "噢……喔喔！美麗的芙蕾雅……！您是我的神嗎？";
+	npctalk "阿瑪爾: 噢……喔喔！美麗的芙蕾雅……！您是我的神嗎？";
 	next;
-	mes "^4d4dffThe so-called divine being looks like a grown-up version of the Pope.^000000";
-	mes "^4d4dffA vessel for the goddess Freyja to descend to this world. Its essential purpose.^000000";
+	mes "^4d4dff所謂的神聖存在，看起來就像是長大版的教皇。^000000";
+	mes "^4d4dff這是讓女神芙蕾雅降臨此世的容器，這就是它存在的根本目的。^000000";
 	next;
-	select( "Could it be the Pope?!" );
-	unittalk getcharid(3), "" + strcharinfo(0) + " : Could it be the Pope?!";
+	select( "難道是教皇嗎？！" );
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 難道是教皇嗎？！";
 	cutin "ep18_bagot_02.png",2;
-	mes "[Bagot]";
-	mes "What kind of sound is that?";
-	mes "No matter how bad Bagot was, he wasn't so mean that he would mess with the Pope!";
-	npctalk "Bagot: What kind of sound is that?", .@bagot01$;
+	mes "[巴戈特]";
+	mes "那是什麼聲音？";
+	mes "不管巴戈特再怎麼糟糕，也不至於敢捉弄教皇吧！";
+	npctalk "巴戈特: 那是什麼聲音？", .@bagot01$;
 	next;
 	cutin "ep18_bagot_03.png",2;
-	mes "[Bagot]";
-	mes "How rude are you to my masterpiece?!";
-	mes "Are you afraid of my ability to even create a vessel for God to descend on?";
-	npctalk "Bagot: Are you afraid of my ability to even create a vessel for God to descend on?", .@bagot01$;
+	mes "[巴戈特]";
+	mes "你怎能對我的傑作這麼無禮？！";
+	mes "你是害怕我竟能製造出神降臨的容器嗎？";
+	npctalk "巴戈特: 你是怕我連神降臨的容器都能做出來嗎？", .@bagot01$;
 	next;
 	cutin "",255;
-	mes "[Amal]";
-	mes "Oh.. .Oooh...! My beautiful Goddess Freyja... !";
-	npctalk "Amal: Oh.. .Oooh...! My beautiful Goddess Freyja... !";
+	mes "[阿馬爾]";
+	mes "噢……喔喔！我美麗的女神芙蕾雅……！";
+	npctalk "阿瑪爾: 噢……喔喔！我美麗的女神芙蕾雅……！";
 	next;
 	cutin "ep18_bagot_02.png",2;
-	mes "[Bagot]";
-	mes "You're not listening to me. Then what is it? Oh~! Yes, a miracle. All you have to do is show me a miracle, right?";
-	npctalk "Bagot: You're not listening to me. Then what is it? Oh~! Yes, a miracle.", .@bagot01$;
+	mes "[巴戈特]";
+	mes "你根本沒在聽我說話。那到底是什麼？喔~！對了，是奇蹟。你只要展現給我看一個奇蹟就行了，對吧？";
+	npctalk "巴戈特: 你根本沒在聽我說話。那到底是什麼？喔~！對了，是奇蹟。", .@bagot01$;
 	next;
 	cutin "ep18_demifreya.png",1;
-	mes "[A Being Called God]";
+	mes "[名為神的存在]";
 	mes ".....";
-	npctalk "A Being Called God: .....", .@demigod$;
+	npctalk "名為神的存在: .....", .@demigod$;
 	next;
-	mes "[A Being Called God]";
+	mes "[名為神的存在]";
 	mes ".....";
 	sleep2 500;
-	mes "We";
-	npctalk "A Being Called God: ..We..", .@demigod$;
+	mes "我們";
+	npctalk "名為神的存在: ..我們..", .@demigod$;
 	sleep2 1000;
 	mes "..a..";
-	npctalk "A Being Called God: ..a..", .@demigod$;
+	npctalk "名為神的存在: ..啊..", .@demigod$;
 	sleep2 1000;
 	mes "k..";
-	npctalk "A Being Called God: k...", .@demigod$;
+	npctalk "名為神的存在: k...", .@demigod$;
 	close2;
 	cutin "",255;
 
@@ -955,93 +955,93 @@ OnMobDead:
 	specialeffect EF_BEGINSPELL_YB, AREA, .@shulang02$;
 	cloakoffnpc .@shulang02$;
 	sleep2 2500;
-	npctalk "Bagot: What? Did you save him? Did you see the priest? What did Baggot say? I said it would be possible.", .@bagot01$;
+	npctalk "巴戈特: 什麼？你救了他嗎？你見到祭司了嗎？巴戈特說了什麼？我早就說過這是可能的吧。", .@bagot01$;
 	sleep2 1500;
 	setpcblock PCBLOCK_NPC, false;
 
 	cutin "ep18_bagot_03.png",2;
-	mes "[Bagot]";
-	mes "Here's the proof. Miracle~";
-	mes "Old priest. Since I summoned your god as promised, I will take the ^4d4dffHeart^000000 with me.";
-	npctalk "Bagot: Since I summoned your god as promised, I will take the Heart with me.", .@bagot01$;
+	mes "[巴戈特]";
+	mes "證據就在這裡。奇蹟~";
+	mes "老祭司。既然我已依約召喚了你們的神，我就要帶走^4d4dff心臟^000000了。";
+	npctalk "巴戈特: 既然我已依約召喚了你們的神，我就要帶走心臟了。", .@bagot01$;
 	next;
-	mes "[Bagot]";
-	mes "I hope you live forever~";
-	npctalk "Bagot: I hope you live forever~", .@bagot01$;
+	mes "[巴戈特]";
+	mes "但願你能永遠活著~";
+	npctalk "巴戈特: 但願你能永遠活著~", .@bagot01$;
 	next;
 	cutin "",255;
-	mes "[Amal]";
-	mes "A lowly servant has witnessed the miracles of God!";
-	npctalk "Amal: A lowly servant has witnessed the miracles of God!";
+	mes "[阿馬爾]";
+	mes "卑微的僕人見證了神的奇蹟！";
+	npctalk "阿瑪爾: 卑微的僕人見證了神的奇蹟！";
 	next;
 	cutin "ep18_bagot_01.png",2;
-	mes "[Bagot]";
-	mes "Are you even listening?";
-	mes "Schulang is a bit of a waste, but that's the end of his role.";
-	npctalk "Bagot: Are you even listening? Schulang is a bit of a waste, but that's the end of his role.", .@bagot01$;
+	mes "[巴戈特]";
+	mes "你到底有沒有在聽？";
+	mes "舒朗算是有點浪費，不過他的角色到此為止了。";
+	npctalk "巴戈特: 你到底有沒有在聽？舒朗算是有點浪費，不過他的角色到此為止了。", .@bagot01$;
 	next;
 	cutin "ep18_bagot_03.png",2;
-	mes "[Bagot]";
-	mes "In the meantime, I kept my promise because I let you live with ^4d4dffstrong taste^000000.";
-	mes "I'll go~ So adventurer? Hello~!";
-	npctalk "Bagot: I have kept my promise since I have been able to live with the 'strong taste' for a while. So adventurer? Hello~!", .@bagot01$;
+	mes "[巴戈特]";
+	mes "在此期間我有遵守承諾，因為我讓你們在^4d4dff濃烈的風味^000000中活了下來。";
+	mes "我走囉~ 所以冒險者？哈囉~！";
+	npctalk "巴戈特: 因為我已能和「濃烈的風味」共存一段時間，所以我有遵守承諾。所以，冒險者？哈囉~！", .@bagot01$;
 	close2;
 	cutin "",255;
 
 	setpcblock PCBLOCK_NPC, true;
 	disablenpc .@bagot01$;
-	npctalk "Amal: Oh... Frejya! Please punish these heretics!";
+	npctalk "阿瑪爾: 噢……芙蕾雅！請懲罰這些異端！";
 	sleep2 2500;
-	npctalk "A Being Called God: kkigigig kikikig kkigigig", .@demigod$;
+	npctalk "名為神的存在: kkigigig kikikig kkigigig", .@demigod$;
 	sleep2 2500;
-	npctalk "Amal: ....? What's wrong my God? Your lowly servant is ready to hear the prophecy...";
+	npctalk "阿瑪爾: ....？我的神啊，您怎麼了？卑微的僕人已準備好聆聽預言……";
 	sleep2 2500;
-	npctalk "A Being Called God: kkigigigi aaaaa!!!!", .@demigod$;
+	npctalk "名為神的存在: kkigigigi aaaaa!!!!", .@demigod$;
 	sleep2 2500;
-	npctalk "Amal: ...I don't feel any divine power...? why...?";
+	npctalk "阿瑪爾: ……我感覺不到任何神力……？為什麼……？";
 	sleep2 2500;
 	specialeffect EF_BEGINSPELL5, AREA, .@demigod$;
 	sleep2 1000;
 	enablenpc .@miriam04$;
 	specialeffect EF_GUARD, AREA, .@miriam04$;
 	sleep2 1000;
-	npctalk "Amal: How can God punish me, a loyal servant of Freyja?";
+	npctalk "阿瑪爾: 神怎麼會懲罰我這個芙蕾雅的忠實僕人？";
 	sleep2 2500;
-	npctalk "Miriam: This is not the time. You must leave it! That's not God!", .@miriam04$;
+	npctalk "米莉安: 現在不是時候。你必須離開那裡！那不是神！", .@miriam04$;
 	sleep2 2500;
-	npctalk "A Being Called God: kikikig kikikig ....", .@demigod$;
+	npctalk "名為神的存在: kikikig kikikig ....", .@demigod$;
 	sleep2 2500;
-	npctalk "Amal: Nonsense! Miriam, get out of the way!";
+	npctalk "阿瑪爾: 胡說八道！米莉安，讓開！";
 	sleep2 2500;
-	npctalk "Miriam: You just almost died. Look straight ahead. Which part of that vile being is God?", .@miriam04$;
+	npctalk "米莉安: 你剛才差點就死了。看清楚前方，那個醜陋的存在，哪一部分是神？", .@miriam04$;
 	sleep2 2500;
-	npctalk "Miriam: It seems like you need to open your eyes. Father.", .@miriam04$;
+	npctalk "米莉安: 看來您需要睜開眼睛，父親。", .@miriam04$;
 	sleep2 2000;
-	npctalk "Amal: This can't be happening! Let go of me, Miriam!";
+	npctalk "阿瑪爾: 這不可能！放開我，米莉安！";
 	sleep2 2000;
-	npctalk "A Being Called God: kkigig...? kkigigi kkyahahahahahahaha!!", .@demigod$;
+	npctalk "名為神的存在: kkigig...？kkigigi kkyahahahahahahaha!!", .@demigod$;
 	sleep2 1000;
 	specialeffect EF_BEGINSPELL5, AREA, .@demigod$;
 	sleep2 700;
 	specialeffect EF_BEGINSPELL_YB, AREA, .@demigod$;
-	npctalk "Miriam: What are you doing!!!!", .@miriam04$;
+	npctalk "米莉安: 你在做什麼！！！！", .@miriam04$;
 	sleep2 800;
 	disablenpc instance_npcname("Yus Amal#jus01");
 	disablenpc .@miriam04$;
 	sleep2 800;
-	npctalk "A Being Called God: kyahahahahahahaha!!", .@demigod$;
+	npctalk "名為神的存在: kyahahahahahahaha!!", .@demigod$;
 	sleep2 1000;
 	setpcblock PCBLOCK_NPC, false;
 
 	specialeffect EF_BEGINSPELL_YB, AREA, .@demigod$;
-	mapannounce 'map_adv$, "The chapel has been sealed off.", bc_map, 0x4D4DFF;
+	mapannounce 'map_adv$, "禮拜堂已被封鎖。", bc_map, 0x4D4DFF;
 	disablenpc .@demigod$;
 	disablenpc .@shulang02$;
 	donpcevent instance_npcname("adv_demigod_boss") + "::OnStart";
 	end;
 }
 
-1@adv,1,1,5	script	adv_demigod_boss	-1,{
+1@adv,1,1,5	script	adv_demigod_boss::adv_demigod_boss	-1,{
 	end;
 OnStart:
 	if ('adv_step != 25)
@@ -1062,7 +1062,7 @@ OnMobDead:
 	if (mobcount('map_adv$, instance_npcname("adv_demigod_boss") + "::OnMobDead") < 1) {
 		'adv_step = 27;
 		killmonster 'map_adv$, instance_npcname("adv_demigod_boss") + "::OnMobDead2";
-		mapannounce 'map_adv$, "Amal's Voice: Oh God--!!!", bc_map, 0xFF0000;
+		mapannounce 'map_adv$, "阿瑪爾的聲音: 噢，神啊――!!!", bc_map, 0xFF0000;
 		enablenpc instance_npcname("#boss_out");
 		enablenpc instance_npcname("Miriam#miriam05");
 		enablenpc instance_npcname("Yus Amal#jus02");
@@ -1078,57 +1078,57 @@ OnMobDead2:
 	if ('adv_step < 27)
 		end;
 	if ('adv_step == 27 && ep18_main == 54) {
-		npctalk "Miriam: Father!", instance_npcname("Miriam#miriam05");
-		mes "[Miriam]";
-		mes "What did he do? It suddenly flew out.";
+		npctalk "米莉安: 父親！", instance_npcname("米莉安#miriam05");
+		mes "[米莉安]";
+		mes "他做了什麼？突然就飛出來了。";
 		mes "你還好嗎？";
 		cutin "ep18_miriam_03.png",0;
 		next;
 		cutin "",255;
-		mes "[Amal]";
-		mes "What have you done to God!!!!!!!!!!";
-		mes "You can't do that!";
-		mes "What have I been doing while waiting for this day...!";
+		mes "[阿馬爾]";
+		mes "你對神做了什麼！！！！！！！！！！";
+		mes "你不能這樣做！";
+		mes "我等待這一天的這段時間，到底都在做什麼……！";
 		next;
 		cutin "ep18_miriam_03.png",0;
-		mes "[Miriam]";
-		mes "Do you still believe that is God?";
-		mes "Are you really saying that?";
+		mes "[米莉安]";
+		mes "你還相信那是神嗎？";
+		mes "你真的這麼說嗎？";
 		next;
-		select( "This Embryo fell out." );
-		mes "[Miriam]";
+		select( "這個艾普理歐掉出來了。" );
+		mes "[米莉安]";
 		mes "的確如此……";
-		mes "It was similar to the Pope's...";
-		mes "If you look at the Embryo that has fallen, it must have been something created by someone named Bagot.";
+		mes "和教皇的很相似……";
+		mes "仔細看掉落的艾普理歐，它一定是名叫巴戈特的人所創造的東西。";
 		next;
-		select( "I'll do the analysis here." );
+		select( "我就在這裡進行分析。" );
 		cutin "",255;
-		mes "[Amal]";
-		mes "Miriam! Catch that insolent fool!";
-		mes "This person deserves divine punishment!";
-		mes "You are a blasphemer!";
+		mes "[阿馬爾]";
+		mes "米莉安！抓住那個無禮的傢伙！";
+		mes "此人理應受到神罰！";
+		mes "你是個瀆神者！";
 		next;
 		cutin "ep18_miriam_03.png",0;
-		mes "[Miriam]";
-		mes "It can't be.";
-		mes "The adventurer came this far to help us.";
+		mes "[米莉安]";
+		mes "不可能。";
+		mes "冒險者為了幫助我們才來到這裡。";
 		next;
-		mes "[Miriam]";
-		mes "It was like that at the temple too.";
-		mes "It looks like they blinded my father too.";
+		mes "[米莉安]";
+		mes "神殿裡也是這樣。";
+		mes "看來他們連我父親也矇騙了。";
 		next;
 		cutin "",255;
-		mes "[Amal]";
-		mes "Are you trying to tell me that I fell for their trick!";
+		mes "[阿馬爾]";
+		mes "你是想告訴我，我中了他們的圈套！";
 		next;
 		cutin "ep18_miriam_03.png",0;
-		mes "[Miriam]";
-		mes "Let's get out of here first.";
-		mes "You can discuss the details after examining the Embryo.";
+		mes "[米莉安]";
+		mes "我們先離開這裡吧。";
+		mes "檢查完艾普理歐之後，再來討論細節吧。";
 		next;
-		mes "[Miriam]";
-		mes "Adventurer, please let me know if the identity of the Twisted God is revealed after the investigation is complete.";
-		mes "I will take care of my father.";
+		mes "[米莉安]";
+		mes "冒險者，調查結束後若查明扭曲之神的真面目，請告訴我。";
+		mes "我會照顧我父親的。";
 		ep18_main = 55;
 		erasequest 18083;
 		setquest 18084;
@@ -1137,12 +1137,12 @@ OnMobDead2:
 		close3;
 	}
 	cutin "ep18_miriam_01.png",0;
-	mes "[Miriam]";
-	mes "I need to take care of my father, so let's get out of here.";
+	mes "[米莉安]";
+	mes "我得照顧我父親，所以我們先離開這裡吧。";
 	close3;
 }
 
 1@adv,119,320,6	script(DISABLED)	Yus Amal#jus02	4_M_RACHOLD,{
-	npctalk "Amal: ...Oh my... It can't be like this...", instance_npcname("Yus Amal#jus02");
+	npctalk "阿瑪爾: ……噢天啊……怎麼會這樣……", instance_npcname("尤斯·阿瑪爾#jus02");
 	end;
 }

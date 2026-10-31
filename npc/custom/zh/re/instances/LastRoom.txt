@@ -13,54 +13,54 @@ un_myst,163,38,5	script	馬克::Mark	4_M_BLUEMAN,{
 	cutin "bu_mark1.bmp",0;
 
 	if (BaseLevel < 150) {
-		mes "It's dangerous here.";
-		mes "It would be better to come back next time when we are stronger.";
+		mes "這裡很危險。";
+		mes "等我們變強之後再來會比較好。";
 		close3;
 	}
-	mes "Unlike the other doors we saw this door has traces of it being blocked from this side.";
+	mes "和我們看過的其他門不同，這扇門有從這一側被堵住的痕跡。";
 	next;
 	mes "[馬克]";
-	mes "Is there something inside?";
+	mes "裡面有什麼東西嗎？";
 	next;
 	switch( checkquest(11379,PLAYTIME) ) {
 	case -1:
 		.@party_id = getcharid(1);
 		if (.@party_id < 1) {
-			mes "...It doesn't feel right here.";
-			mes "It may be dangerous alone so it might be better to form a party.";
+			mes "……這裡感覺不太對勁。";
+			mes "一個人可能很危險，組隊會比較好。";
 			close3;
 		}
 		if (is_party_leader() == true)
 			.@string$ = "Open door.";
-		switch( select( .@string$, "Go in.", "離開。" ) ) {
+		switch( select( .@string$, "進去吧。", "離開。" ) ) {
 		case 1:
 			if (instance_create("Last room") < 1) {
-				mes "Party: " + getpartyname( getcharid(1) ) + "";
-				mes "Leader: " + getpartyleader( getcharid(1) ) + "";
-				mes "^0000ffLast room ^000000- Creation failed";
+				mes "隊伍: " + getpartyname( getcharid(1) ) + "";
+				mes "隊長: " + getpartyleader( getcharid(1) ) + "";
+				mes "^0000ff最後房間 ^000000- 建立失敗";
 				close3;
 			}
 			mes "[馬克]";
-			mes "I'm opening the door.";
-			mes "Go in when the door is completely open.";
+			mes "我要開門了。";
+			mes "等門完全打開再進去。";
 			close3;
 		case 2:
 			switch( instance_enter("Last room") ) {
 			case IE_NOMEMBER:
 				mes "[馬克]";
-				mes "...feel very suspicious!";
-				mes "It's a little dangerous to be alone. It is recommended to team up!";
+				mes "……感覺很可疑！";
+				mes "一個人有點危險，建議組隊！";
 				close3;
 			case IE_NOINSTANCE:
 				mes "[馬克]";
-				mes "The door does not seem to be fully open.";
+				mes "門好像沒有完全打開。";
 				close3;
 			case IE_OTHER:
 				mes "[馬克]";
-				mes "Hey... what is going on?";
+				mes "喂……發生了什麼事？";
 				close3;
 			case IE_OK:
-				mapannounce "un_myst", "" + strcharinfo(0) + " of the party, " + getpartyname(.@party_id) + ", is entering Last room.",bc_map,"0x00FF99";
+				mapannounce "un_myst", "" + strcharinfo(0) + " 隊伍中的 " + getpartyname(.@party_id) + "，正在進入最後房間。",bc_map,"0x00FF99";
 				setquest 11379;// Final Room
 				if (isbegin_quest(11380) == 0)
 					setquest 11380;// Final Room
@@ -75,13 +75,13 @@ un_myst,163,38,5	script	馬克::Mark	4_M_BLUEMAN,{
 	case 1:
 		mes "[馬克]";
 		cutin "bu_mark1.bmp",0;
-		mes "...You look tired.";
-		mes "Since you went there you should take a day to rest.";
+		mes "……你看起來好累。";
+		mes "既然你去過那裡，就該休息一天。";
 		close3;
 	case 2:
 		mes "[馬克]";
 		cutin "bu_mark1.bmp",0;
-		mes "I can't believe you want to enter a place like this again...";
+		mes "真不敢相信你還想再進入這種地方……";
 		erasequest 11379;// Final Room
 		close3;
 	}
@@ -97,7 +97,7 @@ un_myst,163,38,5	script	馬克::Mark	4_M_BLUEMAN,{
 	close3;
 }
 
-1@uns,145,32,5	script	Alph#room1	4_M_BLACKMAN,{
+1@uns,145,32,5	script	阿爾夫#room1::Alph#room1	4_M_BLACKMAN,{
 	mes "[Alph]";
 	mes "There are suspicious traces everywhere.";
 	mes "Some kind of heavy machine seems to have passed...";
@@ -105,7 +105,7 @@ un_myst,163,38,5	script	馬克::Mark	4_M_BLUEMAN,{
 	close3;
 }
 
-1@uns,143,39,5	script	Maggi#room1	4_F_PINKWOMAN,{
+1@uns,143,39,5	script	瑪吉#room1::Maggi#room1	4_F_PINKWOMAN,{
 	mes "[Maggi]";
 	mes "Aahh....";
 	cutin "bu_maggi4.bmp",2;
@@ -113,75 +113,75 @@ un_myst,163,38,5	script	馬克::Mark	4_M_BLUEMAN,{
 }
 */
 
-1@uns,145,37,3	script	Tamarin#room1	4_M_TAMARIN,{
-	mes "[Tamarin]";
-	mes "Verity, are you alright?";
-	mes "You do not look good...";
+1@uns,145,37,3	script	塔瑪林#room1::Tamarin#room1	4_M_TAMARIN,{
+	mes "[塔瑪林]";
+	mes "維瑞蒂，你還好嗎？";
+	mes "你看起來不太好……";
 	cutin "ep143_taang.bmp",2;
 	close3;
 }
 
-1@uns,143,38,5	script	Du#room1	4_M_REDMAN,{
-	mes "[Du]";
-	mes "I have a bad feeling about this...";
+1@uns,143,38,5	script	杜#room1::Du#room1	4_M_REDMAN,{
+	mes "[杜]";
+	mes "我對這件事有種不好的預感……";
 	cutin "bu_du1.bmp",2;
 	close3;
 }
 
-1@uns,144,37,3	script	Verity#room1	4_F_BERRYTEA,{
+1@uns,144,37,3	script	維瑞蒂#room1::Verity#room1	4_F_BERRYTEA,{
 	if ('protocole < 2) {
-		mes "[Verity]";
-		mes "Umph...I suddenly have a feeling that's not good.";
+		mes "[維瑞蒂]";
+		mes "嗯……我突然有種不好的預感。";
 		cutin "EP15_2_brt_6.bmp",2;
 		if (is_party_leader() == false) {
-			mes "I wish to talk with the leader.";
+			mes "我想和隊長談談。";
 			close3;
 		}
-		npctalk "Verity: Umph...I suddenly have a feeling that's not good.";
+		npctalk "維瑞蒂: 嗯……我突然有種不好的預感。";
 		next;
-		mes "[Verity]";
-		mes "Something is splitting my head....Ugh....";
-		npctalk "Verity: Something is splitting my head....Ugh....";
+		mes "[維瑞蒂]";
+		mes "我的頭快裂開了……唔……";
+		npctalk "維瑞蒂: 我的頭快裂開了……唔……";
 		next;
-		mes "[Verity]";
-		mes "....Ugh....";
-		npctalk "Verity: ....Ugh....";
+		mes "[維瑞蒂]";
+		mes "……唔……";
+		npctalk "維瑞蒂: ……唔……";
 		next;
-		mes "[Du]";
-		mes "Sister! Are you alright?!";
+		mes "[杜]";
+		mes "姊姊！你還好嗎？！";
 		cutin "bu_du5.bmp",2;
-		npctalk "Du: Sister! Are you alright?!", instance_npcname("Du#room1");
+		npctalk "杜: 姊姊！你還好嗎？！", instance_npcname("杜#room1");
 		next;
-		mes "[Verity]";
-		mes "....Have to go back....";
+		mes "[維瑞蒂]";
+		mes "……得回去……";
 		cutin "EP15_2_brt_7.bmp",2;
-		npctalk "Verity: ....Have to go back....";
+		npctalk "維瑞蒂: ……得回去……";
 		next;
-		mes "[Tamarin]";
-		mes "Verity, are you alright?";
-		mes "Can you walk?";
+		mes "[塔瑪林]";
+		mes "維瑞蒂，你還好嗎？";
+		mes "你走得動嗎？";
 		cutin "ep143_tahuk.bmp",2;
-		npctalk "Tamarin: Verity, are you alright? Can you walk?", instance_npcname("Tamarin#room1");
+		npctalk "塔瑪林: 維瑞蒂，你還好嗎？走得動嗎？", instance_npcname("塔瑪林#room1");
 		next;
-		mes "[Verity]";
+		mes "[維瑞蒂]";
 		mes "唔……";
 		cutin "EP15_2_brt_6.bmp",2;
-		npctalk "Verity: Ugh...";
+		npctalk "維瑞蒂: 唔……";
 		next;
-		mes "[Du]";
-		mes "" + strcharinfo(0) + "! I think it is better that you go back.";
+		mes "[杜]";
+		mes "" + strcharinfo(0) + "！我想你還是回去比較好。";
 		cutin "bu_du5.bmp",2;
-		npctalk "Du: " + strcharinfo(0) + "! I think it is better that you go back.", instance_npcname("Du#room1");
+		npctalk "杜: " + strcharinfo(0) + "！我想你還是回去比較好。", instance_npcname("杜#room1");
 		next;
-		mes "[Verity]";
-		mes "N...no. I will catch up soon so go on ahead.";
+		mes "[維瑞蒂]";
+		mes "不……不用。我很快就會趕上，你們先走吧。";
 		cutin "EP15_2_brt_4.bmp",2;
-		npctalk "Verity: N...no. I will catch up soon so go on ahead.";
+		npctalk "維瑞蒂: 不……不用。我很快就會趕上，你們先走吧。";
 		next;
-		mes "[Tamarin]";
-		mes "Then I will stay with Verity until she recovers so you can go on ahead.";
+		mes "[塔瑪林]";
+		mes "那我就陪著維瑞蒂，等她恢復，你們先走吧。";
 		cutin "ep143_tahuk.bmp",2;
-		npctalk "Tamarin: Then I will stay with Verity until she recovers so you can go on ahead.";
+		npctalk "塔瑪林: 那我就陪著維瑞蒂，等她恢復，你們先走吧。";
 		if ('protocole == 0) {
 			'protocole = 1;
 			disablenpc instance_npcname("#lrdoor1");
@@ -212,7 +212,7 @@ OnTouch:
 		disablenpc instance_npcname("Verity#room1");
 		// disablenpc instance_npcname("Maggi#room1");
 		// disablenpc instance_npcname("Alph#room1");
-		mapannounce 'map_name$, "-----------------Creak---------------------",bc_map,"0xFF0000";
+		mapannounce 'map_name$, "-----------------嘎吱---------------------",bc_map,"0xFF0000";
 		donpcevent instance_npcname("#lrdoor3") + "::OnStart";
 	}
 	end;
@@ -224,28 +224,28 @@ OnStart:
 	initnpctimer;
 	end;
 OnTimer2000:
-	mapannounce 'map_name$, "-----Creak---Wrr--------------------------",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "-----嘎吱---嗡--------------------------",bc_map,"0xFF0000";
 	end;
 OnTimer4000:
-	mapannounce 'map_name$, "--------------Wirrrrrrr-----------------",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "--------------嗡嗡嗡嗡嗡嗡嗡-----------------",bc_map,"0xFF0000";
 	end;
 OnTimer6000:
-	mapannounce 'map_name$, "-----Zizip--------Zizizip------------------",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "-----滋滋--------滋滋滋------------------",bc_map,"0xFF0000";
 	end;
 OnTimer8000:
-	mapannounce 'map_name$, "System message : Intruder detected.",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "系統訊息 : 偵測到入侵者。",bc_map,"0xFF0000";
 	end;
 OnTimer10000:
-	mapannounce 'map_name$, "System message : Sealing off entrance and eliminating intruder according to designated protocols.",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "系統訊息 : 依照既定程序封鎖入口並排除入侵者。",bc_map,"0xFF0000";
 	enablenpc instance_npcname("#lrdoor3");
 	areamonster 'map_name$,30,33,70,73,"System message",3253,1, instance_npcname("#lrdoor3") + "::OnMyMobDead";
 	callsub S_Spawn;
 OnTimer310000:
-	mapannounce 'map_name$, "System message : Eliminating intruder.",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "系統訊息 : 正在排除入侵者。",bc_map,"0xFF0000";
 	callsub S_Spawn;
 OnTimer610000:
 	stopnpctimer;
-	mapannounce 'map_name$, "System message : Eliminating intruder.",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "系統訊息 : 正在排除入侵者。",bc_map,"0xFF0000";
 	callsub S_Spawn;
 S_Spawn:
 	.@label$ = instance_npcname("#lrdoor3") + "::OnMyMobDead";
@@ -261,7 +261,7 @@ S_Spawn:
 OnMyMobDead:
 	.@count = mobcount( 'map_name$, instance_npcname("#lrdoor3") + "::OnMyMobDead" );
 	if (.@count < 1) {
-		mapannounce 'map_name$, "System message : First protocol failed. Commencing next protocol.",bc_map,"0xFF0000";
+		mapannounce 'map_name$, "系統訊息 : 第一程序失敗。開始執行下一程序。",bc_map,"0xFF0000";
 		stopnpctimer;
 		enablenpc instance_npcname("Tamarin#room2");
 		disablenpc instance_npcname("#lrdoor3");
@@ -269,36 +269,36 @@ OnMyMobDead:
 	end;
 }
 
-1@uns,67,97,3	script	Tamarin#room2	4_M_TAMARIN,{
-	mes "[Tamarin]";
-	mes "Huff huff... Verity suddenly huff huff couldn't even stand straight before huff huff...";
+1@uns,67,97,3	script	塔瑪林#room2::Tamarin#room2	4_M_TAMARIN,{
+	mes "[塔瑪林]";
+	mes "呼呼……維瑞蒂突然呼呼……連站都站不穩，然後呼呼……";
 	cutin "ep143_tahuk.bmp",2;
 	if (is_party_leader() == false) {
 		next;
-		mes "[Tamarin]";
-		mes "I don't think this is a problem we can solve by talking amongst ourselves.";
-		mes "Let's ask the leader's opinion first.";
+		mes "[塔瑪林]";
+		mes "我不認為這個問題能靠我們自己商量解決。";
+		mes "我們先問問隊長的意見吧。";
 		close3;
 	}
-	npctalk "Tamarin: Huff huff... Verity suddenly huff huff couldn't even stand straight before huff huff...";
+	npctalk "塔瑪林: 呼呼……維瑞蒂突然呼呼……連站都站不穩，然後呼呼……";
 	next;
-	mes "[Tamarin]";
-	mes "Ran off so fast huff...huff... to even catch up. Huff huff";
-	npctalk "Tamarin: Ran off so fast huff...huff... to even catch up. Huff huff";
+	mes "[塔瑪林]";
+	mes "跑得太快了呼……呼……我們連追都追不上。呼呼";
+	npctalk "塔瑪林: 跑得太快了呼……呼……我們連追都追不上。呼呼";
 	next;
-	mapannounce 'map_name$, "System message : An unidentified object is moving fast from Zone 1 to Zone 2.",bc_map,"0xFF0000";
-	mes "[Tamarin]";
-	mes "Uh... Could Verity have gone that far?";
-	npctalk "Tamarin: Uh... Could Verity have gone that far?";
+	mapannounce 'map_name$, "系統訊息 : 不明物體正從1號區域高速移動至2號區域。",bc_map,"0xFF0000";
+	mes "[塔瑪林]";
+	mes "呃……維瑞蒂有可能跑那麼遠嗎？";
+	npctalk "塔瑪林: 呃……維瑞蒂有可能跑那麼遠嗎？";
 	next;
-	mapannounce 'map_name$, "System message : Commencing emergency protocol.",bc_map,"0xFF0000";
-	mes "[Tamarin]";
-	mes "We need to find Verity quickly";
-	npctalk "Tamarin: We need to find Verity quickly";
+	mapannounce 'map_name$, "系統訊息 : 開始執行緊急程序。",bc_map,"0xFF0000";
+	mes "[塔瑪林]";
+	mes "我們得盡快找到維瑞蒂";
+	npctalk "塔瑪林: 我們得盡快找到維瑞蒂";
 	next;
-	mes "[Tamarin]";
-	mes "There is only the route going up so go ahead.";
-	npctalk "Tamarin: There is only the route going up so go ahead.";
+	mes "[塔瑪林]";
+	mes "只有往上的路，你先走吧。";
+	npctalk "塔瑪林: 只有往上的路，你先走吧。";
 	if ('protocole == 2) {
 		'protocole = 3;
 		enablenpc instance_npcname("#lrdoor4");
@@ -318,7 +318,7 @@ OnMyMobDead:
 OnTouch:
 	sscanf( strnpcinfo(2), "lrboom%d", .@num );
 	areamonster 'map_name$,178,34,198,54, "Machine Component", (3251 + ((.@num-1) % 2)), 3;
-	mapannounce 'map_name$, "System message : Intruder detected in Zone 2.",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "系統訊息 : 在2號區域偵測到入侵者。",bc_map,"0xFF0000";
 	disablenpc();
 	end;
 }
@@ -337,24 +337,24 @@ OnTouch:
 1@uns,220,63,0	duplicate(#lrboom1)	#lrboom14	4_CRACK,2,2
 1@uns,201,60,0	duplicate(#lrboom1)	#lrboom15	4_CRACK,2,2
 
-1@uns,224,29,3	script	Verity#room2	4_F_BERRYTEA,{
-	mes "[Verity]";
-	mes "Ah...Where am I..";
+1@uns,224,29,3	script	維瑞蒂#room2::Verity#room2	4_F_BERRYTEA,{
+	mes "[維瑞蒂]";
+	mes "啊……我在哪裡……";
 	mes "發生什麼事了？";
 	cutin "EP15_2_brt_6.bmp",2;
 	next;
-	mes "[Verity]";
-	mes "My head...is splitting.";
-	mes "A sound coming from this...door...";
+	mes "[維瑞蒂]";
+	mes "我的頭……快裂開了。";
+	mes "從這……門後面傳來一陣聲音……";
 	next;
-	if (select( "離開。", "Go inside." ) == 1) {
-		mes "[Verity]";
-		mes "Go back...we have to go back...";
+	if (select( "離開。", "進去吧。" ) == 1) {
+		mes "[維瑞蒂]";
+		mes "回去……我們得回去……";
 		cutin "EP15_2_brt_7.bmp",2;
 		close3;
 	}
-	mes "[Verity]";
-	mes "Quickly...we have to go back...";
+	mes "[維瑞蒂]";
+	mes "快點……我們得回去……";
 	cutin "EP15_2_brt_7.bmp",2;
 	close2;
 	warp 'map_name$,240,255;
@@ -362,10 +362,10 @@ OnTouch:
 }
 
 // Last step
-1@uns,242,253,3	script	Verity#room3	4_F_BERRYTEA,{
-	mes "[Verity]";
-	mes "Finally.. We came back...";
-	mes "Finally.....";
+1@uns,242,253,3	script	維瑞蒂#room3::Verity#room3	4_F_BERRYTEA,{
+	mes "[維瑞蒂]";
+	mes "終於……我們回來了……";
+	mes "終於……";
 	cutin "EP15_2_brt_7.bmp",2;
 	if ('protocole == 3) {
 		'protocole = 4;
@@ -382,47 +382,47 @@ OnStart:
 	initnpctimer;
 	end;
 OnTimer2000:
-	mapannounce 'map_name$, "System message : Intruder detected in Mother Room.",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "系統訊息 : 在母控室偵測到入侵者。",bc_map,"0xFF0000";
 	end;
 OnTimer4000:
-	mapannounce 'map_name$, "System message : Commencing final protocol.",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "系統訊息 : 開始執行最終程序。",bc_map,"0xFF0000";
 	areamonster 'map_name$,235,255,255,275,"T_W_O",3254,1, instance_npcname("#bosslr") + "::OnMyMobDead";
 	end;
 OnTimer6000:
-	mapannounce 'map_name$, "System message : Changing all systems from maintenance mode to combat mode.",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "系統訊息 : 所有系統正從維護模式切換為戰鬥模式。",bc_map,"0xFF0000";
 	end;
 OnTimer8000:
-	mapannounce 'map_name$, "System message : This is the final protocol to protect... all unrelated personnel please evacuate.",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "系統訊息 : 這是保護……的最終程序。所有無關人員請立即撤離。",bc_map,"0xFF0000";
 	end;
 OnTimer11000:
-	mapannounce 'map_name$, "T_W_O : Have to go back..... This place isn't it....",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "T_W_O : 得回去……這裡不是……",bc_map,"0xFF0000";
 	end;
 OnTimer30000:
-	mapannounce 'map_name$, "System message : System damage occurred.",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "系統訊息 : 系統發生損壞。",bc_map,"0xFF0000";
 	areamonster 'map_name$,225,250,265,280, "System message",3253,4, instance_npcname("#bosslr") + "::OnMyMobDead2";
 	end;
 OnTimer32000:
-	mapannounce 'map_name$, "T_W_O : Who am I? Why am I here?.",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "T_W_O : 我是誰？我為什麼會在這裡？",bc_map,"0xFF0000";
 	end;
 OnTimer60000:
-	mapannounce 'map_name$, "System message : There may be critical damage within the Zone during system damage so please be careful.",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "系統訊息 : 系統受損期間，區域內可能有嚴重損傷，請小心。",bc_map,"0xFF0000";
 	end;
 OnTimer90000:
-	mapannounce 'map_name$, "System message : System damage occurred.",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "系統訊息 : 系統發生損壞。",bc_map,"0xFF0000";
 	areamonster 'map_name$,225,250,265,280, "System message",3253,4, instance_npcname("#bosslr") + "::OnMyMobDead2";
 	end;
 OnTimer100000:
-	mapannounce 'map_name$, "T_W_O : There is nothing left....",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "T_W_O : 什麼都不剩了……",bc_map,"0xFF0000";
 	end;
 OnTimer110000:
-	mapannounce 'map_name$, "T_W_O : I... Nor them....",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "T_W_O : 我……還有他們……",bc_map,"0xFF0000";
 	end;
 OnTimer150000:
-	mapannounce 'map_name$, "System message : System damage occurred.",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "系統訊息 : 系統發生損壞。",bc_map,"0xFF0000";
 	areamonster 'map_name$,225,250,265,280, "System message",3253,4, instance_npcname("#bosslr") + "::OnMyMobDead2";
 	end;
 OnTimer210000:
-	mapannounce 'map_name$, "System message : System damage occurred.",bc_map,"0xFF0000";
+	mapannounce 'map_name$, "系統訊息 : 系統發生損壞。",bc_map,"0xFF0000";
 	areamonster 'map_name$,225,250,265,280, "System message",3253,4, instance_npcname("#bosslr") + "::OnMyMobDead2";
 	stopnpctimer;
 	end;
@@ -431,7 +431,7 @@ OnMyMobDead:
 		stopnpctimer;
 		killmonster 'map_name$, instance_npcname("#bosslr") + "::OnMyMobDead";
 		killmonster 'map_name$, instance_npcname("#bosslr") + "::OnMyMobDead2";
-		mapannounce 'map_name$, "System message : All protocols failed. Locking down area excluding threat element.",bc_map,"0xFF0000";
+		mapannounce 'map_name$, "系統訊息 : 所有程序均已失敗。除威脅源以外，將封鎖整個區域。",bc_map,"0xFF0000";
 		// enablenpc instance_npcname("Alph#room4");
 		// enablenpc instance_npcname("Tamarin#room4");
 		// enablenpc instance_npcname("Maggi#room4");
@@ -445,10 +445,10 @@ OnMyMobDead2:
 	end;
 }
 
-1@uns,242,253,3	script	Verity#room4	4_F_BERRYTEA,{
-	mes "[Verity]";
+1@uns,242,253,3	script	維瑞蒂#room4::Verity#room4	4_F_BERRYTEA,{
+	mes "[維瑞蒂]";
 	mes "我是誰？";
-	mes "Who am I...";
+	mes "我是誰……";
 	cutin "EP15_2_brt_6.bmp",2;
 	close2;
 	warp "un_bunker",299,162;
@@ -481,14 +481,14 @@ OnInstanceInit:
 }
 
 /*
-1@uns,236,258,1	script	Alph#room4	4_M_BLACKMAN,{
+1@uns,236,258,1	script	阿爾夫#room4::Alph#room4	4_M_BLACKMAN,{
 	mes "[Alph]";
 	mes "It's too early to relax...";
 	cutin "bu_alp1.bmp",2;
 	close3;
 }
 
-1@uns,244,257,3	script	Tamarin#room4	4_M_TAMARIN,{
+1@uns,244,257,3	script	塔瑪林#room4::Tamarin#room4	4_M_TAMARIN,{
 	mes "[Tamarin]";
 	mes "Verity!!!";
 	mes "Pull yourself together!";
@@ -496,14 +496,14 @@ OnInstanceInit:
 	close3;
 }
 
-1@uns,245,254,3	script	Maggi#room4	4_F_PINKWOMAN,{
+1@uns,245,254,3	script	瑪吉#room4::Maggi#room4	4_F_PINKWOMAN,{
 	mes "[Maggi]";
 	mes "Verity, are you alright?";
 	cutin "bu_maggi4.bmp",2;
 	close3;
 }
 
-1@uns,244,254,3	script	Du#room4	4_M_REDMAN,{
+1@uns,244,254,3	script	杜#room4::Du#room4	4_M_REDMAN,{
 	mes "[Du]";
 	mes "Sister!";
 	mes "What happened?!";
@@ -520,7 +520,7 @@ OnInstanceInit:
 	close3;
 }
 
-1@uns,242,253,3	script	Verity#room4	4_F_BERRYTEA,{
+1@uns,242,253,3	script	維瑞蒂#room4::Verity#room4	4_F_BERRYTEA,{
 	mes "[Du]";
 	mes "Sister!";
 	mes "What happened?!";

@@ -7,68 +7,68 @@
 //= 1.0 First version. [Capuche]
 //============================================================
 
-prt_q,249,82,2	script	Han#a1	8W_SOLDIER,{
-	mes "[Han]";
-	mes "There must be a ton of monsters";
-	mes "attacking the center of Prontera.";
+prt_q,249,82,2	script	韓#a1::Han#a1	8W_SOLDIER,{
+	mes "[韓]";
+	mes "一定有大批怪物";
+	mes "正在攻擊普隆德拉的中心。";
 	mes "***";
 	next;
-	mes "[Han]";
-	mes "My family...My friends...";
-	mes "They're all there...";
-	mes "I must protect them...";
-	mes "But...I have an even more important";
-	mes "job to do here...";
+	mes "[韓]";
+	mes "我的家人……我的朋友……";
+	mes "他們都在那裡……";
+	mes "我必須保護他們……";
+	mes "但是……我還有更重要的";
+	mes "任務要在這裡完成……";
 	next;
-	mes "[Han]";
-	mes "I, scientist Doyeon, can do it.";
-	mes "I can obliterate that dirty source place,";
-	mes "ceaselessly spawning the monsters...";
-	mes "That's why I'm protecting him.";
+	mes "[韓]";
+	mes "身為科學家的道妍，我做得到。";
+	mes "我能夠摧毀那個汙穢的源頭，";
+	mes "那個不斷召喚怪物的地方……";
+	mes "所以我才在保護他。";
 	mes "***";
 	next;
-	mes "[Han]";
-	mes "Protecting him and destroying this fortress";
-	mes "is what ultimately protects my family";
-	mes "and friends.";
+	mes "[韓]";
+	mes "保護他，同時摧毀這座要塞";
+	mes "才是保護我的家人";
+	mes "與朋友的根本辦法。";
 	close;
 }
 
-prt_q,252,79,4	script	Doek#a1	8W_SOLDIER,{
-	mes "[Doek]";
-	mes "Can this scientist you're seeing here";
-	mes "really protect Prontera?";
-	mes "Can she?";
-	mes "Do you believe so?";
+prt_q,252,79,4	script	杜克#a1::Doek#a1	8W_SOLDIER,{
+	mes "[杜克]";
+	mes "你眼前這位科學家";
+	mes "真的能保護普隆德拉嗎？";
+	mes "她真的做得到嗎？";
+	mes "你相信她做得到嗎？";
 	next;
-	mes "[Doek]";
-	mes "Honestly, I don't...";
+	mes "[杜克]";
+	mes "說實話，我不相信……";
 	mes "但是……";
 	next;
-	mes "[Doek]";
-	mes "All my loved ones were...";
-	mes "...by those monsters....";
+	mes "[杜克]";
+	mes "我所愛的人全都……";
+	mes "……被那些怪物害死了……";
 	next;
-	mes "[Doek]";
-	mes "This is the last hope I can have...";
-	mes "This is the last.";
-	mes "So please help me.";
-	mes "Help Doyeon...";
+	mes "[杜克]";
+	mes "這是我最後的希望了……";
+	mes "這是最後一次了。";
+	mes "所以，請幫幫我。";
+	mes "幫幫道妍……";
 	next;
-	mes "- And then, she remained silent -";
-	mes "- for quite a while. -";
+	mes "- 然後，她沉默了 -";
+	mes "- 過了好一會兒。 -";
 	close;
 }
 
-prt_q,249,79,4	script	Scientist Doyeon#a1	4_M_MAYOR,{
+prt_q,249,79,4	script	科學家道妍#a1::Scientist Doyeon#a1	4_M_MAYOR,{
 	if (!checkweight(2104,2)) {
-		mes "- It's full of items";
-		mes "so you can't proceed to conversation. -";
+		mes "- 裡面裝滿了道具";
+		mes "所以無法進行對話。 -";
 		close;
 	}
 	if (BaseLevel < 145) {
-		mes "- You should be level 145 or higher";
-		mes "to proceed. -";
+		mes "- 你的等級必須達到145或以上";
+		mes "才能前進。 -";
 		close;
 	}
 	switch( checkquest(9419,PLAYTIME) ) {
@@ -79,89 +79,89 @@ prt_q,249,79,4	script	Scientist Doyeon#a1	4_M_MAYOR,{
 		}
 		if (isbegin_quest(9418) == 0) {// first entrance
 			.@party_name$ = getpartyname(getcharid(1));
-			mes "[Scientist Doyeon]";
-			mes "I'm a scientist";
-			mes "living in Prontera.";
-			mes "I'm just an ordinary scientist";
-			mes "teaching children and doing research.";
-			mes "And then...things came up";
-			mes "in Prontera all of a sudden....";
+			mes "[科學家道妍]";
+			mes "我是一名科學家";
+			mes "住在普隆德拉。";
+			mes "我只是個普通的科學家";
+			mes "教導孩子，並從事研究。";
+			mes "然後……事情發生了";
+			mes "在普隆德拉突然間……";
 			while(true) {
 				next;
-				switch( select( "About Sky Fortress", "Enter the Sky Fortress.", "End the dialogue." ) ) {
+				switch( select( "關於天空要塞", "進入天空要塞。", "結束對話。" ) ) {
 				case 1:
 					callsub S_Info;
 					break;
 				case 2:
-					mes "[Scientist Doyeon]";
-					mes "I think I can open the warp,";
-					mes "at least for once, with the magic";
-					mes "that I've been collecting so hard.";
-					mes "I hope you would help me";
-					mes "destroy the fortress and";
-					mes "get back our Prontera.";
+					mes "[科學家道妍]";
+					mes "我想我可以開啟傳送門，";
+					mes "至少這一次，用上";
+					mes "我辛苦收集的魔力。";
+					mes "希望你能幫我";
+					mes "摧毀要塞，";
+					mes "奪回我們的普隆德拉。";
 					next;
 					if (select( "否", "是" ) == 1) {
-						mes "[Scientist Doyeon]";
+						mes "[科學家道妍]";
 						mes "準備好再";
-						mes "if you change your mind...";
-						mes "Just know that time is running out...";
+						mes "如果你改變心意……";
+						mes "只是要知道，時間所剩不多了……";
 						break;
 					}
-					mes "[Scientist Doyeon]";
-					mes "There! I opened the warp";
-					mes "to the Sky Fortress!";
-					mes "The warp will be activated";
-					mes "only for a limited period of time.";
-					mes "Step inside it, quick!";
+					mes "[科學家道妍]";
+					mes "看！我開啟了傳送門";
+					mes "通往天空要塞！";
+					mes "傳送門將會啟動";
+					mes "但只會持續一段有限的時間。";
+					mes "快踏進去！";
 					if (instance_create("Sky Fortress Invasion") < 0) {
-						mes "Party Name: " + .@party_name$;
-						mes "Party Leader: " + strcharinfo(0);
-						mes "^0000ffSky Fortress Invasion ^000000- Reservation Failed!";
+						mes "隊伍名稱: " + .@party_name$;
+						mes "隊長: " + strcharinfo(0);
+						mes "^0000ff天空要塞入侵 ^000000- 預約失敗！";
 						close;
 					}
 					close;
 				case 3:
-					mes "[Scientist Doyeon]";
-					mes "I'm so worried about";
-					mes "the future of Prontera...";
-					mes "It appears this fortress";
-					mes "must be the source of all evil...";
+					mes "[科學家道妍]";
+					mes "我很擔心";
+					mes "普隆德拉的未來……";
+					mes "看來這座要塞";
+					mes "必定是所有邪惡的根源……";
 					close;
 				}
 			}
 		}
-		mes "You're back unscathed.";
-		mes "So...whatever happened";
-		mes "inside?";
+		mes "你毫髮無傷地回來了。";
+		mes "所以……裡面";
+		mes "發生了什麼事？";
 		next;
-		mes "- I told her everything that";
-		mes "happened inside the Sky Fortress. -";
+		mes "- 我把在天空要塞內";
+		mes "發生的一切都告訴了她。 -";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "How could that be...";
-		mes "Still, I think we have every reason to remain hopeful";
-		mes "for eliminating that huge Golem";
-		mes "in the Sky Fortress.";
+		mes "[科學家道妍]";
+		mes "怎麼會這樣……";
+		mes "儘管如此，我認為我們仍有充分理由保持希望，";
+		mes "因為我們已經消滅了那隻龐大的";
+		mes "天空要塞中的巨石怪。";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "Still, those filthy monsters";
-		mes "keep spawning in Prontera.";
-		mes "So I think what we've done";
-		mes "must not be enough.";
+		mes "[科學家道妍]";
+		mes "但那些可惡的怪物";
+		mes "仍然不斷在普隆德拉出現。";
+		mes "所以我想我們所做的";
+		mes "恐怕還不夠。";
 		mes "***";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "To operate the warp,";
-		mes "a lot of magic is required.";
-		mes "Bring me the item called the -Dungeon Pass-,";
-		mes "or I need about";
-		mes "three days to collect magic.";
+		mes "[科學家道妍]";
+		mes "要啟動傳送門，";
+		mes "需要大量的魔力。";
+		mes "把名為 -地城通行證- 的道具帶來給我，";
+		mes "否則我大約需要";
+		mes "三天的時間來收集魔力。";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "I hope you'd enter the Sky Fortress";
-		mes "and help us save";
-		mes "Prontera.";
+		mes "[科學家道妍]";
+		mes "希望你能進入天空要塞，";
+		mes "並幫助我們拯救";
+		mes "普隆德拉。";
 		completequest 9418;// Attack Sky Fortress Invading Prontera
 		setquest 9419;// Attack Sky Fortress Invading Prontera
 		if (isbegin_quest(9427) == 0) {
@@ -172,103 +172,103 @@ prt_q,249,79,4	script	Scientist Doyeon#a1	4_M_MAYOR,{
 		close;
 	case 0:
 	case 1:
-		mes "[Scientist Doyeon]";
-		mes "To operate the warp,";
-		mes "a lot of magic is required.";
-		mes "Bring me the item called the -Dungeon Pass-,";
-		mes "or I need about";
-		mes "three days to collect magic.";
+		mes "[科學家道妍]";
+		mes "要啟動傳送門，";
+		mes "需要大量的魔力。";
+		mes "把名為 -地城通行證- 的道具帶來給我，";
+		mes "否則我大約需要";
+		mes "三天的時間來收集魔力。";
 		next;
 		if (is_party_leader() == true) {
 			.@party_name$ = getpartyname(getcharid(1));
-			if (select( "End the dialogue.", "Show the -Dungeon Pass-." ) == 2) {
+			if (select( "結束對話。", "出示 -地城通行證-。" ) == 2) {
 				if (rentalcountitem(14505) < 1 && rentalcountitem(14506) < 1) {// Sky Fortress Ticket
-					mes "[Scientist Doyeon]";
-					mes "I don't think this works";
-					mes "without the -Dungeon Pass-.";
-					mes "I can't open the warp without it.";
+					mes "[科學家道妍]";
+					mes "我想這樣行不通";
+					mes "沒有 -地城通行證- 的話。";
+					mes "沒有它我就無法開啟傳送門。";
 					close;
 				}
-				mes "[Scientist Doyeon]";
-				mes "Oh! Where did you";
-				mes "get the -Dungeon Pass-?";
-				mes "With this item,";
-				mes "I can pretty much open the warp.";
+				mes "[科學家道妍]";
+				mes "喔！你是從哪裡";
+				mes "拿到 -地城通行證- 的？";
+				mes "有了這個道具，";
+				mes "我幾乎就能開啟傳送門了。";
 				next;
-				if (select( "End the dialogue.", "Activate the warp." ) == 1) {
-					mes "[Scientist Doyeon]";
-					mes "Are you not going";
-					mes "to help Prontera?";
+				if (select( "結束對話。", "啟動傳送門。" ) == 1) {
+					mes "[科學家道妍]";
+					mes "你難道不去";
+					mes "幫助普隆德拉嗎？";
 					close;
 				}
-				mes "[Scientist Doyeon]";
-				mes "There! I opened the warp";
-				mes "to the Sky Fortress!";
-				mes "The warp will be activated";
-				mes "only for a limited period of time.";
-				mes "Step inside it, quick!";
+				mes "[科學家道妍]";
+				mes "看！我開啟了傳送門";
+				mes "通往天空要塞！";
+				mes "傳送門將會啟動";
+				mes "但只會持續一段有限的時間。";
+				mes "快踏進去！";
 				if (instance_create("Sky Fortress Invasion") < 0) {
-					mes "Party Name: " + .@party_name$;
-					mes "Party Leader: " + strcharinfo(0);
-					mes "^0000ffSky Fortress Invasion ^000000- Reservation Failed!";
+					mes "隊伍名稱: " + .@party_name$;
+					mes "隊長: " + strcharinfo(0);
+					mes "^0000ff天空要塞入侵 ^000000- 預約失敗！";
 					close;
 				}
 				close;
 			}
 		}
-		mes "[Scientist Doyeon]";
-		mes "I hope you'd enter the Sky Fortress";
-		mes "and help us save";
-		mes "Prontera.";
+		mes "[科學家道妍]";
+		mes "希望你能進入天空要塞，";
+		mes "並幫助我們拯救";
+		mes "普隆德拉。";
 		close;
 	case 2:
-		mes "[Scientist Doyeon]";
-		mes "You've come back! You didn't get away!";
+		mes "[科學家道妍]";
+		mes "你回來了！你沒有逃掉！";
 		mes "真是太感謝了！";
 		next;
-		mes "[Scientist Doyeon]";
+		mes "[科學家道妍]";
 		mes "但是……";
-		mes "A ton of undead monsters kept swarming about";
-		mes "from that entrance seen behind me";
-		mes "as if the sap monster spits out the sap.";
-		mes "They kept coming out";
-		mes "no matter how many were killed.";
+		mes "大量不死怪物不斷蜂擁而至";
+		mes "從我身後那個入口";
+		mes "就像樹液怪吐出樹液一樣。";
+		mes "它們源源不絕地湧出";
+		mes "不論被殺死多少。";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "I suppose the monsters are being made up";
-		mes "inside the fortress.";
-		mes "My guess is that if we can defeat their ringleader in the fortress,";
-		mes "the monsters will go away";
-		mes "and Prontera will become stabilized.";
+		mes "[科學家道妍]";
+		mes "我想這些怪物是在";
+		mes "要塞內部被製造出來的。";
+		mes "我猜，如果我們能擊敗要塞中的首領，";
+		mes "怪物就會消失";
+		mes "普隆德拉也會恢復安定。";
 		mes "***";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "I think I can open the warp,";
-		mes "at least for once, with the magic";
-		mes "that I've been collecting so hard.";
-		mes "I hope you would help me";
-		mes "destroy the fortress and";
-		mes "get back our Prontera.";
+		mes "[科學家道妍]";
+		mes "我想我可以開啟傳送門，";
+		mes "至少這一次，用上";
+		mes "我辛苦收集的魔力。";
+		mes "希望你能幫我";
+		mes "摧毀要塞，";
+		mes "奪回我們的普隆德拉。";
 		if (is_party_leader() == true) {
 			.@party_name$ = getpartyname(getcharid(1));
 			next;
 			if (select( "否", "是" ) == 1) {
-				mes "[Scientist Doyeon]";
+				mes "[科學家道妍]";
 				mes "準備好再";
-				mes "if you change your mind...";
-				mes "Just know that time is running out...";
+				mes "如果你改變心意……";
+				mes "只是要知道，時間所剩不多了……";
 				close;
 			}
-			mes "[Scientist Doyeon]";
-			mes "There! I opened the warp";
-			mes "to the Sky Fortress!";
-			mes "The warp will be activated";
-			mes "only for a limited period of time.";
-			mes "Step inside it, quick!";
+			mes "[科學家道妍]";
+			mes "看！我開啟了傳送門";
+			mes "通往天空要塞！";
+			mes "傳送門將會啟動";
+			mes "但只會持續一段有限的時間。";
+			mes "快踏進去！";
 			if (instance_create("Sky Fortress Invasion") < 0) {
-				mes "Party Name: " + .@party_name$;
-				mes "Party Leader: " + strcharinfo(0);
-				mes "^0000ffSky Fortress Invasion ^000000- Reservation Failed!";
+				mes "隊伍名稱: " + .@party_name$;
+				mes "隊長: " + strcharinfo(0);
+				mes "^0000ff天空要塞入侵 ^000000- 預約失敗！";
 				close;
 			}
 		}
@@ -277,68 +277,68 @@ prt_q,249,79,4	script	Scientist Doyeon#a1	4_M_MAYOR,{
 	end;
 
 S_Info:
-	mes "[Scientist Doyeon]";
-	mes "I'm a scientist";
-	mes "living in Prontera.";
-	mes "I'm just an ordinary scientist";
-	mes "teaching children and doing research.";
+	mes "[科學家道妍]";
+	mes "我是一名科學家";
+	mes "住在普隆德拉。";
+	mes "我只是個普通的科學家";
+	mes "教導孩子，並從事研究。";
 	next;
-	mes "[Scientist Doyeon]";
-	mes "But now...the life at least as I know it";
-	mes "has become shattered.";
+	mes "[科學家道妍]";
+	mes "但現在……我所熟悉的生活";
+	mes "已經支離破碎了。";
 	next;
-	mes "[Scientist Doyeon]";
-	mes "Thanks to this fortress";
-	mes "looking like a huge trash can,";
-	mes "our village has turned into a trash heap";
-	mes "that doesn't even decay.";
+	mes "[科學家道妍]";
+	mes "拜這座要塞所賜，";
+	mes "它看起來就像一個巨大的垃圾桶，";
+	mes "我們的村莊變成了垃圾堆";
+	mes "連腐爛都不會的垃圾堆。";
 	next;
-	mes "[Scientist Doyeon]";
-	mes "Buildings fall down,";
-	mes "people keep dying out...";
-	mes "I have to wonder what the nobility and soldiers at the Prontera Palace";
-	mes "are up to when things are like this.";
+	mes "[科學家道妍]";
+	mes "建築物倒塌，";
+	mes "人們不斷死去……";
+	mes "真不知道普隆德拉王宮的貴族和士兵";
+	mes "在這種時候究竟在做什麼。";
 	next;
-	mes "[Scientist Doyeon]";
-	mes "A ton of undead monsters kept swarming about";
-	mes "from that entrance seen behind me";
-	mes "as if the sap monster spits out the sap.";
-	mes "They kept coming out";
-	mes "no matter how many were killed.";
+	mes "[科學家道妍]";
+	mes "大量不死怪物不斷蜂擁而至";
+	mes "從我身後那個入口";
+	mes "就像樹液怪吐出樹液一樣。";
+	mes "它們源源不絕地湧出";
+	mes "不論被殺死多少。";
 	next;
-	mes "[Scientist Doyeon]";
-	mes "I suppose the monsters are being made up";
-	mes "inside the fortress.";
-	mes "My guess is that if we can defeat their ringleader in the fortress,";
-	mes "the monsters will get away";
-	mes "and Prontera will become stabilized.";
+	mes "[科學家道妍]";
+	mes "我想這些怪物是在";
+	mes "要塞內部被製造出來的。";
+	mes "我猜，如果我們能擊敗要塞中的首領，";
+	mes "怪物就會逃走";
+	mes "普隆德拉也會恢復安定。";
 	mes "***";
 	next;
-	mes "[Scientist Doyeon]";
-	mes "So I really wanted to enter the fortress";
-	mes "but couldn't find any entrance.";
-	mes "I studied day and night";
-	mes "and finally located it.";
+	mes "[科學家道妍]";
+	mes "所以我真的很想進入要塞";
+	mes "卻找不到任何入口。";
+	mes "我日以繼夜地研究，";
+	mes "終於找到了它。";
 	next;
-	mes "[Scientist Doyeon]";
-	mes "To enter the fortress,";
-	mes "the warp should be activated.";
-	mes "To do so, a lot of magic";
-	mes "is indispensable!";
+	mes "[科學家道妍]";
+	mes "要進入要塞，";
+	mes "就必須啟動傳送門。";
+	mes "而要做到這點，需要大量的魔力";
+	mes "是不可或缺的！";
 	next;
-	mes "[Scientist Doyeon]";
-	mes "And then...I've been preparing";
-	mes "a lot of magic necessary for the warp.";
-	mes "Now I could use a warrior";
-	mes "who can shatter the fortress";
-	mes "and bring peace to Prontera.";
+	mes "[科學家道妍]";
+	mes "於是……我一直在準備";
+	mes "開啟傳送門所需的大量魔力。";
+	mes "現在我需要一位戰士，";
+	mes "能夠擊破要塞的";
+	mes "並為普隆德拉帶來和平。";
 	return;
 }
 
-prt_q,243,75,3	script	Fortress Entry Warp Portal#1	PORTAL,{
+prt_q,243,75,3	script	要塞入口傳送門#1::Fortress Entry Warp Portal#1	PORTAL,{
 	if (BaseLevel < 145) {
-		mes "- You should be level 145 or higher";
-		mes "to proceed. -";
+		mes "- 你的等級必須達到145或以上";
+		mes "才能前進。 -";
 		close;
 	}
 	if (checkquest(9419,PLAYTIME) == 2 || (checkquest(9419,PLAYTIME) == -1 && isbegin_quest(9418) != 1)) {
@@ -346,21 +346,21 @@ prt_q,243,75,3	script	Fortress Entry Warp Portal#1	PORTAL,{
 		.@type = 1;
 	}
 	else {
-		mes "- The warp doesn't seem to work.";
-		mes "You can't seem to enter... -";
+		mes "- 傳送門似乎無法運作。";
+		mes "你似乎無法進入…… -";
 		next;
 		setarray .@menu$[0], "End the dialogue.", "", "Put the - Dungeon Pass - near to the warp.";
 	}
 	switch( select( .@menu$[0], .@menu$[1], .@menu$[2] ) ) {
 	case 1:
-		mes "- The warp is emanating bright lights. -";
+		mes "- 傳送門正散發出耀眼的光芒。 -";
 		close;
 	case 2:
 		break;
 	case 3:
 		if (rentalcountitem(14505) < 1 && rentalcountitem(14506) < 1) {// Sky Fortress Ticket
-			mes "- You don't have -";
-			mes "- the Dungeon Pass. -";
+			mes "- 你沒有 -";
+			mes "- 地城通行證。 -";
 			close;
 		}
 		break;
@@ -368,17 +368,17 @@ prt_q,243,75,3	script	Fortress Entry Warp Portal#1	PORTAL,{
 	.@md_name$ = "Sky Fortress Invasion";
 	switch( instance_enter(.@md_name$) ) {
 	case IE_OTHER:
-		mes "An unknown error occurred.";
+		mes "發生未知的錯誤。";
 		close;
 	case IE_NOINSTANCE:
-		mes "Memorial Dungeon " + .@md_name$ + " doesn't exist.";
-		mes "Party leader hasn't created the Memorial Dungeon.";
+		mes "紀念地城 " + .@md_name$ + " 不存在。";
+		mes "隊長尚未建立紀念地城。";
 		close;
 	case IE_NOMEMBER:
-		mes "Only the party members may enter the Memorial Dungeon.";
+		mes "只有隊伍成員可以進入紀念地城。";
 		close;
 	case IE_OK:
-		mapannounce "prt_q", "Party member " + strcharinfo(0) + " of party's " + getpartyname( getcharid(1) ) + " enters " + .@md_name$ + "", bc_map,0xFF99;
+		mapannounce "prt_q", "隊員 " + strcharinfo(0) + " 所屬的隊伍 " + getpartyname( getcharid(1) ) + " 進入了 " + .@md_name$ + "", bc_map,0xFF99;
 		if (.@type == 1) {
 			if (isbegin_quest(9419) > 0)
 				erasequest 9419;
@@ -401,38 +401,38 @@ OnInit:
 }
 
 // Dali entrance
-dali02,115,61,3	script	Fortress Entry Warp Portal#2	PORTAL,{
+dali02,115,61,3	script	要塞入口傳送門#2::Fortress Entry Warp Portal#2	PORTAL,{
 	if (BaseLevel < 145) {
-		mes "- You should be level 145 or higher";
-		mes "to proceed. -";
+		mes "- 你的等級必須達到145或以上";
+		mes "才能前進。 -";
 		close;
 	}
-	mes "- The warp doesn't seem to work.";
-	mes "You can't seem to enter. -";
+	mes "- 傳送門似乎無法運作。";
+	mes "你似乎無法進入。 -";
 	next;
-	if (select( "End the dialogue.", "Put the - Dungeon Pass - near to the warp." ) == 1) {
-		mes "- The warp is emanating bright lights. -";
+	if (select( "結束對話。", "請將 - 地城通行證 - 放在傳送門旁邊。" ) == 1) {
+		mes "- 傳送門正散發出耀眼的光芒。 -";
 		close;
 	}
 	if (rentalcountitem(14505) < 1 && rentalcountitem(14506) < 1) {// Sky Fortress Ticket
-		mes "- You don't have -";
-		mes "- the Dungeon Pass. -";
+		mes "- 你沒有 -";
+		mes "- 地城通行證。 -";
 		close;
 	}
 	.@md_name$ = "Sky Fortress Invasion";
 	switch( instance_enter(.@md_name$) ) {
 	case IE_OTHER:
-		mes "An unknown error occurred.";
+		mes "發生未知的錯誤。";
 		close;
 	case IE_NOINSTANCE:
-		mes "Memorial Dungeon " + .@md_name$ + " doesn't exist.";
-		mes "Party leader hasn't created the Memorial Dungeon.";
+		mes "紀念地城 " + .@md_name$ + " 不存在。";
+		mes "隊長尚未建立紀念地城。";
 		close;
 	case IE_NOMEMBER:
-		mes "Only the party members may enter the Memorial Dungeon.";
+		mes "只有隊伍成員可以進入紀念地城。";
 		close;
 	case IE_OK:
-		mapannounce "prt_q", "Party member " + strcharinfo(0) + " of party's " + getpartyname( getcharid(1) ) + " enters " + .@md_name$ + "", bc_map,0xFF99;
+		mapannounce "prt_q", "隊員 " + strcharinfo(0) + " 所屬的隊伍 " + getpartyname( getcharid(1) ) + " 進入了 " + .@md_name$ + "", bc_map,0xFF99;
 		// warp "1@sthb",54,67;
 		fortress_entrance_loc = 1;	// warp back to dali02 on exit
 		// note: no quest change when using tickets
@@ -448,185 +448,185 @@ OnInit:
 	end;
 }
 
-dali02,122,63,2	script	Scientist Doyeon#a2	4_M_MAYOR,{
+dali02,122,63,2	script	科學家道妍#a2::Scientist Doyeon#a2	4_M_MAYOR,{
 	if (!checkweight(2104,2)) {
-		mes "- It's full of items";
-		mes "so you can't proceed to conversation. -";
+		mes "- 裡面裝滿了道具";
+		mes "所以無法進行對話。 -";
 		close;
 	}
 	if (BaseLevel < 145) {
-		mes "- You should be level 145 or higher";
-		mes "to proceed. -";
+		mes "- 你的等級必須達到145或以上";
+		mes "才能前進。 -";
 		close;
 	}
 	if (is_party_leader() == false) {
-		mes "[Scientist Doyeon]";
-		mes "I'm a scientist";
-		mes "living in Prontera.";
-		mes "I'm just an ordinary scientist";
-		mes "teaching children and doing research.";
+		mes "[科學家道妍]";
+		mes "我是一名科學家";
+		mes "住在普隆德拉。";
+		mes "我只是個普通的科學家";
+		mes "教導孩子，並從事研究。";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "But now...my normal life";
-		mes "has become shattered.";
+		mes "[科學家道妍]";
+		mes "但現在……我平凡的生活";
+		mes "已經支離破碎了。";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "Thanks to this fortress";
-		mes "looking like a huge trash can,";
-		mes "our village has turned into a trash heap";
-		mes "that doesn't even decay.";
+		mes "[科學家道妍]";
+		mes "拜這座要塞所賜，";
+		mes "它看起來就像一個巨大的垃圾桶，";
+		mes "我們的村莊變成了垃圾堆";
+		mes "連腐爛都不會的垃圾堆。";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "Buildings fall down,";
-		mes "people keep dying out...";
-		mes "I have to wonder what the nobility and soldiers at the Prontera Palace";
-		mes "are up to when things are like this.";
+		mes "[科學家道妍]";
+		mes "建築物倒塌，";
+		mes "人們不斷死去……";
+		mes "真不知道普隆德拉王宮的貴族和士兵";
+		mes "在這種時候究竟在做什麼。";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "A ton of undead monsters kept swarming about";
-		mes "from that entrance seen behind me";
-		mes "as if the sap monster spits out the sap.";
-		mes "They kept coming out";
-		mes "no matter how many were killed.";
+		mes "[科學家道妍]";
+		mes "大量不死怪物不斷蜂擁而至";
+		mes "從我身後那個入口";
+		mes "就像樹液怪吐出樹液一樣。";
+		mes "它們源源不絕地湧出";
+		mes "不論被殺死多少。";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "I suppose the monsters are being made up";
-		mes "inside the fortress.";
-		mes "My guess is that if we can defeat their ringleader in the fortress,";
-		mes "the monsters will go away";
-		mes "and Prontera will become stabilized.";
+		mes "[科學家道妍]";
+		mes "我想這些怪物是在";
+		mes "要塞內部被製造出來的。";
+		mes "我猜，如果我們能擊敗要塞中的首領，";
+		mes "怪物就會消失";
+		mes "普隆德拉也會恢復安定。";
 		mes "***";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "So I really wanted to enter the fortress";
-		mes "but couldn't find any entrance.";
-		mes "I studied day and night";
-		mes "and finally located it.";
+		mes "[科學家道妍]";
+		mes "所以我真的很想進入要塞";
+		mes "卻找不到任何入口。";
+		mes "我日以繼夜地研究，";
+		mes "終於找到了它。";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "To enter the fortress,";
-		mes "the warp should be activated.";
-		mes "To do so,";
-		mes "the -Dungeon Pass-";
-		mes "is indispensable!";
+		mes "[科學家道妍]";
+		mes "要進入要塞，";
+		mes "就必須啟動傳送門。";
+		mes "為此，";
+		mes "-地城通行證-";
+		mes "是不可或缺的！";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "And then...I've been preparing";
-		mes "a lot of magic necessary for the warp.";
-		mes "Now I could use a warrior";
-		mes "who can shatter the fortress";
-		mes "and bring peace to Prontera.";
+		mes "[科學家道妍]";
+		mes "於是……我一直在準備";
+		mes "開啟傳送門所需的大量魔力。";
+		mes "現在我需要一位戰士，";
+		mes "能夠擊破要塞的";
+		mes "並為普隆德拉帶來和平。";
 		close;
 	}
 	.@party_name$ = getpartyname(getcharid(1));
-	mes "[Scientist Doyeon]";
-	mes "I'm a scientist";
-	mes "living in Prontera.";
-	mes "I teach children and perform research activities.";
-	mes "But it has become";
-	mes "so dangerous there,";
-	mes "so I moved in here.";
+	mes "[科學家道妍]";
+	mes "我是一名科學家";
+	mes "住在普隆德拉。";
+	mes "我教導孩子，並進行研究工作。";
+	mes "但那裡";
+	mes "已經變得太危險了，";
+	mes "所以我搬到了這裡。";
 	next;
-	switch( select( "About Sky Fortress", "Enter the Sky Fortress.", "End the dialogue." ) ) {
+	switch( select( "關於天空要塞", "進入天空要塞。", "結束對話。" ) ) {
 	case 1:
-		mes "[Scientist Doyeon]";
-		mes "But now...my normal life";
-		mes "has become shattered.";
+		mes "[科學家道妍]";
+		mes "但現在……我平凡的生活";
+		mes "已經支離破碎了。";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "Thanks to this fortress";
-		mes "looking like a huge trash can,";
-		mes "our village has turned into a trash heap";
-		mes "that doesn't even decay.";
+		mes "[科學家道妍]";
+		mes "拜這座要塞所賜，";
+		mes "它看起來就像一個巨大的垃圾桶，";
+		mes "我們的村莊變成了垃圾堆";
+		mes "連腐爛都不會的垃圾堆。";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "Buildings fall down,";
-		mes "people keep dying out...";
-		mes "I have to wonder what the nobility and soldiers at the Prontera Palace";
-		mes "are up to when things are like this.";
+		mes "[科學家道妍]";
+		mes "建築物倒塌，";
+		mes "人們不斷死去……";
+		mes "真不知道普隆德拉王宮的貴族和士兵";
+		mes "在這種時候究竟在做什麼。";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "A ton of undead monsters kept swarming about";
-		mes "as if the sap monster spits out the sap.";
-		mes "They kept coming out";
-		mes "no matter how many were killed.";
+		mes "[科學家道妍]";
+		mes "大量不死怪物不斷蜂擁而至";
+		mes "就像樹液怪吐出樹液一樣。";
+		mes "它們源源不絕地湧出";
+		mes "不論被殺死多少。";
 		mes "***";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "I suppose the monsters are being made up";
-		mes "inside the fortress.";
-		mes "My guess is that if we can defeat their ringleader in the fortress,";
-		mes "the monsters will go away";
-		mes "and Prontera will become stabilized.";
+		mes "[科學家道妍]";
+		mes "我想這些怪物是在";
+		mes "要塞內部被製造出來的。";
+		mes "我猜，如果我們能擊敗要塞中的首領，";
+		mes "怪物就會消失";
+		mes "普隆德拉也會恢復安定。";
 		mes "***";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "So I wanted to enter the fortress";
-		mes "but couldn't find any entrance.";
-		mes "I studied day and night";
-		mes "and finally located it.";
+		mes "[科學家道妍]";
+		mes "所以我想進入要塞";
+		mes "卻找不到任何入口。";
+		mes "我日以繼夜地研究，";
+		mes "終於找到了它。";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "To enter the fortress,";
-		mes "the warp should be activated.";
-		mes "To do so, a lot of magic";
-		mes "is indispensable!";
+		mes "[科學家道妍]";
+		mes "要進入要塞，";
+		mes "就必須啟動傳送門。";
+		mes "而要做到這點，需要大量的魔力";
+		mes "是不可或缺的！";
 		next;
-		mes "[Scientist Doyeon]";
-		mes "And then...I've been preparing";
-		mes "a lot of magic necessary for the warp.";
-		mes "Now I could use a warrior";
-		mes "who can shatter the fortress";
-		mes "and bring peace to Prontera.";
-		mes "That's why I'm here.";
+		mes "[科學家道妍]";
+		mes "於是……我一直在準備";
+		mes "開啟傳送門所需的大量魔力。";
+		mes "現在我需要一位戰士，";
+		mes "能夠擊破要塞的";
+		mes "並為普隆德拉帶來和平。";
+		mes "這就是我來這裡的原因。";
 		close;
 	case 2:
-		mes "[Scientist Doyeon]";
-		mes "To operate the warp,";
-		mes "a lot of magic is required.";
-		mes "Don't forget to bring me";
-		mes "the -Dungeon Pass-.";
-		mes "That's the only way to open";
-		mes "the warp to the Sky Fortress.";
+		mes "[科學家道妍]";
+		mes "要啟動傳送門，";
+		mes "需要大量的魔力。";
+		mes "別忘了把";
+		mes "-地城通行證-帶來給我。";
+		mes "那是開啟";
+		mes "通往天空要塞傳送門的唯一方法。";
 		next;
-		if (select( "End the dialogue.", "Show the -Dungeon Pass-." ) == 1) {
-			mes "[Scientist Doyeon]";
-			mes "Don't forget to bring me";
-			mes "the -Dungeon Pass-.";
-			mes "Enter the Sky Fortress";
-			mes "and help us save";
-			mes "the invaded Prontera.";
+		if (select( "結束對話。", "出示 -地城通行證-。" ) == 1) {
+			mes "[科學家道妍]";
+			mes "別忘了把";
+			mes "-地城通行證-帶來給我。";
+			mes "進入天空要塞";
+			mes "並幫助我們拯救";
+			mes "被入侵的普隆德拉。";
 			close;
 		}
 		if (rentalcountitem(14505) < 1 && rentalcountitem(14506) < 1) {// Sky Fortress Ticket
-			mes "[Scientist Doyeon]";
-			mes "I don't think this works";
-			mes "without the -Dungeon Pass-.";
-			mes "I can't open the warp without it.";
+			mes "[科學家道妍]";
+			mes "我想這樣行不通";
+			mes "沒有 -地城通行證- 的話。";
+			mes "沒有它我就無法開啟傳送門。";
 			close;
 		}
-		mes "[Scientist Doyeon]";
-		mes "Oh! Where did you";
-		mes "get the -Dungeon Pass-?";
-		mes "This item is enough";
-		mes "to open the warp.";
+		mes "[科學家道妍]";
+		mes "喔！你是從哪裡";
+		mes "拿到 -地城通行證- 的？";
+		mes "這個道具就足夠了";
+		mes "來開啟傳送門。";
 		next;
-		if (select( "End the dialogue.", "Activate the warp." ) == 1) {
-			mes "[Scientist Doyeon]";
-			mes "Are you not going";
-			mes "to help Prontera?";
+		if (select( "結束對話。", "啟動傳送門。" ) == 1) {
+			mes "[科學家道妍]";
+			mes "你難道不去";
+			mes "幫助普隆德拉嗎？";
 			close;
 		}
-		mes "[Scientist Doyeon]";
-		mes "There! I opened the warp";
-		mes "to the Sky Fortress!";
-		mes "The warp will be activated";
-		mes "only for a limited period of time.";
-		mes "Step inside it, quick!";
+		mes "[科學家道妍]";
+		mes "看！我開啟了傳送門";
+		mes "通往天空要塞！";
+		mes "傳送門將會啟動";
+		mes "但只會持續一段有限的時間。";
+		mes "快踏進去！";
 		if (instance_create("Sky Fortress Invasion") < 0) {
-			mes "Party Name: " + .@party_name$;
-			mes "Party Leader: " + strcharinfo(0);
-			mes "^0000ffSky Fortress Invasion ^000000- Reservation Failed!";
+			mes "隊伍名稱: " + .@party_name$;
+			mes "隊長: " + strcharinfo(0);
+			mes "^0000ff天空要塞入侵 ^000000- 預約失敗！";
 			close;
 		}
 		close;
@@ -641,20 +641,20 @@ dali02,122,63,2	script	Scientist Doyeon#a2	4_M_MAYOR,{
 1@sthb,190,54,0	warp2	#sthd_move_02_02	2,2,1@sthd,103,71
 
 // Main event - step 1
-1@sthb,64,67,4	script	Stefan.J.E.Wolf#sthd_01	4_AS_RAGGED_GOLEM,{
+1@sthb,64,67,4	script	史蒂芬.J.E.狼#sthd_01::Stefan.J.E.Wolf#sthd_01	4_AS_RAGGED_GOLEM,{
 	end;
 OnStart:
 	enablenpc instance_npcname("Stefan.J.E.Wolf#sthd_01");
 	initnpctimer;
 	end;
 OnTimer1000:
-	npctalk "Stefan: ~Grunts~";
+	npctalk "史蒂芬: ~低吼~";
 	end;
 OnTimer3000:
-	npctalk "Earnest: What a bunch of menacing worms...!";
+	npctalk "厄尼斯特: 一群令人厭惡的蟲子……！";
 	end;
 OnTimer5000:
-	mapannounce 'sthb_map$, "Stefan Jack Earnest Wolf: Guard...the Sky Fortress...Immortal...beings...", bc_map,0xEBFF;
+	mapannounce 'sthb_map$, "史蒂芬 傑克 厄尼斯特 狼: 守護……天空要塞……不朽……的存在……", bc_map,0xEBFF;
 	end;
 OnTimer6000:
 	donpcevent instance_npcname("#sthd_event_2") + "::OnStart";
@@ -665,7 +665,7 @@ OnTimer7000:
 	end;
 }
 
-1@sthb,64,67,4	duplicate(dummy_npc)	Stefan.J.E.Wolf#sthd_02	4_AS_RAGGED_GOLEM
+1@sthb,64,67,4	duplicate(dummy_npc)	史蒂芬.J.E.狼#sthd_02::Stefan.J.E.Wolf#sthd_02	4_AS_RAGGED_GOLEM
 
 1@sthb,56,71,0	script	#sthd_event_1	HIDDEN_WARP_NPC,8,8,{
 	end;
@@ -673,18 +673,18 @@ OnTouch:
 	disablenpc instance_npcname("#sthd_event_1");
 	.@stefan$ = instance_npcname("Stefan.J.E.Wolf#sthd_01");
 	setpcblock PCBLOCK_NPC, true;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : Is this what caused the invasion into Prontera? Inside the Sky Fortress?";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 這就是入侵普隆德拉的原因嗎？天空要塞裡面？";
 	sleep2 2000;
 	enablenpc .@stefan$;
 	sleep2 2000;
 	cutin "stephan_j_e_w.bmp",2;
-	npctalk "Wolf: Trespassers... Sky Fortress...", .@stefan$;
+	npctalk "狼: 擅闖者……天空要塞……", .@stefan$;
 	specialeffect2 EF_LOCKON;
 	sleep2 2000;
-	npctalk "Jack: Bijou...told me...to impede the intruders...", .@stefan$;
+	npctalk "傑克: 畢尤……命令我……阻擋入侵者……", .@stefan$;
 	sleep2 2000;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : What's that...huge lump?";
-	npctalk "Earnest: Little...human...Greenhorn...Away...", .@stefan$;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 那是什麼……巨大的東西？";
+	npctalk "厄尼斯特: 小小的……人類……新手……滾開……", .@stefan$;
 	sleep2 2000;
 	setpcblock PCBLOCK_NPC, false;
 	cutin "",255;
@@ -814,14 +814,14 @@ OnTouch:
 	setpcblock PCBLOCK_NPC, true;
 	sleep2 1000;
 	cutin "stephan_j_e_w.bmp",2;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : I believe that huge Golem is what plays an important role in the Sky Fortress.";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 我想那隻巨大的巨石怪在天空要塞中扮演著重要的角色。";
 	sleep2 2000;
-	npctalk "Wolf: Every subordinate at the fortress...Intruders...Stop them...Bijou's...order...", instance_npcname("Stefan.J.E.Wolf#sthd_02");
+	npctalk "狼: 要塞裡的所有部下……入侵者……阻止他們……畢尤的……命令……", instance_npcname("Stefan.J.E.Wolf#sthd_02");
 	specialeffect2 EF_LOCKON;
 	sleep2 2000;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : What on earth is happening inside?";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 裡面到底在發生什麼事？";
 	sleep2 2000;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : Let's head to top! I believe there must be something there.";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 我們往最上面去吧！我相信那裡一定有什麼。";
 	sleep2 2000;
 	setpcblock PCBLOCK_NPC, false;
 	specialeffect2 EF_LOCKON;
@@ -903,13 +903,13 @@ OnTouch:
 1@sthc,15,88,0	duplicate(#sthd_move_back_a_1)	#sthd_move_back_a_6	WARPNPC,2,2
 
 // Room entrance
-1@sthb,34,86,1	script	Activated Warp#sthd_mov_1	1_SHADOW_NPC,{
-	if (select( "Don't step into the warp.", "Step into the warp." ) == 1) {
-		mes "- Dreary warp -";
-		mes "- Black light is shining. -";
+1@sthb,34,86,1	script	已啟動的傳送門#sthd_mov_1::Activated Warp#sthd_mov_1	1_SHADOW_NPC,{
+	if (select( "不要踏進傳送門。", "踏進傳送門。" ) == 1) {
+		mes "- 陰鬱的傳送門 -";
+		mes "- 黑色的光芒正在閃耀。 -";
 		close;
 	}
-	mes "- Black Warp is swirling about. -";
+	mes "- 黑色的傳送門正在旋轉。 -";
 	close2;
 	setarray .@coord[2],
 		 66,96,	// #sthd_move_back_a_1, #sthd_event_13
@@ -925,40 +925,40 @@ OnTouch:
 	end;
 }
 
-1@sthb,84,99,1	duplicate(Activated Warp#sthd_mov_1)	Activated Warp#sthd_mov_2	1_SHADOW_NPC
-1@sthb,24,40,1	duplicate(Activated Warp#sthd_mov_1)	Activated Warp#sthd_mov_3	1_SHADOW_NPC
-1@sthb,206,80,1	duplicate(Activated Warp#sthd_mov_1)	Activated Warp#sthd_mov_4	1_SHADOW_NPC
-1@sthb,147,86,1	duplicate(Activated Warp#sthd_mov_1)	Activated Warp#sthd_mov_5	1_SHADOW_NPC
-1@sthb,179,51,1	duplicate(Activated Warp#sthd_mov_1)	Activated Warp#sthd_mov_6	1_SHADOW_NPC
+1@sthb,84,99,1	duplicate(Activated Warp#sthd_mov_1)	已啟動的傳送門#sthd_mov_2::Activated Warp#sthd_mov_2	1_SHADOW_NPC
+1@sthb,24,40,1	duplicate(Activated Warp#sthd_mov_1)	已啟動的傳送門#sthd_mov_3::Activated Warp#sthd_mov_3	1_SHADOW_NPC
+1@sthb,206,80,1	duplicate(Activated Warp#sthd_mov_1)	已啟動的傳送門#sthd_mov_4::Activated Warp#sthd_mov_4	1_SHADOW_NPC
+1@sthb,147,86,1	duplicate(Activated Warp#sthd_mov_1)	已啟動的傳送門#sthd_mov_5::Activated Warp#sthd_mov_5	1_SHADOW_NPC
+1@sthb,179,51,1	duplicate(Activated Warp#sthd_mov_1)	已啟動的傳送門#sthd_mov_6::Activated Warp#sthd_mov_6	1_SHADOW_NPC
 
-1@sthb,34,85,1	script	Deactivated Warp#sthd_mov_1	4_ENERGY_WHITE,{
-	if (select( "Desactivate the warp.", "Activate the warp." ) == 1) {
-		mes "- Move the fortress to a special place -";
-		mes "- Accessible door -";
-		mes "- You seen an accessible door -";
+1@sthb,34,85,1	script	已關閉的傳送門#sthd_mov_1::Deactivated Warp#sthd_mov_1	4_ENERGY_WHITE,{
+	if (select( "關閉傳送門。", "啟動傳送門。" ) == 1) {
+		mes "- 將要塞移動到特殊的地點 -";
+		mes "- 可進入的門 -";
+		mes "- 你看見了一扇可以進入的門 -";
 		close;
 	}
 	if (countitem(6960) < 1) {
-		mes "- To operate the warp -";
-		mes "- You need a key to the Sky Fortress. -";
+		mes "- 要啟動傳送門 -";
+		mes "- 你需要天空要塞的鑰匙。 -";
 		close;
 	}
 	delitem 6960,1;
-	mes "- Warp has been -";
-	mes "- successfully activated -";
-	mes "- Dreary warp -";
-	mes "- is brought up -";
-	mes "- shining in black -";
+	mes "- 傳送門已經 -";
+	mes "- 成功啟動 -";
+	mes "- 陰鬱的傳送門 -";
+	mes "- 已被升起 -";
+	mes "- 閃耀著黑光 -";
 	disablenpc();
 	enablenpc instance_npcname("Activated Warp#" + strnpcinfo(2));
 	close;
 }
 
-1@sthb,83,99,1	duplicate(Deactivated Warp#sthd_mov_1)	Deactivated Warp#sthd_mov_2	4_ENERGY_WHITE
-1@sthb,24,39,1	duplicate(Deactivated Warp#sthd_mov_1)	Deactivated Warp#sthd_mov_3	4_ENERGY_WHITE
-1@sthb,206,79,1	duplicate(Deactivated Warp#sthd_mov_1)	Deactivated Warp#sthd_mov_4	4_ENERGY_WHITE
-1@sthb,147,87,1	duplicate(Deactivated Warp#sthd_mov_1)	Deactivated Warp#sthd_mov_5	4_ENERGY_WHITE
-1@sthb,178,51,1	duplicate(Deactivated Warp#sthd_mov_1)	Deactivated Warp#sthd_mov_6	4_ENERGY_WHITE
+1@sthb,83,99,1	duplicate(Deactivated Warp#sthd_mov_1)	已關閉的傳送門#sthd_mov_2::Deactivated Warp#sthd_mov_2	4_ENERGY_WHITE
+1@sthb,24,39,1	duplicate(Deactivated Warp#sthd_mov_1)	已關閉的傳送門#sthd_mov_3::Deactivated Warp#sthd_mov_3	4_ENERGY_WHITE
+1@sthb,206,79,1	duplicate(Deactivated Warp#sthd_mov_1)	已關閉的傳送門#sthd_mov_4::Deactivated Warp#sthd_mov_4	4_ENERGY_WHITE
+1@sthb,147,87,1	duplicate(Deactivated Warp#sthd_mov_1)	已關閉的傳送門#sthd_mov_5::Deactivated Warp#sthd_mov_5	4_ENERGY_WHITE
+1@sthb,178,51,1	duplicate(Deactivated Warp#sthd_mov_1)	已關閉的傳送門#sthd_mov_6::Deactivated Warp#sthd_mov_6	4_ENERGY_WHITE
 
 
 // Spawn in the rooms
@@ -1110,22 +1110,22 @@ OnTouch:
 
 // Chest
 1@sthc,66,137,4	script	Sky Fortress Gold Treasure#1	4_TREASURE_BOX,{
-	mes "- You've found -";
-	mes "- the Shining Treasure Box. -";
+	mes "- 你發現了 -";
+	mes "- 閃亮的寶箱。 -";
 	next;
-	if (select( "Open the box.", "Do not open the box." ) == 2) {
-		mes "- If you open the box, -";
-		mes "- there must be some good items. -";
+	if (select( "打開寶箱。", "不要打開寶箱。" ) == 2) {
+		mes "- 如果打開寶箱， -";
+		mes "- 裡面一定有些好東西。 -";
 		close;
 	}
 	if (is_party_leader() == false) {
-		mes "- Those other than the party leader -";
-		mes "- don't seem to be able to open the box. -";
+		mes "- 隊長以外的人 -";
+		mes "- 似乎無法打開寶箱。 -";
 		close;
 	}
 	if (checkweight(5128,1) == 0) {
-		mes "- It's full of items -";
-		mes "- so you can't open the box. -";
+		mes "- 裡面裝滿了道具 -";
+		mes "- 所以無法打開寶箱。 -";
 		close;
 	}
 	donpcevent instance_npcname( strnpcinfo(0) ) + "::OnBar";
@@ -1133,7 +1133,7 @@ OnTouch:
 	if (is_party_leader() == false)
 		end;
 	disablenpc();
-	mes "- In that treasure box, -";
+	mes "- 在那個寶箱裡， -";
 	.@r = rand(100);
 	if (.@r < 32) {
 		.@item_id = 985;	// Oridecon
@@ -1162,7 +1162,7 @@ OnTouch:
 		specialeffect EF_PNEUMA;
 	}
 	getitem .@item_id, 1;
-	mes "- you've found the " + getitemname(.@item_id) + ". -";
+	mes "- 你找到了 " + getitemname(.@item_id) + ". -";
 	close;
 OnBar:
 	progressbar_npc "000000",3;
@@ -1174,31 +1174,31 @@ OnBar:
 1@sthc,66,55,4	duplicate(Sky Fortress Gold Treasure#1)	Sky Fortress Gold Treasure#4	4_TREASURE_BOX
 
 // Cursed Knight
-1@sthc,16,132,4	script	Sky Fortress Treasure Box	CLEAR_NPC,{
-	mes "- You've found -";
-	mes "- the Shining Treasure Box. -";
+1@sthc,16,132,4	script	天空要塞寶箱::Sky Fortress Treasure Box	CLEAR_NPC,{
+	mes "- 你發現了 -";
+	mes "- 閃亮的寶箱。 -";
 	next;
-	if (select( "Open the box.", "Do not open the box." ) == 2) {
-		mes "- If you open the box, -";
-		mes "- there must be some good items. -";
+	if (select( "打開寶箱。", "不要打開寶箱。" ) == 2) {
+		mes "- 如果打開寶箱， -";
+		mes "- 裡面一定有些好東西。 -";
 		close;
 	}
 	if (is_party_leader() == false) {
-		mes "- Those other than the party leader -";
-		mes "- don't seem to be able to open the box. -";
+		mes "- 隊長以外的人 -";
+		mes "- 似乎無法打開寶箱。 -";
 		close;
 	}
 	if (checkweight(2655,1) == 0) {
-		mes "- It's full of items -";
-		mes "- so you can't open the box. -";
+		mes "- 裡面裝滿了道具 -";
+		mes "- 所以無法打開寶箱。 -";
 		close;
 	}
-	mes "- The treasure box is opening up -";
-	mes "- and something suddenly -";
-	mes "- showed up in the front. -";
+	mes "- 寶箱正在打開 -";
+	mes "- 突然間有什麼東西 -";
+	mes "- 出現在前方。 -";
 	specialeffect EF_SILENT_BREEZE;
 	specialeffect EF_LOCKON;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : You may have touched something wrong...";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 你可能碰到了不該碰的東西……";
 	disablenpc instance_npcname("Sky Fortress Treasure Box");
 	stopnpctimer;
 	donpcevent instance_npcname("Immortal Cursed Knight#") + "::OnEvent";
@@ -1215,14 +1215,14 @@ OnTimer9000:
 	end;
 }
 
-1@sthc,16,129,4	script	Immortal Cursed Knight#	4_AS_BLOODY_KNIGHT,{
+1@sthc,16,129,4	script	不朽受詛咒騎士#::Immortal Cursed Knight#	4_AS_BLOODY_KNIGHT,{
 	end;
 OnEvent:
 	enablenpc instance_npcname("Immortal Cursed Knight#");
 	sleep 2000;
-	npctalk "Immortal Cursed Knight: What kind of intruder is trying to wake me up...";
+	npctalk "不朽受詛咒騎士: 是哪個入侵者想吵醒我……";
 	sleep 2000;
-	npctalk "Immortal Cursed Knight: Doom to the petty thief coveting the treasure at the fortress...";
+	npctalk "不朽受詛咒騎士: 覬覦要塞寶物的小偷，末日將降臨於你……";
 	sleep 2000;
 	disablenpc instance_npcname("Immortal Cursed Knight#");
 	monster 'sthc_map$,16,129,"Immortal Cursed Knight",3474,1, instance_npcname("Immortal Cursed Knight#") + "::OnKnightB";	// AS_BLOODY_KNIGHT
@@ -1233,17 +1233,17 @@ OnTimer2000:
 	if (mobcount('sthd_map$, instance_npcname("Immortal Cursed Knight#") + "::OnKnightB") < 1) {
 		stopnpctimer;
 		'cursed_knight = 0;
-		mapannounce 'sthc_map$, "Stefan Jack Earnest Wolf: Fell down... Immortal Cursed Knight... Sad... Will kill... The intruder...", bc_map,0xEBFF;
+		mapannounce 'sthc_map$, "史蒂芬 傑克 厄尼斯特 狼: 倒下了…… 不朽受詛咒騎士…… 好悲傷…… 會殺……那個入侵者……", bc_map,0xEBFF;
 		end;
 	}
 	if ('cursed_knight > 0) {
 		.@r = rand(30);
 		if (.@r == 0)
-			unittalk 'cursed_knight, "Immortal Cursed Knight: Glory to Bijou! Death to the intruders!";
+			unittalk 'cursed_knight, "不朽受詛咒騎士: 榮耀歸於畢尤！入侵者們，死吧！";
 		else if (.@r == 1)
-			unittalk 'cursed_knight, "Immortal Cursed Knight: The perishable is nothing but a handful of ash before the Immortal Knight!";
+			unittalk 'cursed_knight, "不朽受詛咒騎士: 會腐朽的凡人在不朽騎士面前，不過是一把灰燼！";
 		else if (.@r == 2)
-			unittalk 'cursed_knight, "Immortal Cursed Knight: I can't...I can't seem to control the power!";
+			unittalk 'cursed_knight, "不朽受詛咒騎士: 我……我似乎無法控制這股力量！";
 	}
 	end;
 OnTimer3000:
@@ -1255,22 +1255,22 @@ OnKnightB:
 
 // Wind Ghost
 1@sthc,16,54,4	script	Wind Ghost in Experiment	CLEAR_NPC,{
-	if (select( "Examine the test tube.", "Do not examine the test tube." ) == 2) {
-		mes "- I'm sure there is something -";
-		mes "- extremely fearsome. -";
+	if (select( "調查試管。", "不要調查試管。" ) == 2) {
+		mes "- 我確定裡面有某種東西 -";
+		mes "- 極其可怕。 -";
 		close;
 	}
 	if (is_party_leader() == false) {
-		mes "- Those other than the party leader -";
-		mes "- don't seem to be able operate the test tube. -";
+		mes "- 隊長以外的人 -";
+		mes "- 似乎無法操作試管。 -";
 		close;
 	}
-	mes "- The test tube is opening up -";
-	mes "- and something suddenly -";
-	mes "- showed up in the front. -";
+	mes "- 試管正在開啟 -";
+	mes "- 突然間有什麼東西 -";
+	mes "- 出現在前方。 -";
 	specialeffect EF_SILENT_BREEZE;
 	specialeffect EF_LOCKON;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : What...what is this?";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 這……這是什麼？";
 	donpcevent instance_npcname("Immortal Wind Ghost#01") + "::OnEvent";
 	stopnpctimer;
 	disablenpc instance_npcname("Wind Ghost in Experiment");
@@ -1287,14 +1287,14 @@ OnTimer9000:
 	end;
 }
 
-1@sthc,15,49,4	script	Immortal Wind Ghost#01	4_AS_WIND_GHOST,{
+1@sthc,15,49,4	script	不朽風魔巫師#01::Immortal Wind Ghost#01	4_AS_WIND_GHOST,{
 	end;
 OnEvent:
 	enablenpc instance_npcname("Immortal Wind Ghost#01");
 	sleep 2000;
-	npctalk "Immortal Wind Ghost: Foolish human...You're praying for death...";
+	npctalk "不朽風魔巫師: 愚蠢的人類……你是在求死嗎……";
 	sleep 2000;
-	npctalk "Immortal Wind Ghost: The power boiling inside my body...It sure feels good...";
+	npctalk "不朽風魔巫師: 體內沸騰的力量……感覺真好……";
 	sleep 2000;
 	disablenpc instance_npcname("Immortal Wind Ghost#01");
 	monster 'sthc_map$,15,49,"Immortal Wind Ghost",3475,1, instance_npcname("Immortal Wind Ghost#01") + "::OnWindDead";	// AS_WIND_GHOST
@@ -1305,17 +1305,17 @@ OnTimer2000:
 	if (mobcount('sthd_map$, instance_npcname("Immortal Wind Ghost#01") + "::OnWindDead") < 1) {
 		stopnpctimer;
 		'wind_ghost = 0;
-		mapannounce 'sthc_map$, "Stefan Jack Earnest Wolf: Experiment... Became stronger... Immortal Wind Ghost...is dead...Death to all...", bc_map,0xEBFF;
+		mapannounce 'sthc_map$, "史蒂芬 傑克 厄尼斯特 狼: 實驗……變強了……不朽風魔巫師……已死……全部去死……", bc_map,0xEBFF;
 		end;
 	}
 	if ('wind_ghost > 0) {
 		.@r = rand(30);
 		if (.@r == 0)
-			unittalk 'wind_ghost, "Immortal Wind Ghost: I feel more power filling up inside...";
+			unittalk 'wind_ghost, "不朽風魔巫師: 我感覺體內充滿了更多力量……";
 		else if (.@r == 1)
-			unittalk 'wind_ghost, "Immortal Wind Ghost: I will kill you slowly...from the deep side of your lung...";
+			unittalk 'wind_ghost, "不朽風魔巫師: 我會慢慢殺死你……從你肺部的深處……";
 		else if (.@r == 2)
-			unittalk 'wind_ghost, "Immortal Wind Ghost: Only death awaits the humans who dare to go against me...";
+			unittalk 'wind_ghost, "不朽風魔巫師: 膽敢違抗我的人類，只有死路一條……";
 	}
 	end;
 OnTimer3000:
@@ -1485,19 +1485,19 @@ OnTouch:
 	setpcblock PCBLOCK_NPC, true;
 	sleep2 1000;
 	cutin "stephan_j_e_w.bmp",2;
-	npctalk "Stefan: ~Grunts~", instance_npcname("Stefan.J.E.Wolf#sthd_03");
+	npctalk "史蒂芬: ~低吼~", instance_npcname("Stefan.J.E.Wolf#sthd_03");
 	sleep2 2000;
-	npctalk "Earnest: Filthy humans...Stop them...Guard...the holy fortress...", instance_npcname("Stefan.J.E.Wolf#sthd_03");
+	npctalk "厄尼斯特: 污穢的人類……阻止他們……守護……神聖的要塞……", instance_npcname("Stefan.J.E.Wolf#sthd_03");
 	specialeffect2 EF_LOCKON;
 	sleep2 2000;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : It's extremely vigilant of me.";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 警戒心真是高得嚇人。";
 	sleep2 2000;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : I think there must be something if we keep following";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 如果我們一直跟著";
 	sleep2 2000;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : that Golem's trace!";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 那隻巨石怪的足跡，一定有什麼！";
 	sleep2 2000;
 	setpcblock PCBLOCK_NPC, false;
-	mapannounce 'sthb_map$, "Stefan Jack Earnest Wolf: Holy fortress...Intruders...How wicked...Stop them...", bc_map,0xEBFF;
+	mapannounce 'sthb_map$, "史蒂芬 傑克 厄尼斯特 狼: 神聖的要塞……入侵者……何等邪惡……阻止他們……", bc_map,0xEBFF;
 	cutin "",255;
 	specialeffect2 EF_LOCKON;
 	disablenpc instance_npcname("Stefan.J.E.Wolf#sthd_03");
@@ -1506,11 +1506,11 @@ OnTouch:
 	end;
 }
 
-1@sthb,207,83,8	duplicate(dummy_npc)	Stefan.J.E.Wolf#sthd_03	4_AS_RAGGED_GOLEM
+1@sthb,207,83,8	duplicate(dummy_npc)	史蒂芬.J.E.狼#sthd_03::Stefan.J.E.Wolf#sthd_03	4_AS_RAGGED_GOLEM
 
 
 // Final step
-1@sthd,103,115,6	duplicate(dummy_npc)	Stefan.J.E.Wolf#sthd_04	4_AS_RAGGED_GOLEM
+1@sthd,103,115,6	duplicate(dummy_npc)	史蒂芬.J.E.狼#sthd_04::Stefan.J.E.Wolf#sthd_04	4_AS_RAGGED_GOLEM
 
 1@sthd,103,115,0	script	#Stefan for display3	HIDDEN_WARP_NPC,10,10,{
 	end;
@@ -1518,22 +1518,22 @@ OnTouch:
 	.@stephan$ = instance_npcname("Stefan.J.E.Wolf#sthd_04");
 	disablenpc instance_npcname("#Stefan for display3");
 	setpcblock PCBLOCK_NPC, true;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : So this is finally the last...I suppose he must be the cause of Prontera Invasion, isn't he?";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 終於到最後了……他應該就是普隆德拉入侵事件的主謀吧？";
 	sleep2 2000;
 	cutin "stephan_j_e_w.bmp",2;
-	npctalk "Wolf: Adventurers...A bunch of foolish greenhorns...", .@stephan$;
+	npctalk "狼: 冒險者……一群愚蠢的新手……", .@stephan$;
 	sleep2 2000;
-	npctalk "Jack: I must follow...order...from Bijou...", .@stephan$;
+	npctalk "傑克: 我必須服從……畢尤的……命令……", .@stephan$;
 	sleep2 2000;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : Bijou? So, was Golem the mere guardian around here? Is that it...?";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 畢尤？所以，巨石怪只是這附近的守護者嗎？是這樣嗎……？";
 	sleep2 2000;
-	npctalk "Stefan: ~Growls~", .@stephan$;
+	npctalk "史蒂芬: ~低吼~", .@stephan$;
 	sleep2 2000;
-	npctalk "Earnest: Filthy worms...Can't lead life as intended...Immortal power...My body...", .@stephan$;
+	npctalk "厄尼斯特: 骯髒的蟲子……無法過上應有的生活……不朽的力量……我的身體……", .@stephan$;
 	sleep2 2000;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : I'd better defeat it first.";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 還是先擊敗它吧。";
 	sleep2 2000;
-	mapannounce 'sthd_map$, "Stefan Jack Earnest Wolf: Soldiers...Bijou's...fortress...Cut them all...I'll step up...I'll kill them...all...", bc_map,0xEBFF;
+	mapannounce 'sthd_map$, "史蒂芬 傑克 厄尼斯特 狼: 士兵……畢尤的……要塞……全部砍了……我會挺身而出……殺了他們……全部……", bc_map,0xEBFF;
 	sleep2 2000;
 	cutin "",255;
 	specialeffect EF_LOCKON;
@@ -1546,7 +1546,7 @@ OnTouch:
 	end;
 OnTimer30000:
 	stopnpctimer;
-	mapannounce 'sthd_map$, "Stefan Jack Earnest Wolf: Cursed soldiers...Come...Bring it on...", bc_map,0xEBFF;
+	mapannounce 'sthd_map$, "史蒂芬 傑克 厄尼斯特 狼: 受詛咒的士兵……來吧……放馬過來……", bc_map,0xEBFF;
 	monster 'sthd_map$,0,0,"Cursed Soldier of Bijou",3485,5, instance_npcname("#Stefan for display3") + "::OnMobDead";	// AS_D_CURSED_SOLDIER
 	end;
 OnStop:
@@ -1586,11 +1586,11 @@ OnTimer1000:
 		if ('pantheon_event[0] == 0) {
 			'pantheon_event[0] = 1;
 			donpcevent instance_npcname("#Last_Boss2_Monster") + "::OnStart";
-			mapannounce 'sthd_map$, "Stefan Jack Earnest Wolf: Strong...Adventurer... ~Growls~ My... soliders... Get out...", bc_map,0xEBFF;
+			mapannounce 'sthd_map$, "史蒂芬 傑克 厄尼斯特 狼: 強大的……冒險者…… ~低吼~ 我的……士兵們……滾開……", bc_map,0xEBFF;
 		}
 	}
 	else if (.@hp > 5000000 && .@hp < 6000001)
-		mapannounce 'sthd_map$, "Stefan Jack Earnest Wolf: I'll destroy you...I'll be smashing you...Come, the Cursed Soldiers...Ground-shaking...", bc_map,0xEBFF;
+		mapannounce 'sthd_map$, "史蒂芬 傑克 厄尼斯特 狼: 我會毀了你……我會把你碾碎……來吧，受詛咒的士兵們……撼動大地……", bc_map,0xEBFF;
 	else if (.@hp < 5000001) {
 		if ('pantheon_event[1] == 0) {
 			'pantheon_event[1] = 1;
@@ -1861,13 +1861,13 @@ OnTimer1000:
 OnTimer1500:
 	.@r = rand(1,30);
 	if (.@r == 1)
-		unittalk 'boss_id, "Wolf: Don't get away... Come closer... I'll kill you...";
+		unittalk 'boss_id, "狼: 別想逃……靠近些……我會殺了你……";
 	else if (.@r < 11)
-		unittalk 'boss_id, "Stefan: ~Groans~ ~Growls~";
+		unittalk 'boss_id, "史蒂芬: ~呻吟~ ~低吼~";
 	else if (.@r == 20)
-		unittalk 'boss_id, "Jack: I'm hurt... I'm scared... I take courage... I hit you...";
+		unittalk 'boss_id, "傑克: 我受傷了……我好害怕……我鼓起勇氣……打你……";
 	else if (.@r == 30)
-		unittalk 'boss_id, "Earnest: I'm angry... It's noisy... I'll wipe them all up...";
+		unittalk 'boss_id, "厄尼斯特: 我很生氣……好吵……我要把他們全部清掉……";
 	end;
 OnTimer3000:
 OnTimer4500:
@@ -1887,9 +1887,9 @@ OnTimer6000:
 	initnpctimer;
 	end;
 OnLastWord:
-	mapannounce 'sthd_map$, "Stefan Jack Earnest Wolf: Dead...I was...But...I won't be dead...", bc_map,0xEBFF;
+	mapannounce 'sthd_map$, "史蒂芬 傑克 厄尼斯特 狼: 死了……我本來……可是……我不會死……", bc_map,0xEBFF;
 	sleep 3000;
-	mapannounce 'sthd_map$, "Stefan Jack Earnest Wolf: Comes back...the power of Bijou...Eternal body...Again...", bc_map,0xEBFF;
+	mapannounce 'sthd_map$, "史蒂芬 傑克 厄尼斯特 狼: 復活了……畢尤的力量……永恆的身軀……再一次……", bc_map,0xEBFF;
 	end;
 }
 
@@ -1986,11 +1986,11 @@ OnTimer2000:
 1@sthd,90,90,0	duplicate(#pantheon_damage1)	#pantheon_damage27	HIDDEN_WARP_NPC,6,6
 
 1@sthd,104,96,4	script	Sky Fortress Escape Warp#end_warp	1_SHADOW_NPC,{
-	if (select( "Do not go outside of the Sky Fortress.", "Go outside of the Sky Fortress." ) == 1) {
-		mes "- The warp is emanating bright lights. -";
+	if (select( "不要離開天空要塞。", "離開天空要塞。" ) == 1) {
+		mes "- 傳送門正散發出耀眼的光芒。 -";
 		close;
 	}
-	mes "- You start to transport. -";
+	mes "- 你開始傳送。 -";
 	close2;
 	if (fortress_entrance_loc == 0)
 		warp "prt_q",244,81;

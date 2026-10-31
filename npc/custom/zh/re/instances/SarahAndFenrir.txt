@@ -7,85 +7,85 @@
 //= 1.0 First version. [Capuche]
 //============================================================
 
-dali02,97,142,3	script	Professor Bernhard#a1	4_LGTSCIENCE,{
+dali02,97,142,3	script	伯恩哈德教授#a1::Professor Bernhard#a1	4_LGTSCIENCE,{
 	if (BaseLevel < 145) {
-		mes "- You may proceed after reaching level 145 or over -";
+		mes "- 等級達到 145 或以上方可進入 -";
 		close;
 	}
 	switch( checkquest(9336,PLAYTIME) ) {
 	case -1:
 		switch( isbegin_quest(9335) ) {
 		case 0:// First time doing instance
-			mes "[Professor Bernhard]";
-			mes "I would say I am Professor Bernhard, the best weapons researcher in Schwarzwald.";
+			mes "[伯恩哈德教授]";
+			mes "我是伯恩哈德教授，黑森林最優秀的武器研究員。";
 			next;
-			mes "[Professor Bernhard]";
-			mes "After endless research I have created various weapons, but I felt something was missing so I found the ancient texts.";
-			mes "I found out about the Dimensional Device during my research.";
+			mes "[伯恩哈德教授]";
+			mes "經過無止盡的研究，我製造出各式各樣的武器，但總覺得缺少了什麼，於是找到了古代的文獻。";
+			mes "在研究期間，我發現了次元裝置的存在。";
 			next;
-			mes "[Professor Bernhard]";
-			mes "I also realized that relics from the glorious past were also needed to create more powerful and superior weapons.";
-			mes "That is why..I need you..";
+			mes "[伯恩哈德教授]";
+			mes "我也發現，要打造更強大、更優越的武器，還需要光榮過去的遺物。";
+			mes "所以……我需要你……";
 			next;
-			mes "[Professor Bernhard]";
+			mes "[伯恩哈德教授]";
 			if (is_party_leader() == false) {
-				mes "A longing for accomplishing a powerful weapon as a genuine professor!";
-				mes "In order to accomplish that, we need shards of Gigantes that once appeared in the past battle of Fenrir and Sarah.";
+				mes "身為真正的教授，我渴望完成一把強大的武器！";
+				mes "為了達成這個目標，我們需要過去潘利爾與莎拉之戰中出現過的基勘特斯碎片。";
 				next;
-				mes "[Professor Bernhard]";
-				mes "I cannot leave my post.";
-				mes "I need a warrior who can bring me the shards instead..";
-				mes "You seem capable.";
+				mes "[伯恩哈德教授]";
+				mes "我無法離開崗位。";
+				mes "我需要一名能替我帶回碎片的戰士……";
+				mes "你看起來很有能力。";
 				next;
-				mes "[Professor Bernhard]";
-				mes "I will continue discussing this further with your party leader rather than with you.";
+				mes "[伯恩哈德教授]";
+				mes "與其和你談，我還是跟你們的隊長繼續討論這件事。";
 				close;
 			}
-			mes "I need a warrior who can bring me the shard of Gigantes instead..";
-			mes "You seem capable.";
+			mes "我需要一名能替我帶回基勘特斯碎片的戰士……";
+			mes "你看起來很有能力。";
 			next;
-			mes "[Professor Bernhard]";
+			mes "[伯恩哈德教授]";
 			mes "你覺得怎麼樣？";
-			mes "Would you go to the past and bring me back the shards of Gigantes?";
-			mes "I will make sure to compensate you sufficiently.";
+			mes "你願意回到過去，替我帶回基勘特斯的碎片嗎？";
+			mes "我會確保給你足夠的報酬。";
 			next;
 			if (select( "否", "是" ) == 1) {
-				mes "[Professor Bernhard]";
-				mes "Visit me again if you change your mind.";
+				mes "[伯恩哈德教授]";
+				mes "如果你改變主意，再來找我。";
 				close;
 			}
-			mes "[Professor Bernhard]";
-			mes "I set the Dimensional Device to Glast Heim of the past, where Fenrir and Sarah once fought.";
-			mes "The operating time isn't long so hurry up and come back.";
+			mes "[伯恩哈德教授]";
+			mes "我已將次元裝置設定到過去的克雷斯特漢姆古城，也就是潘利爾與莎拉曾經交戰的地方。";
+			mes "運作時間不長，請快點回來。";
 			instance_create("Fenrir and Sarah");
 			close;
 		case 1:
-			mes "[Professor Bernhard]";
-			mes "Did you successfully bring back the shards of Gigantes?";
-			mes "You probably faced a lot of danger so thank you for the effort.";
+			mes "[伯恩哈德教授]";
+			mes "你成功帶回基勘特斯的碎片了嗎？";
+			mes "你一定遭遇了不少危險，辛苦你了。";
 			next;
-			mes "[Professor Bernhard]";
-			mes "I don't expect to receive the shards for nothing when you have risked your life for them!";
+			mes "[伯恩哈德教授]";
+			mes "你都冒著生命危險取得碎片了，我可不會白白收下！";
 			if (sarah_fenrir == 0) {
-				mes "I will give you a useful looking earring from the relics I have happened to have obtained during my previous research.";
+				mes "我會把之前研究時偶然得到的遺物中，一枚看起來很有用的耳環交給你。";
 				next;
-				mes "- The left earring of Sarah -";
-				mes "Usable for Heal 1Lv";
-				mes "- The right earring of Sarah -";
-				mes "Usable for Teleport 1Lv";
+				mes "- 莎拉的左耳環 -";
+				mes "可用於治癒術 1 級";
+				mes "- 莎拉的右耳環 -";
+				mes "可用於瞬間移動 1 級";
 				next;
-				.@s = select( "The left earring of Sarah", "The right earring of Sarah" ) - 1;
+				.@s = select( "莎拉的左耳環", "莎拉的右耳環" ) - 1;
 			}
-			mes "[Professor Bernhard]";
-			mes "If you hand the shards of Gigantes to my chief assistant, I will make sure the earrings will be correspondingly great through an enchantment.";
+			mes "[伯恩哈德教授]";
+			mes "如果你把基勘特斯的碎片交給我的首席助手，我會透過附魔，確保耳環的效果相應地變得更強。";
 			next;
-			mes "[Professor Bernhard]";
-			mes "The more shards of Gigantes are collected, the better.";
-			mes "However, there isn't a stable supply of energy needed to work the Dimensional Device.";
+			mes "[伯恩哈德教授]";
+			mes "基勘特斯的碎片收集得越多越好。";
+			mes "不過，運作次元裝置所需的能量目前沒有穩定的供應。";
 			next;
-			mes "[Professor Bernhard]";
-			mes "Come back and find me after one week has passed for the supply of Dimensional Device energy.";
-			mes "I need you to find shards of Gigantes again.";
+			mes "[伯恩哈德教授]";
+			mes "等次元裝置的能量補充好，過一週後再回來找我。";
+			mes "我需要你再去找一次基勘特斯的碎片。";
 			erasequest 9335;// Search for shards of Gigantes
 			setquest 9336;// Go back to Professor Bernhard
 			if (isbegin_quest(9337) > 0)
@@ -100,36 +100,36 @@ dali02,97,142,3	script	Professor Bernhard#a1	4_LGTSCIENCE,{
 		}
 	case 0:
 	case 1:
-		mes "[Professor Bernhard]";
-		mes "We lack the shards of Gigantes in order to make powerful weapons.";
-		mes "Because a lot of energy is needed to open a dimension device, come back and find me when the energy has accumulated.";
+		mes "[伯恩哈德教授]";
+		mes "想要製作強大的武器，我們還缺少基勘特斯的碎片。";
+		mes "開啟次元裝置需要大量能量，能量累積夠了再回來找我。";
 		close;
 	case 2:
-		mes "[Professor Bernhard]";
-		mes "I have been waiting.";
-		mes "How is everything going?";
-		mes "While you were gone I have succeeded in accumulating dimensional energy.";
-		mes "We can open the dimension device again.";
+		mes "[伯恩哈德教授]";
+		mes "我一直在等你。";
+		mes "一切都還順利嗎？";
+		mes "你離開的這段時間，我已成功累積了次元能量。";
+		mes "我們可以再次開啟次元裝置了。";
 		next;
-		mes "[Professor Bernhard]";
-		mes "A longing for accomplishing a powerful weapon as a genuine professor!";
-		mes "In order to accomplish that, we need shards of Gigantes that once appeared in the past battle of Fenrir and Sarah.";
+		mes "[伯恩哈德教授]";
+		mes "身為真正的教授，我渴望完成一把強大的武器！";
+		mes "為了達成這個目標，我們需要過去潘利爾與莎拉之戰中出現過的基勘特斯碎片。";
 		next;
-		mes "[Professor Bernhard]";
-		mes "Because I cannot leave my post, ";
-		mes "I need a warrior who can bring me the shards instead.";
-		mes "I think you can assist me once again..";
+		mes "[伯恩哈德教授]";
+		mes "因為我無法離開崗位， ";
+		mes "我需要一名能替我帶回碎片的戰士。";
+		mes "我想你可以再幫我一次……";
 		next;
-		mes "[Professor Bernhard]";
-		mes "There, all the preparations are finished.";
-		mes "Can you go back in time again and bring me the shards of Gigantes?";
-		mes "I will make sure to compensate you sufficiently.";
+		mes "[伯恩哈德教授]";
+		mes "好了，所有準備都已完成。";
+		mes "你能再次回到過去，替我帶回基勘特斯的碎片嗎？";
+		mes "我會確保給你足夠的報酬。";
 		if (is_party_leader() == true) {
 			next;
 			if (select( "否", "是" ) == 1) {
-				mes "[Professor Bernhard]";
-				mes "I set the Dimensional Device to Glast Heim of the past, where Fenrir and Sarah once were.";
-				mes "It won't last long so hurry up and come back.";
+				mes "[伯恩哈德教授]";
+				mes "我已將次元裝置設定到過去的克雷斯特漢姆古城，潘利爾與莎拉曾經身在那裡。";
+				mes "時間不會太久，請快點回來。";
 				close;
 			}
 			instance_create("Fenrir and Sarah");
@@ -138,10 +138,10 @@ dali02,97,142,3	script	Professor Bernhard#a1	4_LGTSCIENCE,{
 	}
 }
 
-dali02,99,148,3	script	Dimensional Device#XX1	PORTAL,{
+dali02,99,148,3	script	次元裝置#XX1::Dimensional Device#XX1	PORTAL,{
 	if (BaseLevel < 145) {
-		mes "- You must be level 145 or over";
-		mes "It seems entry is possible. -";
+		mes "- 必須達到 145 級以上";
+		mes "看來可以進入。 -";
 		close;
 	}
 	switch( checkquest(9336,PLAYTIME) ) {
@@ -149,40 +149,40 @@ dali02,99,148,3	script	Dimensional Device#XX1	PORTAL,{
 		break;
 	case 0:
 	case 1:
-		mes "- The Dimensional Device has closed.";
-		mes "It seems entry is not possible. -";
+		mes "- 次元裝置已關閉。";
+		mes "看來無法進入。 -";
 		close;
 	case 2:
 		break;
 	}
 	if (isbegin_quest(9335) > 0) {
-		mes "- The Dimensional Device has closed.";
-		mes "It seems entry is not possible. -";
+		mes "- 次元裝置已關閉。";
+		mes "看來無法進入。 -";
 		close;
 	}
-	if (select( "Do not enter the device.", "Enter the time device" ) == 1) {
+	if (select( "請勿進入裝置。", "進入時空裝置" ) == 1) {
 		if (getcharid(1) > 0) {
-			mes "- It seems the Dimensional Device ";
-			mes "will contort space time -";
+			mes "- 看來次元裝置 ";
+			mes "將會扭曲時空 -";
 			close;
 		}
-		mes "- There is a damp presence. -";
+		mes "- 有潮濕的氣息。 -";
 		close;
 	}
 	.@md_name$ = "Fenrir and Sarah";
 	switch( instance_enter(.@md_name$) ) {
 	case IE_OTHER:
-		mes "An unknown error occurred.";
+		mes "發生未知的錯誤。";
 		close;
 	case IE_NOINSTANCE:
-		mes "Memorial Dungeon " + .@md_name$ + " does not exist.";
-		mes "The party leader has not created the Memorial Dungeon.";
+		mes "紀念地城 " + .@md_name$ + " 不存在。";
+		mes "隊長尚未建立紀念地城。";
 		close;
 	case IE_NOMEMBER:
-		mes "Only party members can enter the Memorial Dungeon.";
+		mes "只有隊伍成員才能進入紀念地城。";
 		close;
 	case IE_OK:
-		mapannounce "dali02", "Party member " + strcharinfo(0) + " of party's " + getpartyname( getcharid(1) ) + " enters Room " + .@md_name$ + "", bc_map,0xFF99,FW_NORMAL,12;
+		mapannounce "dali02", "隊員 " + strcharinfo(0) + " 所屬的隊伍 " + getpartyname( getcharid(1) ) + " 進入了房間 " + .@md_name$ + "", bc_map,0xFF99,FW_NORMAL,12;
 		setquest 9335;// Search for shards of Gigantes
 		if (isbegin_quest(9336) > 0)
 			erasequest 9336;
@@ -191,26 +191,26 @@ dali02,99,148,3	script	Dimensional Device#XX1	PORTAL,{
 	}
 }
 
-dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
+dali02,93,146,6	script	助理教授#a1::Assistant Professor#a1	4_M_REPAIR,{
 	if (sarah_fenrir == 0)
 		end;
 	disable_items;
-	mes "[Chief Assistant]";
-	mes "I've heard about you from the professor.";
-	mes "The professor has told me to sufficiently compensate you for risking your life and bringing the shards of Gigantes.";
+	mes "[首席助手]";
+	mes "我從教授那裡聽說過你了。";
+	mes "教授交代我，要給你足夠的報酬，感謝你冒著生命危險帶回基勘特斯的碎片。";
 	next;
-	switch( select( "Enchant earring.", "Purchase earring", "Exit conversation" ) ) {
+	switch( select( "附魔耳環。", "購買耳環", "結束對話" ) ) {
 	case 1:
-		mes "[Chief Assistant]";
-		mes "Sarah's earrings we have discovered at the archaeological site must certainly have great potential.";
+		mes "[首席助手]";
+		mes "我們在考古遺址發現的莎拉耳環，必定蘊藏著巨大的潛力。";
 		next;
-		switch( select( "Enchant Sarah's earrings", "Initialize enchantment on Sarah's earrings", "Exit conversation" ) ) {
+		switch( select( "附魔莎拉的耳環", "初始化莎拉耳環的附魔", "結束對話" ) ) {
 		case 1:
-			mes "[Chief Assistant]";
-			mes "2 enchantments are possible on one earring.";
-			mes "Which earring do you wish to enchant?";
+			mes "[首席助手]";
+			mes "一個耳環最多可以附魔兩次。";
+			mes "你想附魔哪一個耳環？";
 			next;
-			switch( select( "The left earring of Sarah", "The right earring of Sarah", "離開" ) ) {
+			switch( select( "莎拉的左耳環", "莎拉的右耳環", "離開" ) ) {
 			case 1:
 				.@sarah_item_id = 28310;
 				.@sarah_earring$ = "left";
@@ -220,17 +220,17 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 				.@sarah_earring$ = "right";
 				break;
 			case 3:
-				mes "[Chief Assistant]";
-				mes "If you want an enchantment ";
-				mes "on Sarah's earrings, ";
-				mes "come and find me again.";
+				mes "[首席助手]";
+				mes "如果你想要附魔 ";
+				mes "在莎拉的耳環上， ";
+				mes "再來找我吧。";
 				close;
 			}
-			mes "[Chief Assistant]";
-			mes "You must equip the item to make enchantment possible.";
-			mes "Which column do you wish to enchant?";
+			mes "[首席助手]";
+			mes "你必須裝備該道具，才能進行附魔。";
+			mes "你想附魔哪一欄？";
 			next;
-			if (select( "Left column", "Right column" ) == 1) {
+			if (select( "左欄", "右欄" ) == 1) {
 				.@part = EQI_ACC_L;
 				.@column$ = "left";
 				.@bonus_size = 4;		// 4 possibilities
@@ -244,31 +244,31 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 			}
 			.@equip_id = getequipid(.@part);
 			if (.@equip_id != .@sarah_item_id) {
-				mes "[Chief Assistant]";
-				mes "If you wish to enchant, you must equip Sarah's " + .@sarah_earring$ + " earring.";
+				mes "[首席助手]";
+				mes "如果要附魔，你必須裝備莎拉的 " + .@sarah_earring$ + " 耳環。";
 				close;
 			}
 			setarray .@card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
 			if (.@card[2] > 0) {// 2 enchants
-				mes "[Chief Assistant]";
-				mes "A fully enchanted earring of Sarah cannot be enchanted any further.";
+				mes "[首席助手]";
+				mes "已完全附魔的莎拉耳環無法再附魔。";
 				close;
 			}
 			if (.@card[3] > 0) {// 1 enchant
-				mes "[Chief Assistant]";
-				mes "Sarah's Earring is currently in a state of enchantment in slot 4.";
+				mes "[首席助手]";
+				mes "莎拉的耳環目前在第 4 格已附魔。";
 				.@slot = 3;
 			}
 			else {// none enchant
-				mes "[Chief Assistant]";
-				mes "Sarah's Earring is currently in a state without enchantment.";
+				mes "[首席助手]";
+				mes "莎拉的耳環目前尚未附魔。";
 				.@slot = 4;
 			}
 			next;
-			mes "[Chief Assistant]";
+			mes "[首席助手]";
 			mes "你想在第 " + .@slot + "?";
 			next;
-			switch( select( "CRI or Critical", "Expert archer or Bleed", "Conservation or MATK", "Delay Attack or Delay Skill" ) ) {
+			switch( select( "CRI 或暴擊", "名弓或流血", "節能或魔攻", "攻擊延遲或技能延遲" ) ) {
 			case 1:
 				setarray .@bonus[0],
 					4863,	// Fatal1
@@ -277,8 +277,8 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 					4940,	// Critical3
 					4941,	// Critical4
 					4865;	// Fatal3
-				mes "[Chief Assistant]";
-				mes "Selected for CRI or Critical Enchantment slot " + .@slot + ".";
+				mes "[首席助手]";
+				mes "已選擇 CRI 或暴擊附魔欄位 " + .@slot + ".";
 				break;
 			case 2:
 				setarray .@bonus[0],
@@ -288,8 +288,8 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 					4943,	// Dodge2
 					4944,	// Dodge3
 					4834;	// Expert_Archer3
-				mes "[Chief Assistant]";
-				mes "Selected for Expert Archer or Bleed Enchantment slot " + .@slot + ".";
+				mes "[首席助手]";
+				mes "已選擇名弓或流血附魔欄位 " + .@slot + ".";
 				break;
 			case 3:
 				setarray .@bonus[0],
@@ -299,8 +299,8 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 					4898,	// Matk4p
 					4947,	// Thrift3
 					4899;	// Matk5p
-				mes "[Chief Assistant]";
-				mes "Selected for Conservation or MATK Enchantment slot " + .@slot + ".";
+				mes "[首席助手]";
+				mes "已選擇節能或魔攻附魔欄位 " + .@slot + ".";
 				break;
 			case 4:
 				setarray .@bonus[0],
@@ -310,35 +310,35 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 					4949,	// Skill_Delay2
 					4950,	// Skill_Delay3
 					4873;	// Attack_Delay_3
-				mes "[Chief Assistant]";
-				mes "Selected for Delay Attack or Delay Skill Enchantment slot " + .@slot + ".";
+				mes "[首席助手]";
+				mes "已選擇攻擊延遲或技能延遲附魔欄位 " + .@slot + ".";
 				break;
 			}
 			next;
-			mes "[Chief Assistant]";
-			mes "4 shards of Gigantes is required for one enchantment.";
+			mes "[首席助手]";
+			mes "每次附魔需要 4 個基勘特斯碎片。";
 			next;
-			mes "[Chief Assistant]";
-			mes "Because enchantment is a high risk process, there is risk of Sarah's earring being destroyed.";
-			mes "Do you still want to do it?";
+			mes "[首席助手]";
+			mes "附魔是高風險的過程，莎拉的耳環有可能被毀壞。";
+			mes "你還要繼續嗎？";
 			next;
 			if (select( "否", "是" ) == 1) {
-				mes "[Chief Assistant]";
-				mes "Please speak to me again after making a clear decision!";
+				mes "[首席助手]";
+				mes "想清楚之後，請再來跟我說話！";
 				close;
 			}
 			if (countitem(6803) < 4) {
-				mes "[Chief Assistant]";
-				mes "There are not enough shards of Gigantes.";
-				mes "4 shards of Gigantes is required to do one enchantment.";
+				mes "[首席助手]";
+				mes "基勘特斯的碎片不夠。";
+				mes "進行一次附魔需要 4 個基勘特斯碎片。";
 				close;
 			}
-			mes "[Chief Assistant]";
-			mes "Good. I will start the enchantment!";
-			mes "I wish you luck~!";
+			mes "[首席助手]";
+			mes "好。我現在開始附魔！";
+			mes "祝你好運~！";
 			next;
-			mes "[Chief Assistant]";
-			mes "Aahhhh!!";
+			mes "[首席助手]";
+			mes "啊啊啊啊！！";
 			next;
 			progressbar "000000",5;
 			specialeffect2 EF_MAGICALATTHIT;
@@ -355,24 +355,24 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 			if (.@i == .@bonus_size) {
 				specialeffect2 EF_CRASHEARTH;
 				specialeffect2 EF_MAXPOWER;
-				mes "[Chief Assistant]";
-				mes "Sadly... it is..";
+				mes "[首席助手]";
+				mes "很遺憾……失敗了……";
 				mes "destroyed...";
-				mes "Whew.. ";
-				mes "enchantment is not an easy task..";
+				mes "呼…… ";
+				mes "附魔可不是件容易的事……";
 				close;
 			}
 			.@card[.@slot-1] = .@bonus[.@i];
 			specialeffect2 EF_ANGEL2;
 			getitem2 .@sarah_item_id,1,1,0,0,.@card[0],.@card[1],.@card[2],.@card[3];
-			mes "[Chief Assistant]";
+			mes "[首席助手]";
 			mes "附魔完成！";
 			close;
 		case 2:
-			mes "[Chief Assistant]";
-			mes "Which earring do you wish to initialize?";
+			mes "[首席助手]";
+			mes "你想初始化哪一個耳環？";
 			next;
-			switch( select( "The left earring of Sarah", "The right earring of Sarah", "離開" ) ) {
+			switch( select( "莎拉的左耳環", "莎拉的右耳環", "離開" ) ) {
 			case 1:
 				.@sarah_item_id = 28310;
 				.@sarah_earring$ = "left";
@@ -382,24 +382,24 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 				.@sarah_earring$ = "right";
 				break;
 			case 3:
-				mes "[Chief Assistant]";
-				mes "If you want to initialize an enchantment on Sarah's earrings, come and find me again.";
+				mes "[首席助手]";
+				mes "如果你想初始化莎拉耳環的附魔，再來找我吧。";
 				close;
 			}
-			mes "[Chief Assistant]";
-			mes "On Sarah's earring. 1 shard of Gigantes is required to initialize the enchantment..";
+			mes "[首席助手]";
+			mes "莎拉的耳環上，初始化附魔需要 1 個基勘特斯碎片……";
 			next;
 			if (countitem(6803) < 1) {
-				mes "[Chief Assistant]";
-				mes "There are not enough shards of Gigantes.";
-				mes "You will need them in order for initialization to take place.";
+				mes "[首席助手]";
+				mes "基勘特斯的碎片不夠。";
+				mes "初始化需要用到它們。";
 				close;
 			}
-			mes "[Chief Assistant]";
-			mes "You must equip the item to make initialization possible.";
-			mes "Which column's earring do you wish to initialize?";
+			mes "[首席助手]";
+			mes "你必須裝備該道具，才能進行初始化。";
+			mes "你想初始化哪一欄的耳環？";
 			next;
-			if (select( "Left column", "Right column" ) == 1) {
+			if (select( "左欄", "右欄" ) == 1) {
 				.@part = EQI_ACC_L;
 				.@column$ = "left";
 			}
@@ -410,28 +410,28 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 			.@equip_id = getequipid(.@part);
 			setarray .@card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
 			if (.@equip_id == -1) {
-				mes "[Chief Assistant]";
-				mes "To initialize an enchantment, the relevant column must be equipped with gear.";
+				mes "[首席助手]";
+				mes "要初始化附魔，相應欄位必須裝備道具。";
 				close;
 			}
 			if (.@equip_id != .@sarah_item_id) {
-				mes "[Chief Assistant]";
-				mes "To initialize an enchantment, the relevant column must be equipped with Sarah's earring.";
+				mes "[首席助手]";
+				mes "要初始化附魔，相應欄位必須裝備莎拉的耳環。";
 				close;
 			}
 			if (getequipcardid(.@part,3) < 1) {
-				mes "[Chief Assistant]";
-				mes "Sarah's earring without an enchantment cannot be initialized.";
+				mes "[首席助手]";
+				mes "沒有附魔的莎拉耳環無法初始化。";
 				close;
 			}
-			mes "[Chief Assistant]";
-			mes "You have selected Sarah's " + .@sarah_earring$ + " earring on the " + .@column$ + " column.";
-			mes "It is impossible to restore abilities that are gone after initialization.";
-			mes "Do you still want to proceed?";
+			mes "[首席助手]";
+			mes "你已選擇莎拉的 " + .@sarah_earring$ + " 耳環，位於 " + .@column$ + " 欄。";
+			mes "初始化後消失的能力無法恢復。";
+			mes "你還要繼續嗎？";
 			next;
 			if (select( "否", "是" ) == 2) {
-				mes "[Chief Assistant]";
-				mes "Yes sir. Initialization will start.";
+				mes "[首席助手]";
+				mes "好的。即將開始初始化。";
 				next;
 				progressbar "000000",5;
 				specialeffect2 EF_MAGICALATTHIT;
@@ -445,53 +445,53 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 
 				delequip .@part;
 				getitem .@sarah_item_id,1;
-				mes "[Chief Assistant]";
+				mes "[首席助手]";
 				mes "初始化完成。";
-				mes "Please find me if you need me.";
+				mes "需要的話，再來找我。";
 			}
 			close;
 		case 3:
-			mes "[Chief Assistant]";
-			mes "If you want an enchantment on Sarah's earrings, come and find me again.";
+			mes "[首席助手]";
+			mes "如果你想在莎拉的耳環上附魔，再來找我吧。";
 			close;
 		}
 	case 2:
-		mes "[Chief Assistant]";
-		mes "Related to Glast Heim, this is an unique and rare earring found during an excavation with the professor.";
+		mes "[首席助手]";
+		mes "與克雷斯特漢姆古城有關，這是和教授一起挖掘時發現的獨特稀有耳環。";
 		next;
-		mes "[Chief Assistant]";
-		mes "I think this has been worn by Sarah in the past and seems to have a great ability to draw out potential strength.";
+		mes "[首席助手]";
+		mes "我想這曾是莎拉的配戴之物，似乎具有激發潛力的強大能力。";
 		next;
-		mes "[Chief Assistant]";
-		mes "I will specially trade it for 1 shard since you are the warrior who brought shards of Gigantes for the professor's work.";
+		mes "[首席助手]";
+		mes "因為你為了教授的研究帶回了基勘特斯碎片，我就特別以 1 個碎片與你交換。";
 		next;
-		mes "[Chief Assistant]";
-		mes "- The left earring of Sarah -";
-		mes "Usable for Heal 1Lv";
-		mes "- The right earring of Sarah -";
-		mes "Usable for Teleport 1Lv";
+		mes "[首席助手]";
+		mes "- 莎拉的左耳環 -";
+		mes "可用於治癒術 1 級";
+		mes "- 莎拉的右耳環 -";
+		mes "可用於瞬間移動 1 級";
 		mes "-----------------------";
-		mes "Which one do you wish?";
+		mes "你想要哪一個？";
 		next;
-		.@s = select( "The left earring of Sarah", "The right earring of Sarah", "Exit conversation" ) - 1;
+		.@s = select( "莎拉的左耳環", "莎拉的右耳環", "結束對話" ) - 1;
 		if (.@s < 2) {
 			if (countitem(6803) < 1) {
-				mes "[Chief Assistant]";
-				mes "There are not enough shards of Gigantes.";
-				mes "You will need them for me to trade with you.";
+				mes "[首席助手]";
+				mes "基勘特斯的碎片不夠。";
+				mes "我需要它們才能跟你交易。";
 				close;
 			}
 			delitem 6803,1;// Shard of Gigantes
 			getitem (28310+.@s),1;
 		}
-		mes "[Chief Assistant]";
-		mes "Professor Bernhard is the professor I respect the most.";
-		mes "Do you have someone you respect?";
+		mes "[首席助手]";
+		mes "伯恩哈德教授是我最尊敬的教授。";
+		mes "你有尊敬的人嗎？";
 		close;
 	case 3:
-		mes "[Chief Assistant]";
-		mes "I've heard about you from the professor.";
-		mes "The professor has told me to sufficiently compensate you for risking your life and bringing the shards of Gigantes.";
+		mes "[首席助手]";
+		mes "我從教授那裡聽說過你了。";
+		mes "教授交代我，要給你足夠的報酬，感謝你冒著生命危險帶回基勘特斯的碎片。";
 		close;
 	}
 }
@@ -502,12 +502,12 @@ OnTouch:
 	disablenpc instance_npcname("#glast_event_1");
 	setpcblock PCBLOCK_NPC, true;
 	specialeffect2 EF_HIT2;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : Huh? Somebody there? Hello~ You must be a traveler.";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 咦？那裡有人嗎？哈囉~ 你一定是旅行者吧。";
 	sleep2 3000;
 	cutin "fenrir_a.bmp",2;
-	npctalk "Fenrith Fenrir: This is strange.. I don't recall Glast Heim castle being filled with such a dark presence..", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 好奇怪……我不記得克雷斯特漢姆古城裡曾有這麼陰暗的氣息……", 'fenrir_1$;
 	sleep2 3000;
-	npctalk "Fenrith Fenrir: Greetings can come later! Careful! It seems somebody has summoned a monster!", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 寒暄等等再說！小心！好像有人召喚了怪物！", 'fenrir_1$;
 	sleep2 3000;
 	cutin "",255;
 	specialeffect EF_LOCKON, AREA, 'fenrir_1$;
@@ -521,8 +521,8 @@ OnTouch:
 	monster 'map_glast$,364,297, "Mutant Galion",3198,1, .@label$;
 	monster 'map_glast$,364,291, "Mutant Galion",3198,1, .@label$;
 	monster 'map_glast$,353,290, "Mutant Galion",3198,1, .@label$;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : What are these things?";
-	npctalk "Fenrith Fenrir: Buy me some time while I cast magic! I will handle this!", 'fenrir_1$;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 這些是什麼東西？";
+	npctalk "芬瑞斯·潘利爾: 在我詠唱魔法的時候幫我爭取一點時間！這件事交給我！", 'fenrir_1$;
 	donpcevent instance_npcname("#glast_event_1") + "::OnBar";
 	donpcevent instance_npcname("#glast_event_1") + "::OnEvent";
 	setpcblock PCBLOCK_NPC, false;
@@ -534,24 +534,24 @@ OnBar:
 OnEvent:
 	// npctalk "Fenrith Fenrir: Buy me some time while I cast magic! I will handle this!", 'fenrir_1$;// double on official
 	sleep 3000;
-	npctalk "Fenrith Fenrir: Wrath of the true sky.", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 真天之怒。", 'fenrir_1$;
 	sleep 3000;
-	npctalk "Fenrith Fenrir: Thunderbolt that may split the earth!", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 能夠撕裂大地的雷霆！", 'fenrir_1$;
 	sleep 3000;
-	npctalk "Fenrith Fenrir: Fall before me now!", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 現在，在我面前倒下吧！", 'fenrir_1$;
 	sleep 3000;
-	npctalk "Fenrith Fenrir: Aaah!! Thunder Storm!!!!!", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 啊啊！雷暴！！！！！", 'fenrir_1$;
 	for ( .@i = 1; .@i < 8; .@i++ )
 		specialeffect EF_THUNDERSTORM, AREA, instance_npcname( "#effect_glast_event01_" + .@i );
 	killmonster 'map_glast$, instance_npcname("#glast_event_1") + "::OnMobDead";
 	sleep 4000;
-	npctalk "Fenrith Fenrir: Glast Heim, once the cathedral for the Asgard gods..", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 克雷斯特漢姆古城，曾是阿斯加德諸神的大教堂……", 'fenrir_1$;
 	sleep 3000;
-	npctalk "Fenrith Fenrir: Now it has completely become a habitat for monsters..", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 如今它已完全成了怪物的棲息地……", 'fenrir_1$;
 	sleep 3000;
-	npctalk "Fenrith Fenrir: Wait.. Come to think of it, something is strange..", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 等等……仔細想想，有些地方很奇怪……", 'fenrir_1$;
 	sleep 3000;
-	npctalk "Fenrith Fenrir: Galions are the monsters that habit this vicinity..", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 這附近棲息的怪物是加利翁……", 'fenrir_1$;
 	sleep 3000;
 	enablenpc instance_npcname("#glast_event_3");
 	end;
@@ -566,27 +566,27 @@ OnTouch:
 	disablenpc instance_npcname("#glast_event_3");
 	setpcblock PCBLOCK_NPC, true;
 	cutin "fenrir_a.bmp",2;
-	npctalk "Fenrith Fenrir: By the way, I know it was sudden but thank you for helping.", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 對了，雖然事出突然，還是謝謝你的幫忙。", 'fenrir_1$;
 	sleep2 2000;
-	npctalk "Fenrith Fenrir: Anyway, who are you?", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 話說回來，你是誰？", 'fenrir_1$;
 	sleep2 2000;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : Ah.. that is....";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 啊……那個嘛……";
 	sleep2 2000;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : .. I am a traveler who wanders around the world!";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : ……我是四處流浪的旅行者！";
 	sleep2 2000;
-	npctalk "Fenrith Fenrir: Is that so..? I see.. I guess it does not matter.", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 是嗎……？我知道了……看來也無所謂了。", 'fenrir_1$;
 	sleep2 2000;
-	npctalk "Fenrith Fenrir: This place seems quite dangerous now. It is not too late to turn back.", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 這裡現在看來相當危險。現在回頭還不算太晚。", 'fenrir_1$;
 	sleep2 2000;
-	npctalk "Fenrith Fenrir: There is an object I need to find. I need to hurry before it is too late.", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 我有一樣東西必須找到。得趕在來不及之前動作快點。", 'fenrir_1$;
 	sleep2 2000;
-	npctalk "Fenrith Fenrir: Perhaps you can help me...", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 或許你可以幫我……", 'fenrir_1$;
 	sleep2 2000;
-	npctalk "Fenrith Fenrir: No.. Then thank you! I hope we can meet again later!", 'fenrir_1$;
+	npctalk "芬瑞斯·潘利爾: 不……那就謝謝你了！希望之後還能再見！", 'fenrir_1$;
 	sleep2 3000;
 	cutin "",255;
 	specialeffect EF_LOCKON, AREA, 'fenrir_1$;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : Did that.. person.. really happen to be.. the.. Fenrir..? No way.. probably not..";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 那個……人……真的是……潘利爾……？不可能……應該不是吧……";
 
 	disablenpc 'fenrir_1$;
 	for ( .@i = 1; .@i < 8; .@i++ )
@@ -606,7 +606,7 @@ OnTouch:
 1@glast,356,284,4	duplicate(#effect_glast_event01_1)	#effect_glast_event01_6	CLEAR_NPC
 1@glast,345,283,4	duplicate(#effect_glast_event01_1)	#effect_glast_event01_7	CLEAR_NPC
 
-1@glast,359,294,4	duplicate(#effect_glast_event01_1)	Fenrith Fenrir#glast_01	4_F_FENRIR
+1@glast,359,294,4	duplicate(#effect_glast_event01_1)	芬瑞斯·潘利爾#glast_01::Fenrith Fenrir#glast_01	4_F_FENRIR
 
 // Warps
 // From entrance
@@ -629,22 +629,22 @@ OnTimer2000:
 	specialeffect EF_WHITEBODY, AREA, 'sarah_ego$;
 	end;
 OnTimer3000:
-	npctalk "Sarah Irene: Impressive Fenrith Fenrir, you cleverly escaped", 'sarah_ego$;
+	npctalk "莎拉·艾琳: 真了不起啊，芬瑞斯·潘利爾，你還真會逃", 'sarah_ego$;
 	end;
 OnTimer7500:
-	npctalk "Sarah Irene: Mm.. today I will make you stand down", 'sarah_ego$;
+	npctalk "莎拉·艾琳: 嗯……今天就讓你退下吧", 'sarah_ego$;
 	end;
 OnTimer8000:
-	npctalk "Fenrith Fenrir: Today I hope to end our ill fated relationship.", 'fenrir_11$;
+	npctalk "芬瑞斯·潘利爾: 今天我希望結束我們這段孽緣。", 'fenrir_11$;
 	end;
 OnTimer11000:
-	npctalk "Sarah Irene: However, do not think this is the end", 'sarah_ego$;
+	npctalk "莎拉·艾琳: 不過，別以為這就結束了", 'sarah_ego$;
 	end;
 OnTimer14000:
-	npctalk "Sarah Irene: You will surely see me again!!!", 'sarah_ego$;
+	npctalk "莎拉·艾琳: 你一定還會再見到我的！！！", 'sarah_ego$;
 	end;
 OnTimer14500:
-	npctalk "Fenrith Fenrir: Mm... I look forward to it Sarah Irene..", 'fenrir_11$;
+	npctalk "芬瑞斯·潘利爾: 嗯……我很期待，莎拉·艾琳……", 'fenrir_11$;
 	specialeffect EF_FIREPILLARON2, AREA, 'sarah_ego$;
 	end;
 OnTimer15500:
@@ -714,33 +714,33 @@ OnTouch:
 	disablenpc instance_npcname("#glast_event_5");
 	setpcblock PCBLOCK_NPC, true;
 	cutin "fenrir_a.bmp",2;
-	npctalk "Fenrith Fenrir: You are still in Glast Heim? Why aren't you leaving this dangerous place?", 'fenrir_2$;
+	npctalk "芬瑞斯·潘利爾: 你還在克雷斯特漢姆古城？怎麼還不離開這個危險的地方？", 'fenrir_2$;
 	sleep2 2000;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : I know it's dangerous but I thought it would be fun so I couldn't help myself..";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 我知道很危險，但我覺得很好玩，所以忍不住了……";
 	sleep2 2000;
-	npctalk "Fenrith Fenrir: Hm.. Adventurers..", 'fenrir_2$;
+	npctalk "芬瑞斯·潘利爾: 嗯……冒險者……", 'fenrir_2$;
 	sleep2 2000;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : You don't have to worry~! I am fairly strong myself!";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 不用擔心～！我自己也相當強喔！";
 	sleep2 2000;
-	npctalk "Fenrith Fenrir: Oh.. really? Do you think you can assist me then?", 'fenrir_2$;
+	npctalk "芬瑞斯·潘利爾: 哦……真的嗎？那你覺得你能幫我嗎？", 'fenrir_2$;
 	sleep2 2000;
-	npctalk "Fenrith Fenrir: The object I am looking for is located somewhere in Glast Heim!", 'fenrir_2$;
+	npctalk "芬瑞斯·潘利爾: 我在找的東西就在克雷斯特漢姆古城的某處！", 'fenrir_2$;
 	viewpoint 1,47,270,1,0xFF0000;
 	sleep2 2000;
-	npctalk "Fenrith Fenrir: But others looking for the object will arrive there soon!", 'fenrir_2$;
+	npctalk "芬瑞斯·潘利爾: 但其他找那東西的人很快就會到那裡！", 'fenrir_2$;
 	sleep2 2000;
-	npctalk "Fenrith Fenrir: This is urgent because there isn't enough time. We have to arrive there soon. 5 minutes at the latest!", 'fenrir_2$;
+	npctalk "芬瑞斯·潘利爾: 情況緊急，時間不多。我們必須盡快趕到那裡，最晚五分鐘！", 'fenrir_2$;
 	sleep2 2000;
-	npctalk "Fenrith Fenrir: I will be waiting! If you are late I will have to go by myself!", 'fenrir_2$;
+	npctalk "芬瑞斯·潘利爾: 我會在那裡等！如果你遲到，我就只能自己去了！", 'fenrir_2$;
 	sleep2 2000;
-	npctalk "Fenrith Fenrir: Alright, I will go on ahead and you decide if you are going to assist me!", 'fenrir_2$;
+	npctalk "芬瑞斯·潘利爾: 好吧，我先走一步，要不要幫我就由你決定！", 'fenrir_2$;
 	sleep2 3000;
 	cutin "",255;
 	disablenpc 'fenrir_2$;
 	sleep2 1000;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : Hm.. what should I do..? I need shards of Gigantes as requested by Professor Bernhard..";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 嗯……我該怎麼辦呢……？我得照伯恩哈德教授的要求，收集基勘特斯的碎片……";
 	sleep2 2000;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : Should I help that person.. Or should I look for Gigantes to take the shards as requested by Professor Bernhard..?";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 我該幫那個人……還是照伯恩哈德教授的要求去找基勘特斯取得碎片呢……？";
 	sleep2 2000;
 	donpcevent instance_npcname("#fenrir_left_final_2") + "::OnStart";// timer (5 mins)
 	for ( .@i = 1; .@i < 7; .@i++ )
@@ -752,20 +752,20 @@ OnTouch:
 	end;
 }
 
-1@glast,216,52,6	script	Fenrith Fenrir#glast_02	4_F_FENRIR,{ end; }
+1@glast,216,52,6	script	芬瑞斯·潘利爾#glast_02::Fenrith Fenrir#glast_02	4_F_FENRIR,{ end; }
 
 // Fenrir left side, entrance
 1@glast,47,270,0	script	#glast_event_7	HIDDEN_WARP_NPC,5,5,{
 	end;
 OnTouch:
 	if (is_party_leader() == false)
-		npctalk "Fenrith Fenrir: I would like your party leader to come and help me!", 'fenrir_3$;
+		npctalk "芬瑞斯·潘利爾: 我希望你們的隊長過來幫我！", 'fenrir_3$;
 	else {
 		setpcblock PCBLOCK_NPC, true;
 		disablenpc instance_npcname("#glast_event_7");
-		npctalk "Fenrith Fenrir: You came! I was waiting!", 'fenrir_3$;
+		npctalk "芬瑞斯·潘利爾: 你來了！我一直在等！", 'fenrir_3$;
 		sleep2 2000;
-		npctalk "Fenrith Fenrir: We don't have much time! We have to go search for it now! Let's go in!", 'fenrir_3$;
+		npctalk "芬瑞斯·潘利爾: 時間不多了！我們現在就得去找！進去吧！", 'fenrir_3$;
 		sleep2 2000;
 		setpcblock PCBLOCK_NPC, false;
 		if ('skip_left_part == 0 && is_party_leader() == true) {// 5 mins have passed?
@@ -780,7 +780,7 @@ OnTouch:
 	end;
 }
 
-1@glast,47,270,4	duplicate(#effect_glast_event01_1)	Fenrith Fenrir#glast_03	4_F_FENRIR
+1@glast,47,270,4	duplicate(#effect_glast_event01_1)	芬瑞斯·潘利爾#glast_03::Fenrith Fenrir#glast_03	4_F_FENRIR
 
 // Fenrir left side, inside
 1@glast,44,357,0	script	#glast_event_9	HIDDEN_WARP_NPC,3,3,{
@@ -789,38 +789,38 @@ OnTouch:
 	disablenpc instance_npcname("#glast_event_9");
 	setpcblock PCBLOCK_NPC, true;
 	cutin "fenrir_a.bmp",2;
-	npctalk "Fenrith Fenrir: The sword of Baldur, Sentinel Breeze... even after 1000 years..", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 巴德爾之劍，哨兵微風……即使過了一千年……", 'fenrir_4$;
 	sleep2 3000;
-	npctalk "Fenrith Fenrir: I can feel the evil of monsters in this place.. as if they are being controlled by someone..", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 我能感覺到這裡的魔物充滿邪惡……彷彿有人在操控它們……", 'fenrir_4$;
 	sleep2 3000;
-	npctalk "Fenrith Fenrir: Then there is someone else here other than me?", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 那這裡除了我以外還有別人？", 'fenrir_4$;
 	sleep2 3000;
-	npctalk "Fenrith Fenrir: That will do.. Now all I have to do is use Sentinel Breeze to find Baldur's whereabouts..", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 這樣就夠了……接下來只要用哨兵微風來找出巴德爾的下落……", 'fenrir_4$;
 	sleep2 3000;
 	enablenpc 'sarah_10$;
 	enablenpc instance_npcname("Gigantes#semi1");
 	enablenpc instance_npcname("Gigantes#semi2");
 	sleep2 1000;
 	cutin "sarah_hero3.bmp",0;
-	npctalk "Sarah Irene: Hehe.. I see... just as I expected.", 'sarah_10$;
+	npctalk "莎拉·艾琳: 呵呵……原來如此……正如我所料。", 'sarah_10$;
 	sleep2 3000;
-	npctalk "Sarah Irene: Was that blade the clue?", 'sarah_10$;
+	npctalk "莎拉·艾琳: 那把劍就是線索嗎？", 'sarah_10$;
 	sleep2 3000;
-	npctalk "Sarah Irene: Then, Fenrith Fenrir, that means a 1000 year old seal can be broken with it?", 'sarah_10$;
+	npctalk "莎拉·艾琳: 那麼，芬瑞斯·潘利爾，這表示用它就能破除千年的封印嗎？", 'sarah_10$;
 	sleep2 3500;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : Could it be he was the real Fenrir?";
-	npctalk "Fenrith Fenrir: Could this be.. Valkyrie! Now it is not fun anymore", 'fenrir_4$;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 難道他才是真正的潘利爾？";
+	npctalk "芬瑞斯·潘利爾: 難道是……蘭特克力斯！這下就不好玩了", 'fenrir_4$;
 	cutin "fenrir_b.bmp",2;
 	sleep2 5000;
-	npctalk "Sarah Irene: Belated salutations, my name is Sarah Irene, one of the 12 Valkyries of Valhalla.", 'sarah_10$;
+	npctalk "莎拉·艾琳: 遲來的問候，我是莎拉·艾琳，瓦爾哈拉十二蘭特克力斯之一。", 'sarah_10$;
 	cutin "sarah_hero3.bmp",0;
 	sleep2 3000;
-	npctalk "Sarah Irene: Anyway, also to achieve Freyja's will.. hehe..", 'sarah_10$;
-	npctalk "Fenrith Fenrir: Two Gigantes! This will not be an easy fight. Help me and defeat the Gigantes!", 'fenrir_4$;
+	npctalk "莎拉·艾琳: 總之，也是為了完成芙蕾雅的意志……呵呵……", 'sarah_10$;
+	npctalk "芬瑞斯·潘利爾: 兩隻基勘特斯！這場仗不好打。幫我打敗基勘特斯！", 'fenrir_4$;
 	cutin "fenrir_b.bmp",2;
 	sleep2 3000;
-	npctalk "Sarah Irene: Go forth! Gigantes! And my loyal monsters!", 'sarah_10$;
-	npctalk "Fenrith Fenrir: Sarah will hide and continuously summon monsters! I will take care of that monster, you face the Gigantes!", 'fenrir_4$;
+	npctalk "莎拉·艾琳: 去吧！基勘特斯！還有我忠心的魔物們！", 'sarah_10$;
+	npctalk "芬瑞斯·潘利爾: 莎拉會躲起來不斷召喚魔物！那隻怪交給我，你去對付基勘特斯！", 'fenrir_4$;
 	cutin "fenrir_b.bmp",255;
 	sleep2 2000;
 	disablenpc 'sarah_10$;
@@ -840,11 +840,11 @@ OnEvent:
 
 OnStart:
 	initnpctimer;
-	npctalk "Fenrith Fenrir: Currents vibrating in the atmosphere! Show me your strength!", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 大氣中震盪的力量！展現你的實力吧！", 'fenrir_4$;
 	callsub S_Spawn,1,3198;// MM_M_GALION
 
 	progressbar_npc "000000",5, 'fenrir_4$;	// note: display effect after dead of Gigantes
-	npctalk "Fenrith Fenrir: Light Bolt!!!", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 光之箭！！！", 'fenrir_4$;
 	for ( .@i = 1; .@i < 9; .@i++ )
 		specialeffect EF_LIGHTBOLT, AREA, instance_npcname("#effect_glast_event02_" + .@i);
 	end;
@@ -852,10 +852,10 @@ OnTimer6000:
 	killmonster 'map_glast$, instance_npcname("#glast_event_9") + "::OnMobDead";
 	end;
 OnTimer15000:
-	npctalk "Fenrith Fenrir: Devour this evil presence with the fire pit of the universe!", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 讓宇宙的火坑吞噬這股邪惡的氣息！", 'fenrir_4$;
 	callsub S_Spawn,2,3198;// MM_M_GALION
 	progressbar_npc "000000",5, 'fenrir_4$;
-	npctalk "Fenrith Fenrir: Hell fire that can swallow even space! Meteor storm~!!!!!", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 能吞噬空間的地獄之火！流星雨～！！！！！", 'fenrir_4$;
 	for ( .@i = 1; .@i < 9; .@i++ )
 		specialeffect EF_METEORSTORM, AREA, instance_npcname("#effect_glast_event02_" + .@i);
 	end;
@@ -863,10 +863,10 @@ OnTimer21000:
 	killmonster 'map_glast$, instance_npcname("#glast_event_9") + "::OnMobDead";
 	end;
 OnTimer30000:
-	npctalk "Fenrith Fenrir: Currents vibrating in the atmosphere! Show me your strength!", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 大氣中震盪的力量！展現你的實力吧！", 'fenrir_4$;
 	callsub S_Spawn,1,3199;// MM_M_MUTANT_DRAGON
 	progressbar_npc "000000",5, 'fenrir_4$;
-	npctalk "Fenrith Fenrir: Light Bolt!!!", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 光之箭！！！", 'fenrir_4$;
 	for ( .@i = 1; .@i < 9; .@i++ )
 		specialeffect EF_LIGHTBOLT, AREA, instance_npcname("#effect_glast_event02_" + .@i);
 	end;
@@ -874,10 +874,10 @@ OnTimer36000:
 	killmonster 'map_glast$, instance_npcname("#glast_event_9") + "::OnMobDead";
 	end;
 OnTimer45000:
-	npctalk "Fenrith Fenrir: Freeze the evil presence with frost wind!!!", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 用寒霜之風凍結這股邪惡的氣息！！！", 'fenrir_4$;
 	callsub S_Spawn,2,3199;// MM_M_MUTANT_DRAGON
 	progressbar_npc "000000",5, 'fenrir_4$;
-	npctalk "Fenrith Fenrir: A storm that can freeze even the soul!! Storm gust~!!!!!", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 能凍結靈魂的暴風！！暴風雪～！！！！！", 'fenrir_4$;
 	for ( .@i = 1; .@i < 9; .@i++ )
 		specialeffect EF_STORMGUST, AREA, instance_npcname("#effect_glast_event02_" + .@i);
 	end;
@@ -933,21 +933,21 @@ S_Spawn:
 OnEvent:
 	enablenpc instance_npcname("#fenrir_left_vermilion");
 	initnpctimer;
-	npctalk "Fenrith Fenrir: They are endless. I should finish this absolutely.", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 它們源源不絕。我必須徹底解決這一切。", 'fenrir_4$;
 	progressbar_npc "000000",10, 'fenrir_4$;
 	end;
 OnTimer2000:
-	npctalk "Fenrith Fenrir: Limitlessly distant monarch with the beautiful scarlet breath!!", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 以絢麗緋紅吐息君臨的無限遙遠之王！！", 'fenrir_4$;
 	end;
 OnTimer4000:
-	npctalk "Fenrith Fenrir: Where you have passed will only be filled with nothingness.", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 你所經過之處，將只剩下虛無。", 'fenrir_4$;
 	end;
 OnTimer7000:
-	npctalk "Fenrith Fenrir: Power to shake the earth's axis! Show your grace right here and now!!!", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 撼動大地之軸的力量！就在此時此地展現你的神威吧！！！", 'fenrir_4$;
 	end;
 OnTimer10000:
 	stopnpctimer;
-	npctalk "Fenrith Fenrir: Road of Vermilion!!!!", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 朱紅之路！！！！", 'fenrir_4$;
 	for ( .@i = 1; .@i < 9; .@i++ )
 		specialeffect EF_LORD, AREA, instance_npcname("#effect_glast_event02_" + .@i);
 	killmonster 'map_glast$, instance_npcname("#fenrir_left_final_1") + "::OnMobDead";
@@ -966,21 +966,21 @@ OnStart:
 	initnpctimer;
 	end;
 OnTimer2000:
-	npctalk "Fenrith Fenrir: Alright! We have defeated a Gigantes!", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 好！我們打倒了一隻基勘特斯！", 'fenrir_4$;
 	enablenpc 'sarah_10$;
 	end;
 OnTimer4000:
-	npctalk "Sarah Irene: As expected, Fenrith Fenrir, you do not yield easily!", 'sarah_10$;
+	npctalk "莎拉·艾琳: 果然如此，芬瑞斯·潘利爾，你可不好對付！", 'sarah_10$;
 	end;
 OnTimer7000:
-	npctalk "Fenrith Fenrir: Get away from the Sentinel Breeze immediately!", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 立刻遠離哨兵微風！", 'fenrir_4$;
 	end;
 OnTimer9000:
-	npctalk "Sarah Irene: Hehe.. I can't do that!", 'sarah_10$;
+	npctalk "莎拉·艾琳: 呵呵……那可不行！", 'sarah_10$;
 	specialeffect EF_WL_TELEKINESIS_INTENSE, AREA, instance_npcname("#effect_glast_event02_bis");
 	end;
 OnTimer11000:
-	npctalk "Sarah Irene: If you want it back come to Glast Heim Castle! I shall be waiting!", 'sarah_10$;
+	npctalk "莎拉·艾琳: 想要拿回去的話，就來克雷斯特漢姆古城的城堡吧！我等著你！", 'sarah_10$;
 	end;
 OnTimer13000:
 	specialeffect EF_FIREPILLARON2, AREA, 'sarah_10$;
@@ -989,10 +989,10 @@ OnTimer14000:
 	disablenpc 'sarah_10$;
 	end;
 OnTimer16000:
-	npctalk "Fenrith Fenrir: We must follow quickly to retrieve the sword! I shall use a group space movement spell!", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 我們必須立刻追過去拿回劍！我要用團體空間移動魔法！", 'fenrir_4$;
 	end;
 OnTimer19000:
-	npctalk "Fenrith Fenrir: Simultaneous large scale warp!", 'fenrir_4$;
+	npctalk "芬瑞斯·潘利爾: 同步大範圍傳送！", 'fenrir_4$;
 	end;
 OnTimer20000:
 	stopnpctimer;
@@ -1017,10 +1017,10 @@ OnMobDead:
 	end;
 }
 
-1@glast,44,357,8	duplicate(#effect_glast_event01_1)	Fenrith Fenrir#glast_04	4_F_FENRIR
-1@glast,49,363,4	duplicate(#effect_glast_event01_1)	Gigantes#semi1	4_GIGANTES_SMALL
-1@glast,41,363,4	duplicate(#effect_glast_event01_1)	Gigantes#semi2	4_GIGANTES_SMALL
-1@glast,46,364,4	duplicate(#effect_glast_event01_1)	Sarah Irene#glast_10	4_F_SARAH
+1@glast,44,357,8	duplicate(#effect_glast_event01_1)	芬瑞斯·潘利爾#glast_04::Fenrith Fenrir#glast_04	4_F_FENRIR
+1@glast,49,363,4	duplicate(#effect_glast_event01_1)	基勘特斯#semi1::Gigantes#semi1	4_GIGANTES_SMALL
+1@glast,41,363,4	duplicate(#effect_glast_event01_1)	基勘特斯#semi2::Gigantes#semi2	4_GIGANTES_SMALL
+1@glast,46,364,4	duplicate(#effect_glast_event01_1)	莎拉·艾琳#glast_10::Sarah Irene#glast_10	4_F_SARAH
 
 1@glast,52,345,4	duplicate(#effect_glast_event01_1)	#effect_glast_event02_1	CLEAR_NPC
 1@glast,44,350,4	duplicate(#effect_glast_event01_1)	#effect_glast_event02_2	CLEAR_NPC
@@ -1042,18 +1042,18 @@ OnTouch:
 	setpcblock PCBLOCK_NPC, true;
 	cutin "fenrir_a.bmp",2;
 	sleep2 1000;
-	npctalk "Fenrith Fenrir: I need to go to Glast Heim Castle to retrieve the sword of Baldur.", 'fenrir_5$;
+	npctalk "芬瑞斯·潘利爾: 我得去克雷斯特漢姆古城的城堡拿回巴德爾之劍。", 'fenrir_5$;
 	sleep2 3000;
-	npctalk "Fenrith Fenrir: It could be difficult alone, I would gratefully accept your help.", 'fenrir_5$;
+	npctalk "芬瑞斯·潘利爾: 我一個人可能很難辦到，若能得到你的幫忙，我會非常感激。", 'fenrir_5$;
 	sleep2 3000;
-	npctalk "Fenrith Fenrir: Since there isn't enough time, we can't wait long.", 'fenrir_5$;
+	npctalk "芬瑞斯·潘利爾: 時間不夠，我們不能等太久。", 'fenrir_5$;
 	sleep2 3000;
-	npctalk "Fenrith Fenrir: I will wait in the central castle of Glast Heim for about 5 minutes.", 'fenrir_5$;
+	npctalk "芬瑞斯·潘利爾: 我會在克雷斯特漢姆古城的中央城堡等大約五分鐘。", 'fenrir_5$;
 	sleep2 3000;
-	npctalk "Fenrith Fenrir: Since it is dangerous you do not have to feel obligated to help me. I will try by myself if I have to.", 'fenrir_5$;
+	npctalk "芬瑞斯·潘利爾: 因為很危險，你不必勉強幫我。如果必要，我會自己試試。", 'fenrir_5$;
 	viewpoint 1,199,237,1,0xFF0000;
 	sleep2 3000;
-	npctalk "Fenrith Fenrir: Then I will go on ahead! Warp!", 'fenrir_5$;
+	npctalk "芬瑞斯·潘利爾: 那我先走一步！傳送！", 'fenrir_5$;
 	cutin "",255;
 	donpcevent instance_npcname("#glast_event_13") + "::OnBar";
 	setpcblock PCBLOCK_NPC, false;
@@ -1068,7 +1068,7 @@ OnBar:
 	end;
 }
 
-1@glast,133,365,4	duplicate(#effect_glast_event01_1)	Fenrith Fenrir#glast_05	4_F_FENRIR
+1@glast,133,365,4	duplicate(#effect_glast_event01_1)	芬瑞斯·潘利爾#glast_05::Fenrith Fenrir#glast_05	4_F_FENRIR
 
 // Skipped left side
 1@glast,1,1,0	script	#fenrir_left_final_2	HIDDEN_WARP_NPC,{
@@ -1081,35 +1081,35 @@ OnTimer300000:
 	'skip_left_part = 1;
 	disablenpc instance_npcname("#glast_event_7");
 	disablenpc 'fenrir_3$;
-	mapannounce 'map_glast$, "Fenrith Fenrir: Alright! We have defeated a Gigantes!", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬瑞斯·潘利爾: 好！我們打倒了一隻基勘特斯！", bc_map,0xEBFF;
 	end;
 OnTimer302000:
-	mapannounce 'map_glast$, "Sarah Irene: As expected, Fenrith Fenrir, you do not yield easily!", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 果然如此，芬瑞斯·潘利爾，你可不好對付！", bc_map,0xEBFF;
 	end;
 OnTimer305000:
-	mapannounce 'map_glast$, "Fenrith Fenrir: Get away from the Sentinel Breeze immediately!", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬瑞斯·潘利爾: 立刻遠離哨兵微風！", bc_map,0xEBFF;
 	end;
 OnTimer307000:
-	mapannounce 'map_glast$, "Sarah Irene: Hehe.. I can't do that!", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 呵呵……那可不行！", bc_map,0xEBFF;
 	end;
 OnTimer309000:
-	mapannounce 'map_glast$, "Sarah Irene: If you want it back come to Glast Heim Castle! I shall be waiting!", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 想要拿回去的話，就來克雷斯特漢姆古城的城堡吧！我等著你！", bc_map,0xEBFF;
 	end;
 OnTimer311000:
-	mapannounce 'map_glast$, "Fenrith Fenrir: I need to go to Glast Heim Castle to retrieve the sword of Baldur", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬瑞斯·潘利爾: 我得去克雷斯特漢姆古城的城堡拿回巴德爾之劍", bc_map,0xEBFF;
 	end;
 OnTimer313000:
-	mapannounce 'map_glast$, "Fenrith Fenrir: It may be difficult alone. If you are listening I will gratefully accept your help.", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬瑞斯·潘利爾: 我一個人可能很難辦到。如果你在聽，我會非常感激你的幫忙。", bc_map,0xEBFF;
 	end;
 OnTimer315000:
-	mapannounce 'map_glast$, "Fenrith Fenrir: Since there isn't enough time, we can't wait long.", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬瑞斯·潘利爾: 時間不夠，我們不能等太久。", bc_map,0xEBFF;
 	end;
 OnTimer317000:
-	mapannounce 'map_glast$, "Fenrith Fenrir: I will wait in the central castle of Glast Heim for about 5 minutes.", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬瑞斯·潘利爾: 我會在克雷斯特漢姆古城的中央城堡等大約五分鐘。", bc_map,0xEBFF;
 	end;
 OnTimer319000:
 	stopnpctimer;
-	mapannounce 'map_glast$, "Fenrith Fenrir: Since it is dangerous you do not have to feel obligated to help me. I will try by myself if I have to.", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬瑞斯·潘利爾: 因為很危險，你不必勉強幫我。如果必要，我會自己試試。", bc_map,0xEBFF;
 	enablenpc instance_npcname("#glast_move_03");
 	enablenpc 'fenrir_6$;
 	enablenpc instance_npcname("#glast_event_15");
@@ -1131,9 +1131,9 @@ OnTouch:
 	donpcevent instance_npcname("#fenrir_boss_final_2") + "::OnStop";
 	setpcblock PCBLOCK_NPC, true;
 	sleep2 1000;
-	npctalk "Fenrith Fenrir: I was waiting. Thank you for not being late.", 'fenrir_6$;
+	npctalk "芬瑞斯·潘利爾: 我一直在等。謝謝你沒有遲到。", 'fenrir_6$;
 	sleep2 3000;
-	npctalk "Fenrith Fenrir: Let us climb the castle to retrieve Sentinel Breeze! Sarah will be waiting!", 'fenrir_6$;
+	npctalk "芬瑞斯·潘利爾: 我們爬上城堡拿回哨兵微風吧！莎拉正等著我們呢！", 'fenrir_6$;
 	sleep2 3000;
 	disablenpc 'fenrir_6$;
 	enablenpc instance_npcname("#glast_move_03a");
@@ -1144,7 +1144,7 @@ OnTouch:
 	end;
 }
 
-1@glast,200,268,4	duplicate(#effect_glast_event01_1)	Fenrith Fenrir#glast_06	4_F_FENRIR
+1@glast,200,268,4	duplicate(#effect_glast_event01_1)	芬瑞斯·潘利爾#glast_06::Fenrith Fenrir#glast_06	4_F_FENRIR
 
 // Final room
 1@glast,199,336,0	script	#glast_event_18	HIDDEN_WARP_NPC,10,10,{
@@ -1154,38 +1154,38 @@ OnTouch:
 	setpcblock PCBLOCK_NPC, true;
 	cutin "sarah_hero3.bmp",0;
 	sleep2 1000;
-	npctalk "Sarah Irene: It seemed like forever waiting for you~ Fenrith Fenrir.", 'sarah_17$;
+	npctalk "莎拉·艾琳: 等你等得好像等了一輩子～芬瑞斯·潘利爾。", 'sarah_17$;
 	sleep2 3000;
 	cutin "fenrir_b.bmp",2;
-	npctalk "Fenrith Fenrir: No need for useless words, hand over the Sentinel Breeze now!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 廢話不必多說，立刻交出哨兵微風！", 'fenrir_7$;
 	sleep2 3000;
 	cutin "sarah_hero3.bmp",0;
-	npctalk "Sarah Irene: Try if you can.", 'sarah_17$;
+	npctalk "莎拉·艾琳: 有本事就來拿吧。", 'sarah_17$;
 	sleep2 3000;
 	cutin "fenrir_b.bmp",2;
-	npctalk "Fenrith Fenrir: Sarah may be too difficult for you to face alone. I must face her!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 莎拉可能不是你一個人能應付的。我必須親自對付她！", 'fenrir_7$;
 	sleep2 3000;
-	npctalk "Fenrith Fenrir: Pure white shackles, eternal prison, make a deal with me now!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 純白的枷鎖，永恆的牢獄，現在就與我訂下契約吧！", 'fenrir_7$;
 	donpcevent instance_npcname("#glast_event_18") + "::OnBar";
 	sleep2 3000;
-	npctalk "Fenrith Fenrir: White Imprison!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 白色禁錮！！", 'fenrir_7$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	sleep2 3000;
-	npctalk "Sarah Irene: Hurk.... he..", 'sarah_17$;
-	npctalk "Fenrith Fenrir: I will weaken Sarah with white imprison and face her while she's shackled,", 'fenrir_7$;
+	npctalk "莎拉·艾琳: 呃……他……", 'sarah_17$;
+	npctalk "芬瑞斯·潘利爾: 我會用白色禁錮削弱莎拉，趁她被束縛時與她正面交鋒，", 'fenrir_7$;
 	sleep2 3000;
-	npctalk "Fenrith Fenrir: you take care of the monsters she summons. I'm counting on you.", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 你負責應付她召喚出來的魔物。我就靠你了。", 'fenrir_7$;
 	sleep2 3000;
-	unittalk getcharid(3), "" + strcharinfo(0) + " : Will do. Powerful enemies make my blood boil.";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 交給我吧。強大的敵人讓我熱血沸騰。";
 	sleep2 6000;
-	npctalk "Fenrith Fenrir: This is a strategy to attack at once and finish Sarah off while she is in critical condition. Remember, our opponent is strong.", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 這是趁她瀕死時一舉進攻、解決莎拉的戰術。記住，對手很強。", 'fenrir_7$;
 	sleep2 3000;
 	cutin "sarah_hero3_2.bmp",0;
-	npctalk "Sarah Irene: So your plan was to tie me up with this sort of trick?", 'sarah_17$;
+	npctalk "莎拉·艾琳: 所以你的計畫就是用這種小把戲來綁住我？", 'sarah_17$;
 	sleep2 3000;
-	npctalk "Sarah Irene: Furthermore you borrow the assistance of such rookie adventurers...", 'sarah_17$;
+	npctalk "莎拉·艾琳: 而且你還借來這種菜鳥冒險者的幫忙……", 'sarah_17$;
 	sleep2 3000;
-	npctalk "Sarah Irene: You need to disappear from here along with that worn out blade!!", 'sarah_17$;
+	npctalk "莎拉·艾琳: 你得帶著那把破舊的劍從這裡消失！！", 'sarah_17$;
 	sleep2 3000;
 	cutin "",255;
 	hideonnpc 'sarah_17$;
@@ -1199,9 +1199,9 @@ OnBar:
 	end;
 }
 
-1@glast,200,336,4	duplicate(#effect_glast_event01_1)	Sarah Irene#glast_17	4_F_SARAH
+1@glast,200,336,4	duplicate(#effect_glast_event01_1)	莎拉·艾琳#glast_17::Sarah Irene#glast_17	4_F_SARAH
 
-1@glast,197,330,8	script	Fenrith Fenrir#glast_07	4_F_FENRIR,{
+1@glast,197,330,8	script	芬瑞斯·潘利爾#glast_07::Fenrith Fenrir#glast_07	4_F_FENRIR,{
 	end;
 OnStart:
 	initnpctimer;
@@ -1222,7 +1222,7 @@ OnEvent:
 	enablenpc instance_npcname("#fenrir_boss_final_1");
 	initnpctimer;
 	specialeffect EF_PRIMECHARGE4, AREA, 'fenrir_7$;
-	npctalk "Fenrith Fenrir: Lethal poison, Dark clouds, appear before me and show a most painful death!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 致命之毒，黑暗之雲，現身於我面前，展現最痛苦的死亡吧！", 'fenrir_7$;
 	monster 'map_glast$,190,341, "Large Gigantes#a1", 3194,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN1
 	monster 'map_glast$,214,331, "Large Gigantes#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
 	progressbar_npc "000000",10, 'fenrir_7$;
@@ -1232,14 +1232,14 @@ OnTimer1000:
 	end;
 OnTimer10000:
 	callsub S_Hit,1;
-	npctalk "Fenrith Fenrir: Go! Cloud Kill!!!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 去吧！毒雲！！！！！", 'fenrir_7$;
 	specialeffect EF_POISONSMOKE, AREA, 'sarah_17$;
 	for ( .@i = 1; .@i <= 8; .@i++ )
 		specialeffect EF_POISONSMOKE, AREA, instance_npcname("#effect_glast_event03_" + .@i);
 	progressbar_npc "000000",10, 'fenrir_7$;
 	end;
 OnTimer10500:
-	unittalk 'boss_id, "Sarah Irene: That was sudden Fenrir. Is that all you've got?";
+	unittalk 'boss_id, "莎拉·艾琳: 好突然啊，潘利爾。你就只有這點本事嗎？";
 	end;
 OnTimer11000:
 	specialeffect EF_POISONSMOKE2, AREA, 'sarah_17$;
@@ -1253,7 +1253,7 @@ OnTimer11000:
 	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_8");
 	end;
 OnTimer13000:
-	npctalk "Fenrith Fenrir: Lethal poison, Dark clouds, appear before me and show a most painful death!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 致命之毒，黑暗之雲，現身於我面前，展現最痛苦的死亡吧！", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE4, AREA, 'fenrir_7$;
 	specialeffect EF_POISONSMOKE2, AREA, 'sarah_17$;
 	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_1");
@@ -1267,7 +1267,7 @@ OnTimer13000:
 	end;
 OnTimer20000:
 	callsub S_Hit,2;
-	npctalk "Fenrith Fenrir: Go! Cloud Kill!!!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 去吧！毒雲！！！！！", 'fenrir_7$;
 	specialeffect EF_POISONSMOKE, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	for ( .@i = 1; .@i <= 8; .@i++ )
@@ -1275,7 +1275,7 @@ OnTimer20000:
 	progressbar_npc "000000",30, 'fenrir_7$;
 	end;
 OnTimer20500:
-	unittalk 'boss_id, "Sarah Irene: Try to entertain me a little more!!";
+	unittalk 'boss_id, "莎拉·艾琳: 再多讓我開心一點吧！！";
 	end;
 OnTimer21000:
 	specialeffect EF_POISONSMOKE2, AREA, 'sarah_17$;
@@ -1289,7 +1289,7 @@ OnTimer21000:
 	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_8");
 	end;
 OnTimer23000:
-	npctalk "Fenrith Fenrir: I speak to you who controls fire, I Fenrith, desire a fire that does not go out...", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 我向掌控火焰之人呼喚，我芬瑞斯，渴望一把永不熄滅的火……", 'fenrir_7$;
 	specialeffect EF_BEGINSPELL_YB, AREA, 'fenrir_7$;
 	specialeffect EF_POISONSMOKE2, AREA, 'sarah_17$;
 	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_1");
@@ -1302,148 +1302,148 @@ OnTimer23000:
 	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_8");
 	end;
 OnTimer36000:
-	npctalk "Fenrith Fenrir: Endlessly burning conflagration, a fire that can scorch even the soul!! Appear before me now!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 永恆燃燒的大火，能灼燒靈魂的烈焰！！現在就給我現身吧！！", 'fenrir_7$;
 	specialeffect EF_BEGINSPELL_YB, AREA, 'fenrir_7$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer50000:
 	callsub S_Hit,3;
-	npctalk "Fenrith Fenrir: Emerge!! Fire Insignia!!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 顯現吧！！火之徽記！！！！", 'fenrir_7$;
 	specialeffect EF_DEMONICFIRE, AREA, 'sarah_17$;
 	progressbar_npc "000000",10, 'fenrir_7$;
 	end;
 OnTimer50500:
-	unittalk 'boss_id, "Sarah Irene: Oh... not bad? But not good enough!!";
+	unittalk 'boss_id, "莎拉·艾琳: 哦……還不錯？但還差得遠！！";
 	end;
 OnTimer51000:
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer53000:
-	npctalk "Fenrith Fenrir: The root of earthshaking power!! Fear the power of the earth!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 撼動大地之力的根源！！畏懼大地之力吧！！！", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE4, AREA, 'fenrir_7$;
 	end;
 OnTimer60000:
 	callsub S_Hit,4;
-	npctalk "Fenrith Fenrir: Go forth!! Heaven's Drive!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 去吧！！天堂驅動！！！", 'fenrir_7$;
 	specialeffect EF_HEAVENSDRIVE, AREA, 'sarah_17$;
 	monster 'map_glast$,190,341, "Large Gigantes#a1", 3194,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN1
 	monster 'map_glast$,214,331, "Large Gigantes#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
 	progressbar_npc "000000",10, 'fenrir_7$;
 	end;
 OnTimer60500:
-	unittalk 'boss_id, "Sarah Irene: Why don't you stop your childish magic, Fenrir?";
+	unittalk 'boss_id, "莎拉·艾琳: 潘利爾，你的幼稚魔法就別耍了吧？";
 	end;
 OnTimer63000:
 	specialeffect EF_PRIMECHARGE4, AREA, 'fenrir_7$;
-	npctalk "Fenrith Fenrir: The root of earthshaking power!! Fear the power of the earth!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 撼動大地之力的根源！！畏懼大地之力吧！！！", 'fenrir_7$;
 	end;
 OnTimer70000:
 	callsub S_Hit,5;
-	npctalk "Fenrith Fenrir: Go forth!! Heaven's Drive!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 去吧！！天堂驅動！！！", 'fenrir_7$;
 	specialeffect EF_HEAVENSDRIVE, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	progressbar_npc "000000",30, 'fenrir_7$;
 	end;
 OnTimer70500:
-	unittalk 'boss_id, "Sarah Irene: Do you think that is enough to beat me?";
+	unittalk 'boss_id, "莎拉·艾琳: 你覺得這樣就能打敗我嗎？";
 	end;
 OnTimer73000:
-	npctalk "Fenrith Fenrir: The mercilessly cold breath of the Northern winds,", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 北方寒風那無情的冰冷吐息，", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE2, AREA, 'fenrir_7$;
 	end;
 OnTimer85000:
-	npctalk "Fenrith Fenrir: Come like the silent dawn mist and freeze everything!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 如同寂靜的黎明之霧般降臨，凍結一切吧！！", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE2, AREA, 'fenrir_7$;
 	end;
 OnTimer100000:
 	callsub S_Hit,6;
-	npctalk "Fenrith Fenrir: Appear!!! Frost Misty!!!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 現身吧！！！冰霧！！！！！", 'fenrir_7$;
 	specialeffect EF_FROSTMYSTY, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	specialeffect EF_FROSTMYSTY, AREA, 'sarah_17$;
 	progressbar_npc "000000",10, 'fenrir_7$;
 	end;
 OnTimer100500:
-	unittalk 'boss_id, "Sarah Irene: Not bad but.. not even close!";
+	unittalk 'boss_id, "莎拉·艾琳: 還不錯，但……差得遠了！";
 	end;
 OnTimer103000:
-	npctalk "Fenrith Fenrir: The power of doubt, a powerful force, the power of deeply hidden secrets in the mind!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 疑惑之力，強大的力量，深藏於心中的秘密之力！！！", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE, AREA, 'fenrir_7$;
 	end;
 OnTimer110000:
 	callsub S_Hit,7;
-	npctalk "Fenrith Fenrir: Now!!! Psychic Wave!!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 現在！！！念力波！！！！", 'fenrir_7$;
 	specialeffect EF_SPR_PLANT10, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	progressbar_npc "000000",10, 'fenrir_7$;
 	end;
 OnTimer110500:
-	unittalk 'boss_id, "Sarah Irene: Ugh... that is no use Fenrir!";
+	unittalk 'boss_id, "莎拉·艾琳: 唔……潘利爾，那招沒用的！";
 	end;
 OnTimer113000:
-	npctalk "Fenrith Fenrir: The power of doubt, a powerful force, the power of deeply hidden secrets in the mind!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 疑惑之力，強大的力量，深藏於心中的秘密之力！！！", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE, AREA, 'fenrir_7$;
 	end;
 OnTimer120000:
 	callsub S_Hit,8;
-	npctalk "Fenrith Fenrir: Now!!! Psychic Wave!!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 現在！！！念力波！！！！", 'fenrir_7$;
 	specialeffect EF_SPR_PLANT10, AREA, 'sarah_17$;
 	monster 'map_glast$,190,341, "Large Gigantes#a1", 3194,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN1
 	monster 'map_glast$,214,331, "Large Gigantes#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
 	progressbar_npc "000000",30, 'fenrir_7$;
 	end;
 OnTimer120500:
-	unittalk 'boss_id, "Sarah Irene: Hurk.. such an annoying magic bombardment!!";
+	unittalk 'boss_id, "莎拉·艾琳: 呃……真是煩人的魔法轟炸！！";
 	end;
 OnTimer123000:
-	npctalk "Fenrith Fenrir: I speak to you who controls fire, I Fenrith, desire a fire that does not go out...", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 我向掌控火焰之人呼喚，我芬瑞斯，渴望一把永不熄滅的火……", 'fenrir_7$;
 	specialeffect EF_BEGINSPELL_YB, AREA, 'fenrir_7$;
 	end;
 OnTimer135000:
-	npctalk "Fenrith Fenrir: Endlessly burning conflagration, a fire that can scorch even the soul!! Appear before me now!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 永恆燃燒的大火，能灼燒靈魂的烈焰！！現在就給我現身吧！！", 'fenrir_7$;
 	specialeffect EF_BEGINSPELL_YB, AREA, 'fenrir_7$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer150000:
 	callsub S_Hit,9;
-	npctalk "Fenrith Fenrir: Emerge!! Fire Insignia!!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 顯現吧！！火之徽記！！！！", 'fenrir_7$;
 	specialeffect EF_DEMONICFIRE, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	progressbar_npc "000000",10, 'fenrir_7$;
 	end;
 OnTimer150500:
-	unittalk 'boss_id, "Sarah Irene: I am Sarah Irene! I will not fall so easily!!!";
+	unittalk 'boss_id, "莎拉·艾琳: 我是莎拉·艾琳！我才不會這麼輕易倒下！！！";
 	end;
 OnTimer153000:
-	npctalk "Fenrith Fenrir: True wrath of the sky, thunderbolt that may split the earth... Fall before me now!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 天空真正的怒火，能劈裂大地的雷霆……現在就在我面前墜落吧！！", 'fenrir_7$;
 	specialeffect EF_DQ9_CHARGE3, AREA, 'fenrir_7$;
 	end;
 OnTimer160000:
 	callsub S_Hit,10;
-	npctalk "Fenrith Fenrir: Come now!! Thunder Storm!!!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 來吧！！雷暴！！！！！", 'fenrir_7$;
 	specialeffect EF_THUNDERSTORM2, AREA, 'sarah_17$;
-	unittalk 'boss_id, "Sarah Irene: Ugh...you are.. stronger than I predicted Fenrir...";
+	unittalk 'boss_id, "莎拉·艾琳: 唔……你比我預料的還要強，潘利爾……";
 	progressbar_npc "000000",10, 'fenrir_7$;
 	end;
 OnTimer160500:
-	unittalk 'boss_id, "Sarah Irene: Ugh...you are.. stronger than I predicted Fenrir...";
+	unittalk 'boss_id, "莎拉·艾琳: 唔……你比我預料的還要強，潘利爾……";
 	end;
 OnTimer163000:
-	npctalk "Fenrith Fenrir: True wrath of the sky, thunderbolt that may split the earth... Fall before me now!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 天空真正的怒火，能劈裂大地的雷霆……現在就在我面前墜落吧！！", 'fenrir_7$;
 	specialeffect EF_DQ9_CHARGE3, AREA, 'fenrir_7$;
 	end;
 OnTimer170000:
 	callsub S_Hit,11;
-	npctalk "Fenrith Fenrir: Come now!! Thunder Storm!!!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 來吧！！雷暴！！！！！", 'fenrir_7$;
 	specialeffect EF_THUNDERSTORM2, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	progressbar_npc "000000",30, 'fenrir_7$;
 	end;
 OnTimer170500:
-	unittalk 'boss_id, "Sarah Irene: Argh!!!!!! Ahhh!!!!!";
+	unittalk 'boss_id, "莎拉·艾琳: 啊啊啊！！！！！！啊！！！！！";
 	end;
 OnTimer173000:
-	npctalk "Fenrith Fenrir: The mercilessly cold breath of the Northern winds,", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 北方寒風那無情的冰冷吐息，", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE2, AREA, 'fenrir_7$;
 	end;
 OnTimer180000:
@@ -1453,32 +1453,32 @@ OnTimer180000:
 	monster 'map_glast$,214,331, "Large Gigantes#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
 	end;
 OnTimer185000:
-	npctalk "Fenrith Fenrir: Come like the silent dawn mist and freeze everything!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 如同寂靜的黎明之霧般降臨，凍結一切吧！！", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE2, AREA, 'fenrir_7$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer200000:
 	callsub S_Hit,12;
-	npctalk "Fenrith Fenrir: Appear!!! Frost Misty!!!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 現身吧！！！冰霧！！！！！", 'fenrir_7$;
 	specialeffect EF_FROSTMYSTY, AREA, 'sarah_17$;
 	donpcevent 'fenrir_7$ + "::OnStart";
 	progressbar_npc "000000",50, 'fenrir_7$;
 	end;
 OnTimer200500:
-	unittalk 'boss_id, "Sarah Irene: Argh!!! I will kill you all!!!!!!";
+	unittalk 'boss_id, "莎拉·艾琳: 啊啊！！我要把你們全部殺光！！！！！！";
 	specialeffect EF_FROSTMYSTY, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer203000:
-	npctalk "Fenrith Fenrir: Heaven's sword piercing the sky", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 貫穿天空的天之劍", 'fenrir_7$;
 	specialeffect EF_BLACKBODY, AREA, 'fenrir_7$;
 	specialeffect EF_RECOGNIZED, AREA, 'fenrir_7$;
 	end;
 OnTimer216000:
-	npctalk "Fenrith Fenrir: I wish to borrow your strength for a moment!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 我想借用你的力量一下！！", 'fenrir_7$;
 	end;
 OnTimer230000:
-	npctalk "Fenrith Fenrir: Let fall here your extreme strength that can tear even the vacuum!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 讓能撕裂真空的極致力量降臨於此吧！！", 'fenrir_7$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer239000:
@@ -1488,10 +1488,10 @@ OnTimer239000:
 	monster 'map_glast$,214,331, "Large Gigantes#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
 	end;
 OnTimer240000:
-	npctalk "Fenrith Fenrir: Sword that can control life and death, and pierce space time!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 能掌控生死、貫穿時空的劍！！！", 'fenrir_7$;
 	end;
 OnTimer250000:
-	npctalk "Fenrith Fenrir: Come out Baretis Spear!!!!!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 巴雷提斯長矛，現身吧！！！！！！", 'fenrir_7$;
 	specialeffect EF_PRESSURE3, AREA, 'sarah_17$;
 	for ( .@i = 1; .@i <= 8; .@i++ )
 		specialeffect EF_PRESSURE3, AREA, instance_npcname("#effect_glast_event03_" + .@i);
@@ -1502,31 +1502,31 @@ OnTimer253000:
 	specialeffect EF_PRESSURE3, AREA, 'sarah_17$;
 	for ( .@i = 1; .@i <= 8; .@i++ )
 		specialeffect EF_PRESSURE3, AREA, instance_npcname("#effect_glast_event03_" + .@i);
-	npctalk "Fenrith Fenrir: Now! I put Sarah in critical condition! You have to finish her off! Attack her quickly! Sarah is strong!", 'fenrir_7$;
-	mapannounce 'map_glast$, "Fenrith Fenrir: Now! I put Sarah in critical condition! You have to finish her off!! Attack her quickly! Sarah is strong!", bc_map,0xEBFF;
-	npctalk "Sarah Irene: Hurk...this.. cannot happen!!! I cannot lose!!!!!", 'sarah_17$;
+	npctalk "芬瑞斯·潘利爾: 現在！我已經讓莎拉瀕臨死亡！你們必須解決她！快速攻擊她！莎拉很強！", 'fenrir_7$;
+	mapannounce 'map_glast$, "芬瑞斯·潘利爾: 現在！我已經讓莎拉瀕臨死亡！你們必須解決她！！快速攻擊她！莎拉很強！", bc_map,0xEBFF;
+	npctalk "莎拉·艾琳: 呃……這不可能！！！我不能輸！！！！！", 'sarah_17$;
 	end;
 OnTimer263000:
-	npctalk "Fenrith Fenrir: Since you may not be able to finish her off alone, I will prepare one final spell!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 既然你可能無法單獨解決她，我就準備最後一道魔法！！", 'fenrir_7$;
 	progressbar_npc "000000",50, 'fenrir_7$;
 	end;
 OnTimer273000:
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
-	npctalk "Fenrith Fenrir: Heaven's sword piercing the sky", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 貫穿天空的天之劍", 'fenrir_7$;
 	specialeffect EF_RECOGNIZED, AREA, 'fenrir_7$;
 	specialeffect EF_BLACKBODY, AREA, 'fenrir_7$;
 	end;
 OnTimer283000:
-	npctalk "Fenrith Fenrir: I wish to borrow your strength for a moment!!", 'fenrir_7$;
+	npctalk "芬瑞斯·潘利爾: 我想借用你的力量一下！！", 'fenrir_7$;
 	end;
 OnTimer293000:
-	npctalk "Fenrith Fenrir: Let fall here your extreme strength that can tear even the vacuum!!";
+	npctalk "芬瑞斯·潘利爾: 讓能撕裂真空的極致力量降臨於此吧！！";
 	end;
 OnTimer303000:
-	npctalk "Fenrith Fenrir: Sword that can control life and death, and pierce space time!!!";
+	npctalk "芬瑞斯·潘利爾: 能掌控生死、貫穿時空的劍！！！";
 	end;
 OnTimer313000:
-	npctalk "Fenrith Fenrir: Come out Baretis Spear!!!!!!";
+	npctalk "芬瑞斯·潘利爾: 巴雷提斯長矛，現身吧！！！！！！";
 	specialeffect EF_PRESSURE3, AREA, 'sarah_17$;
 	for ( .@i = 1; .@i <= 8; .@i++ )
 		specialeffect EF_PRESSURE3, AREA, instance_npcname("#effect_glast_event03_" + .@i);
@@ -1568,16 +1568,16 @@ OnTimer6000:
 	enablenpc 'sarah_20$;
 	end;
 OnTimer9000:
-	npctalk "Fenrith Fenrir: Sentinel Breeze! I have it in my hand!", 'fenrir_8$;
+	npctalk "芬瑞斯·潘利爾: 哨兵微風！它就在我手中！", 'fenrir_8$;
 	end;
 OnTimer12000:
-	npctalk "Sarah Irene: Hurk....", 'sarah_20$;
+	npctalk "莎拉·艾琳: 呃……", 'sarah_20$;
 	end;
 OnTimer15000:
-	npctalk "Fenrith Fenrir: I can find Baldur with this!", 'fenrir_8$;
+	npctalk "芬瑞斯·潘利爾: 有了它，我就能找到巴德爾！", 'fenrir_8$;
 	end;
 OnTimer18000:
-	npctalk "Sarah Irene: Not yet!!", 'sarah_20$;
+	npctalk "莎拉·艾琳: 還沒結束！！", 'sarah_20$;
 	progressbar_npc "000000",2, 'sarah_20$;
 	end;
 OnTimer21000:
@@ -1586,21 +1586,21 @@ OnTimer21000:
 	enablenpc 'fenrir_9$;
 	end;
 OnTimer24000:
-	npctalk "Sarah Irene: Hehe... You evade well like a rat.", 'sarah_20$;
+	npctalk "莎拉·艾琳: 呵呵……你像老鼠一樣躲得很靈活嘛。", 'sarah_20$;
 	end;
 OnTimer27000:
-	npctalk "Sarah Irene: However, I cannot let you leave with that.", 'sarah_20$;
+	npctalk "莎拉·艾琳: 不過，我不能讓你就這樣帶著它離開。", 'sarah_20$;
 	end;
 OnTimer30000:
-	npctalk "Sarah Irene: I will blow this entire castle away! Yaah!", 'sarah_20$;
+	npctalk "莎拉·艾琳: 我要把整座城堡炸飛！呀！", 'sarah_20$;
 	progressbar_npc "000000",15, 'sarah_20$;
 	end;
 OnTimer33000:
-	npctalk "Fenrith Fenrir: She is planning to collapse this place! I must perform a large scale teleportation!!!", 'fenrir_9$;
+	npctalk "芬瑞斯·潘利爾: 她打算讓這裡崩塌！我必須進行大規模傳送！！！", 'fenrir_9$;
 	progressbar_npc "000000",6, 'fenrir_9$;
 	end;
 OnTimer36000:
-	npctalk "Fenrith Fenrir: Farewell Valkyrie!! I shall take the Sentinel Breeze! So long!", 'fenrir_9$;
+	npctalk "芬瑞斯·潘利爾: 再見了，蘭特克力斯！！哨兵微風我就收下了！後會有期！", 'fenrir_9$;
 	end;
 OnTimer39000:
 	for ( .@i = 1; .@i <= 8; .@i++ )
@@ -1624,9 +1624,9 @@ OnMobDead:
 	end;
 }
 
-1@glast,199,348,8	duplicate(#effect_glast_event01_1)	Fenrith Fenrir#glast_08	4_F_FENRIR
-1@glast,201,346,4	duplicate(#effect_glast_event01_1)	Fenrith Fenrir#glast_09	4_F_FENRIR
-1@glast,197,339,8	duplicate(#effect_glast_event01_1)	Sarah Irene#glast_20	4_F_SARAH
+1@glast,199,348,8	duplicate(#effect_glast_event01_1)	芬瑞斯·潘利爾#glast_08::Fenrith Fenrir#glast_08	4_F_FENRIR
+1@glast,201,346,4	duplicate(#effect_glast_event01_1)	芬瑞斯·潘利爾#glast_09::Fenrith Fenrir#glast_09	4_F_FENRIR
+1@glast,197,339,8	duplicate(#effect_glast_event01_1)	莎拉·艾琳#glast_20::Sarah Irene#glast_20	4_F_SARAH
 
 1@glast,201,336,4	duplicate(#effect_glast_event01_1)	#effect_glast_event03_1	CLEAR_NPC
 1@glast,201,337,4	duplicate(#effect_glast_event01_1)	#effect_glast_event03_2	CLEAR_NPC
@@ -1645,19 +1645,19 @@ OnTouch:
 	setpcblock PCBLOCK_NPC, true;
 	sleep2 1500;
 	cutin "fenrir_b.bmp",2;
-	npctalk "Fenrith Fenrir: Hehe.. You are certainly skilled but I think you have underestimated me, Valkyrie.", 'fenrir_10$;
+	npctalk "芬瑞斯·潘利爾: 呵呵……你的確有兩下子，但我想你低估了我，蘭特克力斯。", 'fenrir_10$;
 	sleep2 3000;
-	mapannounce 'map_glast$, "Sarah Irene: You rather entertain me Fenrith...", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 你倒是讓我挺開心的，芬瑞斯……", bc_map,0xEBFF;
 	sleep2 3000;
-	mapannounce 'map_glast$, "Sarah Irene: Did you think you can escape that easily?", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 你以為你能這麼輕易逃掉嗎？", bc_map,0xEBFF;
 	sleep2 3000;
-	mapannounce 'map_glast$, "Sarah Irene: I shall turn Glast Heim into hell!!", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 我要把克雷斯特漢姆古城變成地獄！！", bc_map,0xEBFF;
 	sleep2 3000;
-	npctalk "Fenrith Fenrir: If we don't escape now we will suffer a gruesome fate by Sarah's monsters and magic!", 'fenrir_10$;
+	npctalk "芬瑞斯·潘利爾: 如果我們現在不逃，就會被莎拉的魔物和魔法害得很慘！", 'fenrir_10$;
 	sleep2 3000;
-	npctalk "Fenrith Fenrir: Let's meet at Glast Heim entrance where we first met! If we flee that far it should be safe!", 'fenrir_10$;
+	npctalk "芬瑞斯·潘利爾: 我們就在克雷斯特漢姆古城入口，我們初次見面的地方碰頭吧！逃到那麼遠應該就安全了！", 'fenrir_10$;
 	sleep2 3000;
-	npctalk "Fenrith Fenrir: There is no time! Hurry!", 'fenrir_10$;
+	npctalk "芬瑞斯·潘利爾: 沒時間了！快！", 'fenrir_10$;
 	sleep2 3000;
 	cutin "",255;
 	disablenpc 'fenrir_10$;
@@ -1666,7 +1666,7 @@ OnTouch:
 	end;
 }
 
-1@glast,200,224,4	duplicate(#effect_glast_event01_1)	Fenrith Fenrir#glast_10	4_F_FENRIR
+1@glast,200,224,4	duplicate(#effect_glast_event01_1)	芬瑞斯·潘利爾#glast_10::Fenrith Fenrir#glast_10	4_F_FENRIR
 
 // Skipped final room
 1@glast,1,1,0	script	#fenrir_boss_final_2	HIDDEN_WARP_NPC,{
@@ -1681,32 +1681,32 @@ OnTimer300000:
 	disablenpc 'fenrir_6$;
 	end;
 OnTimer305000:
-	mapannounce 'map_glast$, "Fenrith Fenrir: Sentinel Breeze! I have it in my hand!", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬瑞斯·潘利爾: 哨兵微風！它就在我手中！", bc_map,0xEBFF;
 	end;
 OnTimer308000:
-	mapannounce 'map_glast$, "Sarah Irene: Hurk....", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 呃……", bc_map,0xEBFF;
 	end;
 OnTimer311000:
-	mapannounce 'map_glast$, "Fenrith Fenrir: Hehe.. You are certainly skilled but I think you have underestimated me, Valkyrie.", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬瑞斯·潘利爾: 呵呵……你的確有兩下子，但我想你低估了我，蘭特克力斯。", bc_map,0xEBFF;
 	end;
 OnTimer314000:
-	mapannounce 'map_glast$, "Sarah Irene: You rather entertain me Fenrith...", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 你倒是讓我挺開心的，芬瑞斯……", bc_map,0xEBFF;
 	end;
 OnTimer317000:
-	mapannounce 'map_glast$, "Sarah Irene: Did you think you can escape that easily?", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 你以為你能這麼輕易逃掉嗎？", bc_map,0xEBFF;
 	end;
 OnTimer320000:
-	mapannounce 'map_glast$, "Sarah Irene: I shall turn Glast Heim into hell!!", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 我要把克雷斯特漢姆古城變成地獄！！", bc_map,0xEBFF;
 	end;
 OnTimer323000:
-	mapannounce 'map_glast$, "Fenrith Fenrir: If we don't escape now we will suffer a gruesome fate by Sarah's monsters and magic!", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬瑞斯·潘利爾: 如果我們現在不逃，就會被莎拉的魔物和魔法害得很慘！", bc_map,0xEBFF;
 	end;
 OnTimer326000:
-	mapannounce 'map_glast$, "Fenrith Fenrir: Let's meet at Glast Heim entrance where we first met! If we flee that far it should be safe!", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬瑞斯·潘利爾: 我們就在克雷斯特漢姆古城入口，我們初次見面的地方碰頭吧！逃到那麼遠應該就安全了！", bc_map,0xEBFF;
 	end;
 OnTimer329000:
 	stopnpctimer;
-	mapannounce 'map_glast$, "Fenrith Fenrir: There is no time! Hurry!", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "芬瑞斯·潘利爾: 沒時間了！快！", bc_map,0xEBFF;
 	donpcevent instance_npcname("#sarah_wrath") + "::OnStart";
 	end;
 OnStop:
@@ -1731,28 +1731,28 @@ OnStart:
 	initnpctimer;
 	end;
 OnTimer10000:
-	mapannounce 'map_glast$, "Sarah Irene: Absurd little thing, you think you can escape that easily?", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 可笑的小東西，你以為你能這麼輕易逃掉？", bc_map,0xEBFF;
 	callsub S_Spawn,0;
 	end;
 OnTimer50000:
-	mapannounce 'map_glast$, "Sarah Irene: My minions will make sure to kill you!!!", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 我的爪牙一定會把你們殺掉！！！", bc_map,0xEBFF;
 	callsub S_Spawn,1;
 	end;
 OnTimer80000:
-	mapannounce 'map_glast$, "Sarah Irene: I cannot let you escape!!", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 我不能讓你們逃掉！！", bc_map,0xEBFF;
 	callsub S_Spawn,2;
 	end;
 OnTimer110000:
-	mapannounce 'map_glast$, "Sarah Irene: Fenrith Fenrir.... Did you think I couldn't track you because you fled?", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 芬瑞斯·潘利爾……你以為你逃了我就追蹤不到你嗎？", bc_map,0xEBFF;
 	callsub S_Spawn,3;
 	end;
 OnTimer150000:
-	mapannounce 'map_glast$, "Sarah Irene: Absurd little thing, you think you can escape that easily?", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 可笑的小東西，你以為你能這麼輕易逃掉？", bc_map,0xEBFF;
 	callsub S_Spawn,4;
 	end;
 OnTimer300000:
 	stopnpctimer;
-	mapannounce 'map_glast$, "Sarah Irene: Bwahahahahahaha!! Glast Heim is being filled with my wrath!!", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 哇哈哈哈哈哈！！克雷斯特漢姆古城正被我的怒火吞沒！！", bc_map,0xEBFF;
 	for ( .@i = 1; .@i <= 14; .@i++ )
 		enablenpc instance_npcname("#glast_bomb_" + (.@i < 10 ? ("0"+.@i) : .@i));
 	end;
@@ -1862,7 +1862,7 @@ S_Spawn:
 	end;
 OnTouch:
 	unitkill 0;
-	mapannounce 'map_glast$, "Sarah Irene: Bwahahahahahaha!! Glast Heim is being filled with my wrath!!", bc_map,0xEBFF;
+	mapannounce 'map_glast$, "莎拉·艾琳: 哇哈哈哈哈哈！！克雷斯特漢姆古城正被我的怒火吞沒！！", bc_map,0xEBFF;
 	specialeffect2 EF_LORD;
 	sleep2 1000;
 	specialeffect2 EF_LORD;
@@ -1885,26 +1885,26 @@ OnTouch:
 
 // Back to entrance
 // event in #glast_move_01
-1@glast,359,294,4	script	Fenrith Fenrir#glast_11	4_F_FENRIR,{
+1@glast,359,294,4	script	芬瑞斯·潘利爾#glast_11::Fenrith Fenrir#glast_11	4_F_FENRIR,{
 	if (isbegin_quest(9337) == 0) {
 		cutin "fenrir_a.bmp",2;
-		mes "[Fenrith Fenrir]";
-		mes "You arrived safely!";
-		mes "The dangerous situation";
-		mes "had me worried.";
-		mes "It was difficult and dangerous work";
-		mes "so I am grateful for your help.";
+		mes "[芬瑞斯·潘利爾]";
+		mes "你平安抵達了！";
+		mes "危險的狀況";
+		mes "讓我很擔心。";
+		mes "那是件艱難又危險的工作";
+		mes "所以我很感謝你的幫忙。";
 		next;
-		mes "[Fenrir]";
-		mes "I feel we will meet again";
-		mes "but perhaps it is just my imagination?";
-		mes "Mm.. that would be nice.";
+		mes "[潘利爾]";
+		mes "我覺得我們還會再見面";
+		mes "不過，或許只是我想太多？";
+		mes "嗯……那就好了。";
 		next;
-		mes "[Fenrir]";
-		mes "We worked well together";
-		mes "so I hope we will meet again.";
-		mes "And watch for Sarah,";
-		mes "harm can come your way as well.";
+		mes "[潘利爾]";
+		mes "我們合作得很好";
+		mes "所以我希望我們還能再見面。";
+		mes "也請小心莎拉，";
+		mes "她也可能會傷到你。";
 		setquest 9337;// Wrapping up the Adventure
 		getitem 607,1;// Yggdrasilberry
 		getitem 608,1;// Seed_Of_Yggdrasil
@@ -1912,16 +1912,16 @@ OnTouch:
 		cutin "",255;
 		end;
 	}
-	mes "[Fenrir]";
-	mes "We worked well together";
-	mes "so I hope we will meet again.";
+	mes "[潘利爾]";
+	mes "我們合作得很好";
+	mes "所以我希望我們還能再見面。";
 	close;
 }
 
-1@glast,353,290,8	duplicate(#effect_glast_event01_1)	Sarah Irene's alter ego	4_F_SARAH
+1@glast,353,290,8	duplicate(#effect_glast_event01_1)	莎拉的另一人格::Sarah Irene's alter ego	4_F_SARAH
 
 // Shards Events
-1@glast,290,147,4	script	Ancient Gigantes#glast_1	4_GIGANTES_BIG,6,6,{
+1@glast,290,147,4	script	遠古巨人族#glast_1::Ancient Gigantes#glast_1	4_GIGANTES_BIG,6,6,{
 	end;
 OnTouch:
 	disablenpc instance_npcname("Ancient Gigantes#glast_1");
@@ -1929,7 +1929,7 @@ OnTouch:
 	monster 'map_glast$,290,147, "Ancient Gigantes#X1",3196,1, .@label$;		// MM_L_GIGAN3
 	monster 'map_glast$,290,146, "Ancient Medium Gigantes",3193,1, .@label$;	// MM_M_GIGAN3
 	monster 'map_glast$,288,147, "Ancient Medium Gigantes",3193,1, .@label$;	// MM_M_GIGAN3
-	unittalk getcharid(3), "" + strcharinfo(0) + " : The Ancient Gigantes that Professor Bernhard spoke of!!";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 伯恩哈德教授提到的遠古巨人族！！";
 	enablenpc instance_npcname("Stone Gargoyle#glast_01");
 	enablenpc instance_npcname("Stone Gargoyle#glast_02");
 	enablenpc instance_npcname("Stone Gargoyle#glast_03");
@@ -1941,7 +1941,7 @@ OnMobDead:
 	end;
 }
 
-1@glast,300,248,4	script	Ancient Gigantes#glast_2	4_GIGANTES_BIG,4,4,{
+1@glast,300,248,4	script	遠古巨人族#glast_2::Ancient Gigantes#glast_2	4_GIGANTES_BIG,4,4,{
 	end;
 OnTouch:
 	disablenpc instance_npcname("Ancient Gigantes#glast_2");
@@ -1949,7 +1949,7 @@ OnTouch:
 	monster 'map_glast$,300,248, "Ancient Gigantes#X2",3196,1, .@label$;		// MM_L_GIGAN3
 	monster 'map_glast$,299,250, "Ancient Medium Gigantes",3193,1, .@label$;	// MM_M_GIGAN3
 	monster 'map_glast$,302,246, "Ancient Medium Gigantes",3193,1, .@label$;	// MM_M_GIGAN3
-	unittalk getcharid(3), "" + strcharinfo(0) + " : The Ancient Gigantes that Professor Bernhard spoke of!!";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 伯恩哈德教授提到的遠古巨人族！！";
 	enablenpc instance_npcname("Stone Gargoyle#glast_07");
 	enablenpc instance_npcname("Stone Gargoyle#glast_08");
 	enablenpc instance_npcname("Stone Gargoyle#glast_09");
@@ -1960,7 +1960,7 @@ OnMobDead:
 	end;
 }
 
-1@glast,292,344,4	script	Ancient Gigantes#glast_3	4_GIGANTES_BIG,6,6,{
+1@glast,292,344,4	script	遠古巨人族#glast_3::Ancient Gigantes#glast_3	4_GIGANTES_BIG,6,6,{
 	end;
 OnTouch:
 	disablenpc instance_npcname("Ancient Gigantes#glast_3");
@@ -1968,7 +1968,7 @@ OnTouch:
 	monster 'map_glast$,292,344, "Ancient Gigantes#X3",3196,1, .@label$;		// MM_L_GIGAN3
 	monster 'map_glast$,290,346, "Ancient Medium Gigantes",3193,1, .@label$;	// MM_M_GIGAN3
 	monster 'map_glast$,291,344, "Ancient Medium Gigantes",3193,1, .@label$;	// MM_M_GIGAN3
-	unittalk getcharid(3), "" + strcharinfo(0) + " : The Ancient Gigantes that Professor Bernhard spoke of!!";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 伯恩哈德教授提到的遠古巨人族！！";
 	enablenpc instance_npcname("Stone Gargoyle#glast_12");
 	enablenpc instance_npcname("Stone Gargoyle#glast_13");
 	enablenpc instance_npcname("Stone Gargoyle#glast_14");
@@ -1977,7 +1977,7 @@ OnMobDead:
 	end;
 }
 
-1@glast,107,147,6	script	Ancient Gigantes#glast_4	4_GIGANTES_BIG,6,6,{
+1@glast,107,147,6	script	遠古巨人族#glast_4::Ancient Gigantes#glast_4	4_GIGANTES_BIG,6,6,{
 	end;
 OnTouch:
 	disablenpc instance_npcname("Ancient Gigantes#glast_4");
@@ -1985,7 +1985,7 @@ OnTouch:
 	monster 'map_glast$,107,147, "Ancient Gigantes#X4",3196,1, .@label$;		// MM_L_GIGAN3
 	monster 'map_glast$,107,145, "Ancient Medium Gigantes",3193,1, .@label$;	// MM_M_GIGAN3
 	monster 'map_glast$,106,148, "Ancient Medium Gigantes",3193,1, .@label$;	// MM_M_GIGAN3
-	unittalk getcharid(3), "" + strcharinfo(0) + " : The Ancient Gigantes that Professor Bernhard spoke of!!";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 伯恩哈德教授提到的遠古巨人族！！";
 	enablenpc instance_npcname("Stone Gargoyle#glast_15");
 	enablenpc instance_npcname("Stone Gargoyle#glast_16");
 	enablenpc instance_npcname("Stone Gargoyle#glast_17");
@@ -1997,7 +1997,7 @@ OnMobDead:
 	end;
 }
 
-1@glast,98,248,6	script	Ancient Gigantes#glast_5	4_GIGANTES_BIG,4,4,{
+1@glast,98,248,6	script	遠古巨人族#glast_5::Ancient Gigantes#glast_5	4_GIGANTES_BIG,4,4,{
 	end;
 OnTouch:
 	disablenpc instance_npcname("Ancient Gigantes#glast_5");
@@ -2005,7 +2005,7 @@ OnTouch:
 	monster 'map_glast$,98,248, "Ancient Gigantes#X5",3196,1, .@label$;		// MM_L_GIGAN3
 	monster 'map_glast$,96,250, "Ancient Medium Gigantes",3193,1, .@label$;	// MM_M_GIGAN3
 	monster 'map_glast$,98,247, "Ancient Medium Gigantes",3193,1, .@label$;	// MM_M_GIGAN3
-	unittalk getcharid(3), "" + strcharinfo(0) + " : The Ancient Gigantes that Professor Bernhard spoke of!!";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 伯恩哈德教授提到的遠古巨人族！！";
 	enablenpc instance_npcname("Stone Gargoyle#glast_21");
 	enablenpc instance_npcname("Stone Gargoyle#glast_22");
 	enablenpc instance_npcname("Stone Gargoyle#glast_23");
@@ -2016,7 +2016,7 @@ OnMobDead:
 	end;
 }
 
-1@glast,107,344,6	script	Ancient Gigantes#glast_6	4_GIGANTES_BIG,6,6,{
+1@glast,107,344,6	script	遠古巨人族#glast_6::Ancient Gigantes#glast_6	4_GIGANTES_BIG,6,6,{
 	end;
 OnTouch:
 	disablenpc instance_npcname("Ancient Gigantes#glast_6");
@@ -2024,7 +2024,7 @@ OnTouch:
 	monster 'map_glast$,107,344, "Ancient Gigantes#X6",3196,1, .@label$;		// MM_L_GIGAN3
 	monster 'map_glast$,107,344, "Ancient Medium Gigantes",3193,1, .@label$;	// MM_M_GIGAN3
 	monster 'map_glast$,109,346, "Ancient Medium Gigantes",3193,1, .@label$;	// MM_M_GIGAN3
-	unittalk getcharid(3), "" + strcharinfo(0) + " : The Ancient Gigantes that Professor Bernhard spoke of!!";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 伯恩哈德教授提到的遠古巨人族！！";
 	enablenpc instance_npcname("Stone Gargoyle#glast_26");
 	enablenpc instance_npcname("Stone Gargoyle#glast_27");
 	enablenpc instance_npcname("Stone Gargoyle#glast_28");

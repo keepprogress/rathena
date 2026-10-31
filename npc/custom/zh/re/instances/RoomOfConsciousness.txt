@@ -10,22 +10,22 @@
 //      false by default like on official server). [Capuche]
 //============================================================
 
-1@mir,103,40,3	script	Fenrir#1mir	4_F_FENRIR,{
+1@mir,103,40,3	script	潘利爾#1mir::Fenrir#1mir	4_F_FENRIR,{
 	if (is_party_leader() == false)	// it shouldn't happen
 		end;
 	cutin "fenrir_a",2;
-	mes "[Fenrir]";
-	mes "Sealed in the underground";
-	mes "of the Prontera Castle...";
-	mes "I didn't expect it to be this huge...";
+	mes "[潘利爾]";
+	mes "封印於地下";
+	mes "普隆德拉城堡之中……";
+	mes "沒想到會這麼巨大……";
 	next;
 	cutin "hero_iris_01",2;
-	mes "[Iris]";
-	mes "What on earth is there inside?";
+	mes "[菖蒲]";
+	mes "裡面到底有什麼？";
 	next;
 	cutin "fenrir_a",2;
-	mes "[Fenrir]";
-	mes "I don't know. Let's investigate the inside, first.";
+	mes "[潘利爾]";
+	mes "我不知道。我們先調查裡面吧。";
 	close2;
 	cutin "",255;
 	disablenpc instance_npcname("Iris#1mir");
@@ -88,61 +88,61 @@ OnInstanceInit:
 	end;
 }
 
-1@mir,100,94,7	script	Iris#2mir	4_F_IRIS,{
+1@mir,100,94,7	script	菖蒲#2mir::Iris#2mir	4_F_IRIS,{
 	if (is_party_leader() == false)	// it shouldn't happen
 		end;
 	if ('step != 0)
 		end;
-	mes "[Iris]";
-	mes "This...this must be...";
-	mes "Ymir's Heart!";
+	mes "[菖蒲]";
+	mes "這……這一定是……";
+	mes "伊米爾之心！";
 	next;
 	cutin "fenrir_a",2;
-	mes "[Fenrir]";
+	mes "[潘利爾]";
 	mes "這…";
-	mes "This is Ymir's Heart...";
+	mes "這是伊米爾之心……";
 	next;
 	cutin "hero_iris_01",255;
-	mes "~Rumbling~";
+	mes "~轟隆~";
 	next;
 	specialeffect EF_SCREEN_QUAKE,AREA, instance_npcname("Iris#2mir");
 	cutin "hero_iris_01",2;
-	mes "[Iris]";
-	mes "Why is this place shaking?!";
+	mes "[菖蒲]";
+	mes "為什麼這個地方在搖晃？！";
 	next;
 	cutin "fenrir_b",2;
-	mes "[Fenrir]";
-	mes "~Grunts~ They must've started attacking this place, too.";
+	mes "[潘利爾]";
+	mes "~悶哼~ 他們一定也開始攻擊這裡了。";
 	next;
 	enablenpc instance_npcname("Bijou#2mir");
 	cutin "bijou_01",2;
 	mes "[畢尤]";
-	mes "~Grins~ Delighted to see you all.";
+	mes "~咧嘴笑~ 很高興見到你們大家。";
 	next;
 	cutin "fenrir_b",2;
-	mes "[Fenrir]";
+	mes "[潘利爾]";
 	mes "!!";
-	mes "You've got to be kidding me!";
+	mes "你在開玩笑吧！";
 	next;
 	cutin "bijou_01",2;
 	mes "[畢尤]";
-	mes "From this moment on, we the Immortal Legion by Lord Valkyrie Himelmez";
-	mes "will take over here.";
+	mes "從此刻起，我們這支由蘭特克力斯·希梅爾梅茲大人統率的不死軍團";
+	mes "將接管此地。";
 	next;
 	specialeffect EF_SCREEN_QUAKE,AREA, instance_npcname("Iris#2mir");
 	cutin "hero_iris_01",2;
-	mes "[Iris]";
-	mes "What? How dare you!";
-	mes "I'm game. Bring it on!";
+	mes "[菖蒲]";
+	mes "什麼？你竟敢！";
+	mes "正合我意。來吧！";
 	next;
 	cutin "bijou_01",2;
 	mes "[畢尤]";
-	mes "~Grins~ Do I look like I have the time to deal with a petty thing like you, human?";
-	mes "But, out of pure mercy, I'll let you taste the fearful power of the Immortal Legion just a little bit.";
+	mes "~咧嘴笑~ 你覺得我有時間應付你這種小角色嗎，人類？";
+	mes "不過，出於純粹的仁慈，我就讓你稍微嚐嚐不死軍團可怕的力量吧。";
 	next;
 	cutin "fenrir_b",2;
-	mes "[Fenrir]";
-	mes "~Grunts~ When did all the legionnaires get here?";
+	mes "[潘利爾]";
+	mes "~悶哼~ 軍團的人什麼時候都到齊了？";
 	close2;
 	cutin "",255;
 	if ('step == 0) {
@@ -153,7 +153,7 @@ OnInstanceInit:
 	end;
 }
 
-1@mir,101,104,0	script	eq#mir1	HIDDEN_WARP_NPC,{
+1@mir,101,104,0	script	eq#mir1::eq#mir1	HIDDEN_WARP_NPC,{
 	end;
 OnEvent:
 	initnpctimer;
@@ -163,10 +163,10 @@ OnTimer200:
 	disablenpc instance_npcname("Fenrir#1mir");
 	disablenpc instance_npcname("Fenrir#2mir");
 	disablenpc instance_npcname("Bijou#2mir");
-	mapannounce 'map_name$, "Fenrir: The enemies will show up soon! Brace yourself!", bc_map,0xFFFF00,FW_NORMAL,12;
+	mapannounce 'map_name$, "潘利爾: 敵人很快就會出現！做好準備！", bc_map,0xFFFF00,FW_NORMAL,12;
 	end;
 OnTimer2200:
-	mapannounce 'map_name$, "Fenrir: The enemies are swarming in. We must get rid of them all!", bc_map,0xFFFF00,FW_NORMAL,12;
+	mapannounce 'map_name$, "潘利爾: 敵人正蜂擁而來，我們必須全部消滅！", bc_map,0xFFFF00,FW_NORMAL,12;
 	// coords inaccurate
 	monster 'map_name$,83,67,"Enchanted Skeleton",3446,1, instance_npcname("eq#mir1") + "::OnMobDead";// P_SKELETON
 	monster 'map_name$,91,51,"Enchanted Skeleton",3446,1, instance_npcname("eq#mir1") + "::OnMobDead";// P_SKELETON
@@ -182,12 +182,12 @@ OnTimer2200:
 OnMobDead:
 	'skeleton_wave[0]--;
 	if ('skeleton_wave[0] == 0) {
-		mapannounce 'map_name$, "Iris: ~Exhales~ Did we knock out all the enemies now?", bc_map,0xFFFF00,FW_NORMAL,12;
+		mapannounce 'map_name$, "菖蒲: ~吐氣~ 我們已經把所有敵人都打倒了嗎？", bc_map,0xFFFF00,FW_NORMAL,12;
 		startnpctimer;
 	}
 	end;
 OnTimer4200:
-	mapannounce 'map_name$, "Fenrir: I don't think so. Some of the remnants are still here. Watch out!", bc_map,0xFFFF00,FW_NORMAL,12;
+	mapannounce 'map_name$, "潘利爾: 我看未必。還有些殘黨在這裡，小心！", bc_map,0xFFFF00,FW_NORMAL,12;
 	end;
 OnTimer6200:
 	// coords inaccurate
@@ -206,7 +206,7 @@ OnMobDead2:
 	'skeleton_wave[1]--;
 	if ('skeleton_wave[1] == 0 && 'step == 1) {
 		'step = 2;
-		mapannounce 'map_name$, "Fenrir: Phew! I think we've done here.", bc_map,0xFFFF00,FW_NORMAL,12;
+		mapannounce 'map_name$, "潘利爾: 呼！我想這裡已經解決了。", bc_map,0xFFFF00,FW_NORMAL,12;
 		enablenpc instance_npcname("Fenrir#3mir");
 		enablenpc instance_npcname("Iris#3mir");
 		enablenpc instance_npcname("Bijou#2mir");
@@ -215,48 +215,48 @@ OnMobDead2:
 	end;
 }
 
-1@mir,103,85,1	script	Iris#3mir	4_F_IRIS,{
+1@mir,103,85,1	script	菖蒲#3mir::Iris#3mir	4_F_IRIS,{
 	if (is_party_leader() == false)	// it shouldn't happen
 		end;
 	if ('step != 2)
 		end;
 	mes "[畢尤]";
-	mes "~Chuckles~ I think you're not that bad for a human.";
+	mes "~輕笑~ 以人類來說，你還不算太差。";
 	next;
 	cutin "bijou_02",2;
 	mes "[畢尤]";
-	mes "But do you think you can get away from this, again? Wake up, my underlings!";
+	mes "不過，你以為這次還能逃掉嗎？醒來吧，我的部下們！";
 	specialeffect EF_WARP,AREA, instance_npcname("Renovated Amdarais#3mir");
 	sleep2 3000;
 	specialeffect EF_ENTRY,AREA, instance_npcname("Renovated Amdarais#3mir");
 	enablenpc instance_npcname("Renovated Amdarais#3mir");
 	next;
 	cutin "hero_iris_01",2;
-	mes "[Iris]";
-	mes "What...what's up with this monster?!";
+	mes "[菖蒲]";
+	mes "什……什麼怪物啊這是？！";
 	next;
 	cutin "bijou_01",2;
 	mes "[畢尤]";
 	mes "啊……";
-	mes "I'll let you in on me before I go.";
-	mes "I'm Bijou.";
-	mes "I'm the adjutant to Lord Valkyrie Himelmez.";
+	mes "在我走之前，就讓你認識一下我吧。";
+	mes "我是畢尤。";
+	mes "我是蘭特克力斯·希梅爾梅茲大人的副官。";
 	next;
 	cutin "fenrir_b",2;
-	mes "[Fenrir]";
-	mes "~Groans~";
-	mes "No Valkyrie's subordinates ever disappointed me and neither did you.";
-	mes "Ymir's Heart is a huge energy source. For what do you want to use it anyway?";
+	mes "[潘利爾]";
+	mes "~呻吟~";
+	mes "從來沒有哪個蘭特克力斯的部下讓我失望，你也一樣。";
+	mes "伊米爾之心是龐大的能量來源。你到底想拿它做什麼？";
 	next;
 	cutin "bijou_01",2;
 	mes "[畢尤]";
 	mes "......";
-	mes "You don't need to know. You're going to be wiped out soon anyway.";
+	mes "你不需要知道。反正你很快就會被消滅。";
 	next;
 	cutin "fenrir_b",2;
-	mes "[Fenrir]";
-	mes "I don't think you'd use it for any good cause.";
-	mes "I'll stop Bijou from taking Ymir's Heart. You go ahead and take care of that huge monster!";
+	mes "[潘利爾]";
+	mes "我看你不會拿它做什麼好事。";
+	mes "我去阻止畢尤拿走伊米爾之心。你去解決那隻巨大的怪物！";
 	close2;
 	cutin "",255;
 	if ('step == 2) {
@@ -266,7 +266,7 @@ OnMobDead2:
 	end;
 }
 
-1@mir,101,104,0	script	eq#mir2	HIDDEN_WARP_NPC,{
+1@mir,101,104,0	script	eq#mir2::eq#mir2	HIDDEN_WARP_NPC,{
 	end;
 OnEvent:
 	enablenpc instance_npcname("eq#mir2");
@@ -287,16 +287,16 @@ OnTimer1000:
 		initnpctimer;
 		end;
 	}
-	mapannounce 'map_name$, "Iris: Oh, this monster...I don't think its HP doesn't seem to drop no matter how many times I hit.", bc_map,0xFFFF00,FW_NORMAL,12;
+	mapannounce 'map_name$, "菖蒲: 哎呀，這隻怪物……不管我打幾次，它的 HP 好像都沒有下降。", bc_map,0xFFFF00,FW_NORMAL,12;
 	end;
 OnTimer3000:
-	mapannounce 'map_name$, "Bijou: ~Chuckles~ Amdarais won't get knocked down that easily.", bc_map,0xFFFF00,FW_NORMAL,12;
+	mapannounce 'map_name$, "畢尤: ~輕笑~ 闇答萊屍可不會這麼輕易被打倒。", bc_map,0xFFFF00,FW_NORMAL,12;
 	end;
 OnTimer5000:
-	mapannounce 'map_name$, "Fenrir: This undead seems to be different from any other undeads.", bc_map,0xFFFF00,FW_NORMAL,12;
+	mapannounce 'map_name$, "潘利爾: 這隻不死生物好像跟其他不死生物不一樣。", bc_map,0xFFFF00,FW_NORMAL,12;
 	end;
 OnTimer7000:
-	mapannounce 'map_name$, "Fenrir: Yes, it's the nucleus! Attack its nucleus to inflict huge damage!", bc_map,0xFFFF00,FW_NORMAL,12;
+	mapannounce 'map_name$, "潘利爾: 沒錯，是核心！攻擊它的核心就能造成巨大傷害！", bc_map,0xFFFF00,FW_NORMAL,12;
 	end;
 OnTimer9000:
 	donpcevent instance_npcname("eq#mir3") + "::OnEvent";
@@ -317,7 +317,7 @@ OnMobDead:
 	end;
 }
 
-1@mir,101,104,0	script	eq#mir3	HIDDEN_WARP_NPC,{
+1@mir,101,104,0	script	eq#mir3::eq#mir3	HIDDEN_WARP_NPC,{
 	end;
 OnEvent:
 	callsub S_Announce, true;
@@ -328,7 +328,7 @@ S_Announce:
 	'random_letter$ = .@list$[ rand(4) ];
 	donpcevent instance_npcname( "Fenrir#boss" + 'target_event + "" + 'random_letter$ ) + "::OnEvent";	// 1: P_AMDARAIS / 2: BIJOU
 	if (getarg(0) == true)
-		mapannounce 'map_name$, "Fenrir: Lure it to where I am!", bc_map,0xFFFF00,FW_NORMAL,12;
+		mapannounce 'map_name$, "潘利爾: 把它引到我這邊來！", bc_map,0xFFFF00,FW_NORMAL,12;
 	end;
 OnStart:
 	initnpctimer;
@@ -354,40 +354,40 @@ OnEvent:
 
 OnTouchNPC:
 	if ('touch_mob == 0) {
-		npctalk "Fenrir: Good work! Now it's on you, Iris!", 'fenrir_name$;
+		npctalk "潘利爾: 幹得好！接下來就靠你了，菖蒲！", 'fenrir_name$;
 		'touch_mob = 1;
 		initnpctimer;
 	}
 	end;
 OnTimer2000:
-	npctalk "Iris: Alright, let me do it! What I, Iris, want is...!", 'iris_name$;
+	npctalk "菖蒲: 好，交給我！我菖蒲想要的是……！", 'iris_name$;
 	specialeffect EF_BEGINSPELL,AREA, 'iris_name$;
 	end;
 OnTimer4000:
-	npctalk "Iris: Mabi Amulet! Go!!", 'iris_name$;
+	npctalk "菖蒲: 魔比返魂符！去吧！！", 'iris_name$;
 	if ('target_event == 1)
-		unittalk 'boss_id, "Aaarrgghhh---!!";
+		unittalk 'boss_id, "啊啊啊——！！";
 	else
-		unittalk 'boss_id, "Bijou: What the...!!";
+		unittalk 'boss_id, "畢尤: 怎麼回事……！！";
 	end;
 OnTimer5000:
-	npctalk "Iris: It worked!", 'iris_name$;
+	npctalk "菖蒲: 成功了！", 'iris_name$;
 	end;
 OnTimer7000:
-	npctalk "Fenrir: So this is my turn, then. ~Spirited yell~", 'fenrir_name$;
+	npctalk "潘利爾: 那就輪到我了。~振奮的吶喊~", 'fenrir_name$;
 	specialeffect EF_BEGINSPELL,AREA, 'fenrir_name$;
 	specialeffect EF_TETRACASTING,AREA, 'fenrir_name$;
 	progressbar_npc "000000",3;
 	end;
 OnTimer10000:
-	npctalk "Fenrir: Take this!!", 'fenrir_name$;
+	npctalk "潘利爾: 接招吧！！", 'fenrir_name$;
 	specialeffect EF_SUI_EXPLOSION,AREA, 'fenrir_name$;
 	specialeffect EF_LORD,AREA, 'fenrir_name$;
 	specialeffect EF_FLAMELAUNCHER,AREA, 'fenrir_name$;
 	if ('target_event == 1)
-		unittalk 'boss_id, "~Screams~";
+		unittalk 'boss_id, "~尖叫~";
 	else
-		unittalk 'boss_id, "Bijou: ~Groans~ More hurting than I thought...!";
+		unittalk 'boss_id, "畢尤: ~呻吟~ 比我想的還痛……！";
 	getunitdata 'boss_id, .@data;
 	if (.@data[UMOB_HP] > 0) {
 		.@damage = rand(700,1300) * 1000;
@@ -399,10 +399,10 @@ OnTimer10000:
 	}
 	end;
 OnTimer13000:
-	npctalk "Fenrir: It's not perfect but I think we've caused a pretty significant amount of damage!", 'fenrir_name$;
+	npctalk "潘利爾: 雖然不完美，但我想我們已造成相當可觀的傷害！", 'fenrir_name$;
 	end;
 OnTimer14500:
-	npctalk "Fenrir: I've consumed magic too much. I'll take a short break. I'm counting on you, then!", 'fenrir_name$;
+	npctalk "潘利爾: 我消耗太多魔力了，得稍微休息一下。那就靠你們了！", 'fenrir_name$;
 	end;
 OnTimer16500:
 	donpcevent instance_npcname("eq#mir3") + "::OnStart";
@@ -415,42 +415,42 @@ OnStop:
 	end;
 }
 
-1@mir,100,90,7	script	Iris#4mir	4_F_IRIS,{
+1@mir,100,90,7	script	菖蒲#4mir::Iris#4mir	4_F_IRIS,{
 	if (is_party_leader() == false)	// it shouldn't happen
 		end;
 	if ('step != 4)
 		end;
-	mes "[Iris]";
-	mes "Was that it...? Has it gone now?";
-	mes "So what's left now is...";
+	mes "[菖蒲]";
+	mes "結束了嗎……？它已經消失了嗎？";
+	mes "那麼現在剩下的就是……";
 	next;
 	enablenpc instance_npcname("Bijou#4mir");
 	cutin "bijou_01",2;
 	mes "[畢尤]";
-	mes "Me...I'm the only one left...";
+	mes "我……只剩下我一個了……";
 	next;
 	cutin "hero_iris_01",2;
-	mes "[Iris]";
+	mes "[菖蒲]";
 	mes "什麼？！";
 	next;
-	mes "~POW!~";
+	mes "~砰！~";
 	specialeffect EF_SUI_EXPLOSION,AREA, instance_npcname("Iris#4mir");
 	next;
 	cutin "hero_iris_01",2;
-	mes "[Iris]";
-	mes "Aaarrghhh---!!!";
+	mes "[菖蒲]";
+	mes "啊啊啊啊——！！！";
 	next;
 	cutin "bijou_01",2;
 	mes "[畢尤]";
-	mes "I must say it was rather unexpected. ~Chuckles~";
-	mes "I didn't expect anyone to defeat Amdarais that I spent three good years to complete.";
+	mes "不得不說，這真是出乎意料。~輕笑~";
+	mes "沒想到有人能打敗我花了整整三年才完成的闇答萊屍。";
 	next;
 	cutin "bijou_02",2;
 	mes "[畢尤]";
-	mes "You will pay";
-	mes "for ruining my three-year efforts!!";
-	mes "Slowly...";
-	mes "And horribly painfully...!!";
+	mes "你將付出代價，";
+	mes "為了毀掉我三年的心血！！";
+	mes "慢慢地……";
+	mes "而且是極其痛苦地……！！";
 	close2;
 	cutin "",255;
 	if ('step == 4) {
@@ -460,7 +460,7 @@ OnStop:
 	end;
 }
 
-1@mir,101,104,0	script	eq#mir4	HIDDEN_WARP_NPC,{
+1@mir,101,104,0	script	eq#mir4::eq#mir4	HIDDEN_WARP_NPC,{
 	end;
 OnEvent:
 	enablenpc instance_npcname("eq#mir4");
@@ -492,201 +492,201 @@ OnMobDead:
 	end;
 }
 
-1@mir,103,90,1	script	Fenrir#5mir	4_F_FENRIR,{
+1@mir,103,90,1	script	潘利爾#5mir::Fenrir#5mir	4_F_FENRIR,{
 	if (is_party_leader() == false)	// it shouldn't happen
 		end;
 	if ('step != 6)
 		end;
-	mes "[Fenrir]";
-	mes "~Groans~ I can't believe nothing seems to work!";
+	mes "[潘利爾]";
+	mes "~呻吟~ 怎麼什麼都不管用！";
 	next;
 	cutin "bijou_01",2;
 	mes "[畢尤]";
-	mes "~Chuckles~";
-	mes "I'll let you taste what despair feels like.";
+	mes "~輕笑~";
+	mes "我會讓你嚐嚐絕望的滋味。";
 	next;
 	cutin "bijou_02",2;
 	mes "[畢尤]";
-	mes "Frost Diver!";
+	mes "冰霜俯衝！";
 	specialeffect EF_LOCKON,AREA, instance_npcname("Fenrir#5mir");
 	sleep2 3000;
 	specialeffect EF_FREEZE,AREA, instance_npcname("Fenrir#5mir");
 	next;
 	cutin "fenrir_b",2;
-	mes "[Fenrir]";
-	mes "~Groans~";
+	mes "[潘利爾]";
+	mes "~呻吟~";
 	next;
 	cutin "bijou_01",2;
 	mes "[畢尤]";
-	mes "How does it feel? Painful, eh?";
-	mes "You must become paralyzed by now.";
-	mes "...But don't expect me to kill you that easily...";
+	mes "感覺如何？很痛吧？";
+	mes "你現在應該已經麻痺了吧。";
+	mes "……不過，別指望我會這麼輕易殺了你……";
 	next;
 	mes "[畢尤]";
-	mes "I should take care of this downright annoying cleric gal first.";
+	mes "我應該先解決這個煩人透頂的聖職者女人。";
 	next;
 	cutin "fenrir_b",2;
-	mes "[Fenrir]";
-	mes "I...Iris!!";
+	mes "[潘利爾]";
+	mes "我……菖蒲！！";
 	next;
 	cutin "sarah_hero3",2;
-	mes "[Sarah]";
+	mes "[莎拉]";
 	mes "......";
 	enablenpc instance_npcname("Sarah#5mir");
 	next;
 	cutin "bijou_02",2;
 	mes "[畢尤]";
-	mes "Sarah...?";
+	mes "莎拉……？";
 	next;
 	cutin "sarah_hero3",2;
-	mes "[Sarah]";
-	mes "So this is it...";
-	mes "This is the underground of Prontera Castle.";
-	mes "The place where the first Ymir's Heart is sealed.";
+	mes "[莎拉]";
+	mes "原來是這樣……";
+	mes "這裡是普隆德拉城堡的地下。";
+	mes "第一顆伊米爾之心被封印的地方。";
 	next;
-	mes "[Sarah]";
-	mes "And that must be...";
-	mes "Ymir's Heart...";
+	mes "[莎拉]";
+	mes "那一定就是……";
+	mes "伊米爾之心……";
 	next;
 	cutin "bijou_02",2;
 	mes "[畢尤]";
-	mes "What brought you all the way up here?";
-	mes "Sarah Irine.";
-	mes "I didn't expect you would show up here.";
+	mes "你怎麼會一路來到這裡？";
+	mes "莎拉·艾琳。";
+	mes "沒想到你會出現在這裡。";
 	next;
 	cutin "sarah_hero3",2;
-	mes "[Sarah]";
-	mes "What do you think you're doing here, Bijou?";
+	mes "[莎拉]";
+	mes "畢尤，你在這裡做什麼？";
 	next;
 	cutin "bijou_01",2;
 	mes "[畢尤]";
-	mes "Yes, I was in the middle of taking care of the annoying bugs.";
+	mes "是的，我正在處理那些討厭的蟲子。";
 	next;
 	cutin "sarah_hero3",2;
-	mes "[Sarah]";
-	mes "What kind of answer is that, Bijou?";
+	mes "[莎拉]";
+	mes "畢尤，你這是什麼回答？";
 	next;
-	mes "[Sarah]";
-	mes "My question was: what are you still doing here, totally goofing off, and, why didn't you break any sealing off of Ymir's Heart?";
+	mes "[莎拉]";
+	mes "我的問題是: 你怎麼還在這裡，完全在偷懶，還有，你為什麼沒有解除伊米爾之心的任何封印？";
 	next;
 	cutin "bijou_02",2;
 	mes "[畢尤]";
-	mes "Well, that's uh...I did break the 1st seal, though.";
-	mes "This place will be cleaned up in no time. There is nothing for you to worry about, Sarah.";
+	mes "嗯，那個……我確實解開了第一道封印。";
+	mes "這裡很快就會清理乾淨。莎拉，你不用擔心。";
 	next;
 	mes "[畢尤]";
-	mes "Trust me and consider it done. Please be yourself as proud Valkyrie.";
+	mes "相信我，就當作已經完成了。請保持身為驕傲蘭特克力斯的風範。";
 	next;
 	cutin "bijou_01",2;
 	mes "[畢尤]";
-	mes "(~Scoffs~ What an uptight, pathetic Valkyrie she is! I can't believe a greenhorn like you are treated the same as Himelmez. That is so unfair.)";
+	mes "（~冷哼~ 那個死板又可悲的蘭特克力斯！真不敢相信你這種菜鳥竟然和希梅爾梅茲受到同等對待。太不公平了。）";
 	next;
 	cutin "sarah_hero3_2",2;
-	mes "[Sarah]";
-	mes "You must be out of your mind, Bijou...There is no Himelmez here.";
+	mes "[莎拉]";
+	mes "畢尤，你一定是瘋了……這裡沒有希梅爾梅茲。";
 	next;
 	cutin "bijou_03",2;
 	mes "[畢尤]";
-	mes "....~Gasps~";
-	mes "I'm out of breath!";
+	mes "……~倒抽一口氣~";
+	mes "我快喘不過氣了！";
 	next;
 	cutin "sarah_hero3_2",2;
-	mes "[Sarah]";
-	mes "You'd better keep your mouth shut!";
+	mes "[莎拉]";
+	mes "你最好閉上你的嘴！";
 	next;
 	cutin "bijou_03",2;
 	mes "[畢尤]";
-	mes "~Coughs~";
-	mes "~Keeps coughing~";
+	mes "~咳嗽~";
+	mes "~持續咳嗽~";
 	next;
 	cutin "sarah_hero3",2;
-	mes "[Sarah]";
-	mes "I can certainly do without a subordinate who wastes time for this kind of petty job.";
-	mes "Let me take that Ymir's Heart...myself.";
+	mes "[莎拉]";
+	mes "我當然不需要一個為這種小事浪費時間的部下。";
+	mes "讓我親自把那顆伊米爾之心拿走吧……";
 	disablenpc instance_npcname("Sarah#5mir");
 	next;
 	cutin "bijou_02",2;
 	mes "[畢尤]";
-	mes "(She is Valkyrie, indeed. Oh, what can you do about that?)";
+	mes "（她的確是蘭特克力斯。唉，你又能拿她怎麼辦呢？）";
 	next;
 	cutin "fenrir_b",2;
-	mes "[Fenrir]";
-	mes "The time is right!";
-	mes "Frost Diver!";
+	mes "[潘利爾]";
+	mes "時機到了！";
+	mes "冰霜俯衝！";
 	specialeffect EF_FREEZE,AREA, instance_npcname("Bijou#5mir");
 	next;
 	cutin "bijou_03",2;
 	mes "[畢尤]";
-	mes "What did you say?!";
+	mes "你說什麼？！";
 	next;
 	mes "[畢尤]";
-	mes "Whoa...That was a close; call.";
-	mes "How could this happen?";
+	mes "哇……真是千鈞一髮。";
+	mes "怎麼會這樣？";
 	next;
 	cutin "fenrir_a",2;
-	mes "[Fenrir]";
-	mes "This magic...";
-	mes "This must be high-level magic as I expected. It's pretty tough to cast it.";
+	mes "[潘利爾]";
+	mes "這個魔法……";
+	mes "果然是高階魔法。施展起來相當困難。";
 	next;
 	cutin "bijou_02",2;
 	mes "[畢尤]";
-	mes "(What is this?! Did she just master the magic that I used on her?)";
+	mes "（這是什麼？！她剛剛才學會我對她用過的魔法嗎？）";
 	next;
 	cutin "fenrir_a",2;
-	mes "[Fenrir]";
-	mes "Iris! This is a healing potion.";
-	mes "Drink it and you'll come to your senses.";
+	mes "[潘利爾]";
+	mes "菖蒲！這是治療藥水。";
+	mes "喝下去，你就會清醒過來。";
 	next;
 	sleep2 500;
 	specialeffect EF_POTION1,AREA, instance_npcname("Iris#5mir");
 	cutin "hero_iris_01",2;
-	mes "[Iris]";
-	mes "~Muffled sound~";
+	mes "[菖蒲]";
+	mes "~悶聲~";
 	next;
 	sleep2 500;
 	specialeffect EF_POTION1,AREA, instance_npcname("Iris#5mir");
 	cutin "fenrir_a",2;
-	mes "[Fenrir]";
-	mes "Oh, you woke up now?";
+	mes "[潘利爾]";
+	mes "哦，你現在醒了？";
 	next;
 	cutin "hero_iris_01",2;
-	mes "[Iris]";
-	mes "Umm....";
-	mes "~Vomiting sound~";
-	mes "Yuck! Is this bitter!";
-	mes "What the heck is this?!";
-	mes "What did you give to me?";
+	mes "[菖蒲]";
+	mes "嗯……";
+	mes "~嘔吐聲~";
+	mes "呸！好苦！";
+	mes "這到底是什麼啊？！";
+	mes "你給我喝了什麼？";
 	next;
 	cutin "fenrir_a",2;
-	mes "[Fenrir]";
-	mes "So you woke up, Iris.";
-	mes "I'm so relieved.";
+	mes "[潘利爾]";
+	mes "菖蒲，你醒了啊。";
+	mes "我真是鬆了一口氣。";
 	next;
 	cutin "hero_iris_01",2;
-	mes "[Iris]";
-	mes "~Sighs~ By the way, Fenrir!";
-	mes "What about Ymir's Heart?";
+	mes "[菖蒲]";
+	mes "~嘆息~ 對了，潘利爾！";
+	mes "伊米爾之心呢？";
 	next;
 	cutin "bijou_02",2;
 	mes "[畢尤]";
-	mes "(...Fenrir? I thought too much about Ymir's Heart and totally forgot about her. If my guess is right, she must be...!)";
+	mes "（……潘利爾？我一直想著伊米爾之心，完全把她給忘了。如果我猜得沒錯，她一定是……！）";
 	next;
 	mes "[畢尤]";
-	mes "~Exhales~ I see. That's right.";
-	mes "That beast's blood flowing through your body...That was the answer!";
+	mes "~吐氣~ 我明白了。沒錯。";
+	mes "流淌在你體內的那頭野獸之血……原來就是答案！";
 	next;
 	cutin "bijou_01",2;
 	mes "[畢尤]";
-	mes "Then, let me serve you the right way! ~Chuckles~";
-	mes "I didn't expect to see the hero from a thousand years ago!";
+	mes "那麼，就讓我以正確的方式侍奉你吧！~輕笑~";
+	mes "沒想到能見到千年前的英雄！";
 	next;
 	cutin "bijou_03",2;
 	mes "[畢尤]";
-	mes "Die!!";
+	mes "去死吧！！";
 	next;
 	cutin "fenrir_b",2;
-	mes "[Fenrir]";
-	mes "...Be careful. She's about to attack!";
+	mes "[潘利爾]";
+	mes "……小心。她快要攻擊了！";
 	close2;
 	cutin "",255;
 	if ('step == 6) {
@@ -696,7 +696,7 @@ OnMobDead:
 	end;
 }
 
-1@mir,101,104,0	script	eq#mir5	HIDDEN_WARP_NPC,{
+1@mir,101,104,0	script	eq#mir5::eq#mir5	HIDDEN_WARP_NPC,{
 	end;
 OnEvent:
 	enablenpc instance_npcname("eq#mir3");
@@ -718,13 +718,13 @@ OnTimer1000:
 	}
 	end;
 OnTimer3000:
-	mapannounce 'map_name$, "Iris: Let's fight together and we will win again!", bc_map,0xFFFF00,FW_NORMAL,12;
+	mapannounce 'map_name$, "菖蒲: 我們一起戰鬥，就能再次獲勝！", bc_map,0xFFFF00,FW_NORMAL,12;
 	end;
 OnTimer5000:
-	mapannounce 'map_name$, "Fenrir: I think so, too. This time, too, I'd like to ask you to lure it to where I am.", bc_map,0xFFFF00,FW_NORMAL,12;
+	mapannounce 'map_name$, "潘利爾: 我也這麼認為。這次同樣，請把它引到我這邊來。", bc_map,0xFFFF00,FW_NORMAL,12;
 	end;
 OnTimer7000:
-	mapannounce 'map_name$, "Bijou: ......", bc_map,0xFFFF00,FW_NORMAL,12;
+	mapannounce 'map_name$, "畢尤: ……", bc_map,0xFFFF00,FW_NORMAL,12;
 	donpcevent instance_npcname("eq#mir3") + "::OnEvent2";
 	donpcevent instance_npcname("eq#mir6") + "::OnTalk";
 	stopnpctimer;
@@ -752,7 +752,7 @@ OnMobDead:
 	end;
 }
 
-1@mir,101,104,0	script	eq#mir6	HIDDEN_WARP_NPC,{
+1@mir,101,104,0	script	eq#mir6::eq#mir6	HIDDEN_WARP_NPC,{
 	end;
 OnTalk:
 	enablenpc instance_npcname("eq#mir6");
@@ -761,11 +761,11 @@ OnTalk:
 OnTimer20000:
 	.@r = rand(3);
 	if (.@r == 0)
-		unittalk 'boss_id, "Bijou: To Lord Himelmez!";
+		unittalk 'boss_id, "畢尤: 為了希梅爾梅茲大人！";
 	else if (.@r == 1)
-		unittalk 'boss_id, "Bijou: Heh...You're still alive!";
+		unittalk 'boss_id, "畢尤: 哼……你還活著！";
 	else
-		unittalk 'boss_id, "Bijou: ~Chuckles~ Are you feeling the pain?";
+		unittalk 'boss_id, "畢尤: ~輕笑~ 痛嗎？";
 	initnpctimer;
 	end;
 OnStop:
@@ -773,114 +773,114 @@ OnStop:
 	end;
 }
 
-1@mir,100,95,5	script	Iris#6mir	4_F_IRIS,{
+1@mir,100,95,5	script	菖蒲#6mir::Iris#6mir	4_F_IRIS,{
 	if (is_party_leader() == false)	// it shouldn't happen
 		end;
 	if ('step != 8)
 		end;
-	mes "[Iris]";
-	mes "~Grunts~";
+	mes "[菖蒲]";
+	mes "~悶哼~";
 	next;
 	cutin "bijou_01",2;
 	mes "[畢尤]";
-	mes "~Evil laughter~ Die!";
-	mes "Clerics deserve to die!";
+	mes "~邪惡的笑聲~ 去死吧！";
+	mes "聖職者都該死！";
 	specialeffect EF_TETRACASTING,AREA, instance_npcname("Iris#6mir");
 	next;
 	cutin "fenrir_b",2;
-	mes "[Fenrir]";
-	mes "Iris!!";
-	mes "No! Stop!!";
+	mes "[潘利爾]";
+	mes "菖蒲！！";
+	mes "不！住手！！";
 	specialeffect EF_TETRACASTING,AREA, instance_npcname("Iris#6mir");
 	next;
 	cutin "bijou_01",2;
 	mes "[畢尤]";
-	mes "~Chuckles~";
-	mes "So you're looking for a partner, eh?";
-	mes "Good idea, but...I think it's too late.";
+	mes "~輕笑~";
+	mes "所以你在找同伴，是吧？";
+	mes "好主意，但……我想已經太遲了。";
 	specialeffect EF_TETRACASTING,AREA, instance_npcname("Iris#6mir");
 	next;
 	mes "[畢尤]";
 	mes "Because...";
-	mes "This will be the final, fatal blow to you. Wahahaha!";
+	mes "這將是對你致命的最後一擊。哇哈哈哈！";
 	specialeffect EF_TETRACASTING,AREA, instance_npcname("Iris#6mir");
 	next;
 	sleep2 300;
 	enablenpc instance_npcname("Sarah#6mir");
 	cutin "bijou_03",2;
 	mes "[畢尤]";
-	mes "....~Sighs~";
-	mes "Huh?...In my stomach...";
-	mes "This knife...";
-	mes "Sa...Sarah...? How?";
+	mes "……~嘆息~";
+	mes "咦？……我的肚子……";
+	mes "這把刀……";
+	mes "莎……莎拉……？怎麼會……？";
 	specialeffect EF_HFLIMOON1,AREA, instance_npcname("Bijou#6mir");
 	next;
 	cutin "bijou_death",4;
-	mes "[Sarah]";
-	mes "Is that all you want to say?";
-	mes "Don't worry. I'll let Himelmez know of your brave contribution. Don't blame me, Bijou.";
+	mes "[莎拉]";
+	mes "你只想說這些嗎？";
+	mes "別擔心。我會讓希梅爾梅茲知道你的英勇貢獻。畢尤，別怪我。";
 	next;
 	mes "[畢尤]";
-	mes "Why...? Tell me why!";
-	mes "...That...that little chick...Was that it? Because she's your sister? Was that it? Tell me, Sarah!";
+	mes "為什麼……？告訴我原因！";
+	mes "……那……那個小丫頭……就是因為這樣嗎？因為她是你妹妹？就是這樣嗎？告訴我，莎拉！";
 	next;
 	mes "[畢尤]";
-	mes "~Groans~";
+	mes "~呻吟~";
 	specialeffect EF_HFLIMOON1,AREA, instance_npcname("Bijou#6mir");
 	disablenpc instance_npcname("Bijou#6mir");
 	next;
-	mes "[Sarah]";
+	mes "[莎拉]";
 	mes "......";
-	mes "Your soul has been set free, Bijou.";
+	mes "畢尤，你的靈魂已經獲得解脫了。";
 	next;
 	cutin "hero_iris_01",2;
-	mes "[Iris]";
-	mes "(Did she save me...?)";
+	mes "[菖蒲]";
+	mes "（她救了我……？）";
 	next;
-	mes "[Iris]";
-	mes "Sarah...";
-	mes "It's Sarah, right?";
-	mes "People say we parted when we were little...";
+	mes "[菖蒲]";
+	mes "莎拉……";
+	mes "是莎拉，對吧？";
+	mes "人們說我們小時候就分開了……";
 	next;
-	mes "[Iris]";
-	mes "...So what's your plan, huh? Why...why did you save me?!";
-	mes "Don't you ever think this will ever change my belief! I will never, ever forgive you!";
+	mes "[菖蒲]";
+	mes "……所以你打的是什麼主意？為什麼……為什麼要救我？！";
+	mes "別以為這樣就能改變我的信念！我絕不，永遠不會原諒你！";
 	next;
-	mes "[Iris]";
-	mes "Mom...Dad...Every people in our town. I'm going to revenge!";
+	mes "[菖蒲]";
+	mes "媽媽……爸爸……還有鎮上的每一個人。我要復仇！";
 	next;
 	cutin "sarah_hero3",2;
-	mes "[Sarah]";
-	mes "Shut that mouth!";
-	mes "Don't be a drama queen as if you're the only victim here.";
-	mes "They just paid the price for what they sinned. The sin that they committed by killing my mother 12 years ago.";
+	mes "[莎拉]";
+	mes "閉上你的嘴！";
+	mes "別再像個戲劇女王一樣，好像只有你是這裡的受害者。";
+	mes "他們只是為自己的罪孽付出代價。那是十二年前他們殺害我母親所犯下的罪。";
 	next;
-	mes "[Sarah]";
-	mes "Do you want me to tell you the truth? Those 'loved ones' you're incessantly talking about...Our great elder and the people in our town were actually...";
+	mes "[莎拉]";
+	mes "你想知道真相嗎？你不停掛在嘴邊的那些「至親」……我們偉大的長老和鎮上的人們，其實是……";
 	next;
-	mes "[Sarah]";
+	mes "[莎拉]";
 	mes "......";
-	mes "Stop it...";
-	mes "Ymir's Heart comes first, no matter what.";
+	mes "住口……";
+	mes "無論如何，伊米爾之心都是第一優先。";
 	next;
-	mes "[Sarah]";
-	mes "Mark my word.";
-	mes "I didn't let you live.";
-	mes "I will let you die soon.";
-	mes "I make sure you no longer see the light of day the next time when we meet.";
+	mes "[莎拉]";
+	mes "記住我的話。";
+	mes "我可沒讓你活下來。";
+	mes "我很快就會讓你死。";
+	mes "下次見面時，我會確保你再也見不到天日。";
 	next;
-	mes "[Sarah]";
-	mes "Don't you ever let anyone kill you until then, Iris.";
-	mes "I'd better bid farewell for today, then.";
+	mes "[莎拉]";
+	mes "在那之前，菖蒲，你可別讓任何人殺了你。";
+	mes "那今天就先告辭了。";
 	disablenpc instance_npcname("Sarah#6mir");
 	next;
 	specialeffect EF_SCREEN_QUAKE,AREA, instance_npcname("Iris#6mir");
 	cutin "fenrir_b",2;
-	mes "[Fenrir]";
-	mes "~Grunts~ That Valkyrie destroyed the ceiling when taking Ymir's Heart!";
+	mes "[潘利爾]";
+	mes "~悶哼~ 那個蘭特克力斯拿走伊米爾之心時，把天花板給炸毀了！";
 	next;
-	mes "[Fenrir]";
-	mes "We'd better get out of here, too! This place is too dangerous!";
+	mes "[潘利爾]";
+	mes "我們也得趕快離開！這裡太危險了！";
 	close2;
 	if (ep16_royal == 19) {
 		erasequest 7700;// Once More!
@@ -891,40 +891,40 @@ OnStop:
 	end;
 }
 
-1@mir,100,40,5	duplicate(dummy_npc)	Iris#1mir	4_F_IRIS
-1@mir,103,94,1	duplicate(dummy_npc)	Fenrir#2mir	4_F_FENRIR
+1@mir,100,40,5	duplicate(dummy_npc)	菖蒲#1mir::Iris#1mir	4_F_IRIS
+1@mir,103,94,1	duplicate(dummy_npc)	潘利爾#2mir::Fenrir#2mir	4_F_FENRIR
 1@mir,102,98,3	duplicate(dummy_npc)	畢尤#2mir::Bijou#2mir	4_F_BIJOU
 
-1@mir,100,85,7	duplicate(dummy_npc)	Fenrir#3mir	4_F_FENRIR
+1@mir,100,85,7	duplicate(dummy_npc)	潘利爾#3mir::Fenrir#3mir	4_F_FENRIR
 1@mir,102,88,3	duplicate(dummy_npc)	畢尤#3mir::Bijou#3mir	4_F_BIJOU
-1@mir,101,95,1	duplicate(dummy_npc)	Renovated Amdarais#3mir	3448
+1@mir,101,95,1	duplicate(dummy_npc)	翻新安達萊斯#3mir::Renovated Amdarais#3mir	3448
 
 1@mir,94,73,3	duplicate(Fenrir#boss1a)	Fenrir#boss1b	4_F_FENRIR,2,2
 1@mir,112,73,3	duplicate(Fenrir#boss1a)	Fenrir#boss1c	4_F_FENRIR,2,2
 1@mir,103,60,3	duplicate(Fenrir#boss1a)	Fenrir#boss1d	4_F_FENRIR,2,2
 
-1@mir,100,80,5	duplicate(dummy_npc)	Iris#boss1a	4_F_IRIS
-1@mir,91,73,5	duplicate(dummy_npc)	Iris#boss1b	4_F_IRIS
-1@mir,109,73,5	duplicate(dummy_npc)	Iris#boss1c	4_F_IRIS
-1@mir,100,60,5	duplicate(dummy_npc)	Iris#boss1d	4_F_IRIS
+1@mir,100,80,5	duplicate(dummy_npc)	菖蒲#boss1a::Iris#boss1a	4_F_IRIS
+1@mir,91,73,5	duplicate(dummy_npc)	菖蒲#boss1b::Iris#boss1b	4_F_IRIS
+1@mir,109,73,5	duplicate(dummy_npc)	菖蒲#boss1c::Iris#boss1c	4_F_IRIS
+1@mir,100,60,5	duplicate(dummy_npc)	菖蒲#boss1d::Iris#boss1d	4_F_IRIS
 
 1@mir,103,76,3	duplicate(Fenrir#boss1a)	Fenrir#boss2a	4_F_FENRIR,2,2
 1@mir,94,70,3	duplicate(Fenrir#boss1a)	Fenrir#boss2b	4_F_FENRIR,2,2
 1@mir,112,70,3	duplicate(Fenrir#boss1a)	Fenrir#boss2c	4_F_FENRIR,2,2
 1@mir,103,63,3	duplicate(Fenrir#boss1a)	Fenrir#boss2d	4_F_FENRIR,2,2
 
-1@mir,100,76,5	duplicate(dummy_npc)	Iris#boss2a	4_F_IRIS
-1@mir,91,70,5	duplicate(dummy_npc)	Iris#boss2b	4_F_IRIS
-1@mir,109,70,5	duplicate(dummy_npc)	Iris#boss2c	4_F_IRIS
-1@mir,100,63,5	duplicate(dummy_npc)	Iris#boss2d	4_F_IRIS
+1@mir,100,76,5	duplicate(dummy_npc)	菖蒲#boss2a::Iris#boss2a	4_F_IRIS
+1@mir,91,70,5	duplicate(dummy_npc)	菖蒲#boss2b::Iris#boss2b	4_F_IRIS
+1@mir,109,70,5	duplicate(dummy_npc)	菖蒲#boss2c::Iris#boss2c	4_F_IRIS
+1@mir,100,63,5	duplicate(dummy_npc)	菖蒲#boss2d::Iris#boss2d	4_F_IRIS
 
 1@mir,102,95,3	duplicate(dummy_npc)	畢尤#4mir::Bijou#4mir	4_F_BIJOU
-1@mir,103,90,1	duplicate(dummy_npc)	Fenrir#4mir	4_F_FENRIR
+1@mir,103,90,1	duplicate(dummy_npc)	潘利爾#4mir::Fenrir#4mir	4_F_FENRIR
 
 1@mir,102,95,3	duplicate(dummy_npc)	畢尤#5mir::Bijou#5mir	4_F_BIJOU
-1@mir,99,95,5	duplicate(dummy_npc)	Sarah#5mir	4_F_SARAH
-1@mir,100,90,7	duplicate(dummy_npc)	Iris#5mir	4_F_IRIS
+1@mir,99,95,5	duplicate(dummy_npc)	莎拉#5mir::Sarah#5mir	4_F_SARAH
+1@mir,100,90,7	duplicate(dummy_npc)	菖蒲#5mir::Iris#5mir	4_F_IRIS
 
 1@mir,102,95,3	duplicate(dummy_npc)	畢尤#6mir::Bijou#6mir	4_F_BIJOU
-1@mir,104,95,3	duplicate(dummy_npc)	Sarah#6mir	4_F_SARAH
-1@mir,103,90,1	duplicate(dummy_npc)	Fenrir#6mir	4_F_FENRIR
+1@mir,104,95,3	duplicate(dummy_npc)	莎拉#6mir::Sarah#6mir	4_F_SARAH
+1@mir,103,90,1	duplicate(dummy_npc)	潘利爾#6mir::Fenrir#6mir	4_F_FENRIR

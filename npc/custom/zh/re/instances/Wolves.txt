@@ -9,49 +9,49 @@
 //============================================================
 
 // Main Quest: Step 54. (entrance npc is a part of the instance Wolves Gathering Place)
-rachel,167,244,5	duplicate(dummy_cloaked_npc)	Suad#sms03	4_EP18_SUAD
-rachel,167,242,7	duplicate(dummy_cloaked_npc)	Miriam#sms03	4_EP18_MIRIAM
+rachel,167,244,5	duplicate(dummy_cloaked_npc)	蘇阿德#sms03::Suad#sms03	4_EP18_SUAD
+rachel,167,242,7	duplicate(dummy_cloaked_npc)	米莉安#sms03::Miriam#sms03	4_EP18_MIRIAM
 
-rachel,169,245,3	script	Ordinary Person#sms04	4_EP18_GW_WOMAN01,{
+rachel,169,245,3	script	一般民眾#sms04::Ordinary Person#sms04	4_EP18_GW_WOMAN01,{
 	if (BaseLevel < 170) {
-		mes "[Wolf]";
-		mes "Are you here to join the protest? But you don't seem like an experienced protester.";
+		mes "[狼]";
+		mes "你是來參加抗議的嗎？不過你看起來不像經驗豐富的抗議者。";
 		next;
-		mes "- This quest is available from level 170 onward. -";
+		mes "- 此任務限 170 級以上可接取 -";
 		close;
 	}
 	if (ep18_main < 50) {
-		mes "[Ordinary Person]";
-		mes "This area is under maintenance and access is prohibited. It's dangerous. Please step back.";
+		mes "[一般民眾]";
+		mes "此區域正在維護中，禁止進入。這裡很危險，請後退。";
 		close;
 	}
 	if (ep18_main == 50 || ep18_main == 51) {
 		if (ep18_main == 50) {
-			mes "[Ordinary Person]";
-			mes "This area is under maintenance and access is prohibited.";
+			mes "[一般民眾]";
+			mes "此區域正在維護中，禁止進入。";
 			next;
 			cutin "ep18_suad_01.png",2;
 			cloakoffnpcself( "Suad#sms03" );
-			mes "[Suad]";
-			mes "You don't need to be cautious. This person is an adventurer who is with us.";
+			mes "[蘇阿德]";
+			mes "不用太小心，這位是跟我們一起的冒險者。";
 			next;
 			cutin "ep18_miriam_01.png",0;
 			cloakoffnpcself( "Miriam#sms03" );
-			mes "[Miriam]";
-			mes "Are we all gathered now?";
+			mes "[米莉安]";
+			mes "大家都到齊了嗎？";
 			next;
 			cutin "ep18_suad_01.png",2;
-			mes "[Suad]";
-			mes "Yeah, everyone's ready. We just need to signal our people scattered around and enter the temple.";
+			mes "[蘇阿德]";
+			mes "是的，大家都準備好了。只要向分散在各處的同伴發出信號，就能進入神殿了。";
 			next;
 			cutin "ep18_miriam_01.png",0;
-			mes "[Miriam]";
-			mes "We need to move quickly.";
+			mes "[米莉安]";
+			mes "我們得快點行動。";
 			next;
 		}
 		cutin "ep18_suad_01.png",2;
-		mes "[Suad]";
-		mes "When we enter here, we can go towards the side entrance of the temple. We'll enter when we receive a response after sending the signal over there. Adventure, can you send the signal?";
+		mes "[蘇阿德]";
+		mes "我們從這裡進去後，就可以前往神殿的側門。我們會在那邊發出信號並收到回應後再進入。冒險者，你能發送信號嗎？";
 		next;
 
 		.@md_name$ = "Wolves Gathering Place";
@@ -61,13 +61,13 @@ rachel,169,245,3	script	Ordinary Person#sms04	4_EP18_GW_WOMAN01,{
 			.@menu$[1] = "Let's enter quickly.";
 		}
 
-		switch( select( .@menu$[0], .@menu$[1], "We need to be prepared." ) ) {
+		switch( select( .@menu$[0], .@menu$[1], "我們必須做好準備。" ) ) {
 		case 1:
-			mes "Beep-";
+			mes "嗶－";
 			next;
 			instance_create(.@md_name$);
-			mes "[Suad]";
-			mes "Since we've sent the signal, the emergency passage will open soon. Let us know when you're ready. We'll enter immediately.";
+			mes "[蘇阿德]";
+			mes "既然信號已經發出，緊急通道很快就會開啟。準備好了就告訴我們，我們會立刻進入。";
 			if (ep18_main == 50) {
 				changequest 17519,17520;
 				ep18_main = 51;
@@ -76,42 +76,42 @@ rachel,169,245,3	script	Ordinary Person#sms04	4_EP18_GW_WOMAN01,{
 		case 2:
 			switch( instance_enter(.@md_name$) ) {
 			case IE_OTHER:
-				mes "[Suad]";
+				mes "[蘇阿德]";
 				mes "^ff0000發生未知的錯誤。^000000";
 				close3;
 			case IE_NOINSTANCE:
-				mes "[Suad]";
-				mes "We haven't sent the signal yet. Once everyone is ready, we'll send the signal immediately.";
+				mes "[蘇阿德]";
+				mes "我們還沒發出信號。等大家都準備好，我們就會立刻發送。";
 				close3;
 			case IE_NOMEMBER:
-				mes "[Suad]";
-				mes "^ff0000Only a member of the party can enter the Memorial Dungeon.^000000";
+				mes "[蘇阿德]";
+				mes "^ff0000只有隊伍成員才能進入紀念副本。^000000";
 				close3;
 			case IE_OK:
-				mes "[Suad]";
-				mes "The signal has come, so let's move. Let's enter right away.";
+				mes "[蘇阿德]";
+				mes "信號已經來了，我們出發吧。立刻進入！";
 				if (ep18_main == 50) {	// debug
 					changequest 17519,17520;
 					ep18_main = 51;
 				}
 				cutin "",255;
-				mapannounce "rachel", "Adventurer " + strcharinfo(0) + " 的 " + getpartyname( getcharid(1) ) + " party will enter " + .@md_name$ + " first. All wolves, gather sequentially.", bc_map, 0xFF99;
+				mapannounce "rachel", "冒險者 " + strcharinfo(0) + " 的 " + getpartyname( getcharid(1) ) + " 隊伍將進入 " + .@md_name$ + " 優先。所有狼族請依序集合。", bc_map, 0xFF99;
 				// warp "1@nyr",194,30;
 				close;
 			}
 			end;
 		case 3:
-			mes "[Suad]";
-			mes "Right. Adventurers are also essential forces, so let's wait until they're ready.";
+			mes "[蘇阿德]";
+			mes "沒錯。冒險者也是重要的戰力，所以我們等他們準備好吧。";
 			close3;
 		}
 		end;
 	}
-	mes "[Ordinary Person]";
-	mes "Hello, adventurer. An agent from a temple has been waiting for you.";
+	mes "[一般民眾]";
+	mes "你好，冒險者。神殿的特使一直在等你。";
 	close2;
 	cloakoffnpcself( "Priest#sms01" );
-	npctalk "Adventurer, welcome.", "Priest#sms01", bc_self;
+	npctalk "冒險者，歡迎。", "祭司#sms01", bc_self;
 	end;
 
 OnInit:
@@ -130,7 +130,7 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (ep18_main < 52)
@@ -138,12 +138,12 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 	// repeatable instance Sanctuary Purification
 	if (BaseLevel < 170) {
 		mes "[祭司]";
-		mes "You must be at least BaseLevel 170 for this instance.";
+		mes "挑戰此副本至少需要基礎等級 170。";
 		close;
 	}
 	if (isbegin_quest(17524) == 1 || isbegin_quest(17526) == 1) {
 		mes "[祭司]";
-		mes "Welcome, adventurer. You've been through a lot.";
+		mes "歡迎，冒險者。你已經歷經許多事了。";
 		if (isbegin_quest(17524) == 1) {
 			erasequest 17524;
 			.@count = 2;
@@ -155,7 +155,7 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 		getitem 1000405,.@count;	// Ep18_Amethyst_Fragment
 		next;
 		mes "[祭司]";
-		mes "Please take a rest from your journey now! See you again!";
+		mes "請先休息一下吧！下次再見！";
 		close;
 	}
 	.@md_name$ = "Sanctuary Purification";
@@ -168,27 +168,27 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 	case 0:
 	case 1:
 		mes "[祭司]";
-		mes "The plan for the next operation hasn't been completed yet. Since it's conducted only once a day, we need to be cautious. Please rest until then, adventurer.";
+		mes "下一次的行動計畫還未完成。由於每天只能進行一次，我們必須謹慎行事。冒險者，請先休息，等待通知吧。";
 		close;
 	case 2:
 		mes "[祭司]";
-		mes "Hello! Did you get a good rest? I would be grateful if you could help me today. Please note that the operation can be done once a day.";
+		mes "你好！休息得好嗎？如果你今天能幫我一把，我會非常感激。請注意，此行動每天只能進行一次。";
 		erasequest 17527;
 		if (isbegin_quest(17522) == 0 && isbegin_quest(17523) == 0)
 			callsub( S_Take, 2, "Since we're doing it, let's do both.", "Raid on the defected temple guards.", "Raid on the Heart Hunters.", "", "It's going to be tough." );
 		break;
 	}
 	mes "[祭司]";
-	mes "Are you ready? I will send the join signal.";
+	mes "準備好了嗎？我要發送集合信號了。";
 	next;
-	switch( select( "Alright. I'll send the signal.", "I'll proceed.", "I still have a mission pending!", "More preparation is needed." ) ) {
+	switch( select( "好的，我來發送信號。", "我這就出發。", "我還有任務沒完成！", "還需要更多準備。" ) ) {
 	case 1:
 		mes "[祭司]";
-		mes "I've received the rendezvous point. You can join immediately through this emergency exit. When you're ready, proceed to enter.";
+		mes "集合地點已經收到了。你可以透過這個緊急出口立即加入。準備好後就進去吧。";
 		if (instance_create(.@md_name$) < 0) {
-			mes "Party: " + getpartyname(getcharid(1)) + "";
-			mes "Leader: " + strcharinfo(0) + "";
-			mes "^0000ff" + .@md_name$ + " ^000000- Unknown error";
+			mes "隊伍: " + getpartyname(getcharid(1)) + "";
+			mes "隊長: " + strcharinfo(0) + "";
+			mes "^0000ff" + .@md_name$ + " ^000000- 未知錯誤";
 			close;
 		}
 		end;
@@ -198,16 +198,16 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 			mes "^ff0000發生未知的錯誤。^000000";
 			close;
 		case IE_NOINSTANCE:
-			mes "The memorial dungeon does not exist.";
-			mes "The party leader did not generate the dungeon yet.";
+			mes "紀念副本不存在。";
+			mes "隊長尚未生成副本。";
 			close;
 		case IE_NOMEMBER:
-			mes "^ff0000Only a member of the party can enter the Memorial Dungeon.^000000";
+			mes "^ff0000只有隊伍成員才能進入紀念副本。^000000";
 			close;
 		case IE_OK:
 			mes "[祭司]";
-			mes "The signal has arrived, so let's move. Let's enter the rendezvous point right away.";
-			mapannounce "rachel", "" + strcharinfo(0) + " of the party, " + getpartyname( getcharid(1) ) + ", is entering " + .@md_name$ + ".",bc_map,"0x00ff99",FW_NORMAL,12;
+			mes "信號已經到了，我們出發吧。立刻前往集合地點！";
+			mapannounce "rachel", "" + strcharinfo(0) + " 隊伍中的 " + getpartyname( getcharid(1) ) + "，正在進入 " + .@md_name$ + ".",bc_map,"0x00ff99",FW_NORMAL,12;
 			setquest 17527;
 			// warp "1@nyr",194,30;
 			end;
@@ -217,7 +217,7 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 		callsub( S_Take, 1, "", "Raid on the defected temple guards.", "Raid on the Heart Hunters.", "Since we're doing it, let's do both.", "It's going to be tough." );
 	case 4:
 		mes "[祭司]";
-		mes "Understood. I'll wait.";
+		mes "明白了，我會等候。";
 		close;
 	}
 	end;
@@ -225,14 +225,14 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 S_Take:
 	if (getarg(0) == 0) {
 		mes "[祭司]";
-		mes "The main forces that infiltrated the temple have escaped, but we still have trouble with the temple guards who defected to the Heart Hunters and remnants of the Heart Hunters themselves who are after the heart.";
+		mes "潛入神殿的主力部隊已經撤離，但我們仍然要對付投靠心之獵人的神殿守衛，以及那些覬覦心之力的心之獵人殘餘勢力。";
 		next;
 		mes "[祭司]";
-		mes "We are conducting raids independently, but we would appreciate your assistance, adventurer. Please note that raids are conducted once a day.";
+		mes "我們正在獨自進行突襲，但若能得到你的協助，我們將不勝感激，冒險者。請注意，突襲每天只能進行一次。";
 	}
 	else if (getarg(0) == 1) {
 		mes "[祭司]";
-		mes "Is that so? What mission did you miss?";
+		mes "是嗎？你錯過了什麼任務？";
 	}
 	next;
 	switch( select( getarg(1), getarg(2), getarg(3), getarg(4), getarg(5) ) ) {
@@ -243,43 +243,43 @@ S_Take:
 		if (isbegin_quest(17523) == 0 && isbegin_quest(17526) == 0)
 			setquest 17523;
 		mes "[祭司]";
-		mes "Understood.";
+		mes "明白了。";
 		next;
 		mes "[祭司]";
-		mes "Then please let me know when you're ready.";
+		mes "那麼準備好了請告訴我。";
 		close;
 	case 2:
 		if (isbegin_quest(17522) == 0 && isbegin_quest(17524) == 0) {
 			setquest 17522;
 			mes "[祭司]";
-			mes "Raid on the defected temple guards.Is that so? Understood.";
+			mes "突襲叛變的神殿守衛。是這樣啊？明白了。";
 			next;
 			mes "[祭司]";
-			mes "Then please let me know when you're ready.";
+			mes "那麼準備好了請告訴我。";
 			close;
 		}
 		mes "[祭司]";
-		mes "It seems you're already engaged in a mission. Very well, please take care of it.";
+		mes "看來你已經有任務在身了。那好吧，請好好完成它。";
 		next;
 		mes "[祭司]";
-		mes "Then please let me know when you're ready.";
+		mes "那麼準備好了請告訴我。";
 		close;
 	case 3:
 		if (isbegin_quest(17523) == 0 && isbegin_quest(17526) == 0) {
 			setquest 17523;
 			mes "[祭司]";
-			mes "Thank you for your cooperation. Let me know when you're ready.";
+			mes "感謝你的配合。準備好了請告訴我。";
 			close;
 		}
 		mes "[祭司]";
-		mes "It seems you're already engaged in a mission. Very well, please take care of it.";
+		mes "看來你已經有任務在身了。那好吧，請好好完成它。";
 		next;
 		mes "[祭司]";
-		mes "Then please let me know when you're ready.";
+		mes "那麼準備好了請告訴我。";
 		close;
 	case 5:
 		mes "[祭司]";
-		mes "If that's the case, then there's nothing we can do. I'll see you next time!";
+		mes "既然如此，那我們也無能為力了。下次再見！";
 		close2;
 		cloakonnpcself( "Priest#sms01" );
 		end;
@@ -289,7 +289,7 @@ S_Take:
 
 
 // Define the instance variables and disable the unused NPCs
-1@nyr,1,1,0	script	nyr_starter	-1,{
+1@nyr,1,1,0	script	nyr_starter::nyr_starter	-1,{
 	end;
 OnInstanceInit:
 	'nyr_main_step = 0;
@@ -685,7 +685,7 @@ OnTouch_:
 //------------------------------------------------------------
 // Step 1
 //------------------------------------------------------------
-1@nyr,192,31,3	script	Miriam#dms101	EP18_NPC_MIRIAM,5,5,{
+1@nyr,192,31,3	script	米莉安#dms101::Miriam#dms101	EP18_NPC_MIRIAM,5,5,{
 	end;
 OnTouch:
 	if ('nyr_main_step == 1) {
@@ -697,12 +697,12 @@ OnTouch:
 
 	'nyr_main_step = 1;
 	setpcblock PCBLOCK_NPC, true;
-	npctalk "Adventurer!";
+	npctalk "冒險者！";
 	emotion ET_SURPRISE;
 	sleep2 1000;
 	navigateto("1@nyr",125,41);
 	setpcblock PCBLOCK_NPC, false;
-	npctalk "Up ahead is the rallying point.";
+	npctalk "前方就是集合點。";
 	unitwalk getnpcid(0), 162,31, instance_npcname("Miriam#dms101") + "::OnMove1";
 	sleep 2000;
 	npctalk "請這邊走。";
@@ -713,66 +713,66 @@ OnMove1:
 	end;
 OnMove2:
 	unitwalk getnpcid(0), 128,41, instance_npcname("Miriam#dms101") + "::OnMove3";
-	npctalk "It's right in front of me.";
+	npctalk "就在我面前。";
 	end;
 OnMove3:
 	if ('nyr_main_step != 1)
 		end;
 	'nyr_main_step = 2;
 
-	npctalk "Suad, what is the situation?", instance_npcname("Miriam#dms101");
-	npctalk "No further entry is allowed!", instance_npcname("Temple Guard#dms101");
+	npctalk "蘇阿德，情況如何？", instance_npcname("米莉安#dms101");
+	npctalk "禁止再往前進入！", instance_npcname("神殿守衛#dms101");
 	sleep 1000;
-	npctalk "Miriam, Adventurer. A little further over here.", instance_npcname("Suad#dms101");
+	npctalk "米莉安，冒險者。再往這邊走一點。", instance_npcname("蘇阿德#dms101");
 	sleep 1000;
-	npctalk "That's too much! They're treating us like criminals!", instance_npcname("Kun#dms112");
-	npctalk "Are we in the place we're not supposed to be?", instance_npcname("Angry Crowd#dms131");
+	npctalk "太過分了！他們把我們當成罪犯看待！", instance_npcname("昆#dms112");
+	npctalk "我們是不是進了不該進的地方？", instance_npcname("憤怒的群眾#dms131");
 	sleep 1500;
-	npctalk "Hey, that place was my great-great-grandmother's land!", instance_npcname("Angry Crowd#dms121");
-	npctalk "We have every right to be here!", instance_npcname("Angry Crowd#dms161");
+	npctalk "喂，那塊地是我曾曾祖母的土地！", instance_npcname("憤怒的群眾#dms121");
+	npctalk "我們有權待在這裡！", instance_npcname("憤怒的群眾#dms161");
 	sleep 2000;
-	npctalk "Yeah!! Get out of our way!", instance_npcname("Angry Crowd#dms191");
-	npctalk "You pushed us away!", instance_npcname("Angry Crowd#dms181");
+	npctalk "對！給我們讓開！", instance_npcname("憤怒的群眾#dms191");
+	npctalk "你們把我們推開了！", instance_npcname("憤怒的群眾#dms181");
 	sleep 2000;
-	npctalk "Is it because we don't look human?", instance_npcname("Angry Crowd#dms101");
-	npctalk "Is it because we look so easy?", instance_npcname("Angry Crowd#dms131");
+	npctalk "是因為我們看起來不像人類嗎？", instance_npcname("憤怒的群眾#dms101");
+	npctalk "是因為我們看起來好欺負嗎？", instance_npcname("憤怒的群眾#dms131");
 	sleep 2000;
-	npctalk "We're claiming our rightful place!", instance_npcname("Angry Crowd#dms121");
-	npctalk "What the hell!! Give our land back!!", instance_npcname("Angry Crowd#dms181");
+	npctalk "我們要奪回本屬於我們的地方！", instance_npcname("憤怒的群眾#dms121");
+	npctalk "搞什麼鬼！！把我們的土地還給我們！！", instance_npcname("憤怒的群眾#dms181");
 	sleep 2000;
-	npctalk "We are the longtime owners of this land and have been displaced by the settlers.", instance_npcname("Angry Crowd#dms101");
-	npctalk "Who is holding us back?!", instance_npcname("Angry Crowd#dms141");
+	npctalk "我們才是這片土地的世代主人，卻被移民者趕出了家園。", instance_npcname("憤怒的群眾#dms101");
+	npctalk "是誰在阻攔我們？！", instance_npcname("憤怒的群眾#dms141");
 	sleep 2000;
-	npctalk "We have come to claim our rightful place as the longtime inhabitants of this land.", instance_npcname("Angry Crowd#dms101");
-	npctalk "Those who are illegally occupying our land should leave!", instance_npcname("Angry Crowd#dms191");
+	npctalk "我們是來奪回身為這片土地世代居民應得的地位的。", instance_npcname("憤怒的群眾#dms101");
+	npctalk "非法佔據我們土地的人應該離開！", instance_npcname("憤怒的群眾#dms191");
 	sleep 2000;
-	npctalk "No illegal protests! Disband now!", instance_npcname("Temple Guard#dms101");
-	npctalk "Who said our protest was illegal?", instance_npcname("Angry Crowd#dms151");
-	npctalk "You're just making up that it's illegal?", instance_npcname("Angry Crowd#dms171");
+	npctalk "禁止非法抗議！立即解散！", instance_npcname("神殿守衛#dms101");
+	npctalk "誰說我們的抗議是非法的？", instance_npcname("憤怒的群眾#dms151");
+	npctalk "你們只是隨便編個理由說我們非法吧？", instance_npcname("憤怒的群眾#dms171");
 	sleep 2000;
-	npctalk "Our demands are as follows!", instance_npcname("Angry Crowd#dms101");
+	npctalk "我們的訴求如下！", instance_npcname("憤怒的群眾#dms101");
 	sleep 2000;
-	npctalk "One! We are the owners of this land! Those who have illegally occupied it must leave!", instance_npcname("Angry Crowd#dms101");
-	npctalk "Back off!", instance_npcname("Angry Crowd#dms111");
-	npctalk "Back off!", instance_npcname("Angry Crowd#dms121");
-	npctalk "Back off!", instance_npcname("Angry Crowd#dms131");
-	npctalk "Back off!", instance_npcname("Angry Crowd#dms141");
-	npctalk "Back off!", instance_npcname("Angry Crowd#dms151");
-	npctalk "Back off!", instance_npcname("Angry Crowd#dms161");
-	npctalk "Back off!", instance_npcname("Angry Crowd#dms171");
-	npctalk "Back off!", instance_npcname("Angry Crowd#dms181");
-	npctalk "Back off!", instance_npcname("Angry Crowd#dms191");
+	npctalk "第一！我們是這片土地的主人！非法佔據它的人必須離開！", instance_npcname("憤怒的群眾#dms101");
+	npctalk "退後！", instance_npcname("憤怒的群眾#dms111");
+	npctalk "退後！", instance_npcname("憤怒的群眾#dms121");
+	npctalk "退後！", instance_npcname("憤怒的群眾#dms131");
+	npctalk "退後！", instance_npcname("憤怒的群眾#dms141");
+	npctalk "退後！", instance_npcname("憤怒的群眾#dms151");
+	npctalk "退後！", instance_npcname("憤怒的群眾#dms161");
+	npctalk "退後！", instance_npcname("憤怒的群眾#dms171");
+	npctalk "退後！", instance_npcname("憤怒的群眾#dms181");
+	npctalk "退後！", instance_npcname("憤怒的群眾#dms191");
 	sleep 2000;
-	npctalk "Two! Abolish unfair discriminatory policies and acknowledge our rights!", instance_npcname("Angry Crowd#dms101");
-	npctalk "Acknowledge it!", instance_npcname("Angry Crowd#dms111");
-	npctalk "Acknowledge it!", instance_npcname("Angry Crowd#dms121");
-	npctalk "Acknowledge it!", instance_npcname("Angry Crowd#dms131");
-	npctalk "Acknowledge it!", instance_npcname("Angry Crowd#dms141");
-	npctalk "Acknowledge it!", instance_npcname("Angry Crowd#dms151");
-	npctalk "Acknowledge it!", instance_npcname("Angry Crowd#dms161");
-	npctalk "Acknowledge it!", instance_npcname("Angry Crowd#dms171");
-	npctalk "Acknowledge it!", instance_npcname("Angry Crowd#dms181");
-	npctalk "Acknowledge it!", instance_npcname("Angry Crowd#dms191");
+	npctalk "第二！廢除不公平的歧視政策，承認我們的權利！", instance_npcname("憤怒的群眾#dms101");
+	npctalk "承認它！", instance_npcname("憤怒的群眾#dms111");
+	npctalk "承認它！", instance_npcname("憤怒的群眾#dms121");
+	npctalk "承認它！", instance_npcname("憤怒的群眾#dms131");
+	npctalk "承認它！", instance_npcname("憤怒的群眾#dms141");
+	npctalk "承認它！", instance_npcname("憤怒的群眾#dms151");
+	npctalk "承認它！", instance_npcname("憤怒的群眾#dms161");
+	npctalk "承認它！", instance_npcname("憤怒的群眾#dms171");
+	npctalk "承認它！", instance_npcname("憤怒的群眾#dms181");
+	npctalk "承認它！", instance_npcname("憤怒的群眾#dms191");
 	end;
 
 OnStartMove2:
@@ -794,52 +794,52 @@ OnGuy3:
 	end;
 }
 
-1@nyr,125,41,3	script	Suad#dms101	4_EP18_SUAD,{
+1@nyr,125,41,3	script	蘇阿德#dms101::Suad#dms101	4_EP18_SUAD,{
 	if (is_party_leader() == false) {
 		cutin "ep18_Suad_01.png",0;
-		mes "[Suad]";
-		mes "Where's the party leader?";
+		mes "[蘇阿德]";
+		mes "隊長在哪裡？";
 		close3;
 	}
 	if ('nyr_main_step == 2) {
 		cutin "ep18_suad_01.png",0;
-		mes "[Suad]";
-		mes "It's not looking good right now. I think... The armed guards increasing their security..";
+		mes "[蘇阿德]";
+		mes "現在情況不太妙。我想……武裝守衛正在加強戒備……";
 		next;
-		select( "Looks like the issue with the riot on top is a big one." );
+		select( "看來上面那場暴動的問題很嚴重。" );
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "Or the information was leaked. Otherwise, we wouldn't have been prepared.";
+		mes "[米莉安]";
+		mes "或者是情報外洩了，不然他們不會早有準備。";
 		next;
 		cutin "",255;
-		mes "[Temple Guard]";
-		mes "No further entry is permitted. Surrender to your arrest.";
+		mes "[神殿守衛]";
+		mes "禁止再進入。立即投降，接受逮捕。";
 		next;
-		mes "[Natives]";
-		mes "What have we done? We're not supposed to be in here!";
+		mes "[原住民]";
+		mes "我們做錯了什麼？我們本不該在這裡！";
 		next;
-		mes "[Natives]";
-		mes "This is our land! If the owner wants to enter into their own land, why should anyone be stopping them?";
+		mes "[原住民]";
+		mes "這是我們的土地！如果主人想進入自己的土地，為什麼要有人阻攔？";
 		next;
-		mes "[Natives]";
-		mes "You're the ones who are illegally occupying it!";
+		mes "[原住民]";
+		mes "佔據這裡的是你們才對！";
 		next;
-		mes "[Natives]";
-		mes "What the hell, give it back!! Our land!!";
+		mes "[原住民]";
+		mes "搞什麼啊，還給我們！！我們的土地！！";
 		next;
-		mes "[Native Leader]";
-		mes "We are the longtime owners of this land and have been displaced from our homes by the settlers.";
+		mes "[原住民領袖]";
+		mes "我們才是這片土地的世代主人，卻被移民者趕出了家園。";
 		next;
-		mes "[Native Leader]";
-		mes "We have come to claim our rightful place as the longtime inhabitants of this land.";
+		mes "[原住民領袖]";
+		mes "我們是來奪回身為這片土地世代居民應得的地位的。";
 		next;
-		mes "[Native Leader]";
-		mes "Our demands are as follows.";
+		mes "[原住民領袖]";
+		mes "我們的訴求如下。";
 		next;
-		mes "[Native Leader]";
-		mes "One! We have...";
+		mes "[原住民領袖]";
+		mes "第一！我們有……";
 		next;
-		npctalk "Now is the time. Follow me quietly.", instance_npcname("Lamacus#dms102");
+		npctalk "時機到了。跟我悄悄來。", instance_npcname("拉馬庫斯#dms102");
 		npcspeed( 50, instance_npcname("Lamacus#dms102") );
 		npcspeed( 50, instance_npcname("Kun#dms112") );
 		npcspeed( 50, instance_npcname("Yopi#dms122") );
@@ -848,33 +848,33 @@ OnGuy3:
 		unitwalk getnpcid(0,instance_npcname("Kun#dms112")), 145,32, instance_npcname("Miriam#dms101") + "::OnGuy2";
 		unitwalk getnpcid(0,instance_npcname("Yopi#dms122")), 145,31, instance_npcname("Miriam#dms101") + "::OnGuy3";
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "Suad, did you give any specific instructions to the people who were rioting at the top?";
+		mes "[米莉安]";
+		mes "蘇阿德，你有沒有對上面鬧事的人下達什麼具體指示？";
 		next;
 		cutin "ep18_suad_01.png",0;
-		mes "[Suad]";
-		mes "No? Why?";
+		mes "[蘇阿德]";
+		mes "沒有啊？怎麼了？";
 		next;
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "See those guys over there? They're moving cautiously. That's the group that did the attack on the top.";
+		mes "[米莉安]";
+		mes "看到那邊那些人了嗎？他們行動很謹慎。那就是在上面發動攻擊的那群人。";
 		next;
 		cutin "ep18_suad_03.png",0;
-		mes "[Suad]";
-		mes "I didn't give you any instructions. Are you trying to act on your own?";
+		mes "[蘇阿德]";
+		mes "我沒給你們下達任何指示。你們是想擅自行動嗎？";
 		next;
-		select( "Looks like they're heading for the temple." );
+		select( "看來他們是往神殿去了。" );
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "It's an action that's not discussed beforehand. I already have a history, and that's not a good thing, is it? I'm going to have to tread quietly, I don't know what else I'm going to do..";
+		mes "[米莉安]";
+		mes "這是事先沒有討論過的行動。我已經有前科了，那可不是什麼好事，對吧？我得悄悄地行動，我也不知道還能做什麼了……";
 		next;
 		cutin "ep18_suad_01.png",0;
-		mes "[Suad]";
-		mes "Are you going alone?";
+		mes "[蘇阿德]";
+		mes "你要一個人去嗎？";
 		next;
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "I'm just following behind, why do I need a group? I'm good enough on my own. You stay here, I'll signal if anything happens.";
+		mes "[米莉安]";
+		mes "我只是跟在後面，為什麼需要團隊？我自己一個人就夠了。你留在這裡，有什麼狀況我會發信號。";
 		next;
 		if ('nyr_main_step == 2) {
 			'nyr_main_step = 3;
@@ -883,12 +883,12 @@ OnGuy3:
 		}
 		donpcevent instance_npcname("Miriam#dms101") + "::OnStartMove2";
 		cutin "ep18_suad_03.png",0;
-		mes "[Suad]";
-		mes "They say that they're only following, but there's no telling what they might be doing. Even if they're unarmed, they might be hiding something...";
+		mes "[蘇阿德]";
+		mes "他們說只是跟著，但誰知道他們在做什麼。就算沒帶武器，也可能藏著什麼……";
 		next;
-		unittalk getcharid(3), "" + strcharinfo(0) + " : Let me catch up.";
-		mes "[Suad]";
-		mes "Well, that's a relief. I can't make any hasty moves here. Miriam left a trace. Now do me a favor and just follow the trace.";
+		unittalk getcharid(3), "" + strcharinfo(0) + " : 讓我趕上他們。";
+		mes "[蘇阿德]";
+		mes "那就好。我不能在這裡輕舉妄動。米莉安留下了痕跡，現在幫我個忙，順著痕跡走就好。";
 		close2;
 		navigateto("1@nyr",179,164);
 		cutin "",255;
@@ -896,8 +896,8 @@ OnGuy3:
 	}
 	if ('nyr_main_step == 3) {
 		cutin "ep18_suad_01.png",0;
-		mes "[Suad]";
-		mes "Be careful.";
+		mes "[蘇阿德]";
+		mes "小心。";
 		close2;
 		navigateto("1@nyr",179,164);
 		cutin "",255;
@@ -906,34 +906,34 @@ OnGuy3:
 	end;
 }
 
-1@nyr,130,34,1	script	Lamacus#dms102	EP18_ARMED_VILLAGER01,{
+1@nyr,130,34,1	script	拉馬庫斯#dms102::Lamacus#dms102	EP18_ARMED_VILLAGER01,{
 	end;
 OnInstanceInit:
 	npcspeed 100;
 	end;
 }
-1@nyr,132,32,1	duplicate(Lamacus#dms102)	Kun#dms112	EP18_ARMED_VILLAGER02
-1@nyr,130,31,1	duplicate(Lamacus#dms102)	Yopi#dms122	EP18_ARMED_VILLAGER03
+1@nyr,132,32,1	duplicate(Lamacus#dms102)	昆#dms112::Kun#dms112	EP18_ARMED_VILLAGER02
+1@nyr,130,31,1	duplicate(Lamacus#dms102)	尤皮#dms122::Yopi#dms122	EP18_ARMED_VILLAGER03
 
-1@nyr,117,38,7	duplicate(dummy_npc)	Angry Crowd#dms171	4_EP18_GW_MIDDLE02
-1@nyr,139,46,3	duplicate(dummy_npc)	Temple Guard#dms101	4_M_RASWORD
-1@nyr,132,46,3	duplicate(dummy_npc)	Temple Guard#dms111	4_M_RASWORD
-1@nyr,126,46,3	duplicate(dummy_npc)	Temple Guard#dms121	4_M_RASWORD
-1@nyr,122,46,3	duplicate(dummy_npc)	Temple Guard#dms131	4_M_RASWORD
-1@nyr,118,46,5	duplicate(dummy_npc)	Temple Guard#dms141	4_M_RASWORD
-1@nyr,110,46,5	duplicate(dummy_npc)	Temple Guard#dms151	4_M_RASWORD
+1@nyr,117,38,7	duplicate(dummy_npc)	憤怒的群眾#dms171::Angry Crowd#dms171	4_EP18_GW_MIDDLE02
+1@nyr,139,46,3	duplicate(dummy_npc)	神殿守衛#dms101::Temple Guard#dms101	4_M_RASWORD
+1@nyr,132,46,3	duplicate(dummy_npc)	神殿守衛#dms111::Temple Guard#dms111	4_M_RASWORD
+1@nyr,126,46,3	duplicate(dummy_npc)	神殿守衛#dms121::Temple Guard#dms121	4_M_RASWORD
+1@nyr,122,46,3	duplicate(dummy_npc)	神殿守衛#dms131::Temple Guard#dms131	4_M_RASWORD
+1@nyr,118,46,5	duplicate(dummy_npc)	神殿守衛#dms141::Temple Guard#dms141	4_M_RASWORD
+1@nyr,110,46,5	duplicate(dummy_npc)	神殿守衛#dms151::Temple Guard#dms151	4_M_RASWORD
 
-1@nyr,120,44,5	duplicate(dummy_npc)	Temple Guard#dms181	4_M_RASWORD
-1@nyr,124,44,3	duplicate(dummy_npc)	Temple Guard#dms191	4_M_RASWORD
-1@nyr,137,38,1	duplicate(dummy_npc)	Angry Crowd#dms101	4_EP18_GW_MAN01
-1@nyr,124,36,1	duplicate(dummy_npc)	Angry Crowd#dms111	4_EP18_GW_WOMAN01
-1@nyr,131,38,1	duplicate(dummy_npc)	Angry Crowd#dms121	4_EP18_GW_MAN02
-1@nyr,127,34,1	duplicate(dummy_npc)	Angry Crowd#dms131	4_M_MIDDLE
-1@nyr,121,40,7	duplicate(dummy_npc)	Angry Crowd#dms141	4_EP18_GW_WOMAN02
-1@nyr,122,37,7	duplicate(dummy_npc)	Angry Crowd#dms151	4_EP18_GW_MIDDLE01
-1@nyr,118,35,7	duplicate(dummy_npc)	Angry Crowd#dms161	4_M_RACHMAN1
-1@nyr,114,36,7	duplicate(dummy_npc)	Angry Crowd#dms181	4_F_SHABBY
-1@nyr,116,41,7	duplicate(dummy_npc)	Angry Crowd#dms191	4_EP18_GW_WOMAN01
+1@nyr,120,44,5	duplicate(dummy_npc)	神殿守衛#dms181::Temple Guard#dms181	4_M_RASWORD
+1@nyr,124,44,3	duplicate(dummy_npc)	神殿守衛#dms191::Temple Guard#dms191	4_M_RASWORD
+1@nyr,137,38,1	duplicate(dummy_npc)	憤怒的群眾#dms101::Angry Crowd#dms101	4_EP18_GW_MAN01
+1@nyr,124,36,1	duplicate(dummy_npc)	憤怒的群眾#dms111::Angry Crowd#dms111	4_EP18_GW_WOMAN01
+1@nyr,131,38,1	duplicate(dummy_npc)	憤怒的群眾#dms121::Angry Crowd#dms121	4_EP18_GW_MAN02
+1@nyr,127,34,1	duplicate(dummy_npc)	憤怒的群眾#dms131::Angry Crowd#dms131	4_M_MIDDLE
+1@nyr,121,40,7	duplicate(dummy_npc)	憤怒的群眾#dms141::Angry Crowd#dms141	4_EP18_GW_WOMAN02
+1@nyr,122,37,7	duplicate(dummy_npc)	憤怒的群眾#dms151::Angry Crowd#dms151	4_EP18_GW_MIDDLE01
+1@nyr,118,35,7	duplicate(dummy_npc)	憤怒的群眾#dms161::Angry Crowd#dms161	4_M_RACHMAN1
+1@nyr,114,36,7	duplicate(dummy_npc)	憤怒的群眾#dms181::Angry Crowd#dms181	4_F_SHABBY
+1@nyr,116,41,7	duplicate(dummy_npc)	憤怒的群眾#dms191::Angry Crowd#dms191	4_EP18_GW_WOMAN01
 
 
 //------------------------------------------------------------
@@ -942,17 +942,17 @@ OnInstanceInit:
 // (disabled since we are using Miriam instead)
 // 2@nyr,37,219,0	script	#ar101sw	HIDDEN_WARP_NPC,5,5
 
-2@nyr,37,219,3	script	Miriam#dms201	4_EP18_MIRIAM,5,5,{
+2@nyr,37,219,3	script	米莉安#dms201::Miriam#dms201	4_EP18_MIRIAM,5,5,{
 	end;
 OnTouch:
 	// note: player can move
 	if ('nyr_main_step != 3 || is_party_leader() == false)
 		end;
 	'nyr_main_step = 4;
-	npctalk "Adventurer?", instance_npcname("Miriam#dms201");
-	npctalk "Adventurer? Why are you here?", instance_npcname("Miriam#dms201");
+	npctalk "冒險者？", instance_npcname("米莉安#dms201");
+	npctalk "冒險者？你怎麼會在這裡？", instance_npcname("米莉安#dms201");
 	sleep 2000;
-	npctalk "I was sent by Suad. Don't worry too much about it.", instance_npcname("Miriam#dms201");
+	npctalk "我是蘇阿德派來的，不用太擔心。", instance_npcname("米莉安#dms201");
 	sleep 1000;
 	enablenpc instance_npcname("Temple Guard#dms201");
 	enablenpc instance_npcname("Temple Guard#dms211");
@@ -960,62 +960,62 @@ OnTouch:
 	enablenpc instance_npcname("Temple Guard#dms231");
 	enablenpc instance_npcname("Temple Guard#dms241");
 	sleep 500;
-	npctalk "Halt! Identify Yourself.", instance_npcname("Temple Guard#dms201");
-	npctalk "... It's hard to go by quietly, it seems.", instance_npcname("Miriam#dms201");
+	npctalk "站住！報上身分。", instance_npcname("神殿守衛#dms201");
+	npctalk "……看來很難悄悄地過去。", instance_npcname("米莉安#dms201");
 	end;
 }
 
-2@nyr,35,215,7	script	Temple Guard#dms201	4_M_RASWORD,{
+2@nyr,35,215,7	script	神殿守衛#dms201::Temple Guard#dms201	4_M_RASWORD,{
 	if (is_party_leader() == false) {
-		npctalk "Who is the leader of the party?";
+		npctalk "誰是隊長？";
 		end;
 	}
 	if ('nyr_main_step != 4)
 		end;
-	mes "[Temple Guard]";
-	mes "This place is off-limits.";
+	mes "[神殿守衛]";
+	mes "此處禁止進入。";
 	next;
 	cutin "ep18_miriam_01.png",2;
-	mes "[Miriam]";
-	mes "I'm Miriam, the daughter of High Priest Amal. We've been following a suspicious group of people into this area..";
+	mes "[米莉安]";
+	mes "我是米莉安，大祭司阿馬爾的女兒。我們一直在跟蹤一群可疑的人，他們進入了這個區域……";
 	next;
 	cutin "",255;
-	mes "[Temple Guard]";
-	mes "Are you here to help the High Priest with his work?";
+	mes "[神殿守衛]";
+	mes "你是來幫大祭司處理事務的嗎？";
 	next;
 	cutin "ep18_miriam_03.png",2;
-	mes "[Miriam]";
-	mes "Work... help...? Is my father here?";
+	mes "[米莉安]";
+	mes "事務……幫忙……？我父親在這裡嗎？";
 	next;
 	cutin "",255;
-	mes "[Temple Guard]";
+	mes "[神殿守衛]";
 	mes "啊……";
 	next;
-	mes "[Temple Guard]";
-	mes "No one here is suspicious. You may leave now.";
+	mes "[神殿守衛]";
+	mes "這裡沒有任何可疑人員。你可以離開了。";
 	next;
-	mapannounce 'map_2nyr$, "Slowly.", bc_map, 0xFFCC;
+	mapannounce 'map_2nyr$, "慢慢來。", bc_map, 0xFFCC;
 	mapannounce 'map_2nyr$, "請小心。", bc_map, 0xFFCC;
 	cutin "ep18_miriam_03.png",2;
-	mes "[Miriam]";
-	mes "Are you sure there aren't any suspicious people coming in? They've obviously gotten into this place, give me a second and I'll check it out quickly.";
+	mes "[米莉安]";
+	mes "你確定沒有可疑人員進來嗎？他們顯然已經混進這裡了，給我一點時間，我很快就會查看。";
 	next;
 	cutin "",255;
-	mes "[Temple Guard]";
-	mes "If you get any closer, we will take action.";
+	mes "[神殿守衛]";
+	mes "你再靠近一步，我們就要採取行動了。";
 	next;
 	cutin "ep18_miriam_03.png",2;
-	mes "[Miriam]";
-	mes "...Can't help it, then. Can you, Adventurer?";
+	mes "[米莉安]";
+	mes "……那也沒辦法了。冒險者，你能處理嗎？";
 	next;
-	select( "Yes. I'll handle it, you go after them." );
-	mes "[Miriam]";
-	mes "Then do me a favor, I'll leave a trail so you can find me..";
+	select( "好，我來處理，你去追他們。" );
+	mes "[米莉安]";
+	mes "那就幫我個忙，我會留下痕跡讓你能找到我……";
 	next;
 	cutin "",255;
 	disablenpc instance_npcname("Miriam#dms201");
-	mes "[Temple Guard]";
-	mes "Intruder...! Argh!!!";
+	mes "[神殿守衛]";
+	mes "入侵者……！啊啊啊！！";
 	if ('nyr_main_step == 4) {
 		'nyr_main_step = 5;
 		donpcevent instance_npcname("nyr_step_2") + "::OnStart";
@@ -1023,13 +1023,13 @@ OnTouch:
 	close;
 }
 
-2@nyr,34,212,7	duplicate(dummy_npc)	Temple Guard#dms211	4_M_RASWORD
-2@nyr,36,212,1	duplicate(dummy_npc)	Temple Guard#dms221	4_M_RASWORD
-2@nyr,33,209,7	duplicate(dummy_npc)	Temple Guard#dms231	4_M_RASWORD
-2@nyr,38,209,1	duplicate(dummy_npc)	Temple Guard#dms241	4_M_RASWORD
+2@nyr,34,212,7	duplicate(dummy_npc)	神殿守衛#dms211::Temple Guard#dms211	4_M_RASWORD
+2@nyr,36,212,1	duplicate(dummy_npc)	神殿守衛#dms221::Temple Guard#dms221	4_M_RASWORD
+2@nyr,33,209,7	duplicate(dummy_npc)	神殿守衛#dms231::Temple Guard#dms231	4_M_RASWORD
+2@nyr,38,209,1	duplicate(dummy_npc)	神殿守衛#dms241::Temple Guard#dms241	4_M_RASWORD
 
 
-2@nyr,1,1,0	script	nyr_step_2	-1,{
+2@nyr,1,1,0	script	nyr_step_2::nyr_step_2	-1,{
 	end;
 OnStart:
 	// disabled npcs from step 1
@@ -1077,7 +1077,7 @@ OnMobDead:
 		end;
 	if (mobcount('map_2nyr$, instance_npcname("nyr_step_2") + "::OnMobDead") < 1) {
 		'nyr_main_step = 6;
-		mapannounce 'map_2nyr$, "I heard a fight somewhere?", bc_map, 0xFFCC;
+		mapannounce 'map_2nyr$, "我好像聽到哪裡有打鬥聲？", bc_map, 0xFFCC;
 		enablenpc instance_npcname("#mstep01");
 		enablenpc instance_npcname("Miriam#dms301");
 		enablenpc instance_npcname("Lamacus#dms201");
@@ -1100,73 +1100,73 @@ OnTouch:
 //------------------------------------------------------------
 // Step 3
 //------------------------------------------------------------
-2@nyr,43,94,3	script	Miriam#dms301	4_EP18_MIRIAM,5,5,{
+2@nyr,43,94,3	script	米莉安#dms301::Miriam#dms301	4_EP18_MIRIAM,5,5,{
 	end;
 OnTouch:
 	if ('nyr_main_step != 6)
 		end;
-	npctalk "You've come to the right place. Shhh - do you see those people over there?", instance_npcname("Miriam#dms301");
-	npctalk "The smell of books makes me sleepy.", instance_npcname("Lamacus#dms201");
+	npctalk "你來對地方了。噓——看到那邊那些人了嗎？", instance_npcname("米莉安#dms301");
+	npctalk "書的味道讓我好想睡。", instance_npcname("拉馬庫斯#dms201");
 	end;
 }
 
-2@nyr,37,93,5	script	Lamacus#dms201	EP18_ARMED_VILLAGER01,{
+2@nyr,37,93,5	script	拉馬庫斯#dms201::Lamacus#dms201	EP18_ARMED_VILLAGER01,{
 	if ('nyr_main_step != 6)
 		end;
 	if (is_party_leader() == false)
 		end;
 	cutin "ep18_miriam_03.png",2;
-	mes "[Miriam]";
+	mes "[米莉安]";
 	mes "你在這裡做什麼？";
 	next;
 	cutin "",255;
-	mes "[Lamacus]";
-	mes "Whoa! What the hell are you doing here, with an Adventurer?";
+	mes "[拉馬庫斯]";
+	mes "哇！你們在這裡幹什麼，還帶著冒險者？";
 	next;
 	cutin "ep18_miriam_03.png",2;
-	mes "[Miriam]";
-	mes "You shouldn't be here right now. If the Temple finds out, it will only make things more difficult for us.";
+	mes "[米莉安]";
+	mes "你們現在不該待在這裡。要是被神殿發現，只會讓我們的處境更加艱難。";
 	next;
 	cutin "",255;
-	mes "[Lamacus]";
-	mes "Don't you see? We're breaking into a library. There must be a lot of secrets of the settlers in here.";
-	npctalk "Think about it. What if we got our hands on all of this?", instance_npcname("Kun#dms211");
-	npctalk "We can take advantage of their weaknesses!", instance_npcname("Yopi#dms221");
+	mes "[拉馬庫斯]";
+	mes "你沒看出來嗎？我們正在闖入一座圖書館。這裡面一定藏著很多移民者的秘密。";
+	npctalk "想想看，如果我們能得到這一切呢？", instance_npcname("昆#dms211");
+	npctalk "我們可以利用他們的弱點！", instance_npcname("尤皮#dms221");
 	next;
 	cutin "ep18_miriam_03.png",2;
-	mes "[Miriam]";
-	mes "We can think about that later. For now. Go back. Your actions now could put us in more danger..";
+	mes "[米莉安]";
+	mes "這件事以後再想。現在先回去。你現在的行動可能會讓我們陷入更大的危險……";
 	next;
 	cutin "",255;
-	mes "[Yopi]";
-	mes "Go home, Miriam. I'm not going to cooperate with your stuffy behavior anymore.";
-	npctalk "Who are you to tell us what to do?", instance_npcname("Kun#dms211");
+	mes "[尤皮]";
+	mes "回家去吧，米莉安。我不會再配合你那套死板的作風了。";
+	npctalk "你憑什麼來指揮我們？", instance_npcname("昆#dms211");
 	next;
 	enablenpc instance_npcname("Temple Guard#dms301");
-	mes "[Temple Guard]";
-	mes "There, intruder!";
+	mes "[神殿守衛]";
+	mes "就是那裡，入侵者！";
 	next;
 	enablenpc instance_npcname("Temple Guard#dms311");
 	enablenpc instance_npcname("Temple Guard#dms321");
 	enablenpc instance_npcname("Temple Guard#dms331");
 	enablenpc instance_npcname("Temple Guard#dms341");
-	mes "[Temple Guard]";
-	mes "Everyone lay down your weapons and raise your hands!";
+	mes "[神殿守衛]";
+	mes "所有人放下武器，舉起雙手！";
 	next;
-	select( "How do I do this?" );
+	select( "我該怎麼做？" );
 	cutin "ep18_miriam_03.png",2;
-	mes "[Miriam]";
-	mes "We're outnumbered, let's deal with it.";
+	mes "[米莉安]";
+	mes "我們人數不占優，先處理掉他們吧。";
 	next;
 	cutin "",255;
-	mes "[Kun]";
-	mes "Good timing. Then we'll say goodbye!";
+	mes "[昆]";
+	mes "來得正好。那我們就此告辭了！";
 	next;
 	cutin "ep18_miriam_03.png",2;
-	mes "[Miriam]";
-	mes "Hold on, Adventurer!";
+	mes "[米莉安]";
+	mes "等等，冒險者！";
 	next;
-	select( "Leave this one to me!" );
+	select( "這個交給我！" );
 	if ('nyr_main_step == 6) {
 		'nyr_main_step = 7;
 		donpcevent instance_npcname("nyr_step_3") + "::OnStart";
@@ -1175,10 +1175,10 @@ OnTouch:
 	end;
 }
 
-2@nyr,35,90,5	duplicate(dummy_npc)	Yopi#dms221	EP18_ARMED_VILLAGER03
-2@nyr,32,93,1	duplicate(dummy_npc)	Kun#dms211	EP18_ARMED_VILLAGER02
+2@nyr,35,90,5	duplicate(dummy_npc)	尤皮#dms221::Yopi#dms221	EP18_ARMED_VILLAGER03
+2@nyr,32,93,1	duplicate(dummy_npc)	昆#dms211::Kun#dms211	EP18_ARMED_VILLAGER02
 
-2@nyr,1,1,0	script	nyr_step_3	-1,{
+2@nyr,1,1,0	script	nyr_step_3::nyr_step_3	-1,{
 	end;
 OnStart:
 	disablenpc instance_npcname("Miriam#dms301");
@@ -1202,7 +1202,7 @@ OnMobDead:
 		end;
 	if (mobcount('map_2nyr$, instance_npcname("nyr_step_3") + "::OnMobDead") < 1) {
 		'nyr_main_step = 8;
-		mapannounce 'map_2nyr$, "I feel a chill down my spine... Like someone's watching...?", bc_map, 0xFFCC;
+		mapannounce 'map_2nyr$, "我背脊發涼……好像有人在看著我……？", bc_map, 0xFFCC;
 		disablenpc instance_npcname("#mstep01");
 		enablenpc instance_npcname("#mstep02");
 		enablenpc instance_npcname("#mstep03");
@@ -1214,88 +1214,88 @@ OnMobDead:
 	end;
 }
 
-2@nyr,45,96,3	duplicate(dummy_npc)	Temple Guard#dms301	4_M_RASWORD
-2@nyr,47,94,3	duplicate(dummy_npc)	Temple Guard#dms311	4_M_RASWORD
-2@nyr,43,96,3	duplicate(dummy_npc)	Temple Guard#dms321	4_M_RASWORD
-2@nyr,47,98,3	duplicate(dummy_npc)	Temple Guard#dms331	4_M_RASWORD
-2@nyr,44,98,3	duplicate(dummy_npc)	Temple Guard#dms341	4_M_RASWORD
+2@nyr,45,96,3	duplicate(dummy_npc)	神殿守衛#dms301::Temple Guard#dms301	4_M_RASWORD
+2@nyr,47,94,3	duplicate(dummy_npc)	神殿守衛#dms311::Temple Guard#dms311	4_M_RASWORD
+2@nyr,43,96,3	duplicate(dummy_npc)	神殿守衛#dms321::Temple Guard#dms321	4_M_RASWORD
+2@nyr,47,98,3	duplicate(dummy_npc)	神殿守衛#dms331::Temple Guard#dms331	4_M_RASWORD
+2@nyr,44,98,3	duplicate(dummy_npc)	神殿守衛#dms341::Temple Guard#dms341	4_M_RASWORD
 
 
 //------------------------------------------------------------
 // Step 4
 //------------------------------------------------------------
-2@nyr,87,47,5	script	Miriam#dms401	4_EP18_MIRIAM,5,5,{
+2@nyr,87,47,5	script	米莉安#dms401::Miriam#dms401	4_EP18_MIRIAM,5,5,{
 	end;
 OnTouch:
-	npctalk "There's a sound coming from this side.", instance_npcname("Miriam#dms401");
-	npctalk "The... heart....", instance_npcname("Lamacus#dms301");
+	npctalk "這邊傳來了聲音。", instance_npcname("米莉安#dms401");
+	npctalk "心……之……心……", instance_npcname("拉馬庫斯#dms301");
 	end;
 }
 
-2@nyr,99,47,1	script	Lamacus#dms301	EP18_ARMED_VILLAGER01,{
+2@nyr,99,47,1	script	拉馬庫斯#dms301::Lamacus#dms301	EP18_ARMED_VILLAGER01,{
 	if ('nyr_main_step != 8)
 		end;
 	if (is_party_leader() == false)
 		end;
-	mes "[Lamacus]";
-	mes "Did you find it? What kind of a place is this?";
+	mes "[拉馬庫斯]";
+	mes "你找到了嗎？這是什麼地方？";
 	next;
-	mes "[Kun]";
-	mes "Not yet. I don't think it's on this side. Oh, wait... The High Priest's...?";
+	mes "[昆]";
+	mes "還沒有。我想不在這邊。等等……這是大祭司的……？";
 	next;
-	mes "[Yopi]";
-	mes "Leave the irrelevant books alone. That's not what we're looking for.";
+	mes "[尤皮]";
+	mes "別管那些無關的書了，那不是我們要找的東西。";
 	next;
 	cutin "ep18_miriam_03.png",0;
-	mes "[Miriam]";
-	mes "You guys...!";
+	mes "[米莉安]";
+	mes "你們這些人……！";
 	next;
-	select( "Shhh-hold on a second." );
+	select( "噓——等一下。" );
 	cutin "",255;
-	mes "[Lamacus]";
-	mes "Even the most secretive of libraries wouldn't just leave a book like that lying around.";
+	mes "[拉馬庫斯]";
+	mes "就算是最隱密的圖書館，也不會隨便把那種書擺在外面。";
 	next;
-	mes "[Kun]";
-	mes "So is there another secret library within the secret library?";
+	mes "[昆]";
+	mes "所以說，這座秘密圖書館裡面還有另一座秘密圖書館嗎？";
 	next;
-	mes "[Yopi]";
-	mes "I don't know. Let's just find it.";
+	mes "[尤皮]";
+	mes "不知道。總之先找找看吧。";
 	next;
-	mes "[Kun]";
-	mes "It would be nice to know the book title.";
+	mes "[昆]";
+	mes "要是知道書名就好了。";
 	next;
-	mes "[Lamacus]";
-	mes "If I knew that, I wouldn't be here. I'd be like, 'Bring me anything that looks like that.' Go find it.";
+	mes "[拉馬庫斯]";
+	mes "我要是知道，就不會在這兒了。我會說『把看起來像那樣的東西都給我拿來』。去找吧。";
 	next;
-	select( "Doesn't it look like they're looking for a specific book?" );
-	mes "[Miriam]";
-	mes "A specific book...? Not just a book to exploit weaknesses?";
-	next;
-	cutin "ep18_miriam_03.png",0;
-	mes "[Miriam]";
-	mes "No, you mean this? Hey! What are you looking for? For what purpose?";
-	next;
-	cutin "",255;
-	mes "[Yopi]";
-	mes "Oh, there you go again! Why are you eavesdropping? As if you have something shady to share.";
-	npctalk "Why do you keep following me? Why do you keep interrupting me?", instance_npcname("Kun#dms311");
+	select( "他們看起來像是在找某一本特定的書，不是嗎？" );
+	mes "[米莉安]";
+	mes "特定的書……？不是拿來利用弱點的書嗎？";
 	next;
 	cutin "ep18_miriam_03.png",0;
-	mes "[Miriam]";
-	mes "You're the ones who sneaked in with the shady stuff, remember? What's the book you're looking for?";
+	mes "[米莉安]";
+	mes "不，你是說這個嗎？喂！你們在找什麼？為了什麼目的？";
 	next;
 	cutin "",255;
-	mes "[Lamacus]";
-	mes "That really hurts, man. Don't you realize that we're trying to make a good thing out of this? Can't you understand that we're trying to make a better life for everyone?";
-	npctalk "Are you setting us up?", instance_npcname("Yopi#dms321");
-	npctalk "What did they say to us?", instance_npcname("Kun#dms311");
-	next;
-	mes "[Lamacus]";
-	mes "They'll never know how much we care. It's about time you showed up, by the way...";
+	mes "[尤皮]";
+	mes "哎呀，你又來了！為什麼要偷聽？好像你有什麼見不得人的事要分享似的。";
+	npctalk "你為什麼一直跟著我？為什麼一直打斷我？", instance_npcname("昆#dms311");
 	next;
 	cutin "ep18_miriam_03.png",0;
-	mes "[Miriam]";
-	mes "You have to catch them and make them open their mouths...!";
+	mes "[米莉安]";
+	mes "是你們偷偷摸摸帶著見不得人的東西溜進來的，忘了嗎？你們要找的是什麼書？";
+	next;
+	cutin "",255;
+	mes "[拉馬庫斯]";
+	mes "老兄，這話真傷人。你難道不明白我們是想把這件事做好嗎？你就不能理解我們是想為大家創造更好的生活嗎？";
+	npctalk "你是在設計陷害我們嗎？", instance_npcname("尤皮#dms321");
+	npctalk "他們剛才對我們說了什麼？", instance_npcname("昆#dms311");
+	next;
+	mes "[拉馬庫斯]";
+	mes "他們永遠不會知道我們有多在乎。話說回來，你終於來了……";
+	next;
+	cutin "ep18_miriam_03.png",0;
+	mes "[米莉安]";
+	mes "你得抓住他們，讓他們開口說話……！";
 	next;
 	enablenpc instance_npcname("Temple Guard#dms401");
 	enablenpc instance_npcname("Temple Guard#dms411");
@@ -1303,13 +1303,13 @@ OnTouch:
 	enablenpc instance_npcname("Temple Guard#dms431");
 	enablenpc instance_npcname("Temple Guard#dms441");
 	cutin "",255;
-	mes "[Temple Guard]";
-	mes "Here we go! The intruder is here!!!";
-	npctalk "Here we go!!! Good luck! Let's go, boys!", instance_npcname("Lamacus#dms301");
-	npctalk "I'll track them down, and you, Adventurer, take care of these guys!", instance_npcname("Miriam#dms401");
+	mes "[神殿守衛]";
+	mes "來了！入侵者就在這裡！！！";
+	npctalk "開始了！！！祝我們好運！上吧，兄弟們！", instance_npcname("拉馬庫斯#dms301");
+	npctalk "我去追捕他們，冒險者，你就負責對付這些傢伙！", instance_npcname("米莉安#dms401");
 	next;
-	mes "[Temple Guard]";
-	mes "Drop your weapon!!";
+	mes "[神殿守衛]";
+	mes "放下武器！！";
 	if ('nyr_main_step == 8) {
 		'nyr_main_step = 9;
 		donpcevent instance_npcname("nyr_step_4") + "::OnStart";
@@ -1317,16 +1317,16 @@ OnTouch:
 	close;
 }
 
-2@nyr,93,36,3	duplicate(dummy_npc)	Kun#dms311	EP18_ARMED_VILLAGER02
-2@nyr,99,38,5	duplicate(dummy_npc)	Yopi#dms321	EP18_ARMED_VILLAGER03
-2@nyr,88,44,5	duplicate(dummy_npc)	Temple Guard#dms401	4_M_RASWORD
-2@nyr,87,46,5	duplicate(dummy_npc)	Temple Guard#dms411	4_M_RASWORD
-2@nyr,87,42,5	duplicate(dummy_npc)	Temple Guard#dms421	4_M_RASWORD
-2@nyr,85,46,5	duplicate(dummy_npc)	Temple Guard#dms431	4_M_RASWORD
-2@nyr,85,42,5	duplicate(dummy_npc)	Temple Guard#dms441	4_M_RASWORD
+2@nyr,93,36,3	duplicate(dummy_npc)	昆#dms311::Kun#dms311	EP18_ARMED_VILLAGER02
+2@nyr,99,38,5	duplicate(dummy_npc)	尤皮#dms321::Yopi#dms321	EP18_ARMED_VILLAGER03
+2@nyr,88,44,5	duplicate(dummy_npc)	神殿守衛#dms401::Temple Guard#dms401	4_M_RASWORD
+2@nyr,87,46,5	duplicate(dummy_npc)	神殿守衛#dms411::Temple Guard#dms411	4_M_RASWORD
+2@nyr,87,42,5	duplicate(dummy_npc)	神殿守衛#dms421::Temple Guard#dms421	4_M_RASWORD
+2@nyr,85,46,5	duplicate(dummy_npc)	神殿守衛#dms431::Temple Guard#dms431	4_M_RASWORD
+2@nyr,85,42,5	duplicate(dummy_npc)	神殿守衛#dms441::Temple Guard#dms441	4_M_RASWORD
 
 
-2@nyr,1,1,0	script	nyr_step_4	-1,{
+2@nyr,1,1,0	script	nyr_step_4::nyr_step_4	-1,{
 	end;
 OnStart:
 	disablenpc instance_npcname("Miriam#dms401");
@@ -1350,7 +1350,7 @@ OnMobDead:
 		end;
 	if (mobcount('map_2nyr$, instance_npcname("nyr_step_4") + "::OnMobDead") < 1) {
 		'nyr_main_step = 10;
-		mapannounce 'map_2nyr$, "It's ominous. I feel as though it's still following us.", bc_map, 0xFFCC;
+		mapannounce 'map_2nyr$, "不太妙。我感覺它還在跟著我們。", bc_map, 0xFFCC;
 		disablenpc instance_npcname("#mstep02");
 		disablenpc instance_npcname("#mstep03");
 		enablenpc instance_npcname("#mstep04");
@@ -1367,56 +1367,56 @@ OnMobDead:
 //------------------------------------------------------------
 // Step 5
 //------------------------------------------------------------
-2@nyr,209,98,5	script	Miriam#dms501	4_EP18_MIRIAM,5,5,{
+2@nyr,209,98,5	script	米莉安#dms501::Miriam#dms501	4_EP18_MIRIAM,5,5,{
 	if (is_party_leader() == false)
-		npctalk "Didn't the party leader decide to come?", instance_npcname("Miriam#dms501");
+		npctalk "隊長不是決定要來嗎？", instance_npcname("米莉安#dms501");
 	end;
 OnTouch:
-	npctalk "See that shelf over there?", instance_npcname("Miriam#dms501");
-	npctalk "I'm going to burn out my fingers.", instance_npcname("Lamacus#dms401");
+	npctalk "看到那邊的書架了嗎？", instance_npcname("米莉安#dms501");
+	npctalk "我的手指都快累壞了。", instance_npcname("拉馬庫斯#dms401");
 	end;
 }
 
-2@nyr,212,104,1	script	Lamacus#dms401	EP18_ARMED_VILLAGER01,{
+2@nyr,212,104,1	script	拉馬庫斯#dms401::Lamacus#dms401	EP18_ARMED_VILLAGER01,{
 	if ('nyr_main_step != 10)
 		end;
 	if (is_party_leader() == false)
 		end;
-	mes "[Yopi]";
-	mes "Isn't this the end of the line?";
+	mes "[尤皮]";
+	mes "這不就是盡頭了嗎？";
 	next;
-	mes "[Lamacus]";
-	mes "I know. They must have a real secret library.";
-	npctalk "Oops, that was a waste.", instance_npcname("Yopi#dms421");
-	npctalk "You're not going to hold me responsible for failing, are you?", instance_npcname("Kun#dms411");
+	mes "[拉馬庫斯]";
+	mes "我知道。他們一定有個真正的秘密圖書館。";
+	npctalk "哎呀，白忙一場。", instance_npcname("尤比");
+	npctalk "你不會因為失敗而怪罪我吧？", instance_npcname("坤");
 	next;
-	mes "[Lamacus]";
-	mes "I told you to find it in the first place, not just come to me because it's there.";
+	mes "[拉馬庫斯]";
+	mes "我一開始就叫你去找，不是因為它在那裡就跑來找我。";
 	next;
-	mes "[Kun]";
-	mes "Ask if it's okay to back out.";
+	mes "[昆]";
+	mes "問問看能不能退出。";
 	next;
-	npctalk "This is Wolf.", instance_npcname("Lamacus#dms401");
+	npctalk "這裡是狼。", instance_npcname("拉馬庫斯#dms401");
 	sleep2 2000;
-	npctalk "???: Did you find the item?", instance_npcname("Lamacus#dms401");
+	npctalk "???: 你找到道具了嗎？", instance_npcname("拉馬庫斯#dms401");
 	sleep2 2000;
-	npctalk "This is the last library, but I don't think it's here.", instance_npcname("Lamacus#dms401");
+	npctalk "這是最後一座圖書館，但我覺得它不在這裡。", instance_npcname("拉馬庫斯#dms401");
 	sleep2 2000;
-	npctalk "???: Wait.", instance_npcname("Lamacus#dms401");
-	mes "[Kun]";
-	mes "Wait, am I seeing things? That's Miriam and the Adventurer.";
-	npctalk "You're persistent. I'm surprised you beat all the guards.", instance_npcname("Yopi#dms421");
+	npctalk "???: 等等。", instance_npcname("拉馬庫斯#dms401");
+	mes "[昆]";
+	mes "等等，我是看錯了嗎？那是米莉安和冒險者。";
+	npctalk "你很有毅力，居然把所有守衛都打倒了，真讓我驚訝。", instance_npcname("尤比");
 	next;
 	cutin "ep18_miriam_03.png",2;
-	mes "[Miriam]";
-	mes "Who are you guys talking to?";
+	mes "[米莉安]";
+	mes "你們在跟誰說話？";
 	next;
-	select( "Are you guys paid to do this?" );
+	select( "你們是被雇來做這件事的嗎？" );
 	cutin "",255;
-	mes "[Lamacus]";
-	mes "Payment? We don't get that, do we?";
-	npctalk "I'm a bit of a believer.", instance_npcname("Kun#dms411");
-	npctalk "We don't betray, ever.", instance_npcname("Yopi#dms421");
+	mes "[拉馬庫斯]";
+	mes "報酬？我們可拿不到，對吧？";
+	npctalk "我算是有點信仰的人。", instance_npcname("坤");
+	npctalk "我們從不背叛。", instance_npcname("尤比");
 	next;
 	enablenpc instance_npcname("Temple Guard#dms501");
 	enablenpc instance_npcname("Temple Guard#dms511");
@@ -1430,70 +1430,70 @@ OnTouch:
 	unitwalk getnpcid(0,instance_npcname("Temple Guard#dms541")),199,92;
 
 	sleep2 500;
-	npctalk "Over here!", instance_npcname("Temple Guard#dms501");
-	npctalk "Hey! There you are!!", instance_npcname("Lamacus#dms401");
+	npctalk "這裡！", instance_npcname("神殿守衛");
+	npctalk "嘿！你們在這裡啊！！", instance_npcname("拉馬庫斯#dms401");
 	sleep2 1000;
 	enablenpc instance_npcname("Schulang#dms101");
 	unitwalk getnpcid(0,instance_npcname("Schulang#dms101")),206,96;
-	npctalk "......", instance_npcname("Schulang#dms101");
-	npctalk "You've arrived!", instance_npcname("Lamacus#dms401");
-	npctalk "You've arrived!", instance_npcname("Kun#dms411");
-	npctalk "You've arrived!", instance_npcname("Yopi#dms421");
+	npctalk "......", instance_npcname("舒朗");
+	npctalk "你們到了！", instance_npcname("拉馬庫斯#dms401");
+	npctalk "你們到了！", instance_npcname("坤");
+	npctalk "你們到了！", instance_npcname("尤比");
 	sleep2 2000;
 
 	cutin "ep18_shulang.png",0;
 	mes "[??]";
-	mes "Is this the end of the library?";
+	mes "這裡是圖書館的盡頭嗎？";
 	next;
 	cutin "",255;
-	mes "[Lamacus]";
-	mes "Yes, it is.";
+	mes "[拉馬庫斯]";
+	mes "是的，沒錯。";
 	next;
 	cutin "ep18_shulang.png",0;
 	mes "[??]";
-	mes "I wish I could have found the book, but I can't. They've done their work, so we're out of here.";
+	mes "我真希望能找到那本書，但找不到。他們已經完成工作，我們該離開了。";
 	next;
 	cutin "ep18_miriam_03.png",2;
-	mes "[Miriam]";
-	mes "Who are you? What do you have to do with these people?";
+	mes "[米莉安]";
+	mes "你是誰？你和這些人有什麼關係？";
 	next;
 	cutin "ep18_shulang.png",0;
 	mes "[??]";
-	mes "What is it? Is there something else?";
+	mes "怎麼了？還有什麼事嗎？";
 	next;
 	cutin "",255;
-	mes "[Yopi]";
-	mes "Someone sniffed out the wolf and decided to follow us. We'll take care of it soon.";
+	mes "[尤皮]";
+	mes "有人嗅到了狼的蹤跡，決定跟蹤我們。我們很快就會處理。";
 	next;
 	cutin "ep18_shulang.png",0;
 	mes "[??]";
-	mes "That's not necessary. You guys should get out of here and let the new guys take over.";
+	mes "不必了。你們該離開這裡，讓新來的人接手。";
 	next;
 	cutin "",255;
-	mes "[Lamacus]";
-	mes "Yes!!";
+	mes "[拉馬庫斯]";
+	mes "是！！";
 	next;
 	disablenpc instance_npcname("Schulang#dms101");
 	cutin "ep18_miriam_03.png",2;
-	mes "[Miriam]";
-	mes "Wait!!!";
+	mes "[米莉安]";
+	mes "等等！！！";
 	next;
 	cutin "",255;
-	mes "[Temple Guard]";
-	mes "Take care of all intruders!";
-	unittalk getcharid(3), "" + strcharinfo(0) + " : Who's the intruder?";
+	mes "[神殿守衛]";
+	mes "把所有闖入者都解決掉！";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 誰是闖入者？";
 	next;
 	cutin "ep18_miriam_03.png",2;
-	mes "[Miriam]";
-	mes "It seems like a weird twist of fate, huh? The Temple Guards have been bought off. We need to find out what's going on...";
-	unittalk getcharid(3), "" + strcharinfo(0) + " : Leave these people to me.";
+	mes "[米莉安]";
+	mes "真是個奇妙的命運轉折，對吧？神殿守衛已經被收買了。我們得查清楚到底是怎麼回事……";
+	unittalk getcharid(3), "" + strcharinfo(0) + " : 這些人交給我處理。";
 	next;
 	cutin "",255;
-	mes "[Temple Guard]";
-	mes "All hands in formation!";
+	mes "[神殿守衛]";
+	mes "全員集合列陣！";
 	next;
-	mes "[Yopi]";
-	mes "Oh, no~ I'm sorry we've crossed paths, we got dirty, so let's not meet again?";
+	mes "[尤皮]";
+	mes "哎呀~ 很抱歉撞見你們，我們的手都髒了，所以就別再見面了，好嗎？";
 	if ('nyr_main_step == 10) {
 		'nyr_main_step = 11;
 		donpcevent instance_npcname("nyr_step_5") + "::OnStart";
@@ -1501,18 +1501,18 @@ OnTouch:
 	close;
 }
 
-2@nyr,220,98,5	duplicate(dummy_npc)	Kun#dms411	EP18_ARMED_VILLAGER02
-2@nyr,220,95,5	duplicate(dummy_npc)	Yopi#dms421	EP18_ARMED_VILLAGER03
+2@nyr,220,98,5	duplicate(dummy_npc)	昆#dms411::Kun#dms411	EP18_ARMED_VILLAGER02
+2@nyr,220,95,5	duplicate(dummy_npc)	尤皮#dms421::Yopi#dms421	EP18_ARMED_VILLAGER03
 
-2@nyr,197,96,5	duplicate(dummy_npc)	Schulang#dms101	EP18_MD_SCHULANG
-2@nyr,197,95,5	duplicate(dummy_npc)	Temple Guard#dms501	EP18_MD_GUARD_A
-2@nyr,197,96,5	duplicate(dummy_npc)	Temple Guard#dms511	EP18_MD_GUARD_A
-2@nyr,197,93,5	duplicate(dummy_npc)	Temple Guard#dms521	EP18_MD_GUARD_A
-2@nyr,197,98,5	duplicate(dummy_npc)	Temple Guard#dms531	EP18_MD_GUARD_A
-2@nyr,197,92,5	duplicate(dummy_npc)	Temple Guard#dms541	EP18_MD_GUARD_A
+2@nyr,197,96,5	duplicate(dummy_npc)	舒朗#dms101::Schulang#dms101	EP18_MD_SCHULANG
+2@nyr,197,95,5	duplicate(dummy_npc)	神殿守衛#dms501::Temple Guard#dms501	EP18_MD_GUARD_A
+2@nyr,197,96,5	duplicate(dummy_npc)	神殿守衛#dms511::Temple Guard#dms511	EP18_MD_GUARD_A
+2@nyr,197,93,5	duplicate(dummy_npc)	神殿守衛#dms521::Temple Guard#dms521	EP18_MD_GUARD_A
+2@nyr,197,98,5	duplicate(dummy_npc)	神殿守衛#dms531::Temple Guard#dms531	EP18_MD_GUARD_A
+2@nyr,197,92,5	duplicate(dummy_npc)	神殿守衛#dms541::Temple Guard#dms541	EP18_MD_GUARD_A
 
 
-2@nyr,1,1,0	script	nyr_step_5	-1,{
+2@nyr,1,1,0	script	nyr_step_5::nyr_step_5	-1,{
 	end;
 OnStart:
 	disablenpc instance_npcname("Temple Guard#dms501");
@@ -1537,7 +1537,7 @@ OnMobDead:
 		end;
 	if (mobcount('map_2nyr$, instance_npcname("nyr_step_5") + "::OnMobDead") < 1) {
 		'nyr_main_step = 12;
-		mapannounce 'map_2nyr$, "Beep - Vault unlock protocol activated", bc_map, 0xFFCC;
+		mapannounce 'map_2nyr$, "嗶 - 金庫解鎖程序已啟動", bc_map, 0xFFCC;
 		disablenpc instance_npcname("#mstep04");
 		disablenpc instance_npcname("#mstep05");
 
@@ -1562,51 +1562,51 @@ OnMobDead:
 //------------------------------------------------------------
 // 2@nyr,132,108,0	duplicate(dummy_npc)	#dmss101	HIDDEN_WARP_NPC,3,3
 
-2@nyr,133,109,3	script	Miriam#dms601	EP18_NPC_MIRIAM,5,5,{
+2@nyr,133,109,3	script	米莉安#dms601::Miriam#dms601	EP18_NPC_MIRIAM,5,5,{
 	if (is_party_leader() == false) {
-		npctalk "I don't think the party has arrived yet.";
+		npctalk "我覺得隊伍還沒到。";
 		end;
 	}
 	.@miriam$ = instance_npcname("Miriam#dms601");
 
 	if ('nyr_main_step == 12) {
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "What are you doing? How many people are there? I can't see much from here.";
+		mes "[米莉安]";
+		mes "你們在做什麼？裡面有多少人？我從這裡看不太清楚。";
 		next;
-		select( "There are a few people I don't recognize." );
+		select( "目前還有幾個我不認識的人。" );
 		cutin "ep18_shulang.png",1;
 		mes "[???]";
-		mes "How far are we from there?";
+		mes "我們離那裡還有多遠？";
 		next;
 		cutin "",255;
-		mes "[Lamacus]";
-		mes "We're almost there now.";
+		mes "[拉馬庫斯]";
+		mes "我們快到了。";
 		next;
 		cutin "ep18_bagot_01.png",1;
 		mes "[???]";
-		mes "It's really, really, really secure. I'm just saying.";
+		mes "真的非常非常非常安全。我只是說說而已。";
 		next;
 		cutin "",255;
 		mes "[???]";
-		mes "... Aren't you at least this secure?";
+		mes "……你至少也該有這樣的安全性吧？";
 		next;
 		cutin "ep18_bagot_02.png",1;
 		mes "[???]";
-		mes "Hey, Mr. Genius, don't you know how to make an irony?! Tight security is not synonymous with cumbersome and demanding procedures, right?";
+		mes "喂，天才先生，你不知道什麼叫諷刺嗎？嚴密的安全不等於繁瑣又苛刻的程序，對吧？";
 		next;
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "This voice is...";
+		mes "[米莉安]";
+		mes "這個聲音是……";
 		donpcevent .@miriam$ + "::OnEffect";
 		next;
-		select( "Do you know them?" );
-		mes "[Miriam]";
-		mes "It's obscured, so I'm not sure...";
+		select( "你認識他們嗎？" );
+		mes "[米莉安]";
+		mes "被遮住了，我不太確定……";
 		next;
 		cutin "",255;
 		mes "[???]";
-		mes "Enter.";
+		mes "進入。";
 		close2;
 		if ('nyr_main_step != 12)
 			end;
@@ -1641,10 +1641,10 @@ OnMobDead:
 		end;
 	}
 	if ('nyr_main_step == 13) {
-		npctalk "This way! Hurry up and chase him!";
+		npctalk "這邊！快追他！";
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "Let's go in too.";
+		mes "[米莉安]";
+		mes "我們也進去吧。";
 		sleep2 1000;
 		unitwalk getnpcid(0,instance_npcname("Temple Guard#dms601")), 118,121, .@miriam$ + "::OnMove5";
 		unitwalk getnpcid(0,instance_npcname("Temple Guard#dms611")), 118,121, .@miriam$ + "::OnMove6";
@@ -1660,7 +1660,7 @@ OnEffect:
 	enablenpc instance_npcname("#effc01");
 	specialeffect EF_MAPPILLAR2, AREA, instance_npcname("#effc01");
 	sleep 1000;
-	npctalk "Jing- Clap-", instance_npcname("#effc01");
+	npctalk "叮- 啪-", instance_npcname("#effc01");
 	end;
 
 OnMove1:
@@ -1690,18 +1690,18 @@ OnMove8:
 
 OnTouch:
 	if ('nyr_main_step == 12)
-		npctalk "Hey, there are other people over there, what do they say?", instance_npcname("Miriam#dms601");
+		npctalk "嘿，那邊還有其他人，他們在說什麼？", instance_npcname("米莉安");
 	end;
 }
-2@nyr,125,111,3	duplicate(dummy_npc)	Lamacus#dms501	EP18_ARMED_VILLAGER01
-2@nyr,128,107,3	duplicate(dummy_npc)	Kun#dms511	EP18_ARMED_VILLAGER02
-2@nyr,128,104,3	duplicate(dummy_npc)	Yopi#dms521	EP18_ARMED_VILLAGER03
-2@nyr,125,101,1	duplicate(dummy_npc)	Schulang#dms201	EP18_MD_SCHULANG
-2@nyr,122,106,3	duplicate(dummy_npc)	Bagot#dms101	4_EP18_BAGOT
-2@nyr,120,107,3	duplicate(dummy_npc)	Private Officer#dms101	4_M_RACHOLD
-2@nyr,115,102,5	duplicate(dummy_npc)	Temple Guard#dms601	EP18_MD_GUARD_A
-2@nyr,116,106,5	duplicate(dummy_npc)	Temple Guard#dms611	EP18_MD_GUARD_A
-2@nyr,117,98,7	duplicate(dummy_npc)	Temple Guard#dms621	EP18_MD_GUARD_A
+2@nyr,125,111,3	duplicate(dummy_npc)	拉馬庫斯#dms501::Lamacus#dms501	EP18_ARMED_VILLAGER01
+2@nyr,128,107,3	duplicate(dummy_npc)	昆#dms511::Kun#dms511	EP18_ARMED_VILLAGER02
+2@nyr,128,104,3	duplicate(dummy_npc)	尤皮#dms521::Yopi#dms521	EP18_ARMED_VILLAGER03
+2@nyr,125,101,1	duplicate(dummy_npc)	舒朗#dms201::Schulang#dms201	EP18_MD_SCHULANG
+2@nyr,122,106,3	duplicate(dummy_npc)	巴戈特#dms101::Bagot#dms101	4_EP18_BAGOT
+2@nyr,120,107,3	duplicate(dummy_npc)	守衛官#dms101::Private Officer#dms101	4_M_RACHOLD
+2@nyr,115,102,5	duplicate(dummy_npc)	神殿守衛#dms601::Temple Guard#dms601	EP18_MD_GUARD_A
+2@nyr,116,106,5	duplicate(dummy_npc)	神殿守衛#dms611::Temple Guard#dms611	EP18_MD_GUARD_A
+2@nyr,117,98,7	duplicate(dummy_npc)	神殿守衛#dms621::Temple Guard#dms621	EP18_MD_GUARD_A
 2@nyr,119,103,0	duplicate(dummy_npc)	#effc01	HIDDEN_WARP_NPC
 
 
@@ -1711,148 +1711,148 @@ OnTouch:
 //------------------------------------------------------------
 // 2@nyr,118,199,0	duplicate(dummy_npc)	#dms701	HIDDEN_WARP_NPC,1,5
 
-2@nyr,118,199,1	script	Miriam#dms701	4_EP18_MIRIAM,5,5,{
+2@nyr,118,199,1	script	米莉安#dms701::Miriam#dms701	4_EP18_MIRIAM,5,5,{
 	if (is_party_leader() == false) {
-		npctalk "Who is the leader of the party?";
+		npctalk "誰是隊長？";
 		end;
 	}
 	if ('nyr_main_step == 13) {
 		mes "[???]";
-		mes "Schulang, have you secured it yet? This Bagot is about to lose patience.";
+		mes "舒朗，你已經控制住了嗎？這個巴戈特快沒耐性了。";
 		next;
-		mes "[Lamacus]";
-		mes "But do we have to keep this on?";
-		npctalk "It's frustrating.", instance_npcname("Yopi#dms621");
+		mes "[拉馬庫斯]";
+		mes "可是我們非得穿著這個嗎？";
+		npctalk "真讓人鬱悶。", instance_npcname("尤比");
 		next;
 		cutin "ep18_shulang.png",0;
-		mes "[Schulang]";
-		mes "Who cares? You came this far. Do as you please.";
+		mes "[舒朗]";
+		mes "誰在乎？你都走到這一步了，想怎麼做就怎麼做吧。";
 		next;
 		setnpcdisplay( instance_npcname("Lamacus#dms601"), 21308 );	// EP18_MD_HEARTHUNTER_A
 		setnpcdisplay( instance_npcname("Kun#dms611"), 21308 );	// EP18_MD_HEARTHUNTER_A
 		setnpcdisplay( instance_npcname("Yopi#dms621"), 21308 );	// EP18_MD_HEARTHUNTER_A
 		cutin "",255;
-		mes "[Yopi]";
-		mes "Hah- now that's a life saver.";
-		npctalk "I thought it was killing me!", instance_npcname("Kun#dms611");
+		mes "[尤皮]";
+		mes "哈- 這簡直是救命恩人。";
+		npctalk "我還以為它要了我的命！", instance_npcname("坤");
 		next;
-		select( "The Heart Hunters were undercover." );
+		select( "邪心獵人一直是潛伏的。" );
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "Hearthunter... you're working with those mad scientists you were talking about... from the very beginning...!";
+		mes "[米莉安]";
+		mes "邪心獵人……你從一開始就和你說過的那些瘋狂科學家合作……！";
 		next;
 		cutin "",255;
 		mes "[" + strcharinfo(0) + "]";
-		mes "There are still a lot of Heart Hunters remodeled with Ymir's heart left, right?";
+		mes "目前還有很多邪心獵人被改造過、身上還留著伊米爾之心，對吧？";
 		next;
 		cutin "ep18_shulang.png",0;
-		mes "[Schulang]";
-		mes "Was it our old face? Ah, those are the small fries that are said to be tracking you. I heard the news.";
-		npctalk "Oh, those people? They've been after us so relentlessly that we've surprised ourselves. We didn't realize we were in debt.", instance_npcname("Bagot#dms201");
+		mes "[舒朗]";
+		mes "是我們以前的人嗎？啊，那些是據說在追蹤你們的小嘍囉。我聽說了這件事。";
+		npctalk "哦，那些人？他們對我們緊迫盯人，連我們自己都嚇了一跳。我們沒察覺自己欠了這麼多。", instance_npcname("巴戈特");
 		next;
-		select( "That would be Illusion." );
+		select( "那應該是幻影。" );
 		cutin "ep18_bagot_02.png",1;
-		mes "[Bagot]";
-		mes "Oh, my God, I don't want to embarrass you.";
-		npctalk "Who cares, it's going to be gone anyway.", instance_npcname("Schulang#dms301");
+		mes "[巴戈特]";
+		mes "天啊，我可不想讓你難堪。";
+		npctalk "誰在乎，反正都會消失的。", instance_npcname("舒朗");
 		next;
 		enablenpc instance_npcname("High Priest#dms201");
 		enablenpc instance_npcname("Temple Guard#dms701");
 		enablenpc instance_npcname("Temple Guard#dms711");
 		cutin "",255;
 		mes "[???]";
-		mes "You're all good to go.";
+		mes "你們都可以走了。";
 		next;
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "...Father??";
+		mes "[米莉安]";
+		mes "……父親？？";
 		next;
 		cutin "",255;
-		mes "[Amal]";
-		mes "Miriam, You've come this far. You've done your part, now go home.";
+		mes "[阿馬爾]";
+		mes "米莉安，你已經走到這裡了。你盡了你的本分，現在回家去吧。";
 		next;
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "What do you mean? What are you doing...?";
+		mes "[米莉安]";
+		mes "你這是什麼意思？你在做什麼……？";
 		next;
 		cutin "ep18_bagot_03.png",1;
-		mes "[Bagot]";
-		mes "Wow, you got praised by your dad. That's great. Compliments for good parenting, it's important.";
-		mes "I don't even remember getting my praise. Um... Ah! I don't remember because I never got it.!";
-		npctalk "Now that you've been praised, you can go home, wash off your feet, and sleep..", instance_npcname("Bagot#dms201");
+		mes "[巴戈特]";
+		mes "哇，你被爸爸稱讚了。太好了。好的教養離不開稱讚，這很重要。";
+		mes "我連被稱讚過都不記得了。嗯……啊！我從來沒有得到過，所以不記得了！";
+		npctalk "既然你已經被稱讚了，就可以回家、洗洗腳、睡覺了……", instance_npcname("巴戈特");
 		next;
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "What, what's going on? Why did my dad... What did you do?";
+		mes "[米莉安]";
+		mes "怎、怎麼回事？我爸爸為什麼……你們做了什麼？";
 		next;
 		cutin "",255;
-		mes "[Amal]";
-		mes "... Once you've got what you need, let's move on.";
+		mes "[阿馬爾]";
+		mes "……既然你已經拿到需要的東西，我們就走吧。";
 		next;
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "Father! Father!!!";
+		mes "[米莉安]";
+		mes "父親！父親！！！";
 		next;
 		disablenpc instance_npcname("High Priest#dms201");
 		cutin "ep18_bagot_01.png",1;
-		mes "[Bagot]";
-		mes "A father who praises you but never loves you?";
+		mes "[巴戈特]";
+		mes "一個稱讚你卻從不愛你的父親？";
 		next;
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "What are you doing to my father?";
+		mes "[米莉安]";
+		mes "你們對我父親做了什麼？";
 		next;
 		cutin "ep18_bagot_03.png",1;
-		mes "[Bagot]";
-		mes "Oh, you don't know, do you? His wish is to drive all the natives out of Arunafeltz. We helped a little with that, but not for free.";
-		npctalk "You should always live your life doing whatever you want. Otherwise, you're going to be sick.", instance_npcname("Bagot#dms201");
-		npctalk "Hehe - did you like your impersonation? Give us a pat on the back.", instance_npcname("Lamacus#dms601");
+		mes "[巴戈特]";
+		mes "哦，你不知道吧？他的願望是把阿魯納費爾茲的所有原住民趕出去。我們幫了一點忙，但可不是免費的。";
+		npctalk "人應該永遠順從自己的心意活著，不然會生病的。", instance_npcname("巴戈特");
+		npctalk "呵呵- 你喜歡我們的偽裝嗎？給我們拍拍手吧。", instance_npcname("拉瑪庫斯");
 		next;
 		cutin "",255;
-		mes "[Heart Hunter]";
-		mes "Miriam, you and your friends have helped me complete this picture of the riot. Thank you so much!";
+		mes "[邪心獵人]";
+		mes "米莉安，你和你的朋友們幫我完成了這場暴動的全貌。真是太感謝了！";
 		next;
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "Do you think that makes sense?";
+		mes "[米莉安]";
+		mes "你覺得這說得通嗎？";
 		next;
 		cutin "ep18_bagot_01.png",1;
-		mes "[Bagot]";
-		mes "What are you talking about, a handful of impulsive protests to the temple?";
+		mes "[巴戈特]";
+		mes "你在說什麼？不過是一小撮衝動的人去神殿抗議而已？";
 		next;
 		cutin "ep18_bagot_03.png",1;
-		mes "[Bagot]";
-		mes "Soon the protest outside will turn into a riot, and then your wish will be granted, and then you'll make another wish, and then we'll get paid again?";
+		mes "[巴戈特]";
+		mes "外頭的抗議很快就會變成暴動，然後你的願望實現，接著你又會許下另一個願望，然後我們又能拿到報酬，對吧？";
 		next;
 		cutin "ep18_shulang.png",0;
-		mes "[Schulang]";
-		mes "I'm not going to talk forever. Let's go.";
-		mes "Clean up your mess.";
+		mes "[舒朗]";
+		mes "我可不會一直講下去。走吧。";
+		mes "把你們惹的麻煩收拾乾淨。";
 		next;
 		cutin "",255;
-		mes "[Lamacus]";
-		mes "Four!";
+		mes "[拉馬庫斯]";
+		mes "四！";
 		next;
 		disablenpc instance_npcname("Schulang#dms301");
 		disablenpc instance_npcname("Bagot#dms201");
-		mes "[Heart Hunter]";
-		mes "I wish I had Suad here with me. I wish I could've helped him out sometime.";
+		mes "[邪心獵人]";
+		mes "我真希望蘇阿德能在我身邊。真希望我能在某個時候幫過他。";
 		next;
-		mes "[Heart Hunter]";
-		mes "Hi, let me formally introduce ourselves. We're the Heart Hunters, and we're about to bury you here.";
-		npctalk "Not just any heart hunter. He's a really, really good Heart Hunter.", instance_npcname("Kun#dms611");
+		mes "[邪心獵人]";
+		mes "你好，容我正式自我介紹。我們是邪心獵人，而你們即將葬身於此。";
+		npctalk "他可不是一般的獵人。他是非常非常優秀的邪心獵人。", instance_npcname("坤");
 		next;
-		select( "Watch out, they're modified." );
+		select( "小心，他們經過改造了。" );
 		next;
 		specialeffect EF_UNDEADBODY, AREA, instance_npcname("Lamacus#dms601");
 		specialeffect EF_NPC_STOP, AREA, instance_npcname("Lamacus#dms601");
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "He's always been like that... Is there something ominous about that?";
+		mes "[米莉安]";
+		mes "他一直都是這樣……這裡面有什麼不祥的地方嗎？";
 		next;
-		select( "It seems to resonate with the heart of Ymir here." );
-		mes "[Miriam]";
-		mes "That's basically a quick count, right? Okay, let's make it quick and get on with it.";
+		select( "這裡似乎與伊米爾之心產生了共鳴。" );
+		mes "[米莉安]";
+		mes "基本上就是快速清點，對吧？好，我們快點解決，開始吧。";
 		if ('nyr_main_step == 13) {
 			'nyr_main_step = 14;
 			donpcevent instance_npcname("nyr_step_7") + "::OnStart";
@@ -1863,64 +1863,64 @@ OnTouch:
 	}
 	if ('nyr_main_step == 15) {
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "Ha... Hah... Adventurer, are you all right?";
+		mes "[米莉安]";
+		mes "哈……哈……冒險者，你還好嗎？";
 		next;
-		select( "But where did they all go?" );
+		select( "可是他們都跑哪去了？" );
 		enablenpc instance_npcname("Niren#dms101");
 		enablenpc instance_npcname("Temple Guard#dms751");
 		enablenpc instance_npcname("Temple Guard#dms761");
 		enablenpc instance_npcname("Temple Guard#dms771");
-		npctalk "What's this all about?", instance_npcname("Niren#dms101");
+		npctalk "這到底是怎麼回事？", instance_npcname("尼倫");
 		cutin "ra_gwoman.bmp",0;
-		mes "[Niren]";
-		mes "What, what's all the fuss about?";
-		mes "Adventurer...? Why are you here, Adventurer?";
+		mes "[尼倫]";
+		mes "什、什麼事這麼吵？";
+		mes "冒險者……？冒險者，你怎麼會在這裡？";
 		next;
-		select( "Here's what..." );
-		mes "[Niren]";
-		mes "You've been tracking a colleague who's been acting suspiciously, and it turns out they're actually a mole.";
+		select( "事情是這樣的……" );
+		mes "[尼倫]";
+		mes "你們一直在追查一名行為可疑的同事，結果發現他其實是內奸。";
 		next;
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "You're in the same league as my father.?";
+		mes "[米莉安]";
+		mes "你跟我父親是同一路人吧？";
 		next;
 		cutin "ra_gwoman.bmp",0;
-		mes "[Niren]";
-		mes "High Priest?? What does that even mean?";
+		mes "[尼倫]";
+		mes "大祭司？？那到底是什麼意思？";
 		next;
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "I think my father is involved in this.";
+		mes "[米莉安]";
+		mes "我想我父親也牽涉其中。";
 		next;
 		cutin "ra_gwoman.bmp",0;
-		mes "[Niren]";
-		mes "How is that... High Priest...? We'll have to investigate.";
-		mes "I'm sure there are instigators lurking in the crowd outside, planted by the bad guys...";
+		mes "[尼倫]";
+		mes "怎麼會……大祭司……？我們得調查一下。";
+		mes "我敢肯定外面的人群中潛伏著煽動者，是壞人安插進去的……";
 		next;
-		select( "It's also among the Temple Guard." );
-		mes "[Niren]";
-		mes "We're going to need to do a major overhaul...first we need to figure out what we've been doing here, making sure there's nothing dangerous, and nothing is lost... even among the Temple Guards.";
+		select( "神殿守衛裡也有。" );
+		mes "[尼倫]";
+		mes "我們必須進行大規模整頓……首先得弄清楚我們在這裡做了什麼，確保沒有危險，也沒有遺失任何東西……即使是神殿守衛之中也一樣。";
 		next;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "...!!";
-		mes "No need to investigate, Ymir's heart shard is missing. It's supposed to be there.";
+		mes "不用調查了，伊米爾之心的碎片不見了。它本來應該在那裡的。";
 		next;
-		select( "I know..." );
-		mes "[Niren]";
-		mes "What the heck they're going to do with it... I can't even imagine.";
-		mes "This is not what we should be doing, we need to tell the truth and track them down...!!";
+		select( "我知道……" );
+		mes "[尼倫]";
+		mes "他們到底要拿它做什麼……我完全無法想像。";
+		mes "這不是我們該做的事，我們得說出真相，把他們揪出來……！！";
 		next;
-		mes "[Niren]";
-		mes "Ah...! You said there would be enemies among the Temple Guards, so we'll have to pick out the ones we trust first.";
+		mes "[尼倫]";
+		mes "啊……！你說神殿守衛裡會有敵人，那我們得先挑出可以信任的人。";
 		next;
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "I'll go. That's probably my father's, because I have a pretty good idea of where it might have gone.";
+		mes "[米莉安]";
+		mes "我去。那大概是我父親的，因為我很清楚它可能去了哪裡。";
 		next;
 		cutin "ra_gwoman.bmp",0;
-		mes "[Niren]";
-		mes "We'll talk about that when we get outside, because it's not looking good out there.";
+		mes "[尼倫]";
+		mes "等我們出去再談，因為外面的情況看起來不太妙。";
 		close2;
 		cutin "",255;
 		if ('nyr_main_step == 15) {
@@ -1978,32 +1978,32 @@ OnTouch:
 
 OnTouch:
 	if ('nyr_main_step == 13)
-		npctalk "Everyone is gathered over there.";
+		npctalk "大家都聚集在那邊。";
 	end;
 }
 
-2@nyr,120,206,3	duplicate(dummy_npc)	Lamacus#dms601	EP18_ARMED_VILLAGER01
-2@nyr,119,207,3	duplicate(dummy_npc)	Kun#dms611	EP18_ARMED_VILLAGER02
-2@nyr,111,207,5	duplicate(dummy_npc)	Yopi#dms621	EP18_ARMED_VILLAGER03
-2@nyr,115,204,5	duplicate(dummy_npc)	Schulang#dms301	4_EP18_SHULANG
-2@nyr,117,205,3	duplicate(dummy_npc)	Bagot#dms201	4_EP18_BAGOT
+2@nyr,120,206,3	duplicate(dummy_npc)	拉馬庫斯#dms601::Lamacus#dms601	EP18_ARMED_VILLAGER01
+2@nyr,119,207,3	duplicate(dummy_npc)	昆#dms611::Kun#dms611	EP18_ARMED_VILLAGER02
+2@nyr,111,207,5	duplicate(dummy_npc)	尤皮#dms621::Yopi#dms621	EP18_ARMED_VILLAGER03
+2@nyr,115,204,5	duplicate(dummy_npc)	舒朗#dms301::Schulang#dms301	4_EP18_SHULANG
+2@nyr,117,205,3	duplicate(dummy_npc)	巴戈特#dms201::Bagot#dms201	4_EP18_BAGOT
 
-2@nyr,112,201,5	duplicate(dummy_npc)	Temple Guard#dms721	4_M_RASWORD
-2@nyr,121,203,3	duplicate(dummy_npc)	Temple Guard#dms731	4_M_RASWORD
-2@nyr,121,201,3	duplicate(dummy_npc)	Temple Guard#dms741	4_M_RASWORD
+2@nyr,112,201,5	duplicate(dummy_npc)	神殿守衛#dms721::Temple Guard#dms721	4_M_RASWORD
+2@nyr,121,203,3	duplicate(dummy_npc)	神殿守衛#dms731::Temple Guard#dms731	4_M_RASWORD
+2@nyr,121,201,3	duplicate(dummy_npc)	神殿守衛#dms741::Temple Guard#dms741	4_M_RASWORD
 
 2@nyr,115,202,5	duplicate(dummy_npc)	高僧#dms201::High Priest#dms201	4_M_RACHOLD
 
-2@nyr,113,203,5	duplicate(dummy_npc)	Temple Guard#dms701	4_M_RASWORD
-2@nyr,118,203,3	duplicate(dummy_npc)	Temple Guard#dms711	4_M_RASWORD
-2@nyr,120,202,3	duplicate(dummy_npc)	Temple Guard#dms751	4_M_RASWORD
-2@nyr,114,203,5	duplicate(dummy_npc)	Temple Guard#dms761	4_M_RASWORD
-2@nyr,115,199,7	duplicate(dummy_npc)	Temple Guard#dms771	4_M_RASWORD
-2@nyr,117,204,3	duplicate(dummy_npc)	Niren#dms101	4_F_MADAME
+2@nyr,113,203,5	duplicate(dummy_npc)	神殿守衛#dms701::Temple Guard#dms701	4_M_RASWORD
+2@nyr,118,203,3	duplicate(dummy_npc)	神殿守衛#dms711::Temple Guard#dms711	4_M_RASWORD
+2@nyr,120,202,3	duplicate(dummy_npc)	神殿守衛#dms751::Temple Guard#dms751	4_M_RASWORD
+2@nyr,114,203,5	duplicate(dummy_npc)	神殿守衛#dms761::Temple Guard#dms761	4_M_RASWORD
+2@nyr,115,199,7	duplicate(dummy_npc)	神殿守衛#dms771::Temple Guard#dms771	4_M_RASWORD
+2@nyr,117,204,3	duplicate(dummy_npc)	尼倫#dms101::Niren#dms101	4_F_MADAME
 
 
 
-2@nyr,1,1,0	script	nyr_step_7	-1,{
+2@nyr,1,1,0	script	nyr_step_7::nyr_step_7	-1,{
 	end;
 OnStart:
 	disablenpc instance_npcname("#mstep07");
@@ -2054,137 +2054,137 @@ OnTouch:
 	'nyr_main_step = 17;
 	donpcevent instance_npcname("Miriam#dms801") + "::OnMove1";
 	navigateto("1@nyr",129,165);
-	mapannounce 'map_2nyr$, "We're alive! Please notice us!", bc_map, 0xFFCC;
-	npctalk "I don't think this is a good situation. I need to get closer.", instance_npcname("Miriam#dms801");
+	mapannounce 'map_2nyr$, "我們還活著！請注意到我們！", bc_map, 0xFFCC;
+	npctalk "我覺得情況不妙。我得靠近一點。", instance_npcname("米莉安");
 	sleep 2000;
-	npctalk "這邊請。", instance_npcname("Miriam#dms801");
-	mapannounce 'map_2nyr$, "We're alive! We're alive!!", bc_map, 0xFFCC;
+	npctalk "這邊請。", instance_npcname("米莉安");
+	mapannounce 'map_2nyr$, "我們還活著！我們還活著！！", bc_map, 0xFFCC;
 	sleep 3000;
-	mapannounce 'map_2nyr$, "We exist!! Exist!!", bc_map, 0xFFCC;
+	mapannounce 'map_2nyr$, "我們存在！存在！！", bc_map, 0xFFCC;
 	sleep 5000;
-	mapannounce 'map_2nyr$, "Give the right back to the owner of this land! Give it back!!", bc_map, 0xFFCC;
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms201");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms211");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms221");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms231");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms241");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms251");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms261");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms271");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms281");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms291");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms202");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms212");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms222");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms232");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms242");
+	mapannounce 'map_2nyr$, "把權利還給這片土地的主人！還給他們！！", bc_map, 0xFFCC;
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
 	sleep 5000;
-	mapannounce 'map_2nyr$, "We too are alive! Alive!", bc_map, 0xFFCC;
-	npctalk "We're alive!", instance_npcname("Angry Crowd#dms201");
-	npctalk "We're alive!", instance_npcname("Angry Crowd#dms211");
-	npctalk "We're alive!", instance_npcname("Angry Crowd#dms221");
-	npctalk "We're alive!", instance_npcname("Angry Crowd#dms231");
-	npctalk "We're alive!", instance_npcname("Angry Crowd#dms241");
-	npctalk "We're alive!", instance_npcname("Angry Crowd#dms251");
-	npctalk "We're alive!", instance_npcname("Angry Crowd#dms261");
-	npctalk "We're alive!", instance_npcname("Angry Crowd#dms271");
-	npctalk "We're alive!", instance_npcname("Angry Crowd#dms281");
-	npctalk "We're alive!", instance_npcname("Angry Crowd#dms291");
-	npctalk "We're alive!", instance_npcname("Angry Crowd#dms202");
-	npctalk "We're alive!", instance_npcname("Angry Crowd#dms212");
-	npctalk "We're alive!", instance_npcname("Angry Crowd#dms222");
-	npctalk "We're alive!", instance_npcname("Angry Crowd#dms232");
-	npctalk "We're alive!", instance_npcname("Angry Crowd#dms242");
+	mapannounce 'map_2nyr$, "我們也還活著！活著！", bc_map, 0xFFCC;
+	npctalk "我們還活著！", instance_npcname("憤怒的群眾");
+	npctalk "我們還活著！", instance_npcname("憤怒的群眾");
+	npctalk "我們還活著！", instance_npcname("憤怒的群眾");
+	npctalk "我們還活著！", instance_npcname("憤怒的群眾");
+	npctalk "我們還活著！", instance_npcname("憤怒的群眾");
+	npctalk "我們還活著！", instance_npcname("憤怒的群眾");
+	npctalk "我們還活著！", instance_npcname("憤怒的群眾");
+	npctalk "我們還活著！", instance_npcname("憤怒的群眾");
+	npctalk "我們還活著！", instance_npcname("憤怒的群眾");
+	npctalk "我們還活著！", instance_npcname("憤怒的群眾");
+	npctalk "我們還活著！", instance_npcname("憤怒的群眾");
+	npctalk "我們還活著！", instance_npcname("憤怒的群眾");
+	npctalk "我們還活著！", instance_npcname("憤怒的群眾");
+	npctalk "我們還活著！", instance_npcname("憤怒的群眾");
+	npctalk "我們還活著！", instance_npcname("憤怒的群眾");
 	sleep 5000;
-	mapannounce 'map_2nyr$, "We too are exist! Exist!!", bc_map, 0xFFCC;
-	npctalk "We exist!", instance_npcname("Angry Crowd#dms201");
-	npctalk "We exist!", instance_npcname("Angry Crowd#dms211");
-	npctalk "We exist!", instance_npcname("Angry Crowd#dms221");
-	npctalk "We exist!", instance_npcname("Angry Crowd#dms231");
-	npctalk "We exist!", instance_npcname("Angry Crowd#dms241");
-	npctalk "We exist!", instance_npcname("Angry Crowd#dms251");
-	npctalk "We exist!", instance_npcname("Angry Crowd#dms261");
-	npctalk "We exist!", instance_npcname("Angry Crowd#dms271");
-	npctalk "We exist!", instance_npcname("Angry Crowd#dms281");
-	npctalk "We exist!", instance_npcname("Angry Crowd#dms291");
-	npctalk "We exist!", instance_npcname("Angry Crowd#dms202");
-	npctalk "We exist!", instance_npcname("Angry Crowd#dms212");
-	npctalk "We exist!", instance_npcname("Angry Crowd#dms222");
-	npctalk "We exist!", instance_npcname("Angry Crowd#dms232");
-	npctalk "We exist!", instance_npcname("Angry Crowd#dms242");
+	mapannounce 'map_2nyr$, "我們也存在！存在！！", bc_map, 0xFFCC;
+	npctalk "我們存在！", instance_npcname("憤怒的群眾");
+	npctalk "我們存在！", instance_npcname("憤怒的群眾");
+	npctalk "我們存在！", instance_npcname("憤怒的群眾");
+	npctalk "我們存在！", instance_npcname("憤怒的群眾");
+	npctalk "我們存在！", instance_npcname("憤怒的群眾");
+	npctalk "我們存在！", instance_npcname("憤怒的群眾");
+	npctalk "我們存在！", instance_npcname("憤怒的群眾");
+	npctalk "我們存在！", instance_npcname("憤怒的群眾");
+	npctalk "我們存在！", instance_npcname("憤怒的群眾");
+	npctalk "我們存在！", instance_npcname("憤怒的群眾");
+	npctalk "我們存在！", instance_npcname("憤怒的群眾");
+	npctalk "我們存在！", instance_npcname("憤怒的群眾");
+	npctalk "我們存在！", instance_npcname("憤怒的群眾");
+	npctalk "我們存在！", instance_npcname("憤怒的群眾");
+	npctalk "我們存在！", instance_npcname("憤怒的群眾");
 	sleep 5000;
-	mapannounce 'map_2nyr$, "Give this land back to its rightful owner! Give it back!!", bc_map, 0xFFCC;
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms201");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms211");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms221");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms231");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms241");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms251");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms261");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms271");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms281");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms291");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms202");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms212");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms222");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms232");
-	npctalk "Give it back!", instance_npcname("Angry Crowd#dms242");
+	mapannounce 'map_2nyr$, "把這片土地還給它真正的主人！還給他們！！", bc_map, 0xFFCC;
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
+	npctalk "還給我們！", instance_npcname("憤怒的群眾");
 	end;
 }
 
-1@nyr,68,163,5	script	Miriam#dms801	EP18_NPC_MIRIAM,{
+1@nyr,68,163,5	script	米莉安#dms801::Miriam#dms801	EP18_NPC_MIRIAM,{
 	if (is_party_leader() == false) {
-		npctalk "Isn't the party leader arrived yet?";
+		npctalk "隊長還沒到嗎？";
 		end;
 	}
 	if ('nyr_main_step == 18) {
-		mes "[Crowd]";
-		mes "Acknowledge us!";
+		mes "[群眾]";
+		mes "承認我們！";
 		next;
-		mes "[Crowd]";
-		mes "We're alive! We are here!!";
+		mes "[群眾]";
+		mes "我們還活著！我們在這裡！！";
 		next;
-		mes "[Crowd]";
-		mes "This is Our Land!";
+		mes "[群眾]";
+		mes "這是我們的土地！";
 		next;
-		mes "[Crowd]";
-		mes "Return the land to the rightful owners of the land!";
+		mes "[群眾]";
+		mes "把土地還給真正的土地主人！";
 		next;
-		mes "[Temple Guard]";
-		mes "If you dismiss now, we will not charge you for trespassing on the temple!";
+		mes "[神殿守衛]";
+		mes "如果你們現在解散，我們就不追究你們擅闖神殿的罪名！";
 		next;
-		mes "[Temple Guard]";
-		mes "I'll give you exactly 30 minutes! Go back within the time limit!";
+		mes "[神殿守衛]";
+		mes "我只給你們三十分鐘！在限時內返回！";
 		next;
-		mes "[Crowd]";
-		mes "Are you threatening us now?";
+		mes "[群眾]";
+		mes "你現在是在威脅我們嗎？";
 		next;
-		mes "[Crowd]";
-		mes "What are you going to do?";
+		mes "[群眾]";
+		mes "你打算怎麼做？";
 		next;
-		mes "[Crowd]";
-		mes "You're going to arrest everyone and put them in jail, right?";
+		mes "[群眾]";
+		mes "你是打算把所有人都逮捕關進牢裡，對吧？";
 		next;
-		mes "[Crowd]";
-		mes "At this point, let's go in first!!!";
+		mes "[群眾]";
+		mes "事到如今，我們先衝進去！！！";
 		next;
 		cutin "ep18_miriam_03.png",1;
-		mes "[Miriam]";
-		mes "Something's not right. People are getting too aggressive.";
+		mes "[米莉安]";
+		mes "有點不對勁。人們變得太過激動了。";
 		next;
-		mes "[Miriam]";
-		mes "This doesn't look good. I need to get Suad, but where's the deputy?";
-		npctalk "Somebody get Suad, it's urgent!", instance_npcname("Miriam#dms801");
+		mes "[米莉安]";
+		mes "情況不妙。我得找蘇阿德，但副手在哪裡？";
+		npctalk "誰去把蘇阿德找來，十萬火急！", instance_npcname("米莉安");
 		next;
 		enablenpc instance_npcname("Niren#dms201");
 		enablenpc instance_npcname("Zhed#dms101");
 		cutin "ra_gwoman.bmp",2;
-		mes "[Niren]";
-		mes "There you are. I brought along Priest Zhed.";
+		mes "[尼倫]";
+		mes "你們在這裡啊。我把祭司札德帶來了。";
 		next;
 		cutin "ra_gman2.bmp",2;
-		mes "[Zhed]";
-		mes "What's going on here? Does it have something to do with the people who have flocked here? Or, is there something inside the temple that's causing this...";
+		mes "[札德]";
+		mes "這裡到底怎麼回事？跟聚集在此的人有關嗎？還是神殿裡有什麼東西在引起這一切……";
 		next;
 		if ('nyr_main_step == 18) {
 			'nyr_main_step = 19;
@@ -2193,22 +2193,22 @@ OnTouch:
 			disablenpc instance_npcname("#mstep11");
 			disablenpc instance_npcname("#dmswch02");
 			enablenpc instance_npcname("Suad#dms102");
-			npctalk "What's going on? You said you found it in a hurry?", instance_npcname("Suad#dms102");
+			npctalk "怎麼回事？你說你匆忙找到了它？", instance_npcname("蘇阿德");
 		}
 		cutin "ep18_suad_04.png",0;
-		mes "[Suad]";
-		mes "What's going on? You said it's something urgent.";
-		npctalk "What's going on? You said it's something urgent.", instance_npcname("Suad#dms102");
+		mes "[蘇阿德]";
+		mes "怎麼回事？你說是緊急的事。";
+		npctalk "怎麼回事？你說是緊急的事。", instance_npcname("蘇阿德");
 		close3;
 	}
 	if ('nyr_main_step == 21) {
 		'nyr_main_step = 22;
 		enablenpc instance_npcname("#dmwrp02");
 		navigateto("1@nyr",45,28);
-		npctalk "Adventurer, please be safe.", instance_npcname("Miriam#dms801");
+		npctalk "冒險者，請務必小心。", instance_npcname("米莉安");
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
-		mes "Once you've got it covered, move fast. They're waiting for you at the safe house.";
+		mes "[米莉安]";
+		mes "等你們處理好這邊，快點過來。他們在安全屋等你們。";
 		disablenpc instance_npcname("Miriam#dms801");
 		close3;
 	}
@@ -2232,77 +2232,77 @@ OnMove4:
 //------------------------------------------------------------
 // Step 10
 //------------------------------------------------------------
-1@nyr,127,163,5	script	Suad#dms102	4_EP18_SUAD,{
+1@nyr,127,163,5	script	蘇阿德#dms102::Suad#dms102	4_EP18_SUAD,{
 	if (is_party_leader() == false) {
-		npctalk "I wish the leader would tell me as a representative.";
+		npctalk "我希望隊長能以代表的身分告訴我。";
 		end;
 	}
 	if ('nyr_main_step != 19)
 		end;
 	cutin "ep18_suad_04.png",0;
-	mes "[Suad]";
+	mes "[蘇阿德]";
 	mes "發生什麼事了？";
 	next;
 	cutin "ep18_miriam_03.png",1;
-	mes "[Miriam]";
-	mes "We have a mole among us.";
+	mes "[米莉安]";
+	mes "我們之中有內奸。";
 	next;
 	cutin "ep18_suad_04.png",0;
-	mes "[Suad]";
-	mes "A mole? Where?";
+	mes "[蘇阿德]";
+	mes "內奸？在哪裡？";
 	next;
 	cutin "ep18_miriam_03.png",1;
-	mes "[Miriam]";
-	mes "Suad, first of all, give us an overview of the situation here. It sounds like we're on the verge of a riot, is that right? Oh, hello, Priest Zhed.";
+	mes "[米莉安]";
+	mes "蘇阿德，首先請你概述一下這裡的情況。聽起來我們快要爆發暴動了，是嗎？哦，你好，札德祭司。";
 	next;
 	cutin "ep18_suad_02.png",0;
-	mes "[Suad]";
-	mes "Why is the High Priest here?";
+	mes "[蘇阿德]";
+	mes "大祭司為什麼會在這裡？";
 	next;
 	cutin "ra_gman2.bmp",2;
-	mes "[Zhed]";
-	mes "Miriam? Did Miriam have anything to do with this?";
+	mes "[札德]";
+	mes "米莉安？米莉安跟這件事有關係嗎？";
 	next;
 	cutin "ep18_miriam_03.png",1;
-	mes "[Miriam]";
-	mes "There's a reason for that, but first, let's talk about the situation, Suad?";
+	mes "[米莉安]";
+	mes "這有原因，不過先談談現在的情況吧，蘇阿德？";
 	next;
 	cutin "ep18_suad_03.png",0;
-	mes "[Suad]";
-	mes "It's not good. It's spiraling out of control. The temple is coming down hard on us. They're recommending we disband. We're running out of time. We're preparing to evacuate.";
+	mes "[蘇阿德]";
+	mes "情況不妙。已經失控了。神殿正對我們施加重壓，他們建議我們解散。時間所剩不多，我們正準備撤離。";
 	next;
 	cutin "ep18_suad_01.png",0;
-	mes "[Suad]";
-	mes "What happened to the people you followed?";
+	mes "[蘇阿德]";
+	mes "你們跟蹤的那些人怎麼樣了？";
 	next;
-	select( "Let me explain." );
+	select( "讓我來解釋。" );
 	cutin "",255;
-	mes "- The events inside the temple. -";
+	mes "- 神殿內的事件 -";
 	next;
 	cutin "ep18_miriam_03.png",1;
-	mes "[Miriam]";
-	mes "My father and a foreign power conspired to divide Arunafeltz and oppress the natives...";
+	mes "[米莉安]";
+	mes "我父親和某個外國勢力共謀要分裂阿魯納費爾茲，壓迫原住民……";
 	next;
 	cutin "ep18_suad_04.png",0;
-	mes "[Suad]";
-	mes "There's a mole among us... but who's the impostor?";
+	mes "[蘇阿德]";
+	mes "我們之中有內奸……但誰才是冒牌貨？";
 	next;
 	cutin "ep18_miriam_03.png",1;
-	mes "[Miriam]";
-	mes "It's more accurate to say they're gone into hiding than traitorous. They were never on our side to begin with.";
+	mes "[米莉安]";
+	mes "與其說他們是叛徒，不如說他們是躲了起來。他們從來就不站在我們這邊。";
 	next;
 	cutin "ep18_suad_02.png",0;
-	mes "[Suad]";
-	mes "So we were almost in the middle of an organized riot from the start?";
+	mes "[蘇阿德]";
+	mes "所以我們從一開始就幾乎身處一場有組織的暴動之中？";
 	next;
 	cutin "ra_gwoman.bmp",2;
-	mes "[Niren]";
-	mes "This is not the time. They've infiltrated the temple as well, so we have to take on both sides..";
+	mes "[尼倫]";
+	mes "現在不是時候。他們也滲透進了神殿，所以我們得同時對付兩邊……";
 	next;
-	mapannounce 'map_2nyr$, "Pii-", bc_map, 0xFF0000;
+	mapannounce 'map_2nyr$, "嗶-", bc_map, 0xFF0000;
 	cutin "ep18_suad_04.png",0;
-	mes "[Suad]";
-	mes "What's that whistle? It's not our signal.";
+	mes "[蘇阿德]";
+	mes "那是什麼哨聲？不是我們的信號。";
 	next;
 	setnpcdisplay( instance_npcname("Temple Guard#dms802"), 21308 );	// EP18_MD_HEARTHUNTER_A
 	setnpcdisplay( instance_npcname("Temple Guard#dms812"), 21308 );	// EP18_MD_HEARTHUNTER_A
@@ -2314,11 +2314,11 @@ OnMove4:
 	setnpcdisplay( instance_npcname("Angry Crowd#dms222"), 21308 );	// EP18_MD_HEARTHUNTER_A
 	setnpcdisplay( instance_npcname("Angry Crowd#dms232"), 21308 );	// EP18_MD_HEARTHUNTER_A
 	setnpcdisplay( instance_npcname("Angry Crowd#dms242"), 21308 );	// EP18_MD_HEARTHUNTER_A
-	npctalk "Is it now?", instance_npcname("Angry Crowd#dms202");
-	npctalk "Now!", instance_npcname("Temple Guard#dms832");
+	npctalk "是現在嗎？", instance_npcname("憤怒的群眾");
+	npctalk "現在！", instance_npcname("神殿守衛");
 	cutin "",255;
-	mes "[Crowd]";
-	mes "Why you're taking clothes off??";
+	mes "[群眾]";
+	mes "你為什麼脫衣服？？";
 	next;
 	disablenpc instance_npcname("Temple Guard#dms812");
 	disablenpc instance_npcname("Temple Guard#dms832");
@@ -2335,16 +2335,16 @@ OnMove4:
 	enablenpc instance_npcname("Heart Hunter#dms171");
 	enablenpc instance_npcname("Heart Hunter#dms181");
 	enablenpc instance_npcname("Heart Hunter#dms191");
-	mes "[Temple Guard]";
-	mes "Keep your guard up!";
+	mes "[神殿守衛]";
+	mes "提高警覺！";
 	next;
-	mes "[Crowd]";
-	mes "What the hell are you doing??";
+	mes "[群眾]";
+	mes "你到底在做什麼？？";
 	next;
-	npctalk "Sorry. Nothing personal.", instance_npcname("Heart Hunter#dms101");
-	npctalk "I still don't understand. What's going on?", instance_npcname("Heart Hunter#dms141");
-	npctalk "What kind of a goddess is she? You should trust me!", instance_npcname("Heart Hunter#dms171");
-	npctalk "How's that for a taste of repression?", instance_npcname("Heart Hunter#dms191");
+	npctalk "抱歉，沒有私人恩怨。", instance_npcname("邪心獵人");
+	npctalk "我還是不明白。到底怎麼回事？", instance_npcname("邪心獵人");
+	npctalk "她是哪門子的女神？你應該相信我！", instance_npcname("邪心獵人");
+	npctalk "這種壓迫的滋味如何？", instance_npcname("邪心獵人");
 	specialeffect EF_M03, AREA, instance_npcname("Heart Hunter#dms101");
 	specialeffect EF_M03, AREA, instance_npcname("Heart Hunter#dms111");
 	specialeffect EF_M02, AREA, instance_npcname("Heart Hunter#dms121");
@@ -2355,23 +2355,23 @@ OnMove4:
 	specialeffect EF_M02, AREA, instance_npcname("Heart Hunter#dms171");
 	specialeffect EF_M02, AREA, instance_npcname("Heart Hunter#dms181");
 	specialeffect EF_M03, AREA, instance_npcname("Heart Hunter#dms191");
-	mes "[Crowd]";
-	mes "Argh!!!! Argh!!! The temple guard grabs a man!!!";
+	mes "[群眾]";
+	mes "啊啊啊！！！神殿守衛抓住了一個男人！！！";
 	next;
-	mes "[Temple Guard]";
-	mes "It's a riot! Put it down!";
+	mes "[神殿守衛]";
+	mes "暴動了！放下武器！";
 	next;
 	cutin "ep18_miriam_03.png",1;
-	mes "[Miriam]";
-	mes "Oh... I'm late...!";
+	mes "[米莉安]";
+	mes "哦……我遲到了……！";
 	next;
 	cutin "ep18_suad_02.png",0;
-	mes "[Suad]";
-	mes "We need to stop the brute-force attackers.";
+	mes "[蘇阿德]";
+	mes "我們得阻止那些蠻橫的攻擊者。";
 	next;
 	cutin "ra_gwoman.bmp",2;
-	mes "[Niren]";
-	mes "I'll evacuate the people.";
+	mes "[尼倫]";
+	mes "我來疏散人群。";
 	if ('nyr_main_step == 19) {
 		'nyr_main_step = 20;
 		donpcevent instance_npcname("nyr_step_10") + "::OnStart";
@@ -2379,7 +2379,7 @@ OnMove4:
 	close3;
 }
 
-1@nyr,1,1,0	script	nyr_step_10	-1,{
+1@nyr,1,1,0	script	nyr_step_10::nyr_step_10	-1,{
 	end;
 OnStart:
 	disablenpc instance_npcname("Suad#dms102");
@@ -2437,59 +2437,59 @@ OnMobDead:
 		end;
 	if (mobcount('map_1nyr$, instance_npcname("nyr_step_10") + "::OnMobDead") < 1) {
 		'nyr_main_step = 21;
-		npctalk "Adventurer, are you safe?", instance_npcname("Miriam#dms801");
+		npctalk "冒險者，你沒事吧？", instance_npcname("米莉安");
 		enablenpc instance_npcname("Miriam#dms801");
 	}
 	end;
 }
 
-1@nyr,113,172,5	duplicate(dummy_npc)	Temple Guard#dms802	4_M_RASWORD
-1@nyr,126,172,3	duplicate(dummy_npc)	Temple Guard#dms812	4_M_RASWORD
-1@nyr,112,178,5	duplicate(dummy_npc)	Temple Guard#dms822	4_M_RASWORD
-1@nyr,127,178,3	duplicate(dummy_npc)	Temple Guard#dms832	4_M_RASWORD
-1@nyr,118,172,5	duplicate(dummy_npc)	Temple Guard#dms842	4_M_RASWORD
-1@nyr,130,163,1	duplicate(dummy_npc)	Niren#dms201	4_F_MADAME
-1@nyr,131,165,3	duplicate(dummy_npc)	Zhed#dms101	4_M_RACHOLD1
+1@nyr,113,172,5	duplicate(dummy_npc)	神殿守衛#dms802::Temple Guard#dms802	4_M_RASWORD
+1@nyr,126,172,3	duplicate(dummy_npc)	神殿守衛#dms812::Temple Guard#dms812	4_M_RASWORD
+1@nyr,112,178,5	duplicate(dummy_npc)	神殿守衛#dms822::Temple Guard#dms822	4_M_RASWORD
+1@nyr,127,178,3	duplicate(dummy_npc)	神殿守衛#dms832::Temple Guard#dms832	4_M_RASWORD
+1@nyr,118,172,5	duplicate(dummy_npc)	神殿守衛#dms842::Temple Guard#dms842	4_M_RASWORD
+1@nyr,130,163,1	duplicate(dummy_npc)	尼倫#dms201::Niren#dms201	4_F_MADAME
+1@nyr,131,165,3	duplicate(dummy_npc)	札德#dms101::Zhed#dms101	4_M_RACHOLD1
 
-1@nyr,130,172,3	duplicate(dummy_npc)	Temple Guard#dms801	4_M_RASWORD
-1@nyr,127,174,3	duplicate(dummy_npc)	Temple Guard#dms811	4_M_RASWORD
-1@nyr,112,174,5	duplicate(dummy_npc)	Temple Guard#dms821	4_M_RASWORD
-1@nyr,109,172,5	duplicate(dummy_npc)	Temple Guard#dms831	4_M_RASWORD
-1@nyr,116,172,5	duplicate(dummy_npc)	Temple Guard#dms841	4_M_RASWORD
-1@nyr,120,172,3	duplicate(dummy_npc)	Temple Guard#dms851	4_M_RASWORD
-1@nyr,123,172,3	duplicate(dummy_npc)	Temple Guard#dms861	4_M_RASWORD
-1@nyr,117,176,5	duplicate(dummy_npc)	Temple Guard#dms871	4_M_RASWORD
-1@nyr,122,176,3	duplicate(dummy_npc)	Temple Guard#dms881	4_M_RASWORD
-1@nyr,119,178,5	duplicate(dummy_npc)	Temple Guard#dms891	4_M_RASWORD
+1@nyr,130,172,3	duplicate(dummy_npc)	神殿守衛#dms801::Temple Guard#dms801	4_M_RASWORD
+1@nyr,127,174,3	duplicate(dummy_npc)	神殿守衛#dms811::Temple Guard#dms811	4_M_RASWORD
+1@nyr,112,174,5	duplicate(dummy_npc)	神殿守衛#dms821::Temple Guard#dms821	4_M_RASWORD
+1@nyr,109,172,5	duplicate(dummy_npc)	神殿守衛#dms831::Temple Guard#dms831	4_M_RASWORD
+1@nyr,116,172,5	duplicate(dummy_npc)	神殿守衛#dms841::Temple Guard#dms841	4_M_RASWORD
+1@nyr,120,172,3	duplicate(dummy_npc)	神殿守衛#dms851::Temple Guard#dms851	4_M_RASWORD
+1@nyr,123,172,3	duplicate(dummy_npc)	神殿守衛#dms861::Temple Guard#dms861	4_M_RASWORD
+1@nyr,117,176,5	duplicate(dummy_npc)	神殿守衛#dms871::Temple Guard#dms871	4_M_RASWORD
+1@nyr,122,176,3	duplicate(dummy_npc)	神殿守衛#dms881::Temple Guard#dms881	4_M_RASWORD
+1@nyr,119,178,5	duplicate(dummy_npc)	神殿守衛#dms891::Temple Guard#dms891	4_M_RASWORD
 
-1@nyr,123,168,3	duplicate(dummy_npc)	Heart Hunter#dms101	EP18_MD_HEARTHUNTER_A
-1@nyr,118,168,5	duplicate(dummy_npc)	Heart Hunter#dms111	EP18_MD_HEARTHUNTER_A
-1@nyr,113,165,5	duplicate(dummy_npc)	Heart Hunter#dms121	EP18_MD_HEARTHUNTER_A
-1@nyr,114,171,5	duplicate(dummy_npc)	Heart Hunter#dms131	EP18_MD_HEARTHUNTER_A
-1@nyr,128,170,3	duplicate(dummy_npc)	Heart Hunter#dms141	EP18_MD_HEARTHUNTER_A
-1@nyr,115,176,5	duplicate(dummy_npc)	Heart Hunter#dms151	EP18_MD_HEARTHUNTER_A
-1@nyr,120,174,3	duplicate(dummy_npc)	Heart Hunter#dms161	EP18_MD_HEARTHUNTER_A
-1@nyr,125,175,3	duplicate(dummy_npc)	Heart Hunter#dms171	EP18_MD_HEARTHUNTER_A
-1@nyr,123,177,3	duplicate(dummy_npc)	Heart Hunter#dms181	EP18_MD_HEARTHUNTER_A
-1@nyr,128,172,3	duplicate(dummy_npc)	Heart Hunter#dms191	EP18_MD_HEARTHUNTER_A
+1@nyr,123,168,3	duplicate(dummy_npc)	邪心獵人#dms101::Heart Hunter#dms101	EP18_MD_HEARTHUNTER_A
+1@nyr,118,168,5	duplicate(dummy_npc)	邪心獵人#dms111::Heart Hunter#dms111	EP18_MD_HEARTHUNTER_A
+1@nyr,113,165,5	duplicate(dummy_npc)	邪心獵人#dms121::Heart Hunter#dms121	EP18_MD_HEARTHUNTER_A
+1@nyr,114,171,5	duplicate(dummy_npc)	邪心獵人#dms131::Heart Hunter#dms131	EP18_MD_HEARTHUNTER_A
+1@nyr,128,170,3	duplicate(dummy_npc)	邪心獵人#dms141::Heart Hunter#dms141	EP18_MD_HEARTHUNTER_A
+1@nyr,115,176,5	duplicate(dummy_npc)	邪心獵人#dms151::Heart Hunter#dms151	EP18_MD_HEARTHUNTER_A
+1@nyr,120,174,3	duplicate(dummy_npc)	邪心獵人#dms161::Heart Hunter#dms161	EP18_MD_HEARTHUNTER_A
+1@nyr,125,175,3	duplicate(dummy_npc)	邪心獵人#dms171::Heart Hunter#dms171	EP18_MD_HEARTHUNTER_A
+1@nyr,123,177,3	duplicate(dummy_npc)	邪心獵人#dms181::Heart Hunter#dms181	EP18_MD_HEARTHUNTER_A
+1@nyr,128,172,3	duplicate(dummy_npc)	邪心獵人#dms191::Heart Hunter#dms191	EP18_MD_HEARTHUNTER_A
 
 // Note: dms201 and dms231 on the same cells on official
-1@nyr,109,167,7	duplicate(dummy_npc)	Angry Crowd#dms201	4_EP18_GW_MAN01
-1@nyr,117,164,1	duplicate(dummy_npc)	Angry Crowd#dms211	4_EP18_GW_WOMAN01
-1@nyr,109,167,7	duplicate(dummy_npc)	Angry Crowd#dms231	4_M_MIDDLE
-1@nyr,112,166,1	duplicate(dummy_npc)	Angry Crowd#dms221	4_EP18_GW_MAN02
-1@nyr,122,166,1	duplicate(dummy_npc)	Angry Crowd#dms241	4_EP18_GW_WOMAN02
-1@nyr,115,166,7	duplicate(dummy_npc)	Angry Crowd#dms251	4_EP18_GW_MIDDLE01
-1@nyr,120,167,1	duplicate(dummy_npc)	Angry Crowd#dms261	4_M_RACHMAN1
-1@nyr,116,170,1	duplicate(dummy_npc)	Angry Crowd#dms271	4_EP18_GW_MIDDLE02
-1@nyr,112,168,1	duplicate(dummy_npc)	Angry Crowd#dms281	4_F_SHABBY
-1@nyr,124,171,1	duplicate(dummy_npc)	Angry Crowd#dms291	4_EP18_GW_WOMAN01
+1@nyr,109,167,7	duplicate(dummy_npc)	憤怒的群眾#dms201::Angry Crowd#dms201	4_EP18_GW_MAN01
+1@nyr,117,164,1	duplicate(dummy_npc)	憤怒的群眾#dms211::Angry Crowd#dms211	4_EP18_GW_WOMAN01
+1@nyr,109,167,7	duplicate(dummy_npc)	憤怒的群眾#dms231::Angry Crowd#dms231	4_M_MIDDLE
+1@nyr,112,166,1	duplicate(dummy_npc)	憤怒的群眾#dms221::Angry Crowd#dms221	4_EP18_GW_MAN02
+1@nyr,122,166,1	duplicate(dummy_npc)	憤怒的群眾#dms241::Angry Crowd#dms241	4_EP18_GW_WOMAN02
+1@nyr,115,166,7	duplicate(dummy_npc)	憤怒的群眾#dms251::Angry Crowd#dms251	4_EP18_GW_MIDDLE01
+1@nyr,120,167,1	duplicate(dummy_npc)	憤怒的群眾#dms261::Angry Crowd#dms261	4_M_RACHMAN1
+1@nyr,116,170,1	duplicate(dummy_npc)	憤怒的群眾#dms271::Angry Crowd#dms271	4_EP18_GW_MIDDLE02
+1@nyr,112,168,1	duplicate(dummy_npc)	憤怒的群眾#dms281::Angry Crowd#dms281	4_F_SHABBY
+1@nyr,124,171,1	duplicate(dummy_npc)	憤怒的群眾#dms291::Angry Crowd#dms291	4_EP18_GW_WOMAN01
 
-1@nyr,118,171,1	duplicate(dummy_npc)	Angry Crowd#dms202	4_M_RACHMAN2
-1@nyr,127,166,7	duplicate(dummy_npc)	Angry Crowd#dms212	4_M_DESERT
-1@nyr,125,168,7	duplicate(dummy_npc)	Angry Crowd#dms222	4_M_RACHMAN1
-1@nyr,123,164,7	duplicate(dummy_npc)	Angry Crowd#dms232	4_M_MIDDLE1
-1@nyr,127,169,7	duplicate(dummy_npc)	Angry Crowd#dms242	4_F_SHABBY
+1@nyr,118,171,1	duplicate(dummy_npc)	憤怒的群眾#dms202::Angry Crowd#dms202	4_M_RACHMAN2
+1@nyr,127,166,7	duplicate(dummy_npc)	憤怒的群眾#dms212::Angry Crowd#dms212	4_M_DESERT
+1@nyr,125,168,7	duplicate(dummy_npc)	憤怒的群眾#dms222::Angry Crowd#dms222	4_M_RACHMAN1
+1@nyr,123,164,7	duplicate(dummy_npc)	憤怒的群眾#dms232::Angry Crowd#dms232	4_M_MIDDLE1
+1@nyr,127,169,7	duplicate(dummy_npc)	憤怒的群眾#dms242::Angry Crowd#dms242	4_F_SHABBY
 
 
 
@@ -2533,29 +2533,29 @@ OnTouch:
 	enablenpc instance_npcname("Temple Guard#qdms181");
 
 	sleep 1000;	// (player can walk)
-	npctalk "Adventurer, welcome. Thank you for joining us on this cleansing operation.", instance_npcname("Temple Guard#qdms101");
+	npctalk "冒險者，歡迎。感謝你參加這次淨化行動。", instance_npcname("神殿守衛");
 	sleep 1500;
-	npctalk "Is everyone assembled?", instance_npcname("Temple Guard#qdms101");
+	npctalk "大家都集合好了嗎？", instance_npcname("神殿守衛");
 	sleep 1000;
-	npctalk "是的！", instance_npcname("Temple Guard#qdms111");
-	npctalk "是的！", instance_npcname("Temple Guard#qdms121");
-	npctalk "是的！", instance_npcname("Temple Guard#qdms131");
-	npctalk "是的！", instance_npcname("Temple Guard#qdms141");
-	npctalk "是的！", instance_npcname("Temple Guard#qdms151");
-	npctalk "是的！", instance_npcname("Temple Guard#qdms161");
-	npctalk "是的！", instance_npcname("Temple Guard#qdms171");
-	npctalk "是的！", instance_npcname("Temple Guard#qdms181");
+	npctalk "是的！", instance_npcname("神殿守衛");
+	npctalk "是的！", instance_npcname("神殿守衛");
+	npctalk "是的！", instance_npcname("神殿守衛");
+	npctalk "是的！", instance_npcname("神殿守衛");
+	npctalk "是的！", instance_npcname("神殿守衛");
+	npctalk "是的！", instance_npcname("神殿守衛");
+	npctalk "是的！", instance_npcname("神殿守衛");
+	npctalk "是的！", instance_npcname("神殿守衛");
 	sleep 1000;
-	npctalk "Renegades who have forsaken a life of serving the goddess and broken their oath are disturbing this place!", instance_npcname("Temple Guard#qdms101");
+	npctalk "背棄侍奉女神之路、違背誓言的叛徒，正在擾亂這片聖地！", instance_npcname("神殿守衛");
 	sleep 1500;
-	npctalk "It is also our duty to enact the will of the goddess upon them!", instance_npcname("Temple Guard#qdms101");
+	npctalk "以女神之名懲處他們，也是我們的職責！", instance_npcname("神殿守衛");
 	sleep 1500;
-	npctalk "We have blocked off four areas from this point onwards: three garden zones and one entrance to the temple. Let us purify them sequentially.", instance_npcname("Temple Guard#qdms101");
+	npctalk "從此處起，我們已封鎖以下四個區域: 三處花園與神殿的一個入口。讓我們依序淨化。", instance_npcname("神殿守衛");
 	sleep 1500;
-	npctalk "Beware, allies may not be distinguishable from foes in the darkness! Exercise caution to avoid attacking our own!", instance_npcname("Temple Guard#qdms101");
+	npctalk "注意，黑暗中可能分不清敵友！請小心，避免誤傷自己人！", instance_npcname("神殿守衛");
 	enablenpc instance_npcname("Temple Guard#qdms01");
 	sleep 1500;
-	npctalk "To your respective positions!", instance_npcname("Temple Guard#qdms101");
+	npctalk "各就各位！", instance_npcname("神殿守衛");
 
 	disablenpc instance_npcname("Temple Guard#qdms101");
 	disablenpc instance_npcname("Temple Guard#qdms111");
@@ -2570,15 +2570,15 @@ OnTouch:
 }
 
 // Guards entrance daily
-1@nyr,190,31,1	duplicate(dummy_npc)	Temple Guard#qdms101	4_M_RASWORD
-1@nyr,186,31,5	duplicate(dummy_npc)	Temple Guard#qdms111	4_M_RASWORD
-1@nyr,187,32,5	duplicate(dummy_npc)	Temple Guard#qdms121	4_M_RASWORD
-1@nyr,188,33,5	duplicate(dummy_npc)	Temple Guard#qdms131	4_M_RASWORD
-1@nyr,189,34,5	duplicate(dummy_npc)	Temple Guard#qdms141	4_M_RASWORD
-1@nyr,185,32,5	duplicate(dummy_npc)	Temple Guard#qdms151	4_M_RASWORD
-1@nyr,186,33,5	duplicate(dummy_npc)	Temple Guard#qdms161	4_M_RASWORD
-1@nyr,187,34,5	duplicate(dummy_npc)	Temple Guard#qdms171	4_M_RASWORD
-1@nyr,188,35,5	duplicate(dummy_npc)	Temple Guard#qdms181	4_M_RASWORD
+1@nyr,190,31,1	duplicate(dummy_npc)	神殿守衛#qdms101::Temple Guard#qdms101	4_M_RASWORD
+1@nyr,186,31,5	duplicate(dummy_npc)	神殿守衛#qdms111::Temple Guard#qdms111	4_M_RASWORD
+1@nyr,187,32,5	duplicate(dummy_npc)	神殿守衛#qdms121::Temple Guard#qdms121	4_M_RASWORD
+1@nyr,188,33,5	duplicate(dummy_npc)	神殿守衛#qdms131::Temple Guard#qdms131	4_M_RASWORD
+1@nyr,189,34,5	duplicate(dummy_npc)	神殿守衛#qdms141::Temple Guard#qdms141	4_M_RASWORD
+1@nyr,185,32,5	duplicate(dummy_npc)	神殿守衛#qdms151::Temple Guard#qdms151	4_M_RASWORD
+1@nyr,186,33,5	duplicate(dummy_npc)	神殿守衛#qdms161::Temple Guard#qdms161	4_M_RASWORD
+1@nyr,187,34,5	duplicate(dummy_npc)	神殿守衛#qdms171::Temple Guard#qdms171	4_M_RASWORD
+1@nyr,188,35,5	duplicate(dummy_npc)	神殿守衛#qdms181::Temple Guard#qdms181	4_M_RASWORD
 
 
 // 1@nyr,120,173,0	duplicate(dummy_npc)	#qar201sw	HIDDEN_WARP_NPC,5,5
@@ -2644,7 +2644,7 @@ OnMobDead11:
 		end;
 	if (mobcount('map_1nyr$, instance_npcname("#qmobg101") + "::OnMobDead11") > 0)
 		end;
-	mapannounce 'map_1nyr$, "All zones cleared! Gather at the entrance of the temple!", bc_map, 0xFFCC;
+	mapannounce 'map_1nyr$, "所有區域已清空！在神殿入口集合！", bc_map, 0xFFCC;
 	for ( .@i = 0; .@i < 9; ++.@i )
 		enablenpc instance_npcname("Temple Guard#qdms1" + .@i + "2");
 	end;
@@ -2679,7 +2679,7 @@ S_Call:	// basic routine to display the message and spawn the monsters
 	end;
 }
 
-1@nyr,165,32,5	script	Temple Guard#qdms01	4_M_RASWORD,5,5,{
+1@nyr,165,32,5	script	神殿守衛#qdms01::Temple Guard#qdms01	4_M_RASWORD,5,5,{
 	end;
 OnTouch:
 	if (is_party_leader() == false)
@@ -2688,39 +2688,39 @@ OnTouch:
 	donpcevent instance_npcname("#qmobg101") + "::OnStart" + .@string$;
 	end;
 }
-1@nyr,165,98,5	duplicate(Temple Guard#qdms01)	Temple Guard#qdms02	4_M_RASWORD,5,5
-1@nyr,184,141,5	duplicate(Temple Guard#qdms01)	Temple Guard#qdms03	4_M_RASWORD,5,5
-1@nyr,139,134,5	duplicate(Temple Guard#qdms01)	Temple Guard#qdms21	4_M_RASWORD,5,5
-1@nyr,102,109,5	duplicate(Temple Guard#qdms01)	Temple Guard#qdms22	4_M_RASWORD,5,5
-1@nyr,137,78,5	duplicate(Temple Guard#qdms01)	Temple Guard#qdms23	4_M_RASWORD,5,5
-1@nyr,74,32,5	duplicate(Temple Guard#qdms01)	Temple Guard#qdms31	4_M_RASWORD,5,5
-1@nyr,54,61,5	duplicate(Temple Guard#qdms01)	Temple Guard#qdms32	4_M_RASWORD,5,5
-1@nyr,65,108,5	duplicate(Temple Guard#qdms01)	Temple Guard#qdms33	4_M_RASWORD,5,5
-1@nyr,108,167,5	duplicate(Temple Guard#qdms01)	Temple Guard#qdms41	4_M_RASWORD,5,5
-1@nyr,107,178,5	duplicate(Temple Guard#qdms01)	Temple Guard#qdms42	4_M_RASWORD,5,5
+1@nyr,165,98,5	duplicate(Temple Guard#qdms01)	神殿守衛#qdms02::Temple Guard#qdms02	4_M_RASWORD,5,5
+1@nyr,184,141,5	duplicate(Temple Guard#qdms01)	神殿守衛#qdms03::Temple Guard#qdms03	4_M_RASWORD,5,5
+1@nyr,139,134,5	duplicate(Temple Guard#qdms01)	神殿守衛#qdms21::Temple Guard#qdms21	4_M_RASWORD,5,5
+1@nyr,102,109,5	duplicate(Temple Guard#qdms01)	神殿守衛#qdms22::Temple Guard#qdms22	4_M_RASWORD,5,5
+1@nyr,137,78,5	duplicate(Temple Guard#qdms01)	神殿守衛#qdms23::Temple Guard#qdms23	4_M_RASWORD,5,5
+1@nyr,74,32,5	duplicate(Temple Guard#qdms01)	神殿守衛#qdms31::Temple Guard#qdms31	4_M_RASWORD,5,5
+1@nyr,54,61,5	duplicate(Temple Guard#qdms01)	神殿守衛#qdms32::Temple Guard#qdms32	4_M_RASWORD,5,5
+1@nyr,65,108,5	duplicate(Temple Guard#qdms01)	神殿守衛#qdms33::Temple Guard#qdms33	4_M_RASWORD,5,5
+1@nyr,108,167,5	duplicate(Temple Guard#qdms01)	神殿守衛#qdms41::Temple Guard#qdms41	4_M_RASWORD,5,5
+1@nyr,107,178,5	duplicate(Temple Guard#qdms01)	神殿守衛#qdms42::Temple Guard#qdms42	4_M_RASWORD,5,5
 
 // Final map 1
-1@nyr,119,175,3	script	Temple Guard#qdms102	4_M_RASWORD,2,2,{
+1@nyr,119,175,3	script	神殿守衛#qdms102::Temple Guard#qdms102	4_M_RASWORD,2,2,{
 	if (is_party_leader() == false)
 		end;
 	if ('nyr_daily_step != 12)
 		end;
-	mes "[Temple Guard Captain]";
-	mes "Well done, everyone! The cleansing will continue daily! Let's disband for today and take a rest!";
-	npctalk "Yes, sir!!", instance_npcname("Temple Guard#qdms112");
-	npctalk "Yes, sir!!", instance_npcname("Temple Guard#qdms122");
-	npctalk "Yes, sir!!", instance_npcname("Temple Guard#qdms132");
-	npctalk "Yes, sir!!", instance_npcname("Temple Guard#qdms142");
-	npctalk "Yes, sir!!", instance_npcname("Temple Guard#qdms152");
-	npctalk "Yes, sir!!", instance_npcname("Temple Guard#qdms162");
-	npctalk "Yes, sir!!", instance_npcname("Temple Guard#qdms172");
-	npctalk "Yes, sir!!", instance_npcname("Temple Guard#qdms182");
+	mes "[神殿守衛隊長]";
+	mes "大家辛苦了！淨化行動將每日持續！今天先解散休息吧！";
+	npctalk "是，長官！！", instance_npcname("神殿守衛");
+	npctalk "是，長官！！", instance_npcname("神殿守衛");
+	npctalk "是，長官！！", instance_npcname("神殿守衛");
+	npctalk "是，長官！！", instance_npcname("神殿守衛");
+	npctalk "是，長官！！", instance_npcname("神殿守衛");
+	npctalk "是，長官！！", instance_npcname("神殿守衛");
+	npctalk "是，長官！！", instance_npcname("神殿守衛");
+	npctalk "是，長官！！", instance_npcname("神殿守衛");
 	next;
-	mes "[Temple Guard Captain]";
-	mes "Adventurer, thank you for your assistance.";
+	mes "[神殿守衛隊長]";
+	mes "冒險者，感謝你的協助。";
 	next;
-	mes "[Temple Guard Captain]";
-	mes "I've heard that you'll also be joining us for a separate cleansing operation inside the temple. We'll be counting on you!";
+	mes "[神殿守衛隊長]";
+	mes "聽說你也會參加神殿內部另一項淨化行動。我們就指望你了！";
 	close2;
 	if ('nyr_daily_step != 12)
 		end;
@@ -2729,14 +2729,14 @@ OnTouch:
 	enablenpc instance_npcname("#2ar101sw");
 	end;
 }
-1@nyr,116,171,7	duplicate(dummy_npc)	Temple Guard#qdms112	4_M_RASWORD
-1@nyr,118,171,7	duplicate(dummy_npc)	Temple Guard#qdms122	4_M_RASWORD
-1@nyr,120,171,1	duplicate(dummy_npc)	Temple Guard#qdms132	4_M_RASWORD
-1@nyr,122,171,1	duplicate(dummy_npc)	Temple Guard#qdms142	4_M_RASWORD
-1@nyr,116,173,7	duplicate(dummy_npc)	Temple Guard#qdms152	4_M_RASWORD
-1@nyr,118,173,7	duplicate(dummy_npc)	Temple Guard#qdms162	4_M_RASWORD
-1@nyr,120,173,1	duplicate(dummy_npc)	Temple Guard#qdms172	4_M_RASWORD
-1@nyr,122,173,1	duplicate(dummy_npc)	Temple Guard#qdms182	4_M_RASWORD
+1@nyr,116,171,7	duplicate(dummy_npc)	神殿守衛#qdms112::Temple Guard#qdms112	4_M_RASWORD
+1@nyr,118,171,7	duplicate(dummy_npc)	神殿守衛#qdms122::Temple Guard#qdms122	4_M_RASWORD
+1@nyr,120,171,1	duplicate(dummy_npc)	神殿守衛#qdms132::Temple Guard#qdms132	4_M_RASWORD
+1@nyr,122,171,1	duplicate(dummy_npc)	神殿守衛#qdms142::Temple Guard#qdms142	4_M_RASWORD
+1@nyr,116,173,7	duplicate(dummy_npc)	神殿守衛#qdms152::Temple Guard#qdms152	4_M_RASWORD
+1@nyr,118,173,7	duplicate(dummy_npc)	神殿守衛#qdms162::Temple Guard#qdms162	4_M_RASWORD
+1@nyr,120,173,1	duplicate(dummy_npc)	神殿守衛#qdms172::Temple Guard#qdms172	4_M_RASWORD
+1@nyr,122,173,1	duplicate(dummy_npc)	神殿守衛#qdms182::Temple Guard#qdms182	4_M_RASWORD
 
 // nowalk delimiter npcs
 1@nyr,89,24,5	duplicate(dummy_npc)	#cell01	2_MONEMUS
@@ -2772,45 +2772,45 @@ OnTouch:
 	'nyr_daily_step = 14;
 	for ( .@i = 0; .@i < 7; ++.@i )
 		enablenpc instance_npcname("Temple Guard#2dms1" + .@i + "1");
-	npctalk "Inspect all the facilities and ensure security. Anyone attempting to breach and gain power must be dealt with!", instance_npcname("Temple Guard#2dms101");
+	npctalk "檢查所有設施，確保安全。任何企圖突破防線、奪取權力的人都必須加以處置！", instance_npcname("神殿守衛");
 	sleep 2000;
-	npctalk "是的！", instance_npcname("Temple Guard#2dms111");
-	npctalk "是的！", instance_npcname("Temple Guard#2dms121");
-	npctalk "是的！", instance_npcname("Temple Guard#2dms131");
-	npctalk "是的！", instance_npcname("Temple Guard#2dms141");
-	npctalk "是的！", instance_npcname("Temple Guard#2dms151");
-	npctalk "是的！", instance_npcname("Temple Guard#2dms161");
+	npctalk "是的！", instance_npcname("神殿守衛");
+	npctalk "是的！", instance_npcname("神殿守衛");
+	npctalk "是的！", instance_npcname("神殿守衛");
+	npctalk "是的！", instance_npcname("神殿守衛");
+	npctalk "是的！", instance_npcname("神殿守衛");
+	npctalk "是的！", instance_npcname("神殿守衛");
 	sleep 2000;
-	npctalk "To your respective positions!", instance_npcname("Temple Guard#2dms101");
+	npctalk "各就各位！", instance_npcname("神殿守衛");
 	sleep 2000;
 	for ( .@i = 1; .@i < 7; ++.@i )
 		disablenpc instance_npcname("Temple Guard#2dms1" + .@i + "1");
-	npctalk "Adventurer, thank you for participating in the cleansing operation!", instance_npcname("Temple Guard#2dms101");
+	npctalk "冒險者，感謝你參與淨化行動！", instance_npcname("神殿守衛");
 	sleep 2000;
-	npctalk "In addition to dealing with intruders, I have another task for you.", instance_npcname("Temple Guard#2dms101");
+	npctalk "除了處理闖入者，我還有另一項任務要交給你。", instance_npcname("神殿守衛");
 	sleep 2000;
-	npctalk "Temporarily, I'll grant administrator privileges to the leader of the party. Please reset the security code for the changing security facilities daily.", instance_npcname("Temple Guard#2dms101");
+	npctalk "暫時會把管理員權限授予隊長。請每天重設安全裝置的安全碼。", instance_npcname("神殿守衛");
 	sleep 2000;
 	'code = rand(1000,9999);
-	npctalk "Today's security code is " + 'code + ". Make sure the storage and warehouse are empty before setting it!", instance_npcname("Temple Guard#2dms101");
+	npctalk "今日安全碼為 " + 'code + ". 設定前請確保儲藏室與倉庫是空的！", instance_npcname("神殿守衛");
 	sleep 2000;
-	npctalk "Now, let's begin the mission!", instance_npcname("Temple Guard#2dms101");
+	npctalk "那麼，開始任務吧！", instance_npcname("神殿守衛");
 	enablenpc instance_npcname("Temple Guard#2dms10");
 	end;
 }
 
-2@nyr,35,187,7	script	Temple Guard#2dms101	4_M_RASWORD,{
+2@nyr,35,187,7	script	神殿守衛#2dms101::Temple Guard#2dms101	4_M_RASWORD,{
 	if ('code > 0)
-		npctalk "Have you forgotten the security code? Today's security code is " + 'code + "! Hurry! I'll join you shortly!", instance_npcname("Temple Guard#2dms101");
+		npctalk "你忘了安全碼嗎？今日安全碼為 " + 'code + "！快點！我馬上就過去！", instance_npcname("神殿守衛");
 	end;
 }
 
-2@nyr,37,191,3	duplicate(dummy_npc)	Temple Guard#2dms111	4_M_RASWORD
-2@nyr,35,191,3	duplicate(dummy_npc)	Temple Guard#2dms121	4_M_RASWORD
-2@nyr,33,191,3	duplicate(dummy_npc)	Temple Guard#2dms131	4_M_RASWORD
-2@nyr,33,189,5	duplicate(dummy_npc)	Temple Guard#2dms141	4_M_RASWORD
-2@nyr,35,189,5	duplicate(dummy_npc)	Temple Guard#2dms151	4_M_RASWORD
-2@nyr,37,189,5	duplicate(dummy_npc)	Temple Guard#2dms161	4_M_RASWORD
+2@nyr,37,191,3	duplicate(dummy_npc)	神殿守衛#2dms111::Temple Guard#2dms111	4_M_RASWORD
+2@nyr,35,191,3	duplicate(dummy_npc)	神殿守衛#2dms121::Temple Guard#2dms121	4_M_RASWORD
+2@nyr,33,191,3	duplicate(dummy_npc)	神殿守衛#2dms131::Temple Guard#2dms131	4_M_RASWORD
+2@nyr,33,189,5	duplicate(dummy_npc)	神殿守衛#2dms141::Temple Guard#2dms141	4_M_RASWORD
+2@nyr,35,189,5	duplicate(dummy_npc)	神殿守衛#2dms151::Temple Guard#2dms151	4_M_RASWORD
+2@nyr,37,189,5	duplicate(dummy_npc)	神殿守衛#2dms161::Temple Guard#2dms161	4_M_RASWORD
 
 
 // mobs spawn npcs
@@ -2907,7 +2907,7 @@ OnFinal:
 		end;
 	if (mobcount('map_2nyr$, instance_npcname("#nyr_puri_mob_2") + "::OnFinal") > 0)
 		end;
-	mapannounce 'map_2nyr$, "Vault Security Code Reset in Progress!", bc_map, 0xFFCC;
+	mapannounce 'map_2nyr$, "金庫安全碼重設中！", bc_map, 0xFFCC;
 	disablenpc instance_npcname("#2mstep07");
 	disablenpc instance_npcname("#2mstep08");
 	// enablenpc instance_npcname("#2mstep09");
@@ -2915,7 +2915,7 @@ OnFinal:
 	end;
 }
 
-2@nyr,35,171,5	script	Temple Guard#2dms10	EP18_MD_HEARTHUNTER_R,5,5,{
+2@nyr,35,171,5	script	神殿守衛#2dms10::Temple Guard#2dms10	EP18_MD_HEARTHUNTER_R,5,5,{
 	end;
 OnTouch:
 	if (is_party_leader() == false)
@@ -2924,87 +2924,87 @@ OnTouch:
 	donpcevent instance_npcname("#nyr_puri_mob_2") + "::OnStart" + .@string$;
 	end;
 }
-2@nyr,36,146,5	duplicate(Temple Guard#2dms10)	Heart Hunter#2dms11	EP18_MD_HEARTHUNTER_R,5,5
-2@nyr,64,131,5	duplicate(Temple Guard#2dms10)	Heart Hunter#2dms12	EP18_MD_HEARTHUNTER_R,5,5
-2@nyr,42,104,5	duplicate(Temple Guard#2dms10)	Heart Hunter#2dms13	EP18_MD_HEARTHUNTER_R,5,5
+2@nyr,36,146,5	duplicate(Temple Guard#2dms10)	邪心獵人#2dms11::Heart Hunter#2dms11	EP18_MD_HEARTHUNTER_R,5,5
+2@nyr,64,131,5	duplicate(Temple Guard#2dms10)	邪心獵人#2dms12::Heart Hunter#2dms12	EP18_MD_HEARTHUNTER_R,5,5
+2@nyr,42,104,5	duplicate(Temple Guard#2dms10)	邪心獵人#2dms13::Heart Hunter#2dms13	EP18_MD_HEARTHUNTER_R,5,5
 
-2@nyr,69,103,5	duplicate(Temple Guard#2dms10)	Heart Hunter#2dms20	EP18_MD_HEARTHUNTER_R,5,5
-2@nyr,106,78,5	duplicate(Temple Guard#2dms10)	Heart Hunter#2dms21	EP18_MD_HEARTHUNTER_R,5,5
-2@nyr,94,62,5	duplicate(Temple Guard#2dms10)	Heart Hunter#2dms22	EP18_MD_HEARTHUNTER_R,5,5
+2@nyr,69,103,5	duplicate(Temple Guard#2dms10)	邪心獵人#2dms20::Heart Hunter#2dms20	EP18_MD_HEARTHUNTER_R,5,5
+2@nyr,106,78,5	duplicate(Temple Guard#2dms10)	邪心獵人#2dms21::Heart Hunter#2dms21	EP18_MD_HEARTHUNTER_R,5,5
+2@nyr,94,62,5	duplicate(Temple Guard#2dms10)	邪心獵人#2dms22::Heart Hunter#2dms22	EP18_MD_HEARTHUNTER_R,5,5
 
-2@nyr,129,75,5	duplicate(Temple Guard#2dms10)	Heart Hunter#2dms30	EP18_MD_HEARTHUNTER_R,5,5
-2@nyr,158,104,5	duplicate(Temple Guard#2dms10)	Heart Hunter#2dms31	EP18_MD_HEARTHUNTER_R,5,5
-2@nyr,195,99,5	duplicate(Temple Guard#2dms10)	Heart Hunter#2dms32	EP18_MD_HEARTHUNTER_R,5,5
+2@nyr,129,75,5	duplicate(Temple Guard#2dms10)	邪心獵人#2dms30::Heart Hunter#2dms30	EP18_MD_HEARTHUNTER_R,5,5
+2@nyr,158,104,5	duplicate(Temple Guard#2dms10)	邪心獵人#2dms31::Heart Hunter#2dms31	EP18_MD_HEARTHUNTER_R,5,5
+2@nyr,195,99,5	duplicate(Temple Guard#2dms10)	邪心獵人#2dms32::Heart Hunter#2dms32	EP18_MD_HEARTHUNTER_R,5,5
 
-2@nyr,174,109,5	duplicate(Temple Guard#2dms10)	Heart Hunter#2dms40	EP18_MD_HEARTHUNTER_R,5,5
+2@nyr,174,109,5	duplicate(Temple Guard#2dms10)	邪心獵人#2dms40::Heart Hunter#2dms40	EP18_MD_HEARTHUNTER_R,5,5
 
 	
 // final battle
-2@nyr,115,177,3	script	Heart Hunter#2dms41	EP18_MD_HEARTHUNTER_R,5,5,{
+2@nyr,115,177,3	script	邪心獵人#2dms41::Heart Hunter#2dms41	EP18_MD_HEARTHUNTER_R,5,5,{
 	end;
 OnTouch:
-	npctalk "Ah, it seems like something is coming~", instance_npcname("Heart Hunter#2dms41");
+	npctalk "啊，好像有什麼東西要來了~", instance_npcname("邪心獵人");
 	end;
 }
 
-2@nyr,126,174,5	script	Heart Hunter#2dms42	EP18_MD_HEARTHUNTER_R,5,5,{
+2@nyr,126,174,5	script	邪心獵人#2dms42::Heart Hunter#2dms42	EP18_MD_HEARTHUNTER_R,5,5,{
 	end;
 OnTouch:
-	npctalk "Thrilling!!! Incredible!!!", instance_npcname("Heart Hunter#2dms42");
+	npctalk "刺激！！！太厲害了！！！", instance_npcname("邪心獵人");
 	end;
 }
 
-2@nyr,117,207,1	script	Heart Hunter#2dms43	EP18_MD_HEARTHUNTER_R,2,2,{
+2@nyr,117,207,1	script	邪心獵人#2dms43::Heart Hunter#2dms43	EP18_MD_HEARTHUNTER_R,2,2,{
 	end;
 OnTouch:
-	npctalk "I recall seeing this last time, but how did we deal with it again...", instance_npcname("Heart Hunter#2dms43");
+	npctalk "我記得上次看過這個，但我們當時是怎麼處理的來著……", instance_npcname("邪心獵人");
 	end;
 }
 
-2@nyr,115,206,7	script	Heart Hunter#2dms44	EP18_MD_HEARTHUNTER_R,2,2,{
+2@nyr,115,206,7	script	邪心獵人#2dms44::Heart Hunter#2dms44	EP18_MD_HEARTHUNTER_R,2,2,{
 	end;
 OnTouch:
-	npctalk "That's not how you do it.", instance_npcname("Heart Hunter#2dms44");
+	npctalk "不是這樣做的。", instance_npcname("邪心獵人");
 	end;
 }
 
-2@nyr,119,206,1	script	Heart Hunter#2dms45	EP18_MD_HEARTHUNTER_R,2,2,{
+2@nyr,119,206,1	script	邪心獵人#2dms45::Heart Hunter#2dms45	EP18_MD_HEARTHUNTER_R,2,2,{
 	end;
 OnTouch:
-	npctalk "If you can't do it, step aside. I'll handle it.", instance_npcname("Heart Hunter#2dms45");
+	npctalk "做不來就讓開，我來處理。", instance_npcname("邪心獵人");
 	end;
 }
 
-2@nyr,129,199,5	script	Heart Hunter#2dms46	EP18_MD_HEARTHUNTER_R,2,2,{
+2@nyr,129,199,5	script	邪心獵人#2dms46::Heart Hunter#2dms46	EP18_MD_HEARTHUNTER_R,2,2,{
 	end;
 OnTouch:
-	npctalk "Oh, I'm afraid of heights.", instance_npcname("Heart Hunter#2dms46");
+	npctalk "哦，我有懼高症。", instance_npcname("邪心獵人");
 	end;
 }
 
-2@nyr,113,194,3	script	Heart Hunter#2dms47	EP18_MD_HEARTHUNTER_R,2,2,{
+2@nyr,113,194,3	script	邪心獵人#2dms47::Heart Hunter#2dms47	EP18_MD_HEARTHUNTER_R,2,2,{
 	end;
 OnTouch:
-	npctalk "There's something here!", instance_npcname("Heart Hunter#2dms47");
+	npctalk "這裡有東西！", instance_npcname("邪心獵人");
 	end;
 }
 
-2@nyr,111,209,5	script	Heart Hunter#2dms48	EP18_MD_HEARTHUNTER_R,2,2,{
+2@nyr,111,209,5	script	邪心獵人#2dms48::Heart Hunter#2dms48	EP18_MD_HEARTHUNTER_R,2,2,{
 	end;
 OnTouch:
-	npctalk "Hey! This is exhilarating~", instance_npcname("Heart Hunter#2dms48");
+	npctalk "嘿！這種感覺真刺激~", instance_npcname("邪心獵人");
 	end;
 }
 
-2@nyr,112,206,5	script	Heart Hunter#2dms49	EP18_MD_HEARTHUNTER_R,2,2,{
+2@nyr,112,206,5	script	邪心獵人#2dms49::Heart Hunter#2dms49	EP18_MD_HEARTHUNTER_R,2,2,{
 	end;
 OnTouch:
-	npctalk "When will this be over...", instance_npcname("Heart Hunter#2dms49");
+	npctalk "這到底什麼時候才結束……", instance_npcname("邪心獵人");
 	end;
 }
 
-2@nyr,115,201,5	script	Heart Hunter#2dms50	EP17_1_BELLARE1,{
-	npctalk "What is it? Probably just your mood.", instance_npcname("Heart Hunter#2dms50");
+2@nyr,115,201,5	script	邪心獵人#2dms50::Heart Hunter#2dms50	EP17_1_BELLARE1,{
+	npctalk "怎麼了？大概只是你的心情吧。", instance_npcname("邪心獵人");
 	end;
 }
 
@@ -3021,85 +3021,85 @@ OnTouch:
 	enablenpc instance_npcname("Heart Hunter#2dms50");
 	emotion ET_QUESTION, getnpcid(0,instance_npcname("Heart Hunter#2dms50"));
 	sleep 500;
-	npctalk "What's this? An uninvited guest?", instance_npcname("Heart Hunter#2dms50");
+	npctalk "這是什麼？不速之客？", instance_npcname("邪心獵人");
 	sleep 2000;
-	npctalk "What were you all doing that you didn't notice someone entering? Snap out of it!", instance_npcname("Heart Hunter#2dms50");
+	npctalk "你們在做什麼，連有人進來都沒發現？清醒一點！", instance_npcname("邪心獵人");
 	sleep 2000;
-	npctalk "Ah~ I'm intoxicated~ Intoxicated by the magic of the heart~", instance_npcname("Heart Hunter#2dms48");
+	npctalk "啊~ 我醉了~ 被心之魔力迷醉了~", instance_npcname("邪心獵人");
 	sleep 2000;
-	npctalk "Isn't this the only magic permitted by the kingdom?", instance_npcname("Heart Hunter#2dms48");
-	npctalk "What are you talking about? This isn't permitted by the kingdom either. Have you forgotten?", instance_npcname("Heart Hunter#2dms44");
+	npctalk "這不是王國唯一允許的魔法嗎？", instance_npcname("邪心獵人");
+	npctalk "你在說什麼？這也不是王國允許的。你忘了嗎？", instance_npcname("邪心獵人");
 	sleep 2000;
-	npctalk "Oh, right. We were trespassing illegally, weren't we?", instance_npcname("Heart Hunter#2dms49");
+	npctalk "哦，對了。我們是非法闖入的，不是嗎？", instance_npcname("邪心獵人");
 	sleep 200;
-	npctalk "Perhaps the thrill comes from it being illegal?", instance_npcname("Heart Hunter#2dms48");
-	npctalk "Hey! This is strange. No matter how I manipulate it, the magic of the heart isn't emitting.", instance_npcname("Heart Hunter#2dms43");
-	npctalk "Then step aside! Let me try!!", instance_npcname("Heart Hunter#2dms45");
+	npctalk "或許刺激感正是來自於它的非法性？", instance_npcname("邪心獵人");
+	npctalk "嘿！這很奇怪。不管我怎麼操控，心之魔力都沒有散發出來。", instance_npcname("邪心獵人");
+	npctalk "那就讓開！讓我來試試！！", instance_npcname("邪心獵人");
 	sleep 2000;
-	npctalk "What? So, what's this exhilaration flowing through my body right now?", instance_npcname("Heart Hunter#2dms48");
+	npctalk "什麼？那麼，現在流遍我全身的這股刺激感是什麼？", instance_npcname("邪心獵人");
 	sleep 2000;
-	npctalk "Hmm, my mood feels exhilarating for once.", instance_npcname("Heart Hunter#2dms48");
-	npctalk "Examine it carefully. It could be tampered with.", instance_npcname("Heart Hunter#2dms49");
-	npctalk "You claimed to have seen the manipulation technique before? And you want us to believe only you?", instance_npcname("Heart Hunter#2dms50");
+	npctalk "嗯，我的心情難得這麼興奮。", instance_npcname("邪心獵人");
+	npctalk "仔細檢查。可能被動過手腳。", instance_npcname("邪心獵人");
+	npctalk "你說你以前見過這種操控手法？你還想讓我們只相信你一個人？", instance_npcname("邪心獵人");
 	sleep 1000;
-	npctalk "That... wait a moment, it's showing a mismatch in security code?", instance_npcname("Heart Hunter#2dms43");
+	npctalk "那個……等等，它顯示安全碼不符？", instance_npcname("邪心獵人");
 	sleep 2000;
-	npctalk "Security code mismatch? Hmm... I think it might be related to the adventurer here? Right?", instance_npcname("Heart Hunter#2dms50");
+	npctalk "安全碼不符？嗯……我覺得可能跟這位冒險者有關？對吧？", instance_npcname("邪心獵人");
 	sleep 2000;
-	npctalk "Could you input the changed security code? Then we'll all be truly happy.", instance_npcname("Heart Hunter#2dms50");
+	npctalk "能請你輸入更改後的安全碼嗎？這樣我們大家才真正會開心。", instance_npcname("邪心獵人");
 	sleep 2000;
-	npctalk "Step aside. Sometimes machines need to be hit to listen!", instance_npcname("Heart Hunter#2dms45");
+	npctalk "讓開。有時候機器得拍打一下才聽得進去！", instance_npcname("邪心獵人");
 	specialeffect EF_HITDARK, AREA, instance_npcname("Heart Hunter#2dms45");
 	specialeffect EF_MAGICCRASHER, AREA, instance_npcname("Heart Hunter#2dms45");
-	npctalk "Hey! Who's handling the machine like that?", instance_npcname("Heart Hunter#2dms43");
+	npctalk "嘿！是誰這樣搬弄機器的？", instance_npcname("邪心獵人");
 	sleep 2000;
 	specialeffect EF_LIGHTNINGLOADER, AREA, instance_npcname("Heart Hunter#2dms48");
 	specialeffect EF_MAGICALATTHIT, AREA, instance_npcname("Heart Hunter#2dms48");
-	npctalk "Oops!!! Suddenly it got more exhilarating!! Is this also because of my mood?", instance_npcname("Heart Hunter#2dms48");
-	npctalk "Looks like it's short-circuiting! It's emitting light from it!", instance_npcname("Heart Hunter#2dms44");
+	npctalk "哎呀！！！突然變得更刺激了！！這也是因為我的心情嗎？", instance_npcname("邪心獵人");
+	npctalk "看起來短路了！它正在發光！", instance_npcname("邪心獵人");
 	sleep 2000;
 	specialeffect EF_UNDEADBODY, AREA, instance_npcname("Heart Hunter#2dms48");
 	specialeffect EF_NPC_STOP, AREA, instance_npcname("Heart Hunter#2dms48");
-	npctalk "Aaahhh!!!", instance_npcname("Heart Hunter#2dms48");
-	npctalk "Hey!! This one's amazing!!!", instance_npcname("Heart Hunter#2dms44");
-	npctalk "Why only that...? Something's odd here?", instance_npcname("Heart Hunter#2dms43");
+	npctalk "啊啊啊！！！", instance_npcname("邪心獵人");
+	npctalk "嘿！！這個太厲害了！！！", instance_npcname("邪心獵人");
+	npctalk "為什麼只有那個……？這裡有點奇怪？", instance_npcname("邪心獵人");
 	sleep 2000;
 	specialeffect EF_NPC_STOP, AREA, instance_npcname("Heart Hunter#2dms43");
 	specialeffect EF_NPC_STOP, AREA, instance_npcname("Heart Hunter#2dms44");
 	specialeffect EF_NPC_STOP, AREA, instance_npcname("Heart Hunter#2dms45");
-	npctalk "欸……？", instance_npcname("Heart Hunter#2dms43");
-	npctalk "What's this?", instance_npcname("Heart Hunter#2dms44");
-	npctalk "As expected, you have to smack a malfunctioning machine!", instance_npcname("Heart Hunter#2dms45");
+	npctalk "欸……？", instance_npcname("邪心獵人");
+	npctalk "這是什麼？", instance_npcname("邪心獵人");
+	npctalk "果然，故障的機器就得拍一拍！", instance_npcname("邪心獵人");
 	sleep 2000;
 	specialeffect EF_UNDEADBODY, AREA, instance_npcname("Heart Hunter#2dms49");
 	specialeffect EF_NPC_STOP, AREA, instance_npcname("Heart Hunter#2dms49");
-	npctalk "Am I also getting shocked? Is there something wrong with my body too?", instance_npcname("Heart Hunter#2dms49");
+	npctalk "我也被電到了嗎？我的身體也出問題了嗎？", instance_npcname("邪心獵人");
 	specialeffect EF_UNDEADBODY, AREA, instance_npcname("Heart Hunter#2dms43");
 	specialeffect EF_UNDEADBODY, AREA, instance_npcname("Heart Hunter#2dms44");
 	specialeffect EF_UNDEADBODY, AREA, instance_npcname("Heart Hunter#2dms45");
 	sleep 2000;
-	npctalk "That's not it, I succeeded. Look, we're all resonating with the heart, aren't we?", instance_npcname("Heart Hunter#2dms45");
+	npctalk "不是這樣，我成功了。你看，我們都與心共鳴了，不是嗎？", instance_npcname("邪心獵人");
 	sleep 200;
-	npctalk "啊……", instance_npcname("Heart Hunter#2dms50");
+	npctalk "啊……", instance_npcname("邪心獵人");
 	sleep 2000;
 	specialeffect EF_NPC_STOP, AREA, instance_npcname("Heart Hunter#2dms41");
 	specialeffect EF_NPC_STOP, AREA, instance_npcname("Heart Hunter#2dms42");
 	specialeffect EF_NPC_STOP, AREA, instance_npcname("Heart Hunter#2dms46");
 	specialeffect EF_NPC_STOP, AREA, instance_npcname("Heart Hunter#2dms47");
 	specialeffect EF_NPC_STOP, AREA, instance_npcname("Heart Hunter#2dms50");
-	npctalk "Whatever. Although we couldn't extract the magic of the heart, our resonance is working well. Shall we test this power then?", instance_npcname("Heart Hunter#2dms50");
-	npctalk "Luckily, there's an adventurer here. Perfect timing.", instance_npcname("Heart Hunter#2dms49");
-	npctalk "Good. It's fortunate. Otherwise, we might have quarreled among ourselves, right?", instance_npcname("Heart Hunter#2dms45");
-	npctalk "Ah! I saw something like that in Prontera. Everyone was hitting eggs there, right?", instance_npcname("Heart Hunter#2dms44");
+	npctalk "算了。雖然沒能取出心之魔力，但我們的共鳴運作得很好。那要不要來測試一下這股力量？", instance_npcname("邪心獵人");
+	npctalk "幸好這裡有位冒險者。時機正好。", instance_npcname("邪心獵人");
+	npctalk "很好，真是幸運。不然我們可能會自己人之間吵起來，對吧？", instance_npcname("邪心獵人");
+	npctalk "啊！我在普隆德拉見過類似的情況。那裡的人都在敲蛋，對吧？", instance_npcname("邪心獵人");
 	sleep 2000;
 	specialeffect EF_UNDEADBODY, AREA, instance_npcname("Heart Hunter#2dms41");
 	specialeffect EF_UNDEADBODY, AREA, instance_npcname("Heart Hunter#2dms42");
 	specialeffect EF_UNDEADBODY, AREA, instance_npcname("Heart Hunter#2dms46");
 	specialeffect EF_UNDEADBODY, AREA, instance_npcname("Heart Hunter#2dms47");
 	specialeffect EF_UNDEADBODY, AREA, instance_npcname("Heart Hunter#2dms50");
-	npctalk "There are no personal feelings involved, but if we let this pass as it is, we'll be in trouble.", instance_npcname("Heart Hunter#2dms50");
+	npctalk "這不是私人恩怨，但如果就這樣放過，我們會有麻煩。", instance_npcname("邪心獵人");
 	sleep 2000;
-	npctalk "It would've been better if you just pretended not to know and passed by. Oh well, goodbye.", instance_npcname("Heart Hunter#2dms50");
+	npctalk "你要是假裝不知道就路過，那就好了。唉，再見。", instance_npcname("邪心獵人");
 
 	for ( .@i = 41; .@i < 51; ++.@i ) {
 		hideonnpc instance_npcname("Heart Hunter#2dms" + .@i );
@@ -3218,7 +3218,7 @@ OnTouch:
 
 
 // Code
-2@nyr,51,57,5	script	Security Device#2dms10	4_POINT_BLUE,5,5,{
+2@nyr,51,57,5	script	安全裝置#2dms10::Security Device#2dms10	4_POINT_BLUE,5,5,{
 	if (is_party_leader() == false)
 		end;
 	switch( atoi( replacestr( strnpcinfo(2), "2dms", "" ) ) ) {
@@ -3245,11 +3245,11 @@ OnTouch:
 	}
 	if ('nyr_daily_step != .@step)
 		end;
-	mes "Awaiting security code reset. Please input the new security code.";
+	mes "等待重設安全碼。請輸入新的安全碼。";
 	next;
 	input .@num;
 	if (.@num != 'code) {
-		mes "Cancel input";
+		mes "取消輸入";
 		close;
 	}
 	mes .@mes$;
@@ -3274,27 +3274,27 @@ OnTouch:
 		break;
 	}
 	if ('nyr_daily_step <= .@step)
-		npctalk "Awaiting security code reset";
+		npctalk "等待重設安全碼";
 	else
-		npctalk "Security code reset completed.";
+		npctalk "安全碼重設完成。";
 	end;
 }
-2@nyr,115,69,5	duplicate(Security Device#2dms10)	Security Device#2dms20	4_POINT_BLUE,5,5
-2@nyr,184,100,5	duplicate(Security Device#2dms10)	Security Device#2dms30	4_POINT_BLUE,5,5
+2@nyr,115,69,5	duplicate(Security Device#2dms10)	安全裝置#2dms20::Security Device#2dms20	4_POINT_BLUE,5,5
+2@nyr,184,100,5	duplicate(Security Device#2dms10)	安全裝置#2dms30::Security Device#2dms30	4_POINT_BLUE,5,5
 
-2@nyr,124,138,5	script	Security Device#2dms40	4_POINT_BLUE,5,5,{
+2@nyr,124,138,5	script	安全裝置#2dms40::Security Device#2dms40	4_POINT_BLUE,5,5,{
 	if (is_party_leader() == false)
 		end;
 	if ('nyr_daily_step != 33)
 		end;
-	mes "Security code reset in progress. Please enter the new security code.";
+	mes "安全碼重設中。請輸入新的安全碼。";
 	next;
 	input .@num;
 	if (.@num != 'code) {
-		mes "Cancel input";
+		mes "取消輸入";
 		close;
 	}
-	mes "Vault security code has been reset.";
+	mes "金庫安全碼已重設。";
 	if ('nyr_daily_step == 33) {
 		'nyr_daily_step = 34;
 		enablenpc instance_npcname("#2mstep10");
@@ -3307,22 +3307,22 @@ OnTouch:
 		enablenpc instance_npcname("Temple Guard#2dms251");
 		enablenpc instance_npcname("Temple Guard#2dms261");
 		enablenpc instance_npcname("#msnavi01");
-		mapannounce 'map_2nyr$, "Do you think we'll give up just like that? We've already tasted it. Just watch!", bc_map, 0xFFCC;
-		mapannounce 'map_2nyr$, "Do you think the crowd will give up because of the delay? The taste of baboons dried up? Leave it!", bc_map, 0xFFCC;
+		mapannounce 'map_2nyr$, "你以為我們會就這樣放棄？我們已經嚐過甜頭了。走著瞧！", bc_map, 0xFFCC;
+		mapannounce 'map_2nyr$, "你以為群眾會因為拖延而放棄？狒狒的滋味都乾了？別管它！", bc_map, 0xFFCC;
 		sleep2 1000;
-		mapannounce 'map_2nyr$, "All sectors cleared! Gather at the exit!", bc_map, 0xFFCC;
+		mapannounce 'map_2nyr$, "所有區域已清空！在出口集合！", bc_map, 0xFFCC;
 	}
 	navigateto("2@nyr",151,131);
 	close;
 OnTouch:
 	if ('nyr_daily_step <= 33)
-		npctalk "Vault Security Code Reset in Progress";
+		npctalk "金庫安全碼重設中";
 	else
-		npctalk "Vault security code has been reset.";
+		npctalk "金庫安全碼已重設。";
 	end;
 }
 
-2@nyr,174,135,5	script	Temple Guard#2dms201	4_M_RASWORD,5,5,{
+2@nyr,174,135,5	script	神殿守衛#2dms201::Temple Guard#2dms201	4_M_RASWORD,5,5,{
 	end;
 OnTouch:
 	if (is_party_leader() == false)
@@ -3330,28 +3330,28 @@ OnTouch:
 	if ('nyr_daily_step != 34)
 		end;
 	'nyr_daily_step = 35;
-	npctalk "Thank you all for your hard work!", instance_npcname("Temple Guard#2dms201");
+	npctalk "大家辛苦了！", instance_npcname("神殿守衛");
 	sleep 2000;
-	npctalk "We will need to cleanse the temple daily for a while!", instance_npcname("Temple Guard#2dms201");
+	npctalk "我們接下來一段時間都要每日淨化神殿！", instance_npcname("神殿守衛");
 	sleep 2000;
-	npctalk "Four!!", instance_npcname("Temple Guard#2dms211");
-	npctalk "Four!!", instance_npcname("Temple Guard#2dms221");
-	npctalk "Four!!", instance_npcname("Temple Guard#2dms231");
-	npctalk "Four!!", instance_npcname("Temple Guard#2dms241");
-	npctalk "Four!!", instance_npcname("Temple Guard#2dms251");
-	npctalk "Four!!", instance_npcname("Temple Guard#2dms261");
-	npctalk "Everyone, you may now disperse!", instance_npcname("Temple Guard#2dms201");
+	npctalk "四！！", instance_npcname("神殿守衛");
+	npctalk "四！！", instance_npcname("神殿守衛");
+	npctalk "四！！", instance_npcname("神殿守衛");
+	npctalk "四！！", instance_npcname("神殿守衛");
+	npctalk "四！！", instance_npcname("神殿守衛");
+	npctalk "四！！", instance_npcname("神殿守衛");
+	npctalk "各位，現在可以解散了！", instance_npcname("神殿守衛");
 	sleep 2000;
-	npctalk "Adventurers, thank you for your hard work as well! Until we meet again!", instance_npcname("Temple Guard#2dms201");
+	npctalk "冒險者們，也辛苦你們了！後會有期！", instance_npcname("神殿守衛");
 	end;
 }
 
-2@nyr,177,134,1	duplicate(dummy_npc)	Temple Guard#2dms211	4_M_RASWORD,3,0
-2@nyr,176,133,1	duplicate(dummy_npc)	Temple Guard#2dms221	4_M_RASWORD
-2@nyr,175,132,1	duplicate(dummy_npc)	Temple Guard#2dms231	4_M_RASWORD
-2@nyr,178,133,1	duplicate(dummy_npc)	Temple Guard#2dms241	4_M_RASWORD
-2@nyr,177,132,1	duplicate(dummy_npc)	Temple Guard#2dms251	4_M_RASWORD
-2@nyr,176,131,1	duplicate(dummy_npc)	Temple Guard#2dms261	4_M_RASWORD
+2@nyr,177,134,1	duplicate(dummy_npc)	神殿守衛#2dms211::Temple Guard#2dms211	4_M_RASWORD,3,0
+2@nyr,176,133,1	duplicate(dummy_npc)	神殿守衛#2dms221::Temple Guard#2dms221	4_M_RASWORD
+2@nyr,175,132,1	duplicate(dummy_npc)	神殿守衛#2dms231::Temple Guard#2dms231	4_M_RASWORD
+2@nyr,178,133,1	duplicate(dummy_npc)	神殿守衛#2dms241::Temple Guard#2dms241	4_M_RASWORD
+2@nyr,177,132,1	duplicate(dummy_npc)	神殿守衛#2dms251::Temple Guard#2dms251	4_M_RASWORD
+2@nyr,176,131,1	duplicate(dummy_npc)	神殿守衛#2dms261::Temple Guard#2dms261	4_M_RASWORD
 
 // 2@nyr,179,131,0	duplicate(dummy_npc)	#msnavi01	WARPNPC,3,3
 2@nyr,179,131,0	script	#msnavi01	HIDDEN_WARP_NPC,3,3,{

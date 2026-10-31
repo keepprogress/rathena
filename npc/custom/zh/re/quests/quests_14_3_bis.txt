@@ -9,14 +9,14 @@
 //= 1.2 Added Flaming Basin and Doom Prayers quests. [Capuche]
 //============================================================
 
-moro_vol,94,110,5	script	Guardian Nidhogg#143nyd01	4_F_NYDHOG,{
-	mes "[Nidhogg]";
+moro_vol,94,110,5	script	守護者尼德霍格#143nyd01::Guardian Nidhogg#143nyd01	4_F_NYDHOG,{
+	mes "[尼德霍格]";
 	if (ep4_3_mockill == 0) {
 		mes "Soon we'll face a decisive war.";
 		mes "I'll do my best to fulfill my duty as the Guardian.";
 		cutin "ep14_nyd04.bmp",2;
 		next;
-		mes "[Nidhogg]";
+		mes "[尼德霍格]";
 		mes "I'm preparing a gift for you to make up for my past transgressions against you.";
 		close3;
 	}
@@ -32,27 +32,27 @@ moro_vol,94,110,5	script	Guardian Nidhogg#143nyd01	4_F_NYDHOG,{
 		mes "Vengeance is meted out, but the results aren't as satisfying as I thought.";
 		cutin "ep14_nyd01.bmp",2;
 		next;
-		mes "[Nidhogg]";
+		mes "[尼德霍格]";
 		mes "May I have this Soul Shard?";
 		mes "In exchange, I'll give you and your party";
 		mes "the biggest gift I can give.";
 		cutin "ep14_nyd03.bmp",2;
 		next;
 		if (select( "Give the Soul Shard.", "拒絕。" ) == 2) {
-			mes "[Nidhogg]";
+			mes "[尼德霍格]";
 			mes "Watch out for the Demon God's negative influence on you.";
 			cutin "ep14_nyd04.bmp",2;
 			close3;
 		}
 		if ($ep143_3_expbuff == 1) {
-			mes "[Nidhogg]";
+			mes "[尼德霍格]";
 			mes "Oh, you already received Yggdrasil's blessing.";
 			mes "I'll take a rain check on this.";
 			cutin "ep14_nyd01.bmp",2;
 			close3;
 		}
 		cutin "ep14_nyd04.bmp",2;
-		mes "[Nidhogg]";
+		mes "[尼德霍格]";
 		mes "謝謝。";
 		mes "May Yggdrasil bless you.";
 		delitem 6715,1;// P_Of_Evil_Soul
@@ -70,12 +70,12 @@ moro_vol,94,110,5	script	Guardian Nidhogg#143nyd01	4_F_NYDHOG,{
 	mes "yet I feel like I'm empty on the inside.";
 	cutin "ep14_nyd02.bmp",2;
 	next;
-	mes "[Nidhogg]";
+	mes "[尼德霍格]";
 	mes "This must be";
 	mes "how people feel when they've lost their jobs overnight.";
 	cutin "ep14_nyd01.bmp",2;
 	next;
-	mes "[Nidhogg]";
+	mes "[尼德霍格]";
 	mes "At least I've saved enough money";
 	mes "to go without a job for a while.";
 	cutin "ep14_nyd04.bmp",2;
@@ -117,9 +117,9 @@ OnInterIfInitOnce:
 	end;
 }
 
-moro_vol,97,110,3	script	Loki#1432loki01	4_M_ROKI2,{
+moro_vol,97,110,3	script	洛基#1432loki01::Loki#1432loki01	4_M_ROKI2,{
 	cutin "ep14_roki01.bmp",2;
-	mes "[Loki]";
+	mes "[洛基]";
 	mes "Things haven't even started off yet;";
 	mes "they will only when his true colors are revealed.";
 	close3;
@@ -139,7 +139,7 @@ OnTimer12000:
 	end;
 }
 
-moro_vol,98,107,3	script	Magic Scholar#143avt01	4_M_FAIRYAVANT,{
+moro_vol,98,107,3	script	魔法學者#143avt01::Magic Scholar#143avt01	4_M_FAIRYAVANT,{
 	if (checkweight(1304,3) == 0) {
 		mes "You are carrying too many items to proceed with the quest.";
 		mes "Please make some room in your inventory.";
@@ -147,39 +147,39 @@ moro_vol,98,107,3	script	Magic Scholar#143avt01	4_M_FAIRYAVANT,{
 	}
 	cutin "avant01.bmp",1;
 	if (ep14_2_mylord < 33) {
-		mes "[Magic Scholar]";
+		mes "[魔法學者]";
 		mes "Stop bothering me.";
 		mes "If you're here to donate your body for my experiment, then you can stay.";
 		mes "Or scram!";
 		close3;
 	}
 	if (ep14_2_mylord == 33) {
-		mes "[Avant]";
+		mes "[阿凡特]";
 		mes "What brings you, rookie?";
 		mes "Did you come to laugh at my misery, like everyone else?";
 		next;
 		select( "你來這裡做什麼？", "Are you sorry for what you've done?" );
-		mes "[Avant]";
+		mes "[阿凡特]";
 		mes "*Snort*";
 		mes "This is a matter of pride.";
 		mes "I admit that my action sent my kinsmen in harm's way.";
 		next;
 		cutin "avant02.bmp",1;
-		mes "[Avant]";
+		mes "[阿凡特]";
 		mes "I want to say that I'm doing this to make up for what I did,";
 		mes "like everyone wants to believe. *Smirk*";
 		next;
-		mes "[Avant]";
+		mes "[阿凡特]";
 		mes "But if I'm honest with myself,";
 		mes "I'm doing this to get back at Shnaim and Morocc for using me like a tool.";
 		next;
-		mes "[Avant]";
+		mes "[阿凡特]";
 		mes "I'm planning to be the last one standing after everything goes down.";
 		ep14_2_mylord = 34;
 		close3;
 	}
 	if (BaseLevel < 140) {
-		mes "[Avant]";
+		mes "[阿凡特]";
 		mes "I've got no use for weaklings.";
 		mes "Come back when you become stronger.";
 		close3;
@@ -188,7 +188,7 @@ moro_vol,98,107,3	script	Magic Scholar#143avt01	4_M_FAIRYAVANT,{
 	case -1:
 		if (isbegin_quest(7583) == 1) {// Collecting Mana
 			if (countitem(6708) > 2) {
-				mes "[Avant]";
+				mes "[阿凡特]";
 				mes "Not bad, rookie.";
 				mes "Let me take the Mana Crystallines.";
 				mes "做得不錯。";
@@ -198,46 +198,46 @@ moro_vol,98,107,3	script	Magic Scholar#143avt01	4_M_FAIRYAVANT,{
 				getexp 350000,350000;
 				close3;
 			}
-			mes "[Avant]";
+			mes "[阿凡特]";
 			mes "Greenhorn, if you defeat those strong Demons, you'll find some mana crystallines.";
 			mes "I want you to bring them to me,";
 			mes "at least three at a time. Got it?";
 			close3;
 		}
 		if (checkquest(7581,HUNTING) == 0 || checkquest(7581,HUNTING) == 1) {
-			mes "[Avant]";
+			mes "[阿凡特]";
 			mes "Hey, rookie.";
 			mes "Do you see those massive goons?";
 			mes "If you hunt those Distorted,";
 			next;
-			mes "[Avant]";
+			mes "[阿凡特]";
 			mes "Blazing, and Freezing Reincarnations, you'll find some mana crystallines.";
 			mes "Part of mana stolen from the orb, the crystallines are what";
 			mes "make those Demon runts so strong.";
 			next;
-			mes "[Avant]";
+			mes "[阿凡特]";
 			mes "I want you to";
 			mes "get rid of them and bring me Mana Crystallines.";
 			mes "Don't try to keep them from me: they're not useful for you.";
 			next;
-			mes "[Avant]";
+			mes "[阿凡特]";
 			mes "Three Reincarnations, thus three Mana Crystallines.";
 			mes "Bring them at least for Kardui of Eclage.";
 			setquest 7583;// Collecting Mana
 			close3;
 		}
-		mes "[Avant]";
+		mes "[阿凡特]";
 		mes "Hm, I didn't know such a small amount of mana could produce";
 		mes "such great power.";
 		mes "Dirty Demons.";
 		close3;
 	case 0:
 	case 1:
-		mes "[Avant]";
+		mes "[阿凡特]";
 		mes "I hope you'll come back for the next subjugation.";
 		close3;
 	case 2:
-		mes "[Avant]";
+		mes "[阿凡特]";
 		mes "Soon the Human Alliance will send out a Demon subjugation party. Come by before you leave.";
 		mes "You want to collect the mana, don't you?";
 		erasequest 7584;
@@ -427,7 +427,7 @@ moro_vol,108,88,5	script	Commander Hibba Agip#14301	4_M_REDSWORD,{
 		mes "Those must have been dragged in from the Morocc Desert, then contaminated by his evil energy.";
 		next;
 		mes "[Hibba Agip]";
-		mes "Sigh...";
+		mes "唉……";
 		mes "We have a long and winding load ahead of us.";
 		mes "...";
 		next;
@@ -575,7 +575,7 @@ moro_vol,108,88,5	script	Commander Hibba Agip#14301	4_M_REDSWORD,{
 	case 1:
 		mes "Now that we've taken care of the main body, we can take things slow.";
 		mes "Why don't you go rest for now?";
-		mes "Leave the rest to us.";
+		mes "剩下的交給我們。";
 		close3;
 	case 2:
 		erasequest 7598;// Caged God
@@ -703,7 +703,7 @@ moro_vol,111,87,1	script	 Instructor Igrid#14303	4_M_CRU,{
 		case -1:
 			mes "[Instructor Igrid]";
 			mes "Hey, well-met.";
-			mes "I need your help.";
+			mes "我需要你的幫助。";
 			mes "Some of those Demons pouring out of the Flaming Basin are a real pain in the neck.";
 			next;
 			mes "[Instructor Igrid]";
@@ -1318,7 +1318,7 @@ moro_vol,101,87,5	script	Rune-Midgarts Knight#mid01	4_M_KNIGHT_BLACK,{
 	else if (.@ttemp == 3)
 		npctalk "I really need to let off some steam.";
 	else if (.@ttemp == 4)
-		npctalk "Grr...";
+		npctalk "嗚嗚……";
 	else
 		npctalk "...";
 	end;
@@ -1483,7 +1483,7 @@ moro_vol,119,106,3	script	Instructor Jakken#h_sol01	4_M_YOUNGKNIGHT,3,3,{
 	mes "When I volunteered for the Ash-Bakum Expedition, I knew this day would come.";
 	next;
 	mes "[Instructor Jakken]";
-	mes "I'm ready.";
+	mes "我準備好了。";
 	mes "I'm going to fight to the death for the peace of the Midgard Continent.";
 	next;
 	mes "[Instructor Jakken]";
@@ -1654,7 +1654,7 @@ moro_vol,143,124,1	script	Midgard Alliance Soldier#line23	4_M_JOB_WIZARD,{
 	else if (.@ttemp == 2)
 		npctalk "Step back.";
 	else
-		npctalk "Sigh...";
+		npctalk "唉……";
 	end;
 }
 
@@ -1738,7 +1738,7 @@ moro_vol,121,115,1	script	Midgard Alliance Soldier#line32	4_M_EIN_SOLDIER,{
 	else if (.@ttemp == 2)
 		npctalk "The front lines are most dangerous.";
 	else
-		npctalk "Sigh...";
+		npctalk "唉……";
 	end;
 }
 
@@ -1903,7 +1903,7 @@ moro_vol,156,83,1	duplicate(Combat Laphine#sol01)	Dicastes Elite#gal26	4_MAN_GAL
 moro_vol,139,104,1	script	Manuk Defender#line01	4_MAN_GALTUN1,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "Hm!";
+		npctalk "哼！";
 	else if (.@ttemp == 2)
 		npctalk "All clear.";
 	else
@@ -1933,7 +1933,7 @@ moro_vol,147,108,1	script	Manuk Defender#line03	4_MAN_GALTUN1,{
 moro_vol,152,109,1	script	Manuk Defender#line04	4_MAN_GALTUN1,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "Hm!";
+		npctalk "哼！";
 	else if (.@ttemp == 2)
 		npctalk "All clear.";
 	else
@@ -1961,7 +1961,7 @@ moro_vol,156,110,1	script	Manuk Defender#line05	4_MAN_GALTUN1,{
 moro_vol,160,110,7	script	Manuk Defender#line06	4_MAN_GALTUN1,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "Hm!";
+		npctalk "哼！";
 	else if (.@ttemp == 2)
 		npctalk "All clear.";
 	else
@@ -1978,7 +1978,7 @@ OnTouchNPC:
 moro_vol,164,109,7	script	Manuk Defender#line07	4_MAN_GALTUN1,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "Hm!";
+		npctalk "哼！";
 	else if (.@ttemp == 2)
 		npctalk "All clear.";
 	else
@@ -1989,7 +1989,7 @@ moro_vol,164,109,7	script	Manuk Defender#line07	4_MAN_GALTUN1,{
 moro_vol,167,107,7	script	Manuk Defender#line08	4_MAN_GALTUN1,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "Hm!";
+		npctalk "哼！";
 	else if (.@ttemp == 2)
 		npctalk "All clear.";
 	else
@@ -2006,7 +2006,7 @@ OnTouchNPC:
 moro_vol,169,104,7	script	Manuk Defender#line09	4_MAN_GALTUN1,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "Hm!";
+		npctalk "哼！";
 	else if (.@ttemp == 2)
 		npctalk "Too loud.";
 	else
@@ -2017,7 +2017,7 @@ moro_vol,169,104,7	script	Manuk Defender#line09	4_MAN_GALTUN1,{
 moro_vol,171,100,5	script	Manuk Defender#line10	4_MAN_GALTUN1,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "Hm!";
+		npctalk "哼！";
 	else if (.@ttemp == 2)
 		npctalk "All clear.";
 	else
@@ -2034,7 +2034,7 @@ OnTouchNPC:
 moro_vol,172,95,5	script	Manuk Defender#line11	4_MAN_GALTUN1,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "Hm!";
+		npctalk "哼！";
 	else if (.@ttemp == 2)
 		npctalk "All clear.";
 	else
@@ -2045,7 +2045,7 @@ moro_vol,172,95,5	script	Manuk Defender#line11	4_MAN_GALTUN1,{
 moro_vol,173,89,5	script	Manuk Defender#line12	4_MAN_GALTUN1,2,2,{
 	.@ttemp = rand(1,3);
 	if (.@ttemp == 1)
-		npctalk "Hm!";
+		npctalk "哼！";
 	else if (.@ttemp == 2)
 		npctalk "All clear.";
 	else
@@ -2073,7 +2073,7 @@ morocc,138,238,4	script	Piled Rags#ep14bs	4_M_DIEMAN,{
 	if (ep14_3_newerabs == 0) {
 		mes "- There is a pile of dirty rags. -";
 		next;
-		if (select( "Leave it.", "Remove it." ) == 1) {
+		if (select( "放著不管。", "Remove it." ) == 1) {
 			mes "- You left the pile of dirty rags where it is. -";
 			close;
 		}
@@ -2117,7 +2117,7 @@ morocc,138,238,4	script	Piled Rags#ep14bs	4_M_DIEMAN,{
 			mes "[???]";
 			mes "唔……";
 			next;
-			if (select( "Leave it.", "Give Monster's Feed." ) == 1) {
+			if (select( "放著不管。", "Give Monster's Feed." ) == 1) {
 				mes "[???]";
 				mes "Ugh... H-help...";
 				close;
@@ -2177,65 +2177,65 @@ morocc,138,238,4	script	Piled Rags#ep14bs	4_M_DIEMAN,{
 			mes "I'm glad I didn't die on the street. The world is still a beautiful place.";
 			mes "I'm moved.";
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "My name is ^0000FFTamarin^000000.";
 			mes "I'm an adventurer, and no, this isn't my preferred attire.";
 			next;
 			select("Introduce yourself.");
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "" + strcharinfo(0) + ", huh? That's a good name.";
 			next;
 		}
 		if (ep14_3_newerabs <= 3) {
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "Ah,";
 			mes "I'd better do something before people start asking if I'm homeless.";
 			cutin "ep143_tadir.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "Do you know a place where I can wash myself?";
 			next;
 			if (select( "Tell him the place.", "Say you don't know." ) == 2) {
-				mes "[Tamarin]";
+				mes "[塔瑪林]";
 				mes "Water is scarce in the desert, huh?";
 				ep14_3_newerabs = 3;
 				close3;
 			}
 		}
 		if (ep14_3_newerabs <= 4) {
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "Ah,";
 			mes "do you mean the ^0000FFoasis near the northwestern sphinx^000000?";
 			cutin "ep143_tadir.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "I've been in Morocc, but this is my first time inside the village.";
 			mes "I remember hearing that the place holds special water.";
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "I feel excited to wash myself with the special water!";
 			mes "I'm going to the oasis now. Could you wait for me?";
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "It'll take a while before I feel strong again, but at least I can walk on my own.";
 			mes "哈哈哈！";
 			next;
 			if (select( "Watch him.", "Accompany him." ) == 1) {
-				mes "[Tamarin]";
+				mes "[塔瑪林]";
 				mes "(Braces himself and inhales.)";
 				mes "Wait, wait.";
 				mes "I can stand up on my own.";
 				next;
-				mes "[Tamarin]";
+				mes "[塔瑪林]";
 				mes "Wait, wait!";
 				ep14_3_newerabs = 4;
 				close3;
 			}
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "How kind of you!";
 			mes "The world is still an okay place to live.";
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "Then, let's go to the ^0000FFoasis near the northwestern sphinx^000000.";
 			changequest 11350,11351;
 			ep14_3_newerabs = 5;
@@ -2243,12 +2243,12 @@ morocc,138,238,4	script	Piled Rags#ep14bs	4_M_DIEMAN,{
 		}
 	}
 	if (ep14_3_newerabs == 5) {
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "How kind of you!";
 		mes "The world is still an okay place to live.";
 		cutin "ep143_tadir.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Then, let's go to the ^0000FFoasis near the northwestern sphinx^000000.";
 		close3;
 	}
@@ -2260,167 +2260,167 @@ OnInit:
 	end;
 }
 
-moc_ruins,106,140,4	script	Tamarin#ep14bs_ru	4_M_TAMARIN,{
+moc_ruins,106,140,4	script	塔瑪林#ep14bs_ru::Tamarin#ep14bs_ru	4_M_TAMARIN,{
 	if (ep14_3_newerabs == 5 || ep14_3_newerabs == 6) {
 		if (ep14_3_newerabs == 5) {
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "Pah!";
 			mes "This feels great!";
 			cutin "ep143_tasmi.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "The water feels too warm for my liking, but beggars can't be choosers.";
 			cutin "ep143_tasta.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "You saved me from starvation, and took me to this great place. I must have been a great person in the past life";
 			mes "to deserve such kindness.";
 			cutin "ep143_tahuk.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "I want to repay you, fellow adventurer.";
 			mes "I lost all my belongings when I fell into that strange hole and got separated from my party,";
 			cutin "ep143_tasta.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "but at least I can tell you an ^0000FFinteresting story^000000.";
 			cutin "ep143_tasmi.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "It's about the strange place I've been to.";
 			cutin "ep143_tahuk.bmp",2;
 			next;
-			if (select( "沒興趣。", "I'm listening." ) == 1) {
-				mes "[Tamarin]";
+			if (select( "沒興趣。", "我在聽。" ) == 1) {
+				mes "[塔瑪林]";
 				mes "All right, then.";
 				mes "I thought you were serious about adventuring.";
 				cutin "ep143_tahuk.bmp",2;
 				next;
-				mes "[Tamarin]";
+				mes "[塔瑪林]";
 				mes "Then";
 				mes "do you want your Monster's Feed back?";
 				cutin "ep143_tasta.bmp",2;
 				next;
-				mes "[Tamarin]";
+				mes "[塔瑪林]";
 				mes "*Retch*";
 				cutin "ep143_taang.bmp",2;
 				close3;
 			}
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "I knew you'd be interested!";
 			mes "Nothing piques adventurers' interest like the story of a strange place, right?";
 			cutin "ep143_tasmi.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "Ahem.";
 			mes "The story begins with my journey to the ^0000FFOther World^000000, the latest hot spot for adventurers.";
 			cutin "ep143_tahuk.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "Adventurer Tamarin and his party went on a journey to the land of the unknown, Other World.";
 			cutin "ep143_tasmi.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "Their journey was perilous, but they bravely moved forward.";
 			cutin "ep143_taang.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "Oh,";
 			mes "why am I speaking in the third-person perspective?";
 			cutin "ep143_tahuk.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "My original inspiration was Bard, but then I became a Hunter because my friends thought that suited me better.";
 			cutin "ep143_tasmi.bmp",2;
 			next;
 			select("Ask him to be more straightforward.");
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "是的。";
 			cutin "ep143_tahuk.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "A while ago, my friends and I decided to explore the Other World together.";
 			cutin "ep143_tasta.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "Since it'd be our first visit to the Other World, we wanted to go to a more popular spot, but one of us wouldn't have it--he was so excited that he started acting out of control.";
 			cutin "ep143_taang.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "When I came back to my senses, I was alone in a strange place.";
 			cutin "ep143_tahuk.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "The ^0000FFland was burning with perpetual flames^000000 that weren't too hot to touch, and ^0000FFstrange-looking plants and insects^000000 were crawling all over the place.";
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "At first I yelled for help and moved around hoping to find others, but all to no avail.";
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "After a few days of having nothing to eat, I started to eat anything I saw off the ground, and I had the worst diarrhea ever.";
 			cutin "ep143_taang.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "I didn't know how many days had passed before I saw a group of some entities that I thought were men at a glance.";
 			cutin "ep143_tahuk.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "But ^0000FFthey looked too strange to pass as human^000000.";
 			mes "I couldn't talk to them, so I just jumped into the Crack that they came through.";
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "My knees gave way and I rolled on my side. When I looked around, I was back at the ^0000FFDimensional Crack^000000 where my friends and I first arrived.";
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "I came out through the ^0000FFMorocc Dimensional Teleporter^000000 and used every ounce of my energy to get to Morocc.";
 			next;
-			mes "[Tamarin]";
-			mes "Sigh...";
+			mes "[塔瑪林]";
+			mes "唉……";
 			mes "I wonder if my friends are safe.";
 			cutin "ep143_tasta.bmp",2;
 			next;
 		}
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "I should seek them out,";
 		mes "but first I want to go back to that strange place when I get my full strength back. Not many people have a chance to see such a special place, you know.";
 		cutin "ep143_tasmi.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Fortunately for me, with the ^0000FFMorocc restoration work^000000 underway, I shouldn't have a problem making money through some part-time jobs.";
 		next;
 		if (select( "Tell him have safe travel.", "Tell him you want to tag along." ) == 1) {
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "I will.";
 			mes "Thank you for saving me.";
 			cutin "ep143_tahuk.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "This is the beauty of adventuring:";
 			mes "making new friends!";
 			cutin "ep143_tasmi.bmp",2;
 			next;
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "I'll be in Morocc for a while, making some money and getting ready for another adventure. I hope I can see you again before I leave.";
 			ep14_3_newerabs = 6;
 			close3;
 		}
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "!!";
 		cutin "ep143_tahuk.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Do you mean it?";
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "By the gods I'm a lucky bastard!";
 		mes "*Sob*";
 		cutin "ep143_taang.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Then meet me at the ^0000FFDimensional Crack^000000. I need to replenish myself first.";
 		cutin "ep143_tasta.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "It may take a while for me to get everything packed, so get your other business done in the meantime.";
 		erasequest 11351;// Dimensional Travel
 		setquest 11352;// Dimensional Travel
@@ -2428,42 +2428,42 @@ moc_ruins,106,140,4	script	Tamarin#ep14bs_ru	4_M_TAMARIN,{
 		close3;
 	}
 	if (ep14_3_newerabs == 7) {
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Then meet me at the ^0000FFDimensional Crack^000000. I need to replenish myself first.";
 		cutin "ep143_tasta.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "It may take a while for me to get everything packed, so get your other business done in the meantime.";
 		close3;
 	}
-	mes "[Tamarin]";
+	mes "[塔瑪林]";
 	mes "Pah!";
 	mes "This feels great!";
 	cutin "ep143_tasmi.bmp",2;
 	close3;
 }
 
-dali,112,69,4	script	Tamarin#ep14bs_cha	4_M_TAMARIN,{
+dali,112,69,4	script	塔瑪林#ep14bs_cha::Tamarin#ep14bs_cha	4_M_TAMARIN,{
 	if (ep14_3_newerabs == 7) {
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "" + strcharinfo(0) + ", over here!";
 		mes "You're early.";
 		cutin "ep143_tasta.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "(Glancing around surreptitiously)";
 		mes "I hope no one's watching us.";
 		cutin "ep143_tahuk.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "I've hidden the opening to that place: I didn't want anyone to get there before me.";
 		cutin "ep143_tasmi.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "At that time, I was too distracted to remember where the opening was, but I think it's definitely ^0000FFsomewhere on the 2nd floor^000000.";
 		cutin "ep143_tasta.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Meet me in front of the ^0000FFHidden Crack^000000. Make sure no one follows you there.";
 		mes "I've ^0000FFcovered the opening with dirt^000000. I hope no one dug it open.";
 		erasequest 11352;// Dimensional Travel
@@ -2472,20 +2472,20 @@ dali,112,69,4	script	Tamarin#ep14bs_cha	4_M_TAMARIN,{
 		close3;
 	}
 	if (ep14_3_newerabs == 8) {
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "I've hidden the opening to that place: I didn't want anyone to get there before me.";
 		cutin "ep143_tasmi.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "At that time, I was too distracted to remember where the opening was, but I think it's definitely ^0000FFsomewhere on the 2nd floor^000000.";
 		cutin "ep143_tasta.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Meet me in front of the ^0000FFHidden Crack^000000. Make sure no one follows you there.";
 		mes "I've ^0000FFcovered the opening with dirt^000000. I hope no one dug it open.";
 		close3;
 	}
-	mes "[Tamarin]";
+	mes "[塔瑪林]";
 	mes "Hm, my mark had better stay where I left it.";
 	cutin "ep143_tahuk.bmp",2;
 	close3;
@@ -2499,18 +2499,18 @@ dali02,90,62,0	script	Sand Mound#ep14bs	4_SOIL,{
 	if (ep14_3_newerabs == 8) {
 		mes "- A mound of sand stands awkwardly, looking out of place. -";
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "呼！";
 		mes "I'm glad you've found me.";
 		cutin "ep143_tasmi.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Let me clear the dirt...";
 		mes "Be mindful of the opening. It's quite narrow.";
 		cutin "ep143_tasta.bmp",2;
 		next;
-		if (select( "Enter.", "離開。" ) == 2) {
-			mes "[Tamarin]";
+		if (select( "進入。", "離開。" ) == 2) {
+			mes "[塔瑪林]";
 			mes "Aren't you going in?";
 			cutin "ep143_tahuk.bmp",2;
 			close3;
@@ -2524,7 +2524,7 @@ dali02,90,62,0	script	Sand Mound#ep14bs	4_SOIL,{
 	}
 	mes "- A mound of sand stands awkwardly, looking out of place. -";
 	next;
-	if (select( "Enter.", "離開。" ) == 2) {
+	if (select( "進入。", "離開。" ) == 2) {
 		mes "You decided not to enter.";
 		close;
 	}
@@ -2551,23 +2551,23 @@ moro_vol,137,136,0	script	Sand Mound#ep14bs_	4_SOIL,{
 	end;
 }
 
-moro_vol,132,140,4	script	Tamarin#ep14bs_ju	4_M_TAMARIN,{
+moro_vol,132,140,4	script	塔瑪林#ep14bs_ju::Tamarin#ep14bs_ju	4_M_TAMARIN,{
 	if (ep14_3_newerabs == 9) {
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "哇！";
 		mes "I didn't expect to see so many people.";
 		cutin "ep143_tahuk.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "I'm disappointed that I'm not the first one to discover the place, and am glad that I'm not alone in this dismal place.";
 		cutin "ep143_taang.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "I see more of those entities that look sort of like men.";
 		mes "This place might be much more than I thought it was!";
 		cutin "ep143_tasmi.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Look!";
 		mes "Walking trees!";
 		mes "Grrr-!";
@@ -2582,7 +2582,7 @@ moro_vol,132,140,4	script	Tamarin#ep14bs_ju	4_M_TAMARIN,{
 		close;
 	}
 	if (ep14_3_newerabs == 15) {
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Look!";
 		mes "Walking trees!";
 		mes "Grrr-!";
@@ -2595,18 +2595,18 @@ moro_vol,132,140,4	script	Tamarin#ep14bs_ju	4_M_TAMARIN,{
 		close;
 	}
 	if (ep14_3_newerabs == 16) {
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "They might kick us out if they know we sneaked in.";
 		mes "Let's do what they ask for now, yeah?";
 		cutin "ep143_taang.bmp",2;
 		close3;
 	}
 	if (ep14_3_newerabs == 17 || ep14_3_newerabs == 18) {
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Collecting the plant specimens doesn't sound too difficult. We can split them between us.";
 		cutin "ep143_tasta.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "^0000FFWhen you collect 25 Sonia stems, meet me by the big rock in the center of this place^000000.";
 		if (ep14_3_newerabs == 17) {
 			erasequest 11356;// Specimen Collection
@@ -2617,40 +2617,40 @@ moro_vol,132,140,4	script	Tamarin#ep14bs_ju	4_M_TAMARIN,{
 	}
 	if (ep14_3_newerabs == 19) {
 		if (countitem(6690) < 25) {// YummyStem
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "Ooh! (Wincing)";
 			mes "You don't have enough stems.";
 			mes "Get more and take them to Barget.";
 			cutin "ep143_tahuk.bmp",2;
 			close3;
 		}
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Let's report to Barget first.";
 		cutin "ep143_tahuk.bmp",2;
 		close3;
 	}
 	if (ep14_3_newerabs == 21 || ep14_3_newerabs == 22) {
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Come on,";
 		mes "hurry over to ^0000FFInstructor Rugen^000000!";
 		cutin "ep143_tahuk.bmp",2;
 		close3;
 	}
 	if (ep14_3_newerabs == 23) {
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Thank the gods, who knew that thing I ate out of hunger would save me?";
 		mes "Let's report to Barget.";
 		cutin "ep143_tahuk.bmp",2;
 		close3;
 	}
 	if (ep14_3_newerabs == 24) {
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Arrgh!";
 		mes "" + strcharinfo(0) + " Get in the cave before everyone else explores it!";
 		cutin "ep143_tahuk.bmp",2;
 		close3;
 	}
-	mes "[Tamarin]";
+	mes "[塔瑪林]";
 	mes "唔……";
 	mes "I was the first to come to this place!";
 	cutin "ep143_taang.bmp",2;
@@ -2679,7 +2679,7 @@ moro_vol,142,131,5	script	Barget Tiblack#ep14bs	4_M_ALCHE_D,{
 		mes "[Barget Tiblack]";
 		mes "I demand an assistant!";
 		mes "Enough with that budget problem!";
-		mes "Argh!";
+		mes "啊啊！";
 		next;
 		mes "[Barget Tiblack]";
 		mes "...";
@@ -2761,7 +2761,7 @@ moro_vol,142,131,5	script	Barget Tiblack#ep14bs	4_M_ALCHE_D,{
 		mes "Try not to stray too far away from the base. It's too dangerous out there.";
 		mes "Come back safely.";
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "嗯……";
 		mes "" + strcharinfo(0) + ", wait!";
 		cutin "ep143_tahuk.bmp",2;
@@ -2885,9 +2885,9 @@ moro_vol,142,131,5	script	Barget Tiblack#ep14bs	4_M_ALCHE_D,{
 	close;
 }
 
-moro_vol,198,179,4	script	Tamarin#ep14bs_st	4_M_TAMARIN,{
+moro_vol,198,179,4	script	塔瑪林#ep14bs_st::Tamarin#ep14bs_st	4_M_TAMARIN,{
 	if (ep14_3_newerabs < 18) {
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "嗯……";
 		mes "We don't have time for this!";
 		cutin "ep143_taang.bmp",2;
@@ -2895,28 +2895,28 @@ moro_vol,198,179,4	script	Tamarin#ep14bs_st	4_M_TAMARIN,{
 	}
 	if (ep14_3_newerabs == 18) {
 		if (countitem(6690) < 25 || checkquest(11357,HUNTING) != 2) {
-			mes "[Tamarin]";
+			mes "[塔瑪林]";
 			mes "^0000FFWhen you collect 25 Sonia stems, meet me here^000000.";
 			cutin "ep143_tasta.bmp",2;
 			close3;
 		}
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "I don't remember this rock was so big.";
 		mes "Or seeing these strange things around it.";
 		mes "I also smell ^0000FFsmoke^000000.";
 		cutin "ep143_tahuk.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Again,";
 		mes "I don't remember seeing ^0000FFso many strange animals and plants^000000 either.";
 		mes "These are Sonias, right? They weren't so many before.";
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "If they were, I wouldn't have had to starve.";
 		mes "Sonias were the most delicious and least toxic among all the plants I tried.";
 		cutin "ep143_taang.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "" + strcharinfo(0) + ", do you want to taste it?";
 		mes "I brought a few stems for memories' sake.";
 		cutin "ep143_tasmi.bmp",2;
@@ -2925,12 +2925,12 @@ moro_vol,198,179,4	script	Tamarin#ep14bs_st	4_M_TAMARIN,{
 		mes "- Taste of Sonia -";
 		mes "Its thick, tongue-warming sap fills your mouth with delicious aroma.";
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "你覺得怎麼樣？";
 		mes "Delicious, huh?";
 		cutin "ep143_tahuk.bmp",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "I've got only a few left. Let's take turns to gather some more.";
 		cutin "ep143_tasmi.bmp",2;
 		erasequest 11357;// Specimen Collection
@@ -2939,37 +2939,37 @@ moro_vol,198,179,4	script	Tamarin#ep14bs_st	4_M_TAMARIN,{
 		close3;
 	}
 	if (ep14_3_newerabs == 19) {
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "I've got only a few left. Let's take turns to gather some more.";
 		cutin "ep143_tasmi.bmp",2;
 		close3;
 	}
 	if (ep14_3_newerabs < 23) {
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Come on,";
 		mes "hurry over to ^0000FFInstructor Rugen^000000!";
 		cutin "ep143_tahuk.bmp",2;
 		close3;
 	}
 	if (ep14_3_newerabs == 23) {
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Thank the gods, who knew that thing I ate out of hunger would save me?";
 		mes "Let's report to Barget.";
 		cutin "ep143_tahuk.bmp",2;
 		close3;
 	}
-	mes "[Tamarin]";
+	mes "[塔瑪林]";
 	mes "Arrgh!";
 	mes "" + strcharinfo(0) + " get in there before everyone else explores it!";
 	cutin "ep143_tahuk.bmp",2;
 	next;
-	if (select( "Enter.", "離開。" ) == 2) {
-		mes "[Tamarin]";
+	if (select( "進入。", "離開。" ) == 2) {
+		mes "[塔瑪林]";
 		mes "啊……";
 		cutin "ep143_taang.bmp",2;
 		close3;
 	}
-	mes "[Tamarin]";
+	mes "[塔瑪林]";
 	mes "The floor is dark. Watch your step!";
 	close2;
 	warp "moro_cav",40,50;
@@ -2998,7 +2998,7 @@ moro_vol,105,71,5	script	Instructor Rugen#ep14bs	4_M_YOUNGKNIGHT,{
 		next;
 		if (select( "Talk to him.", "No, he looks too upset to talk." ) == 2) {
 			mes "[Instructor Rugen]";
-			mes "Sigh...";
+			mes "唉……";
 			mes "This is just...";
 			close;
 		}
@@ -3399,7 +3399,7 @@ moro_vol,131,103,3	script	Base Investigator#bl	4_M_KY_HEAD,{
 			mes "That's not the answer I expected,";
 			mes "but I'll continue with the spiel";
 			mes "I've prepared.";
-			mes "Sigh...";
+			mes "唉……";
 			next;
 			mes "[Base Investigator]";
 			mes "A scout hasn't returned";
@@ -4515,7 +4515,7 @@ moro_vol,1,3,4	script	Perishing Blessing Assistant#bl	4_FROG,{
 		"Blessing Stone 40", "Monster Blood 30", "Final Reward", "Before the door of blessing is opened" ) ) {
 	case 1:
 		mes "[Perishing Blessing Assistant]";
-		mes "Done!";
+		mes "完成！";
 		ep14_3_fall_bless = 0;
 		for ( .@i = 1264; .@i <= 1275; .@i++ ) {
 			if (isbegin_quest(.@i) > 0)
@@ -4526,17 +4526,17 @@ moro_vol,1,3,4	script	Perishing Blessing Assistant#bl	4_FROG,{
 		close;
 	case 2:
 		mes "[Perishing Blessing Assistant]";
-		mes "Done!";
+		mes "完成！";
 		getitem 6691,15;// BurningFeather
 		close;
 	case 3:
 		mes "[Perishing Blessing Assistant]";
-		mes "Done!";
+		mes "完成！";
 		getitem 6692,20;// PatrolLog
 		close;
 	case 4:
 		mes "[Perishing Blessing Assistant]";
-		mes "Done!";
+		mes "完成！";
 		setquest 1268;
 		setquest 1269;
 		for ( .@i = 1264; .@i <= 1267; .@i++ ) {
@@ -4553,23 +4553,23 @@ moro_vol,1,3,4	script	Perishing Blessing Assistant#bl	4_FROG,{
 		close;
 	case 5:
 		mes "[Perishing Blessing Assistant]";
-		mes "Done!";
+		mes "完成！";
 		getitem 6693,40;// Stone_Of_Blessing
 		close;
 	case 6:
 		mes "[Perishing Blessing Assistant]";
-		mes "Done!";
+		mes "完成！";
 		getitem 6694,30;// Monster_Blood
 		close;
 	case 7:
 		mes "[Perishing Blessing Assistant]";
-		mes "Done!";
+		mes "完成！";
 		getitem 6695,30;// ToothOfFlameGolem
 		getitem 6696,30;// ToothOfFlameFrilldora
 		close;
 	case 8:
 		mes "[Perishing Blessing Assistant]";
-		mes "Done!";
+		mes "完成！";
 		setquest 1274;
 		ep14_3_fall_bless = 11;
 		for ( .@i = 1264; .@i <= 1273; .@i++ ) {

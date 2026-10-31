@@ -15,7 +15,7 @@
 
 ba_in01,22,262,6	script(CLOAKED)	Est#ep181_est01	4_F_ESTLOVELOY,{
 	if (ep18_main == 1) {
-		mes "[Est]";
+		mes "[艾斯特]";
 		mes "請多保重。";
 		close;
 	}
@@ -27,7 +27,7 @@ ba_in01,22,262,6	script(CLOAKED)	Est#ep181_est01	4_F_ESTLOVELOY,{
 ba_in01,24,262,7	script(CLOAKED)	Rookie#ep181_rk01	4_M_ROOKIE,{
 	if (ep18_main == 1) {
 		cutin "16loo_03.bmp",0;
-		mes "[Rookie]";
+		mes "[新人]";
 		mes "It's unfortunate, but it is what it is.";
 		mes "We also have a company job to do, so we can't just sit around and play.";
 		mes "See you when it's all resolved.";
@@ -46,14 +46,14 @@ rachel,182,176,3	script	Masked Girl	4_F_MASK,5,5,{
 		if (getequipid(EQI_HEAD_TOP) != 400127) {	// Ep18_Mini_Elly
 			mes "Someone is giving a speech in a loud voice.";
 			next;
-			mes "[Mini Elly]";
+			mes "[迷你艾莉]";
 			mes "Please take it out of the bag and put it on top of my head.";
 			unittalk getcharid(3), "" + strcharinfo(0) + " : Mini Elly: Please take it out of the bag and put it on top of my head.", bc_self;
 			close;
 		}
 		mes "Someone is giving a speech in a loud voice.";
 		next;
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "I've received a signal that you've arrived at your local coordinates.";
 		mes "Is this the location I called you to?";
 		next;
@@ -66,19 +66,19 @@ rachel,182,176,3	script	Masked Girl	4_F_MASK,5,5,{
 			mes "[" + strcharinfo(0) + "]";
 			mes "I don't think it's here.";
 			next;
-			mes "[Mini Elly]";
+			mes "[迷你艾莉]";
 			mes "That's odd, but it seems to fit with the information coming from Mini Elly right now, so let's check around.";
 			break;
 		}
 		next;
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "Does the guest see anything suspicious?";
 		mes "I've never seen anyone who was neither an intruder nor a guest, but I know that those masked people are suspicious.";
 		next;
 		mes "[" + strcharinfo(0) + "]";
 		mes "Those people are residents here...";
 		next;
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "Isn't that an interesting outfit?";
 		mes "I'll remember that.";
 		next;
@@ -126,12 +126,12 @@ rachel,182,176,3	script	Masked Girl	4_F_MASK,5,5,{
 		next;
 		mes "The speaker continued their speech without paying any attention to the voice from the audience.";
 		next;
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "It's interesting. There are quite a few people wearing masks. It seems like even if we all have the same face like us, we can still distinguish each other.";
 		npctalk "Hey, words are nice, but with people continuing to get hurt and taken to the hospital, do you think just talking will solve anything?", "Crowd#ep18c02", bc_self;
 		npctalk "Whose fault is that?", "Crowd#ep18c05", bc_self;
 		next;
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "Why is this person interrupting someone who is saying the right thing?";
 		next;
 		mes "[" + strcharinfo(0) + "]";
@@ -139,14 +139,14 @@ rachel,182,176,3	script	Masked Girl	4_F_MASK,5,5,{
 		npctalk "You see, I've seen it before. When there's a fight, is it just a battlefield, or sometimes are immigrants the only targets?", "Crowd#ep18c02", bc_self;
 		npctalk "I heard it was because the indigenous kids were beaten up before and then they retaliated.", "Crowd#ep18c05", bc_self;
 		next;
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "It seems like the fuss is getting louder.";
 		mes "Everyone seems to think they're right and don't want to listen to what anyone else has to say.";
 		npctalk "It's wrong to use violence against people in the first place!", "Crowd#ep18c05", bc_self;
 		npctalk "They must have done something wrong.", "Crowd#ep18c02", bc_self;
 		npctalk "I really dislike hearing the phrase 'they must have done something wrong.' What exactly does 'something wrong' mean?", "Crowd#ep18c04", bc_self;
 		next;
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "The noise seems to be getting louder than before.";
 		npctalk "Telling victims they have a reason to be victimized is wrong!", "Crowd#ep18c05", bc_self;
 		next;
@@ -216,7 +216,7 @@ OnTouch:
 		end;
 	}
 	if (ep18_main == 1) {
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "Please take it out of the bag and put it on top of my head.";
 		unittalk getcharid(3), "" + strcharinfo(0) + " : Mini Elly: Please take it out of the bag and put it on top of my head.", bc_self;
 		close;
@@ -244,12 +244,12 @@ OnInit:
 	end;
 }
 
-rachel,179,175,7	duplicate(dummy_cloaked_npc)	Crowd#ep18c01	4_F_MASK
-rachel,177,178,5	duplicate(dummy_cloaked_npc)	Crowd#ep18c02	4_M_RACHMAN1
-rachel,179,171,7	duplicate(dummy_cloaked_npc)	Crowd#ep18c03	4_M_RACHMAN2
-rachel,181,170,0	duplicate(dummy_cloaked_npc)	Crowd#ep18c04	4_M_MIDDLE
-rachel,186,173,1	duplicate(dummy_cloaked_npc)	Crowd#ep18c05	4_F_MASK
-rachel,184,171,1	duplicate(dummy_cloaked_npc)	Crowd#ep18c06	4_F_MASK
+rachel,179,175,7	duplicate(dummy_cloaked_npc)	群眾#ep18c01::Crowd#ep18c01	4_F_MASK
+rachel,177,178,5	duplicate(dummy_cloaked_npc)	群眾#ep18c02::Crowd#ep18c02	4_M_RACHMAN1
+rachel,179,171,7	duplicate(dummy_cloaked_npc)	群眾#ep18c03::Crowd#ep18c03	4_M_RACHMAN2
+rachel,181,170,0	duplicate(dummy_cloaked_npc)	群眾#ep18c04::Crowd#ep18c04	4_M_MIDDLE
+rachel,186,173,1	duplicate(dummy_cloaked_npc)	群眾#ep18c05::Crowd#ep18c05	4_F_MASK
+rachel,184,171,1	duplicate(dummy_cloaked_npc)	群眾#ep18c06::Crowd#ep18c06	4_F_MASK
 
 rachel,187,170,3	script(CLOAKED)	Girl#ep18c07	4_F_DST_CHILD,{
 	mes "[女孩]";
@@ -265,7 +265,7 @@ rachel,187,173,3	script(CLOAKED)	Guard Gala#ep18c08	4_M_RASWORD,{
 
 rachel,187,174,3	script(CLOAKED)	Guard Izu#ep18c09	4_M_RASWORD,{
 	mes "[Guard Izu]";
-	mes "Sigh...";
+	mes "唉……";
 	close;
 }
 
@@ -374,7 +374,7 @@ rachel,183,170,3	script(CLOAKED)	Nervous Priest#e18a	4_M_TRAINEE,{
 		next;
 		mes "[Guard Gala]";
 		mes "I heard there was a fight, so I came to see...";
-		mes "Adventurer?";
+		mes "冒險者？";
 		next;
 		mes "[Nervous Priest]";
 		mes "Oh, no, no, no! Adventurer here is trying to help me...";
@@ -451,35 +451,35 @@ ra_temple,30,142,0	duplicate(#ep18w01)	#ep18w02_C	HIDDEN_WARP_NPC,3,3
 ra_temple,72,54,5	script(CLOAKED)	Nervous Priest#e18b	4_M_TRAINEE,{
 	if (ep18_main == 4) {
 		if (getequipid(EQI_HEAD_TOP) != 400127) {	// Ep18_Mini_Elly
-			mes "[Mini Elly]";
+			mes "[迷你艾莉]";
 			mes "Please take it out of the bag and put it on top of my head.";
 			unittalk getcharid(3), "" + strcharinfo(0) + " : Mini Elly: Please take it out of the bag and put it on top of my head.", bc_self;
 			close;
 		}
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "Guest, just a moment, please.";
 		unittalk getcharid(3), "" + strcharinfo(0) + " : Mini Elly: I'm curious about something.", bc_self;
 		next;
 		if (select( "Elly, what's going on?", "Because of the clues?" ) == 2) {
-			mes "[Mini Elly]";
+			mes "[迷你艾莉]";
 			mes "Well, that's one thing.";
 			next;
 		}
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "You've been here before, right?";
 		npctalk "Junok: Adventurer?", "Nervous Priest#e18b", bc_self;
 		next;
 		select( "是" );
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "I've been getting some strange looks on the way here. I'm sure my guest felt it too...";
 		mes "Is it a neighborhood with a lot of people with that kind of outlook?";
 		next;
 		select( "That wasn't the case." );
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "Could they be associated with the 'intruders'?";
 		next;
 		select( "或許吧。" );
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "Do you think they recognized the guest?";
 		npctalk "Junok: ?", "Nervous Priest#e18b", bc_self;
 		next;
@@ -595,15 +595,15 @@ ra_temple,30,142,1	script(CLOAKED)	Nervous Priest#e18c	4_M_TRAINEE,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	.@char_id = getcharid(0);
 	if (ep18_main == 5) {
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "You look familiar, do I know you?";
 		next;
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "You found me faster than I expected.";
 		next;
 		select( "You still don't know the situation at the mansion, do you?" );
@@ -613,7 +613,7 @@ ra_temple,30,142,1	script(CLOAKED)	Nervous Priest#e18c	4_M_TRAINEE,{
 		mes "[Guard Izu]";
 		mes "You are surrounded! Surrender!";
 		next;
-		mes "[Heart Hunter]";
+		mes "[邪心獵人]";
 		mes "Hmph, calling this a surround. Just as the rumors say.";
 		next;
 		mes "[Guard Izu]";
@@ -623,20 +623,20 @@ ra_temple,30,142,1	script(CLOAKED)	Nervous Priest#e18c	4_M_TRAINEE,{
 		mes "It's actually 15 times.";
 		npctalk "Hmph.", "Heart Hunter#ep18c15", bc_self;
 		next;
-		mes "[Heart Hunter]";
+		mes "[邪心獵人]";
 		mes "That was our rookie scouts we sent!";
 		mes "Now we've mapped out all your patrol routes. Be prepared.";
 		next;
 		mes "[Guard Gala]";
 		mes "We'll have to change tactics.";
 		next;
-		mes "[Heart Hunter]";
+		mes "[邪心獵人]";
 		mes "...";
 		next;
 		mes "[衛兵]";
 		mes "...";
 		next;
-		mes "[Heart Hunter]";
+		mes "[邪心獵人]";
 		mes "This time it's over! The special forces are already at the temple...";
 		next;
 		cloakoffnpcself( "Marshal Chive#c17" );
@@ -650,7 +650,7 @@ ra_temple,30,142,1	script(CLOAKED)	Nervous Priest#e18c	4_M_TRAINEE,{
 		mes "[Guard Gala]";
 		mes "Seems like it's over.";
 		next;
-		mes "[Heart Hunter]";
+		mes "[邪心獵人]";
 		mes "...Next time, we'll definitely succeed!";
 		cloakonnpcself( "Heart Hunter#ep18c15" );
 		cloakonnpcself( "Heart Hunter#ep18c16" );
@@ -729,12 +729,12 @@ ra_temple,26,145,7	script(CLOAKED)	Guard Calsort#c14	4_M_RASWORD,{
 	end;
 }
 
-ra_temple,31,147,4	duplicate(dummy_cloaked_npc)	Heart Hunter#ep18c15	G_EP17_2_HEART_HUNTER
-ra_temple,29,146,4	duplicate(dummy_cloaked_npc)	Heart Hunter#ep18c16	G_EP17_2_HEART_HUNTER
+ra_temple,31,147,4	duplicate(dummy_cloaked_npc)	邪心獵人#ep18c15::Heart Hunter#ep18c15	G_EP17_2_HEART_HUNTER
+ra_temple,29,146,4	duplicate(dummy_cloaked_npc)	邪心獵人#ep18c16::Heart Hunter#ep18c16	G_EP17_2_HEART_HUNTER
 
 ra_temple,35,141,1	duplicate(dummy_cloaked_npc)	Marshal Chive#c17	4_M_RASWORD
-ra_temple,36,140,4	duplicate(dummy_cloaked_npc)	Heart Hunter#ep18c18	G_EP17_2_HEART_HUNTER
-ra_temple,37,140,4	duplicate(dummy_cloaked_npc)	Heart Hunter#ep18c19	G_EP17_2_HEART_HUNTER
+ra_temple,36,140,4	duplicate(dummy_cloaked_npc)	邪心獵人#ep18c18::Heart Hunter#ep18c18	G_EP17_2_HEART_HUNTER
+ra_temple,37,140,4	duplicate(dummy_cloaked_npc)	邪心獵人#ep18c19::Heart Hunter#ep18c19	G_EP17_2_HEART_HUNTER
 
 
 ra_temple,168,169,3	script	Eridanus#fp	4_M_MIDDLE1,{
@@ -901,7 +901,7 @@ ra_temin,174,38,3	script	Guard Neil#ep18	4_DST_SOLDIER,{
 		close;
 	}
 	if (ep18_main == 11 || ep18_main == 12) {
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "Neil, did you happen to see ^e5555eMaram^000000 today?";
 		cloakoffnpcself( "Niren#ep18_in1" );
 		cutin "ra_gwoman.bmp",2;
@@ -914,14 +914,14 @@ ra_temin,174,38,3	script	Guard Neil#ep18	4_DST_SOLDIER,{
 		mes "[Guard Neil]";
 		mes "I'm not sure if he's still at the plaza, but maybe we could ask the people there to find out where Maram went?";
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "Hmm... I see.";
 		mes "The task I asked to " + strcharinfo(0) + " earlier, my son Maram will help with that.";
 		mes "He knows more about this matter than anyone else.";
 		npctalk "My son Maram will help with the task I asked earlier.", "Niren#ep18_in1", bc_self;
 		cutin "ra_gwoman.bmp",2;
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "I would introduce him myself, but as you can see, I can't leave my post right now.";
 		mes "If you ask around ^e5555enear the plaza^000000, you should be able to find him.";
 		if (ep18_main == 11) {
@@ -991,7 +991,7 @@ ra_temin,172,36,7	script	Priest Freya#ep18	4_F_MASK1,{
 		mes "[Priest Freya]";
 		mes "Mostly, they're people venting personal grievances rather than raising official complaints, causing disturbances or shouting at the entrance of the temple.";
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "Hold on...";
 		mes "Could we hear more details about this?";
 		cloakoffnpcself( "Niren#ep18_in1" );
@@ -1010,7 +1010,7 @@ ra_temin,172,36,7	script	Priest Freya#ep18	4_F_MASK1,{
 		mes "[Priest Freya]";
 		mes "But recently, there have been more incidents of physical fights among the people visiting the temple...";
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "Physical fights in the sacred temple...";
 		mes "Was there no way to resolve their grievances through dialogue?";
 		npctalk "Unbelievable...", "Niren#ep18_in1", bc_self;
@@ -1024,30 +1024,30 @@ ra_temin,172,36,7	script	Priest Freya#ep18	4_F_MASK1,{
 		mes "But since they are complaining like that, it seems like they can't complain to Niren directly and take their anger out on the temple.";
 		mes "Because they know how important Niren values harmony";
 		next;
-		mes "[High Priestess Niren]";
-		mes "Sigh...";
+		mes "[大祭司尼倫]";
+		mes "唉……";
 		mes "Heretics...";
 		mes "It seems that our efforts to eliminate discrimination haven't reached their hearts.";
 		cutin "ra_gwoman.bmp",2;
-		npctalk "Sigh...", "Niren#ep18_in1", bc_self;
+		npctalk "唉……", "Niren#ep18_in1", bc_self;
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "Moreover, causing fights even at the temple is not an issue we can easily overlook.";
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "I've heard some disagreements to some extent, but... I may have been wrong to think that they would naturally resolve if we lived together, got to know each other, and understood each other.";
 		next;
 		cutin "",255;
 		mes "[Priest Freya]";
 		mes "Even though the hardliners have stepped back, it's not easy for the hearts of those who supported them to change all at once.";
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "Sadly, that's true.";
 		mes "The time we waited for self-healing has turned into the result of festering wounds.";
 		mes "Now, even dialogue for reconciliation won't be easy...";
 		cutin "ra_gwoman.bmp",2;
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "<FONT SIZE = 10>We need some kind of catalyst...</FONT>";
 		next;
 		cutin "",255;
@@ -1060,19 +1060,19 @@ ra_temin,172,36,7	script	Priest Freya#ep18	4_F_MASK1,{
 		mes "[Guard Dent]";
 		mes "Anyway, they came here to see you because they have something to say to you.";
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "哎呀……！";
 		mes "" + strcharinfo(0) + "!!!";
 		mes "I didn't even notice that " + strcharinfo(0) + " was here because I've been so distracted.";
 		npctalk "哎呀……！", "Niren#ep18_in1", bc_self;
 		cutin "ra_gwoman.bmp",2;
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "As you can see, we're currently swamped with internal issues regarding ^e5555eRachel^000000.";
 		mes "But what is it that you want to tell me?";
 		next;
 		select( "About the intruder." );
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "啊……";
 		mes "<FONT SIZE = 10>It's a bit difficult to discuss that here.</FONT>";
 		mes "請跟我來。";
@@ -1088,7 +1088,7 @@ ra_temin,172,36,7	script	Priest Freya#ep18	4_F_MASK1,{
 		mes "[Priest Freya]";
 		mes "It seems High Priestess Niren was looking for you. Did you not meet him?";
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "" + strcharinfo(0) + ", please follow me this way.";
 		cloakoffnpcself( "Niren#ep18_in1" );
 		cutin "ra_gwoman.bmp",2;
@@ -1107,7 +1107,7 @@ OnInit:
 	end;
 }
 
-ra_temin,170,38,5	duplicate(dummy_cloaked_npc)	Niren#ep18_in1	4_F_MADAME
+ra_temin,170,38,5	duplicate(dummy_cloaked_npc)	尼倫#ep18_in1::Niren#ep18_in1	4_F_MADAME
 ra_temin,171,42,5	duplicate(dummy_npc)	Rachelite#ep18_in1	4_F_SHABBY
 ra_temin,173,43,3	duplicate(dummy_npc)	Rachelite#ep18_in2	4_M_RACHMAN2
 ra_temin,175,36,0	duplicate(dummy_npc)	Rachelite#ep18_in3	4_F_DESERT
@@ -1117,50 +1117,50 @@ ra_temin,177,33,5	duplicate(dummy_npc)	Rachel Resident#ep18_in6	4_M_CHILD1
 ra_temin,173,32,0	duplicate(dummy_npc)	Rachel Resident#ep18_in7	4_F_MASK
 
 // Main Quest: Step 9.
-ra_temin,213,87,3	script	Niren#ep18_in2	4_F_MADAME,{
+ra_temin,213,87,3	script	尼倫#ep18_in2::Niren#ep18_in2	4_F_MADAME,{
 	if (ep18_main == 10) {
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "It seems there won't be anyone listening here.";
 		mes "^e5555eEspecially on sensitive matters^000000 like this,";
 		mes "I apologize for having to discuss it in a place like this.";
 		cutin "ra_gwoman.bmp",2;
 		next;
 		select( "Explain about the intruder's identity." );
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "<FONT SIZE = 14>That's possible!!!</FONT>";
 		mes "^e5555eHeart Hunters^000000 are already targeting ^e5555eYmir's Heart fragments^000000, so we can't afford to ignore this!";
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "They infiltrated so easily...";
 		mes "We need to immediately ^e5555eStrengthen the security near the Heart Vault^000000 and actively cooperate with ^e5555eRebEllyon^000000.";
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "But no matter how much we reinforce the security near the Heart Vault, with the recent tense atmosphere among the residents, it's actually an ideal situation for intruders to run rampant.";
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "I'll focus on reinforcing the security for now, so could I ask you, " + strcharinfo(0) + ", to ^e5555eMediate among the residents^000000?";
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "不……";
 		mes "Rather than mediating, just listening to their stories and relaying them would be enough.";
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "When making a decision that I thought would make many people happy, I failed to properly consider the feelings of those who didn't support that choice.";
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "It's not realistic to expect everyone to get along overnight.";
 		mes "就……";
 		mes "If we can understand what the grievances are...";
 		mes "I believe we can start over.";
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "Right now, it seems like nobody is willing to listen, but like Dent said, perhaps an outsider like " + strcharinfo(0) + " might be able to help with the conversation.";
 		next;
 		mes "[Elly]";
 		mes "Human relationships are complicated.";
 		cutin "ep172_beta.bmp",2;
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "Haha... indeed.";
 		mes "Shall we head back to the entrance of the temple for now?";
 		mes "^e5555eWe need to check with the security^000000 team as well...";
@@ -1173,11 +1173,11 @@ ra_temin,213,87,3	script	Niren#ep18_in2	4_F_MADAME,{
 		end;
 	}
 	if (ep18_main == 11) {
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "Right now, it seems like nobody is willing to listen, but like Dent said, perhaps an outsider like " + strcharinfo(0) + " might be able to help with the conversation.";
 		cutin "ra_gwoman.bmp",2;
 		next;
-		mes "[High Priestess Niren]";
+		mes "[大祭司尼倫]";
 		mes "Shall we head back to the entrance of the temple for now?";
 		mes "^e5555eWe need to check with the security^000000 team as well...";
 		close2;
@@ -1185,7 +1185,7 @@ ra_temin,213,87,3	script	Niren#ep18_in2	4_F_MADAME,{
 		navigateto("ra_temin",174,38);
 		end;
 	}
-	mes "[High Priestess Niren]";
+	mes "[大祭司尼倫]";
 	mes "I'm a bit busy right now...";
 	mes "Sorry about that.";
 	cutin "ra_gwoman.bmp",2;
@@ -1362,22 +1362,22 @@ rachel,112,136,0	duplicate(#Flower Room Main)	Niren Great Hall	HIDDEN_WARP_NPC,5
 rachel,115,125,0	duplicate(#Flower Room Main)	Reminder#ra01	HIDDEN_WARP_NPC,3,3
 
 // Main Quest: Step 14. and 24.
-rachel,70,147,3	script	Maram#ep18_Rachel	4_EP18_MARAM,{
+rachel,70,147,3	script	瑪拉姆#ep18_Rachel::Maram#ep18_Rachel	4_EP18_MARAM,{
 	if (ep18_main < 15) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "I wonder when Miriam will arrive~";
 		cutin "ep18_maram_01.png",2;
 		close3;
 	}
 	if (ep18_main == 15) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "你好。";
 		mes "I believe it's our first meeting. Is this your first time in Rachel?";
 		mes "May the blessings of Freyja be with you, traveler.";
 		cutin "ep18_maram_01.png",2;
 		next;
 		select( "Deliver Niren's message." );
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "啊！";
 		mes "If it's a task entrusted by my mother, then I must do my best to help!!!";
 		npctalk "Just leave it to me.", "Maram#ep18_Rachel", bc_self;
@@ -1387,45 +1387,45 @@ rachel,70,147,3	script	Maram#ep18_Rachel	4_EP18_MARAM,{
 		mes "But we don't know much about the situation here. How can we mediate between people?";
 		cutin "ep172_beta.bmp",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "From my perspective...";
 		mes "Before mediating between people, I hope you understand the situation faced by the natives and our Gray Children.";
 		cutin "ep18_maram_01.png",2;
 		next;
 		select( "Who are the Gray Children?" );
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Rachel...";
 		mes "It's a city with a beautiful temple now, but it used to be a ^e5555eBarren Wasteland^000000 where the natives lived.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "But one day, ^e5555eFreyja's Disciples^000000 suddenly came and pushed the natives aside, building the temple.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Some people who followed the temple to settle down here tried to live together with the newcomers, but ^e5555emany couldn't bear it and left^000000 or... some ^e5555esuffered^000000.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "It would have been good if those were just things of the past... but they've ^e5555econtinued until now^000000.";
 		mes "As a result, there are ^e5555echildren who have lost their place to go^000000, and I am one of them.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "My adoptive mother, who felt sorry for us, adopted me. And since she became a high-ranking priestess, she has been leading the way in ^e5555eadopting us into the homes of wealthy immigrants^000000.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Some people found this unacceptable and ^e5555ediscriminated against us^000000, calling us the Gray Children. But my mother hoped that we would become bridges between immigrants and natives.";
 		npctalk "Why are they like that...", "Maram#ep18_Rachel", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "<FONT SIZE = 14>We couldn't fit in anywhere properly, just remained as an outsiders</FONT>.";
 		cutin "ep18_maram_02.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "It would be better to hear such stories ^e5555edirectly from people^000000, but...";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "I have an ^e5555eimportant appointment with a friend^000000 right now, so could you please allow me to meet my friend and explain the situation later?";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "The time we agreed to meet...";
 		next;
 		mes "[???]";
@@ -1434,17 +1434,17 @@ rachel,70,147,3	script	Maram#ep18_Rachel	4_EP18_MARAM,{
 		cloakoffnpcself( "Miriam#ep18_Rachel" );
 		npctalk "It's already been 5 minutes, hasn't it?", "Miriam#ep18_Rachel", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "<FONT SIZE = 14>^e5555eMiriam!</FONT>";
 		mes "Since when have you been here?";
 		cutin "ep18_maram_01.png",2;
 		npctalk "What a surprise!", "Maram#ep18_Rachel", bc_self;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "But more importantly...";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "喔！";
 		mes "This is my ^e5555eFriend Miriam^000000.";
 		mes "Miriam, these are " + strcharinfo(0) + " and... Elly?";
@@ -1459,7 +1459,7 @@ rachel,70,147,3	script	Maram#ep18_Rachel	4_EP18_MARAM,{
 		end;
 	}
 	if (ep18_main == 16) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "喔！";
 		mes "This is my ^e5555eFriend Miriam^000000.";
 		mes "Miriam, these are " + strcharinfo(0) + " and... Elly?";
@@ -1471,7 +1471,7 @@ rachel,70,147,3	script	Maram#ep18_Rachel	4_EP18_MARAM,{
 		end;
 	}
 	if (ep18_main == 17) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "抱歉， " + strcharinfo(0) + " but could we leave after I quickly buy something?";
 		mes "It'll be quick if I just place the order.";
 		npctalk "Please wait just a moment.", "Maram#ep18_Rachel", bc_self;
@@ -1482,66 +1482,66 @@ rachel,70,147,3	script	Maram#ep18_Rachel	4_EP18_MARAM,{
 		end;
 	}
 	if (ep18_main < 25) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Buying the item isn't as easy as I thought.";
 		npctalk "唔……", "Maram#ep18_Rachel", bc_self;
 		cutin "ep18_maram_01.png",2;
 		close3;
 	}
 	if (ep18_main == 25) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "啊！";
 		mes "" + strcharinfo(0) + ", you are here.";
 		mes "We've gathered the necessary personnel, although we're a bit short.";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "When Miriam returns... Oh!";
 		npctalk "喔！", "Tamarin#ep18_Maram", bc_self;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "喔！";
 		mes "It's Lord Niren's son!";
 		cloakoffnpcself( "Tamarin#ep18_Maram" );
 		cutin "ep18_tamarin_04.png",2;
 		npctalk "喔！", "Tamarin#ep18_Maram", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Ah, you're the ones who came looking for my mother last time.";
 		mes "Tamarin, Mark, and Maggi, right?";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Maram.";
 		cloakoffnpcself( "Miriam#ep18_Rachel" );
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Miriam, you're back?";
 		mes "Did you find the clothes?";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "I brought some, but...";
 		mes "這樣夠了嗎？";
 		cutin "ep18_miriam_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "<FONT SIZE = 14>Hahaha!</FONT>";
 		mes "That outfit, could it be...";
 		mes "It's perfect!";
 		cutin "ep18_maram_02.png",2;
 		npctalk "哈哈哈！", "Tamarin#ep18_Maram", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Now that we've gathered all the necessary personnel and prepared the clothes, let me explain the plan.";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "We'll wear the clothes brought by Miriam and head to the top of this exotic town to move the goods.";
 		mes "I can't disclose the destination yet, so just follow me.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "" + strcharinfo(0) + ", please go to the ^e5555estore where you bought the items^000000 and inform them that you will be leaving soon.";
 		mes "The others will change into the clothes with me and head to the entrance of the village first.";
 		erasequest 11713;
@@ -1556,15 +1556,15 @@ rachel,70,147,3	script	Maram#ep18_Rachel	4_EP18_MARAM,{
 		end;
 	}
 	if (ep18_main == 26) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Now that all the necessary personnel are gathered and the clothes are ready, let me explain the plan.";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "We'll ^e5555eput on the clothes Miriam brought and pretend to be a foreign merchant^000000, then move the goods.";
 		mes "I can't disclose the destination yet, so just follow me.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "" + strcharinfo(0) + ", could you please go to the shop where you bought the items earlier and inform them that we'll be leaving soon?";
 		mes "The others will change into the clothes with me and head to the entrance of the village first.";
 		close2;
@@ -1576,12 +1576,12 @@ rachel,70,147,3	script	Maram#ep18_Rachel	4_EP18_MARAM,{
 		end;
 	}
 	if (ep18_main == 27) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "" + strcharinfo(0) + ", thanks to you, it seems like things are going quite smoothly!";
 		cutin "ep18_maram_01.png",2;
 		close3;
 	}
-	mes "[Maram]";
+	mes "[瑪拉姆]";
 	mes "" + strcharinfo(0) + ", thanks to you, it seems like things are going quite smoothly!";
 	cutin "ep18_maram_01.png",2;
 	close3;
@@ -1601,71 +1601,71 @@ rachel,62,144,5	script(CLOAKED)	Miriam#ep18_Rachel	4_EP18_MIRIAM,{
 	}
 	if (ep18_main == 16) {
 		select( "問候你。" );
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Hello, how are you?";
 		mes "很高興見到你。";
 		mes "" + strcharinfo(0) + ".";
 		mes "I'm Miriam, a friend of Maram.";
 		cutin "ep18_miriam_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "So, Miriam, here's the thing.";
 		mes "My mother asked you to help " + strcharinfo(0) + ", so I might not be able to go with you this time.";
 		mes "Can you go alone?";
 		cutin "ep18_maram_01.png",2;
 		npctalk "抱歉。", "Maram#ep18_Rachel", bc_self;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "If it's something Niren asked for, then there's no helping it.";
 		mes "But we can't even leave because we don't have the items.";
 		cutin "ep18_miriam_03.png",2;
 		npctalk "No items?", "Miriam#ep18_Rachel", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "什麼？";
 		mes "Didn't you buy them?";
 		cutin "ep18_maram_03.png",2;
 		npctalk "什麼？", "Maram#ep18_Rachel", bc_self;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Here, a check.";
 		cutin "ep18_miriam_03.png",2;
 		npctalk "I'll return it.", "Miriam#ep18_Rachel", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "唔……";
 		mes "You didn't make a mistake while buying the items or something, did you?";
 		cutin "ep18_maram_02.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Me...?";
 		cutin "ep18_miriam_03.png",2;
 		npctalk "What are you implying!", "Miriam#ep18_Rachel", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "You're good most of the time, but sometimes you get annoyed...";
 		cutin "ep18_maram_02.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "<FONT SIZE = 16><B>No, right?</FONT></B>";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Maram]";
-		mes "Sigh...";
+		mes "[瑪拉姆]";
+		mes "唉……";
 		mes "This is really a big problem...";
 		cutin "ep18_maram_03.png",2;
 		npctalk "This is bad!", "Maram#ep18_Rachel", bc_self;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Can't you buy from those merchants last time?";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "嗯……";
 		mes "If I want to deal with them, ^e5555eI have to go myself^000000...";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "" + strcharinfo(0) + ", I'm sorry, but would it be okay if I just quickly buy the items and then leave?";
 		mes "It'll be quick because I just need to place the order.";
 		npctalk "請稍等一下。", "Maram#ep18_Rachel", bc_self;
@@ -1685,12 +1685,12 @@ OnInit:
 	end;
 }
 
-rachel,68,146,5	duplicate(dummy_cloaked_npc)	Tamarin#ep18_Maram	4_EP18_TAMARIN
+rachel,68,146,5	duplicate(dummy_cloaked_npc)	塔瑪林#ep18_Maram::Tamarin#ep18_Maram	4_EP18_TAMARIN
 
 // Main Quest: Step 16.
 rachel,87,122,7	script	商人#ep18_Rachel1::Merchant#ep18_Rachel1	4_F_DST_GRAND,{
 	if (ep18_main == 17) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "你好。";
 		mes "Merchant Sreen.";
 		cutin "ep18_maram_01.png",2;
@@ -1700,7 +1700,7 @@ rachel,87,122,7	script	商人#ep18_Rachel1::Merchant#ep18_Rachel1	4_F_DST_GRAND,
 		mes "<FONT SIZE = 16><B>What are you here for!</FONT></B>";
 		mes "<FONT SIZE = 14><B>We have nothing to sell to you, get out from here!</FONT></B>";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Please don't say that.";
 		cutin "ep18_maram_02.png",2;
 		next;
@@ -1708,24 +1708,24 @@ rachel,87,122,7	script	商人#ep18_Rachel1::Merchant#ep18_Rachel1	4_F_DST_GRAND,
 		mes "[Merchant Sreen]";
 		mes "<FONT SIZE = 16><B>Just because of Niren, I won't forcibly chase you away!</FONT></B>";
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "<FONT SIZE = 14>Stop it.</FONT>";
 		mes "Let's go back.";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "<B>I apologize.</B>";
 		mes "Merchant Sreen.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "But Miriam...";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "<FONT SIZE = 14><B>Let's go!</FONT></B>";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "You were so confident, but ended up looking embarrassed from the start.";
 		mes "Shall we try ^e5555eanother store^000000 then?";
 		cutin "ep18_maram_02.png",2;
@@ -1749,7 +1749,7 @@ OnInit:
 // Main Quest: Step 17.
 rachel,107,102,7	script	商人#ep18_Rachel2::Merchant#ep18_Rachel2	4_M_DESERT,{
 	if (ep18_main == 18) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "你好。";
 		mes "Mr. Sannat.";
 		mes "Is Mrs. Sannat doing well too?";
@@ -1765,7 +1765,7 @@ rachel,107,102,7	script	商人#ep18_Rachel2::Merchant#ep18_Rachel2	4_M_DESERT,{
 		mes "[Merchant Sannat]";
 		mes "...";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "I'm interested in buying some of the items listed here.";
 		cutin "ep18_maram_01.png",2;
 		next;
@@ -1774,7 +1774,7 @@ rachel,107,102,7	script	商人#ep18_Rachel2::Merchant#ep18_Rachel2	4_M_DESERT,{
 		mes "Ah... um...";
 		mes "I'm sorry, but we don't have much stock at the moment.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Then, could you please check the list and see if there are any items are available?";
 		cutin "ep18_maram_01.png",2;
 		next;
@@ -1783,7 +1783,7 @@ rachel,107,102,7	script	商人#ep18_Rachel2::Merchant#ep18_Rachel2	4_M_DESERT,{
 		mes "嗯……";
 		mes "I'm sorry, but the items we have here are all low in stock...";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "That's alright, even if they're a bit low in stock.";
 		cutin "ep18_maram_01.png",2;
 		next;
@@ -1791,7 +1791,7 @@ rachel,107,102,7	script	商人#ep18_Rachel2::Merchant#ep18_Rachel2	4_M_DESERT,{
 		mes "[Merchant Sannat]";
 		mes "很抱歉……";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Then, what about bread and meat...";
 		cutin "ep18_maram_03.png",2;
 		next;
@@ -1800,11 +1800,11 @@ rachel,107,102,7	script	商人#ep18_Rachel2::Merchant#ep18_Rachel2	4_M_DESERT,{
 		mes "啊……";
 		mes "<FONT SIZE = 10>Those are already reserved...</FONT>";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "...";
 		cutin "ep18_maram_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Alright... I'm sorry.";
 		mes "Then, next time...";
 		next;
@@ -1824,7 +1824,7 @@ rachel,107,102,7	script	商人#ep18_Rachel2::Merchant#ep18_Rachel2	4_M_DESERT,{
 		mes "[Merchant Sannat]";
 		mes "很抱歉……";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Then, how about bread and meat...";
 		cutin "ep18_maram_03.png",2;
 		next;
@@ -1833,11 +1833,11 @@ rachel,107,102,7	script	商人#ep18_Rachel2::Merchant#ep18_Rachel2	4_M_DESERT,{
 		mes "啊……";
 		mes "<FONT SIZE = 10>Those are already reserved...</FONT>";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "...";
 		cutin "ep18_maram_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Yes... I'm sorry.";
 		mes "Then, next time...";
 		next;
@@ -1872,72 +1872,72 @@ rachel,117,104,5	script(CLOAKED)	Miriam#ep18_merchant2	4_EP18_MIRIAM,{
 		end;
 	}
 	if (ep18_main == 19) {
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Ughhh...";
 		cutin "ep18_miriam_03.png",2;
 		npctalk "What is this!", "Miriam#ep18_merchant2", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "...";
 		cutin "ep18_maram_03.png",2;
 		npctalk "Calm down, Miriam.", "Maram#ep18_merchant2", bc_self;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Before confessing my embarrassing behavior, let me apologize in advance.";
 		mes "抱歉。";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "???";
 		cutin "ep18_maram_03.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "I know it's impolite, but truthfully, I overheard a bit of the conversation between " + strcharinfo(0) + " and Maram earlier.";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "While I cannot be certain of how Niren and " + strcharinfo(0) + " perceive the current ^e5555econflict among Rachel residents^000000, I believe what you've seen just now would have given you a clear indication.";
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Saying there are no goods to sell to the ^e5555eGray Children^000000...";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Miriam, it's not...";
 		cutin "ep18_maram_03.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "<FONT SIZE = 14>Maram, this is reality.</FONT>";
 		mes "<FONT SIZE = 14>You know it as well.</FONT>";
 		cutin "ep18_miriam_03.png",2;
 		npctalk "This is reality.", "Miriam#ep18_merchant2", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Miriam...";
 		cutin "ep18_maram_03.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "...";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "<FONT SIZE = 10>Yeah, you're right.</FONT>";
 		mes "Both Mr. Sreen and Mr. Sannat were ^e5555eparticipants in selling goods^000000 until recently...";
 		mes "But now, even they are reluctant to sell.";
 		cutin "ep18_maram_01.png",2;
 		npctalk "你說得對。", "Maram#ep18_merchant2", bc_self;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "...";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "<FONT SIZE = 16><B>Yeah!!!</FONT></B>";
 		mes "<FONT SIZE = 16><B>That's right!!!</FONT></B>";
 		mes "<FONT SIZE = 14><B>It would be easier if we just admit it to ourselves!!!</FONT></B>";
 		cutin "ep18_maram_02.png",2;
 		npctalk "Forget it!", "Maram#ep18_merchant2", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Instead of constantly complaining about how things are, let's think about how to acquire the goods!";
 		erasequest 11707;
 		setquest 11708;
@@ -1948,18 +1948,18 @@ rachel,117,104,5	script(CLOAKED)	Miriam#ep18_merchant2	4_EP18_MIRIAM,{
 		end;
 	}
 	if (ep18_main == 20) {
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "...";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "<FONT SIZE = 16><B>Yeah!!!</FONT></B>";
 		mes "<FONT SIZE = 16><B>That's right!!!</FONT></B>";
 		mes "<FONT SIZE = 14><B>It would be easier if we just admit it to ourselves!!!</FONT></B>";
 		cutin "ep18_maram_02.png",2;
 		npctalk "Forget it!", "Maram#ep18_merchant2", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Instead of constantly complaining about how things are, let's think about how to acquire the goods!";
 		close2;
 		cutin "",255;
@@ -1976,67 +1976,67 @@ OnInit:
 // Main Quest: Step 19.
 rachel,119,103,3	script(CLOAKED)	Maram#ep18_merchant2	4_EP18_MARAM,{
 	if (ep18_main == 20) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "This is really a big problem.";
 		mes "We need to acquire the goods somehow, quickly.";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "It might be better to go to another city to buy them, although it'll be tough...";
 		mes "But with the situation in Rachel and <FONT SIZE = 10>also with what Mother has asked,</FONT> it's difficult to go to another city...";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "At times like this, it would be great if we had a passing ^e5555eTrade delegation from another country^000000.";
 		mes "<FONT SIZE = 10>From another country...</FONT>";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "<FONT SIZE = 16><B>!!!</FONT></B>";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "<FONT SIZE = 16><B>Oh!!!!</FONT></B>";
 		mes "<FONT SIZE = 16><B>That's it!!!!</FONT></B>";
 		mes "<FONT SIZE = 14><B>" + strcharinfo(0) + "!!!!</FONT></B>";
 		npctalk "Oh!!!! That's it!!!!", "Maram#ep18_merchant2", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "<FONT SIZE = 14>I have a favor to ask!</FONT>";
 		mes "^e5555eCould you please help me secretly buy the goods for Mother?";
 		cutin "ep18_maram_02.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "^e5555eWith an outsider^000000 like " + strcharinfo(0) + ", we might be able to buy the goods!";
 		next;
 		select( "Reason for Buying Goods" );
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "啊~";
 		mes "那是……";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "How long do you plan to keep it a secret?";
 		mes "If someone asks for such a favor without knowing the reason, it's natural to refuse.";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "對。";
 		mes "我懂了。";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "" + strcharinfo(0) + "...";
 		mes "Actually, Miriam and I are ^e5555eHelping indigenous people struggling in another area^000000.";
 		mes "^e5555eProcure the supplies needed to live^000000 is one of those tasks.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Although it's called ^e5555eDiscrimination and Persecution^000000, in reality, it's almost like escaping from ^e5555eHardliners or Extremists^000000.";
 		mes "For those ^e5555eFugitives^000000, the only way to survive was ^e5555eTo Hide^000000.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Living in hiding... Even if they could survive without our help... <FONT SIZE = 10>Or rather, even if they couldn't</FONT> it would have been better if they could somehow make a living, but unfortunately, that's not the case.";
 		cutin "ep18_maram_03.png",2;
 		npctalk "Even if they couldn't survive without our help...", "Maram#ep18_merchant2", bc_self;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "I also request the same.";
 		mes "<FONT SIZE = 14>To prevent children exhausted from hunger from following the same path as me...</FONT> <FONT SIZE = 10>Experiencing the same suffering</FONT>.";
 		cutin "ep18_miriam_03.png",2;
@@ -2044,7 +2044,7 @@ rachel,119,103,3	script(CLOAKED)	Maram#ep18_merchant2	4_EP18_MARAM,{
 		next;
 		switch( select( "Help them.", "Don't help them.", "Inform Niren." ) ) {
 		case 1:
-			mes "[Maram]";
+			mes "[瑪拉姆]";
 			mes "<FONT SIZE = 14><B>Thank you!</FONT></B>";
 			mes "<FONT SIZE = 14><B>Let's go right away!</FONT></B>";
 			mes "Since it would be strange to go back to the shop we just visited, it's better to go to the ^e5555eShop across the square^000000.";
@@ -2076,7 +2076,7 @@ OnInit:
 // Main Quest: Step 20. and 25.
 rachel,137,85,5	script(CLOAKED)	Merchant#ep18_Rachel3	4_M_MIDDLE1,{
 	if (ep18_main == 21) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "你好～";
 		mes "Merchant Rencia~";
 		cutin "ep18_maram_01.png",2;
@@ -2086,7 +2086,7 @@ rachel,137,85,5	script(CLOAKED)	Merchant#ep18_Rachel3	4_M_MIDDLE1,{
 		mes "What's up.";
 		mes "Not for you......";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Actually, <FONT SIZE = 14><B>this merchant here</FONT></B> is the one.";
 		cutin "ep18_maram_01.png",2;
 		next;
@@ -2095,7 +2095,7 @@ rachel,137,85,5	script(CLOAKED)	Merchant#ep18_Rachel3	4_M_MIDDLE1,{
 		mes "嗯……";
 		mes "<FONT SIZE = 10>Doesn't look like a merchant?</FONT>";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "This person is actually a Merchant " + strcharinfo(0) + " from Maroll.";
 		mes "Since they travel around trading in various places, they often encounter dangerous areas, so they're armed~";
 		cutin "ep18_maram_01.png",2;
@@ -2104,7 +2104,7 @@ rachel,137,85,5	script(CLOAKED)	Merchant#ep18_Rachel3	4_M_MIDDLE1,{
 		mes "[Merchant Rencia]";
 		mes "Maroll, heard of it before...";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Meeting <FONT SIZE = 14>monsters</FONT> on the road would be a big problem~";
 		cutin "ep18_maram_01.png",2;
 		next;
@@ -2112,7 +2112,7 @@ rachel,137,85,5	script(CLOAKED)	Merchant#ep18_Rachel3	4_M_MIDDLE1,{
 		mes "[Merchant Rencia]";
 		mes "<FONT SIZE = 10>That's true.</FONT>";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "<FONT SIZE = 16><B>Now!</FONT></B>";
 		mes "<FONT SIZE = 14><B>Here's the list of items!</FONT></B>";
 		cutin "ep18_maram_01.png",2;
@@ -2121,7 +2121,7 @@ rachel,137,85,5	script(CLOAKED)	Merchant#ep18_Rachel3	4_M_MIDDLE1,{
 		mes "[Merchant Rencia]";
 		mes "You're buying all this alone?";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "<FONT SIZE = 16><B>Of course~</FONT></B> The other merchants are waiting elsewhere.";
 		mes "<FONT SIZE = 14><B>Right?</FONT></B>";
 		cutin "ep18_maram_02.png",2;
@@ -2135,7 +2135,7 @@ rachel,137,85,5	script(CLOAKED)	Merchant#ep18_Rachel3	4_M_MIDDLE1,{
 			mes "[Merchant Rencia]";
 			mes "Anyway, since it seems you didn't bring separate carriers, just let us know when you're leaving town, and we'll deliver it to the town entrance.";
 			next;
-			mes "[Maram]";
+			mes "[瑪拉姆]";
 			mes "You really don't have to go through all this trouble...";
 			cutin "ep18_maram_01.png",2;
 			next;
@@ -2144,7 +2144,7 @@ rachel,137,85,5	script(CLOAKED)	Merchant#ep18_Rachel3	4_M_MIDDLE1,{
 			mes "啥？";
 			mes "為什麼不？";
 			next;
-			mes "[Maram]";
+			mes "[瑪拉姆]";
 			mes "We haven't even decided on a departure time yet...";
 			cutin "ep18_maram_01.png",2;
 			next;
@@ -2153,11 +2153,11 @@ rachel,137,85,5	script(CLOAKED)	Merchant#ep18_Rachel3	4_M_MIDDLE1,{
 			mes "I'll prepare in advance, so just let me know when the time is set.";
 			mes "You're buying this much, so I should provide this level of <FONT SIZE = 14><B>service</FONT></B>~!";
 			next;
-			mes "[Maram]";
+			mes "[瑪拉姆]";
 			mes "...";
 			cutin "ep18_maram_01.png",2;
 			next;
-			mes "[Miriam]";
+			mes "[米莉安]";
 			mes "Thank you for offering to deliver.";
 			mes "We'll inform you once the departure time is decided.";
 			mes "See you when we depart.";
@@ -2168,7 +2168,7 @@ rachel,137,85,5	script(CLOAKED)	Merchant#ep18_Rachel3	4_M_MIDDLE1,{
 			mes "Thank you for your purchase.";
 			mes "Merchant " + strcharinfo(0) + " from Maroll.";
 			next;
-			mes "[Miriam]";
+			mes "[米莉安]";
 			mes "Let's have a little chat ^e5555eover here^000000.";
 			cutin "ep18_miriam_03.png",2;
 			erasequest 11709;
@@ -2190,11 +2190,11 @@ rachel,137,85,5	script(CLOAKED)	Merchant#ep18_Rachel3	4_M_MIDDLE1,{
 		mes "I'll prepare in advance, so just let me know when the time is set.";
 		mes "You're buying this much, so I should provide this level of <FONT SIZE = 14><B>Service</FONT></B>~!";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "...";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Thank you for offering to deliver.";
 		mes "We'll inform you once the departure time is decided.";
 		mes "See you when we depart.";
@@ -2205,7 +2205,7 @@ rachel,137,85,5	script(CLOAKED)	Merchant#ep18_Rachel3	4_M_MIDDLE1,{
 		mes "Thank you for your purchase.";
 		mes "Merchant " + strcharinfo(0) + " from Maroll.";
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Let's have a little chat ^e5555eover here^000000.";
 		cutin "ep18_miriam_03.png",2;
 		close2;
@@ -2258,78 +2258,78 @@ OnInit:
 // Main Quest: Step 21.
 rachel,120,79,5	script(CLOAKED)	Miriam#ep18_merchant3	4_EP18_MIRIAM,{
 	if (ep18_main == 22) {
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "You're not even looking this way while we talk...";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "嗯……";
 		mes "There's nothing I can do about it.";
 		mes "Let's just be grateful that we were able to buy the items safely thanks to you, " + strcharinfo(0) + ".";
 		cutin "ep18_maram_02.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "We shouldn't let our guard down until everything is completely in our hands.";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Yeah, it seems like Rencia is a bit suspicious because we're together.";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "A person who doesn't want to sell items.";
 		mes "And a merchant who came with combat attire.";
 		mes "Other unseen members of the merchant group.";
 		mes "Even if they agree to deliver the items, they hesitate...";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "<FONT SIZE = 14>It's natural to be suspicious, isn't it?</FONT>";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "<FONT SIZE = 14><B>Haha?!</FONT></B>";
 		mes "<FONT SIZE = 14>Well, it's all lies in reality~</FONT>";
 		cutin "ep18_maram_02.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "<FONT SIZE = 16><B>Is this a time to laugh!!!!</FONT></B>";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Sorry sorry~";
 		mes "Anyway, even though it's a service, seeing as they say it will be delivered right before departure, I think I'd like to check ^e5555edirectly at the top^000000.";
 		cutin "ep18_maram_02.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "To ensure that you receive your goods safely, it would be a good idea to ^e5555edecorate it to look like a real merchant^000000.";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "I can only see a future ^e5555ejust the three of us went and our things were taken away on the spot^000000.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Then, we'll need ^e5555epeople who will pretend to be a merchant^000000..";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "It's dangerous for this matter to be heard by other merchants.";
 		mes "I will ^e5555ehire adventurers from outside as escort mercenaries^000000.";
 		mes "Miriam, could you please find some clothes that a merchant would wear?";
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "明白了。";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "As for you, " + strcharinfo(0) + "...";
 		mes "<FONT SIZE = 14>Hmm......</FONT>";
 		mes "<FONT SIZE = 16>Well......</FONT>";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Would you like to rest here in this shop for a moment?";
 		mes "I'll order ^e5555efood^000000 for you, so when you're finished eating, please come to the ^e5555eunder the tree we first met^000000.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "If you happen to meet anyone you know, please casually mention about hiring mercenaries.";
 		next;
 		mes "[Elly]";
@@ -2355,7 +2355,7 @@ OnInit:
 rachel,108,74,3	script	Dumplings#ep18_Rachel	4_POINT_RED,{
 	if (ep18_main == 23) {
 		select( "Eat the food Maram ordered." );
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "<FONT SIZE = 16><B>Oh?</FONT></B>";
 		mes "嘿， " + strcharinfo(0) + "!";
 		mes "Nice to see you!";
@@ -2363,36 +2363,36 @@ rachel,108,74,3	script	Dumplings#ep18_Rachel	4_POINT_RED,{
 		cutin "ep18_tamarin_04.png",2;
 		npctalk "Nice to see you!", "Tamarin#ep18_Rachel_dumpling", bc_self;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "What a coincidence to meet here!";
 		cutin "ep18_tamarin_02.png",2;
 		npctalk "Nice to see you again!", "Tamarin#ep18_Rachel_dumpling", bc_self;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Is the food here really good?";
 		mes "I tried it when I visited Rachel before and it was so delicious that I always make sure to visit this place whenever I'm here.";
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "<FONT SIZE = 14>Excuse me, could I have one dumpling, please?</FONT>";
 		cutin "ep18_tamarin_01.png",2;
 		next;
 		select( "Ask what they're doing." );
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Are you eating dumplings?";
 		mes "<FONT SIZE = 14><B>Oh!</FONT></B>";
 		mes "<FONT SIZE = 14>Are you here in Rachel?</FONT>";
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Well... I can't go into details, but I received a request, and after meeting with Niren, I suddenly needed extra guards, so I brought Duran and Alph with me.";
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "So we're waiting for them, and if we have to wait too long, we might consider moving on to the next area...";
 		mes "But we'll see.";
 		npctalk "We'll manage to catch up.", "Tamarin#ep18_Rachel_dumpling", bc_self;
 		next;
 		select( "Request assistance with the merchant disguise." );
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "<FONT SIZE = 14><B>Oh!</FONT></B>";
 		mes "That sounds like a good idea.";
 		mes "Let's go find Mark and Maggie and head over together.";
@@ -2409,7 +2409,7 @@ rachel,108,74,3	script	Dumplings#ep18_Rachel	4_POINT_RED,{
 	}
 	if (ep18_main == 24) {
 		select( "Eat the food Maram ordered." );
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Once you finish the dumplings, let's find Mark and Maggie and go together.";
 		mes "They're probably shopping near the square.";
 		cloakoffnpcself( "Tamarin#ep18_Rachel_dumpling" );
@@ -2428,7 +2428,7 @@ OnInit:
 	end;
 }
 
-rachel,105,73,5	duplicate(dummy_cloaked_npc)	Tamarin#ep18_Rachel_dumpling	4_EP18_TAMARIN
+rachel,105,73,5	duplicate(dummy_cloaked_npc)	塔瑪林#ep18_Rachel_dumpling::Tamarin#ep18_Rachel_dumpling	4_EP18_TAMARIN
 
 // Main Quest: Step 23.
 rachel,122,120,3	script	馬克#ep18_Rachel::Mark#ep18_Rachel	4_EP18_MARK,{
@@ -2438,11 +2438,11 @@ rachel,122,120,3	script	馬克#ep18_Rachel::Mark#ep18_Rachel	4_EP18_MARK,{
 		mes "" + strcharinfo(0) + ".";
 		cutin "ep18_mark_01.png",2;
 		next;
-		mes "[Maggi]";
+		mes "[瑪吉]";
 		mes "Oh... Hello...";
 		cutin "4job_maggi_04.PNG",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Mark, Maggi, are you done with your business?";
 		mes "" + strcharinfo(0) + " introduced you to a job, right?";
 		mes "We're going to meet the client now, so let's go together.";
@@ -2454,7 +2454,7 @@ rachel,122,120,3	script	馬克#ep18_Rachel::Mark#ep18_Rachel	4_EP18_MARK,{
 		mes "But I couldn't find the snacks that Dew asked for.";
 		cutin "ep18_mark_02.png",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Then we can leave now.";
 		mes "Let's head to the meeting place.";
 		cutin "ep18_tamarin_02.png",2;
@@ -2472,7 +2472,7 @@ rachel,122,120,3	script	馬克#ep18_Rachel::Mark#ep18_Rachel	4_EP18_MARK,{
 		mes "But I couldn't find the snacks that Dew asked for.";
 		cutin "ep18_mark_02.png",2;
 		next;
-		mes "[Tamarin]";
+		mes "[塔瑪林]";
 		mes "Then we can leave now.";
 		mes "Let's head to the meeting place.";
 		cutin "ep18_tamarin_02.png",2;
@@ -2482,7 +2482,7 @@ rachel,122,120,3	script	馬克#ep18_Rachel::Mark#ep18_Rachel	4_EP18_MARK,{
 		end;
 	}
 	mes "[馬克]";
-	mes "Hello";
+	mes "你好";
 	mes "" + strcharinfo(0) + ".";
 	cutin "ep18_mark_01.png",2;
 	close3;
@@ -2493,14 +2493,14 @@ OnInit:
 }
 
 rachel,121,120,5	script	Magi#ep18_rachel	4_4JOB_MAGGI,{
-	mes "[Maggi]";
+	mes "[瑪吉]";
 	mes "Oh... Hello...";
 	cutin "4job_maggi_04.PNG",2;
 	close3;
 }
 
 // Main Quest: Step 26.
-rachel,41,132,3	script	Box#ep18_procurement4	4_WOODBOX,{
+rachel,41,132,3	script	箱子#ep18_procurement4::Box#ep18_procurement4	4_WOODBOX,{
 	if (ep18_main == 27) {
 		mes "[Merchant Rencia]";
 		mes "Then please check if the ordered items are correct...";
@@ -2512,7 +2512,7 @@ rachel,41,132,3	script	Box#ep18_procurement4	4_WOODBOX,{
 		mes "謝謝你！";
 		mes "Please use our service again next time~!";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Before you leave " + strcharinfo(0) + ", let's ^e5555echeck the path outside the door^000000.";
 		cutin "ep18_maram_01.png",2;
 		erasequest 11715;
@@ -2524,7 +2524,7 @@ rachel,41,132,3	script	Box#ep18_procurement4	4_WOODBOX,{
 		end;
 	}
 	if (ep18_main == 28) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Before you leave " + strcharinfo(0) + ", let's ^e5555echeck the path outside the door^000000.";
 		cutin "ep18_maram_01.png",2;
 		close2;
@@ -2539,9 +2539,9 @@ OnInit:
 	end;
 }
 
-rachel,42,133,3	duplicate(dummy_npc)	Box#ep18_procurement1	4_WOODBOX
-rachel,40,133,3	duplicate(dummy_npc)	Box#ep18_procurement2	4_WOODBOX
-rachel,39,132,3	duplicate(dummy_npc)	Box#ep18_procurement3	4_WOODBOX
+rachel,42,133,3	duplicate(dummy_npc)	箱子#ep18_procurement1::Box#ep18_procurement1	4_WOODBOX
+rachel,40,133,3	duplicate(dummy_npc)	箱子#ep18_procurement2::Box#ep18_procurement2	4_WOODBOX
+rachel,39,132,3	duplicate(dummy_npc)	箱子#ep18_procurement3::Box#ep18_procurement3	4_WOODBOX
 
 // Main Quest: Step 27.
 ra_fild11,354,235,3	script	商人#ep18_rachel::Merchant#ep18_rachel	4_EP18_MERCHANT,{
@@ -2579,28 +2579,28 @@ OnInit:
 // Main Quest: Step 29. (1@oz solo instance)
 
 // Main Quest: Step 30.
-gw_fild01,276,339,3	duplicate(dummy_cloaked_npc)	Maram#ep18_Ozexit	4_EP18_MARAM
+gw_fild01,276,339,3	duplicate(dummy_cloaked_npc)	瑪拉姆#ep18_Ozexit::Maram#ep18_Ozexit	4_EP18_MARAM
 
 gw_fild01,273,339,3	script	#ep18_in front of Oz Exit	4_POINT_RED,1,1,{
 // trigger OnClick + OnTouch, so OnTouch commented
 	// end;
 // OnTouch:
 	if (ep18_main == 31 || ep18_main == 32) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "<FONT SIZE = 14><B>Ah!</FONT></B>";
 		mes "Finally, I'm out!";
 		cloakoffnpcself( "Maram#ep18_Ozexit" );
 		cutin "ep18_maram_01.png",2;
 		npctalk "I'm so exhausted...", "Maram#ep18_Ozexit", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "If you head a bit ^e5555ewest^000000 from here, you'll find the entrance to the ^e5555evillage^000000.";
 		next;
 		select( "Village?" );
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "It's more like a ^e5555ehideout^000000 where people who fled from Rachel hide rather than a village.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "It's better to see it for yourself than to hear me explain.";
 		if (ep18_main == 31) {
 			completequest 11720;
@@ -2621,16 +2621,16 @@ OnInit:
 }
 
 // Main Quest: Step 31. + 33.
-gw_fild01,39,100,5	duplicate(dummy_npc)	Exotic Merchant#ep18_gw2	4_EP18_MERCHANT
-gw_fild01,34,96,3	duplicate(dummy_npc)	Exotic Merchant#ep18_gw3	4_EP18_MERCHANT
+gw_fild01,39,100,5	duplicate(dummy_npc)	異國商人#ep18_gw2::Exotic Merchant#ep18_gw2	4_EP18_MERCHANT
+gw_fild01,34,96,3	duplicate(dummy_npc)	異國商人#ep18_gw3::Exotic Merchant#ep18_gw3	4_EP18_MERCHANT
 
-gw_fild01,35,102,5	script	Maram#ep18_gw	4_EP18_MARAM,{
+gw_fild01,35,102,5	script	瑪拉姆#ep18_gw::Maram#ep18_gw	4_EP18_MARAM,{
 	if (ep18_main == 32) {
 		mes "[Camper]";
 		mes "Hoooray~~~";
 		mes "Sometimes, camping like this isn't so bad~~~";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "<FONT SIZE = 14><B>It's me! Me!</FONT></B>";
 		cutin "ep18_maram_01.png",2;
 		next;
@@ -2639,25 +2639,25 @@ gw_fild01,35,102,5	script	Maram#ep18_gw	4_EP18_MARAM,{
 		mes "你？";
 		mes "Do we know each other?";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "你在說什麼？";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Is this the reaction when you bring an ^e5555eoutsider^000000?";
 		cloakoffnpcself( "Miriam#ep18_gw" );
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "啊……";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Then I'll go ahead.";
 		cloakoffnpcself( "Imril#ep18_gw" );
 		cutin "ep18_imril_02.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "<FONT SIZE = 14><B>Oops!! Imril, wait a moment!!!!</FONT></B>";
 		cutin "ep18_maram_01.png",2;
 		erasequest 11721;
@@ -2666,161 +2666,161 @@ gw_fild01,35,102,5	script	Maram#ep18_gw	4_EP18_MARAM,{
 		close3;
 	}
 	if (ep18_main == 33) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "啊……";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Then I'll go ahead.";
 		cloakoffnpcself( "Imril#ep18_gw" );
 		cutin "ep18_imril_02.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "<FONT SIZE = 14><B>Oops!! Imril, wait a moment!!!!</FONT></B>";
 		cutin "ep18_maram_01.png",2;
 		close3;
 	}
 	if (ep18_main == 34) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Suad is late...";
 		mes "What if she doesn't come at all?";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "We should return to Rachel.";
 		mes "If trust is already broken, ^e5555ewe might not be able to enter the village again.^000000";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "But if we continue like this, the people in the village will only suffer more.";
 		mes "If necessary, even the help of outsiders...";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "You don't understand.";
 		cutin "ep18_miriam_03.png",2;
 		npctalk "You're both the same and different from us.", "Miriam#ep18_gw", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "...";
 		cutin "ep18_maram_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "I also... want to understand... you all...";
 		npctalk "很抱歉……", "Maram#ep18_gw", bc_self;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "...";
 		cutin "ep18_miriam_03.png",2;
 		npctalk "To say such things, I'm the one who should apologize.", "Miriam#ep18_gw", bc_self;
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "To bring an outsider without any consultation...";
 		mes "Consider yourself fortunate that I came to hear your last excuse, considering our past relationship.";
 		cutin "ep18_suad_03.png",2;
 		cloakoffnpcself( "Suad#ep18_gw" );
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Suad!";
 		mes "Bringing an outsider to the village entrance without saying a word was reckless of me!";
 		cutin "ep18_maram_02.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "But these individuals are trustworthy enough for Mother to entrust important tasks to them!";
 		mes "There's no need to worry; nothing bad will happen!";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Is Niren giving you that much trust to handle tasks?";
 		mes "What does it matter if you have Niren's trust?";
 		cutin "ep18_suad_03.png",2;
 		npctalk "It means nothing!", "Suad#ep18_gw", bc_self;
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "<FONT SIZE = 14>Niren doesn't even know that you're delivering goods here.</FONT>";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "那是……";
 		cutin "ep18_maram_01.png",2;
 		npctalk "That's true, but...", "Maram#ep18_gw", bc_self;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Stop mocking Suad.";
 		cutin "ep18_miriam_03.png",2;
 		npctalk "Enough with the words!", "Miriam#ep18_gw", bc_self;
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "I'm not mocking.";
 		mes "I'm just stating the truth...";
 		cutin "ep18_suad_03.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "If it's the truth, ^e5555ethen in Rachel, we won't have anyone to sell goods to us anymore,^000000 and we'll all starve to death like this.";
 		cutin "ep18_miriam_03.png",2;
 		npctalk "That's not what we want, right?", "Miriam#ep18_gw", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "You can buy goods from Veins or other villages, but ^e5555ethe number of people who can pass through Oz Labyrinth is decreasing.^000000";
 		cutin "ep18_maram_01.png",2;
 		npctalk "Even Imril was in danger.", "Maram#ep18_gw", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "For now, ^e5555eif you have combat skills, you can pass by killing monsters,^000000 but later it might not be about combat skills; ^e5555ethe entire maze might be locked in lava.^000000";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "By then, the people who could help wouldn't even be able to come this far.";
 		npctalk "By then, it'll be too late!", "Maram#ep18_gw", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "And if only ^e5555emediation between the natives and immigrants requested by Mother could be achieved, we could cross Oz's Gorge again with a bridge!";
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Mediation? It seems like Niren is having another dreamy idea.";
 		mes "Just like when the ^e5555egray children^000000 appeared.";
 		cutin "ep18_suad_03.png",2;
 		npctalk "It seems like Niren is having another dreamy idea.", "Suad#ep18_gw", bc_self;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "But thanks to that, we were able to avoid hunger, and now we can help the children in the village.";
 		cutin "ep18_miriam_03.png",2;
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Fine.";
 		mes "Then let's give them a chance.";
 		mes "Just like Niren gave us a chance.";
 		cutin "ep18_suad_03.png",2;
 		npctalk "I abandoned that chance and ran away...", "Suad#ep18_gw", bc_self;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "什麼？";
 		cutin "ep18_miriam_03.png",2;
 		npctalk "Are you allowing this so easily?", "Miriam#ep18_gw", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "真的嗎？！";
 		cutin "ep18_maram_02.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Seriously?";
 		cutin "ep18_miriam_03.png",2;
 		npctalk "I honestly didn't expect much!", "Maram#ep18_gw", bc_self;
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "那是什麼？";
 		mes "That reaction.";
 		cutin "ep18_suad_03.png",2;
 		npctalk "Then go back!!", "Suad#ep18_gw", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "No~ No~";
 		mes "謝謝你~";
 		cutin "ep18_maram_02.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Then let's go to the ^e5555eVillage^000000 before Suad changes his mind!";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Let's discuss the details inside.";
 		erasequest 11723;
 		setquest 11724;
@@ -2833,18 +2833,18 @@ gw_fild01,35,102,5	script	Maram#ep18_gw	4_EP18_MARAM,{
 		end;
 	}
 	if (ep18_main == 35) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Then let's hurry and go to the ^e5555evillage^000000 before Suad changes his mind!";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Let's discuss the details inside.";
 		close2;
 		cutin "",255;
 		warp "wolfvill",152,113;
 		end;
 	}
-	mes "[Maram]";
+	mes "[瑪拉姆]";
 	mes "Hoo~";
 	mes "Shall we try lighting a campfire or something?";
 	cutin "ep18_maram_01.png",2;
@@ -2856,69 +2856,69 @@ OnInit:
 	end;
 }
 
-gw_fild01,36,103,5	duplicate(dummy_cloaked_npc)	Miriam#ep18_gw	4_EP18_MIRIAM
-gw_fild01,41,103,5	duplicate(dummy_cloaked_npc)	Suad#ep18_gw	4_EP18_SUAD
+gw_fild01,36,103,5	duplicate(dummy_cloaked_npc)	米莉安#ep18_gw::Miriam#ep18_gw	4_EP18_MIRIAM
+gw_fild01,41,103,5	duplicate(dummy_cloaked_npc)	蘇阿德#ep18_gw::Suad#ep18_gw	4_EP18_SUAD
 
 // Main Quest: Step 32.
 gw_fild01,37,105,5	script(CLOAKED)	Imril#ep18_gw	4_EP18_IMRIL,{
 	if (ep18_main == 33) {
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Why.";
 		cutin "ep18_imril_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Don't go alone, help us a little.";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Not bringing outsiders is our ^e5555erule^000000.";
 		mes "Even if you ask for help, there's nothing I can do.";
 		cutin "ep18_imril_02.png",2;
 		npctalk "What power do I have.", "Imril#ep18_gw", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "嗯……";
 		cutin "ep18_maram_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Then how about going to the village and calling for ^e5555eSuad^000000?";
 		cutin "ep18_maram_02.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Because of bringing outsiders, I don't think even I will be allowed to enter the village.";
 		cutin "ep18_maram_01.png",2;
 		npctalk "Help me...", "Maram#ep18_gw", bc_self;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "^e5555eSuad^000000 is sensitive about that.";
 		mes "Should have told him in advance.";
 		cutin "ep18_imril_02.png",2;
 		npctalk "He's going to be really angry.", "Imril#ep18_gw", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "This time, things got messed up before I could tell.";
 		mes "You roughly know the ^e5555eRachel situation^000000 right now.";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "That's why I went to ^e5555eVeins^000000 to buy goods.";
 		cutin "ep18_imril_02.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "I owe him a favor for helping earlier, so I'll ask ^e5555eSuad^000000.";
 		mes "But don't expect much.";
 		cutin "ep18_imril_03.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "明白了。";
 		cutin "ep18_maram_01.png",2;
 		npctalk "謝謝。", "Maram#ep18_gw", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "" + strcharinfo(0) + ", to enter the village, it seems we'll need to meet and persuade ^e5555eSuad^000000.";
 		mes "I'm not sure if he'll agree to meet us though...";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Let's wait for ^e5555eSuad^000000 to arrive first.";
 		erasequest 11722;
 		setquest 11723;
@@ -2937,32 +2937,32 @@ OnInit:
 
 // Main Quest: Step 34.
 // + Quest: Investigation of Oz Labyrinth. Step 1 + 13 (final).
-wolfvill,143,114,5	duplicate(dummy_cloaked_npc)	Maram#ep18_wv	4_EP18_MARAM
-wolfvill,145,114,5	duplicate(dummy_cloaked_npc)	Miriam#ep18_wv	4_EP18_MIRIAM
+wolfvill,143,114,5	duplicate(dummy_cloaked_npc)	瑪拉姆#ep18_wv::Maram#ep18_wv	4_EP18_MARAM
+wolfvill,145,114,5	duplicate(dummy_cloaked_npc)	米莉安#ep18_wv::Miriam#ep18_wv	4_EP18_MIRIAM
 
-wolfvill,143,113,5	script	Imril#ep18_wv	4_EP18_IMRIL,{
+wolfvill,143,113,5	script	伊姆里爾#ep18_wv::Imril#ep18_wv	4_EP18_IMRIL,{
 	if (checkweight(1000405,20) == 0) {
 		mes "- 等一下！！ -";
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (ep18_main < 35)
 		end;
 	if (ep18_main == 35) {
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "<FONT SIZE = 14>Hey!</FONT>";
 		mes "You really came in, didn't you?";
 		cutin "ep18_imril_03.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "I did convey the message.";
 		mes "But ^e5555eSuad^000000 won't allow outsiders to enter the village!";
 		cutin "ep18_imril_02.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "That probably indicates that the village situation isn't that good.";
 		cloakoffnpcself( "Miriam#ep18_wv" );
 		cloakoffnpcself( "Maram#ep18_wv" );
@@ -2974,28 +2974,28 @@ wolfvill,143,113,5	script	Imril#ep18_wv	4_EP18_IMRIL,{
 		mes "Or perhaps they're not trees, but rocks?";
 		cutin "ep172_beta.bmp",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "I think the situation will improve if we can receive a little help from the outside.";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "That would be good if it happens.";
 		mes "Suad may not have said it, but he must have been thinking about it for quite some time.";
 		cutin "ep18_imril_01.png",2;
 		npctalk "Because he's someone with a strong sense of responsibility.", "Imril#ep18_wv", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "And it seems that " + strcharinfo(0) + "'s help with purchasing items was effective!";
 		cutin "ep18_maram_02.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "^e5555eThey may say that entry is only permitted when acquiring supplies^000000, but once they realize that you're ^e5555esomeone trustworthy^000000, they might feel more at ease.";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "So, shall we start by talking to ^e5555ethe villagers^000000 for now?";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "^e5555eListening to the stories^000000 of the people and getting to know them might reveal ^e5555ethe key to what my mother entrusted^000000.";
 		// note: unlocks side quests
 		completequest 11724;
@@ -3014,47 +3014,47 @@ wolfvill,143,113,5	script	Imril#ep18_wv	4_EP18_IMRIL,{
 	case 0:
 		switch( isbegin_quest(11725) ) {
 		case 0:
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "Thanks to you, I was able to safely pass through ^e5555eOz Labyrinth^000000.";
 			mes "謝謝。";
 			cutin "ep18_imril_03.png",2;
 			next;
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "In the past, as long as I was careful, traveling alone wasn't a big issue. But these days, it's getting harder to go alone.";
 			cutin "ep18_imril_02.png",2;
 			next;
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "Considering our village's current situation, I can't always have an escort, and besides, it's risky to attract attention by traveling in a group.";
 			cutin "ep18_imril_01.png",2;
 			next;
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "It would be great if we could investigate deeper into Oz Labyrinth.";
 			mes "<FONT SIZE = 14>Status of the lava...</FONT>";
 			mes "<FONT SIZE = 16><B>Distribution of monsters...</FONT></B>";
 			cutin "ep18_imril_02.png",2;
 			next;
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "嗯……";
 			mes "Adventurer, since you're strong, would you accompany me to ^e5555eOz Labyrinth when you have some free time^000000?";
 			mes "It might be a shameless request, but it's not every day that I have the chance to meet someone as strong as an adventurer like you.";
 			next;
 			if (select( "Depart now!", "Later..." ) == 2) {
-				mes "[Imril]";
+				mes "[伊姆里爾]";
 				mes "好！";
 				mes "If you're busy right now, I guess there's nothing to be done.";
 				cutin "ep18_imril_02.png",2;
 				next;
-				mes "[Imril]";
+				mes "[伊姆里爾]";
 				mes "If you have time later, will you come with me?";
 				close3;
 			}
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "哇！";
 			mes "真的嗎？";
 			mes "You're willingly accepting my request like this? I'm touched!";
 			cutin "ep18_imril_03.png",2;
 			next;
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "Then let's meet at ^e5555eOz Labyrinth entrance^000000 first!";
 			mes "You remember the way, right?";
 			cutin "ep18_imril_02.png",2;
@@ -3064,7 +3064,7 @@ wolfvill,143,113,5	script	Imril#ep18_wv	4_EP18_IMRIL,{
 			navigateto("oz_dun01",27,184);
 			end;
 		case 1:
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "The monsters that were moving or dealing with lava are obstacles.";
 			mes "It would be great if there were a way to completely eliminate them.";
 			cutin "ep18_imril_01.png",2;
@@ -3074,33 +3074,33 @@ wolfvill,143,113,5	script	Imril#ep18_wv	4_EP18_IMRIL,{
 		}
 		end;
 	case 1:
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "啊……";
 		mes "My skin feels prickly.";
 		cutin "ep18_imril_02.png",2;
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Where's the fool who dared to venture deep into the maze with such attire?";
 		mes "Be grateful you're not roasted alive!";
 		cutin "ep18_suad_03.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Anyway, no matter what you say!";
 		cutin "ep18_imril_02.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Anyway, ^e5555eOz Labyrinth situation is getting worse^000000.";
 		mes "^e5555eThe lava area is expanding^000000.";
 		cutin "ep18_imril_01.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "At this rate, there won't be much time left to navigate through Maze of Oz.";
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Indeed, if the lava has spread to that extent, we need a solution as soon as possible.";
 		cutin "ep18_suad_03.png",2;
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "For now...";
 		mes "To send workers, we need to reduce the number of monsters in Maze of Oz.";
 		next;
@@ -3118,12 +3118,12 @@ wolfvill,143,113,5	script	Imril#ep18_wv	4_EP18_IMRIL,{
 	case 2:
 		break;
 	}
-	mes "[Imril]";
+	mes "[伊姆里爾]";
 	mes "Monsters that were moving luggage or dealing with lava are obstacles.";
 	mes "It would be great if there were a way to eliminate them completely.";
 	cutin "ep18_imril_01.png",2;
 	next;
-	mes "[Imril]";
+	mes "[伊姆里爾]";
 	mes "冒險者，你覺得呢？";
 	mes "^e5555eInterested in monster extermination^000000?";
 	cutin "ep18_imril_02.png",2;
@@ -3150,7 +3150,7 @@ wolfvill,143,113,5	script	Imril#ep18_wv	4_EP18_IMRIL,{
 			break;
 		case 0:
 		case 1:
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "You did a great job today. Thank you.";
 			mes "Will you help me tomorrow too?.";
 			cutin "ep18_imril_04.png",2;
@@ -3161,30 +3161,30 @@ wolfvill,143,113,5	script	Imril#ep18_wv	4_EP18_IMRIL,{
 		}
 		switch( checkquest(11736,HUNTING) ) {
 		case -1:
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "^e5555ePlease defeat about 20 " + getmonsterinfo(21295, MOB_NAME) + " on the 1st floor of Oz Labyrinth.^000000";
 			mes "Even if the number of monsters decreases slightly, it will greatly help travelers passing through the maze.";
 			cutin "ep18_imril_03.png",2;
 			next;
 			if (select( "接受。", "Stop here." ) == 2) {
-				mes "[Imril]";
+				mes "[伊姆里爾]";
 				mes "Why~? Are you busy?";
 				cutin "ep18_imril_02.png",2;
 				close3;
 			}
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "Then be careful on your way back~";
 			setquest 11736;
 			close3;
 		case 0:
 		case 1:
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "^e5555ePlease defeat about 20 " + getmonsterinfo(21295, MOB_NAME) + " on the 1st floor of Oz Labyrinth.^000000";
 			mes "Even if the number of monsters decreases slightly, it will greatly help travelers passing through the maze.";
 			cutin "ep18_imril_03.png",2;
 			close3;
 		case 2:
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "Are you done already?";
 			mes "Because it's reliable!";
 			cutin "ep18_imril_04.png",2;
@@ -3203,7 +3203,7 @@ wolfvill,143,113,5	script	Imril#ep18_wv	4_EP18_IMRIL,{
 		}
 	case 2:
 		if (BaseLevel < 200) {
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "This is still too dangerous, so ^ff0000wait until you're around level 200^000000 to try again!";
 			close;
 		}
@@ -3212,7 +3212,7 @@ wolfvill,143,113,5	script	Imril#ep18_wv	4_EP18_IMRIL,{
 			break;
 		case 0:
 		case 1:
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "You did a great job today. Thank you.";
 			mes "Will you help me tomorrow too?.";
 			cutin "ep18_imril_04.png",2;
@@ -3223,26 +3223,26 @@ wolfvill,143,113,5	script	Imril#ep18_wv	4_EP18_IMRIL,{
 		}
 		switch( checkquest(11738,HUNTING) ) {
 		case -1:
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "^e5555eDefeat about 20^000000 " + getmonsterinfo("EP18_HOT_MOLAR", MOB_NAME) + " in the second floor of the maze of Oz.";
 			mes "Because even a small reduction in the number of monsters will be of great help to the hawkers who pass through the maze.";
 			cutin "ep18_imril_03.png",2;
 			next;
 			if (select( "接受", "停止" ) == 2)
 				close3;
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "Then be careful and go there~";
 			setquest 11738;
 			close3;
 		case 0:
 		case 1:
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "^e5555eDefeat about 20^000000 " + getmonsterinfo("EP18_HOT_MOLAR", MOB_NAME) + " in the second floor of the maze of Oz.";
 			mes "Because even a small reduction in the number of monsters will be of great help to the hawkers who pass through the maze.";
 			cutin "ep18_imril_03.png",2;
 			close3;
 		case 2:
-			mes "[Imril]";
+			mes "[伊姆里爾]";
 			mes "Are you done already?";
 			mes "Because it's reliable!";
 			cutin "ep18_imril_04.png",2;
@@ -3261,7 +3261,7 @@ wolfvill,143,113,5	script	Imril#ep18_wv	4_EP18_IMRIL,{
 		}
 		end;
 	case 3:
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Why~? Are you busy?";
 		cutin "ep18_imril_02.png",2;
 		close3;
@@ -3397,7 +3397,7 @@ wolfvill,143,148,5	script(CLOAKED)	Angry Youth#Radical5	4_EP18_GW_MAN02,{
 // Main Quest: Step 36 + 41.
 wolfvill,144,151,5	script(CLOAKED)	Suad#1	4_EP18_SUAD,{
 	if (getequipid(EQI_HEAD_TOP) != 400127) {	// Ep18_Mini_Elly
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "Take it out of the bag. Please put it on top of your head.";
 		close;
 	}
@@ -3405,38 +3405,38 @@ wolfvill,144,151,5	script(CLOAKED)	Suad#1	4_EP18_SUAD,{
 		end;
 	if (ep18_main == 38) {
 		cutin "ep18_suad_01.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "You're a little late. No, there's no blame.";
 		mes "Come this way. The meeting will start soon.";
 		next;
 		cutin "ep18_maram_02.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Finally being invited to this place, Adventurer, you're truly amazing.";
 		mes "Well, we hoped for the same treatment too.";
 		next;
 		cutin "ep18_miriam_02.png",2;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "... Nonsense. Adventurer, don't pay too much attention to Maram's words.";
 		mes "It's an important occasion. Maram, don't behave like usual.";
 		next;
 		cutin "ep18_maram_03.png",2;
 		emotion ET_HUK, getnpcid(0,"Maram#1");
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "No, Miriam! If you say it like that, it sounds like I did something wrong.";
 		mes "Oh, okay, okay. I'll focus.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Even if it's late, Suad is the exception, and actually, there is still time before the meeting starts.";
 		mes "Adventurer, how about hearing people's opinions in advance before coming?";
 		next;
 		cutin "ep18_maram_02.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "I think it would be helpful for sure to participate in the meeting....";
 		mes "As you listen to the story, please also organize your perspective as an adventurer.";
 		next;
 		cutin "ep18_suad_01.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Sure. That's not bad either.";
 		mes "If you've heard enough, go ahead and tell me. Let's start the meeting.";
 		erasequest 16567;
@@ -3449,31 +3449,31 @@ wolfvill,144,151,5	script(CLOAKED)	Suad#1	4_EP18_SUAD,{
 	}
 	if (ep18_main == 39) {
 		cutin "ep18_suad_01.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Once you've heard enough, tell me. I'll start the meeting.";
 		close3;
 	}
 	if (ep18_main == 40) {
 		cutin "ep18_suad_01.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Did everyone listen to it? We are also ready on this end.";
 		mes "Let's start the meeting in a moment.";
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Everyone has gathered in their seats.";
 		mes "Now, let's begin the meeting.";
 		npctalk "Suad: Everyone has gathered in their seats. Now, let's begin the meeting.", "Suad#1", bc_self;
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Today, we are going to discuss future response measures.";
 		mes "The current situation of Gray Wolf Village is not very favorable.";
 		next;
 		cutin "ep18_suad_03.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Today, countless people are crossing the canyon of Oz and coming to the village.";
 		mes "In contrast, the supply of food and necessities is critically insufficient.";
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "We now need to decide on the direction to move forward.";
 		mes "Those who have something to say, please feel free to speak.";
 		next;
@@ -3485,7 +3485,7 @@ wolfvill,144,151,5	script(CLOAKED)	Suad#1	4_EP18_SUAD,{
 		npctalk "That's right! That's right!", "Radical Youth#Radical2", bc_self;
 		npctalk "We must destroy everything!", "Hot-blooded Youth#Radic", bc_self;
 		next;
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "I felt it while listening to the story earlier, but those people are particularly rough.";
 		mes "It is difficult to determine from the information given so far whether their expressions are rough or whether they are inherently rough.";
 		next;
@@ -3521,17 +3521,17 @@ wolfvill,144,151,5	script(CLOAKED)	Suad#1	4_EP18_SUAD,{
 		npctalk "Those who oppose are just the same oppressors!", "Angry Youth#Radical5", bc_self;
 		next;
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Uh, it seems to be getting a bit overheated.";
 		mes "Suad, don't you think you need to calm down a bit?";
 		next;
 		cutin "ep18_suad_03.png",2;
 		emotion ET_THINK, getnpcid(0,"Suad#1");
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Let's watch a little more.";
 		next;
 		cutin "",255;
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "It's a bit strange.";
 		mes "The rhetoric that even drives those who disagree into a corner seems like an enemy tactic.";
 		next;
@@ -3549,20 +3549,20 @@ wolfvill,144,151,5	script(CLOAKED)	Suad#1	4_EP18_SUAD,{
 		mes "We have already staked our lives and are prepared to wash away blood with blood!";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Did you do it? I haven't done it yet... They say you should wash blood off with cold water for it to come off well.";
 		next;
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "It's not the time for jokes, Maram.";
 		mes "And Suad, if you don't organize things properly, the opinions of the forest residents will completely diverge like this.";
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Even if I don't feel like it, it seems like it's time to organize now.";
 		next;
 		cutin "ep18_suad_03.png",2;
 		emotion ET_THINK, getnpcid(0,"Suad#1");
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Enough, this is not a place for us to blush among ourselves. It's a space to gather opinions and move forward.";
 		mes "Let's stop, this is not a place we created to make our faces red among ourselves.";
 		npctalk "Suad: Enough, this is not a place for us to blush among ourselves.", "Suad#1", bc_self;
@@ -3577,17 +3577,17 @@ wolfvill,144,151,5	script(CLOAKED)	Suad#1	4_EP18_SUAD,{
 		mes "Look here. It's not like I'll be swayed by those ignorant, noisy kids blabbering about anything in that bright blue color, right?";
 		next;
 		cutin "ep18_suad_02.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Do you want to leave me?";
 		mes "If you believed someone would listen to your side, it seems I've misunderstood you all this time.";
 		next;
 		cutin "ep18_suad_03.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "I will listen to the perspectives and reasons from both sides.";
 		mes " There is an opinion that staying here indefinitely is not possible, and another opinion that rushing without preparation will lead to disgrace. Both are not wrong.";
 		next;
 		cutin "ep18_suad_01.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "So let's not think about taking sides among ourselves, but try to persuade each other.";
 		mes "It means to explain how and why you should realize your opinions.";
 		npctalk "...", "Embarrassed Old Man#Eld", bc_self;
@@ -3600,7 +3600,7 @@ wolfvill,144,151,5	script(CLOAKED)	Suad#1	4_EP18_SUAD,{
 		next;
 		cutin "ep18_maram_03.png",2;
 		emotion ET_QUESTION, getnpcid(0,"Maram#1");
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Huh? Are you saying there's a weapons purchasing route that I don't know about?";
 		mes "That's the first time I've heard of such a thing....";
 		next;
@@ -3636,12 +3636,12 @@ wolfvill,144,151,5	script(CLOAKED)	Suad#1	4_EP18_SUAD,{
 		mes "That's right. Just pretend you heard about it and speak loudly, okay?";
 		mes "If we take away what matters most to them, they'll start paying attention to us.";
 		next;
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "The peaceful gathering of opinions seemed to be taking place, but it has turned back into a violent direction again...";
 		next;
 		cutin "ep18_suad_01.png",2;
 		emotion ET_SURPRISE, getnpcid(0,"Suad#1");
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Stop, have we gathered enough opinions?";
 		mes "Are we in favor of carrying out the protest, occupying the temple, and making our intentions known?";
 		next;
@@ -3653,12 +3653,12 @@ wolfvill,144,151,5	script(CLOAKED)	Suad#1	4_EP18_SUAD,{
 		mes "It still looks dangerous, but we need to make our intentions known nonetheless.";
 		next;
 		cutin "ep18_suad_01.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Then, to discuss the details further, we will proceed with an additional meeting.";
 		mes "You understand that this meeting must be confidential, right?";
 		npctalk "Suad: Let's conclude the main meeting here.", "Suad#1", bc_self;
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Adventurer, Marum, and Miriam. With a few exceptions, let's disband for now.";
 		mes "We'll inform you of the detailed plan after the operation is finalized.";
 		next;
@@ -3688,7 +3688,7 @@ wolfvill,144,151,5	script(CLOAKED)	Suad#1	4_EP18_SUAD,{
 		cloakonnpcself( "Radical Youth#Radical2" );
 		cloakonnpcself( "Neutral Youth#Neutral3" );
 		cloakonnpcself( "Timid Old Man#Elder4" );
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Well, adventurer. I have a brief matter to discuss, could you come over here for a moment?";
 		mes "Suad, Maram. I request that you also take a moment before the meeting.";
 		erasequest 16572;
@@ -3698,21 +3698,21 @@ wolfvill,144,151,5	script(CLOAKED)	Suad#1	4_EP18_SUAD,{
 	}
 	if (ep18_main == 41) {
 		cutin "ep18_suad_03.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "What's going on? If it's a sudden decision, it might be quite hard to implement it in reality from now on.";
 		next;
 		cutin "ep18_miriam_03.png",2;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Important talk. Please give me a moment.";
 		close3;
 	}
 	if (ep18_main == 42) {
 		cutin "ep18_suad_01.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Well then, I'll count on you.";
 		mes "I'll be doing what I can here as well.";
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Minimizing conflicts as much as possible and ensuring the protest concludes safely... that's what I mean.";
 		close3;
 	}
@@ -3905,34 +3905,34 @@ OnInit:
 wolfvill,149,152,3	script(CLOAKED)	Maram#1	4_EP18_MARAM,{
 	if (ep18_main == 38) {
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Hoo hoo hoo, you've finally made it to this place.";
 		mes "You trusted my judgment, but you're even more impressive than I thought, adventurer.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "I hope you'll actively participate in the meeting as well.";
 		mes "Suad can be a bit stubborn, you know. We need someone to soften that a bit~";
 		next;
 		cutin "ep18_maram_02.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "I am counting on the adventurer. I still trust my instincts, you know.";
 		mes "I believe in my vision and words.";
 		close3;
 	}
 	if (ep18_main == 39) {
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Shh! The competition is about to start soon.";
 		mes "If I make noise, I'll get scolded by Miriam and Suad, you know?";
 		close3;
 	}
 	if (ep18_main == 40) {
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Shh! The competition is about to start soon.";
 		mes "If I make noise, will I get scolded by Miriam and Suad beforehand?";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "So, adventurer, please listen to the story of Suad with us.";
 		mes "Of course, also the stories of other people.";
 		close3;
@@ -3947,102 +3947,102 @@ wolfvill,148,153,3	script(CLOAKED)	Miriam#1	4_EP18_MIRIAM,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (getequipid(EQI_HEAD_TOP) != 400127) {	// Ep18_Mini_Elly
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "Take it out of the bag. Please put it on top of your head.";
 		close;
 	}
 	if (ep18_main == 38) {
 		cutin "ep18_miriam_01.png",2;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Ah, I knew you would come to the competition after all.";
 		mes "There was no one opposed to the adventurer coming.";
 		next;
 		cutin "ep18_miriam_02.png",2;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "You must have worked hard here, right?";
 		mes "You're truly impressive.";
 		close3;
 	}
 	if (ep18_main == 39) {
 		cutin "ep18_miriam_01.png",2;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Well, have you heard everyone's opinions?";
 		mes "How was it? Have you made up your mind, adventurer?";
 		close3;
 	}
 	if (ep18_main == 40) {
 		cutin "ep18_miriam_01.png",2;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Well, have you listened to people's opinions?";
 		mes "What did you think? Have you made up your mind, adventurer?";
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "If that's the case, let's wait for the meeting to start.";
 		mes "Suad will make the opening declaration.";
 		close3;
 	}
 	if (ep18_main == 41) {
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "What's going on? It seems like a real headache to prepare for the protest.";
 		mes "Ah, seriously, because I'm a man who works for a living.";
 		next;
 		cutin "ep18_miriam_01.png",2;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "No joke. Look at those people. Isn't it strange? The ones who were shouting about being armed earlier.";
 		mes "Take a good look at their armed state. It's not for hunting.";
 		next;
 		cutin "",255;
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "I've analyzed it too. Those weapons are classified as anti-personnel, meaning they're for warfare.";
 		mes "Even if you try to hunt with those, the prey will be torn apart, rendering them useless for that purpose.";
 		next;
 		cutin "ep18_suad_03.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "發生什麼事了？";
 		mes "It can't be easy to acquire such weaponry.";
 		next;
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Oh... I can confidently say that such things are not readily available in the market.";
 		mes "I wonder where they came from.";
 		next;
 		cutin "ep18_miriam_01.png",2;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "There's a guess, but it's not certain.";
 		mes "So, what if we try to identify those people and find out where they're from?";
 		next;
 		cutin "ep18_suad_03.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "I see. Anyway, some level of armament is necessary for the protest.";
 		mes "What if we offer some bait in exchange for information?";
 		next;
 		cutin "ep18_suad_02.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "And I don't necessarily oppose arming ourselves through actual transactions.";
 		mes "The reason we've been oppressed so far is because we lacked strength.";
 		next;
 		cutin "ep18_maram_02.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Hey, leader. At best, we've reduced the matter from a struggle to a protest, but What should we do if we are tempted by weapons in the midst of war?";
 		mes "Let's just find the source, just the source.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "It doesn't look good for Suad to take the lead here.";
 		mes "How about the adventurer and Miriam take the lead in the investigation?";
 		next;
 		cutin "ep18_miriam_01.png",2;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "I have something I want to investigate on the other side, rather than confronting those people directly.";
 		mes "So, I'll leave the direct contact to you and the adventurer, Mara.";
 		next;
 		cutin "ep18_maram_02.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Alright. Shall we go to work, adventurer?";
 		mes "Approach while pretending to be interested in a deal, just to be safe.";
 		mes "With this map, it shouldn't be too difficult.";
@@ -4067,7 +4067,7 @@ OnInit:
 // Main Quest: Step 43.
 wolfvill,143,145,7	script(CLOAKED)	Radical Young Man#Radic	4_M_RASWORD,{
 	if (getequipid(EQI_HEAD_TOP) != 400127) {	// Ep18_Mini_Elly
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "Take it out of the bag. Please put it on top of your head.";
 		close;
 	}
@@ -4075,7 +4075,7 @@ wolfvill,143,145,7	script(CLOAKED)	Radical Young Man#Radic	4_M_RASWORD,{
 		cloakonnpcself( "Suad#1" );
 		cloakoffnpcself( "Maram#1_1" );
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "你好。";
 		mes "I have something I'd like to ask for a moment. Is it okay?";
 		next;
@@ -4084,7 +4084,7 @@ wolfvill,143,145,7	script(CLOAKED)	Radical Young Man#Radic	4_M_RASWORD,{
 		mes "What's going on? I don't really have anything to say.";
 		next;
 		cutin "ep18_maram_02.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "No, the weaponry is incredibly cool.";
 		mes "It seems like it would be hard to find anywhere else, where did you get it?";
 		next;
@@ -4098,7 +4098,7 @@ wolfvill,143,145,7	script(CLOAKED)	Radical Young Man#Radic	4_M_RASWORD,{
 		mes "Do you think they'll cower in fear and bow their heads at the temple on their own?";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Can you provide some information on who sold it over here?";
 		next;
 		cutin "",255;
@@ -4106,7 +4106,7 @@ wolfvill,143,145,7	script(CLOAKED)	Radical Young Man#Radic	4_M_RASWORD,{
 		mes "Uh... We can't just wear it bare. We did put some effort into acquiring it, after all.";
 		next;
 		cutin "ep18_maram_02.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "But they said they sold it very cheap over there, didn't they?";
 		mes "It seems like they are trying to clear their inventory. In that case, should we go with what we know, or what the temple knows~";
 		next;
@@ -4116,7 +4116,7 @@ wolfvill,143,145,7	script(CLOAKED)	Radical Young Man#Radic	4_M_RASWORD,{
 		mes "Just say it. Anyway, if we're going to the protest, we have to be armed.";
 		next;
 		cutin "ep18_maram_02.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "You thought well. As expected, are you wise?";
 		next;
 		cutin "",255;
@@ -4130,16 +4130,16 @@ wolfvill,143,145,7	script(CLOAKED)	Radical Young Man#Radic	4_M_RASWORD,{
 		mes "I'm not one to disregard what's called security. I'm not a fool either.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Who's the fool? All I've said so far is that I'm wise.";
 		mes "Thanks for the great information!";
 		next;
 		cutin "",255;
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "You're going back to Rachel. Let's reset the target coordinates.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Well then, adventurer. It seems like we'll have to take a bit of a detour to find the core, as expected.";
 		mes "Let's go together to <NAVI>[Rachel]<INFO>rachel,75,44,0,101,0</INFO></NAVI>!";
 		erasequest 16574;
@@ -4163,7 +4163,7 @@ OnInit:
 	end;
 }
 
-wolfvill,148,145,3	duplicate(dummy_cloaked_npc)	Maram#1_1	4_EP18_MARAM
+wolfvill,148,145,3	duplicate(dummy_cloaked_npc)	瑪拉姆#1_1::Maram#1_1	4_EP18_MARAM
 
 wolfvill,140,150,5	script(CLOAKED)	Embarrassed Old Man#Eld	4_EP18_GW_MIDDLE01,{
 	npctalk "No, why are those young people behaving like that?", "Embarrassed Old Man#Eld", bc_self;
@@ -4191,12 +4191,12 @@ wolfvill,151,150,1	script(CLOAKED)	Neutral Youth#Neutral3	4_EP18_GW_MAN01,{
 }
 
 // Main Quest: Step 44.
-rachel,72,42,3	duplicate(dummy_cloaked_npc)	Maram#1_2	4_EP18_MARAM
+rachel,72,42,3	duplicate(dummy_cloaked_npc)	瑪拉姆#1_2::Maram#1_2	4_EP18_MARAM
 
 rachel,75,44,3	script	Bearded Jack#armsman_rachel	4_M_MIDDLE1,{
 	if (ep18_main == 43) {
 		cloakoffnpcself( "Maram#1_2" );
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "You have arrived. The business of 'Bearded Jack' is a hardware store.";
 		next;
 		mes "[Bearded Jack]";
@@ -4207,14 +4207,14 @@ rachel,75,44,3	script	Bearded Jack#armsman_rachel	4_M_MIDDLE1,{
 		mes "Take your time looking around.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Uh, we came looking for something a little different.";
 		mes "What was that, Adventurer?";
 		next;
 		cutin "",255;
 		switch( select( "Smelly Sock", "Smelly Dandelion", "Scented Sock", "Scented Dandelion" ) ) {
 		case 1:
-			mes "[Mini Elly]";
+			mes "[迷你艾莉]";
 			mes "Hmm, I don't think that was it.";
 			next;
 			mes "[Bearded Jack]";
@@ -4245,7 +4245,7 @@ rachel,75,44,3	script	Bearded Jack#armsman_rachel	4_M_MIDDLE1,{
 			cloakonnpcself( "Maram#1_2" );
 			end;
 		case 3:
-			mes "[Mini Elly]";
+			mes "[迷你艾莉]";
 			mes "Um, I don't think it was.";
 			next;
 			mes "[Bearded Jack]";
@@ -4279,11 +4279,11 @@ OnInit:
 }
 
 // Main Quest: Step 45.
-veins,289,281,7	duplicate(dummy_cloaked_npc)	Maram#1_3	4_EP18_MARAM
+veins,289,281,7	duplicate(dummy_cloaked_npc)	瑪拉姆#1_3::Maram#1_3	4_EP18_MARAM
 
 veins,293,282,3	script	蒲公英#weapons_bains::Dandelion#weapons_bains	4_M_DESERT,{
 	if (ep18_main == 44) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "你好～";
 		mes "Are you in business?";
 		next;
@@ -4292,7 +4292,7 @@ veins,293,282,3	script	蒲公英#weapons_bains::Dandelion#weapons_bains	4_M_DESE
 		mes "We're closed.";
 		next;
 		cutin "ep18_maram_02.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Don't be like that. I came here because Jack introduced me, saying there are smelly dandelions here.";
 		next;
 		cutin "",255;
@@ -4301,7 +4301,7 @@ veins,293,282,3	script	蒲公英#weapons_bains::Dandelion#weapons_bains	4_M_DESE
 		mes "hich jerk came up with such a strange password!";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Ah, your name is... So, it was Dandelion.";
 		mes "For something related to security, it's quite simple, isn't it.";
 		next;
@@ -4312,7 +4312,7 @@ veins,293,282,3	script	蒲公英#weapons_bains::Dandelion#weapons_bains	4_M_DESE
 		next;
 		select( "I came here to buy some weapons..." );
 		cutin "ep18_maram_02.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Right? What the adventurer is saying is correct.";
 		mes "Rather than coming to buy one or two weapons, it's more like a bulk purchase, shall we say?";
 		next;
@@ -4321,7 +4321,7 @@ veins,293,282,3	script	蒲公英#weapons_bains::Dandelion#weapons_bains	4_M_DESE
 		mes "Bulk purchase? How much are you planning to buy?";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Well, roughly this much?";
 		mes "Is this amount acceptable at this store?";
 		next;
@@ -4331,7 +4331,7 @@ veins,293,282,3	script	蒲公英#weapons_bains::Dandelion#weapons_bains	4_M_DESE
 		mes "W-well, if you give me a little time, it seems possible.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "What should we do? We don't have much time.";
 		mes "I hope we can find it as soon as possible.";
 		next;
@@ -4340,7 +4340,7 @@ veins,293,282,3	script	蒲公英#weapons_bains::Dandelion#weapons_bains	4_M_DESE
 		mes "Call your schedule. I'll try to accommodate as soon as possible.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "That's good too, but how about connecting us directly with the supplier?";
 		mes "We'll take care of the intermediary fees without any inconvenience.";
 		next;
@@ -4350,12 +4350,12 @@ veins,293,282,3	script	蒲公英#weapons_bains::Dandelion#weapons_bains	4_M_DESE
 		mes "Enough, go back, go back!";
 		next;
 		cutin "ep18_maram_02.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Hey, who are you kidding? I already know everything. Selling this at such a special price is just a flashy business strategy, right?";
 		mes "Anyway, we're not going to have a long-term business relationship, are we? ";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "So, I'm just asking for a bit of information from your end.";
 		mes "Whether it's our urgent situation or the guy taking off the intermediary fee, either works. Isn't it a win-win?";
 		next;
@@ -4364,7 +4364,7 @@ veins,293,282,3	script	蒲公英#weapons_bains::Dandelion#weapons_bains	4_M_DESE
 		mes "Mmm... Alright. But absolutely do not leak it.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Such obvious words.";
 		next;
 		cutin "",255;
@@ -4373,7 +4373,7 @@ veins,293,282,3	script	蒲公英#weapons_bains::Dandelion#weapons_bains	4_M_DESE
 		mes "I'm letting you know because once their stock there runs out, the deal is going to be cut off anyway.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "From the way you're talking, it seems like you'll cut ties soon, huh?";
 		next;
 		cutin "",255;
@@ -4382,12 +4382,12 @@ veins,293,282,3	script	蒲公英#weapons_bains::Dandelion#weapons_bains	4_M_DESE
 		mes "If you've got what you wanted, pay the commission and leave.";
 		next;
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Thor Volcano's secret base... this smells very suspicious.";
 		mes "I have a feeling this might be our final destination, don't you think?";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "I'll see you at <NAVI>[Thor Volcano]<INFO>thor_v01,169,169,0,101,0</INFO></NAVI> Make sure to come prepared!";
 		mes "Don't enter the military base directly; instead, come in the direction of 3 o'clock from there, and I'll be waiting for you.";
 		erasequest 16576;
@@ -4405,7 +4405,7 @@ veins,293,282,3	script	蒲公英#weapons_bains::Dandelion#weapons_bains	4_M_DESE
 		mes "If you've got what you wanted, pay the commission and leave.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "I'll see you at<NAVI>[Thor Volcano]<INFO>thor_v01,169,169,0,101,0</INFO></NAVI> Make sure to come prepared!";
 		mes "Don't enter the military base directly; instead, come in the direction of 3 o'clock from there, and I'll be waiting for you.";
 		close2;
@@ -4421,9 +4421,9 @@ OnInit:
 }
 
 // Main Quest: Step 46.
-thor_v01,169,169,3	script	Maram#Armybase-Secret passage	4_EP18_MARAM,{
+thor_v01,169,169,3	script	瑪拉姆#Armybase-Secret passage::Maram#Armybase-Secret passage	4_EP18_MARAM,{
 	if (ep18_main == 45 || ep18_main == 46) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Over here! Follow me!";
 		mes "Here's a <NAVI>[shortcut]<INFO>que_thr,133,53,0,101,0</INFO></NAVI> that will take you around a bit, but it'll keep you out of sight.";
 		close2;
@@ -4439,8 +4439,8 @@ thor_v01,169,169,3	script	Maram#Armybase-Secret passage	4_EP18_MARAM,{
 // Main Quest: Step 51.
 wolfvill,140,112,0	duplicate(#contest1)	#sms01	HIDDEN_WARP_NPC,5,5
 
-wolfvill,142,109,1	duplicate(dummy_cloaked_npc)	Miriam#sms01	4_EP18_MIRIAM
-wolfvill,143,110,1	duplicate(dummy_cloaked_npc)	Maram#sms01	4_EP18_MARAM
+wolfvill,142,109,1	duplicate(dummy_cloaked_npc)	米莉安#sms01::Miriam#sms01	4_EP18_MIRIAM
+wolfvill,143,110,1	duplicate(dummy_cloaked_npc)	瑪拉姆#sms01::Maram#sms01	4_EP18_MARAM
 
 wolfvill,140,112,5	script(CLOAKED)	Suad#sms01	4_EP18_SUAD,{
 	if (getequipid(EQI_HEAD_TOP) != 400127) {	// Ep18_Mini_Elly
@@ -4450,104 +4450,104 @@ wolfvill,140,112,5	script(CLOAKED)	Suad#sms01	4_EP18_SUAD,{
 	}
 	if (ep18_main == 47) {
 		cutin "ep18_suad_01.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Adventurer? Why have you returned already? Didn't you go to investigate the origin of the weapon with Miriam?";
 		next;
 		select( "I found out, but the origin is..." );
 		cutin "",255;
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "That's not all. The bigger issue is that the weapons and ammunition that should have been disposed of have been flowing in without any guarantee of stability.";
 		mes "The analysis results indicate that the risk of the stored gunpowder and unmanaged weapons is approximately 9.72%.";
 		next;
 		cutin "ep18_suad_03.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "I anticipated it, but it's worse than I thought. I was only concerned about the origin. I can't guarantee the stability of the weapons either. They're old weapons...";
 		next;
 		cutin "ep18_suad_01.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "While we do need armament, we can't use items with questionable origins. If we start tracing the weapons leaked from the other side and make it an issue, things could escalate into a bad situation.";
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "However, finding a reliable supplier and negotiating deals will also take time, so we need to make careful decisions.";
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "For now, let's retrieve all the weapons and discuss the future plan with Maram and Miriam when they return.";
 		mes "Didn't Miriam and Maram return together?";
 		next;
 		select( "To expose the weapons smuggling..." );
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Yeah, it seems like waiting is all we can do for now.";
 		next;
 		cloakoffnpcself( "Miriam#sms01" );
 		cloakoffnpcself( "Maram#sms01" );
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Suad!!! Suad, Suad!!! Something big happened! Big trouble, big trouble!!! Suad! Listen, listen to me, Suad!!!";
 		next;
 		cutin "ep18_suad_04.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Maram, Miriam. What's going on?";
 		next;
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "We're all~~ going to die like this!!";
 		next;
 		cutin "ep18_suad_04.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "...What? Can you please explain in more detail? Why?";
 		next;
 		cutin "ep18_miriam_03.png",1;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "I'll explain. Maram, why don't you sit down over there and calm down a bit.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Really? I'm a little startled... My heart is pounding.";
 		npctalk "你……？", "Miriam#sms01", bc_self;
 		npctalk "You didn't know? You really didn't know.", "Maram#sms01", bc_self;
 		next;
 		cutin "ep18_miriam_01.png",1;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Do you remember the people we armed before?";
 		next;
 		cutin "ep18_suad_01.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "They were weapons from the Thor Volcano, right? I heard that from the adventurer. Did we eventually find out about it from Rachel's side?";
 		next;
 		cutin "ep18_miriam_01.png",1;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Actually, I heard that the group raided the headquarters of the migrants. They took everything the headquarters had.";
 		next;
 		cutin "ep18_suad_04.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "What? When did that happen?";
 		next;
 		cutin "ep18_miriam_01.png",1;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "It hasn't been long, but Rachel's side already knows about it.";
 		next;
 		cutin "ep18_suad_03.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Oh no... Why on earth...?";
 		next;
 		cutin "ep18_miriam_01.png",1;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "It's not over yet. They're claiming over there that since we armed ourselves and carried out the attack, we're rebels. It seems like the voices advocating for a tough response are gaining strength.";
 		next;
 		cutin "ep18_suad_03.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "This is the worst. If they launch an attack first... No, that's not it. We should meet with them first.";
 		next;
 		cutin "ep18_miriam_03.png",1;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "How do you plan to do that?";
 		next;
 		cutin "ep18_suad_03.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "We need to hold them accountable for their sudden actions that put our position at a disadvantage. We need to assess the scale and prepare a response strategy.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Let's go together. I know where it is! <NAVI>[���]<INFO>wolfvill,131,257,0,101,0</INFO></NAVI>Adventure, come with us. I have a feeling that we might need a third-party witness!";
 		erasequest 16580;
 		setquest 17517;
@@ -4592,61 +4592,61 @@ wolfvill,131,257,1	script	Goods#sms04	4_WOODBOX,{
 		emotion ET_QUESTION, getnpcid(0,"Lamacus#sms01");
 		setpcblock PCBLOCK_NPC, false;
 
-		mes "[Lamacus]";
+		mes "[拉馬庫斯]";
 		mes "Oh? Suad! Miriam and Maram are here too.";
 		next;
-		mes "[Kun]";
+		mes "[昆]";
 		mes "What's going on, everyone? If it's about the weapons, I've already said everything before.";
 		next;
 		cutin "ep18_miriam_03.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Is there something else that needs to be said besides that?";
 		next;
 		cutin "",255;
-		mes "[Yopi]";
+		mes "[尤皮]";
 		mes "Hey~ that's scary~ Why all of a sudden? Bringing in strangers too. Is there something to be afraid of?";
 		npctalk "Who is that person?", "Kun#sms01", bc_self;
 		next;
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "What nonsense is this? I'm more afraid of you guys! How can you attack the upper ranks?";
 		next;
 		cutin "",255;
-		mes "[Lamacus]";
+		mes "[拉馬庫斯]";
 		mes "Oh, that? You don't have to praise me.";
 		next;
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Really~Ah?";
 		next;
 		cutin "ep18_suad_01.png",1;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "We came to hear the reason why you attacked the innocent upper ranks.";
 		next;
 		cutin "",255;
-		mes "[Kun]";
+		mes "[昆]";
 		mes "What's this about? You've all gathered here over something trivial?";
 		next;
 		cutin "ep18_suad_02.png",1;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Something trivial? Because of what you've done, we're being branded as rebels. You've given them an excuse to attack us!";
 		next;
 		cutin "",255;
-		mes "[Yopi]";
+		mes "[尤皮]";
 		mes "If they attack us, we'll just counterattack. What's there to worry about? We have weapons now too, you know?";
 		npctalk "有什麼問題嗎？", "Kun#sms01", bc_self;
 		npctalk "Talking is easy, huh?", "Maram#sms02", bc_self;
 		next;
-		mes "[Yopi]";
+		mes "[尤皮]";
 		mes "Do you know who we robbed? If you knew, you'd thank us. It wasn't an innocent upper rank, you know?";
 		npctalk "You'll also regret treating us like this.", "Lamacus#sms01", bc_self;
 		next;
 		cutin "ep18_miriam_03.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Do you know what it's called when you attack and rob the upper ranks regardless of innocence? It's called robbery.";
 		next;
 		cutin "",255;
-		mes "[Kun]";
+		mes "[昆]";
 		mes "No, this is too much. Robbery? We targeted Ahmad's upper ranks.";
 		next;
 		emotion ET_SURPRISE, getnpcid(0,"Suad#sms02");
@@ -4654,68 +4654,68 @@ wolfvill,131,257,1	script	Goods#sms04	4_WOODBOX,{
 		emotion ET_HUK, getnpcid(0,"Maram#sms02");
 		emotion ET_QUESTION, playerattached();
 		cutin "ep18_miriam_03.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "If it's Ahmad...";
 		next;
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Isn't it Suad's?";
 		npctalk "Oh... It was there, after all.", "Maram#sms02", bc_self;
 		next;
 		cutin "",255;
-		mes "[Kun]";
+		mes "[昆]";
 		mes "Yeah! They treated us like trash and even ignored their own sons!";
 		next;
-		mes "[Lamacus]";
+		mes "[拉馬庫斯]";
 		mes "They were sucking people like us dry!";
 		npctalk "I thought it was a mosquito...?", "Yopi#sms01", bc_self;
 		next;
-		mes "[Yopi]";
+		mes "[尤皮]";
 		mes "Isn't it a good thing that we sought revenge on Suad and secured the necessary supplies?";
 		npctalk "There's so much we need!", "Lamacus#sms01", bc_self;
 		next;
-		mes "[Kun]";
+		mes "[昆]";
 		mes "Exactly!! You suffered a lot because of your father. You came here because of him.";
 		next;
-		mes "[Kun]";
+		mes "[昆]";
 		mes "Simply because you're indigenous, he not only refused to acknowledge you as a capable son but also subjected you to abuse. In fact, he probably never even acknowledged you as his son.";
 		next;
-		mes "[Yopi]";
+		mes "[尤皮]";
 		mes "Is there anyone here who doesn't know Suad's story??";
 		npctalk "No, there isn't. Think about it carefully. We avenged you.", "Kun#sms01", bc_self;
 		next;
-		mes "[Lamacus]";
+		mes "[拉馬庫斯]";
 		mes "You always imagined it in your heart, right? You didn't deserve such treatment. You wanted revenge against your stepfather.";
 		next;
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Say something, Suad.";
 		next;
 		cutin "ep18_suad_03.png",1;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "...Sigh... Alright, I understand... Just... Let's be careful next time. I understand why you did what you did, but we could end up in even bigger trouble...";
 		next;
 		cutin "ep18_miriam_03.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Suad? Is that the end of it?";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "I may not know much about this kind of thing, but from my limited perspective, won't they continue like this in the future? Shouldn't we arm ourselves just in case?";
 		next;
 		cutin "ep18_suad_03.png",1;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Given the shortage of supplies in the village, that's true. It's becoming increasingly difficult for trade.";
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "And as I mentioned before, being armed is necessary. We'll need to find new sources while keeping what we've already acquired. That's why I wanted to discuss it with you all";
 		next;
 		cutin "ep18_miriam_03.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Suad? Tell us. Are you completely unaware of this decision? Can you honestly say you have no involvement in this matter?";
 		next;
 		cutin "ep18_suad_03.png",1;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Wait, wait. I need some time to gather my thoughts.";
 		erasequest 17517;
 		setquest 17518;
@@ -4745,27 +4745,27 @@ wolfvill,131,252,3	script(CLOAKED)	Lamacus#sms01	EP18_ARMED_VILLAGER01,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (ep18_main == 49) {
-		mes "[Kun]";
+		mes "[昆]";
 		mes "No! But you know, when I think about it, what did we do wrong? Why are they trying to stop us?";
 		npctalk "I don't know either. Didn't we help them?", "Yopi#sms01", bc_self;
 		next;
-		mes "[Lamacus]";
+		mes "[拉馬庫斯]";
 		mes "We're not trying to take everything for ourselves, we just want everyone to live well.";
 		next;
-		mes "[Yopi]";
+		mes "[尤皮]";
 		mes "Right? That's what I think too. Maybe if we work harder and more actively, they'll change their minds?";
 		next;
 		select( "Can we leave it as it is...?" );
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "No, we can't. Of course not. Acting recklessly without thinking about the future, is that what adults do?";
 		next;
 		cutin "ep18_miriam_03.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Suad, please speak up.";
 		next;
 		cutin "",255;
@@ -4779,27 +4779,27 @@ wolfvill,131,252,3	script(CLOAKED)	Lamacus#sms01	EP18_ARMED_VILLAGER01,{
 		mes "Well done. Sometimes you just have to stir things up. Are we supposed to be powerless and do nothing? They've been looking down on us, and it's time to stop being ignored.";
 		npctalk "We need to show that we can also make some waves.", "Citizen#sms02", bc_self;
 		next;
-		mes "[Yopi]";
+		mes "[尤皮]";
 		mes "But now Suad is saying we shouldn't do it.";
 		next;
 		mes "[市民]";
 		mes "Why? Why is he saying not to do it? ";
 		next;
-		mes "[Kun]";
+		mes "[昆]";
 		mes "Well, he's saying our actions could put us in more danger, but I'm too confused to understand what he's talking about";
 		next;
-		mes "[Lamacus]";
+		mes "[拉馬庫斯]";
 		mes "Are they going to chase us out of Rachel just because we raided the upper ranks? They're going to attack us?";
 		npctalk "What do they mean, chasing us out!?", "Citizen#sms01", bc_self;
 		npctalk "They're going to attack us??", "Citizen#sms03", bc_self;
 		npctalk "Is this true?", "Citizen#sms02", bc_self;
 		next;
 		cutin "ep18_suad_01.png",1;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "I see. Our position has become extremely unfavorable. There haven't been any major moves yet, but public opinion is not in our favor.";
 		next;
 		cutin "",255;
-		mes "[Lamacus]";
+		mes "[拉馬庫斯]";
 		mes "Isn't this the time when we should raise our voices even more?";
 		npctalk "We're humans too. Just like them.", "Citizen#sms02", bc_self;
 		npctalk "Now that we have weapons too.", "Kun#sms01", bc_self;
@@ -4813,7 +4813,7 @@ wolfvill,131,252,3	script(CLOAKED)	Lamacus#sms01	EP18_ARMED_VILLAGER01,{
 		npctalk "That's right!!!", "Yopi#sms01", bc_self;
 		next;
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Just calm down for a moment.";
 		next;
 		cutin "",255;
@@ -4822,7 +4822,7 @@ wolfvill,131,252,3	script(CLOAKED)	Lamacus#sms01	EP18_ARMED_VILLAGER01,{
 		npctalk "Why do we have to live hiding like fugitives?", "Citizen#sms03", bc_self;
 		npctalk "We can't live like this forever.", "Citizen#sms01", bc_self;
 		next;
-		mes "[Kun]";
+		mes "[昆]";
 		mes "Suad, you're being too cautious. We'll go and do it ourselves. Just like the ones who raided the upper ranks. Nothing will happen.";
 		next;
 		mes "[市民]";
@@ -4830,32 +4830,32 @@ wolfvill,131,252,3	script(CLOAKED)	Lamacus#sms01	EP18_ARMED_VILLAGER01,{
 		next;
 		select( "我……" );
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "The atmosphere is getting tense...";
 		next;
 		select( "It seems like things are taking a strange turn." );
 		cutin "ep18_miriam_03.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "People seem to be breaking free from Suad's control, and if it continues like this...";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Bang! Help! Somebody save me!";
 		next;
 		cutin "ep18_suad_01.png",1;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Yeah. Let's do it. Protest. We can't wait forever.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "What? Like this? Right now? Without any preparation?";
 		next;
 		cutin "ep18_suad_01.png",1;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "It's not like we haven't prepared at all. We've been gradually moving through Rachel, hiding, and when the time is right, we can join from the temple.";
 		next;
 		cutin "",255;
-		mes "[Lamacus]";
+		mes "[拉馬庫斯]";
 		mes "Tonight after sunset seems like a good time. The guards will be changing shifts, so the security will be lax.";
 		next;
 		mes "[市民]";
@@ -4865,34 +4865,34 @@ wolfvill,131,252,3	script(CLOAKED)	Lamacus#sms01	EP18_ARMED_VILLAGER01,{
 		cloakonnpcself( "Citizen#sms02" );
 		cloakonnpcself( "Citizen#sms03" );
 		cutin "ep18_suad_01.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Maran, you stay here and prepare for any potential situations.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "明白了。";
 		next;
 		cutin "ep18_suad_01.png",1;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "And you guys, leave all those weapons behind.";
 		next;
 		cutin "",255;
-		mes "[Yopi]";
+		mes "[尤皮]";
 		mes "Oh, why!! We need to protect ourselves too!!";
 		next;
 		cutin "ep18_suad_01.png",1;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "We're not going there to incite armed conflict. If by chance something unfortunate happens while we're carrying weapons, we'll truly be branded as rebels.";
 		next;
 		cutin "",255;
-		mes "[Kun]";
+		mes "[昆]";
 		mes "Ah, alright! Anyway, Suad seems to be worried a lot.";
 		next;
-		mes "[Lamacus]";
+		mes "[拉馬庫斯]";
 		mes "Why worry about something that hasn't even happened yet?";
 		next;
 		cutin "ep18_suad_01.png",1;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Alright, now that it's settled, let's hurry. Let's meet at <NAVI>[in front of the temple]<INFO>rachel,169,245,0,101,0</INFO></NAVI>";
 		erasequest 17518;
 		setquest 17519;
@@ -4907,7 +4907,7 @@ wolfvill,131,252,3	script(CLOAKED)	Lamacus#sms01	EP18_ARMED_VILLAGER01,{
 		end;
 	}
 	if (ep18_main == 50) {
-		mes "[Lamacus]";
+		mes "[拉馬庫斯]";
 		mes "What are you doing? We agreed to meet at <NAVI>[in front of the temple]<INFO>rachel,169,245,0,101,0</INFO></NAVI>.";
 		close2;
 		cloakonnpcself( "Lamacus#sms01" );
@@ -4922,23 +4922,23 @@ OnInit:
 	end;
 }
 
-wolfvill,129,256,3	duplicate(dummy_cloaked_npc)	Kun#sms01	EP18_ARMED_VILLAGER02
-wolfvill,126,255,5	duplicate(dummy_cloaked_npc)	Yopi#sms01	EP18_ARMED_VILLAGER03
+wolfvill,129,256,3	duplicate(dummy_cloaked_npc)	昆#sms01::Kun#sms01	EP18_ARMED_VILLAGER02
+wolfvill,126,255,5	duplicate(dummy_cloaked_npc)	尤皮#sms01::Yopi#sms01	EP18_ARMED_VILLAGER03
 
 wolfvill,129,251,1	duplicate(dummy_cloaked_npc)	市民#sms01::Citizen#sms01	4_M_RACHMAN1
 wolfvill,129,248,7	duplicate(dummy_cloaked_npc)	市民#sms02::Citizen#sms02	4_M_MIDDLE1
 wolfvill,132,250,1	duplicate(dummy_cloaked_npc)	市民#sms03::Citizen#sms03	4_EP18_GW_MAN01
 
-wolfvill,126,252,7	duplicate(dummy_cloaked_npc)	Suad#sms02	4_EP18_SUAD
-wolfvill,124,253,5	duplicate(dummy_cloaked_npc)	Miriam#sms02	4_EP18_MIRIAM
-wolfvill,127,250,7	duplicate(dummy_cloaked_npc)	Maram#sms02	4_EP18_MARAM
+wolfvill,126,252,7	duplicate(dummy_cloaked_npc)	蘇阿德#sms02::Suad#sms02	4_EP18_SUAD
+wolfvill,124,253,5	duplicate(dummy_cloaked_npc)	米莉安#sms02::Miriam#sms02	4_EP18_MIRIAM
+wolfvill,127,250,7	duplicate(dummy_cloaked_npc)	瑪拉姆#sms02::Maram#sms02	4_EP18_MARAM
 
 // Main Quest: Step 54. (entrance npc is a part of the instance A Gathering Place of Wolves)
 // Main Quest: Step 55-58 instance 1@nyr.
 
 // Main Quest: Step 59.
-rachel,118,197,1	duplicate(dummy_cloaked_npc)	Miriam#sms04	4_EP18_MIRIAM
-rachel,119,199,3	duplicate(dummy_cloaked_npc)	Suad#sms04	4_EP18_SUAD
+rachel,118,197,1	duplicate(dummy_cloaked_npc)	米莉安#sms04::Miriam#sms04	4_EP18_MIRIAM
+rachel,119,199,3	duplicate(dummy_cloaked_npc)	蘇阿德#sms04::Suad#sms04	4_EP18_SUAD
 
 rachel,115,198,5	script(CLOAKED)	Zed#sms01	4_M_RACHOLD1,{
 	cutin "ra_gman2.bmp",0;
@@ -4947,13 +4947,13 @@ rachel,115,198,5	script(CLOAKED)	Zed#sms01	4_M_RACHOLD1,{
 	close3;
 }
 
-rachel,116,200,5	script	Niren#sms01	4_F_MADAME,{
+rachel,116,200,5	script	尼倫#sms01::Niren#sms01	4_F_MADAME,{
 	if (checkweight(1000405,60) == 0) {
 		mes "- 等一下！！ -";
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (ep18_main == 52) {
@@ -4971,11 +4971,11 @@ rachel,116,200,5	script	Niren#sms01	4_F_MADAME,{
 		setpcblock PCBLOCK_NPC, false;
 
 		cutin "ra_gwoman.bmp",0;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "The damage... is too great.";
 		next;
 		cutin "ep18_suad_03.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Moreover, with the bloodshed that occurred, rumors of a native uprising will spread in no time. It's already a bad situation with the headquarters attack incident.";
 		next;
 		cutin "ra_gman2.bmp",0;
@@ -4983,7 +4983,7 @@ rachel,116,200,5	script	Niren#sms01	4_F_MADAME,{
 		mes "Don't worry about public opinion. Let us handle the recovery.";
 		next;
 		cutin "ra_gwoman.bmp",0;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "It turns out that recent events were all part of a scheme.";
 		next;
 		cutin "ra_gman2.bmp",0;
@@ -4991,19 +4991,19 @@ rachel,116,200,5	script	Niren#sms01	4_F_MADAME,{
 		mes "It was our oversight not to examine the suspicious movements within the temple more closely.";
 		next;
 		cutin "ep18_suad_01.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Let's save self-blame for later and focus on resolving the situation on both sides for now.";
 		next;
 		cutin "ra_gwoman.bmp",0;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "Are we sure about the involvement of the Youth Amal Vice-Chancellor?";
 		next;
 		cutin "ep18_miriam_01.png",1;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "After the setback, my deputy, who had been languishing, suddenly regained vigor and became enthusiastic. Since then, tensions between the natives and immigrants of Arunafeltz have gradually escalated.";
 		next;
 		cutin "",255;
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "That aligns roughly with the time when the Heart Hunters escaped from the mansion.";
 		next;
 		cutin "ra_gman2.bmp",0;
@@ -5012,45 +5012,45 @@ rachel,116,200,5	script	Niren#sms01	4_F_MADAME,{
 		next;
 		select( "Because I even witnessed it." );
 		cutin "ra_gwoman.bmp",0;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "One thing that's troubling is that the Vice-Chancellor of Youth Amal wouldn't be unaware of the value of the Imir's Heart Fragment. Simply causing conflict by infiltrating the organization wouldn't have been enough to easily betray it...";
 		next;
 		cutin "ep18_suad_01.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Did they agree to receive something more and hand it over?";
 		next;
 		cutin "ep18_miriam_01.png",1;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "I'm not sure, but my deputy... No, I need to go and confirm it myself.";
 		next;
 		cutin "ep18_suad_01.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Where are you going? Do you have any idea where to start looking?";
 		next;
 		cutin "ep18_miriam_01.png",1;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "There's a summer villa on the outskirts of Rachel. Recently, my deputy has been frequenting that place for medical treatment. If he's colluding with those mad scientists to plan something, that's probably where he'd be.";
 		next;
 		cutin "",255;
-		mes "[Mini Elly]";
+		mes "[迷你艾莉]";
 		mes "We'll need to do some tracking.";
 		next;
 		cutin "ra_gwoman.bmp",0;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "Tracking down the person who stole the Heart Fragment should be left to Miriam. I hope the adventurer will accompany her.";
 		next;
-		select( "Understood." );
+		select( "明白了。" );
 		cutin "ra_gman2.bmp",0;
 		mes "[澤德]";
 		mes "We'll stay here to attend to the injured and identify any remaining stragglers who might still be around. We also need to consider public opinion.";
 		next;
 		cutin "ep18_suad_01.png",2;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "We need to return to the forest and handle the aftermath there as well.";
 		mes "Miriam, adventurer. Then I entrust you with tracking.";
 		next;
 		cutin "ep18_miriam_01.png",1;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Let's go, adventurer. Before heading to the villa, there's someone who will accompany us. Let's meet at <NAVI>[������ �̷�]<INFO>oz_dun01,223,116,0,101,0</INFO></NAVI>";
 		erasequest 17521;
 		setquest 17525;
@@ -5065,11 +5065,11 @@ rachel,116,200,5	script	Niren#sms01	4_F_MADAME,{
 	}
 	if (ep18_main == 53) {
 		cutin "ra_gwoman.bmp",0;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "We agreed to meet Miriam at <NAVI>[Maze of Oz]<INFO>oz_dun01,223,116,0,101,0</INFO></NAVI>";
 		close3;
 	}
-	mes "[Miriam]";
+	mes "[米莉安]";
 	mes "The situation here is not so good these days.";
 	close;
 
@@ -5099,134 +5099,134 @@ oz_dun01,223,116,3	script	Appointment Point#c12_evt01	4_POINT_BLUE,5,5,{
 		setpcblock PCBLOCK_NPC, false;
 
 		select( "Were you waiting for Miriam?" );
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "I asked for my mother's permission and came out for a moment.";
 		mes "I'm in the middle of handling the protest so I have to go back soon but...";
 		mes "Where is Miriam?";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "There she comes.";
 		cutin "ep18_suad_01.png",0;
 		next;
 		cloakoffnpcself( "Miriam#c12_01" );
 		cloakoffnpcself( "Ira#c12_01" );
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Sorry for being late. I took some time to find someone.";
 		cutin "ep18_miriam_01.png",0;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "This is Ira.";
 		mes "She's a child who often brings my father's books, but she needs help to enter the villa.";
 		next;
 		cutin "",255;
 		npctalk "你好。", "Ira#c12_01", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "What, why is Ira here?";
 		mes "Is she related to this matter?";
 		cutin "ep18_maram_01.png",2;
 		next;
 		cutin "",255;
-		mes "[Ira]";
+		mes "[伊拉]";
 		mes "Long time no see, Maramoppa.";
 		mes "I came to repay a favor to Miriam unnie while I'm at it.";
 		next;
-		mes "[Ira]";
+		mes "[伊拉]";
 		mes "You said there's something to see at the villa?";
 		mes "I've been pushing Sir Amal's wheelchair around, so I've been everywhere.";
 		next;
-		mes "[Ira]";
+		mes "[伊拉]";
 		mes "Coincidentally, I have the keys for the servants. I haven't returned them yet because I've been accompanying Sir Amal recently.";
 		mes "Even recently, I haven't returned them as I've been out with Sir Amal.";
 		next;
-		mes "[Ira]";
+		mes "[伊拉]";
 		mes "And about that villa.";
 		mes "Sometimes we lend it to the priests.";
 		mes "That's what happened this time too.";
 		mes "But it's a bit strange.";
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Strange?";
 		mes "It would be good if you could be specific.";
 		cutin "ep18_suad_04.png",0;
 		next;
 		cutin "",255;
-		mes "[Ira]";
+		mes "[伊拉]";
 		mes "They said some priests would be staying for a while, but it feels like a lie...";
 		next;
-		mes "[Ira]";
+		mes "[伊拉]";
 		mes "It seems like Sir Amal is operating another secret group.";
 		mes "Last time, he said he'd wage war but got pushed out of the temple, didn't he?";
 		next;
-		mes "[Ira]";
+		mes "[伊拉]";
 		mes "It seems like he hasn't given up yet.";
 		mes "This time, there seem to be more dangerous people staying at the villa than last time.";
 		next;
-		mes "[Ira]";
+		mes "[伊拉]";
 		mes "I don't care who, but I wish someone would stop him.";
 		mes "The atmosphere is not good either.";
 		mes "If there's a war, we, the indigenous people, will be the ones caught in the crossfire.";
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Well... no, it won't be a war.";
 		mes "You can relax, it's okay.";
 		cutin "ep18_miriam_01.png",0;
 		next;
 		cutin "",255;
-		mes "[Ira]";
+		mes "[伊拉]";
 		mes "Sister! How can you be so calm?";
 		mes "Do you know how scary it was for me to manage the villa?!";
 		mes "Especially with that strange woman there...";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Hahaha....";
 		mes "Alright, calm down, Ira.";
 		mes "We're gathered here to figure that out now.";
 		cutin "ep18_maram_02.png",2;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "For that reason, we're planning to enter the villa where aggressive guests are staying.";
 		mes "Since they seem to be the same people we encountered at the temple.";
 		cutin "ep18_miriam_01.png",0;
 		next;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "I understand what you mean.";
 		mes "Honestly, I'd like to go with you.";
 		mes "But there are still things I need to take care of.";
 		cutin "ep18_suad_01.png",0;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Yeah. I hurriedly asked for permission and left for a moment.";
 		mes "I still need to handle the protest and do some coordination work.";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Sorry, but Suadand I won't be able to go with you..";
 		mes "Can you understand?";
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "當然。";
 		mes "It's better for you to handle matters among yourselves.";
 		mes "I'll rely on the people of the Wolf Village.";
 		cutin "ep18_miriam_01.png",0;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Then, " + strcharinfo(0) + ", will you scout the villa with us?";
 		next;
 		select( "Leave it to me." );
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Thank you for understanding.";
 		mes "If you safely enter the villa, we'll bring Ira with us.";
 		cutin "ep18_suad_01.png",0;
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "謝謝。";
 		mes "Then, Ira. Will you send us to the villa?";
 		cutin "ep18_miriam_01.png",0;
 		next;
 		cutin "",255;
-		mes "[Ira]";
+		mes "[伊拉]";
 		mes "當然。";
 		mes "Just talk to me when you're ready.";
 		mes "I'll send you right away.";
@@ -5251,7 +5251,7 @@ oz_dun01,223,116,3	script	Appointment Point#c12_evt01	4_POINT_BLUE,5,5,{
 	next;
 	.@md_name$ = "High Priest's Villa";
 
-	select( "Enter the " + .@md_name$ + "" );
+	select( "進入 " + .@md_name$ + "" );
 
 	switch( instance_enter(.@md_name$) ) {
 	case IE_OTHER:
@@ -5261,10 +5261,10 @@ oz_dun01,223,116,3	script	Appointment Point#c12_evt01	4_POINT_BLUE,5,5,{
 		mes "Accompanying is not currently possible. Please check if your accompanying party member has applied for MD.";
 		close;
 	case IE_NOMEMBER:
-		mes "^ff0000Only a member of the party can enter the Memorial Dungeon.^000000";
+		mes "^ff0000只有隊伍成員才能進入紀念副本。^000000";
 		close;
 	case IE_OK:
-		mapannounce "oz_dun01", "" + strcharinfo(0) + " from the " + getpartyname( getcharid(1) ) + "'s party has entered the " + .@md_name$ + ".", bc_map, 0xFF99;
+		mapannounce "oz_dun01", "" + strcharinfo(0) + " 來自 " + getpartyname( getcharid(1) ) + "'的隊伍已進入 " + .@md_name$ + ".", bc_map, 0xFF99;
 		// warp "1@adv",123,17;
 		end;
 	}
@@ -5289,23 +5289,23 @@ OnInit:
 }
 
 oz_dun01,223,120,5	script(CLOAKED)	Suad#c12_01	4_EP18_SUAD,{
-	mes "[Suad]";
+	mes "[蘇阿德]";
 	mes "I'm sorry for burdening you with this annoying task.";
 	mes "But the Gray Wolf Village members must be waiting for me.";
 	cutin "ep18_suad_01.png",0;
 	next;
-	mes "[Suad]";
+	mes "[蘇阿德]";
 	mes "I entrust Miriam to you.";
 	close3;
 }
 
 oz_dun01,220,118,5	script(CLOAKED)	Miriam#c12_01	4_EP18_MIRIAM,{
-	mes "[Miriam]";
+	mes "[米莉安]";
 	mes "Only Miriam and the adventurer can enter the villa.";
 	mes "Suadand Maram will return to handle the protest.";
 	cutin "ep18_miriam_01.png",0;
 	next;
-	mes "[Miriam]";
+	mes "[米莉安]";
 	mes "The villa is said to be located under this gorge.";
 	mes "Ira has a separate entrance key, so when you're ready, talk to Ira.";
 	close3;
@@ -5317,37 +5317,37 @@ oz_dun01,220,118,5	script(CLOAKED)	Miriam#c12_01	4_EP18_MIRIAM,{
 // Main Quest: Step 67.
 oz_dun01,225,119,3	script(CLOAKED)	Maram#c12_01	4_EP18_MARAM,{
 	if (ep18_main == 55) {
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Oh, you're here.";
 		mes "The situation has been somewhat resolved, so I came to see you.";
 		mes "Miriam and Priest Yus have gone to the temple.";
 		cutin "ep18_maram_01.png",2;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Due to Priest Yus rampage, Suadwas kind of forced to escort him away.";
 		mes "They said they'll discuss the details at the temple.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Will you go there right away?";
 		next;
 		if (select( "I'll ask for your help.", "I'll go on my own." ) == 2)
 			end;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Then let's go together this way. Haha...";
 		close2;
 		cutin "",255;
 		warp "ra_temin",169,26;
 		end;
 	}
-	mes "[Maram]";
+	mes "[瑪拉姆]";
 	mes "Even if this event was fabricated by the Heart Hunters and the Illusions, it was going to explode someday.";
 	cutin "ep18_maram_01.png",2;
 	next;
-	mes "[Maram]";
+	mes "[瑪拉姆]";
 	mes "I don't know why it's so hard for everyone to live well together.";
 	cutin "ep18_maram_03.png",2;
 	next;
-	mes "[Maram]";
+	mes "[瑪拉姆]";
 	mes "These worries are left up to us.";
 	mes "Adventures, investigate the villa with Miriam.";
 	mes "I don't know what Amal is thinking.";
@@ -5388,60 +5388,60 @@ ra_temin,254,117,5	script(CLOAKED)	Miriam#c12_02	4_EP18_MIRIAM,{
 	}
 	if (ep18_main == 55) {
 		cutin "ep18_miriam_01.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "During your arrival, I heard some detailed stories....";
 		mes "It seems that the real goal was the arrival of Freyja, through the fragment of Ymir.";
 		next;
 		cutin "ep18_miriam_03.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Setting fire between the natives and immigrants was also to divert the attention of the temple and the people.";
 		mes "唉……";
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "How many people suffered and struggled because of that incident....";
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "The gods? What are the gods, really?";
 		mes "What did my father wish for, to offer such misguided prayers?";
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "....";
 		mes "I'll have to ask more to find out the details.";
 		mes "But, I'm really disillusioned with blind faith.";
 		next;
 		cutin "ra_gwoman.bmp",2;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "You really have no shame.";
 		mes "I never imagined Youth would do such a thing.";
 		next;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "Do you remember he used to be the leader of the hardliners?";
 		mes "But he couldn't start a war.";
 		mes "After retreating from the frontline because of that, he's been scheming something like this from behind.";
 		next;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "We are servants of the gods, serving their will.";
 		mes "We are always waiting, hoping that Freyja will speak to us again.";
 		next;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "But even so, we must not dare to summon the gods to the mortal realm.";
 		mes "That's not the will of the gods.";
 		next;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "Youth has violated taboo.";
 		mes "Daring to call oneself a servant of the gods and trying to take the gods as one's own.";
 		next;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "That alone is unforgivable, but he also caused pain to the gods and innocent people for that.";
 		mes "What should we do about the lost fragment of Ymir's heart....";
 		next;
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Mother.";
 		mes "We can retrieve the fragment of Ymir's heart.";
 		mes "Don't worry too much.";
 		next;
 		cutin "ep18_miriam_01.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "你說得對。";
 		mes "I will also retrieve the fragment of Ymir's heart.";
 		next;
@@ -5449,18 +5449,18 @@ ra_temin,254,117,5	script(CLOAKED)	Miriam#c12_02	4_EP18_MIRIAM,{
 		mes "When can we intervene....";
 		next;
 		cutin "ep18_suad_01.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "....";
 		mes "If you're here, show your presence.";
 		next;
 		cutin "ra_gwoman.bmp",2;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "Oh, we were discussing without even realizing that the adventurer had arrived.";
 		mes "What about your investigation?";
 		mes "It's about the remnants of that blasphemous thing found in Youth's mansion.";
 		next;
 		cutin "ep18_miriam_01.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "The 'Bagot,' was it?";
 		mes "What we saw at the mansion was a chimera created by the Bagot....";
 		close2;
@@ -5489,7 +5489,7 @@ ra_temin,258,117,3	script(CLOAKED)	Elly's Figure#c12_02	4_EP17_TABLET,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (getequipid(EQI_HEAD_TOP) == 400127 && countitem(400127) == 1 || countitem(400127) == 0) {
@@ -5502,7 +5502,7 @@ ra_temin,258,117,3	script(CLOAKED)	Elly's Figure#c12_02	4_EP17_TABLET,{
 		mes "I projected my original form because it seems like a story you all need to hear together.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Oh... I sometimes heard a faint moaning sound somewhere, and it was here?";
 		next;
 		cutin "ep172_beta.bmp",2;
@@ -5511,7 +5511,7 @@ ra_temin,258,117,3	script(CLOAKED)	Elly's Figure#c12_02	4_EP17_TABLET,{
 		mes "Let's get straight to the point. This form has a short duration.";
 		next;
 		cutin "ra_gwoman.bmp",2;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "Truly surprising, but please do. I need to understand the true identity of Freya's manifestation.";
 		next;
 		cutin "ep172_beta.bmp",2;
@@ -5520,7 +5520,7 @@ ra_temin,258,117,3	script(CLOAKED)	Elly's Figure#c12_02	4_EP17_TABLET,{
 		mes "The remains collected from the mansion were structurally identical to the Embryo, the origin of Homunculus.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Embryo?";
 		mes "What's that? Some kind of alchemy?";
 		next;
@@ -5538,13 +5538,13 @@ ra_temin,258,117,3	script(CLOAKED)	Elly's Figure#c12_02	4_EP17_TABLET,{
 		next;
 		select( "Because it's an illusion." );
 		cutin "ep18_suad_01.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Can I know more about this illusion?";
 		next;
 		mes "I explained briefly about the illusion.";
 		next;
 		cutin "ep18_suad_02.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "So, we were fooled by Bagot's trickery to get a piece of Ymir's heart to summon a goddess?";
 		next;
 		cutin "ep172_beta.bmp",2;
@@ -5553,22 +5553,22 @@ ra_temin,258,117,3	script(CLOAKED)	Elly's Figure#c12_02	4_EP17_TABLET,{
 		mes "You catch on quickly. You must have an excellent brain.";
 		next;
 		cutin "ep18_suad_03.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "I understand well that Yuseh got caught up in the illusion's ploy and tried to summon a goddess but ended up self-destructing.";
 		mes "But what about the illusion? Where did Bagot and the heart go?";
 		next;
 		cutin "ep18_suad_01.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Most of all, I... I can't stand the fact that we suffered because of some personal power play, not just God's will.";
 		next;
 		cutin "ep18_miriam_03.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Suad.";
 		mes "I feel the same way. We all do.";
 		mes "Above all, the fact that I was closest and still didn't notice is the worst...";
 		next;
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Mother. What should we do from now on?";
 		next;
 		cutin "ep172_beta.bmp",2;
@@ -5582,21 +5582,21 @@ ra_temin,258,117,3	script(CLOAKED)	Elly's Figure#c12_02	4_EP17_TABLET,{
 		mes "It's difficult but easy. You just have to guarantee it.";
 		next;
 		cutin "ra_gwoman.bmp",2;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "I see. Rather than just waiting for God's word and forcing it, we need to listen to people's stories.";
 		mes "Such fundamental...";
 		next;
 		cutin "ep18_maram_03.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "But the ruling class won't stay quiet.";
 		mes "If anything, there might be more resistance and turmoil than now.";
 		next;
 		cutin "ep18_suad_01.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Ha, but we can't just stay like this, can we?";
 		next;
 		cutin "ep18_miriam_01.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Right. Reform is necessary.";
 		mes "We can't just shout at walls and hide in the forest forever.";
 		next;
@@ -5610,30 +5610,30 @@ ra_temin,258,117,3	script(CLOAKED)	Elly's Figure#c12_02	4_EP17_TABLET,{
 		mes "The rest will be resolved by time and human adaptability.";
 		next;
 		cutin "ra_gwoman.bmp",2;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "This is a great lesson from an outsider.";
 		mes "Understood. Let's formally raise this issue for discussion.";
 		next;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "If it's Zedd Mansion, it might be of great help.";
 		mes "You guys decide on a representative for the natives.";
 		next;
 		cutin "ep18_miriam_01.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Suad is here. Father.";
 		mes "And there's me and Maram. Aren't we here for this day?";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "It's time for the children of gray to do their job.";
 		mes "The reason Mother adopted us, was it for this day?";
 		next;
 		cutin "ep18_suad_01.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Don't worry about this side. Just make sure to prepare a proper board.";
 		next;
 		cutin "ra_gwoman.bmp",2;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "Thank you. You've grown well...";
 		next;
 		cutin "ep172_beta.bmp",2;
@@ -5642,13 +5642,13 @@ ra_temin,258,117,3	script(CLOAKED)	Elly's Figure#c12_02	4_EP17_TABLET,{
 		mes "Now let's go back to the story of the illusion.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Right. Bagot took Ymir's heart and went somewhere, right?";
 		mes "And the adventurer will leave to find the heart.";
 		next;
 		select( "We need to know Bagot's whereabouts." );
 		cutin "ep18_miriam_01.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Bagot seems to have headed to the northern continent.";
 		mes "I remember having a conversation with my father about Jormungand.";
 		next;
@@ -5658,54 +5658,54 @@ ra_temin,258,117,3	script(CLOAKED)	Elly's Figure#c12_02	4_EP17_TABLET,{
 		mes "Are you talking about Jormungand, the sealed area beyond the barrier?";
 		next;
 		cutin "ep18_miriam_01.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Is it true? That Jormungand is sealed. Bagot seems interested.";
 		mes "Bagot was interested in resurrecting a god.";
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "At first, it seemed like a false promise of a divine advent just to steal Ymir's heart, but....";
 		mes "No one knows what he will do with Ymir's heart he obtained.";
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "However, it seems that one of Bagot's companions has already moved to the northern continent.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Jormungand exists?";
 		next;
 		cutin "ra_gwoman.bmp",2;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "The Jormungand sect did exist.";
 		mes "The heroes who won in the fight against the sect became the founders of the Rune-Midgarts Kingdom.";
 		next;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "At that time, they fought in the name of Odin, not Freya, as we did.";
 		mes "Clearly, it was Freya who unfolded the meaning for humans.";
 		next;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "However, the family of heroes who won the fight against the Church founded a country in the name of Odin.";
 		mes "There is also a story that Jormungand placed a curse on the victorious hero and first king because of this.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "I've never heard of this before?";
 		mes "Curse...?";
 		next;
 		select( "The curse is not important." );
 		cutin "ra_gwoman.bmp",2;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "Yes. The story of the current royal curse isn't important.";
 		mes "What's important is that the Jormungand sect did exist.";
 		next;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "The story of Jormungand being sealed in the place called the northern continent is also told.";
 		next;
 		cutin "ep18_miriam_01.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "If Bagot really wants to resurrect a god, he will aim for Jormungand next.";
 		next;
 		cutin "ra_gwoman.bmp",2;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "That must be prevented.";
 		mes "The darkness of the continent is greater than the divine war that lasted a thousand years.";
 		mes "We must track down and stop Bagot.";
@@ -5715,11 +5715,11 @@ ra_temin,258,117,3	script(CLOAKED)	Elly's Figure#c12_02	4_EP17_TABLET,{
 		mes "The north is a sealed land. It's not easy to cross the barrier.";
 		next;
 		cutin "ep18_miriam_01.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "Because there's a barrier, we can't cross it?";
 		mes "Then did Bagot use Ymir's heart to cross the barrier?";
 		next;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "To track him down, we need to find a way to cross the barrier that blocks the north.";
 		mes "It will take time.";
 		next;
@@ -5744,32 +5744,32 @@ ra_temin,258,117,3	script(CLOAKED)	Elly's Figure#c12_02	4_EP17_TABLET,{
 		next;
 		cloakonnpcself( "Elly's Figure#c12_02" );
 		cutin "ep18_miriam_01.png",0;
-		mes "[Miriam]";
+		mes "[米莉安]";
 		mes "There's nothing we can do until more information gathers.";
 		mes "I'll try to have a conversation with my father a bit more.";
 		mes "謝謝你的幫忙。";
 		next;
 		cutin "ep18_suad_01.png",0;
-		mes "[Suad]";
+		mes "[蘇阿德]";
 		mes "Then I'll return to the Gray Wolf Forest.";
 		mes "Niren, please call me back when the council is formed. I'll prepare until then.";
 		next;
 		cutin "ep18_maram_01.png",2;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Then shall I go and listen to Miriam and Yuse's story together?";
 		mes "I want to help find Ymir's heart fragment.";
 		next;
 		cutin "ra_gwoman.bmp",2;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "Then I'll go meet Deputy Jed.";
 		mes "Adventurer, you've done us a service once again.";
 		next;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "Prayers are always directed towards God,";
 		mes "to support those who make wishes ...";
 		mes "But what did Yuse pray for?";
 		next;
-		mes "[Niren]";
+		mes "[尼倫]";
 		mes "At the end of that prayer is only downfall.";
 		mes "...";
 		close3;
@@ -5814,13 +5814,13 @@ ra_temin,259,111,1	script(CLOAKED)	Maram#c12last	4_EP18_MARAM,{
 // Quest: Investigation of Oz Labyrinth. Step 2.
 oz_dun01,27,184,5	script	#ep18_sb1	4_POINT_RED,{
 	if (isbegin_quest(11725) == 1 || isbegin_quest(11726) == 1) {
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Phew... It's hot!";
 		mes "It used to be a cool cave...";
 		mes "Now, just standing still feels like sweat is pouring down.";
 		cutin "ep18_imril_02.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "If we stay too long, I might get dizzy, so let's explore quickly.";
 		mes "For now, this path is an ^e5555eexternal path^000000, so we just need to walk straight.";
 		if (isbegin_quest(11725) == 1) {
@@ -5840,19 +5840,19 @@ OnInit:
 }
 
 // Quest: Investigation of Oz Labyrinth. Step 3.
-oz_dun01,68,284,5	script	Box#ep18_sb1	4_WOODBOX,{
+oz_dun01,68,284,5	script	箱子#ep18_sb1::Box#ep18_sb1	4_WOODBOX,{
 	if (isbegin_quest(11726) == 1 || isbegin_quest(11727) == 1) {
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Someone left their luggage behind.";
 		mes "Sometimes when facing monsters or feeling too exhausted to carry items, people hide their luggage like this and move on.";
 		cutin "ep18_imril_01.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "While it's important to move items, life is precious.";
 		mes "Since we're close to the entrance here, it's convenient to retrieve the items later.";
 		cutin "ep18_imril_02.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Let's leave this luggage for now and move on.";
 		if (isbegin_quest(11726) == 1) {
 			erasequest 11726;
@@ -5874,12 +5874,12 @@ OnInit:
 // Quest: Investigation of Oz Labyrinth. Step 4.
 oz_dun01,65,189,5	script	Steep Road#ep18_sb1	4_POINT_RED,{
 	if (isbegin_quest(11727) == 1 || isbegin_quest(11728) == 1) {
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "The path here is rough, so be careful.";
 		mes "You might slip and hurt your ankle if you're not careful.";
 		cutin "ep18_imril_02.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Let's go down straight from here.";
 		if (isbegin_quest(11727) == 1) {
 			erasequest 11727;
@@ -5900,17 +5900,17 @@ OnInit:
 // Quest: Investigation of Oz Labyrinth. Step 5.
 oz_dun01,111,96,5	script	Steaming Hole#ep18_sb1	4_POINT_RED,{
 	if (isbegin_quest(11728) == 1 || isbegin_quest(11729) == 1) {
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Hoo!";
 		mes "It's hot!";
 		mes "Steam is escaping from the cracked crevice.";
 		cutin "ep18_imril_01.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Fortunately, the ground seems okay for now, but steam rising indicates that the ground deep below has heated up, so we might not be able to go much further before lava starts flowing.";
 		cutin "ep18_imril_02.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "It's really serious that it's starting to heat up near the main path...";
 		next;
 		cutin "",255;
@@ -5934,7 +5934,7 @@ OnInit:
 // Quest: Investigation of Oz Labyrinth. Step 6 + 7 + 8.
 oz_dun01,100,92,3	script	???#ep18_sb1	4_EP18_GW_MIDDLE02,{
 	if (isbegin_quest(11729) == 1) {
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Are you okay, Paul?";
 		cutin "ep18_imril_02.png",2;
 		next;
@@ -5948,7 +5948,7 @@ oz_dun01,100,92,3	script	???#ep18_sb1	4_EP18_GW_MIDDLE02,{
 		mes "I'm not sure where my belongings went either.";
 		mes "Getting hurt and losing my belongings, it's miserable...";
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Don't say that, your life is more important than your belongings.";
 		cutin "ep18_imril_02.png",2;
 		next;
@@ -5957,7 +5957,7 @@ oz_dun01,100,92,3	script	???#ep18_sb1	4_EP18_GW_MIDDLE02,{
 		mes "是啊……";
 		mes "謝謝。";
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "I have some potions here, so drink this and return to the village first.";
 		mes "You can find your belongings later.";
 		cutin "ep18_imril_01.png",2;
@@ -5990,27 +5990,27 @@ oz_dun01,100,92,3	script	???#ep18_sb1	4_EP18_GW_MIDDLE02,{
 	case 2:
 		mes "[保羅]";
 		mes "Phew~";
-		mes "Thanks!";
+		mes "謝謝！";
 		mes "I'm feeling a bit better now and can move.";
 		next;
 		mes "[保羅]";
 		mes "Well, I'll slowly head back to the village now.";
 		mes "It's good to investigate the maze, but be careful of your health.";
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "明白了。";
 		mes "Take care, Paul.";
 		cutin "ep18_imril_02.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "嗯……";
 		mes "Steam rising from various places is indeed a big problem, not just the monsters.";
 		cutin "ep18_imril_01.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Travelers rarely descend further down, but if they are chased by monsters, they might take the wrong path...";
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Let's ^e5555ego down a bit more^000000 for now.";
 		erasequest 11730;
 		setquest 11731;
@@ -6024,20 +6024,20 @@ oz_dun01,100,92,3	script	???#ep18_sb1	4_EP18_GW_MIDDLE02,{
 		mes "Well, I'll slowly head back to the village now.";
 		mes "It's good to investigate the maze, but be careful of your health.";
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "明白了。";
 		mes "Take care, Paul.";
 		cutin "ep18_imril_02.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "嗯……";
 		mes "Steam rising from various places is indeed a big problem, not just the monsters.";
 		cutin "ep18_imril_01.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Travelers rarely descend further down, but if they are chased by monsters, they might take the wrong path...";
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Let's ^e5555ego down a bit more^000000 for now.";
 		close2;
 		cutin "",255;
@@ -6053,14 +6053,14 @@ OnInit:
 }
 
 // Quest: Investigation of Oz Labyrinth. Step 9.
-oz_dun01,134,56,5	script	Box#ep18_sb2	4_WOODBOX,{
+oz_dun01,134,56,5	script	箱子#ep18_sb2::Box#ep18_sb2	4_WOODBOX,{
 	if (isbegin_quest(11731) == 1 || isbegin_quest(11732) == 1) {
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "There's some luggage here too...";
 		mes "Could this be the luggage Paul lost?";
 		cutin "ep18_imril_01.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Let's just remember the location for now and retrieve it later.";
 		mes "We still need to check ^e5555efurther down^000000.";
 		mes "這邊請……";
@@ -6084,17 +6084,17 @@ OnInit:
 // Quest: Investigation of Oz Labyrinth. Step 10.
 oz_dun01,110,37,5	script	#ep18_sb2	4_POINT_RED,{
 	if (isbegin_quest(11732) == 1 || isbegin_quest(11733) == 1) {
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "唔……";
 		mes "The heat is already unbearable.";
 		mes "It's even more dangerous down here, so we really need to be careful.";
 		cutin "ep18_imril_02.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "To be honest, unless you're as strong as an adventurer, coming this far is as good as a death sentence.";
 		cutin "ep18_imril_01.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "But since I'm here with you, I'll venture further down.";
 		if (isbegin_quest(11732) == 1) {
 			erasequest 11732;
@@ -6115,12 +6115,12 @@ OnInit:
 // Quest: Investigation of Oz Labyrinth. Step 11.
 oz_dun02,152,276,5	script	#ep18_sb3	4_POINT_RED,{
 	if (isbegin_quest(11733) == 1 || isbegin_quest(11734) == 1) {
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "It seems like the monsters down here have slightly changed their form just from coming down a bit further.";
 		mes "Even this level of change could pose a risk to adventurers, don't you think?";
 		cutin "ep18_imril_02.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Since it's too dangerous here, let's just take a quick look around and then head back to town.";
 		if (isbegin_quest(11733) == 1) {
 			erasequest 11733;
@@ -6141,7 +6141,7 @@ OnInit:
 // Quest: Investigation of Oz Labyrinth. Step 12.
 oz_dun02,143,231,3	script	老先生#ep18_sb1::Old Man#ep18_sb1	4_EP18_GW_OLD01,{
 	if (isbegin_quest(11734) == 1) {
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "<FONT SIZE = 14><B>Elder!!!!</FONT></B>";
 		mes "You're safe!!!";
 		cutin "ep18_imril_03.png",2;
@@ -6153,7 +6153,7 @@ oz_dun02,143,231,3	script	老先生#ep18_sb1::Old Man#ep18_sb1	4_EP18_GW_OLD01,{
 		mes "Isn't this Imril?";
 		mes "Why did you come to such a dangerous place?";
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "No, why are you really here, Elder.";
 		cutin "ep18_imril_02.png",2;
 		next;
@@ -6161,7 +6161,7 @@ oz_dun02,143,231,3	script	老先生#ep18_sb1::Old Man#ep18_sb1	4_EP18_GW_OLD01,{
 		mes "[Maze Master Elder]";
 		mes "The maze master is in the maze, where else would I be.";
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "But this place is too dangerous with monsters...";
 		cutin "ep18_imril_01.png",2;
 		next;
@@ -6176,7 +6176,7 @@ oz_dun02,143,231,3	script	老先生#ep18_sb1::Old Man#ep18_sb1	4_EP18_GW_OLD01,{
 		mes "[Maze Master Elder]";
 		mes "If it were an adventurer next to you, it might be okay, but it's too dangerous for you.";
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "明白了。";
 		mes "Please take care of yourself, Elder.";
 		mes "Hurry back to the village.";
@@ -6187,11 +6187,11 @@ oz_dun02,143,231,3	script	老先生#ep18_sb1::Old Man#ep18_sb1	4_EP18_GW_OLD01,{
 		mes "哎呀~";
 		mes "If the maze master isn't in the maze, who will manage the maze!";
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Anyway, stubbornness...";
 		cutin "ep18_imril_02.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "As Inspirational said, I don't think I can handle going further down, so let's go back to the ^e5555evillage^000000.";
 		mes "I feel like my skin is burning even now.";
 		erasequest 11734;
@@ -6206,11 +6206,11 @@ oz_dun02,143,231,3	script	老先生#ep18_sb1::Old Man#ep18_sb1	4_EP18_GW_OLD01,{
 		mes "哎呀~";
 		mes "If the maze Master isn't in the maze, who will manage the maze!";
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "Anyway, you're so stubborn...";
 		cutin "ep18_imril_02.png",2;
 		next;
-		mes "[Imril]";
+		mes "[伊姆里爾]";
 		mes "As the elder said, I don't think I can go down any further, so let's go back to ^e5555eVillage^00000.";
 		mes "Even now, my skin feels like it's going to burn.";
 		close2;
@@ -6268,7 +6268,7 @@ wolfvill,117,119,5	script	Scania#wms01	4_EP18_GW_MAN02,5,5,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (ep18_main < 36) {
@@ -6286,20 +6286,20 @@ wolfvill,117,119,5	script	Scania#wms01	4_EP18_GW_MAN02,5,5,{
 		mes "Oh my, look at this! Look at the way they're breathing. They're a genius at inhaling and exhaling! A true genius!";
 		next;
 		cloakoffnpcself( "Maram#wms01" );
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Hello! Scania!";
 		next;
 		mes "[Scania]";
 		mes "Maram? When did you come? You came earlier than expected?";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Thanks to the adventurer's help, I came a little faster this time.";
 		npctalk "Hello. You are a strong and mighty adventurer.", "Maram#wms01", bc_self;
 		next;
 		mes "[Scania]";
 		mes "Is this the newcomer who just arrived?";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Oh, that's not it. He is not from around here. He is from a completely different place. He helped with purchasing goods this time, and they've transported them all the way here.";
 		npctalk "He is a strong and mighty adventurer.", "Maram#wms01", bc_self;
 		next;
@@ -6307,7 +6307,7 @@ wolfvill,117,119,5	script	Scania#wms01	4_EP18_GW_MAN02,5,5,{
 		mes "Hmm... An adventurer...? So, they're an outsider? Are we sure about your identity? What if we search through everything he have?";
 		mes "Or perhaps we could let slip some information over there? If not, what if they try to claim our land like those immigrants?";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "No, not him! He have nothing but kind words for everyone they meet! They're not that kind of person at all. Why would you compare him to those troublemakers?";
 		next;
 		mes "[Scania]";
@@ -6316,7 +6316,7 @@ wolfvill,117,119,5	script	Scania#wms01	4_EP18_GW_MAN02,5,5,{
 		npctalk "Bringing back, huh! Watch your words!", "Maram#wms01", bc_self;
 		next;
 		select( "I'm not that kind of person, though." );
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Oh, of course, what comes out of their mouth isn't the truth. It's just talk, that's all.";
 		mes "By the way, a wolf cub? What wolf cub?";
 		next;
@@ -6327,46 +6327,46 @@ wolfvill,117,119,5	script	Scania#wms01	4_EP18_GW_MAN02,5,5,{
 		mes "Do you know what that means? It's already causing trouble for our sheep! Even now, it's behaving like that. What will happen when it gets bigger? It will definitely harm our sheep!";
 		mes "So, why don't you go and try saying it once! I won't listen to what you say!";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Oh? That's actually a great suggestion. It would be a very constructive conversation. But what should I do? I have to tidy up the stuff I brought.";
 		npctalk "Oh, what's with the awkward tone?", "Scania#wms01", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Ah, of course! Adventurer! Would you care to go? Explore this place, take in the sights, and perhaps make a lasting impression on the locals as well.";
 		mes "Since we'll be staying here for a while anyway, right? Everyone here is as friendly and kind-hearted as I am, so you won't encounter any hostility.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Right, Scania?";
 		next;
 		mes "[Scania]";
 		mes "......";
 		npctalk "What's with the glare?", "Maram#wms01", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Just go and check whether what Aisha brought back is a real wolf cub or just a puppy that looks like a wolf.";
 		npctalk "It's a wolf even without checking! I saw it all!", "Scania#wms01", bc_self;
 		next;
 		select( "What about verifying it?" );
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Oh... well, I haven't really thought that far. But wouldn't it be troublesome if it's really a wolf cub? Even a puppy would be a hassle in that case.";
 		npctalk "Where would the trouble be?", "Scania#wms01", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Let me explain for our newly arrived adventurer. Here, the land is such that there aren't many animals suitable for raising.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Mostly, Skania takes care of the sheep and chickens. There are hardly any cattle or pigs that can adapt to such places. Therefore, livestock is really precious here.";
 		next;
 		mes "[Scania]";
 		mes "But what if what Aisha is carrying is indeed a wolf cub?";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "The mother is coming to find her cub!";
 		next;
 		mes "[Scania]";
 		mes "Even if the mother doesn't come looking for it?";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "The cub will grow up and start harming the livestock!";
 		next;
 		emotion ET_SWEAT, playerattached();
@@ -6374,7 +6374,7 @@ wolfvill,117,119,5	script	Scania#wms01	4_EP18_GW_MAN02,5,5,{
 		mes "你聽到了嗎？";
 		next;
 		select( "Where should I go?" );
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Where did Aisha live again? Ah, right! <NAVI>[Upper Side]<INFO>wolfvill,99,178,0,101,0</INFO></NAVI>, if you go there, you'll find Aisha's house.";
 		next;
 		emotion ET_SWEAT, playerattached();
@@ -6383,7 +6383,7 @@ wolfvill,117,119,5	script	Scania#wms01	4_EP18_GW_MAN02,5,5,{
 		npctalk "Skania, adventurer, you are not someone whose worth is judged by your opinion.", "Maram#wms01", bc_self;
 		npctalk "Who said that? I'll take care of it.", "Scania#wms01", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Adventurer, then, please go and return safely! I'll take my leave for now too!";
 		setquest 17510;
 		close2;
@@ -6468,7 +6468,7 @@ wolfvill,117,119,5	script	Scania#wms01	4_EP18_GW_MAN02,5,5,{
 		mes "[Aisha]";
 		mes "Did you hear me? Where is your refutation? Come on, smart genius! Sit down! Hands up!";
 		emotion ET_WRAP, getnpcid(0,"Aisha#wms01");
-		npctalk "Woof!!", "Boksil#wms01", bc_self;
+		npctalk "汪！！", "Boksil#wms01", bc_self;
 		emotion ET_ROCK, getnpcid(0,"Boksil#wms01");
 		npctalk "I'm glad you think so! You did a great job too! We're both genius!", "Aisha#wms01", bc_self;
 		next;
@@ -6542,7 +6542,7 @@ wolfvill,117,119,5	script	Scania#wms01	4_EP18_GW_MAN02,5,5,{
 	case 0:
 	case 1:
 		mes "[Scania]";
-		mes "Please wait the end of the quest delay.";
+		mes "請等待任務延遲結束。";
 		close;
 	case 2:
 		erasequest 17516;
@@ -6586,7 +6586,7 @@ wolfvill,117,119,5	script	Scania#wms01	4_EP18_GW_MAN02,5,5,{
 		mes "Ta-da! We're here!";
 		next;
 		mes "[Boksil]";
-		mes "Woof!!";
+		mes "汪！！";
 		next;
 		mes "[Scania]";
 		mes "Sure, I'll take you for a walk. Really... do I have to go too? Can I trust you to handle it?";
@@ -6645,7 +6645,7 @@ OnInit:
 	end;
 }
 
-wolfvill,120,121,3	duplicate(dummy_cloaked_npc)	Maram#wms01	4_EP18_MARAM
+wolfvill,120,121,3	duplicate(dummy_cloaked_npc)	瑪拉姆#wms01::Maram#wms01	4_EP18_MARAM
 wolfvill,119,117,1	duplicate(dummy_cloaked_npc)	Boksil#wms01	EP18_GREY_WOLF_BABY
 
 // Quest: Training Grey Wolves. Step 2.
@@ -6782,7 +6782,7 @@ wolfvill,100,177,1	script	Boksil#wms02	EP18_GREY_WOLF_BABY,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	switch( isbegin_quest(17511) ) {
@@ -7009,7 +7009,7 @@ wolfvill,85,111,3	script	Zlan#ep18	4_M_RACHMAN1,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (ep18_main < 36) {
@@ -7548,7 +7548,7 @@ wolfvill,61,170,5	script	Folklorist Gudra#ep18	4_F_SHABBY,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (ep18_main < 36) {
@@ -7952,7 +7952,7 @@ wolfvill,103,230,3	script	Budan#ep18	4_M_RACHMAN1,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (ep18_main < 36) {
@@ -8015,14 +8015,14 @@ wolfvill,103,230,3	script	Budan#ep18	4_M_RACHMAN1,{
 		mes "[Budan]";
 		mes "If you go to a temple, there will probably be worshippers out doing good deeds that day.";
 		mes "Just say a few words and buy it.";
-		mes "Please do me a favor.";
+		mes "請幫我一個忙。";
 		close;
 	case 1:
 		if (countitem(1000411) < 1) {
 			mes "[Budan]";
 			mes "If you go to a temple, there will probably be worshippers out doing good deeds that day.";
 			mes "Just say a few words and buy it.";
-			mes "Please do me a favor.";
+			mes "請幫我一個忙。";
 			close;
 		}
 		delitem 1000411,1;	// Ep18_Purified_Bucket
@@ -8062,7 +8062,7 @@ wolfvill,103,230,3	script	Budan#ep18	4_M_RACHMAN1,{
 		mes "[Budan]";
 		mes "If you go to a temple, there will probably be worshippers out doing good deeds that day.";
 		mes "Just say a few words and buy it.";
-		mes "Please do me a favor.";
+		mes "請幫我一個忙。";
 		close;
 	}
 	if (isbegin_quest(8697) == 1) {
@@ -8120,7 +8120,7 @@ wolfvill,103,230,3	script	Budan#ep18	4_M_RACHMAN1,{
 	mes "[Budan]";
 	mes "If you go to a temple, there will probably be worshippers out doing good deeds that day.";
 	mes "Just say a few words and buy it.";
-	mes "Please do me a favor.";
+	mes "請幫我一個忙。";
 	close;
 
 OnInit:
@@ -8261,7 +8261,7 @@ wolfvill,104,235,0	script	Water barrel#ep1801	CLEAR_NPC,{
 			mes "- 你目前攜帶的 -";
 			mes "- 道具太多了。 -";
 			mes "- 請再試一次 -";
-			mes "- after you loose some weight. -";
+			mes "- 在你瘦下來一些之後。 -";
 			close;
 		}
 		specialeffect EF_BLUECASTING;
@@ -8912,7 +8912,7 @@ wolfvill,171,253,5	script	Ezekiel#hms01	4_M_RACHMAN2,5,5,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (ep18_main < 36) {
@@ -9001,7 +9001,7 @@ wolfvill,171,253,5	script	Ezekiel#hms01	4_M_RACHMAN2,5,5,{
 			mes "Oh my, I think I'm dying. Help...";
 			npctalk "Someone is waving to me in the distance...", "Injured#hms01", bc_self;
 			next;
-			mes "[Maram]";
+			mes "[瑪拉姆]";
 			mes "Ezekiel!!! Something is wrong!";
 			next;
 			mes "[Ezekiel]";
@@ -9011,13 +9011,13 @@ wolfvill,171,253,5	script	Ezekiel#hms01	4_M_RACHMAN2,5,5,{
 			mes "If I die... put my accumulated wealth...! With me. Did you get it?! It's unfair! Maram, make sure you guard my grave well! Don't let a single penny be stolen!";
 			emotion ET_CRY, getnpcid(0,"Injured#hms01");
 			next;
-			mes "[Maram]";
+			mes "[瑪拉姆]";
 			mes "No, you won't die. Don't be ominous.";
 			next;
 			mes "[老先生]";
 			mes "What's wrong with Joel?";
 			next;
-			mes "[Maram]";
+			mes "[瑪拉姆]";
 			mes "There's been an accident while moving the luggage. I need to get it taken care of quickly. Can you do that, Ezekiel?";
 			next;
 			mes "[老先生]";
@@ -9054,7 +9054,7 @@ wolfvill,171,253,5	script	Ezekiel#hms01	4_M_RACHMAN2,5,5,{
 			mes "[Ezekiel]";
 			mes "I'm saying I can do it because I can do it. Everybody, get out of the way.";
 			next;
-			mes "[Maram]";
+			mes "[瑪拉姆]";
 			mes "You'll have to trust him. Ezekiel may not look like much in your eyes, but he's pretty good, right?";
 			npctalk "I didn't go out of my way to bring him in.", "Maram#hms01", bc_self;
 			next;
@@ -9117,7 +9117,7 @@ wolfvill,171,253,5	script	Ezekiel#hms01	4_M_RACHMAN2,5,5,{
 		next;
 		cloakoffnpcself( "Maram#hms01" );
 		select( "That person...?" );
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Shhh- wait a minute, listen to what he's saying, he sounds like he's saying something.";
 		next;
 		mes "[Ezekiel]";
@@ -9127,7 +9127,7 @@ wolfvill,171,253,5	script	Ezekiel#hms01	4_M_RACHMAN2,5,5,{
 		mes "[Ezekiel]";
 		mes "No, but that's what I initially aimed for. Finding my roots...";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Ezekiel! How have you been? Why are you muttering to yourself like that?";
 		next;
 		mes "[Ezekiel]";
@@ -9137,7 +9137,7 @@ wolfvill,171,253,5	script	Ezekiel#hms01	4_M_RACHMAN2,5,5,{
 		mes "[Ezekiel]";
 		mes "I told you I was going to build a clinic here. When I came here, there was no decent clinic, so I build one.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "That's right. That's why I got a lot of things to fill it with this time.";
 		npctalk "Really? We'll see about that later. Just listen to the story first.", "Ezekiel#hms01", bc_self;
 		next;
@@ -9147,13 +9147,13 @@ wolfvill,171,253,5	script	Ezekiel#hms01	4_M_RACHMAN2,5,5,{
 		mes "[Ezekiel]";
 		mes "Is it really that destructive to nature and the environment to just build a more hygienic, more modern clinic, which would allow for a faster response in an emergency?";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "No. You aren't that kind of person. Everyone else, but never you.";
 		next;
 		mes "[Ezekiel]";
 		mes "Isn't that right? And you've gotten me to the point where... I'm not doing anything right now because I'm thinking, Am I really a bad person?";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "If that's the case, you should talk to Suad. That's not fair. We're all trying to live together. The clinic isn't against nature. Oh, come on.";
 		next;
 		mes "[Ezekiel]";
@@ -9162,13 +9162,13 @@ wolfvill,171,253,5	script	Ezekiel#hms01	4_M_RACHMAN2,5,5,{
 		mes "[Ezekiel]";
 		mes "I told him that we need a clinic, but we can't just push it through because the elderly people who have lived here for a long time are against it, so we have to convince them.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "From the sounds of it, so does he. We can't ignore the opinions of the elders, after all, and it's not like Suad's the kind of guy who'd bend over backwards to do so.";
 		next;
 		mes "[Ezekiel]";
 		mes "So... I'm... going back to Rachel... What do you think?";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "What, you came this far and you're going back?";
 		next;
 		mes "[Ezekiel]";
@@ -9177,13 +9177,13 @@ wolfvill,171,253,5	script	Ezekiel#hms01	4_M_RACHMAN2,5,5,{
 		mes "[Ezekiel]";
 		mes "So what I'm saying is... I'm trying to figure it out. When did I say I would just cut it and go back? Can you please not listen to me however you want?";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Hmmm... but the clinic is a necessity as far as I'm concerned, and if I can make the case...";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "That's right! I think the adventurer might be able to help us out. You know, this adventurer is really good at talking, don't you think his face makes him believable? This is just the kind of prize that grown-ups like.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "He has a big heart, and he helped us buy and transport supplies.";
 		next;
 		mes "[Ezekiel]";
@@ -9193,7 +9193,7 @@ wolfvill,171,253,5	script	Ezekiel#hms01	4_M_RACHMAN2,5,5,{
 		mes "...Is that really the kind of person who gets the favor of the adults? They're so... so... stubborn.";
 		npctalk "You're so good at calling yourself stubborn.", "Maram#hms01", bc_self;
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "You have to make the most of it. Even if I can't persuade you, what else is there to do but listen to more nagging? Is that the adventurer going to listen to that instead?";
 		npctalk "Oh, that's kind of nice.", "Ezekiel#hms01", bc_self;
 		next;
@@ -9211,7 +9211,7 @@ wolfvill,171,253,5	script	Ezekiel#hms01	4_M_RACHMAN2,5,5,{
 		mes "[Ezekiel]";
 		mes "But there's nothing I can do to convince the naysayers, so I'm going to ask an adventurer <NAVI>[sir]<INFO>wolfvill,176,111,0,101,0</INFO></NAVI> to do it for me.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Please do, and in the meantime, I'll go meet some other people.";
 		setquest 17504;
 		close2;
@@ -9226,7 +9226,7 @@ wolfvill,171,253,5	script	Ezekiel#hms01	4_M_RACHMAN2,5,5,{
 		mes "[Joel]";
 		mes "Am I alive?? Am I alive?? Is my leg okay??";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Uh, since you say it is, it must be, right?";
 		next;
 		mes "[Joel]";
@@ -9282,7 +9282,7 @@ wolfvill,171,253,5	script	Ezekiel#hms01	4_M_RACHMAN2,5,5,{
 		mes "[Ezekiel]";
 		mes "I see... I understand it.";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Wow, you guys thought of everything. This is exactly what I need, and I'm all for it.";
 		next;
 		mes "[老先生]";
@@ -9315,24 +9315,24 @@ wolfvill,171,253,5	script	Ezekiel#hms01	4_M_RACHMAN2,5,5,{
 		cloakonnpcself( "Old Man#hms01" );
 		cloakonnpcself( "Old Man#hms02" );
 		cloakonnpcself( "Old Man#hms03" );
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Let's see!!!";
 		mes "Whoa- that's a relief, isn't it?";
 		next;
 		mes "[Ezekiel]";
 		mes "Yeah, it's there... right? But it's so abrupt that it's a little baffling, isn't it?";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "Now that they've seen it with their own eyes, they think differently. That's good. Now, let's finish what we started, shall we?";
 		next;
 		mes "[Ezekiel]";
 		mes "Yes. But first, I think we need to change the design to match this place. ";
 		next;
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "The Adventurer will help you, right?";
 		next;
 		select( "That's... right..." );
-		mes "[Maram]";
+		mes "[瑪拉姆]";
 		mes "If you need any equipment or tools, let me know in advance and I'll bring them next time.";
 		mes "Joel, let's go get some rest, too.";
 		next;
@@ -9457,7 +9457,7 @@ OnInit:
 	end;
 }
 
-wolfvill,174,252,3	duplicate(dummy_cloaked_npc)	Maram#hms01	4_EP18_MARAM
+wolfvill,174,252,3	duplicate(dummy_cloaked_npc)	瑪拉姆#hms01::Maram#hms01	4_EP18_MARAM
 wolfvill,175,249,1	duplicate(dummy_cloaked_npc)	老先生#hms01::Old Man#hms01	4_EP18_GW_OLD01
 wolfvill,173,247,1	duplicate(dummy_cloaked_npc)	老先生#hms02::Old Man#hms02	4_EP18_GW_OLD02
 wolfvill,170,248,7	duplicate(dummy_cloaked_npc)	老先生#hms03::Old Man#hms03	4_EP18_GW_MIDDLE01
@@ -9604,7 +9604,7 @@ wolfvill,202,166,3	script	Eruin#ep18	4_F_SHABBY,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (ep18_main < 36) {
@@ -9806,7 +9806,7 @@ gw_fild01,24,122,0	script	Trap Set#01	CLEAR_NPC,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (ep18_main < 36)
@@ -9874,7 +9874,7 @@ wolfvill,147,97,5	script	Ahir#ep18	4_M_DST_CHILD,3,3,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (ep18_main < 36) {
@@ -10546,7 +10546,7 @@ gw_fild01,36,99,5	script(CLOAKED)	Horim#ep1814	4_M_RACHMAN2,{
 		next;
 		mes "[" + strcharinfo(0) + "]";
 		mes "This is the entrance.";
-		mes "Enter.";
+		mes "進入。";
 		close2;
 		erasequest 8702;
 		setquest 8703;
@@ -10575,7 +10575,7 @@ wolfvill,266,26,5	script(CLOAKED)	Horim#ep1815	4_M_RACHMAN2,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (ep18_main < 36)
@@ -11818,7 +11818,7 @@ rachel,180,80,4	script(CLOAKED)	Abused Child#E18_4	4_M_DST_CHILD,{
 		mes "[小孩]";
 		mes "Ah.. I gave him some freedom with the money, but I didn't give him too much freedom, so it was quite satisfying. I thought it would last.";
 		next;
-		select( "Are you okay?" );
+		select( "你還好嗎？" );
 		mes "[小孩]";
 		mes "Uncle What?";
 		next;
@@ -11906,7 +11906,7 @@ rachel,70,135,4	script(CLOAKED)	Mejai#E18_5	4_M_DST_CHILD,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (isbegin_quest(5933) == 1) {
@@ -12162,7 +12162,7 @@ rachel,72,133,4	script(CLOAKED)	Half Flower#E18_6	4_EP18_HALFFLOWER,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (isbegin_quest(5935) == 1) {
@@ -12226,7 +12226,7 @@ rachel,70,135,4	script(CLOAKED)	Mejai#E18_7	4_M_DST_CHILD,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (isbegin_quest(5933) == 1) {
@@ -12358,7 +12358,7 @@ gw_fild01,325,376,1	script	Half Flower#EP18_R01	4_EP18_HALFFLOWER,7,7,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	for ( .@id = 5938; .@id < 5942; .@id++ ) {
@@ -12510,7 +12510,7 @@ gw_fild01,32,101,3	script	Camper#to_wolfvill	4_M_SITDOWN,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	if (checkquest(18086,HUNTING) == 2) {
@@ -12623,7 +12623,7 @@ OnInit:
 
 //--- Others NPCs
 //============================================================
-oz_dun01,284,164,3	script	Rope#to_ra_fild10	4_ROPEPILE,{
+oz_dun01,284,164,3	script	鞭子#to_ra_fild10::Rope#to_ra_fild10	4_ROPEPILE,{
 	if (ep18_main < 31)
 		end;
 	mes "Looks like you can climb using a rope.";
@@ -12640,7 +12640,7 @@ OnInit:
 	end;
 }
 
-oz_dun01,28,190,3	script	Rope#to_gw_fild01	4_ROPEPILE,{
+oz_dun01,28,190,3	script	鞭子#to_gw_fild01::Rope#to_gw_fild01	4_ROPEPILE,{
 	if (ep18_main < 31)
 		end;
 	mes "Looks like you can climb using a rope.";
@@ -12658,7 +12658,7 @@ OnInit:
 }
 
 
-gw_fild01,279,335,3	script	Rope#to_oz_dun01	4_ROPEPILE,{
+gw_fild01,279,335,3	script	鞭子#to_oz_dun01::Rope#to_oz_dun01	4_ROPEPILE,{
 	if (ep18_main < 31)
 		end;
 	mes "It seems there's a cave beneath the gap in the rock,";
@@ -12676,7 +12676,7 @@ OnInit:
 	end;
 }
 
-ra_fild10,175,179,3	script	Rope#to_oz_dun01_	4_ROPEPILE,{
+ra_fild10,175,179,3	script	鞭子#to_oz_dun01_::Rope#to_oz_dun01_	4_ROPEPILE,{
 	if (ep18_main < 31)
 		end;
 	mes "It seems there's a cave beneath the gap in the rock,";
@@ -12866,7 +12866,7 @@ wolfvill,167,135,3	script	Asad#asad	4_EP18_GW_MAN01,{
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
 		mes "- 請再試一次 -";
-		mes "- after you loose some weight. -";
+		mes "- 在你瘦下來一些之後。 -";
 		close;
 	}
 	.@reputation = get_reputation_points(REPUTATION_EP18);

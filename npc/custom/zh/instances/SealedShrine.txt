@@ -201,7 +201,7 @@ monk_test,309,146,3	script	修士派崔克#edq::Friar Patrick#edq	412,{
 	end;
 }
 
-monk_test,306,151,3	script	Grave of Baphomet#edq	111,{
+monk_test,306,151,3	script	巴風特之墓#edq::Grave of Baphomet#edq	111,{
 	if (countitem(6002)) delitem 6002,countitem(6002); //Token_Of_Apostle
 	mes "這座墓碑上刻著一個長著巨大犄角的邪惡惡魔，令人感到不祥。";
 	next;
@@ -428,7 +428,7 @@ prt_monk,261,91,3	script	魯斯特·黑手#edq::Rust Blackhand#edq	826,{
 
 // Sealed Shrine Interior
 //============================================================
-1@cata,1,2,0	script	ins_baphomet_lotto	-1,{
+1@cata,1,2,0	script	ins_baphomet_lotto::ins_baphomet_lotto	-1,{
 OnInstanceInit:
 	// Pick one "true" Gravestone and 12 "false" Gravestones.
 	set .@true, rand(1,13);
@@ -439,14 +439,14 @@ OnInstanceInit:
 	end;
 }
 
-1@cata,3,2,0	script	ins_baphomet_lotto2	-1,{
+1@cata,3,2,0	script	ins_baphomet_lotto2::ins_baphomet_lotto2	-1,{
 OnEnable:
 	for(set .@i,1; .@i<=12; set .@i,.@i+1)
 		enablenpc instance_npcname("Bobbing Torch#"+.@i);
 	end;
 }
 
-1@cata,4,2,0	script	ins_baphomet_lotto3	-1,{
+1@cata,4,2,0	script	ins_baphomet_lotto3::ins_baphomet_lotto3	-1,{
 OnEnable:
 	set .@label$, instance_npcname("ins_baphomet_lotto3")+"::OnMyMobDead";
 	set .@map$, instance_mapname("1@cata");
@@ -482,7 +482,7 @@ OnMyMobDead:
 
 // Soul of hero near the north grave
 //============================================================
-1@cata,141,221,0	script	Gravestone#	844,3,3,{
+1@cata,141,221,0	script	墓碑#::Gravestone#	844,3,3,{
 	set .@party_id,getcharid(1);
 	if ('ins_baphomet == 0) {
 		mes "墓碑正在顫抖……";
@@ -811,7 +811,7 @@ OnInstanceInit:
 
 // To 2F Warp
 //============================================================
-1@cata,281,12,0	script	ins_bapho_to_2f	45,1,1,{
+1@cata,281,12,0	script	ins_bapho_to_2f::ins_bapho_to_2f	45,1,1,{
 OnTouch:
 	if (countitem(6002) > 0) {
 		delitem 6002,countitem(6002); //Token_Of_Apostle
@@ -847,37 +847,37 @@ OnInstanceInit:
 		close;
 	}
 }
-1@cata,86,214,0	duplicate(Gravestone#SS1)	Gravestone#1F_1T	844
-1@cata,200,209,0	duplicate(Gravestone#SS1)	Gravestone#1F_2T	844
-1@cata,230,195,0	duplicate(Gravestone#SS1)	Gravestone#1F_3T	844
-1@cata,118,182,0	duplicate(Gravestone#SS1)	Gravestone#1F_4T	844
-1@cata,193,182,0	duplicate(Gravestone#SS1)	Gravestone#1F_5T	844
-1@cata,253,156,0	duplicate(Gravestone#SS1)	Gravestone#1F_6T	844
-1@cata,88,154,0	duplicate(Gravestone#SS1)	Gravestone#1F_7T	844
-1@cata,127,116,0	duplicate(Gravestone#SS1)	Gravestone#1F_8T	844
-1@cata,90,98,0	duplicate(Gravestone#SS1)	Gravestone#1F_9T	844
-1@cata,188,84,0	duplicate(Gravestone#SS1)	Gravestone#1F_10T	844
-1@cata,244,42,0	duplicate(Gravestone#SS1)	Gravestone#1F_11T	844
-1@cata,127,32,0	duplicate(Gravestone#SS1)	Gravestone#1F_12T	844
-1@cata,267,30,0	duplicate(Gravestone#SS1)	Gravestone#1F_13T	844
+1@cata,86,214,0	duplicate(Gravestone#SS1)	墓碑#1F_1T::Gravestone#1F_1T	844
+1@cata,200,209,0	duplicate(Gravestone#SS1)	墓碑#1F_2T::Gravestone#1F_2T	844
+1@cata,230,195,0	duplicate(Gravestone#SS1)	墓碑#1F_3T::Gravestone#1F_3T	844
+1@cata,118,182,0	duplicate(Gravestone#SS1)	墓碑#1F_4T::Gravestone#1F_4T	844
+1@cata,193,182,0	duplicate(Gravestone#SS1)	墓碑#1F_5T::Gravestone#1F_5T	844
+1@cata,253,156,0	duplicate(Gravestone#SS1)	墓碑#1F_6T::Gravestone#1F_6T	844
+1@cata,88,154,0	duplicate(Gravestone#SS1)	墓碑#1F_7T::Gravestone#1F_7T	844
+1@cata,127,116,0	duplicate(Gravestone#SS1)	墓碑#1F_8T::Gravestone#1F_8T	844
+1@cata,90,98,0	duplicate(Gravestone#SS1)	墓碑#1F_9T::Gravestone#1F_9T	844
+1@cata,188,84,0	duplicate(Gravestone#SS1)	墓碑#1F_10T::Gravestone#1F_10T	844
+1@cata,244,42,0	duplicate(Gravestone#SS1)	墓碑#1F_11T::Gravestone#1F_11T	844
+1@cata,127,32,0	duplicate(Gravestone#SS1)	墓碑#1F_12T::Gravestone#1F_12T	844
+1@cata,267,30,0	duplicate(Gravestone#SS1)	墓碑#1F_13T::Gravestone#1F_13T	844
 
 -	script	Gravestone#SS2	-1,{
 	mes "我只感覺到這座墓碑散發出陰鬱的氣息。";
 	close;
 }
-1@cata,86,214,0	duplicate(Gravestone#SS2)	Gravestone#1F_1F	844
-1@cata,200,209,0	duplicate(Gravestone#SS2)	Gravestone#1F_2F	844
-1@cata,230,195,0	duplicate(Gravestone#SS2)	Gravestone#1F_3F	844
-1@cata,118,182,0	duplicate(Gravestone#SS2)	Gravestone#1F_4F	844
-1@cata,193,182,0	duplicate(Gravestone#SS2)	Gravestone#1F_5F	844
-1@cata,253,156,0	duplicate(Gravestone#SS2)	Gravestone#1F_6F	844
-1@cata,88,154,0	duplicate(Gravestone#SS2)	Gravestone#1F_7F	844
-1@cata,127,116,0	duplicate(Gravestone#SS2)	Gravestone#1F_8F	844
-1@cata,90,98,0	duplicate(Gravestone#SS2)	Gravestone#1F_9F	844
-1@cata,188,84,0	duplicate(Gravestone#SS2)	Gravestone#1F_10F	844
-1@cata,244,42,0	duplicate(Gravestone#SS2)	Gravestone#1F_11F	844
-1@cata,127,32,0	duplicate(Gravestone#SS2)	Gravestone#1F_12F	844
-1@cata,267,30,0	duplicate(Gravestone#SS2)	Gravestone#1F_13F	844
+1@cata,86,214,0	duplicate(Gravestone#SS2)	墓碑#1F_1F::Gravestone#1F_1F	844
+1@cata,200,209,0	duplicate(Gravestone#SS2)	墓碑#1F_2F::Gravestone#1F_2F	844
+1@cata,230,195,0	duplicate(Gravestone#SS2)	墓碑#1F_3F::Gravestone#1F_3F	844
+1@cata,118,182,0	duplicate(Gravestone#SS2)	墓碑#1F_4F::Gravestone#1F_4F	844
+1@cata,193,182,0	duplicate(Gravestone#SS2)	墓碑#1F_5F::Gravestone#1F_5F	844
+1@cata,253,156,0	duplicate(Gravestone#SS2)	墓碑#1F_6F::Gravestone#1F_6F	844
+1@cata,88,154,0	duplicate(Gravestone#SS2)	墓碑#1F_7F::Gravestone#1F_7F	844
+1@cata,127,116,0	duplicate(Gravestone#SS2)	墓碑#1F_8F::Gravestone#1F_8F	844
+1@cata,90,98,0	duplicate(Gravestone#SS2)	墓碑#1F_9F::Gravestone#1F_9F	844
+1@cata,188,84,0	duplicate(Gravestone#SS2)	墓碑#1F_10F::Gravestone#1F_10F	844
+1@cata,244,42,0	duplicate(Gravestone#SS2)	墓碑#1F_11F::Gravestone#1F_11F	844
+1@cata,127,32,0	duplicate(Gravestone#SS2)	墓碑#1F_12F::Gravestone#1F_12F	844
+1@cata,267,30,0	duplicate(Gravestone#SS2)	墓碑#1F_13F::Gravestone#1F_13F	844
 
 // Bobbing Torches
 //============================================================
@@ -917,20 +917,20 @@ OnInstanceInit:
 	disablenpc();
 	end;
 }
-1@cata,267,210,0	duplicate(Bobbing Torch#SS)	Bobbing Torch#1	844
-1@cata,85,182,0	duplicate(Bobbing Torch#SS)	Bobbing Torch#2	844
-1@cata,267,154,0	duplicate(Bobbing Torch#SS)	Bobbing Torch#3	844
-1@cata,157,139,0	duplicate(Bobbing Torch#SS)	Bobbing Torch#4	844
-1@cata,193,138,0	duplicate(Bobbing Torch#SS)	Bobbing Torch#5	844
-1@cata,193,102,0	duplicate(Bobbing Torch#SS)	Bobbing Torch#6	844
-1@cata,157,102,0	duplicate(Bobbing Torch#SS)	Bobbing Torch#7	844
-1@cata,113,112,0	duplicate(Bobbing Torch#SS)	Bobbing Torch#8	844
-1@cata,253,56,0	duplicate(Bobbing Torch#SS)	Bobbing Torch#9	844
-1@cata,239,56,0	duplicate(Bobbing Torch#SS)	Bobbing Torch#10	844
-1@cata,71,42,0	duplicate(Bobbing Torch#SS)	Bobbing Torch#11	844
-1@cata,155,14,0	duplicate(Bobbing Torch#SS)	Bobbing Torch#12	844
+1@cata,267,210,0	duplicate(Bobbing Torch#SS)	搖曳的火炬#1::Bobbing Torch#1	844
+1@cata,85,182,0	duplicate(Bobbing Torch#SS)	搖曳的火炬#2::Bobbing Torch#2	844
+1@cata,267,154,0	duplicate(Bobbing Torch#SS)	搖曳的火炬#3::Bobbing Torch#3	844
+1@cata,157,139,0	duplicate(Bobbing Torch#SS)	搖曳的火炬#4::Bobbing Torch#4	844
+1@cata,193,138,0	duplicate(Bobbing Torch#SS)	搖曳的火炬#5::Bobbing Torch#5	844
+1@cata,193,102,0	duplicate(Bobbing Torch#SS)	搖曳的火炬#6::Bobbing Torch#6	844
+1@cata,157,102,0	duplicate(Bobbing Torch#SS)	搖曳的火炬#7::Bobbing Torch#7	844
+1@cata,113,112,0	duplicate(Bobbing Torch#SS)	搖曳的火炬#8::Bobbing Torch#8	844
+1@cata,253,56,0	duplicate(Bobbing Torch#SS)	搖曳的火炬#9::Bobbing Torch#9	844
+1@cata,239,56,0	duplicate(Bobbing Torch#SS)	搖曳的火炬#10::Bobbing Torch#10	844
+1@cata,71,42,0	duplicate(Bobbing Torch#SS)	搖曳的火炬#11::Bobbing Torch#11	844
+1@cata,155,14,0	duplicate(Bobbing Torch#SS)	搖曳的火炬#12::Bobbing Torch#12	844
 
-1@cata,1,1,0	script	ins_baphomet_1f_timer	-1,{
+1@cata,1,1,0	script	ins_baphomet_1f_timer::ins_baphomet_1f_timer	-1,{
 OnInstanceInit:
 	disablenpc instance_npcname("ins_baphomet_1f_timer");
 	end;
@@ -971,14 +971,14 @@ OnTimer3500000:
 	end;
 }
 
-2@cata,80,144,0	script	ins_2f_enter	-1,3,3,{
+2@cata,80,144,0	script	ins_2f_enter::ins_2f_enter	-1,3,3,{
 OnTouch_:
 	donpcevent instance_npcname("ins_2f_enter_broad")+"::OnEnable";
 	disablenpc instance_npcname("ins_2f_enter");
 	end;
 }
 
-2@cata,1,1,0	script	ins_2f_enter_broad	-1,{
+2@cata,1,1,0	script	ins_2f_enter_broad::ins_2f_enter_broad	-1,{
 OnInstanceInit:
 OnDisable:
 	disablenpc instance_npcname("ins_2f_enter_broad");
@@ -1008,7 +1008,7 @@ OnTimer18000:
 	end;
 }
 
-2@cata,50,67,0	script	slave_left	-1,5,5,{
+2@cata,50,67,0	script	slave_left::slave_left	-1,5,5,{
 OnTouch_:
 	set .@map$, instance_mapname("2@cata");
 	mapannounce .@map$, "巴風特的使徒 : 殺了人類！別讓他們打斷我們主人的復活！",bc_map,"0xFFFF00";
@@ -1032,7 +1032,7 @@ OnTouch_:
 	end;
 }
 
-2@cata,109,67,0	script	slave_right	-1,5,5,{
+2@cata,109,67,0	script	slave_right::slave_right	-1,5,5,{
 OnTouch_:
 	set .@map$, instance_mapname("2@cata");
 	mapannounce .@map$, "巴風特的使徒 : 殺了人類！別讓他們打斷我們主人的復活！",bc_map,"0xFFFF00";
@@ -1056,7 +1056,7 @@ OnTouch_:
 	end;
 }
 
-2@cata,79,39,0	script	slave_down	-1,5,5,{
+2@cata,79,39,0	script	slave_down::slave_down	-1,5,5,{
 OnTouch_:
 	set .@map$, instance_mapname("2@cata");
 	mapannounce .@map$, "巴風特的使徒 : 殺了人類！別讓他們打斷我們主人的復活！",bc_map,"0xFFFF00";
@@ -1113,13 +1113,13 @@ OnInstanceInit:
 	disablenpc();
 	end;
 }
-2@cata,79,81,0	duplicate(Magical Seal#SS)	Magical Seal#0	844
-2@cata,123,109,0	duplicate(Magical Seal#SS)	Magical Seal#2	844
-2@cata,123,22,0	duplicate(Magical Seal#SS)	Magical Seal#4	844
-2@cata,35,21,0	duplicate(Magical Seal#SS)	Magical Seal#8	844
-2@cata,35,109,0	duplicate(Magical Seal#SS)	Magical Seal#10	844
+2@cata,79,81,0	duplicate(Magical Seal#SS)	魔法封印#0::Magical Seal#0	844
+2@cata,123,109,0	duplicate(Magical Seal#SS)	魔法封印#2::Magical Seal#2	844
+2@cata,123,22,0	duplicate(Magical Seal#SS)	魔法封印#4::Magical Seal#4	844
+2@cata,35,21,0	duplicate(Magical Seal#SS)	魔法封印#8::Magical Seal#8	844
+2@cata,35,109,0	duplicate(Magical Seal#SS)	魔法封印#10::Magical Seal#10	844
 
-2@cata,79,65,0	script	The Main Altar#ss	844,{
+2@cata,79,65,0	script	主祭壇#ss::The Main Altar#ss	844,{
 	if (('ins_baphomet == 5) && is_party_leader() == true) {
 		mes "一股難以形容的恐怖邪惡力量，正從巨大的祭壇之下散發出紫色光芒。";
 		next;
@@ -1181,7 +1181,7 @@ OnInstanceInit:
 	end;
 }
 
-2@cata,1,2,0	script	ins_2f_hero_broad	-1,{
+2@cata,1,2,0	script	ins_2f_hero_broad::ins_2f_hero_broad	-1,{
 OnEnable:
 	enablenpc instance_npcname("ins_2f_hero_broad");
 	initnpctimer;
@@ -1220,7 +1220,7 @@ OnTimer17000:
 	end;
 }
 
-2@cata,3,3,0	script	control_baphomet	-1,{
+2@cata,3,3,0	script	control_baphomet::control_baphomet	-1,{
 OnInstanceInit:
 OnDisable:
 	disablenpc instance_npcname("control_baphomet");
@@ -1256,7 +1256,7 @@ OnMyMobDead:
 	end;
 }
 
-2@cata,2,2,0	script	ins_2f_hero_broad2	-1,{
+2@cata,2,2,0	script	ins_2f_hero_broad2::ins_2f_hero_broad2	-1,{
 OnInstanceInit:
 OnDisable:
 	disablenpc instance_npcname("ins_2f_hero_broad2");
@@ -1284,15 +1284,15 @@ OnTimer16000:
 	end;
 
 OnTimer19000:
-	mapannounce instance_mapname("2@cata"), "Ancient Hero's Soul : We have only 1 hour to stop Baphomet. If time runs out, the power of the seals will be useless.",bc_map,"0xFFFF00";
+	mapannounce instance_mapname("2@cata"), "古代英雄之靈 : 我們只剩 1 小時能阻止巴風特。時間一到，封印的力量就會失效。",bc_map,"0xFFFF00";
 	end;
 
 OnTimer22000:
-	mapannounce instance_mapname("2@cata"), "Baphomet : It's useless. Make more seals. I'll crush them all. None of you will survive!",bc_map,"0xdb7093";
+	mapannounce instance_mapname("2@cata"), "巴風特 : 沒用的。多做一些封印吧。我會把它們全部碾碎。你們一個都活不了！",bc_map,"0xdb7093";
 	end;
 
 OnTimer26000:
-	mapannounce instance_mapname("2@cata"), "Ancient Hero's Soul : The magical power of the central seal is running out. Go to the central seal and put the magical power.",bc_map,"0xFFFF00";
+	mapannounce instance_mapname("2@cata"), "古代英雄之靈 : 中央封印的魔力正在耗盡。前往中央封印，注入魔力。",bc_map,"0xFFFF00";
 	enablenpc instance_npcname("Magical Seal#0");
 	disablenpc instance_npcname("Magical Seal#2");
 	disablenpc instance_npcname("Magical Seal#4");
@@ -1304,7 +1304,7 @@ OnTimer26000:
 	end;
 }
 
-2@cata,4,1,0	script	2f_callmon_pattern_c	-1,{
+2@cata,4,1,0	script	2f_callmon_pattern_c::2f_callmon_pattern_c	-1,{
 OnInstanceInit:
 	disablenpc instance_npcname("2f_callmon_pattern_c");
 	end;
@@ -1329,7 +1329,7 @@ OnTimer3600000:
 	end;
 }
 
-2@cata,4,2,0	script	2f_callmon_pattern	-1,{
+2@cata,4,2,0	script	2f_callmon_pattern::2f_callmon_pattern	-1,{
 OnInstanceInit:
 	disablenpc instance_npcname("2f_callmon_pattern");
 	end;
@@ -1353,7 +1353,7 @@ OnTimer300000:
 	end;
 }
 
-2@cata,3,1,0	script	ins_2f_hero_pattern_c	-1,{
+2@cata,3,1,0	script	ins_2f_hero_pattern_c::ins_2f_hero_pattern_c	-1,{
 OnInstanceInit:
 	disablenpc instance_npcname("ins_2f_hero_pattern_c");
 	end;
@@ -1380,16 +1380,16 @@ OnDisable:
 	end;
 
 OnTimer3600000:
-	mapannounce instance_mapname("2@cata"), "Baphomet : krrrr... Now you can't stop me with the seals. All you can do is wait for death!",bc_map,"0xdb7093";
+	mapannounce instance_mapname("2@cata"), "巴風特 : 咕嚕嚕……現在你們已經無法用封印阻止我了。你們只能等死！",bc_map,"0xdb7093";
 	end;
 
 OnTimer3605000:
-	mapannounce instance_mapname("2@cata"), "Ancient Hero's Soul : We can't stop Baphomet with the magical power of the seals anymore. Now everything depends on God...",bc_map,"0xFFFF00";
+	mapannounce instance_mapname("2@cata"), "古代英雄之靈 : 我們已經無法靠封印的魔力阻止巴風特了。現在一切都只能聽天由命……",bc_map,"0xFFFF00";
 	donpcevent instance_npcname("ins_2f_hero_pattern_c")+"::OnDisable";
 	end;
 }
 
-2@cata,3,2,0	script	ins_2f_hero_pattern	-1,{
+2@cata,3,2,0	script	ins_2f_hero_pattern::ins_2f_hero_pattern	-1,{
 OnInstanceInit:
 	disablenpc instance_npcname("ins_2f_hero_pattern");
 	end;
@@ -1407,7 +1407,7 @@ OnDisable:
 OnTimer70000:
 	switch(rand(1,5)) {
 	case 1:
-		mapannounce instance_mapname("2@cata"), "Ancient Hero's Soul : The seal of the Main Altar is running out. Strengthen the Main Altar's seal!",bc_map,"0xFFFF00";
+		mapannounce instance_mapname("2@cata"), "古代英雄之靈 : 主祭壇的封印正在耗盡。快強化主祭壇的封印！",bc_map,"0xFFFF00";
 		enablenpc instance_npcname("Magical Seal#0");
 		disablenpc instance_npcname("Magical Seal#2");
 		disablenpc instance_npcname("Magical Seal#4");
@@ -1415,7 +1415,7 @@ OnTimer70000:
 		disablenpc instance_npcname("Magical Seal#10");
 		break;
 	case 2:
-		mapannounce instance_mapname("2@cata"), "Ancient Hero's Soul : The magical power of the seal at 2 o'clock is running out. Go to 2 o'clock and put the magical power in the seal.",bc_map,"0xFFFF00";
+		mapannounce instance_mapname("2@cata"), "古代英雄之靈 : 2點鐘方向的封印魔力正在耗盡。前往2點鐘方向，將魔力注入封印中。",bc_map,"0xFFFF00";
 		disablenpc instance_npcname("Magical Seal#0");
 		enablenpc instance_npcname("Magical Seal#2");
 		disablenpc instance_npcname("Magical Seal#4");
@@ -1423,7 +1423,7 @@ OnTimer70000:
 		disablenpc instance_npcname("Magical Seal#10");
 		break;
 	case 3:
-		mapannounce instance_mapname("2@cata"), "Ancient Hero's Soul : The magical power of the seal at 4 o'clock is running out. Go to 4 o'clock and put the magical power in the seal.",bc_map,"0xFFFF00";
+		mapannounce instance_mapname("2@cata"), "古代英雄之靈 : 4點鐘方向的封印魔力正在耗盡。前往4點鐘方向，將魔力注入封印中。",bc_map,"0xFFFF00";
 		disablenpc instance_npcname("Magical Seal#0");
 		disablenpc instance_npcname("Magical Seal#2");
 		enablenpc instance_npcname("Magical Seal#4");
@@ -1431,7 +1431,7 @@ OnTimer70000:
 		disablenpc instance_npcname("Magical Seal#10");
 		break;
 	case 4:
-		mapannounce instance_mapname("2@cata"), "Ancient Hero's Soul : The magical power of the seal at 8 o'clock is running out. Go to 8 o'clock and put the magical power in the seal.",bc_map,"0xFFFF00";
+		mapannounce instance_mapname("2@cata"), "古代英雄之靈 : 8點鐘方向的封印魔力正在耗盡。前往8點鐘方向，將魔力注入封印中。",bc_map,"0xFFFF00";
 		disablenpc instance_npcname("Magical Seal#0");
 		disablenpc instance_npcname("Magical Seal#2");
 		disablenpc instance_npcname("Magical Seal#4");
@@ -1439,7 +1439,7 @@ OnTimer70000:
 		disablenpc instance_npcname("Magical Seal#10");
 		break;
 	case 5:
-		mapannounce instance_mapname("2@cata"), "Ancient Hero's Soul : The magical power of the seal at 10 o'clock is running out. Go to 10 o'clock and put the magical power in the seal.",bc_map,"0xFFFF00";
+		mapannounce instance_mapname("2@cata"), "古代英雄之靈 : 10點鐘方向的封印魔力正在耗盡。前往10點鐘方向，將魔力注入封印中。",bc_map,"0xFFFF00";
 		disablenpc instance_npcname("Magical Seal#0");
 		disablenpc instance_npcname("Magical Seal#2");
 		disablenpc instance_npcname("Magical Seal#4");
@@ -1452,7 +1452,7 @@ OnTimer70000:
 }
 
 
-1@cata,1,1,0	script	ins_1f_spawn_mobs	-1,{
+1@cata,1,1,0	script	ins_1f_spawn_mobs::ins_1f_spawn_mobs	-1,{
 OnInstanceInit:
 	set .@map$, instance_mapname("1@cata");
 	monster .@map$,0,0,"Zombie Master",1298,10;

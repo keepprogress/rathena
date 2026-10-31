@@ -30,17 +30,17 @@ wolfvill,79,260,4	script(CLOAKED)	Aira#con	4_M_BRZ_JACI,{
 		break;
 	case 0:
 	case 1:
-		mes "[Aira]";
-		mes "Please wait the end of the quest delay.";
+		mes "[艾拉]";
+		mes "請等待任務延遲結束。";
 		close;
 	case 2:
 		erasequest 12522;
-		mes "^0000ff All the aftereffects of access are gone.^000000";
+		mes "^0000ff 進入的所有後遺症都已消失。^000000";
 		close;
 	}
-	mes "[Aira]";
-	mes "" + strcharinfo(0) + "Thanks to Mr. I arrived safely in the village.";
-	mes "But it seems that something has been revived in the villa. I think I need to get help one more time.";
+	mes "[艾拉]";
+	mes "" + strcharinfo(0) + "多虧了你，我才平安抵達村莊。";
+	mes "但別墅裡似乎有什麼東西復活了。我想我得再求一次幫助。";
 	next;
 	.@md_name_normal$ = "Villa of Deception";
 	.@md_name_hard$ = "Villa of Deception Advanced";
@@ -50,20 +50,20 @@ wolfvill,79,260,4	script(CLOAKED)	Aira#con	4_M_BRZ_JACI,{
 		if (countitem(1000471) > 0)
 			.@create_hard$ = "^000044Create " + .@md_name_hard$ + "^000000";
 	}
-	switch( select( "Entry", .@create_normal$, .@create_hard$ ) ) {
+	switch( select( "入場", .@create_normal$, .@create_hard$ ) ) {
 	case 1:
 		if (select( .@md_name_normal$, .@md_name_hard$ ) == 1) {
 			if (BaseLevel < 170) {
-				mes "[Aira]";
-				mes "You must be at least BaseLevel 170 to enter.";
+				mes "[艾拉]";
+				mes "進入需要至少基礎等級 170。";
 				close;
 			}
 			.@enter_to$ = .@md_name_normal$;
 		}
 		else {
 			if (BaseLevel < 200) {
-				mes "[Aira]";
-				mes "You must be at least BaseLevel 200 to enter.";
+				mes "[艾拉]";
+				mes "進入需要至少基礎等級 200。";
 				close;
 			}
 			.@enter_to$ = .@md_name_hard$;
@@ -74,13 +74,13 @@ wolfvill,79,260,4	script(CLOAKED)	Aira#con	4_M_BRZ_JACI,{
 			mes "^ff0000發生未知的錯誤。^000000";
 			close;
 		case IE_NOINSTANCE:
-			mes "^0000ff The dungeon has not been created or you are trying to enter a dungeon different from the party leader.^000000";
+			mes "^0000ff 副本尚未建立，或你嘗試進入的副本與隊長不同。^000000";
 			close;
 		case IE_NOMEMBER:
-			mes "^ff0000Only a member of the party can enter the Memorial Dungeon.^000000";
+			mes "^ff0000只有隊伍成員才能進入紀念副本。^000000";
 			close;
 		case IE_OK:
-			mapannounce "wolfvill", "" + strcharinfo(0) + " of the party, " + getpartyname( getcharid(1) ) + ", is entering " + .@enter_to$ + ".",bc_map,"0x00ff99",FW_NORMAL,12;
+			mapannounce "wolfvill", "" + strcharinfo(0) + " 隊伍中的 " + getpartyname( getcharid(1) ) + "，正在進入 " + .@enter_to$ + ".",bc_map,"0x00ff99",FW_NORMAL,12;
 			if (.@enter_to$ == .@md_name_normal$)
 				setquest 12520;
 			else
@@ -92,32 +92,32 @@ wolfvill,79,260,4	script(CLOAKED)	Aira#con	4_M_BRZ_JACI,{
 		end;
 	case 2:
 		if (BaseLevel < 170) {
-			mes "[Aira]";
-			mes "You must be at least BaseLevel 170 to create the instance.";
+			mes "[艾拉]";
+			mes "建立副本需要至少基礎等級 170。";
 			close;
 		}
 		if (instance_create(.@md_name_normal$) < 0) {
-			mes "Party: " + getpartyname(getcharid(1)) + "";
-			mes "Leader: " + strcharinfo(0) + "";
-			mes "^0000ff" + .@md_name_normal$ + " ^000000- Unknown error";
+			mes "隊伍: " + getpartyname(getcharid(1)) + "";
+			mes "隊長: " + strcharinfo(0) + "";
+			mes "^0000ff" + .@md_name_normal$ + " ^000000- 未知錯誤";
 			close;
 		}
 		end;
 	case 3:
 		if (BaseLevel < 200) {
-			mes "[Aira]";
-			mes "You must be at least BaseLevel 200 to create the instance.";
+			mes "[艾拉]";
+			mes "建立副本需要至少基礎等級 200。";
 			close;
 		}
 		if (countitem(1000471) < 1) {
-			mes "[Aira]";
-			mes "Where is the " + getitemname(1000471) + "?";
+			mes "[艾拉]";
+			mes "請問 " + getitemname(1000471) + "?";
 			close;
 		}
 		if (instance_create(.@md_name_hard$) < 0) {
-			mes "Party: " + getpartyname(getcharid(1)) + "";
-			mes "Leader: " + strcharinfo(0) + "";
-			mes "^0000ff" + .@md_name_hard$ + " ^000000- Unknown error";
+			mes "隊伍: " + getpartyname(getcharid(1)) + "";
+			mes "隊長: " + strcharinfo(0) + "";
+			mes "^0000ff" + .@md_name_hard$ + " ^000000- 未知錯誤";
 			close;
 		}
 		delitem 1000471,1;
@@ -129,7 +129,7 @@ wolfvill,79,260,4	script(CLOAKED)	Aira#con	4_M_BRZ_JACI,{
 
 
 
-1@advs,1,1,0	script	advs_init	-1,{
+1@advs,1,1,0	script	advs_init::advs_init	-1,{
 	end;
 OnInstanceInit:
 	//--------------------------------------------
@@ -316,7 +316,7 @@ OnMobDead:
 OnTimer2000:
 	stopnpctimer;
 	.@alive = mobcount('map_advs$, instance_npcname("#advs_step_1") + "::OnMobDead");
-	mapannounce 'map_advs$, "Number of monsters left: " + .@alive, bc_map, 0xAAAAFF;
+	mapannounce 'map_advs$, "剩餘怪物數量: " + .@alive, bc_map, 0xAAAAFF;
 	end;
 S_Spawn:
 	.@label$ = instance_npcname("#advs_step_1") + "::OnMobDead";
@@ -338,10 +338,10 @@ S_Spawn:
 1@advs,67,182,5	script	#sw_1	4_NFWISP,1,1,{
 	if ('advs_step != 0)
 		end;
-	mes "[Unidentified grudge]";
-	mes "Are you here to set me free?";
+	mes "[不明怨念]";
+	mes "你是來解放我的嗎？";
 	next;
-	if (select( "停止", "Do it" ) == 1)
+	if (select( "停止", "動手" ) == 1)
 		end;
 	if ('advs_step != 0)
 		end;
@@ -357,10 +357,10 @@ OnTouch_:
 1@advs,180,182,5	script	#sw_2	4_NFWISP,1,1,{
 	if ('advs_step != 0)
 		end;
-	mes "[Unidentified grudge]";
-	mes "Are you here to set me free?";
+	mes "[不明怨念]";
+	mes "你是來解放我的嗎？";
 	next;
-	if (select( "停止", "Do it" ) == 1)
+	if (select( "停止", "動手" ) == 1)
 		end;
 	if ('advs_step != 0)
 		end;
@@ -392,14 +392,14 @@ OnTimer3000:
 			enablenpc instance_npcname("#sw_2");
 		'sw[0] = 0;
 		'sw[1] = 0;
-		npctalk "Ah... my half soul beyond this hallway is still unfulfilled...", instance_npcname("#sw_1");
-		npctalk "Ah... my half soul beyond this hallway is still unfulfilled...", instance_npcname("#sw_2");
-		mapannounce 'map_advs$, "You must free both souls on the left and right of the hallway at the same time.", bc_map, 0xAAAAFF;
+		npctalk "啊……走廊另一端的我另一半靈魂仍未獲得安息……", instance_npcname("#sw_1");
+		npctalk "啊……走廊另一端的我另一半靈魂仍未獲得安息……", instance_npcname("#sw_2");
+		mapannounce 'map_advs$, "必須同時解放走廊左右兩側的靈魂。", bc_map, 0xAAAAFF;
 		end;
 	}
 	if ('advs_step != 0)
 		end;
-	mapannounce 'map_advs$, "Two souls are simultaneously liberated, opening the door to the center.", bc_map, 0xAAAAFF;
+	mapannounce 'map_advs$, "兩道靈魂同時獲得解放，中央的門因此開啟。", bc_map, 0xAAAAFF;
 	donpcevent instance_npcname("#advs_step_2") + "::OnStart";
 	end;
 }
@@ -501,7 +501,7 @@ OnMobDead:
 OnTimer2000:
 	stopnpctimer;
 	.@alive = mobcount('map_advs$, instance_npcname("#advs_step_2") + "::OnMobDead");
-	mapannounce 'map_advs$, "Number of monsters left: " + .@alive, bc_map, 0xAAAAFF;
+	mapannounce 'map_advs$, "剩餘怪物數量: " + .@alive, bc_map, 0xAAAAFF;
 	if ('advs_step == 1 && 'mob_to_respawn == 0 && .@alive == 0)
 		donpcevent instance_npcname("#advs_step_3_A") + "::OnStart";
 	end;
@@ -524,7 +524,7 @@ S_Spawn:
 
 1@advs,101,159,5	script	#food1	4_EP16_FOOD,1,1,{
 	if ('max_food <= 0) {
-		mapannounce 'map_advs$, "??? : You really don't know how to cook well, you deserve a casual tour of my garden.", bc_map, 0xAAAAFF;
+		mapannounce 'map_advs$, "??? : 你真的不太會做菜呢，就當作是在我的花園裡隨便逛逛吧。", bc_map, 0xAAAAFF;
 		end;
 	}
 	progressbar "",4;
@@ -613,7 +613,7 @@ OnMobDead:
 OnTimer2000:
 	stopnpctimer;
 	.@alive = mobcount('map_advs$, instance_npcname("#advs_step_3_B") + "::OnMobDead");
-	mapannounce 'map_advs$, "Number of monsters left: " + .@alive, bc_map, 0xAAAAFF;
+	mapannounce 'map_advs$, "剩餘怪物數量: " + .@alive, bc_map, 0xAAAAFF;
 	if ('advs_step == 2 && 'mob_to_respawn == 0 && .@alive == 0)
 		donpcevent instance_npcname("#boss1_advs") + "::OnStart";
 	end;
@@ -667,7 +667,7 @@ OnMobDead:
 	if (is_party_leader() == false)
 		end;
 	'advs_step = 4;
-	npctalk "That's all human.";
+	npctalk "那些全都是人類。";
 	unitwalk getnpcid(0), 124,290, instance_npcname("#boss1") + "::OnMove";
 	end;
 
@@ -676,7 +676,7 @@ OnMove:
 	monster 'map_advs$,124,290,"--en--",'schulang_id,1, instance_npcname("#boss1_advs") + "::OnMobDead";
 	'schulang_gid = $@mobid[0];
 	unitskilluseid $@mobid[0], 771, 1;	// NPC_RELIEVE_ON
-	unittalk 'schulang_gid, "I'm in a bit of trouble if I approach this more than that!!!";
+	unittalk 'schulang_gid, "要是再靠近一點，我可就有點麻煩了！！！";
 	monster 'map_advs$,123,285,"--en--",21319,1;	// EP18_MD_HEARTHUNTER_R2
 	unitskilluseid $@mobid[0], 771, 'monster_relieve;	// NPC_RELIEVE_ON
 	donpcevent instance_npcname("#boss1_advs_skill_1") + "::OnStart";
@@ -750,7 +750,7 @@ OnStop:
 	enablenpc instance_npcname("#boss2");
 	specialeffect EF_BEGINSPELL_YB;
 	sleep 2000;
-	npctalk "I... and... together... let's play...", instance_npcname("#boss2");
+	npctalk "我……和……一起……來玩吧……", instance_npcname("#boss2");
 	unitwalk getnpcid(0, instance_npcname("#boss2")), 124,346, instance_npcname("#boss2_sw") + "::OnMove";
 	end;
 OnMove:
@@ -760,7 +760,7 @@ OnMove:
 	'freyja_gid = $@mobid[0];
 	donpcevent instance_npcname("#advs_boss_relieve") + "::OnStart";
 	sleep 3000;
-	mapannounce 'map_advs$, "Tip: Twisted God Freyja is weaken as it get closer to the chandelier.", bc_map, 0xFFCC;
+	mapannounce 'map_advs$, "提示: 扭曲神芙蕾雅會隨著越接近吊燈而變弱。", bc_map, 0xFFCC;
 	if ('advs_difficult == 1)
 		sleep 8000;
 	else
@@ -867,7 +867,7 @@ OnStop:
 
 // stop the circles from moving
 1@advs,108,358,4	script	#b_sw1	4_ENERGY_YELLOW,2,2,{
-	mes "Ddispel the circle ^ff0000requires your health and mana.^000000 During the process, you ^ff0000becomes immobile and defenseless.^000000 Are you sure you want to start dispelling?";
+	mes "解除魔法陣^ff0000需要消耗你的生命與魔力。^000000過程中，你^ff0000會無法移動且毫無防備。^000000確定要開始解除嗎？";
 	next;
 	if (select( "取消", "繼續" ) == 1)
 		end;
@@ -875,7 +875,7 @@ OnStop:
 		end;
 	// this part need to be checked when more information are available
 	.@success = callsub( S_Venom );
-	mes "^0000ffThe magic stone that absorbed your stamina and magic resonates. The magic circle that has been wandering disappears.^000000";
+	mes "^0000ff吸收了你體力與魔力的魔法石產生共鳴，徘徊不去的魔法陣消失了。^000000";
 	specialeffect EF_BASH3D6;
 	if (.@success == true && 'circle_move == 1) {
 		disablenpc();
@@ -934,10 +934,10 @@ OnTouch:	// effect ?
 			mes "- 你目前攜帶的 -";
 			mes "- 道具太多了。 -";
 			mes "- 請再試一次 -";
-			mes "- after you loose some weight. -";
+			mes "- 在你瘦下來一些之後。 -";
 			close;
 		}
-		mes "^0000ffFound something in a bright glowing halo.^000000";
+		mes "^0000ff在明亮的光暈中發現了某樣東西。^000000";
 		if (get_reputation_points(3) >= 5000)
 			.@bonus = 2;
 		getitem 1000405,8+.@bonus;	// Ep18_Amethyst_Fragment
@@ -949,7 +949,7 @@ OnTouch:	// effect ?
 			getitem 1000471,1;
 		close;
 	}
-	mes "^0000ffI think you can get out now.^000000";
+	mes "^0000ff我想你現在可以出去了。^000000";
 	next;
 	if (select( "取消", "離開" ) == 1)
 		end;

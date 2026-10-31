@@ -10,66 +10,66 @@
 //= 1.3 Cleanup and sanity checks [Everade]
 //============================================================
 
-cmd_fild07,58,278,3	script	Reckless Explorer#pa0829_01	4_F_GON,{
-	mes "^FF0000Please note that, any abnormal monster handling inside the instance such as taming is not considered normal and may hinder the instance progress.^000000"; 
+cmd_fild07,58,278,3	script	莽撞探險家#pa0829_01::Reckless Explorer#pa0829_01	4_F_GON,{
+	mes "^FF0000請注意，在副本內進行任何非正常的怪物操作（例如馴服）都不被視為正常，可能會妨礙副本進度。^000000"; 
 	next;
 	if (BaseLevel < 100) {
-		mes "[ Reckless Explorer ]";
-		mes "Will you come back to me after getting a little bit stronger? How about getting to level 100 first?";
+		mes "[ 莽撞探險家 ]";
+		mes "等你變強一點後再回來找我如何？先練到100等怎麼樣？";
 		close;
 	}
 	if (isbegin_quest(12364) != 2) {
-		mes "[ Reckless Explorer ]";
-		mes "Ah, no, I didn't meant to go inside. I didn't meant to violate any laws.";
+		mes "[ 莽撞探險家 ]";
+		mes "啊，不，我不是要進去的。我沒有想要違法的意思。";
 		next;
 		select("你在說什麼？");
-		mes "[ Reckless Explorer ]";
-		mes "Ha?";
+		mes "[ 莽撞探險家 ]";
+		mes "哈？";
 		next;
-		mes "[ Reckless Explorer ]";
-		mes "Hmm, are you one of the Royal Palace's suppression squad?";
+		mes "[ 莽撞探險家 ]";
+		mes "嗯，你是王宮的鎮壓隊成員嗎？";
 		next;
-		select("I'm an ordinary adventurer.");
-		mes "[ Reckless Explorer ]";
-		mes "Phew~ That's a relief.";
-		mes "I've never soon you before, so I thought you are one of the suppression squad of the palace.";
+		select("我只是普通的冒險者。");
+		mes "[ 莽撞探險家 ]";
+		mes "呼～太好了。";
+		mes "我以前從沒見過你，所以以為你是王宮的鎮壓隊。";
 		next;
-		if (select("What if I am one of the suppression squad?:What's the matter?") == 1) {
-			mes "[ Reckless Explorer ]";
-			mes "I'm just an ordinary woman who's out for a walk. And this is the end of my walk, and I'm going to...";
+		if (select("如果我是鎮壓隊的人呢？:怎麼了嗎？") == 1) {
+			mes "[ 莽撞探險家 ]";
+			mes "我只是個出來散步的普通女人。散步到這裡就結束了，我打算……";
 			close;
 		}
-		mes "[ Reckless Explorer ]";
-		mes "Have you heard about the Paros Lighthouse collapse?";
+		mes "[ 莽撞探險家 ]";
+		mes "你聽說帕洛斯燈塔倒塌的事了嗎？";
 		next;
-		mes "[ Reckless Explorer ]";
-		mes "^777700(She moved close to me)^000000";
-		mes "The Paros Lighthouse here collapsed for some unknown reason some time ago, and there's a lot of stuff underneath it.";
+		mes "[ 莽撞探險家 ]";
+		mes "^777700（她靠近了我）^000000";
+		mes "這裡的帕洛斯燈塔不久前不知為何倒塌了，底下埋著許多東西。";
 		next;
-		mes "[ Reckless Explorer ]";
-		mes "Some of the restoration workers and guards that were sent to the palace went missing. Rumors has it that monsters are crawling down there.";
+		mes "[ 莽撞探險家 ]";
+		mes "被派去王宮的修復工人和衛兵有些失蹤了。據傳底下有怪物在爬動。";
 		next;
-		mes "[ Reckless Explorer ]";
-		mes "Because its depth is seemingly endless, the people here became afraid of this place and started calling it Infinite Space.";
+		mes "[ 莽撞探險家 ]";
+		mes "因為它的深度似乎無窮無盡，這裡的人們開始害怕此地，並稱之為無限空間。";
 		next;
-		mes "[ Reckless Explorer ]";
-		mes "I know some people who sneaked in and made a fortune. That's why I'm going to give it a try, are you interested?";
+		mes "[ 莽撞探險家 ]";
+		mes "我認識幾個偷偷溜進去、發了大財的人。所以我打算試試看，你有興趣嗎？";
 		next;
-		if (select("I'm not interested.:Yes.") == 1) {
-			mes "[ Reckless Explorer ]";
-			mes "That's unfortunate. Come back whenever you change your mind. I'll welcome you anytime.";
+		if (select("沒興趣。:有興趣。") == 1) {
+			mes "[ 莽撞探險家 ]";
+			mes "真可惜。改變心意隨時回來，我隨時歡迎你。";
 			close;
 		}
-		mes "[ Reckless Explorer ]";
-		mes "All right, Just one thing, I'm inexperienced and a novice adventurer. So I'll help you explore down there by guiding you from somewhere safe.";
+		mes "[ 莽撞探險家 ]";
+		mes "好吧，還有一件事，我經驗不足，是個新手冒險者。所以我會從安全的地方指引你，幫你探索下面。";
 		next;
-		mes "[ Reckless Explorer ]";
-		mes "I'm an adventure tour, and you can explore it yourself. Aren't we compatible with each other? Then, let's get started when you're ready.";
+		mes "[ 莽撞探險家 ]";
+		mes "我是冒險導覽員，你可以自己去探索。我們不是很合適嗎？那麼，準備好就出發吧。";
 		setquest 12364;
 		completequest 12364;
 	} else {
-		mes "[ Reckless Explorer ]";
-		mes "Are you going in there again this time?";
+		mes "[ 莽撞探險家 ]";
+		mes "這次你又要進去了嗎？";
 		switch (checkquest(12365,PLAYTIME)) {
 			case -1:
 				break;
@@ -77,8 +77,8 @@ cmd_fild07,58,278,3	script	Reckless Explorer#pa0829_01	4_F_GON,{
 			case 0:
 			case 1:
 				next;
-				mes "[ Reckless Explorer ]";
-				mes "Oh, your whole body is shouting that it's tired. You can't go down there like this.";
+				mes "[ 莽撞探險家 ]";
+				mes "哎呀，你全身都在喊累。你這樣不能下去。";
 				close;
 
 			case 2:
@@ -90,27 +90,27 @@ cmd_fild07,58,278,3	script	Reckless Explorer#pa0829_01	4_F_GON,{
 	.@md_name$ = "Infinite Space";
 	.@party_id = getcharid(1);
 	if (!.@party_id) {
-		mes "[ Reckless Explorer ]";
-		mes "It's impossible alone. Would you like to organize a party at least one person or join another party and come back?";
+		mes "[ 莽撞探險家 ]";
+		mes "一個人是不可能的。要不要組隊至少一人，或加入其他隊伍後再回來？";
 		close;
 	}
-	if (select("Prepare to enter Infinite Space:Cancel") == 2)
+	if (select("準備進入無限空間:取消") == 2)
 		close;
-	mes "[ Reckless Explorer ]";
-	mes "Once the passage opens, take a breath for a while and talk to me again.";
+	mes "[ 莽撞探險家 ]";
+	mes "通道開啟後，先喘口氣，再來跟我說話。";
 	if (instance_create(.@md_name$) == -3)
-		dispbottom "The reservation of the instance '" + .@md_name$ + "' has failed due to an active instance.";
+		dispbottom "副本「" + .@md_name$ + "」預約失敗，因為已有進行中的副本。";
 	close;
 }
 
-cmd_fild07,54,280,5	script	Temporary Entrance#pa0829_01	PORTAL,{
+cmd_fild07,54,280,5	script	臨時入口#pa0829_01::Temporary Entrance#pa0829_01	PORTAL,{
 	switch (checkquest(12365,PLAYTIME)) {
 		case -1:
 			break;
 
 		case 0:
 		case 1:
-			mes "The passage is not yet activated.";
+			mes "通道尚未開啟。";
 			close;
 
 		case 2:
@@ -123,11 +123,11 @@ cmd_fild07,54,280,5	script	Temporary Entrance#pa0829_01	PORTAL,{
 	switch (instance_enter(.@md_name$)) {
 		case IE_OK:
 			setquest 12365;
-			mapannounce "cmd_fild07", strcharinfo(0) + " of the party, "+ .@party_name$ +", is entering the " + .@md_name$ + ".", bc_map, "0x00FF99";
+			mapannounce "cmd_fild07", strcharinfo(0) + " 隊伍中的 "+ .@party_name$ +"，正在進入 " + .@md_name$ + ".", bc_map, "0x00FF99";
 			end;
 
 		default:
-			mes "The passage is not yet activated.";
+			mes "通道尚未開啟。";
 			close;
 	}
 }
@@ -531,7 +531,7 @@ OnUnitSpawn:
 		sleep 10000;
 		while (.@index < getarraysize(.@unit_id)) {
 			if (unitexists('boss_id)) {
-				mapannounce 'map$,"The boss monster is trying to summon its allies.",0xFFFF00;
+				mapannounce 'map$,"首領怪物正試圖召喚同伴。",0xFFFF00;
 				getunitdata 'boss_id,.@data;
 				.@x = .@data[UMOB_X];
 				.@y = .@data[UMOB_Y];
@@ -556,14 +556,14 @@ OnMobKill:
 			enablenpc instance_npcname("#w" + 'floor + "_t");
 
 		if ('floor == 50) {
-			mapannounce 'map$,"Reckless Explorer : It seems there are no other way from here. It's dangerous, so you'd better return outside.",0xFFFF00;
+			mapannounce 'map$,"莽撞探險家 : 看來這裡沒有其他路了。很危險，你最好回到外面去。",0xFFFF00;
 			enablenpc instance_npcname("#w50_ppl");
 		}
 		if ('floor < 50) {
 			if (('floor%10) == 0)
-				mapannounce 'map$,"Reckless Explorer : This area is safe. Use the passage to go to the next area.",0xFFFF00;
+				mapannounce 'map$,"莽撞探險家 : 這區域很安全。請使用通道前往下一區域。",0xFFFF00;
 			else
-				mapannounce 'map$,"Reckless Explorer : This area is safe. Go through the passage to the next area.",0xFFFF00;
+				mapannounce 'map$,"莽撞探險家 : 這區域很安全。穿過通道前往下一區域吧。",0xFFFF00;
 			// Enable warp portal to next floor
 			enablenpc instance_npcname("#w" + 'floor);
 			'floor += 1;
@@ -575,38 +575,38 @@ OnPoringKill:
 
 1@infi,42,8,1	script	#w0_0	4_F_GON,{
 	if (is_party_leader() && !'mode && 'sanity == 0) {
-		mes "[ Reckless Explorer ]";
-		mes "I have went in and out of this place many times and figured out a way to provoke the monsters in here. You can get more rewards if you're going to deal with heated ones.";
+		mes "[ 莽撞探險家 ]";
+		mes "我進出這裡很多次了，摸索出激怒這裡怪物的方法。如果你要對付那些被激怒的怪物，能拿到更多獎勵。";
 		next;
-		mes "[ Reckless Explorer ]";
-		mes "What do you think? Would you like to try something challenging?";
+		mes "[ 莽撞探險家 ]";
+		mes "你覺得如何？要不要挑戰看看更困難的？";
 		next;
-		if (select("I want to proceed normally:I want to proceed with something difficult") == 1 && 'sanity == 0) {
+		if (select("我想正常前進:我想挑戰困難的") == 1 && 'sanity == 0) {
 			'mode = 1;
 			'poring_chance = 1;
 		} else {
 			'mode = 2;
 			'poring_chance = 2;
 		}
-		mes "[ Reckless Explorer ]";
-		mes "Good. Shall we go now?";
+		mes "[ 莽撞探險家 ]";
+		mes "很好。我們現在出發吧？";
 		close2;
 		if ('sanity == 0) {
 			'sanity = 1;
 			disablenpc instance_npcname(strnpcinfo(0));
 			hideoffnpc instance_npcname("#w0");
-			npctalk "Reckless Explorer : Woah~ It's very neat for a sunken place, don't you think?",instance_npcname("#w0");
+			npctalk "莽撞探險家 : 哇～沉沒之地竟然這麼整齊，你不覺得嗎？",instance_npcname("w0");
 			sleep 3000;
-			npctalk "Reckless Explorer : I would believe it to be an ancient site, not a lighthouse. It's so well organized...",instance_npcname("#w0");
+			npctalk "莽撞探險家 : 我寧可相信這是古代遺跡，而不是燈塔。它整理得這麼有條理……",instance_npcname("w0");
 			sleep 3000;
-			npctalk "Reckless Explorer : Oh, did you hear something?",instance_npcname("#w0");
+			npctalk "莽撞探險家 : 喔，你有聽到什麼聲音嗎？",instance_npcname("w0");
 			donpcevent instance_npcname("#inf_space_mobs") + "::OnSummon";
 			sleep 3000;
-			npctalk "Reckless Explorer : Oh, that must be the monsters haunting this place.",instance_npcname("#w0");
+			npctalk "莽撞探險家 : 喔，那一定是盤踞在這裡的怪物。",instance_npcname("w0");
 			sleep 3000;
-			npctalk "Reckless Explorer : They look no different from the ones we saw outside, but I can feel a very strong energy.",instance_npcname("#w0");
+			npctalk "莽撞探險家 : 它們看起來跟我們在外面見到的沒什麼兩樣，但我能感覺到非常強大的力量。",instance_npcname("w0");
 			sleep 3000;
-			npctalk "Reckless Explorer : Hm~ It looks dangerous, so I'll go back up. I'll give you directions from above.",instance_npcname("#w0");
+			npctalk "莽撞探險家 : 嗯～看起來很危險，我先回上面去。我會從上面給你指示。",instance_npcname("w0");
 			disablenpc instance_npcname("#w0");
 		}
 	}
@@ -618,11 +618,11 @@ OnPoringKill:
 }
 
 1@infi,366,392,4	script	#w50_ppl	4_F_GON,{
-	mes "[ Reckless Explorer ]";
-	mes "I'll keep a separate record of this expedition. If you've been lucky, you might have gotten a decent reward from your expedition.";
+	mes "[ 莽撞探險家 ]";
+	mes "我會另外記錄這次探險。如果你運氣好，或許能從這次探險拿到不錯的獎勵。";
 	next;
-	mes "[ Reckless Explorer ]";
-	mes "So, shall we get out of here?";
+	mes "[ 莽撞探險家 ]";
+	mes "那麼，我們離開這裡吧？";
 	close2;
 	warp "cmd_fild07",53,270;
 	end;
