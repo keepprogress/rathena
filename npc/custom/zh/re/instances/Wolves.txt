@@ -77,7 +77,7 @@ rachel,169,245,3	script	Ordinary Person#sms04	4_EP18_GW_WOMAN01,{
 			switch( instance_enter(.@md_name$) ) {
 			case IE_OTHER:
 				mes "[Suad]";
-				mes "^ff0000An unknown error occurred.^000000";
+				mes "^ff0000發生未知的錯誤。^000000";
 				close3;
 			case IE_NOINSTANCE:
 				mes "[Suad]";
@@ -95,7 +95,7 @@ rachel,169,245,3	script	Ordinary Person#sms04	4_EP18_GW_WOMAN01,{
 					ep18_main = 51;
 				}
 				cutin "",255;
-				mapannounce "rachel", "Adventurer " + strcharinfo(0) + " of the " + getpartyname( getcharid(1) ) + " party will enter " + .@md_name$ + " first. All wolves, gather sequentially.", bc_map, 0xFF99;
+				mapannounce "rachel", "Adventurer " + strcharinfo(0) + " 的 " + getpartyname( getcharid(1) ) + " party will enter " + .@md_name$ + " first. All wolves, gather sequentially.", bc_map, 0xFF99;
 				// warp "1@nyr",194,30;
 				close;
 			}
@@ -137,12 +137,12 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 		end;
 	// repeatable instance Sanctuary Purification
 	if (BaseLevel < 170) {
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "You must be at least BaseLevel 170 for this instance.";
 		close;
 	}
 	if (isbegin_quest(17524) == 1 || isbegin_quest(17526) == 1) {
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "Welcome, adventurer. You've been through a lot.";
 		if (isbegin_quest(17524) == 1) {
 			erasequest 17524;
@@ -154,7 +154,7 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 		}
 		getitem 1000405,.@count;	// Ep18_Amethyst_Fragment
 		next;
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "Please take a rest from your journey now! See you again!";
 		close;
 	}
@@ -167,23 +167,23 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 		break;
 	case 0:
 	case 1:
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "The plan for the next operation hasn't been completed yet. Since it's conducted only once a day, we need to be cautious. Please rest until then, adventurer.";
 		close;
 	case 2:
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "Hello! Did you get a good rest? I would be grateful if you could help me today. Please note that the operation can be done once a day.";
 		erasequest 17527;
 		if (isbegin_quest(17522) == 0 && isbegin_quest(17523) == 0)
 			callsub( S_Take, 2, "Since we're doing it, let's do both.", "Raid on the defected temple guards.", "Raid on the Heart Hunters.", "", "It's going to be tough." );
 		break;
 	}
-	mes "[Priest]";
+	mes "[祭司]";
 	mes "Are you ready? I will send the join signal.";
 	next;
 	switch( select( "Alright. I'll send the signal.", "I'll proceed.", "I still have a mission pending!", "More preparation is needed." ) ) {
 	case 1:
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "I've received the rendezvous point. You can join immediately through this emergency exit. When you're ready, proceed to enter.";
 		if (instance_create(.@md_name$) < 0) {
 			mes "Party: " + getpartyname(getcharid(1)) + "";
@@ -195,7 +195,7 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 	case 2:
 		switch( instance_enter(.@md_name$) ) {
 		case IE_OTHER:
-			mes "^ff0000An unknown error occurred.^000000";
+			mes "^ff0000發生未知的錯誤。^000000";
 			close;
 		case IE_NOINSTANCE:
 			mes "The memorial dungeon does not exist.";
@@ -205,7 +205,7 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 			mes "^ff0000Only a member of the party can enter the Memorial Dungeon.^000000";
 			close;
 		case IE_OK:
-			mes "[Priest]";
+			mes "[祭司]";
 			mes "The signal has arrived, so let's move. Let's enter the rendezvous point right away.";
 			mapannounce "rachel", "" + strcharinfo(0) + " of the party, " + getpartyname( getcharid(1) ) + ", is entering " + .@md_name$ + ".",bc_map,"0x00ff99",FW_NORMAL,12;
 			setquest 17527;
@@ -216,7 +216,7 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 	case 3:
 		callsub( S_Take, 1, "", "Raid on the defected temple guards.", "Raid on the Heart Hunters.", "Since we're doing it, let's do both.", "It's going to be tough." );
 	case 4:
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "Understood. I'll wait.";
 		close;
 	}
@@ -224,14 +224,14 @@ rachel,167,244,5	script(CLOAKED)	Priest#sms01	4_F_TRAINEE,{
 
 S_Take:
 	if (getarg(0) == 0) {
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "The main forces that infiltrated the temple have escaped, but we still have trouble with the temple guards who defected to the Heart Hunters and remnants of the Heart Hunters themselves who are after the heart.";
 		next;
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "We are conducting raids independently, but we would appreciate your assistance, adventurer. Please note that raids are conducted once a day.";
 	}
 	else if (getarg(0) == 1) {
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "Is that so? What mission did you miss?";
 	}
 	next;
@@ -242,43 +242,43 @@ S_Take:
 			setquest 17522;
 		if (isbegin_quest(17523) == 0 && isbegin_quest(17526) == 0)
 			setquest 17523;
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "Understood.";
 		next;
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "Then please let me know when you're ready.";
 		close;
 	case 2:
 		if (isbegin_quest(17522) == 0 && isbegin_quest(17524) == 0) {
 			setquest 17522;
-			mes "[Priest]";
+			mes "[祭司]";
 			mes "Raid on the defected temple guards.Is that so? Understood.";
 			next;
-			mes "[Priest]";
+			mes "[祭司]";
 			mes "Then please let me know when you're ready.";
 			close;
 		}
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "It seems you're already engaged in a mission. Very well, please take care of it.";
 		next;
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "Then please let me know when you're ready.";
 		close;
 	case 3:
 		if (isbegin_quest(17523) == 0 && isbegin_quest(17526) == 0) {
 			setquest 17523;
-			mes "[Priest]";
+			mes "[祭司]";
 			mes "Thank you for your cooperation. Let me know when you're ready.";
 			close;
 		}
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "It seems you're already engaged in a mission. Very well, please take care of it.";
 		next;
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "Then please let me know when you're ready.";
 		close;
 	case 5:
-		mes "[Priest]";
+		mes "[祭司]";
 		mes "If that's the case, then there's nothing we can do. I'll see you next time!";
 		close2;
 		cloakonnpcself( "Priest#sms01" );
@@ -1992,7 +1992,7 @@ OnTouch:
 2@nyr,121,203,3	duplicate(dummy_npc)	Temple Guard#dms731	4_M_RASWORD
 2@nyr,121,201,3	duplicate(dummy_npc)	Temple Guard#dms741	4_M_RASWORD
 
-2@nyr,115,202,5	duplicate(dummy_npc)	High Priest#dms201	4_M_RACHOLD
+2@nyr,115,202,5	duplicate(dummy_npc)	高僧#dms201::High Priest#dms201	4_M_RACHOLD
 
 2@nyr,113,203,5	duplicate(dummy_npc)	Temple Guard#dms701	4_M_RASWORD
 2@nyr,118,203,3	duplicate(dummy_npc)	Temple Guard#dms711	4_M_RASWORD
@@ -2057,7 +2057,7 @@ OnTouch:
 	mapannounce 'map_2nyr$, "We're alive! Please notice us!", bc_map, 0xFFCC;
 	npctalk "I don't think this is a good situation. I need to get closer.", instance_npcname("Miriam#dms801");
 	sleep 2000;
-	npctalk "This way.", instance_npcname("Miriam#dms801");
+	npctalk "這邊請。", instance_npcname("Miriam#dms801");
 	mapannounce 'map_2nyr$, "We're alive! We're alive!!", bc_map, 0xFFCC;
 	sleep 3000;
 	mapannounce 'map_2nyr$, "We exist!! Exist!!", bc_map, 0xFFCC;
@@ -2241,7 +2241,7 @@ OnMove4:
 		end;
 	cutin "ep18_suad_04.png",0;
 	mes "[Suad]";
-	mes "What's going on?";
+	mes "發生什麼事了？";
 	next;
 	cutin "ep18_miriam_03.png",1;
 	mes "[Miriam]";

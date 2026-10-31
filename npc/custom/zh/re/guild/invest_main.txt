@@ -165,7 +165,7 @@ function	script	F_Invest_Abyss	{
 		}
 		mes .@npc_name$;
 		mes "你已投資 "+callfunc("F_InsertPlural",.@units,"unit")+" "+callfunc("F_InsertComma",.@zeny)+" Zeny"+getarg(2,"")+".";
-		mes "不是什麼貴重的東西，只是一份小禮物。你可以在馬朗多用它兌換物品。";
+		mes "不是什麼貴重的東西，只是一份小禮物。你可以在綿綿島用它兌換物品。";
 		set Zeny, Zeny-.@zeny;
 		setd getarg(0), getd(getarg(0)) + .@units;
 		getitem 6488,.@units; //Thanks_Invest_Ticket
@@ -213,7 +213,7 @@ function	script	F_Invest_Abyss	{
 		set .@units, .@tickets * 10;
 		mes .@npc_name$;
 		mes .@tickets+" 投資證明書"+((.@tickets == 1)?" 已":"皆")+" 等同於投資 "+.@units+" 單位 ("+((.@units < 100)?.@units:insertchar(""+.@units,",",1))+"0,000z)"+getarg(2,"")+".";
-		mes "不是什麼貴重的東西，只是一份小禮物。你可以在馬朗多用它兌換物品。";
+		mes "不是什麼貴重的東西，只是一份小禮物。你可以在綿綿島用它兌換物品。";
 		delitem 6489,.@tickets; //Cats_Invest_Certif
 		setd getarg(0), getd(getarg(0)) + .@units;
 		getitem 6488,.@units; //Thanks_Invest_Ticket
@@ -732,7 +732,7 @@ OnAgitInvest:
 		mes "它只是為了方便才被稱為深淵之門，其實不過是 ^4d4dff通往另一個次元的縫隙^000000。";
 		next;
 		mes .@n$;
-		mes "自從摩洛克製造出次元裂縫之後，各處陸續發現了更多這樣的縫隙。";
+		mes "自從夢羅克製造出次元裂縫之後，各處陸續發現了更多這樣的縫隙。";
 		mes "我個人認為最近發現的深淵之門，可能是來自過去，甚至是未來的一部分。";
 		next;
 		mes .@n$;
@@ -833,10 +833,10 @@ OnAgitInvest:
 			next;
 			mes .@n$;
 			mes "我們通常收取 ^4d4dff通用貨幣 Zeny^000000。";
-			mes "不過既然是支持喵爪商人公會，你也可以用馬朗多需求的物品來投資。";
+			mes "不過既然是支持喵爪商人公會，你也可以用綿綿島需求的物品來投資。";
 			next;
 			mes .@n$;
-			mes "請把所需物品交給馬朗多負責公會總務的娜米絲。";
+			mes "請把所需物品交給綿綿島負責公會總務的娜米絲。";
 			mes "把你的投資證明書帶回來，就能加進投資貢品中。";
 			next;
 			mes .@n$;
@@ -884,7 +884,7 @@ OnAgitInvest:
 			mes .@n$;
 			mes "你持有的感謝票已經太多，無法再領取了。";
 			mes "無法再發放感謝票給你了。請先使用手中的票再來吧。";
-			mes "這張票可以在馬朗多兌換各種物品。";
+			mes "這張票可以在綿綿島兌換各種物品。";
 			close;
 		}
 		if (callfunc("F_Invest_Status") != 1) {
@@ -1121,7 +1121,7 @@ OnAgitInvest:
 			mes "[門扉管理員]";
 			mes "你持有的感謝票已經太多，無法再領取了。";
 			mes "無法再發放感謝票給你了。請先使用手中的票再來吧。";
-			mes "這張票可以在馬朗多兌換各種物品。";
+			mes "這張票可以在綿綿島兌換各種物品。";
 			close;
 		}
 		if (callfunc("F_Invest_Status") != 1) {

@@ -38,182 +38,182 @@
 // Senior Crusader: 1st Collect Items Test
 //============================================================
 -	script	Senior Crusader_	-1,{
-	mes "[Michael Halig]";
+	mes "[麥可·哈利格]";
 	if (Upper == 1) { //the baby classes were totally blocked... due to missing == 1
-		mes "Go and train yourself in preparation for the holy war that is coming. Victory will be in the hands of those who are most ready to receive it.";
+		mes "去鍛鍊自己，為即將到來的聖戰做準備。勝利將屬於最有準備迎接它的人。";
 		next;
-		mes "[Michael Halig]";
-		mes "You don't belong here, my friend.";
-		mes "Be advised to continue practicing yourself.";
+		mes "[麥可·哈利格]";
+		mes "朋友，你不屬於這裡。";
+		mes "建議你繼續磨練自己。";
 		close;
 	} 
 	else if(BaseJob != Job_Swordman) {
 		if(BaseJob == Job_Crusader) {
-			mes "Go and train yourself in preparation for the holy war that is coming. Victory will be in the hands of those who are most ready to receive it.";
+			mes "去鍛鍊自己，為即將到來的聖戰做準備。勝利將屬於最有準備迎接它的人。";
 			next;
-			mes "[Michael Halig]";
-			mes "Chaos will one day arise to challenge our principles of peace, justice and order. Until we have eliminated evil and created our ideal world, we must not cease training.";
+			mes "[麥可·哈利格]";
+			mes "混沌終有一天會挑戰我們和平、正義與秩序的信念。在消滅邪惡、建立理想世界之前，我們絕不能停止訓練。";
 			close;
 		}
 		else if(BaseJob == Job_Novice) {
-			mes "We are Crusaders,";
-			mes "warriors preparing";
-			mes "to fight in the Holy War.";
+			mes "我們是十字軍，";
+			mes "準備中的戰士";
+			mes "為聖戰而戰。";
 			next;
-			mes "[Michael Halig]";
-			mes "If you wish to join us, you must first learn the Swordsman discipline and train yourself thoroughly...";
+			mes "[麥可·哈利格]";
+			mes "如果你想加入我們，必須先學習劍士的修行，並徹底鍛鍊自己……";
 			close;
 		}
-		mes "We are Crusaders,";
-		mes "warriors preparing";
-		mes "to fight in the Holy War.";
+		mes "我們是十字軍，";
+		mes "準備中的戰士";
+		mes "為聖戰而戰。";
 		next;
-		mes "[Michael Halig]";
-		mes "As it happened one thousand years ago, evil forces will one day attack in droves in an attempt to take over the world once again.";
+		mes "[麥可·哈利格]";
+		mes "正如一千年前所發生的，邪惡勢力終有一天會成群來襲，企圖再次奪取這個世界。";
 		close;
 	} 
 	else if(CRUS_Q <= 3 && countitem(1004) && countitem(1009)) {
 		mes "啊……";
-		mes "I see that you have been called to become a Crusader. We are assured of your will, but now we must test your capabilities.";
+		mes "我看得出你受到了成為十字軍的召喚。我們相信你的意志，但現在必須測試你的能力。";
 		next;
-		mes "[Michael Halig]";
-		mes "Meet with Moorenak Miyol who is training in the underground dungeon of the Prontera Castle. Go, and speak with him first.";
+		mes "[麥可·哈利格]";
+		mes "去找正在普隆德拉城堡地下迷宮訓練的穆雷納克·米歐吧。先去和他談談。";
 		next;
 		delitem 1004, 1;
 		delitem 1009, 1;
 		set CRUS_Q,4;
-		mes "[Michael Halig]";
-		mes "Moorenak and others like him will test the limits of your capabilities and help you find your path. Return to me after you have completed their tests...";
+		mes "[麥可·哈利格]";
+		mes "穆雷納克和其他像他一樣的人會測試你的極限，幫助你找到自己的道路。完成他們的測試後再回來找我……";
 		close;
 	}
 	else if(CRUS_Q == 0) {
-		mes "We are Crusaders, warriors preparing for the Holy War.";
-		mes "What brings you";
-		mes "to this place?";
+		mes "我們是十字軍，為聖戰做準備的戰士。";
+		mes "是什麼風把你";
+		mes "來到這個地方？";
 		next;
-		if (select("I want to prepare for the Holy War!:Nothing in particular.") == 1) {
-			mes "[Michael Halig]";
-			mes "You wish to become";
-			mes "a Crusader...?";
-			mes "Joining us is not as";
-			mes "easy as it sounds.";
+		if (select("我想為聖戰做準備！:沒什麼特別的。") == 1) {
+			mes "[麥可·哈利格]";
+			mes "你想成為";
+			mes "十字軍嗎……？";
+			mes "加入我們並不像";
+			mes "聽起來那麼容易。";
 			next;
-			mes "[Michael Halig]";
-			mes "I am Michael Halig. I am one of but many Crusaders preparing for the Holy War. We continuously train ourselves with sincere faith and endless loyalty.";
+			mes "[麥可·哈利格]";
+			mes "我是麥可·哈利格。我是眾多為聖戰做準備的十字軍之一。我們以真誠的信仰和無盡的忠誠不斷鍛鍊自己。";
 			next;
-			mes "[Michael Halig]";
-			mes "We recruit Swordsmen that express exceptional faith, or those who were born as warriors";
-			mes "by Odin's will.";
+			mes "[麥可·哈利格]";
+			mes "我們招募展現出卓越信仰的劍士，或是天生就是戰士的人";
+			mes "這是奧丁的旨意。";
 			next;
-			mes "[Michael Halig]";
-			mes "Possessing the ^3355FFChivalry Emblem^000000 and ^3355FFHand of God^000000 is seen as a sign that you have been called to become a Crusader.";
+			mes "[麥可·哈利格]";
+			mes "擁有^3355FF騎士徽章^000000與^3355FF神之手^000000，被視為你已受到召喚、成為十字軍的徵兆。";
 			next;
-			mes "[Michael Halig]";
-			mes "After obtaining those items and passing our tests, you too, can become a Crusader.";
+			mes "[麥可·哈利格]";
+			mes "取得這些道具並通過我們的測試後，你也能成為十字軍。";
 			next;
-			mes "[Michael Halig]";
-			mes "I don't know what type of person you are right now though. But";
-			mes "I shall test you if you desire. Are you willing to endure these tests in preparation for the Holy War?";
+			mes "[麥可·哈利格]";
+			mes "不過，我還不清楚你是怎樣的人。但是";
+			mes "如果你願意，我就來測試你。你願意為了聖戰而承受這些考驗嗎？";
 			next;
-			if (select("Yes, I do.:I'd like to think about it.") == 1) {
+			if (select("我願意。:我想再考慮一下。") == 1) {
 				if(JobLevel < 40) {
-					mes "[Michael Halig]";
-					mes "Wait...";
-					mes "You're not ready yet.";
-					mes "You need to be at least";
-					mes "Job Level 40 to become";
-					mes "a Crusader.";
+					mes "[麥可·哈利格]";
+					mes "等等……";
+					mes "你還沒準備好。";
+					mes "你的等級至少需要";
+					mes "達到 Job 40 等才能成為";
+					mes "十字軍。";
 					next;
-					mes "[Michael Halig]";
-					mes "Train yourself more as a Swordsman and wait for your calling. I understand your intent, but as of now, you cannot join us.";
+					mes "[麥可·哈利格]";
+					mes "繼續以劍士的身分鍛鍊自己，等待你的召喚。我理解你的心意，但目前你還不能加入我們。";
 					close;
 				} 
 				if (SkillPoint) {
-					mes "[Michael Halig]";
-					mes "You haven't finished learning everything as a Swordsman. Use all of your remaining skill points, and then return to me.";
+					mes "[麥可·哈利格]";
+					mes "你還沒學完劍士的所有技能。把剩餘的技能點數全部用完後再回來找我。";
 					close;
 				}
-				mes "[Michael Halig]";
+				mes "[麥可·哈利格]";
 				mes "那麼……";
-				mes "I shall test you to see if you are fit to become a Crusader.";
+				mes "我將測試你是否有資格成為十字軍。";
 				next;
-				mes "[Michael Halig]";
-				mes "Your name is";
+				mes "[麥可·哈利格]";
+				mes "你的名字是";
 				mes "" + strcharinfo(0) + "...?";
 				mes "我看看……";
 				next;
 				if (countitem(1004) && countitem(1009)) {
-					mes "[Michael Halig]";
+					mes "[麥可·哈利格]";
 					mes "啊……";
-					mes "I see that you have been called to become a Crusader. We are assured of your will, but now we must test your capabilities.";
+					mes "我看得出你受到了成為十字軍的召喚。我們相信你的意志，但現在必須測試你的能力。";
 					next;
-					mes "[Michael Halig]";
-					mes "Meet with Moorenak Miyol who is training in the underground dungeon of the Prontera Castle. Go, and speak with him first.";
+					mes "[麥可·哈利格]";
+					mes "去找正在普隆德拉城堡地下迷宮訓練的穆雷納克·米歐吧。先去和他談談。";
 					next;
 					delitem 1004, 1;
 					delitem 1009, 1;
 					set CRUS_Q,4;
 					setquest 3009;
-					mes "[Michael Halig]";
-					mes "Moorenak and others like him will test the limits of your capabilities and help you find your path. Return to me after you have completed their tests...";
+					mes "[麥可·哈利格]";
+					mes "穆雷納克和其他像他一樣的人會測試你的極限，幫助你找到自己的道路。完成他們的測試後再回來找我……";
 					close;
 				}
-				mes "[Michael Halig]";
-				mes "Mmm. I can't discern whether or not you have the heart to become a Crusader. However, if you have the will and put forth the effort, you may have what it takes.";
+				mes "[麥可·哈利格]";
+				mes "嗯。我還無法判斷你是否有成為十字軍的心。不過，只要你有意志並肯付出努力，或許就能做到。";
 				next;
-				mes "[Michael Halig]";
+				mes "[麥可·哈利格]";
 				mes "嗯……";
-				mes "This is my test for you. Bring me the following items and prove your determination to me.";
+				mes "這是我為你準備的測試。把以下道具帶來給我，向我證明你的決心。";
 				next;
-				mes "[Michael Halig]";
+				mes "[麥可·哈利格]";
 				set .@cru_m1,rand(1,3);
 				if(.@cru_m1 == 1) {
 					set CRUS_Q, 1;
 					setquest 3006;
-					mes "10 ^3355FF"+getitemname(957)+"^000000";
-					mes "10 ^3355FF"+getitemname(959)+"^000000";
-					mes "10 ^3355FF"+getitemname(1099)+"^000000";
-					mes "10 ^3355FF"+getitemname(901)+"^000000";
+					mes "10 個 ^3355FF"+getitemname(957)+"^000000";
+					mes "10 個 ^3355FF"+getitemname(959)+"^000000";
+					mes "10 個 ^3355FF"+getitemname(1099)+"^000000";
+					mes "10 個 ^3355FF"+getitemname(901)+"^000000";
 					next;
 				}
 				else if(.@cru_m1 == 2) {
 					set CRUS_Q, 2;
 					setquest 3007;
-					mes "10 ^3355FF"+getitemname(932)+"^000000";
-					mes "10 ^3355FF"+getitemname(1043)+"^000000";
-					mes "10 ^3355FF"+getitemname(1098)+"^000000";
-					mes "10 ^3355FF"+getitemname(1094)+"^000000";
+					mes "10 個 ^3355FF"+getitemname(932)+"^000000";
+					mes "10 個 ^3355FF"+getitemname(1043)+"^000000";
+					mes "10 個 ^3355FF"+getitemname(1098)+"^000000";
+					mes "10 個 ^3355FF"+getitemname(1094)+"^000000";
 					next;
 				}
 				else {
 					set CRUS_Q, 3;
 					setquest 3008;
-					mes "10 ^3355FF"+getitemname(958)+"^000000";
-					mes "10 ^3355FF"+getitemname(930)+"^000000";
-					mes "10 ^3355FF"+getitemname(1041)+"^000000";
-					mes "10 ^3355FF"+getitemname(1062)+"^000000";
+					mes "10 個 ^3355FF"+getitemname(958)+"^000000";
+					mes "10 個 ^3355FF"+getitemname(930)+"^000000";
+					mes "10 個 ^3355FF"+getitemname(1041)+"^000000";
+					mes "10 個 ^3355FF"+getitemname(1062)+"^000000";
 					next;
 				}
-				mes "[Michael Halig]";
-				mes "Show me the strength of your will by gathering these items. If you prove successful, you will progress to the next test. May Odin protect you.";
+				mes "[麥可·哈利格]";
+				mes "收集這些道具，向我展現你意志的力量。若你成功證明自己，就能進入下一個測試。願奧丁保佑你。";
 				close;
 			}
-			mes "[Michael Halig]";
-			mes "Nobody knows when the Holy War will come. We must prepare in advance and cannot afford to slacken";
-			mes "our training.";
+			mes "[麥可·哈利格]";
+			mes "沒人知道聖戰何時會來臨。我們必須提早準備，絕不能懈怠";
+			mes "我們的訓練。";
 			next;
-			mes "[Michael Halig]";
-			mes "If you feel that participating in the Holy War is your calling, please come back right away and take the test to become";
-			mes "a Crusader.";
+			mes "[麥可·哈利格]";
+			mes "如果你覺得參與聖戰是你的使命，請立刻回來參加測試，以成為";
+			mes "十字軍。";
 			close;
 		}
-		mes "[Michael Halig]";
+		mes "[麥可·哈利格]";
 		if (Sex == SEX_MALE) mes "If you, too, are a man of the sword, constantly train and prepare yourself. No one knows when the Holy War may begin.";
 		else mes "As a woman of the sword, you must train diligently and constantly. Prepare yourself, for no one knows when the Holy War may be coming.";
 		close;
 	}
 	else if(CRUS_Q >= 1 && CRUS_Q <= 3) {
-		mes "Have you proven your determination with the task I have given you, or do you possess the items proving that you have received your calling?";
+		mes "你是否已用我交付的任務證明了你的決心，或是持有證明你已受到召喚的道具？";
 		next;
 		switch(CRUS_Q) {
 		case 1:
@@ -236,12 +236,12 @@
 			break;
 		}
 		if (countitem(.@item1) > 9 && countitem(.@item2) > 9 && countitem(.@item3) > 9 && countitem(.@item4) > 9) {
-			mes "[Michael Halig]";
-			mes "Ah, well done.";
-			mes "I must acknowledge your efforts and determination. You may now proceed to take the next test.";
+			mes "[麥可·哈利格]";
+			mes "啊，做得好。";
+			mes "我必須承認你的努力與決心。你現在可以進行下一個測試了。";
 			next;
-			mes "[Michael Halig]";
-			mes "Meet with Moorenak Miyol who is training in the underground dungeon of the Prontera Castle. Go, and speak with him first.";
+			mes "[麥可·哈利格]";
+			mes "去找正在普隆德拉城堡地下迷宮訓練的穆雷納克·米歐吧。先去和他談談。";
 			next;
 			delitem .@item1, 10;
 			delitem .@item2, 10;
@@ -257,718 +257,718 @@
 			else {
 				changequest 3008,3009;
 			}
-			mes "[Michael Halig]";
-			mes "Moorenak and others like him will test the limits of your capabilities and help you find your path. Return to me after you have completed their tests...";
+			mes "[麥可·哈利格]";
+			mes "穆雷納克和其他像他一樣的人會測試你的極限，幫助你找到自己的道路。完成他們的測試後再回來找我……";
 			close;
 		}
-		mes "[Michael Halig]";
-		mes "Ah, you still have not completed the task I have given to you. Bring me the following items, and prove your will to become a Crusader to me...";
+		mes "[麥可·哈利格]";
+		mes "啊，你還沒完成我交付的任務。把以下道具帶來，向我證明你成為十字軍的意志……";
 		next;
-		mes "[Michael Halig]";
-		mes "10 ^3355FF"+getitemname(.@item1)+"^000000";
-		mes "10 ^3355FF"+getitemname(.@item2)+"^000000";
-		mes "10 ^3355FF"+getitemname(.@item3)+"^000000";
-		mes "10 ^3355FF"+getitemname(.@item4)+"^000000";
+		mes "[麥可·哈利格]";
+		mes "10 個 ^3355FF"+getitemname(.@item1)+"^000000";
+		mes "10 個 ^3355FF"+getitemname(.@item2)+"^000000";
+		mes "10 個 ^3355FF"+getitemname(.@item3)+"^000000";
+		mes "10 個 ^3355FF"+getitemname(.@item4)+"^000000";
 		next;
-		mes "[Michael Halig]";
-		mes "If you put forth the effort, you'll be able to accomplish this task. May Odin protect you on your journeys.";
+		mes "[麥可·哈利格]";
+		mes "只要肯付出努力，你就能完成這項任務。願奧丁在你的旅途中守護你。";
 		close;
 	}
 	else if(CRUS_Q == 10) {
 		if(SkillPoint) {
-			mes "You haven't finished learning everything as a Swordsman. Use all of your remaining skill points, and then return to me.";
+			mes "你還沒學完劍士的所有技能。把剩餘的技能點數全部用完後再回來找我。";
 			close;
 		}
-		mes "Congratulations on completing all of your tests. You are truly worthy of fighting alongside side us in the Holy War as a Crusader.";
+		mes "恭喜你完成了所有測試。你確實有資格以十字軍的身分，與我們並肩作戰於聖戰之中。";
 		next;
-		mes "[Michael Halig]";
-		mes "Together, let us ready ourselves and be victorious over evil and tyranny!";
+		mes "[麥可·哈利格]";
+		mes "讓我們一同準備，戰勝邪惡與暴政！";
 		next;
 		set .@Joblevel,JobLevel;
 		completequest 3015;
 		callfunc "Job_Change",Job_Crusader;
 		callfunc "F_ClearJobVar";		//clears all job variables for the current player
-		mes "[Michael Halig]";
-		mes "Behold...!";
-		mes "You are now a Crusader!";
-		mes "When the Holy War comes, we shall fight side by side against the forces of evil.";
+		mes "[麥可·哈利格]";
+		mes "看吧……！";
+		mes "你現在是十字軍了！";
+		mes "聖戰來臨之時，我們將並肩對抗邪惡勢力。";
 		next;
-		mes "[Michael Halig]";
-		mes "Now you are";
-		mes "one of us!";
+		mes "[麥可·哈利格]";
+		mes "現在你已是";
+		mes "我們的一員了！";
 		if (Sex == SEX_MALE) mes "...Brother.";
 		else mes "...Comrade.";
 		next;
 		if(.@JobLevel != 50) getitem 504, 6;
 		else getitem 504, 12;
-		mes "[Michael Halig]";
-		mes "And use this in times of dire peril. It will give you strength when your wounds are most grievous.";
+		mes "[麥可·哈利格]";
+		mes "在危急存亡之際使用這個。當你的傷勢最為嚴重時，它會給你力量。";
 		next;
-		mes "[Michael Halig]";
-		mes "Never forget that the Holy War is approaching. We must be prepare for the inevitable tide of evil that will sweep this world. Now, go forth and fight for the principles of freedom and justice!";
+		mes "[麥可·哈利格]";
+		mes "永遠不要忘記聖戰正在逼近。我們必須為即將席捲這個世界的邪惡浪潮做好準備。現在，去為自由與正義的信念而戰吧！";
 		close;
 	}
-	mes "It seems that you have not yet completed all of the testing. You will not be ready to become a Crusader until you have completed the tests set before you.";
+	mes "看來你還沒完成所有的測試。在完成眼前所有測試之前，你還無法成為十字軍。";
 	next;
-	mes "[Michael Halig]";
-	mes "Return to me when you have completed all of your tests. When you finally prove eligible, you will join the proud ranks of the mighty Crusaders.";
+	mes "[麥可·哈利格]";
+	mes "完成所有測試後再回來找我。當你終於證明了資格，你就會加入強大十字軍的光榮行列。";
 	close;
 }
 
 // Suffering Man: 2nd Endurance Test
 //============================================================
 -	script	Man in Anguish_	-1,{
-	mes "[Murnak Mijoul]";
+	mes "[穆納克·米久爾]";
 	if(BaseJob != Job_Swordman) {
 		if (BaseJob == Job_Crusader) {
-			mes "Don't linger around in a place like this and forge your own path towards discovering your own strengths. The day that we will join hands in battle will come soon.";
+			mes "別在這種地方逗留，去走出屬於你自己的路，找出自身的力量。我們並肩作戰的那一天即將到來。";
 			close;
 		}
 		else if(BaseJob == Job_Novice) {
-			mes "A Novice...?";
-			mes "So green, and yet,";
-			mes "so much potential.";
+			mes "見習生……？";
+			mes "還這麼青澀，卻";
+			mes "潛力無窮。";
 			next;
-			mes "[Murnak Mijoul]";
-			mes "Let me assure you that I'm no criminal. I'm here merely to train myself. Perhaps as you become stronger, you will understand.";
+			mes "[穆納克·米久爾]";
+			mes "讓我向你保證，我不是罪犯。我只是來這裡鍛鍊自己。也許等你變強了，就會明白。";
 			close;
 		}
-		mes "Hm. You have no business in a place like this. Please leave, and do not interrupt my training.";
+		mes "哼。你在這種地方沒有任何事。請離開，別打擾我的訓練。";
 		close;
 	}
 	else if(CRUS_Q >= 0 && CRUS_Q <= 3) {
-		mes "What do you want...?";
-		mes "If you have no business here,";
-		mes "then please leave. A tranquil state of mind is essential in self training...";
+		mes "你想要什麼……？";
+		mes "如果你在這裡沒有事，";
+		mes "那就請離開。在自我訓練中，平靜的心境至關重要……";
 		next;
-		mes "[Murnak Mijoul]";
-		mes "I wish to improve the sense of serenity in my heart in preparation for the Holy War that is to come. So please, do not disturb me.";
+		mes "[穆納克·米久爾]";
+		mes "我希望在為即將到來的聖戰做準備的同時，提升內心的寧靜。所以請不要打擾我。";
 		close;
 	}
 	else if(CRUS_Q == 4) {
-		mes "What is it...?";
-		mes "Do you have business";
+		mes "怎麼了……？";
+		mes "你有什麼事";
 		if (Sex == SEX_MALE) mes "with me, man of the sword?";
 		else mes "with me, woman of the sword?";
 		next;
-		if (select("I'd like to take the Crusader test.:Nothing.") == 1) {
-			mes "[Murnak Mijoul]";
-			mes "You wish to become a Crusader...? Hm, fighting in the Holy War is an admirable goal we may both share.";
+		if (select("我想參加十字軍測試。:沒什麼事。") == 1) {
+			mes "[穆納克·米久爾]";
+			mes "你想成為十字軍嗎……？嗯，為聖戰而戰，是我們都可以共同懷抱的崇高目標。";
 			next;
-			mes "[Murnak Mijoul]";
-			mes "Your name is";
+			mes "[穆納克·米久爾]";
+			mes "你的名字是";
 			mes "" + strcharinfo(0) + "...?";
-			mes "Let me take";
-			mes "a look at your face.";
+			mes "讓我";
+			mes "看看你的臉。";
 			next;
 			if(getequipid(EQI_ACC_L) != 2608 && getequipid(EQI_ACC_R) != 2608) {
-				mes "[Murnak Mijoul]";
-				mes "Hmm. You wish to become a Crusader, but do not wear a Rosary? I have no business with you if you cannot uphold our customs.";
+				mes "[穆納克·米久爾]";
+				mes "嗯。你想成為十字軍，卻沒戴幸運珠鏈？如果你無法遵守我們的規矩，我就不會理你。";
 				close;
 			}
-			mes "[Murnak Mijoul]";
+			mes "[穆納克·米久爾]";
 			mes "嗯……";
-			mes "You seem so-so, but also young and ambitious. Ambition may work against you if it is not tempered with patience.";
+			mes "你看起來平平無奇，但也年輕又有野心。若野心沒有耐心來節制，反而可能害了你。";
 			next;
-			mes "[Murnak Mijoul]";
-			mes "Don't give me a reason to doubt you, and show me your patience. You must endure my test with your patience if you wish to become a Crusader.";
+			mes "[穆納克·米久爾]";
+			mes "別讓我有理由懷疑你，向我展現你的耐心。若你想成為十字軍，就必須以耐心承受我的考驗。";
 			next;
-			mes "[Murnak Mijoul]";
-			mes "You may take my test right away. It's actually quite simple. All you must do is walk to the end of the corridor.";
+			mes "[穆納克·米久爾]";
+			mes "你可以立刻接受我的測試。其實很簡單，你只要走到走廊的盡頭就行。";
 			next;
-			mes "[Murnak Mijoul]";
+			mes "[穆納克·米久爾]";
 			mes "但是……";
-			mes "You must keep one thing in mind. Under no condition are you allowed to kill the monsters.";
+			mes "你必須記住一件事：無論如何，都不准殺死怪物。";
 			next;
 			set CRUS_Q,5;
 			changequest 3009,3010;
-			mes "[Murnak Mijoul]";
+			mes "[穆納克·米久爾]";
 			mes "那麼……";
 			mes "祝你好運。";
 			close2;
 			warp "job_cru",98,40;
 			end;
 		}
-		mes "[Murnak Mijoul]";
-		mes "You seem to have a lot of time on your hands. Why don't you do something more productive, like pick Jellopy off the streets or something?";
+		mes "[穆納克·米久爾]";
+		mes "你好像很閒。何不做點更有意義的事，比如去街上撿些傑勒比結晶之類的？";
 		close;
 	}
 	else if(CRUS_Q == 5) {
-		mes "What is it...?";
-		mes "You're the Swordman from before. What happened, did you fail?";
+		mes "怎麼了……？";
+		mes "你就是之前那位劍士吧。怎麼了，失敗了嗎？";
 		next;
-		if (select("Let me retake the test.:What kind of test was that?!") == 1) {
-			mes "[Murnak Mijoul]";
-			mes "I'll let you retake the test as much as you like. But if you continuously fail, there's an inherent problem with your";
-			mes "state of mind.";
+		if (select("讓我重新測試一次。:那是什麼測試啊！") == 1) {
+			mes "[穆納克·米久爾]";
+			mes "你想重考多少次都可以。但如果你一直失敗，那你的";
+			mes "心態本身就有問題。";
 			next;
 			if(getequipid(EQI_ACC_L) != 2608 && getequipid(EQI_ACC_R) != 2608) {
-				mes "[Murnak Mijoul]";
-				mes "Wait...";
-				mes "Where have you left your Rosary? You can't let that lie around just anywhere. We are supposed to be warriors of holiness.";
+				mes "[穆納克·米久爾]";
+				mes "等等……";
+				mes "你把幸運珠鏈放到哪裡去了？不能隨便丟在一旁。我們應該是神聖的戰士。";
 				next;
-				mes "[Murnak Mijoul]";
-				mes "Carelessly losing things is an attitude for mere Swordsmen. If you really want to retake the test, you must respect the Crusader traditions.";
+				mes "[穆納克·米久爾]";
+				mes "粗心弄丟東西，是普通劍士才有的態度。如果你真的想重考，就必須尊重十字軍的傳統。";
 				close;
 			}
-			mes "[Murnak Mijoul]";
-			mes "Your problem is your habit of hitting monsters the moment you see one. You must develop your patience and endurance.";
+			mes "[穆納克·米久爾]";
+			mes "你的問題在於一看到怪物就立刻攻擊的習慣。你必須培養耐心與毅力。";
 			next;
-			mes "[Murnak Mijoul]";
-			mes "Just focus...";
-			mes "Your only goal is to walk from one end of the corridor to the other. It's simple when you think";
-			mes "about it.";
+			mes "[穆納克·米久爾]";
+			mes "專心一點……";
+			mes "你唯一的目標，就是從走廊的一端走到另一端。這樣想就很簡單了";
+			mes "仔細想想吧。";
 			next;
-			mes "[Murnak Mijoul]";
-			mes "No matter what you do, do not kill any of the monsters. This time, think carefully before you draw your sword.";
+			mes "[穆納克·米久爾]";
+			mes "無論你做什麼，都不准殺任何怪物。這一次，拔劍之前請仔細想清楚。";
 			next;
 			set CRUS_Q,5;
-			mes "[Murnak Mijoul]";
+			mes "[穆納克·米久爾]";
 			mes "那麼……";
 			mes "祝你好運。";
 			close2;
 			warp "job_cru",98,40;
 		}
-		mes "[Murnak Mijoul]";
-		mes "Who are you to say that you don't like my test? With that kind of attitude, you'll never become a Crusader.";
+		mes "[穆納克·米久爾]";
+		mes "你憑什麼說不喜歡我的測試？抱持這種態度，你永遠不可能成為十字軍。";
 		next;
-		mes "[Murnak Mijoul]";
-		mes "I can understand if you are easily frustrated, but you must overcome your frustration to pass this test.";
+		mes "[穆納克·米久爾]";
+		mes "我能理解你容易感到挫折，但你必須克服挫折才能通過這個測試。";
 		close;
 	}
 	else if(CRUS_Q == 6) {
-		mes "Hmm, seems like you did well. It shouldn't have been too hard. You no longer have any business";
+		mes "嗯，看來你表現不錯。這應該不算太難。你已經沒有任何";
 		mes "我。";
 		next;
-		mes "[Murnak Mijoul]";
-		mes "For your next test, go look for Gabriel Valentine in the Prontera Sanctuary. Well then, I'll see you around.";
+		mes "[穆納克·米久爾]";
+		mes "下一個測試，請到普隆德拉聖所去找加布里爾·華倫泰。那麼，我們之後再見。";
 		close;
 	}
 	mes "嗯……";
-	mes "You still have tests to complete if you want to become a Crusader, don't you?";
+	mes "如果你想成為十字軍，還有測試沒完成吧？";
 	close;
 }
 
 // Gabriel Valentine: 3rd Knowledge Test
 //============================================================
-prt_church,95,127,3	script	Crusader	745,{
-	mes "[Gabriel Valentine]";
+prt_church,95,127,3	script	聖騎士::Crusader	745,{
+	mes "[加布里爾·華倫泰]";
 	if(BaseJob != Job_Swordman) {
 		if (BaseJob == Job_Crusader) {
-			mes "Welcome, fellow Crusader.";
-			mes "How is your training";
-			mes "coming along?";
+			mes "歡迎，同袍十字軍。";
+			mes "你的修行";
+			mes "進展如何？";
 			next;
-			mes "[Gabriel Valentine]";
-			mes "You must not forget to train everyday, and prepare for the day the Holy War will come upon us.";
+			mes "[加布里爾·華倫泰]";
+			mes "你絕不能忘記每天鍛鍊，為聖戰降臨我們的那一天做好準備。";
 			close;
 		}
 		else if(BaseJob == Job_Novice) {
-			mes "Welcome, I am a Crusader.";
-			mes "I am preparing for the";
-			mes "foretold Holy War";
-			mes "that is to come.";
+			mes "歡迎，我是十字軍。";
+			mes "我正在為";
+			mes "預言中的聖戰";
+			mes "做準備。";
 			next;
-			mes "[Gabriel Valentine]";
-			mes "If you are interested in becoming a Crusader, you must train first as a Swordman. Come and visit us again when you believe that you have learned enough as a Swordman...";
+			mes "[加布里爾·華倫泰]";
+			mes "如果你有意成為十字軍，必須先以劍士的身分鍛鍊。當你覺得自己作為劍士已學夠了，再來拜訪我們……";
 			next;
-			mes "[Gabriel Valentine]";
-			mes "We are located in the Prontera Central Palace, so if you have time, it wouldn't hurt to stop by.";
+			mes "[加布里爾·華倫泰]";
+			mes "我們位於普隆德拉中央宮殿，若你有空，順道來坐坐也無妨。";
 			close;
 		}
-		mes "Welcome, we are Crusaders.";
-		mes "We are preparing for the";
-		mes "foretold Holy War";
-		mes "that is to come.";
+		mes "歡迎，我們是十字軍。";
+		mes "我們正在為";
+		mes "預言中的聖戰";
+		mes "做準備。";
 		next;
-		mes "[Gabriel Valentine]";
-		mes "I hope you will train yourself in preparation for the future as well.";
+		mes "[加布里爾·華倫泰]";
+		mes "我也希望你能為未來而鍛鍊自己。";
 		close;
 	}
 	else if(CRUS_Q == 0) {
-		mes "Welcome. We are Crusaders.";
-		mes "We are preparing for the";
-		mes "foretold Holy War";
-		mes "that is to come.";
+		mes "歡迎。我們是十字軍。";
+		mes "我們正在為";
+		mes "預言中的聖戰";
+		mes "做準備。";
 		next;
-		mes "[Gabriel Valentine]";
-		mes "If you would like to become a Crusader, please speak with our leader in the Prontera Central Palace.";
+		mes "[加布里爾·華倫泰]";
+		mes "如果你想成為十字軍，請去找普隆德拉中央宮殿的領袖談談。";
 		close;
 	}
 	else if((CRUS_Q == 6) || (CRUS_Q == 7)) {
 		if(CRUS_Q == 6) {
 			mes "歡迎。";
-			mes "Did you do well";
-			mes "on those painful tests?";
-			mes "I will be conducting your next test.";
+			mes "你在";
+			mes "那些痛苦的測試中表現得如何？";
+			mes "接下來的測試將由我主持。";
 			next;
-			mes "[Gabriel Valentine]";
-			mes "My name is Gabriel Valentine. I, too, am preparing for the Holy War. For the time being, I act as guard for this church.";
+			mes "[加布里爾·華倫泰]";
+			mes "我叫加布里爾·華倫泰。我也正在為聖戰做準備。目前，我負責守衛這座教堂。";
 			next;
-			mes "[Gabriel Valentine]";
-			mes "I will test to see if you have acquired the knowledge that is necessary to become a Crusader.";
-			mes "We can't very well win the Holy War just by swinging a sword.";
+			mes "[加布里爾·華倫泰]";
+			mes "我將測試你是否已掌握成為十字軍所需的知識。";
+			mes "光靠揮舞劍，我們是無法打贏聖戰的。";
 			next;
-			mes "[Gabriel Valentine]";
-			mes "I will give";
-			mes "you 10 questions.";
-			mes "Answer them correctly.";
+			mes "[加布里爾·華倫泰]";
+			mes "我會給";
+			mes "你 10 道題目。";
+			mes "請正確作答。";
 			next;
 		}
 		else if(CRUS_Q == 7) {
-			mes "Welcome back~";
-			mes "Did you prepare";
-			mes "well for this test?";
-			mes "Let's try again,";
-			mes "shall we...?";
+			mes "歡迎回來～";
+			mes "你有";
+			mes "好好準備這次的測試嗎？";
+			mes "我們再試一次，";
+			mes "好嗎……？";
 			next;
-			mes "[Gabriel Valentine]";
-			mes "Once again, I'm going";
-			mes "to give you 10 questions";
-			mes "Listen carefully, and";
-			mes "choose the correct answer.";
+			mes "[加布里爾·華倫泰]";
+			mes "我要再一次";
+			mes "出 10 道題目給你";
+			mes "請仔細聽，然後";
+			mes "選出正確的答案。";
 			next;
 		}
 		set .@cru_m,rand(1,3);
 		if (.@cru_m == 1) {
-			mes "[Gabriel Valentine]";
-			mes "1. Which attribute is the most effective in atttacking the Undead?";
+			mes "[加布里爾·華倫泰]";
+			mes "1. 哪種屬性攻擊不死族最有效？";
 			next;
-			if (select("Neutral:Earth:Undead:Holy") == 4)
+			if (select("無屬性:地屬性:不死:聖屬性") == 4)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "2. If the monster is a Level 2 Undead, how much more damage does a Holy attack do compared to Fire?";
+			mes "[加布里爾·華倫泰]";
+			mes "2. 若怪物是 2 級不死族，聖屬性攻擊比火屬性攻擊多造成多少傷害？";
 			next;
 			if (select("25 %:50 %:75 %:100 %") == 1)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "3. What item can you not get from an Evil Druid?";
+			mes "[加布里爾·華倫泰]";
+			mes "3. 以下哪項道具無法從闇神官身上取得？";
 			next;
-			if (select("Monk Hat:Yggdrasil leaf:White Herb:Amulet ") == 1)
+			if (select("神聖之帽:世界樹之葉:白色藥草:返魂符 ") == 1)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "4. Which Undead monster";
-			mes "has the highest HP?";
+			mes "[加布里爾·華倫泰]";
+			mes "4. 下列哪種不死族怪物";
+			mes "血量最高？";
 			next;
-			if (select("Ghoul:Skeleton Prisoner:Wraith:Zombie Prisoner") == 4) 
+			if (select("綠腐屍:邪骸戰俘:惡靈:腐屍戰俘") == 4) 
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "5. Which of the following monsters is a different size than the others?";
+			mes "[加布里爾·華倫泰]";
+			mes "5. 以下哪種怪物的體型與其他不同？";
 			next;
-			if (select("Wraith:Khalitzburg:Drake:Evil Druid") == 3)
+			if (select("惡靈:卡利斯格:海盜之王:闇神官") == 3)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "6. Which card grants you tolerance to Undead property attacks?";
+			mes "[加布里爾·華倫泰]";
+			mes "6. 哪張卡片能讓你抵抗不死屬性攻擊？";
 			next;
-			if (select("Orc Skeleton Card:Orc Zombie Card:Ghoul Card:Skel Worker Card") == 2)
+			if (select("邪骸獸人卡片:獸人腐屍卡片:綠腐屍卡片:骷髏工人卡片") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "7. What was the relationship between Munak and Bongun before they passed away?";
+			mes "[加布里爾·華倫泰]";
+			mes "7. 殭屍與妖道在去世前是什麼關係？";
 			next;
-			if (select("Big Brother and Little Sister:Childhood friends in the same village:Stepbrother and sister:Complete strangers") == 2)
+			if (select("哥哥和妹妹:同村長大的玩伴:繼兄妹:完全陌生的人") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "8. Which of the following monsters is not aggressive?";
+			mes "[加布里爾·華倫泰]";
+			mes "8. 以下哪種怪物不具攻擊性？";
 			next;
-			if (select("Soldier Skeleton:Orc Skeleton:Skeleton:Skel Worker") == 3)
+			if (select("邪骸士兵:邪骸獸人:邪骸戰士:骷髏工人") == 3)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "9. What is the name of the shield in which a Munak Card has been inserted?";
+			mes "[加布里爾·華倫泰]";
+			mes "9. 插有殭屍卡片的盾牌名稱是什麼？";
 			next;
-			if (select("Atomic Shield:Amulet Shield:Hypnotic Shield:Homeroth Shield") == 2)
+			if (select("原子盾:返魂符盾:催眠之盾:霍梅洛斯之盾") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "10. Which of the following monsters does not drop Memento?";
+			mes "[加布里爾·華倫泰]";
+			mes "10. 以下哪種怪物不會掉落亡者遺物？";
 			next;
-			if (select("Munak:Ghoul:Mummy:Soldier Skeleton") == 1)
+			if (select("殭屍:綠腐屍:木乃伊:邪骸士兵") == 1)
 				set .@cru_t,.@cru_t+10;
 		}
 		else if (.@cru_m == 2) {
-			mes "[Gabriel Valentine]";
-			mes "1. Which of the following monsters is a different attribute than the others?";
+			mes "[加布里爾·華倫泰]";
+			mes "1. 以下哪種怪物的屬性與其他不同？";
 			next;
-			if (select("Carat:Wind Ghost:Isis:Wanderer") == 3)
+			if (select("卡拉特小丑:風魔巫師:蛇女伊絲:邪骸浪人") == 3)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "2. Which sword is effective in attacking Demon monsters?";
+			mes "[加布里爾·華倫泰]";
+			mes "2. 哪種劍對惡魔系怪物特別有效？";
 			next;
-			if (select("Decussate Tsurugi:Hollowed Tsurugi:Damned Tsurugi:Drowsy Tsurugi") == 1)
+			if (select("交叉日本刀:空洞日本刀:詛咒日本刀:睏倦日本刀") == 1)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "3. Which item is NOT dropped by Dokebi?";
+			mes "[加布里爾·華倫泰]";
+			mes "3. 以下哪項道具不是土人掉落的？";
 			next;
-			if (select("Rough Elunium:Golden Hammer:Sword Mace:Mighty Staff") == 2)
+			if (select("鋁原石:黃金錘子:尖刃鐵錘:巫杖 魂咬") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "4. Which Demon monster has the most HP?";
+			mes "[加布里爾·華倫泰]";
+			mes "4. 哪種惡魔系怪物的血量最多？";
 			next;
-			if (select("Giearth:Magnolia:Dokebi:Marionette") == 4)
+			if (select("基爾瑟:魔鍋蛋:土人:傀儡娃娃") == 4)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "5. Which Demon monster is a different size than the others?";
+			mes "[加布里爾·華倫泰]";
+			mes "5. 哪種惡魔系怪物的體型與其他不同？";
 			next;
-			if (select("Ghostring:Whisper:Deviruchi:Baphomet Junior") == 1)
+			if (select("幽靈波利:白幽靈:小惡魔:小巴風特") == 1)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "6. Which shield reduces damage inflicted by Demon monsters?";
+			mes "[加布里爾·華倫泰]";
+			mes "6. 哪種盾牌能減少惡魔系怪物造成的傷害？";
 			next;
-			if (select("Satanic Shield:Shield from Hell:Amulet Shield:Excellent Shield") == 2)
+			if (select("撒旦之盾:地獄之盾:返魂符盾:優秀之盾") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "7. Which attribute is the most effective on the Wind Ghost?";
+			mes "[加布里爾·華倫泰]";
+			mes "7. 哪種屬性對風魔巫師最有效？";
 			next;
-			if (select("Water:Earth:Fire:Wind") == 2)
+			if (select("水:土:火:風") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "8. Which monster is different from the other Demon monsters?";
+			mes "[加布里爾·華倫泰]";
+			mes "8. 哪種怪物與其他惡魔系怪物不同？";
 			next;
-			if (select("Sohee:Isis:Dokebi:Whisper") == 4)
+			if (select("鬼女:蛇女伊絲:土人:白幽靈") == 4)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "9. What effect does the Marionette Card have?";
+			mes "[加布里爾·華倫泰]";
+			mes "9. 傀儡娃娃卡片有什麼效果？";
 			next;
-			if (select("Increase defense against Shadow attacks by 30 %:Increase defense against poison attacks by 30 %:Increase defense against Ghost attacks by 30 %:Increase defense against Neutral attacks by 30 %") == 3)
+			if (select("提升對暗屬性攻擊的防禦 30%:提升對毒屬性攻擊的防禦 30%:提升對幽靈屬性攻擊的防禦 30%:提升對無屬性攻擊的防禦 30%") == 3)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "10. Which of the following is an effective way to react when encountering a demon monster?";
+			mes "[加布里爾·華倫泰]";
+			mes "10. 遭遇惡魔系怪物時，以下哪種應對方式最有效？";
 			next;
-			if (select("Scream, 'Evil one, go away!':Offer your soul and get a deal.:Put Holy Water on a weapon and attack.:Put on a Deviruchi hat.") == 3)
+			if (select("大喊「邪惡之物，滾開！」:獻上靈魂做交易。:將聖水塗在武器上再攻擊。:戴上小惡魔帽子。") == 3)
 				set .@cru_t,.@cru_t+10;
 		}
 		else {
-			mes "[Gabriel Valentine]";
-			mes "1. What level of 'Divine Protection' do you need to learn 'Demon Bane?'";
+			mes "[加布里爾·華倫泰]";
+			mes "1. 要學會「惡魔剋星」，需要「神聖守護」幾級？";
 			next;
-			if (select("Level 1:Level 2:Level 3:Level 4") == 3)
+			if (select("1級:2級:3級:4級") == 3)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "2. If your INT is 30, including INT bonuses from quipment, at level 55, how much HP does Level 5 Heal recover?";
+			mes "[加布里爾·華倫泰]";
+			mes "2. 若你 55 級時的智力為 30（含裝備提供的智力加成），5 級治癒術能回復多少 HP？";
 			next;
 			if (select("396:440:484:528") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "3. With Level 7 Divine Protection, by how much is your defense against the Undead increased?";
+			mes "[加布里爾·華倫泰]";
+			mes "3. 神聖守護 7 級時，對不死族的防禦會提升多少？";
 			next;
 			if (select("21:22:23:24") == 1)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "4. Which of the following spears can attack Nightmare, which is endowed with the Ghost attribute?";
+			mes "[加布里爾·華倫泰]";
+			mes "4. 以下哪種長矛能攻擊擁有幽靈屬性的惡夢？";
 			next;
-			if (select("Lance:Bill Guisarme:Cresent scythe:Zephyrus") == 4)
+			if (select("騎士長矛:修爾特長矛:新月鐮刀:風靈之矛") == 4)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "5. What level of 'Heal' do you need to learn 'Cure?'";
+			mes "[加布里爾·華倫泰]";
+			mes "5. 要學會「解除狀態」，需要「治癒術」幾級？";
 			next;
-			if (select("Level 1:Level 2:Level 3:Level 4") == 2)
+			if (select("1級:2級:3級:4級") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "6. What is the attack speed when Level 3 Cavalier Mastery is learned?";
+			mes "[加布里爾·華倫泰]";
+			mes "6. 學會 3 級騎乘精通時，攻擊速度是多少？";
 			next;
-			if (select("70 % of normal speed:80 % of normal speed:90 % of normal speed:100 % of normal speed") == 2)
+			if (select("正常速度的 70%:正常速度的 80%:正常速度的 90%:正常速度的 100%") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "7. Which of the following is not correct of the Demon Bane skill?";
+			mes "[加布里爾·華倫泰]";
+			mes "7. 以下關於惡魔剋星技能的敘述，哪項不正確？";
 			next;
-			if (select("Increase attack on Undead:Only Acolytes can learn the skill:When mastered, + 30 increase:Passive Skill") == 2)
+			if (select("提升對不死族的攻擊:只有見習祭司能學習此技能:精通時 +30 提升:被動技能") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "8. How much SP does Level 7 Heal use?";
+			mes "[加布里爾·華倫泰]";
+			mes "8. 7 級治癒術消耗多少 SP？";
 			next;
 			if (select("30:31:33:35") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "9. What status cannot be";
-			mes "cured with the Cure skill?";
+			mes "[加布里爾·華倫泰]";
+			mes "9. 以下哪種狀態無法";
+			mes "以解除狀態技能治癒？";
 			next;
-			if (select("Curse:Silence:Chaos:Blind") == 1)
+			if (select("詛咒:沉默:混亂:失明") == 1)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "10. What best describes a Crusader?";
+			mes "[加布里爾·華倫泰]";
+			mes "10. 下列哪一項最能形容十字軍？";
 			next;
-			if (select("One preparing for matrimony.:One preparing for the Holy War.:One preparing consummation.:One preparing potions.") == 2)
+			if (select("正在準備婚禮的人。:正在為聖戰做準備的人。:正在準備圓房的人。:正在準備藥水的人。") == 2)
 				set .@cru_t,.@cru_t+10;
 
 		}
-		mes "[Gabriel Valentine]";
-		mes "Good work~";
-		mes "Well, first let me";
-		mes "look at your results.";
+		mes "[加布里爾·華倫泰]";
+		mes "做得好~";
+		mes "那麼，先讓我";
+		mes "看看你的成績。";
 		next;
-		mes "[Gabriel Valentine]";
-		mes " " + strcharinfo(0) + "'s score";
-		mes "是 " + .@cru_t + " points...";
+		mes "[加布里爾·華倫泰]";
+		mes " " + strcharinfo(0) + "的分數";
+		mes "是 " + .@cru_t + " 分……";
 		if(.@cru_t == 100) {
 			set CRUS_Q, 8;
 			changequest 3011,3013;
-			mes "Superb! Now, it's time for";
-			mes "you to take the next test.";
+			mes "太棒了！現在是時候";
+			mes "讓你參加下一個測試了。";
 			next;
-			mes "[Gabriel Valentine]";
-			mes "Go to Prontera Castle";
-			mes "and meet Bliant Piyord.";
-			mes "I will inform him that";
-			mes "he will be testing you next.";
+			mes "[加布里爾·華倫泰]";
+			mes "前往普隆德拉城堡";
+			mes "去見布萊恩特·皮約德。";
+			mes "我會通知他";
+			mes "接下來由他來測試你。";
 			close;
 		}
 		else if(.@cru_t == 90) {
 			set CRUS_Q, 8;
 			changequest 3011,3013;
-			mes "Well done~ Now, it's time for";
-			mes "you to take the next test.";
+			mes "做得好~ 現在是時候";
+			mes "讓你參加下一個測試了。";
 			next;
-			mes "[Gabriel Valentine]";
-			mes "Go to Prontera Castle";
-			mes "and meet Bliant Piyord.";
-			mes "I will inform him that";
-			mes "he will be testing you next.";
+			mes "[加布里爾·華倫泰]";
+			mes "前往普隆德拉城堡";
+			mes "去見布萊恩特·皮約德。";
+			mes "我會通知他";
+			mes "接下來由他來測試你。";
 			close;
 		}
 		else if (.@cru_t == 80 && CRUS_Q == 7) {
 			set CRUS_Q,8;
 			changequest 3011,3013;
-			mes "Seems like you prepared a lot so I'll let you pass this time.";
-			mes "Hurry now and go take the next test.";
+			mes "看來你準備得很充分，這次就讓你通過吧。";
+			mes "快去參加下一個測試吧。";
 			next;
-			mes "[Gabriel Valentine]";
-			mes "Go to the Prontera Castle and meet Bliant Piyord.";
-			mes "I will inform him to prepare the next test.";
+			mes "[加布里爾·華倫泰]";
+			mes "前往普隆德拉城堡，去見布萊恩特·皮約德。";
+			mes "我會通知他準備下一個測試。";
 			close;
 		}
 		set CRUS_Q,7;
 		if(checkquest(3011) != -1) {
 			changequest 3011,3012;
 		}
-		mes "Hmmm... What a pity.";
-		mes "Go study some more and";
-		mes "take this test again, okay?";
+		mes "唉……真可惜。";
+		mes "再多用功一點，然後";
+		mes "再來參加一次測試，好嗎？";
 		next;
-		mes "[Gabriel Valentine]";
-		mes "Don't stress, you need to know a lot in order to pass this test. In any case, I'll be waiting right here. When you think you're ready, come back, alright?";
+		mes "[加布里爾·華倫泰]";
+		mes "別緊張，要通過這個測試，你必須懂很多。不管怎樣，我都會在這裡等你。覺得自己準備好了，再回來，好嗎？";
 		close;
 	} 
 	else if(CRUS_Q == 8 || CRUS_Q == 9) {
-		mes "Like I mentioned before, you should go to Prontera Castle and meet with Bliant Piyord to take your next test. Good luck, and become a Crusder soon, alright?";
+		mes "我之前說過，你應該前往普隆德拉城堡，去見布萊恩特·皮約德參加下一個測試。祝你好運，早日成為十字軍，好嗎？";
 		close;
 	}
 	else if(CRUS_Q == 10) {
-		mes "What are you still doing here? You've already completed all the tests. Go talk to our leader, you're pretty much ready to become a Crusader now.";
+		mes "你還在這裡做什麼？所有測試你都已經完成了。去找我們的領袖談談吧，你現在幾乎已經準備好成為十字軍了。";
 		next;
-		mes "[Gabriel Valentine]";
-		mes "You will soon join us in our preparations for the Holy War. Continue to live with faith after becoming a Crusader.";
+		mes "[加布里爾·華倫泰]";
+		mes "你很快就會加入我們，為聖戰做準備。成為十字軍之後，也要懷著信仰繼續生活。";
 		close;
 	}
 	mes "嗯……？";
-	mes "It seems that you're";
-	mes "an aspiring Crusader...";
-	mes "But, it's not my turn";
-	mes "to test you quite yet.";
+	mes "看來你是";
+	mes "一位有志成為十字軍的人……";
+	mes "不過，現在還不輪到我";
+	mes "來測試你。";
 	next;
-	mes "[Gabriel Valentine]";
-	mes "Finish those other tests,";
-	mes "and come to me once you're";
-	mes "instructed. Until then,";
-	mes "I'll see you later~";
+	mes "[加布里爾·華倫泰]";
+	mes "先完成其他測試，";
+	mes "等你";
+	mes "接到指示後再來找我。在那之前，";
+	mes "之後再見囉~";
 	close;
 }
 
 // Crusader: 4th Purification Test
 //============================================================
 -	script	Patron Knight_	-1,{
-	mes "[Bliant Piyord]";
+	mes "[布萊恩特·皮約德]";
 	mes "歡迎。";
 	if(BaseJob != Job_Swordman) {
 		if(BaseJob == Job_Crusader) {
-			mes "How goes";
-			mes "your training?";
+			mes "進展";
+			mes "如何？訓練還順利嗎？";
 			next;
-			mes "[Bliant Piyord]";
-			mes "Develop your faith. From faith springs strength and discipline. Day after day, train yourself and become a great Crusader.";
+			mes "[布萊恩特·皮約德]";
+			mes "培養你的信仰。力量與紀律源於信仰。日復一日地鍛鍊自己，成為偉大的十字軍。";
 			close;
 		}
 		else if(BaseJob == Job_Novice) {
-			mes "We are Crusaders,";
-			mes "warriors of holiness preparing for the great Holy War that is to come.";
+			mes "我們是十字軍，";
+			mes "神聖的戰士們，正在為即將到來的偉大聖戰做準備。";
 			next;
-			mes "[Bliant Piyord]";
-			mes "Are you interested";
-			mes "in becoming a Crusader?";
-			mes "We are always waiting";
-			mes "for more capable men and";
-			mes "women to join our ranks.";
+			mes "[布萊恩特·皮約德]";
+			mes "你有沒有興趣";
+			mes "想成為十字軍嗎？";
+			mes "我們一直在等待";
+			mes "更多有才能的男男女女";
+			mes "加入我們的行列。";
 			next;
-			mes "[Bliant Piyord]";
-			mes "Train as a Swordsman and come to us when you think you are ready. If you have been called by Odin to become a Crusader, that would be even better.";
+			mes "[布萊恩特·皮約德]";
+			mes "以劍士的身分鍛鍊，覺得自己準備好了就來找我們。如果你已受到奧丁的召喚要成為十字軍，那就更好了。";
 			close;
 		}
-		mes "We are Crusaders,";
-		mes "warriors of holiness preparing for the great Holy War that is to come.";
+		mes "我們是十字軍，";
+		mes "神聖的戰士們，正在為即將到來的偉大聖戰做準備。";
 		next;
-		mes "[Bliant Piyord]";
-		mes "Even in these relatively peaceful times, our training is ceaseless. We must be ready for the day with the tides of darkness shall rush against mankind...";
+		mes "[布萊恩特·皮約德]";
+		mes "即使在這相對和平的時代，我們的訓練也從未停歇。我們必須為黑暗之潮湧向人類的那一天做好準備……";
 		close;
 	}
 	else if(CRUS_Q == 0) {
-		mes "We are Crusaders,";
-		mes "warriors of holiness preparing for the great Holy War that is to come.";
+		mes "我們是十字軍，";
+		mes "神聖的戰士們，正在為即將到來的偉大聖戰做準備。";
 		next;
-		mes "[Bliant Piyord]";
-		mes "Are you interested";
-		mes "in becoming a Crusader?";
-		mes "We are always waiting";
-		mes "for more capable men and";
-		mes "women to join our ranks.";
+		mes "[布萊恩特·皮約德]";
+		mes "你有沒有興趣";
+		mes "想成為十字軍嗎？";
+		mes "我們一直在等待";
+		mes "更多有才能的男男女女";
+		mes "加入我們的行列。";
 		next;
-		mes "[Bliant Piyord]";
-		mes "To become a Crusader, you must train until you are Job Level 40. For more details, please speak with our leader inside.";
+		mes "[布萊恩特·皮約德]";
+		mes "要成為十字軍，你必須訓練到 Job 40 等。詳情請向裡面的領袖詢問。";
 		next;
-		mes "[Bliant Piyord]";
-		mes "May Odin";
-		mes "be with you...";
+		mes "[布萊恩特·皮約德]";
+		mes "願奧丁";
+		mes "與你同在……";
 		close;
 	}
 	else if(CRUS_Q == 8 || CRUS_Q == 9) {
 		if (CRUS_Q == 8) {
-			mes "It's nice";
-			mes "to meet you.";
-			mes "It is now time";
-			mes "for your final test.";
+			mes "很高興";
+			mes "見到你。";
+			mes "現在是時候";
+			mes "進行你的最後一個測試了。";
 			next;
-			mes "[Bliant Piyord]";
-			mes "My name is Bliant Piyord and I too, am preparing for the Holy War. It must've been quite a hassle to come all this way.";
+			mes "[布萊恩特·皮約德]";
+			mes "我叫布萊恩特·皮約德，我同樣正在為聖戰做準備。你一路走來一定很辛苦吧。";
 			next;
-			mes "[Bliant Piyord]";
-			mes "This test will gauge your skills in battle. Only those with great fighting ability can become Crusaders.";
+			mes "[布萊恩特·皮約德]";
+			mes "這個測試將考驗你的戰鬥技巧。只有具備卓越戰鬥能力的人，才能成為十字軍。";
 			next;
-			mes "[Bliant Piyord]";
-			mes "To take the battle test, bring";
-			mes "1 ^3355FFHoly Water^000000. This will be used to purify you prior to taking the test.";
+			mes "[布萊恩特·皮約德]";
+			mes "要參加戰鬥測試，請帶來";
+			mes "1 個 ^3355FF聖水^000000。測試前會用它來淨化你。";
 			if(checkquest(3013) != -1) {
 				changequest 3013,3014;
 			}
 			next;
-			mes "[Bliant Piyord]";
+			mes "[布萊恩特·皮約德]";
 			mes "那麼……";
-			mes "Shall we";
-			mes "begin right away?";
-			mes "Or do you need time";
-			mes "to prepare yourself?";
+			mes "我們要";
+			mes "馬上開始嗎？";
+			mes "還是你需要時間";
+			mes "做好準備？";
 		}
 		else {
-			mes "Are you prepared";
-			mes "for the test now?";
+			mes "你準備好了嗎";
+			mes "現在要參加測試嗎？";
 			next;
-			mes "[Bliant Piyord]";
-			mes "Would you like to begin now, or do you still need time to make preparations?";
+			mes "[布萊恩特·皮約德]";
+			mes "你想現在開始，還是還需要時間做準備？";
 		}
 		next;
-		if (select("I would like to begin.:Give me some time to prepare.") == 1) {
+		if (select("我想開始了。:請給我一點時間準備。") == 1) {
 			if(getequipid(EQI_ACC_L) != 2608 && getequipid(EQI_ACC_R) != 2608) {
-				mes "[Bliant Piyord]";
-				mes "Just a second, you do not have a Rosary equipped. As a Crusader, you must always have a Rosary on your person.";
+				mes "[布萊恩特·皮約德]";
+				mes "等一下，你沒有裝備幸運珠鏈。身為聖騎士，你必須隨時帶著幸運珠鏈。";
 				next;
-				mes "[Bliant Piyord]";
-				mes "Come back and take";
-				mes "the test after you";
-				mes "have a Rosary.";
+				mes "[布萊恩特·皮約德]";
+				mes "請回來參加";
+				mes "你的測驗，";
+				mes "在擁有幸運珠鏈之後。";
 				close;
 			}
 			else if(countitem(523) < 1) {
-				mes "[Bliant Piyord]";
-				mes "For the battle test, please prepare one ^3355FFHoly water^000000.";
-				mes "I told you just to purify the candidates.";
+				mes "[布萊恩特·皮約德]";
+				mes "請準備一瓶 ^3355FF聖水^000000 作為戰鬥測驗之用。";
+				mes "我只說過要你淨化候選人。";
 				next;
-				mes "[Bliant Piyord]";
-				mes "Get prepares and come back to here.";
-				mes "I will wait for you.";
+				mes "[布萊恩特·皮約德]";
+				mes "準備好就回到這裡來。";
+				mes "我會在這裡等你。";
 				close;
 			}
 			delitem 523, 1; //Holy Water
-			mes "[Bliant Piyord]";
-			mes "Then, I'll start";
-			mes "the test. You will";
-			mes "be purified with the";
-			mes "Holy Water you prepared.";
+			mes "[布萊恩特·皮約德]";
+			mes "那麼，我將開始";
+			mes "測驗。你將會";
+			mes "以";
+			mes "你準備的聖水淨化。";
 			next;
-			mes "[Bliant Piyord]";
+			mes "[布萊恩特·皮約德]";
 			mes "...............";
 			next;
-			mes "[Bliant Piyord]";
-			mes "Let's begin.";
-			mes "Go and enter";
-			mes "the waiting room.";
-			mes "Defeat the monsters";
-			mes "that appear in";
-			mes "the 4 stages.";
+			mes "[布萊恩特·皮約德]";
+			mes "我們開始吧。";
+			mes "前往進入";
+			mes "等候室。";
+			mes "擊敗";
+			mes "出現在";
+			mes "四個階段中的怪物。";
 			close2;
 			warp "job_cru",24,169;
 			end;
 		}
-		mes "[Bliant Piyord]";
-		mes "Prepare 1 ^3355FFHoly Water^000000 to take the battle test. As I've said, it will be used to purify you prior to taking the test.";
+		mes "[布萊恩特·皮約德]";
+		mes "請準備 1 瓶 ^3355FF聖水^000000 參加戰鬥測驗。如同我之前說過的，它會在測驗前用來淨化你。";
 		next;
-		mes "[Bliant Piyord]";
-		mes "Come back and take";
-		mes "the test after you";
-		mes "have prepared";
-		mes "1 Holy Water.";
-		mes "I shall be";
+		mes "[布萊恩特·皮約德]";
+		mes "請回來參加";
+		mes "你的測驗，";
+		mes "已經準備好";
+		mes "1 瓶聖水。";
+		mes "我會在";
 		mes "waiting.";
 		close;
 	} 
 	else if(CRUS_Q == 10) {
 		mes "恭喜。";
-		mes "You have completed";
-		mes "all the tests to";
-		mes "become a Crusader.";
+		mes "你已完成";
+		mes "所有";
+		mes "成為聖騎士的測驗。";
 		next;
-		mes "[Bliant Piyord]";
-		mes "Go talk to our";
-		mes "leader inside.";
-		mes "We welcome you into";
-		mes "the ranks of those";
-		mes "preparing for the";
-		mes "coming Holy War.";
+		mes "[布萊恩特·皮約德]";
+		mes "去找我們";
+		mes "在裡面的領袖。";
+		mes "歡迎你加入";
+		mes "這群";
+		mes "為即將到來的";
+		mes "聖戰做準備的戰士。";
 		close;
 	}
-	mes "Are you not one of the ones in the process of becoming a Crusader?";
+	mes "你不是正在成為聖騎士的人之一嗎？";
 	next;
-	mes "[Bliant Piyord]";
-	mes "It's not your turn";
-	mes "to take my test yet.";
-	mes "Come back after taking";
-	mes "all the other tests.";
+	mes "[布萊恩特·皮約德]";
+	mes "還沒輪到你";
+	mes "參加我的測驗。";
+	mes "請在參加";
+	mes "完其他所有測驗後再回來。";
 	next;
-	mes "[Bliant Piyord]";
-	mes "I'll see you soon.";
-	mes "May Odin's blessings";
-	mes "be with you.";
+	mes "[布萊恩特·皮約德]";
+	mes "我們很快會再見。";
+	mes "願奧丁的祝福";
+	mes "與你同在。";
 	close;
 }
 
@@ -1207,24 +1207,24 @@ OnDead:
 //----------------------------------------------------------------------------
 // Purification Test
 //----------------------------------------------------------------------------
-job_cru,24,187,4	script	Patron Knight#2	751,{
-	mes "[Bliant Piyord]";
+job_cru,24,187,4	script	守護騎士#2::Patron Knight#2	751,{
+	mes "[布萊恩特·皮約德]";
 	mes "歡迎。";
-	mes "You will take";
-	mes "the last test here.";
-	mes "If you are ready for";
-	mes "the test, enter the";
-	mes "waiting room.";
+	mes "你將參加";
+	mes "這裡的最後一項測驗。";
+	mes "如果你準備好";
+	mes "參加測驗，就進入";
+	mes "等候室。";
 	next;
-	mes "[Bliant Piyord]";
-	mes "Only one person can take the test at a time. If someone else is already testing, please wait until the testing area is made available once again.";
+	mes "[布萊恩特·皮約德]";
+	mes "每次只能有一人參加測驗。如果有其他人正在測驗，請等到測驗區再次開放。";
 	next;
-	mes "[Bliant Piyord]";
-	mes "Each person will get 4 minutes to complete the test. If you wish to leave in the middle of the test, please disconnect from the game.";
+	mes "[布萊恩特·皮約德]";
+	mes "每人有 4 分鐘完成測驗。如果你想在測驗中途離開，請直接斷線。";
 	close;
 }
 
-job_cru,24,187,2	script	Waiting Room#cr1	700,{
+job_cru,24,187,2	script	等候室#cr1::Waiting Room#cr1	700,{
 	end;
 
 OnInit:
@@ -1245,22 +1245,22 @@ OnStart:
 	end;
 }
 
-job_cru,168,17,0	script	Zombie Guide	-1,2,2,{
+job_cru,168,17,0	script	腐屍嚮導::Zombie Guide	-1,2,2,{
 OnTouch_:
-	mes "[Bliant Piyord]";
-	mes "Go forth and defeat all";
-	mes "the monsters that appear.";
-	mes "You will not pass if any";
-	mes "are remaining.";
+	mes "[布萊恩特·皮約德]";
+	mes "出發，擊敗所有";
+	mes "出現的怪物。";
+	mes "若仍剩下任何";
+	mes "怪物，你將不會通過。";
 	next;
-	mes "[Bliant Piyord]";
-	mes "You will be given";
-	mes "4 minutes. Go forth";
-	mes "and do your best...";
+	mes "[布萊恩特·皮約德]";
+	mes "你將獲得";
+	mes "4 分鐘。出發吧";
+	mes "並全力以赴……";
 	close;
 }
 
-job_cru,2,1,1	script	Monster Summon#cr0	-1,{
+job_cru,2,1,1	script	怪物召喚#cr0::Monster Summon#cr0	-1,{
 OnInit:
 	disablenpc "Monster Summon#cr0";
 	end;
@@ -1312,7 +1312,7 @@ OnReset:
 	end;
 }
 
-job_cru,168,45,0	script	Monster Summon#cr1	-1,15,1,{
+job_cru,168,45,0	script	怪物召喚#cr1::Monster Summon#cr1	-1,15,1,{
 OnInit:
 	disablenpc "Monster Summon#cr1";
 	end;
@@ -1331,7 +1331,7 @@ OnEnd:
 	end;
 }
 
-job_cru,168,80,0	script	Monster Summon#cr2	-1,15,1,{
+job_cru,168,80,0	script	怪物召喚#cr2::Monster Summon#cr2	-1,15,1,{
 OnInit:
 	disablenpc "Monster Summon#cr2";
 	end;
@@ -1350,7 +1350,7 @@ OnEnd:
 	end;
 }
 
-job_cru,165,115,0	script	Monster Summon#cr3	-1,15,1,{
+job_cru,165,115,0	script	怪物召喚#cr3::Monster Summon#cr3	-1,15,1,{
 OnInit:
 	disablenpc "Monster Summon#cr3";
 	end;
@@ -1369,7 +1369,7 @@ OnEnd:
 	end;
 }
 
-job_cru,168,150,0	script	Monster Summon#cr4	-1,15,1,{
+job_cru,168,150,0	script	怪物召喚#cr4::Monster Summon#cr4	-1,15,1,{
 OnInit:
 	disablenpc "Monster Summon#cr4";
 	end;
@@ -1397,13 +1397,13 @@ OnEnd:
 
 }
 
-job_cru,168,150,0	script	Monster Summon#cr4-a	-1,{
+job_cru,168,150,0	script	怪物召喚#cr4-a::Monster Summon#cr4-a	-1,{
 OnDead:
 	donpcevent "Monster Summon#cr5::OnStart";
 	end;
 }
 
-job_cru,2,2,1	script	Monster Summon#cr6	-1,{
+job_cru,2,2,1	script	怪物召喚#cr6::Monster Summon#cr6	-1,{
 OnTimer241000:
 	areawarp "job_cru",160,14,175,178,"job_cru",24,169;
 	donpcevent "Monster Summon#cr0::OnReset";

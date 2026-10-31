@@ -15,70 +15,70 @@
 //= 1.3 Now saves/restores all the quest skills [Lupus]
 //============================================================ 
 
-valkyrie,44,39,5	script	Lord Knight#Valkyrie	56,{
+valkyrie,44,39,5	script	騎士領主#Valkyrie::Lord Knight#Valkyrie	56,{
 	if (ADVJOB == 0 || Upper != 1) {
 		set .@karma_d,rand(1,10);
 		if (.@karma_d > 4) {
-			mes "[Lord Knight]";
+			mes "[騎士領主]";
 			mes "恭喜。";
-			mes "Honor to the warriors!";
+			mes "向勇士致敬！";
 			close;
 		}
-		mes "[Lord Knight]";
-		mes "We Knights have an";
-		mes "awesome responsibility...";
-		mes "To serve and protect.";
+		mes "[騎士領主]";
+		mes "我們騎士肩負著一份";
+		mes "重大的責任……";
+		mes "守護與效忠。";
 		next;
-		mes "[Lord Knight]";
-		mes "Even at the cost";
-		mes "of our own lives,";
-		mes "we must safeguard the";
-		mes "well being of our comrades.";
+		mes "[騎士領主]";
+		mes "即使付出";
+		mes "自己的性命，";
+		mes "我們也必須守護";
+		mes "夥伴們的安危。";
 		close;
 	}
 	else if (ADVJOB == Job_Lord_Knight && Class == Job_Swordman_High && JobLevel > 39) {
-		mes "[Lord Knight]";
-		mes "Your time has come!";
-		mes "The world still needs you.";
-		mes "Please continue your life";
-		mes "as a hero with a new appearance.";
+		mes "[騎士領主]";
+		mes "你的時機已到！";
+		mes "世界依然需要你。";
+		mes "請以";
+		mes "嶄新的姿態，繼續作為英雄而活。";
 		next;
-		mes "[Lord Knight]";
+		mes "[騎士領主]";
 		mes "你想要";
-		mes "to become a Lord Knight?";
+		mes "想成為騎士領主嗎？";
 		next;
-		if (select("No.:Yes.") == 1) {
-			mes "[Lord Knight]";
-			mes "When you're ready,";
-			mes "feel free to come back.";
-			mes "Honor to the warriors!";
+		if (select("不。:是的。") == 1) {
+			mes "[騎士領主]";
+			mes "準備好的時候，";
+			mes "隨時歡迎再回來。";
+			mes "向勇士致敬！";
 			close;
 		}
 		if (SkillPoint) {
-			mes "[Lord Knight]";
-			mes "It is still possible for you to learn more skills. Please use";
-			mes "all of your remaining Skill Points before returning to me.";
+			mes "[騎士領主]";
+			mes "你仍然可以學習更多技能。請先使用";
+			mes "剩餘的技能點數，再回來找我。";
 			close;
 		}
 		jobchange Job_Lord_Knight;
 		set ADVJOB,0;
-		mes "[Lord Knight]";
+		mes "[騎士領主]";
 		mes "恭喜！";
-		mes "As a Lord Knight,";
-		mes "I hope that you will be";
-		mes "at the forefront of battle,";
-		mes "and lead your allies to victory!";
+		mes "身為騎士領主，";
+		mes "我希望你能站";
+		mes "在戰場的最前線，";
+		mes "帶領你的夥伴贏得勝利！";
 		close;
 	}
-	mes "[Lord Knight]";
+	mes "[騎士領主]";
 	mes "歡迎";
-	mes "to Valhalla,";
-	mes "the Hall of Honor.";
+	mes "前往瓦爾哈拉，";
+	mes "榮譽大廳。";
 	next;
-	mes "[Lord Knight]";
-	mes "Please make";
-	mes "yourself comfortable";
-	mes "while you are here.";
-	mes "Honor to the warriors!";
+	mes "[騎士領主]";
+	mes "請您";
+	mes "放輕鬆，";
+	mes "在此期間請隨意休息。";
+	mes "向勇士致敬！";
 	close;
 }

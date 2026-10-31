@@ -15,73 +15,73 @@
 //= 1.3 Now saves/restores all the quest skills [Lupus]
 //============================================================ 
 
-valkyrie,53,42,3	script	Champion#Valkyrie	52,{
+valkyrie,53,42,3	script	冠軍#Valkyrie::Champion#Valkyrie	52,{
 	if (ADVJOB == 0 || Upper != 1) {
 		set .@karma_d,rand(1,10);
 		if (.@karma_d > 4) {
-			mes "[Champion]";
+			mes "[冠軍]";
 			mes "恭喜。";
-			mes "Honor to the warriors!";
+			mes "向勇士致敬！";
 			close;
 		}
-		mes "[Champion]";
-		mes "Skill.";
-		mes "Speed.";
-		mes "Strength.";
-		mes "Agility.";
+		mes "[冠軍]";
+		mes "技巧。";
+		mes "速度。";
+		mes "力量。";
+		mes "敏捷。";
 		next;
-		mes "[Champion]";
-		mes "A Champion can";
-		mes "benefit from all";
-		mes "these things. But";
-		mes "one can only master";
-		mes "so much in life...";
+		mes "[冠軍]";
+		mes "冠軍能夠";
+		mes "從這一切中";
+		mes "獲得益處。然而";
+		mes "人生中一個人只能精通";
+		mes "這麼多東西……";
 		close;
 	}
 	else if (ADVJOB == Job_Champion && Class == Job_Acolyte_High && JobLevel > 39) {
-		mes "[Champion]";
-		mes "It's time.";
-		mes "Time for great heroes";
-		mes "to stand up against the";
-		mes "forces of evil which plague";
-		mes "the world of Midgard!";
+		mes "[冠軍]";
+		mes "是時候了。";
+		mes "偉大的英雄們，";
+		mes "起身對抗";
+		mes "那些肆虐的邪惡勢力，";
+		mes "正在侵擾米德加德世界！";
 		next;
-		mes "[Champion]";
+		mes "[冠軍]";
 		mes "你想要";
-		mes "to become a Champion?";
+		mes "想成為冠軍嗎？";
 		next;
-		if (select("No.:Yes.") == 1) {
-			mes "[Champion]";
-			mes "When you're ready,";
-			mes "feel free to come back.";
-			mes "Honor to the warriors!";
+		if (select("不。:是的。") == 1) {
+			mes "[冠軍]";
+			mes "準備好的時候，";
+			mes "隨時歡迎再回來。";
+			mes "向勇士致敬！";
 			close;
 		}
 		if (SkillPoint) {
-			mes "[Champion]";
-			mes "It is still possible for you to learn more skills. Please use";
-			mes "all of your remaining Skill Points before returning to me.";
+			mes "[冠軍]";
+			mes "你仍然可以學習更多技能。請先使用";
+			mes "剩餘的技能點數，再回來找我。";
 			close;
 		}
 		jobchange Job_Champion;
 		set ADVJOB,0;
-		mes "[Champion]";
+		mes "[冠軍]";
 		mes "恭喜！";
-		mes "Live as a Champion,";
-		mes "and bring light into";
-		mes "the world through the";
-		mes "strength of your fists.";
+		mes "成為冠軍，";
+		mes "為";
+		mes "世界帶來光明，透過";
+		mes "你雙拳的力量。";
 		close;
 	}
-	mes "[Champion]";
+	mes "[冠軍]";
 	mes "歡迎";
-	mes "to Valhalla,";
-	mes "the Hall of Honor.";
+	mes "前往瓦爾哈拉，";
+	mes "榮譽大廳。";
 	next;
-	mes "[Champion]";
-	mes "Please make";
-	mes "yourself comfortable";
-	mes "while you are here.";
-	mes "Honor to the warriors!";
+	mes "[冠軍]";
+	mes "請您";
+	mes "放輕鬆，";
+	mes "在此期間請隨意休息。";
+	mes "向勇士致敬！";
 	close;
 }

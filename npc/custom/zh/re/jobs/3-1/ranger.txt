@@ -24,48 +24,48 @@
 //= 1.7 Added VIP features. [Euphy]
 //============================================================
 
-tur_dun01,156,36,5	script	Survival Instructor#jr01	59,{
-	mes "[Survival Instructor, Rescue]";
+tur_dun01,156,36,5	script	生存教官#jr01::Survival Instructor#jr01	59,{
+	mes "[生存教官, 救援]";
 	if (BaseJob == Job_Hunter) {
 		if (job_ranger01 < 1) {
-			mes "eeeeei~ ha!";
-			mes "The weather is really great.";
+			mes "咿~哈！";
+			mes "今天天氣真好。";
 			next;
-			mes "[Survival Instructor, Rescue]";
+			mes "[生存教官, 救援]";
 			mes "怎麼了？";
-			mes "The monsters here are a";
-			mes "little tough so be careful.";
+			mes "這裡的怪物有點";
+			mes "難纏，所以要小心。";
 			next;
-			if(select("I came here to become to a Ranger.:I just came to look around.") == 2) {
-				mes "[Survival Instructor, Rescue]";
-				mes "Oh ya?";
-				mes "The weather is really great. Shall we take a picture to commemorate it?";
+			if(select("我是來成為遊俠的。:我只是來看看。") == 2) {
+				mes "[生存教官, 救援]";
+				mes "是嗎？";
+				mes "天氣真好。要不要拍張照留念？";
 				next;
-				mes "[Survival Instructor, Rescue]";
+				mes "[生存教官, 救援]";
 				mes "不要嗎？";
-				mes "Then just look around quietly and then go back.";
+				mes "那就安靜地看看，然後回去吧。";
 				close;
 			}
-			mes "[Survival Instructor, Rescue]";
+			mes "[生存教官, 救援]";
 			mes "啥？";
-			mes "How did you find me?";
+			mes "你是怎麼找到我的？";
 			next;
-			mes "[Survival Instructor, Rescue]";
-			mes "Well, it's a passing mark that you recognize me... let me see.";
+			mes "[生存教官, 救援]";
+			mes "嗯，你能認出我，算你及格了……讓我看看。";
 			next;
 			if (BaseLevel < 99 || JobLevel < 50) {
-				mes "[Survival Instructor, Rescue]";
+				mes "[生存教官, 救援]";
 				mes "不要。";
-				mes "I can tell just by looking at you that you seem to be inexperienced.";
+				mes "只看你一眼就知道，你似乎還很缺乏經驗。";
 				next;
-				mes "[Survival Instructor, Rescue]";
-				mes "Have more pride in your job and get more experience, and then when you grow as a Hunter or a Sniper you can make an aura by yourself, please come back again.";
+				mes "[生存教官, 救援]";
+				mes "請對你的職業更有自信，多累積些經驗。等你成長為獵人或狙擊手，能自己製造光環時，請再來找我。";
 				close;
 			}
-			mes "[Survival Instructor, Rescue]";
-			mes "Ok!";
+			mes "[生存教官, 救援]";
+			mes "好！";
 			mes "看起來您";
-			mes "enough experience.";
+			mes "足夠的經驗。";
 			next;
 			if (VIP_SCRIPT) {
 				callfunc "VIP_Third_Class";
@@ -73,52 +73,52 @@ tur_dun01,156,36,5	script	Survival Instructor#jr01	59,{
 				setquest 8254;
 				next;
 			}
-			mes "[Survival Instructor, Rescue]";
+			mes "[生存教官, 救援]";
 			mes "很好。";
-			mes "First of all, let me tell you the job change qualifications to be a Ranger.";
+			mes "首先，讓我告訴你成為遊俠的轉職資格。";
 			next;
-			mes "[Survival Instructor, Rescue]";
-			mes "I've already checked the first qualification that you've experienced enough to make an aura as a Hunter or a Sniper.";
+			mes "[生存教官, 救援]";
+			mes "我已經確認了第一項資格：你身為獵人或狙擊手，已累積足夠的經驗來製造光環。";
 			next;
-			mes "[Survival Instructor, Rescue]";
-			mes "For the second qualification to judge one's ability exactly, you need to lighten your body and mind.";
+			mes "[生存教官, 救援]";
+			mes "第二項資格是為了準確判斷你的能力，你需要讓身心輕盈起來。";
 			next;
 			if (Class == Job_Hunter || Class == Job_Baby_Hunter) {
-				mes "[Survival Instructor, Rescue]";
-				mes "Ah wait, before that.";
-				mes "When you change a job into a Ranger from a Hunter,";
-				mes "you won't get any chance to learn the skills of a Sniper, would that be okay?";
+				mes "[生存教官, 救援]";
+				mes "啊，等等，在那之前。";
+				mes "當你從獵人轉職為遊俠時，";
+				mes "你將無法再有機會學習狙擊手的技能，這樣可以嗎？";
 				next;
-				switch(select("I'll think about it more.:I want to be a Ranger already.")) {
+				switch(select("我再考慮一下。:我已經想成為遊俠了。")) {
 				case 1:
-					mes "[Survival Instructor, Rescue]";
+					mes "[生存教官, 救援]";
 					mes "好的。";
-					mes "Take your time to think, if it's okay then come back.";
+					mes "慢慢想，想好了再回來。";
 					close;
 				case 2:
-					mes "[Survival Instructor, Rescue]";
-					mes "All right.";
-					mes "You are ready then.";
+					mes "[生存教官, 救援]";
+					mes "好吧。";
+					mes "那麼你準備好了。";
 					next;
 				}
-				mes "[Survival Instructor, Rescue]";
-				mes "Well let's continue our conversation.";
-				mes "Before you change into a Ranger, even though you reached the highest level of a Hunter, it is not the best evaluation of your abilities.";
+				mes "[生存教官, 救援]";
+				mes "那麼我們繼續談吧。";
+				mes "在你轉職為遊俠之前，即使你已達到獵人的最高等級，也不是評估你能力的最佳標準。";
 				next;
-				mes "[Survival Instructor, Rescue]";
-				mes "So in order to check your abilities, I'll need to evaluate your pure abilities.~";
+				mes "[生存教官, 救援]";
+				mes "所以為了檢驗你的能力，我需要評估你的純粹實力~";
 				next;
 			} else {
-				mes "[Survival Instructor, Rescue]";
-				mes "Before you change into a Ranger, even though you reached the highest level of a Sniper, it is not the best evaluation of your abilities.";
+				mes "[生存教官, 救援]";
+				mes "在你轉職為遊俠之前，即使你已達到狙擊手的最高等級，也不是評估你能力的最佳標準。";
 				next;
-				mes "[Survival Instructor]";
-				mes "So in order to check your abilities, I'll need to evaluate your pure abilities.~";
+				mes "[生存教官]";
+				mes "所以為了檢驗你的能力，我需要評估你的純粹實力~";
 				next;
 			}
-			mes "[Survival Instructor, Rescue]";
-			mes "To do this you need to be cleansed of body and soul.";
-			mes "Make sure that your weight equals '0' to continue.";
+			mes "[生存教官, 救援]";
+			mes "要做到這一點，你需要身心都得到淨化。";
+			mes "請確認你的負重為「0」才能繼續。";
 			set job_ranger01,1;
 			setquest 8254;
 			close2;
@@ -126,82 +126,82 @@ tur_dun01,156,36,5	script	Survival Instructor#jr01	59,{
 			end;
 		} else if (job_ranger01 == 1) {
 			if (Weight < 1) {
-				mes "Wow, you've come back so quickly.";
+				mes "哇，你回來得這麼快。";
 				next;
-				mes "[Survival Instructor, Rescue]";
-				mes "Ok, now I'll talk about the requirements to take the test to become a Ranger.";
+				mes "[生存教官, 救援]";
+				mes "好，現在我來說明成為遊俠的測驗要求。";
 				next;
-				mes "[Survival Instructor, Rescue]";
-				mes "All the tests to become a Ranger are going to be done with practical means.";
+				mes "[生存教官, 救援]";
+				mes "成為遊俠的所有測驗都將以實戰方式進行。";
 				next;
-				mes "[Survival Instructor, Rescue]";
-				mes "Will there be a written test?";
+				mes "[生存教官, 救援]";
+				mes "會有筆試嗎？";
 				next;
-				mes "[Survival Instructor, Rescue]";
-				mes "Why do you want one?";
-				mes "The most important part of this test is the test of your experience on the battlefield.";
+				mes "[生存教官, 救援]";
+				mes "你為什麼想要筆試？";
+				mes "這項測驗最重要的部分，是檢驗你在戰場上的經驗。";
 				next;
-				mes "[Survival Instructor, Rescue]";
-				mes "Therefore, what I request of you is to prove your power of survival.";
+				mes "[生存教官, 救援]";
+				mes "因此，我要求你證明你的生存能力。";
 				next;
-				mes "[Survival Instructor, Rescue]";
-				mes "I want to see the real power of survival, even if you fall down and get beat up.";
+				mes "[生存教官, 救援]";
+				mes "即使你倒下、被打得遍體鱗傷，我也想看到你真正的生存之力。";
 				next;
-				mes "[Survival Instructor, Rescue]";
-				mes "If you succeed with this survival power test, you will receive the first qualification.";
+				mes "[生存教官, 救援]";
+				mes "如果你通過這項生存能力測驗，就能取得第一項資格。";
 				next;
-				mes "[Survival Instructor, Rescue]";
-				mes "Well, let's talk about the details when you get the qualification for taking the test.";
-				mes "When you want to take the survival power test, please talk to me again.";
+				mes "[生存教官, 救援]";
+				mes "那麼，等你取得參加測驗的資格時，我們再談細節吧。";
+				mes "當你想參加生存能力測驗時，請再來跟我說話。";
 				set job_ranger01,2;
 				changequest 8254,8255;
 				close;
 			}
-			mes "Before you change into a Ranger, I'll need to evaluate your pure abilities.";
+			mes "在你轉職為遊俠之前，我需要評估你的純粹實力。";
 			next;
-			mes "[Survival Instructor, Rescue]";
-			mes "To do this you need to be cleansed of body and soul.";
-			mes "Make sure that your weight equals 0 to continue.";
+			mes "[生存教官, 救援]";
+			mes "要做到這一點，你需要身心都得到淨化。";
+			mes "請確認你的負重為 0 才能繼續。";
 			close;
 		} else if (job_ranger01 == 2) {
 			if (Weight < 1) {
-				mes "Um. That you talked to me again means that you are determined to change into a Ranger and take the survival power test.";
+				mes "嗯。你再來找我，表示你已下定決心要轉職為遊俠並參加生存能力測驗。";
 				next;
-				if(select("I'll think about it more:I'll take the test") == 1) {
-					mes "[Survival Instructor, Rescue]";
-					mes "Prepare yourself very well before taking this test.";
+				if(select("我再考慮一下:我要參加測驗") == 1) {
+					mes "[生存教官, 救援]";
+					mes "參加這項測驗前，請做好充分準備。";
 					next;
-					mes "[Survival Instructor, Rescue]";
-					mes "Think about it well and come back.";
+					mes "[生存教官, 救援]";
+					mes "好好想清楚再回來。";
 					close;
 				}
-				mes "[Survival Instructor, Rescue]";
-				mes "If you are determined, then there's nothing to wait for.";
+				mes "[生存教官, 救援]";
+				mes "既然你已下定決心，那就沒什麼好等的了。";
 				next;
-				mes "[Survival Instructor, Rescue]";
-				mes "I'll explain it simply.";
-				mes "What I'm going to provide you is 10 Fly Wings, 500 of Arrows and 1 test Bow.";
+				mes "[生存教官, 救援]";
+				mes "我簡單說明一下。";
+				mes "我會給你 10 個蒼蠅翅膀、500 支箭和 1 把測驗用的弓。";
 				next;
-				mes "[Survival Instructor, Rescue]";
-				mes "Take the provided items and all you have to do for the survival power test is ^0000ffgo to the Northwestern area of Turtle Island and find Instructor Teardrop^000000.";
-				mes "Easy, right?";
+				mes "[生存教官, 救援]";
+				mes "拿好這些道具，生存能力測驗你要做的就是^0000ff前往烏龜島的西北方區域，找到眼淚教官^000000。";
+				mes "很簡單吧？";
 				next;
-				mes "[Survival Instructor, Rescue]";
-				mes "Remember that you don't have any other equipment on, so be careful of the monsters.";
-				mes "Ready to start?";
+				mes "[生存教官, 救援]";
+				mes "記住，你身上沒有其他裝備，所以要小心怪物。";
+				mes "準備好開始了嗎？";
 				next;
-				if(select("Wait a second:Yes, I'm ready") == 1) {
-					mes "[Survival Instructor, Rescue]";
-					mes "What kind of preparation can be so long.";
+				if(select("等一下:是的，我準備好了") == 1) {
+					mes "[生存教官, 救援]";
+					mes "什麼樣的準備需要這麼久。";
 					next;
-					mes "[Survival Instructor, Rescue]";
-					mes "Come again when you are absolutely ready.";
+					mes "[生存教官, 救援]";
+					mes "等你完全準備好了再來。";
 					close;
 				}
-				mes "[Survival Instructor, Rescue]";
-				mes "Well, then let's start.";
-				mes "There's no time to hesitate.";
-				mes "Do your best.";
+				mes "[生存教官, 救援]";
+				mes "那麼，我們開始吧。";
+				mes "沒有時間猶豫了。";
+				mes "盡力而為吧。";
 				set job_ranger01,3;
 				changequest 8255,8256;
 				getitem 1703,1; //Bow__
@@ -209,465 +209,465 @@ tur_dun01,156,36,5	script	Survival Instructor#jr01	59,{
 				getitem 1750,500; //Arrow
 				close;
 			}
-			mes "I knew it.";
+			mes "我就知道。";
 			next;
-			mes "[Survival Instructor, Rescue]";
-			mes "Why did you bring so much?";
-			mes "It's good that you do your best on the job change but, the key to this test is to test our true abilities...";
+			mes "[生存教官, 救援]";
+			mes "你為什麼帶這麼多東西？";
+			mes "你為轉職盡力是好事，但這項測驗的關鍵，是檢驗我們真正的能力……";
 			next;
-			mes "[Survival Instructor, Rescue]";
-			mes "If you don't make your weight 0, you wouldn't be able to take the test.";
+			mes "[生存教官, 救援]";
+			mes "如果你的負重不是 0，就無法參加測驗。";
 			close;
 		} else if (job_ranger01 == 3) {
-			mes "Umm?";
-			mes "What are you waiting for?";
+			mes "嗯？";
+			mes "你在等什麼？";
 			next;
-			if(select("Tell me the mission again.:I just wanted to talk.") == 1) {
-				mes "[Survival Instructor, Rescue]";
-				mes "Oh, ya.";
-				mes "Is this the mind of a person who's going to take the test?";
+			if(select("再跟我說一次任務。:我只是想聊聊。") == 1) {
+				mes "[生存教官, 救援]";
+				mes "喔，對。";
+				mes "這是要參加測驗的人該有的心態嗎？";
 				next;
-				mes "[Survival Instructor, Rescue]";
-				mes "Stay alert and listen.";
+				mes "[生存教官, 救援]";
+				mes "保持警覺，仔細聽好。";
 				next;
-				mes "[Survival Instructor, Rescue]";
-				mes "Take the provided items and all you have to do for the survival power test is ^0000ffgo to the Northwestern area of Turtle Island and find Instructor Teardrop^000000.";
-				mes "Isn't that so easy?";
+				mes "[生存教官, 救援]";
+				mes "拿好這些道具，生存能力測驗你要做的就是^0000ff前往烏龜島的西北方區域，找到眼淚教官^000000。";
+				mes "不是很簡單嗎？";
 				next;
-				mes "[Survival Instructor, Rescue]";
-				mes "As you don't have any equipment on, be careful of the monsters in the field.";
-				mes "Well, shall we start?";
+				mes "[生存教官, 救援]";
+				mes "你身上沒有任何裝備，要小心場上的怪物。";
+				mes "那麼，我們開始好嗎？";
 				next;
-				if(select("Wait a minute:I will start") == 1) {
-					mes "[Survival Instructor, Rescue]";
-					mes "What kind of preparation can be so long.";
+				if(select("等一下:我要開始") == 1) {
+					mes "[生存教官, 救援]";
+					mes "什麼樣的準備需要這麼久。";
 					next;
-					mes "[Survival Instructor, Rescue]";
-					mes "Come again when you are absolutely ready.";
+					mes "[生存教官, 救援]";
+					mes "等你完全準備好了再來。";
 					close;
 				}
-				mes "[Survival Instructor, Rescue]";
-				mes "Okay, let's start.";
-				mes "There's no time to hesitate, so do your best.";
+				mes "[生存教官, 救援]";
+				mes "好，我們開始吧。";
+				mes "沒有時間猶豫了，盡力而為吧。";
 				close;
 			}
-			mes "[Survival Instructor, Rescue]";
-			mes "I don't think you have the time for that.";
+			mes "[生存教官, 救援]";
+			mes "我看你沒那個時間了。";
 			next;
-			mes "[Survival Instructor, Rescue]";
-			mes "Hurry up and finish the test.";
+			mes "[生存教官, 救援]";
+			mes "快點完成測驗。";
 			close;
 		} else if (job_ranger01 > 3 && job_ranger01 < 7) {
-			mes "Are you still wandering about here?";
+			mes "你還在這裡晃來晃去嗎？";
 			next;
-			mes "[Survival Instructor, Rescue]";
-			mes "Well, if you are an easy person, that's none of my business but if you decided once, wouldn't it be better to take the practical test in a minute and meet me after becoming a Ranger?";
+			mes "[生存教官, 救援]";
+			mes "嗯，如果你是那種隨性的人，那與我無關。但既然決定了，不如馬上參加實技測驗，成為遊俠後再來見我，不是更好嗎？";
 			close;
 		} else if (job_ranger01 == 7) {
-			mes "Oh, hey. What are you doing here?";
+			mes "喔，喂。你在這裡做什麼？";
 			next;
-			mes "[Survival Instructor, Rescue]";
-			mes "Because you've disappeared suddenly, the Ranger Master was looking for you.";
-			mes "Do you want to go to him now?";
+			mes "[生存教官, 救援]";
+			mes "因為你突然消失，遊俠大師一直在找你。";
+			mes "你現在要去見他嗎？";
 			next;
-			switch(select("Don't go:Go")) {
+			switch(select("不去:去")) {
 			case 1:
-				mes "[Survival Instructor, Rescue]";
-				mes "Are you busy with something else?";
+				mes "[生存教官, 救援]";
+				mes "你還有別的事要忙嗎？";
 				close;
 			case 2:
-				mes "[Survival Instructor, Rescue]";
-				mes "Then I'll send you, please be well.";
+				mes "[生存教官, 救援]";
+				mes "那我送你過去，請多保重。";
 				close2;
 				warp "job3_rang01",89,38;
 				end;
 			}
 		}
-		mes "Oh, hey. Who's this?";
+		mes "喔，喂。這是誰？";
 		next;
-		mes "[Survival Instructor, Rescue]";
-		mes "Hey, you look great.";
-		mes "Congratulations on becoming a Ranger~";
+		mes "[生存教官, 救援]";
+		mes "嘿，你看起來很不錯。";
+		mes "恭喜你成為遊俠~";
 		next;
-		mes "[Survival Instructor, Rescue]";
-		mes "Next time, try not to intimidate other people.";
+		mes "[生存教官, 救援]";
+		mes "下次，盡量別嚇到其他人。";
 		close;
 	}
 	if (Class == Job_Ranger || Class == Job_Ranger_T || Class == Job_Baby_Ranger) {
 		if (job_ranger01 == 8) {
-			mes "Ho. Who's this~";
-			mes "You really look talented...";
+			mes "喔。這是誰呀~";
+			mes "你看起來真的很有天分……";
 			next;
-			mes "[Survival Instructor, Rescue]";
-			mes "Next time, try not to intimidate other people.";
+			mes "[生存教官, 救援]";
+			mes "下次，盡量別嚇到其他人。";
 			close;
 		}
 	}
-	mes "Ha ~ ha.";
-	mes "The weather is really great.";
+	mes "哈~哈。";
+	mes "今天天氣真好。";
 	next;
-	mes "[Survival Instructor, Rescue]";
+	mes "[生存教官, 救援]";
 	mes "怎麼了？";
-	mes "The monsters here are a";
-	mes "little tough so be careful.";
+	mes "這裡的怪物有點";
+	mes "難纏，所以要小心。";
 	close;
 }
 
-tur_dun01,91,169,3	script	Test Instructor#jr02	732,{
-	mes "[Test Instructor, Teardrop]";
+tur_dun01,91,169,3	script	測驗教官#jr02::Test Instructor#jr02	732,{
+	mes "[測驗教官, 眼淚]";
 	if (BaseJob == Job_Hunter) {
 		if (job_ranger01 < 3) {
-			mes "Good to goooooo!!!!!!!";
+			mes "出發囉！！！！！！！";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "Huh? Who are you? What are you doing here, you baby archer.";
+			mes "[測驗教官, 眼淚]";
+			mes "哈？你是誰？你這個小弓手在這裡做什麼？";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "May I tell you one thing?";
-			mes "If you want to change a job to a Ranger, first talk to Survival Instructor Rescue.";
+			mes "[測驗教官, 眼淚]";
+			mes "我可以告訴你一件事嗎？";
+			mes "如果你想轉職為遊俠，先去找生存教官救援談談。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "Then he will tell you the requirement for the job change test!!!";
+			mes "[測驗教官, 眼淚]";
+			mes "他會告訴你轉職測驗的要求！！！";
 			close;
 		} else if (job_ranger01 == 3) {
-			mes "Good to goooooo!!!!!!!";
+			mes "出發囉！！！！！！！";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "Huh? Who are you? What are you doing here, you baby archer.";
+			mes "[測驗教官, 眼淚]";
+			mes "哈？你是誰？你這個小弓手在這裡做什麼？";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "That you are coming and going bugs me so, would you please stop?!";
+			mes "[測驗教官, 眼淚]";
+			mes "你來來去去的讓我很煩，能不能停下來？！";
 			next;
-			if(select("Ranger practical test building?:I came for the test.") == 1) {
-				mes "[Test Instructor, Teardrop]";
-				mes "What, what are you...?";
+			if(select("遊俠實技測驗會場？:我是來參加測驗的。") == 1) {
+				mes "[測驗教官, 眼淚]";
+				mes "什、什麼……你是……？";
 				next;
-				mes "[Test Instructor, Teardrop]";
-				mes "What do you think you are looking at?";
+				mes "[測驗教官, 眼淚]";
+				mes "你以為你在看什麼？";
 				next;
-				mes "[Test Instructor, Teardrop]";
-				mes "How could you be a Ranger if you can't even recognize what's in front of you? Get out of here!";
+				mes "[測驗教官, 眼淚]";
+				mes "連眼前的東西都認不出來，怎麼能當遊俠？給我滾出去！";
 				close;
 			}
-			mes "[Test Instructor, Teardrop]";
-			mes "Ho, having come this far, it means you've passed the first survival test.";
+			mes "[測驗教官, 眼淚]";
+			mes "喔，既然你已經走到這裡，代表你通過了第一項生存測驗。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "But, can you be sure that there wasn't any cheating?";
+			mes "[測驗教官, 眼淚]";
+			mes "但是，你能確定沒有作弊嗎？";
 			next;
 			if (Weight > 500) {
-				mes "[Test Instructor, Teardrop]";
-				mes "See, I knew it.";
+				mes "[測驗教官, 眼淚]";
+				mes "你看，我就知道。";
 				next;
-				mes "[Test Instructor, Teardrop]";
-				mes "Having done the test normally, you would have adjusted your weight to 0, and hold the items provided by Rescue!";
-				mes "But, how come you weigh so much?";
+				mes "[測驗教官, 眼淚]";
+				mes "如果正常進行測驗，你應該把負重調整為 0，並持有救援給你的道具！";
+				mes "但是，你的負重怎麼這麼重？";
 				next;
-				mes "[Test Instructor, Teardrop]";
-				mes "I consider this as cheating!";
-				mes "Come and see me again!";
+				mes "[測驗教官, 眼淚]";
+				mes "我視為作弊！";
+				mes "再來找我！";
 				close2;
 				warp "tur_dun01",162,33;
 				end;
 			}
-			mes "[Test Instructor, Teardrop]";
-			mes "Hmm. It's doubtful...";
+			mes "[測驗教官, 眼淚]";
+			mes "嗯。很可疑……";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "I don't smell any signs of cheating. For now...";
+			mes "[測驗教官, 眼淚]";
+			mes "我沒聞到任何作弊的跡象。目前是……";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "Before taking a practical test, I want to eat something.";
-			mes "You know the food situation isn't always so good in a foreign land.";
+			mes "[測驗教官, 眼淚]";
+			mes "參加實技測驗前，我想先吃點東西。";
+			mes "你知道在異鄉，食物狀況不一定都很好吧。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "I know that the very basic way to survive might be raising the strength of one's own body. But, I find that sending adventurers is easier for me.";
+			mes "[測驗教官, 眼淚]";
+			mes "我知道，最基本的生存之道或許是鍛鍊自身的體力。但我覺得，派冒險者出去對我來說比較輕鬆。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "So, kill ^0000ff1 Dragon Tail^000000 and bring me ^0000ff1 Wing of Dragonfly^000000.";
+			mes "[測驗教官, 眼淚]";
+			mes "所以，^0000ff擊殺 1 個龍尾^000000，並帶給我 ^0000ff1 個蜻蜓的翅膀^000000。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "If you run out of the provided items, we cannot support you more so take care.";
-			mes "Consider this as an extension of the survival power test.";
+			mes "[測驗教官, 眼淚]";
+			mes "如果你用完了提供的道具，我們就無法再支援你了，所以要小心。";
+			mes "就把這當作生存能力測驗的延伸吧。";
 			set job_ranger01,4;
 			changequest 8256,8257;
 			close;
 		} else if (job_ranger01 == 4) {
 			if (checkquest(8257,HUNTING) == 2) {
 				if (countitem(7064) > 0) {
-					mes "Oh! Oh! Woooooow!";
-					mes "You've brought it! Let me see...";
+					mes "喔！喔！哇喔喔！";
+					mes "你帶來了！讓我看看……";
 					next;
-					mes "[Test Instructor, Teardrop]";
-					mes "Hmmmm, it's still hot?!";
-					mes "You don't seem to be hurt anywhere...";
+					mes "[測驗教官, 眼淚]";
+					mes "嗯嗯嗯，還是燙的？！";
+					mes "你好像哪裡都沒受傷……";
 					next;
-					mes "[Test Instructor, Teardrop]";
-					mes "Good, for now you're qualified for the practical test.";
+					mes "[測驗教官, 眼淚]";
+					mes "很好，目前你具備參加實技測驗的資格了。";
 					next;
-					mes "[Test Instructor, Teardrop]";
-					mes "Well, before I explain, could you please give me that Dragonfly wing?";
-					mes "You've heard the saying, 'in any situation, eating comes first'?";
+					mes "[測驗教官, 眼淚]";
+					mes "那麼，在我說明之前，能把那個蜻蜓的翅膀給我嗎？";
+					mes "你聽過「無論什麼情況，吃飯最重要」這句話吧？";
 					delitem 7064,1; //Dragon_Fly_Wing
 					set job_ranger01,5;
 					changequest 8257,8258;
 					close;
 				}
 			}
-			mes "What are you doing there? Standing with a blank look.";
+			mes "你在那裡做什麼？發呆站著。";
 			next;
-			mes "[Test Instructor, Teardrop]";
+			mes "[測驗教官, 眼淚]";
 			mes "我餓了。";
-			mes "Before taking the practical test, I want to eat something.";
+			mes "參加實技測驗前，我想先吃點東西。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "I know that the very basic way to survive might be raising the strength of one's own body. But, I find that sending adventurers is easier for me.";
+			mes "[測驗教官, 眼淚]";
+			mes "我知道，最基本的生存之道或許是鍛鍊自身的體力。但我覺得，派冒險者出去對我來說比較輕鬆。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "So, kill ^0000ff1 Dragon Tail^000000 and bring me ^0000ff1 Dragon Fly Wing^000000.";
+			mes "[測驗教官, 眼淚]";
+			mes "所以，^0000ff擊殺 1 個龍尾^000000，並帶給我 ^0000ff1 個龍蠅翅膀^000000。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "If you run out of the provided items, we cannot support more so take care.";
-			mes "Consider this as an extension of the survival power test.";
+			mes "[測驗教官, 眼淚]";
+			mes "如果你用完了提供的道具，我們就無法再支援，所以要小心。";
+			mes "就把這當作生存能力測驗的延伸吧。";
 			close;
 		} else if (job_ranger01 == 5) {
-			mes "Awooo. Yumyum.";
-			mes "Eh? What are you looking at?";
-			mes "You want to eat some?";
+			mes "嗷嗚。好吃好吃。";
+			mes "欸？你在看什麼？";
+			mes "你想吃一點嗎？";
 			next;
-			switch(select("Oh, just eat up:...")) {
+			switch(select("喔，你就吃吧:...")) {
 			case 1:
-				mes "[Test Instructor, Teardrop]";
-				mes "Why aren't you eating?";
-				mes "It's quite edible.";
-				mes "If you cover it with rice, it's like roasted seaweed, very tasty and delicious.";
+				mes "[測驗教官, 眼淚]";
+				mes "你怎麼不吃？";
+				mes "其實還挺能吃的。";
+				mes "如果用飯包起來，就像海苔飯捲一樣，非常美味。";
 				next;
-				mes "[Test Instructor, Teardrop]";
-				mes "You need to be strong enough not to be so picky with such things...";
+				mes "[測驗教官, 眼淚]";
+				mes "你需要堅強一點，別對這種東西太挑剔……";
 				next;
 				break;
 			case 2:
 				mes "["+strcharinfo(0)+"]";
-				mes "No thanks... anyway...";
+				mes "不用了……總之……";
 				next;
-				mes "[Test Instructor, Teardrop]";
-				mes "Hmm? Oh my, oh my, I've shown you my sloppiness.";
+				mes "[測驗教官, 眼淚]";
+				mes "嗯？哎呀哎呀，讓你見笑了。";
 				next;
 				break;
 			}
-			mes "[Test Instructor, Teardrop]";
-			mes "Ok, I'll send you to the practical test field.";
+			mes "[測驗教官, 眼淚]";
+			mes "好，我送你去實技測驗場地。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "The practical test consists of 3 parts in total.";
-			mes "It's to recheck the things you've learned as a hunter or a sniper, so there's nothing much to be worried.";
+			mes "[測驗教官, 眼淚]";
+			mes "實技測驗總共分為 3 個部分。";
+			mes "這是為了重新檢驗你身為獵人或狙擊手所學的東西，所以不必太擔心。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "If you get a passing mark over three tests, you'll be on your way to becoming a Ranger.";
+			mes "[測驗教官, 眼淚]";
+			mes "如果三項測驗都取得及格分數，你就能邁向成為遊俠的道路。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "I'll explain the paths for the test.";
+			mes "[測驗教官, 眼淚]";
+			mes "我來說明測驗的流程。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "Once you get into the test field, a staff will be waiting for you. Go into the room made by the staff, and standby.";
+			mes "[測驗教官, 眼淚]";
+			mes "進入測驗場地後，會有職員在等你。走進職員準備的房間，然後待命。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "The test is done one by one so, if there's many people, you might need to wait.";
+			mes "[測驗教官, 眼淚]";
+			mes "測驗是逐一進行的，所以如果人很多，可能需要等候。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "The first test is to test of how keen your eyes are.";
-			mes "Different monsters will appear in 8 places. Kill only the monster named 'Poring' and you get a point, when you reach a certain mark, then you pass. Easy, huh?";
+			mes "[測驗教官, 眼淚]";
+			mes "第一項測驗是檢驗你的眼力有多敏銳。";
+			mes "八個地點會出現不同的怪物。只要擊殺名為「波利」的怪物就能得一分，達到一定分數就算通過。很簡單吧？";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "The second test is about how much you can use a trap efficiently.";
-			mes "Get rid of monsters and do the mission by using only the provided traps, and you pass. Just be careful not to be engulfed by the explosion.";
+			mes "[測驗教官, 眼淚]";
+			mes "第二項測驗是檢驗你能多有效地運用陷阱。";
+			mes "只能使用提供的陷阱來清除怪物並完成任務，就算通過。只是要小心別被爆炸吞沒。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "For the 3rd test, when you become a Ranger you can handle a wolf, so you will be tested on how well you can handle such an animal.";
+			mes "[測驗教官, 眼淚]";
+			mes "第三項測驗，是因為成為遊俠後能操控狼，所以會測驗你駕馭這種動物的能力。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "When you remove a bomb by using the given wolf, you get points. You pass when you get a certain mark on the test.";
+			mes "[測驗教官, 眼淚]";
+			mes "用提供的狼清除炸彈時，就能得分。達到一定分數就算通過。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "The staff there will tell you more details as well.";
+			mes "[測驗教官, 眼淚]";
+			mes "那裡的職員也會告訴你更多細節。";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "Now, I will enter you into the practical test field, is your preparation all done?";
+			mes "[測驗教官, 眼淚]";
+			mes "現在，我要讓你進入實技測驗場地，你都準備好了嗎？";
 			next;
-			if(select("Please wait a little:Let's go to the practical test field!") == 1) {
-				mes "[Test Instructor, Teardrop]";
-				mes "Um? Aren't you ready?";
+			if(select("請稍等一下:前往實技測驗場地吧！") == 1) {
+				mes "[測驗教官, 眼淚]";
+				mes "嗯？你還沒準備好嗎？";
 				next;
-				mes "[Test Instructor, Teardrop]";
-				mes "Well. To be careful is good.";
+				mes "[測驗教官, 眼淚]";
+				mes "嗯。小心點是好事。";
 				mes "準備好了再回來吧。";
 				close;
 			}
 			callsub L_Start,0;
 			close;
 		} else if (job_ranger01 == 6) {
-			mes "Good to goooooo!!!!!!!";
+			mes "出發囉！！！！！！！";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "Um? What happened?";
-			mes "Why are you walking about here? What about the test?";
+			mes "[測驗教官, 眼淚]";
+			mes "嗯？發生什麼事了？";
+			mes "你為什麼在這裡晃來晃去？測驗呢？";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "Aha... You've failed the middle!";
-			mes "You are such a fool.";
+			mes "[測驗教官, 眼淚]";
+			mes "啊哈……你中途失敗了！";
+			mes "你真是個笨蛋。";
 			emotion ET_KIK;
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "So what are you going to do? Try again?";
+			mes "[測驗教官, 眼淚]";
+			mes "那你打算怎麼辦？要再試一次嗎？";
 			next;
-			switch(select("Wait a minute:Go to the practical test field!:I give up the job change.")) {
+			switch(select("等一下:前往實技測驗場地！:我放棄轉職。")) {
 			case 1:
-				mes "[Test Instructor, Teardrop]";
-				mes "Um? Aren't you ready yet?";
+				mes "[測驗教官, 眼淚]";
+				mes "嗯？你還沒準備好嗎？";
 				next;
-				mes "[Test Instructor, Teardrop]";
-				mes "All right. To be careful is good.";
-				mes "Come when you are ready.";
+				mes "[測驗教官, 眼淚]";
+				mes "好吧。小心點是好事。";
+				mes "準備好了再來。";
 				close;
 			case 2:
 				callsub L_Start,1;
 				close;
 			case 3:
-				mes "[Test Instructor, Teardrop]";
-				mes "Um? What, you're kidding huh?";
+				mes "[測驗教官, 眼淚]";
+				mes "嗯？什麼，你在開玩笑吧？";
 				next;
-				mes "[Test Instructor, Teardrop]";
-				mes "Think again.";
-				mes "Do you really want to give up the job change to become a Ranger?";
+				mes "[測驗教官, 眼淚]";
+				mes "再想想。";
+				mes "你真的想放棄成為遊俠的轉職嗎？";
 				next;
-				switch(select("No, I'll try again:I give up!")) {
+				switch(select("不，我要再試一次:我放棄！")) {
 				case 1:
-					mes "[Test Instructor, Teardrop]";
-					mes "Hey. You were kidding after all?";
+					mes "[測驗教官, 眼淚]";
+					mes "喂。你果然是在開玩笑？";
 					next;
-					mes "[Test Instructor, Teardrop]";
-					mes "It's not funny so don't do that kind of joke again.";
+					mes "[測驗教官, 眼淚]";
+					mes "一點都不好笑，別再開這種玩笑了。";
 					close;
 				case 2:
-					mes "[Test Instructor, Teardrop]";
-					mes "You don't have as many guts as I thought.";
+					mes "[測驗教官, 眼淚]";
+					mes "你的膽量沒有我想的那麼大。";
 					nude;
 					next;
 					if (countitem(1703) > 0) {
-						mes "[Test Instructor, Teardrop]";
-						mes "Okay. I'll respect your opinion.";
-						mes "I'll cancel the job change request from "+strcharinfo(0)+".";
+						mes "[測驗教官, 眼淚]";
+						mes "好吧，我尊重你的意見。";
+						mes "我會取消 "+strcharinfo(0)+".";
 						delitem 1703,1; //Bow__
 						set job_ranger01,0;
 						for(set .@i,8254; .@i<=8262; set .@i,.@i+1)
 							if (checkquest(.@i) > -1) erasequest .@i;
 						close;
 					}
-					mes "[Test Instructor, Teardrop]";
-					mes "Huh? Where's the bow that I gave you for the practical tests?";
+					mes "[測驗教官, 眼淚]";
+					mes "哈？我給你的實技測驗用弓呢？";
 					next;
-					mes "[Test Instructor, Teardrop]";
-					mes "If you don't return it, I can't cancel you job change request.";
+					mes "[測驗教官, 眼淚]";
+					mes "如果你不歸還，我就無法取消你的轉職申請。";
 					close;
 				}
 			}
 		} else if (job_ranger01 == 7) {
-			mes "Oh, hey. What are you doing here?";
+			mes "喔，喂。你在這裡做什麼？";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "Because you've disappeared suddenly, the Ranger Master was looking for you.";
-			mes "Do you want to go to him now?";
+			mes "[測驗教官, 眼淚]";
+			mes "因為你突然消失，遊俠大師一直在找你。";
+			mes "你現在要去見他嗎？";
 			next;
-			switch(select("Don't go:Go")) {
+			switch(select("不去:去")) {
 			case 1:
-				mes "[Test Instructor, Teardrop]";
-				mes "Are you busy with something else?";
+				mes "[測驗教官, 眼淚]";
+				mes "你還有別的事要忙嗎？";
 				close;
 			case 2:
-				mes "[Test Instructor, Teardrop]";
-				mes "Then I'll send you, please be well.";
+				mes "[測驗教官, 眼淚]";
+				mes "那我送你過去，請多保重。";
 				close2;
 				warp "job3_rang01",89,38;
 				end;
 			}
 		}
-		mes "Wow. Who's this?";
+		mes "哇。這是誰？";
 		next;
-		mes "[Test Instructor, Teardrop]";
-		mes "It seems that your dull eyes became somewhat keen now?";
+		mes "[測驗教官, 眼淚]";
+		mes "你那雙遲鈍的眼睛現在好像變得有點敏銳了？";
 		next;
-		mes "[Test Instructor, Teardrop]";
-		mes "Then, enjoy an adventure well as a Ranger.";
+		mes "[測驗教官, 眼淚]";
+		mes "那麼，就好好享受身為遊俠的冒險吧。";
 		close;
 	}
-	mes "Good to gooooooooooooooo!!!!!!";
+	mes "出發囉囉囉囉囉囉！！！！！！";
 	next;
-	mes "[Test Instructor]";
-	mes "Huh? What are you? Where are you from?";
-	mes "Don't hang around here doing nothing. This is my area!";
+	mes "[測驗教官]";
+	mes "哈？你是什麼人？從哪裡來的？";
+	mes "別在這裡閒晃。這是我的地盤！";
 	close;
 L_Start:
 	if (getmercinfo(1)) {
-		mes "[Test Instructor, Teardrop]";
+		mes "[測驗教官, 眼淚]";
 		mes "住手！";
 		next;
-		mes "[Test Instructor, Teardrop]";
-		mes "Where do you think you're going with that mercenary?!";
+		mes "[測驗教官, 眼淚]";
+		mes "你打算帶著那個傭兵去哪裡？！";
 		next;
-		mes "[Test Instructor, Teardrop]";
-		mes "If you don't cancel the mercenary, you cannot get into the test field! Cancel it first!";
+		mes "[測驗教官, 眼淚]";
+		mes "如果你不解除傭兵，就無法進入測驗場地！先解除它！";
 		close;
 	}
 	if (getarg(0) == 1) {
 		if (countitem(12380)) {
-			mes "[Test Instructor, Teardrop]";
-			mes "What, what is this?";
-			mes "You shouldn't keep this around!";
+			mes "[測驗教官, 眼淚]";
+			mes "什、什麼，這是什麼？";
+			mes "你不該帶著這種東西！";
 			delitem 12380,countitem(12380); //Desert_Wolf_Babe_Scroll
 			next;
 		}
 		if (countitem(12258)) {
-			mes "[Test Instructor, Teardrop]";
-			mes "What, what is this, a Bombring Capsule.";
-			mes "You shouldn't keep such a dangerous thing!";
+			mes "[測驗教官, 眼淚]";
+			mes "什、什麼，這是炸彈環膠囊吧。";
+			mes "你不該帶著這麼危險的東西！";
 			delitem 12258,countitem(12258); //Bombring_Box
 			next;
 		}
 		if (countitem(6156)) {
-			mes "[Test Instructor, Teardrop]";
-			mes "What, what are all these Documents?";
-			mes "I think I know. You were going to send this to Caution, right?";
+			mes "[測驗教官, 眼淚]";
+			mes "什、什麼，這些文件是什麼？";
+			mes "我想我知道。你是打算把這個送給警戒，對吧？";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "If you hold such thing it would disturb your practical test so I'll take this.";
+			mes "[測驗教官, 眼淚]";
+			mes "如果你持有這種東西，會妨礙你的實技測驗，所以我先收下。";
 			delitem 6156,countitem(6156); //Approval_Report
 			next;
 		}
 	}
 	if (Weight > 500) {
-		mes "[Test Instructor, Teardrop]";
-		mes "Well, then let's gooooooooo.... oo,um?";
+		mes "[測驗教官, 眼淚]";
+		mes "那麼，我們出發吧……呃，嗯？";
 		next;
-		mes "[Test Instructor, Teardrop]";
-		mes "Hey, what are you hiding there?";
-		mes "I've pointed it out for several times, you should not even think to go in there secretly with anything other than the provided items!";
+		mes "[測驗教官, 眼淚]";
+		mes "喂，你在那裡藏了什麼？";
+		mes "我已經指出過好幾次了，你不該想著偷偷帶著提供道具以外的東西進去！";
 		next;
-		mes "[Test Instructor, Teardrop]";
-		mes "You'd better lighten your weight.";
+		mes "[測驗教官, 眼淚]";
+		mes "你最好減輕一點負重。";
 		close;
 	}
-	mes "[Test Instructor, Teardrop]";
-	mes "See, for the last time, I warn you that cheating is strictly banned.";
+	mes "[測驗教官, 眼淚]";
+	mes "聽好，最後一次警告你，嚴禁作弊。";
 	next;
 	if (countitem(1750) < 100) {
-		mes "[Test Instructor, Teardrop]";
-		mes "Okay, once again I'll provide you with arrows, then I'll let you in.";
+		mes "[測驗教官, 眼淚]";
+		mes "好吧，我再給你一次箭矢，然後讓你進去。";
 		set .@arrow,1;
 		next;
 	}
-	mes "[Test Instructor, Teardrop]";
+	mes "[測驗教官, 眼淚]";
 	mes "祝你好運。";
-	mes "Become a Ranger and we shall meet again.";
+	mes "成為遊俠後，我們再會吧。";
 	set job_ranger01,6;
 	if (getarg(0) == 0)
 		changequest 8258,8259;
@@ -681,43 +681,43 @@ L_Start:
 	end;
 }
 
-job3_rang01,30,44,3	script	Test Waiting Room#jr_03	88,{
-	mes "[Staff DTS]";
-	mes "Please wait at the practical test waiting room to start the test process.";
+job3_rang01,30,44,3	script	測驗等候室#jr_03::Test Waiting Room#jr_03	88,{
+	mes "[職員 DTS]";
+	mes "請在實技測驗候場室等候，以開始測驗流程。";
 	next;
-	mes "[Staff DTS]";
-	mes "In the order you enter, you can take the practical test one by one.";
-	mes "There's 3 kinds of a Ranger job change practical tests, it takes a total of about 10 minutes.";
+	mes "[職員 DTS]";
+	mes "按照入場順序，你們會依序進行實技測驗。";
+	mes "遊俠轉職實技測驗共有 3 種，總共大約需要 10 分鐘。";
 	next;
-	switch(select("Test explanation:Cancel:I give up the Ranger test")) {
+	switch(select("測驗說明:取消:我放棄遊俠測驗")) {
 	case 1:
 		break;
 	case 2:
-		mes "[Staff DTS]";
-		mes "Don't you need any explanation?";
+		mes "[職員 DTS]";
+		mes "你不需要任何說明嗎？";
 		next;
-		mes "[Staff DTS]";
-		mes "Enter into the chat room and wait for the order and take the job change practical test.";
+		mes "[職員 DTS]";
+		mes "進入聊天室，等候順序後參加轉職實技測驗。";
 		close;
 	case 3:
-		mes "[Staff DTS]";
-		mes "Please think about it again.";
-		mes "If you give up here, your job change request will be cancelled. Do you really want to give up the job change to a Ranger?";
+		mes "[職員 DTS]";
+		mes "請再考慮一下。";
+		mes "如果在這裡放棄，你的轉職申請就會被取消。你真的要放棄轉職為遊俠嗎？";
 		next;
-		switch(select("No, I'll continue with the test:I give up the Ranger job change")) {
+		switch(select("不，我要繼續測驗:我放棄遊俠轉職")) {
 		case 1:
-			mes "[Staff DTS]";
-			mes "If you want to continue with the practical test, please enter into the chat room.";
+			mes "[職員 DTS]";
+			mes "如果你想繼續實技測驗，請進入聊天室。";
 			close;
 		case 2:
-			mes "[Staff DTS]";
-			mes "You don't have as many guts as I thought.";
+			mes "[職員 DTS]";
+			mes "你的膽量沒有我想的那麼大。";
 			nude;
 			next;
 			if (countitem(1703) > 0) {
-				mes "[Staff DTS]";
-				mes "Okay. I'll respect your opinion.";
-				mes "I'll cancel the job change request from "+strcharinfo(0)+".";
+				mes "[職員 DTS]";
+				mes "好吧，我尊重你的意見。";
+				mes "我會取消 "+strcharinfo(0)+".";
 				delitem 1703,1; //Bow__
 				set job_ranger01,0;
 				for(set .@i,8254; .@i<=8262; set .@i,.@i+1)
@@ -727,65 +727,65 @@ job3_rang01,30,44,3	script	Test Waiting Room#jr_03	88,{
 				warp "alberta",117,57;
 				end;
 			}
-			mes "[Staff DTS]";
-			mes "Huh? Where's the bow that I gave you for the practical tests?";
+			mes "[職員 DTS]";
+			mes "哈？我給你的實技測驗用弓呢？";
 			next;
-			mes "[Test Instructor, Teardrop]";
-			mes "If you don't return it, I can't cancel you job change request.";
+			mes "[測驗教官, 眼淚]";
+			mes "如果你不歸還，我就無法取消你的轉職申請。";
 			close;
 		}
 	}
 	while (1) {
-		mes "[Staff DTS]";
-		mes "I'll explain the Ranger job change practical test.";
-		mes "Among the 1st, 2nd, and 3rd practical tests, which one's test method are you curious of?";
+		mes "[職員 DTS]";
+		mes "我來說明遊俠轉職實技測驗。";
+		mes "在第一、第二與第三項實技測驗中，你想了解哪一項的測驗方式？";
 		next;
-		switch(select("1st Test:2nd Test:3rd Test:Cancel")) {
+		switch(select("第一項測驗:第二項測驗:第三項測驗:取消")) {
 		case 1:
-			mes "[Staff DTS]";
-			mes "For the 1st test, we test your eyesight and accuracy.";
+			mes "[職員 DTS]";
+			mes "第一項測驗，是檢驗你的眼力與準確度。";
 			next;
-			mes "[Staff DTS]";
-			mes "Monsters appear randomly from 8 sides of the left, right, up and down of the player, among them if you get rid of a monster named 'Poring' you get a point.";
+			mes "[職員 DTS]";
+			mes "怪物會從玩家的左、右、上、下八個方向隨機出現，其中只要清除名為「波利」的怪物就能得一分。";
 			next;
-			mes "[Staff DTS]";
-			mes "^0000ffWhatever the form looks like, you need to kill the monster named 'Poring' to get a point, and if you get rid of others your points get deducted, so be careful.^000000";
+			mes "[職員 DTS]";
+			mes "^0000ff不管怪物長什麼樣子，都必須擊殺名為「波利」的怪物才能得分，如果清除其他怪物，分數就會被扣除，所以要小心。^000000";
 			next;
-			mes "[Staff DTS]";
-			mes "The 1st test progressing time will be about 3 minutes. When you get 15 points or more over 20, you are sent to 2nd test field.";
+			mes "[職員 DTS]";
+			mes "第一項測驗的進行時間約為 3 分鐘。在 20 次中取得 15 分以上，就會被送往第二測驗場地。";
 			next;
 			break;
 		case 2:
-			mes "[Staff DTS]";
-			mes "The 2nd test is to test the mission performance ability and the efficient use of a trap.";
+			mes "[職員 DTS]";
+			mes "第二項測驗，是檢驗任務執行能力與陷阱的有效運用。";
 			next;
-			mes "[Staff DTS]";
-			mes "The attendant receives 10 'Bombring Capsules'. When you consume the Bombring Capsule, a Bombring is summoned near and after the summoning when you reach a certain time, the Bombring explodes.";
+			mes "[職員 DTS]";
+			mes "服務人員會發給你 10 個「炸彈環膠囊」。使用炸彈環膠囊後，附近會召喚出炸彈環，召喚後經過一定時間，炸彈環就會爆炸。";
 			next;
-			mes "[Staff DTS]";
-			mes "^0000ffThe Bombring explosion affects you, so be careful not to get involved in the explosion. You need to get rid of the monster by using the Bombring Capsule, accomplish the mission and come out alive.^000000";
+			mes "[職員 DTS]";
+			mes "^0000ff炸彈環的爆炸會波及你，所以要小心別被捲入爆炸。你需要利用炸彈環膠囊清除怪物、完成任務，並活著出來。^000000";
 			next;
-			mes "[Staff DTS]";
-			mes "The 2nd test progressing time will be about 3 minutes. When you consume all the Bombring Capsules, collect hidden equipment, and survive, you will be sent to the 3rd test field.";
+			mes "[職員 DTS]";
+			mes "第二項測驗的進行時間約為 3 分鐘。當你用完所有炸彈環膠囊、收集隱藏的裝備並存活下來後，就會被送往第三測驗場地。";
 			next;
 			break;
 		case 3:
-			mes "[Staff DTS]";
-			mes "The 3rd is to test how you can efficiently use a wolf which is given Rangers.";
+			mes "[職員 DTS]";
+			mes "第三項測驗，是檢驗你如何有效運用遊俠所獲得的狼。";
 			next;
-			mes "[Staff DTS]";
-			mes "The tester is provided with disposable wolf summoning flute. Remove all bombs that are dispersed here and there by controlling the summoned warg and you get a point.";
+			mes "[職員 DTS]";
+			mes "受測者會獲得一次性的召狼笛。操控召喚出的狼清除散布各處的所有炸彈，就能得分。";
 			next;
-			mes "[Staff DTS]";
-			mes "^0000ffThe tester cannot move while the test is going on and the test is completed when he or she removes the bombs quickly and accurately in time by using only the warg.^000000";
+			mes "[職員 DTS]";
+			mes "^0000ff測驗進行期間，受測者無法移動。只能使用狼，在時限內迅速而準確地清除炸彈，測驗即告完成。^000000";
 			next;
-			mes "[Staff DTS]";
-			mes "The 3rd test progressing time would be about 3 minutes, when you get 10 or more over 20, all the practical tests are completed.";
+			mes "[職員 DTS]";
+			mes "第三項測驗的進行時間約為 3 分鐘，在 20 次中取得 10 分以上，就完成所有實技測驗。";
 			next;
 			break;
 		case 4:
-			mes "[Staff DTS]";
-			mes "When you want to progress with the practical test, please enter into the chat room.";
+			mes "[職員 DTS]";
+			mes "想要進行實技測驗時，請進入聊天室。";
 			close;
 		}
 	}
@@ -807,7 +807,7 @@ OnDisable:
 	end;
 }
 
-job3_rang02,100,95,0	script	Test Supervisor#jr_04	139,{
+job3_rang02,100,95,0	script	測試監考官#jr_04::Test Supervisor#jr_04	139,{
 OnInit:
 	set $@job_rang_point01,0;
 	disablenpc "Test Supervisor#jr_04";
@@ -829,28 +829,28 @@ OnStart:
 	disablenpc "Test Supervisor#jr_04";
 	end;
 OnTimer3000:
-	mapannounce "job3_rang02","Test Supervisor, Notice : Welcome to the Ranger Job Change Test. I am Test Supervisor, Notice.",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 告示 : 歡迎來到遊俠轉職測驗。我是測驗監考官, 告示。",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer6000:
-	mapannounce "job3_rang02","Test Supervisor, Notice : The 1st test is to test your eyesight and accuracy.",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 告示 : 第一項測驗是檢驗你的眼力與準確度。",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer9000:
-	mapannounce "job3_rang02","Test Supervisor, Notice : The test method is, to kill monsters named 'Poring' amongst the random spawned monsters on 8 locations.",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 告示 : 測驗方式是，在 8 個地點隨機出現的怪物中，擊殺名為「波利」的怪物。",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer12000:
-	mapannounce "job3_rang02","Test Supervisor, Notice : Whatever it may look like, you need to kill the monster named 'Poring' to get a point, and if you kill others you will lose points, so be careful.",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 告示 : 不管它長什麼樣子，都必須擊殺名為「波利」的怪物才能得分，若擊殺其他怪物就會失分，所以要小心。",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
 	end;
 OnTimer15000:
-	mapannounce "job3_rang02","Test Supervisor, Notice : The test progression time would be around 3 minutes. You need to get 15 points or more to qualify for the next test.",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 告示 : 測驗進行時間約為 3 分鐘。你需要取得 15 分以上，才能晉級下一項測驗。",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer18000:
 	stopnpctimer;
-	mapannounce "job3_rang02","Test Supervisor, Notice : Then let's begin the test. Good luck.",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 告示 : 那麼，我們開始測驗吧。祝你好運。",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	donpcevent "Test Supervisor#jr_04::OnStart";
 	end;
 }
 
-job3_rang02,102,95,0	script	First Test Timer#jr_05	139,{
+job3_rang02,102,95,0	script	第一測驗計時器#jr_05::First Test Timer#jr_05	139,{
 OnInit:
 	disablenpc "First Test Timer#jr_05";
 	end;
@@ -911,28 +911,28 @@ OnTimer122000:
 OnTimer129000:
 OnTimer136000:
 	set $@job_rang_text01,$@job_rang_text01+1;
-	mapannounce "job3_rang02","Test Supervisor, Notice : "+.text$[$@job_rang_text01]+" Wave! Kill the Poring!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 告示 : "+.text$[$@job_rang_text01]+" 波次來襲！擊殺波利！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	donpcevent "CallCorrectAnswer#jr::OnStart";
 	end;
 OnTimer143000:
-	mapannounce "job3_rang02","Test Supervisor, Notice : Well done! Now for your test result!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 告示 : 做得好！現在公布你的測驗結果！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer146000:
 	if ($@job_rang_point01 < 1)
 		set $@job_rang_point01,0;
-	mapannounce "job3_rang02","Test Supervisor, Notice : I'll announce the test result. The number of Porings you killed out of 20 is ..." + $@job_rang_point01 + "!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 告示 : 我來公布測驗結果。你在 20 隻中擊殺的波利數量是……" + $@job_rang_point01 + "!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer149000:
 	if ($@job_rang_point01 > 14) {
-		mapannounce "job3_rang02","Test Supervisor, Notice : Congratulations! You've killed " + $@job_rang_point01 + " out of 20 Porings total, so you've passed the 1st test. I will send you to the 2nd test field.",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rang02","測驗監考官, 告示 : 恭喜！你已擊殺 " + $@job_rang_point01 + " 隻波利（共 20 隻），你已通過第一項測驗。我會把你送往第二測驗場地。",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
 		mapwarp "job3_rang02","job3_rang02",113,58;
 		donpcevent "Second Test Timer#jr_08::OnEnable";
 		stopnpctimer;
 	} else
-		mapannounce "job3_rang02","Test Supervisor, Notice : You couldn't kill 15 Porings or more on a total of 20 total, so you've failed the 1st test... I am sorry but please try again.",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rang02","測驗監考官, 告示 : 你在 20 隻中未能擊殺 15 隻以上的波利，所以第一項測驗未通過……很抱歉，請再試一次。",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer151000:
-	mapannounce "job3_rang02","Test Supervisor, Notice : The adventurer's 1st test ends now. Please make yourself more capable. Goodbye.",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 告示 : 冒險者的第一項測驗到此結束。請讓自己變得更強。再見。",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	mapwarp "job3_rang02","tur_dun01",93,165;
 	end;
 OnTimer154000:
@@ -951,7 +951,7 @@ OnTimer157000:
 	end;
 }
 
-job3_rang02,104,95,0	script	CallCorrectAnswer#jr	139,{
+job3_rang02,104,95,0	script	呼叫正確答案#jr::CallCorrectAnswer#jr	139,{
 OnInit:
 OnDisable:
 	disablenpc "CallCorrectAnswer#jr";
@@ -974,11 +974,11 @@ OnReset:
 OnMyMobDead:
 	specialeffect2 EF_POTION_CON;
 	set $@job_rang_point01, $@job_rang_point01+1;
-	mapannounce "job3_rang02","Test Supervisor, Notice : Correct Target! You have very good eyesight!",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 告示 : 正確目標！你的眼力很好！",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
 	end;
 }
 
-job3_rang02,106,95,0	script	CallWrongAnswer#jr	139,{
+job3_rang02,106,95,0	script	呼叫錯誤答案#jr::CallWrongAnswer#jr	139,{
 OnInit:
 OnDisable:
 	disablenpc "CallWrongAnswer#jr";
@@ -1064,11 +1064,11 @@ OnReset:
 OnMyMobDead:
 	specialeffect2 EF_DEVIL;
 	set $@job_rang_point01, $@job_rang_point01-1;
-	mapannounce "job3_rang02","Test Supervisor, Notice : Wrong Target! Pull yourself together!",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 告示 : 錯誤目標！打起精神來！",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
 	end;
 }
 
-job3_rang02,100,93,0	script	Second Test Timer#jr_08	139,{
+job3_rang02,100,93,0	script	第二測驗計時器#jr_08::Second Test Timer#jr_08	139,{
 OnInit:
 	disablenpc "Second Test Timer#jr_08";
 	end;
@@ -1088,81 +1088,81 @@ OnStop:
 	stopnpctimer;
 	end;
 OnTimer3000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : Yeah. Congrats on you passing the 1st practical test. I am the 2nd practical test supervisor Caution.",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 警戒 : 耶。恭喜你通過第一項實技測驗。我是第二項實技測驗的監考官警戒。",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer6000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : The Second Test is about test performance ability and the effective usage of traps.",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 警戒 : 第二項測驗，是檢驗任務執行能力與陷阱的有效運用。",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer9000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : When the test begins, you'll recive 'Bombring Caspule's' from a staff member near you, and kill the monsters in your way.",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 警戒 : 測驗開始後，你會從附近的職員那裡領到「炸彈環膠囊」，並擊殺擋在路上的怪物。",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer11000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : When you use a 'Bombring Capsule' a Bombring is summoned near you, and after 3 seconds it will explode.",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 警戒 : 使用「炸彈環膠囊」後，附近會召喚出炸彈環，3 秒後就會爆炸。",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer14000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : The explosive range of the Bombring is a 5x5 cell around the Bombring, so be careful not to be caught in the explosion.",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 警戒 : 炸彈環的爆炸範圍是以炸彈環為中心的 5x5 格，所以要小心別被爆炸波及。",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
 	end;
 OnTimer17000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : Whilst progressing, if you complete the mission given by an staff member come and see me, then you will pass the 2nd practical test!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 警戒 : 進行途中，若完成職員交付的任務後來找我，就能通過第二項實技測驗！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer20000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : Oh! When you come and see me, all 'Bombring Capsules' have to been used up.",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 警戒 : 喔！來找我的時候，所有「炸彈環膠囊」都必須已經用完。",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
 	end;
 OnTimer23000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : The test period will take 3 minutes in total! Copmplete the mission in 3 minutes and stay alive! Then come to see me!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 警戒 : 測驗期間總共 3 分鐘！請在 3 分鐘內完成任務並存活下來！然後來找我！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer26000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : Well the test begins now!! Start going!!!!!!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 警戒 : 那麼測驗現在開始！！出發吧！！！！！！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	donpcevent "Staff Rust#jr_09::OnEnable";
 	end;
 OnTimer80000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : 1 Minute has passed. You are coming to see me, right?",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測驗監考官, 警戒 : 已經過了 1 分鐘。你是來找我的，對吧？",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer83000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : Don't be too brave to rush and get yourself killed, be slow and careful.",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 別太逞強急著衝，小心送命，慢慢來、謹慎點。",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer140000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : 2 Minutes have passed. Getting here on time should be your top priority.?",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 已經過了 2 分鐘。準時抵達才是你最優先的事。?",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer143000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : However, you need to be alive in order to make the time limit, right? Please watch out.",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 不過，要趕上時限得先活著吧？請多加小心。",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer170000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : 2 Minutes and 30 Seconds have passed. There's not much time left!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 已經過了 2 分 30 秒，剩下的時間不多了！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer173000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : Hurry up! Hurry up! Come on.",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 快點！快點！加油啊。",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer200000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : 3 Minutes have passed! 3 Minutes!!!! I'll be a little easy on you, so hurry up!!!!!!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 已經過了 3 分鐘！3 分鐘了！！！！我會對你放水一點，所以快點！！！！！！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer205000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : 5 Seconds remaining!!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 剩下 5 秒！！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer206000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : 4 Seconds remaining!!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 剩下 4 秒！！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer207000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : 3 Seconds remaining!!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 剩下 3 秒！！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer208000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : 2 Seconds remaining!!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 剩下 2 秒！！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer209000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : 1 Second remaining!!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 剩下 1 秒！！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer210000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : Ugh... What are you doing? Your time is up!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 唉……你在做什麼？時間到了！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer213000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : You couldn't get here on time, therefore the 2nd practical test ends here!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 你沒能準時抵達，因此第二項實技測驗到此結束！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer217000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : If you want to blame something, blame your own stupidness! Start over from the beginning! You fool!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 要怪就怪你自己太笨！從頭重來！你這個笨蛋！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	mapwarp "job3_rang02","tur_dun01",93,165;
 	end;
 OnTimer220000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : If you want to blame something, blame your own stupidness! Start over from the beginning! You fool!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 要怪就怪你自己太笨！從頭重來！你這個笨蛋！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	mapwarp "job3_rang02","tur_dun01",93,165;
 	donpcevent "Staff Rust#jr_09::OnDisable";
 	donpcevent "Summon Monster#jr_10::OnDisable";
@@ -1175,37 +1175,37 @@ OnTimer223000:
 	end;
 }
 
-job3_rang02,111,56,3	script	Staff Rust#jr_09	89,{
+job3_rang02,111,56,3	script	拉斯特#jr_09::Staff Rust#jr_09	89,{
 	if (job_ranger01 == 6) {
 		if (countitem(12258) < 1) {
 			percentheal 100,0;
 			specialeffect2 EF_ABSORBSPIRITS;
-			mes "[Staff Rust]";
-			mes "I'll give you the 'Bombring Capsules.";
-			mes "The 'Bombring Capsules' can be given again only for the one who used it all, so please keep that in mind.";
+			mes "[拉斯特]";
+			mes "我會把「炸彈膠囊」交給你。";
+			mes "「炸彈膠囊」只會再給已經全部用完的人，請記住這點。";
 			if (countitem(6156)) {
 				getitem 12258,5; //Bombring_Box
 				close;
 			}
 			next;
 			emotion ET_FRET;
-			mes "[Staff Rust]";
-			mes "And the mission is.... to deliver these documents to the supervisor, Caution. He won't take what I give...";
+			mes "[拉斯特]";
+			mes "任務是……把這些文件送交監考官 Caution。他不肯收我給的東西……";
 			setquest 8260;
 			getitem 6156, (MaxWeight-Weight-2000)/10; //Approval_Report
 			getitem 12258,10; //Bombring_Box
 			getitem 569,100; //Novice_Potion
 			close;
 		}
-		mes "[Staff Rust]";
-		mes "I'm sorry, but you already have the 'Bombring Capsules', so I cannot provide you with more.";
+		mes "[拉斯特]";
+		mes "很抱歉，你已經有「炸彈膠囊」了，所以我不能再給你。";
 		close;
 	}
-	mes "[Staff Rust]";
-	mes "Excuse me, but how did you get in?";
+	mes "[拉斯特]";
+	mes "不好意思，你是怎麼進來的？";
 	next;
-	mes "[Staff Rust]";
-	mes "If you are not here for the job change test, please leave.";
+	mes "[拉斯特]";
+	mes "如果你不是來參加轉職測驗的，請離開。";
 	close;
 OnInit:
 	disablenpc "Staff Rust#jr_09";
@@ -1220,7 +1220,7 @@ OnDisable:
 	end;
 }
 
-job3_rang02,136,21,0	script	Summon Monster#jr_10	139,5,5,{
+job3_rang02,136,21,0	script	召喚怪物#jr_10::Summon Monster#jr_10	139,5,5,{
 OnInit:
 	disablenpc "Summon Monster#jr_10";
 	end;
@@ -1263,15 +1263,15 @@ OnDisable:
 OnTouch_:
 	percentheal 10,0;
 	specialeffect2 EF_ABSORBSPIRITS;
-	mapannounce "job3_rang02","Test Supervisor, Caution : You are doing well! If you come closer a little more, you should be able to see me.",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 做得不錯！再靠近一點，應該就能看到我了。",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnMyMobDead:
 	end;
 }
 
-job3_rang02,180,78,3	script	Test Supervisor#jr_11	882,1,1,{
-	mes "[Test Supervisor, Caution]";
-	mes "Come, come near, nearer, nearer!!";
+job3_rang02,180,78,3	script	測試監考官#jr_11::Test Supervisor#jr_11	882,1,1,{
+	mes "[測試監考官 Caution]";
+	mes "過來，過來，再靠近，再近一點！！";
 	close;
 OnInit:
 	disablenpc "Test Supervisor#jr_11";
@@ -1286,77 +1286,77 @@ OnDisable:
 OnTouch_:
 	if (job_ranger01 == 6) {
 		if (countitem(12258)) {
-			mes "[Test Supervisor, Caution]";
-			mes "No, no!";
-			mes "You need to use all the 'Bombring Capsules'?!";
+			mes "[測試監考官 Caution]";
+			mes "不、不行！";
+			mes "你要把「炸彈膠囊」全部用掉？！";
 			next;
-			mes "[Test Supervisor, Caution]";
-			mes "Use it all and come back!";
-			mes "Time is ticking so you'd better hurry.";
+			mes "[測試監考官 Caution]";
+			mes "全部用完再回來！";
+			mes "時間不等人，你最好快一點。";
 			close;
 		}
 		if (countitem(6156) > 0) {
-			mes "[Test Supervisor, Caution]";
-			mes "You've arrived safely!!!";
+			mes "[測試監考官 Caution]";
+			mes "你平安抵達了！！！";
 			donpcevent "Second Test Timer#jr_08::OnDisable";
 			donpcevent "Staff Rust#jr_09::OnDisable";
 			donpcevent "Summon Monster#jr_10::OnDisable";
 			initnpctimer;
 			next;
-			mes "[Test Supervisor, Caution]";
-			mes "What are those documents?";
+			mes "[測試監考官 Caution]";
+			mes "那些文件是什麼？";
 			emotion ET_STARE_ABOUT;
 			next;
-			select("Mr. Rust asked me to give this to you.");
-			mes "[Test Supervisor, Caution]";
-			mes "Haaaaaaaah!!";
-			mes "I've been avoiding him so much!!";
+			select("拉斯特先生託我把這個交給你。");
+			mes "[測試監考官 Caution]";
+			mes "哈啊啊啊啊！！";
+			mes "我一直都在躲他啊！！";
 			delitem 6156,countitem(6156); //Approval_Report
 			erasequest 8260;
 			next;
-			mes "[Test Supervisor, Caution]";
-			mes "I've never imagined this could be a test...";
+			mes "[測試監考官 Caution]";
+			mes "我從沒想過這竟然是測驗……";
 			emotion ET_CRY;
 			next;
-			mes "[Test Supervisor, Caution]";
-			mes "Anyway you've passed the 2nd test very well.";
+			mes "[測試監考官 Caution]";
+			mes "總之，你第二項測驗表現得很好。";
 			next;
-			mes "[Test Supervisor, Caution]";
-			mes "Pass the 3rd one and you will become a great ranger.";
+			mes "[測試監考官 Caution]";
+			mes "通過第三項，你就會成為出色的遊俠。";
 			close2;
 			warp "job3_rang02",250,49;
 			donpcevent "Test Supervisor#jr_13::OnEnable";
 			end;
 		}
 	}
-	mes "[Test Supervisor, Caution]";
-	mes "You've arrived safely......uh?";
+	mes "[測試監考官 Caution]";
+	mes "你平安抵達了……呃？";
 	next;
-	mes "[Test Supervisor, Caution]";
-	mes "Didn't Rust give you something?";
+	mes "[測試監考官 Caution]";
+	mes "拉斯特沒給你什麼東西嗎？";
 	next;
-	mes "[Test Supervisor, Caution]";
-	mes "Where did you lose that?";
-	mes "Pick it up quickly!";
+	mes "[測試監考官 Caution]";
+	mes "你是在哪裡弄丟的？";
+	mes "快去撿起來！";
 	close;
 OnTimer60000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : Come here, you don't have to rush your test, but why are you delaying the test?",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 過來，你不用急著考，但為什麼要拖延測驗？",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
 	end;
 OnTimer63000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : I hate people that make me wait! if you don't talk to me in 30 seconds to continue the test, I will end your test progress!",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 我最討厭讓我等的人！如果你 30 秒內不跟我說話繼續測驗，我就結束你的測驗進度！",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
 	end;
 OnTimer93000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : Hurry up! Hurry up! Come on.",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 快點！快點！加油啊。",bc_map,"0xffb6c1"; //FW_NORMAL 12 0 0
 	end;
 OnTimer96000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : You couldn't get here on time, therefore the 2nd practical test ends here!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 你沒能準時抵達，因此第二項實技測驗到此結束！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer99000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : If you want to blame something, blame your own stupidity! Start over from the beginning! You fool!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 要怪就怪你自己的愚蠢！從頭重新開始！你這個傻瓜！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	mapwarp "job3_rang02","tur_dun01",93,165;
 	end;
 OnTimer102000:
-	mapannounce "job3_rang02","Test Supervisor, Caution : If you want to blame something, blame your own stupidity! Start over from the beginning! You fool!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Caution : 要怪就怪你自己的愚蠢！從頭重新開始！你這個傻瓜！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	mapwarp "job3_rang02","tur_dun01",93,165;
 	donpcevent "Staff Rust#jr_09::OnDisable";
 	donpcevent "Summon Monster#jr_10::OnDisable";
@@ -1369,7 +1369,7 @@ OnTimer105000:
 	end;
 }
 
-job3_rang02,104,93,0	script	Third Test Timer#jr_12	139,{
+job3_rang02,104,93,0	script	第三測驗計時器#jr_12::Third Test Timer#jr_12	139,{
 OnInit:
 	disablenpc "Third Test Timer#jr_12";
 	end;
@@ -1383,16 +1383,16 @@ OnDisable:
 	disablenpc "Third Test Timer#jr_12";
 	end;
 OnTimer3000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : Well, then let's start the 3rd practical test! Are you ready?",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 那麼，我們開始第三項實技測驗！準備好了嗎？",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer6000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : From now on, every 3 seconds an 'Egg Bomb' will appear! Look at it carefully, and have your wolf attack the egg bomb to dismantle it!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 從現在開始，每 3 秒就會出現一個「蛋炸彈」！仔細看清楚，讓你的狼去攻擊蛋炸彈把它拆除！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer9000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : You can control the wolf by pressing the alt key and left click the surface, the wolf then moves to that point! Then you target the bomb and click on more time, it will then attack it!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 按住 Alt 鍵並左鍵點擊地面，就能控制狼移動到該點！接著鎖定炸彈後再點擊一次，狼就會去攻擊它！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer12000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : The 'Egg Bombs' will spawn 20 times! Each time you successfully dismantle one, you get 1 point! If you get 10 or more points, you pass the practical test, so go for it! Then I'll start!!!!!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 「蛋炸彈」會出現 20 次！每成功拆除一個，就得 1 分！得到 10 分以上就算通過實技測驗，加油吧！那我要開始囉！！！！！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	set .n,14;
 	end;
 OnTimer15000:
@@ -1420,30 +1420,30 @@ OnTimer110000:
 	else set .n,.n+3;
 	end;
 OnTimer113000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : The test is ooooooooooooooveeeeerrr!!!!!!!!!!!!!!!!!!!!!!!!!!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 測驗結束啦啊啊啊啊啊啊啊啊啊啊啊啊啊！！！！！！！！！！！！！！！！！！！！！！！！！！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	for(set .@i,14; .@i<=28; set .@i,.@i+1)
 		donpcevent "Egg Bomb#"+.@i+"::OnDisable";
 	set .n,0;
 	end;
 OnTimer116000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : Well let's see the result?!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 那我們來看看結果吧？！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer119000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : Your score is ..." + $@job_rang_point03 + " out of 20!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 你的分數是……" + $@job_rang_point03 + " / 20 分！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer121000:
 	if ($@job_rang_point03 > 9) {
-		mapannounce "job3_rang02","Test Supervisor, Freeze : You have been successful so far! You've passed all practical tests! Let's move to the waitingroom!!!!!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rang02","測試監考官 Freeze : 到目前為止你都表現得很好！實技測驗全部通過了！我們移到等候室吧！！！！！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 		mapwarp "job3_rang02","job3_rang01",89,38;
 	} else
-		mapannounce "job3_rang02","Test Supervisor, Freeze : It's too bad but you couldn't pass the 10 points, so you failed!!!!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+		mapannounce "job3_rang02","測試監考官 Freeze : 很可惜，你沒能拿到 10 分，所以不及格！！！！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer124000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : It's too bad, but you'll need to retake the test from the beginning! Please go back!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 很可惜，你得從頭重考！請回去吧！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	mapwarp "job3_rang02","tur_dun01",93,165;
 	end;
 OnTimer127000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : It's too bad, but you'll need to retake the test from the beginning! Please go back!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 很可惜，你得從頭重考！請回去吧！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	set $@job_rang_point03,0;
 	mapwarp "job3_rang02","tur_dun01",93,165;
 	donpcevent "Test Supervisor#jr_13::OnDisable";
@@ -1456,43 +1456,43 @@ OnTimer130000:
 	end;
 }
 
-job3_rang02,251,49,3	script	Test Supervisor#jr_13	732,{
-	mes "[Test Supervisor, Freeze]";
+job3_rang02,251,49,3	script	測試監考官#jr_13::Test Supervisor#jr_13	732,{
+	mes "[測試監考官 Freeze]";
 	if (job_ranger01 == 6) {
 		if (checkquest(8261) == -1) {
-			mes "Congrats for passing the 2nd practical test! I am the 3rd practical test supervisor Freeze!";
+			mes "恭喜通過第二項實技測驗！我是第三項實技測驗的監考官 Freeze！";
 			next;
-			mes "[Test Supervisor, Freeze]";
-			mes "For the 3rd test, I'll test how much you could use a wolf effectively. When you become a Ranger in the future, you'll learn an wolf!";
+			mes "[測試監考官 Freeze]";
+			mes "第三項測驗，我要測試你能把狼運用到什麼程度。將來成為遊俠時，你就能學會操控狼！";
 			next;
-			mes "[Test Supervisor, Freeze]";
-			mes "^0000ffThe tester is provided with a disposable Wolf summoning Flute! When you remove egg bombs coming out from here and there by controlling the summoned wolf, you get points!^000000";
+			mes "[測試監考官 Freeze]";
+			mes "^0000ff受測者會獲得一支一次性的狼召喚笛！操控召喚出的狼拆除四處冒出來的蛋炸彈，就能得分！^000000";
 			next;
-			mes "[Test Supervisor, Freeze]";
-			mes "Tester cannot move during the test, and the test completes when all bombs are removed quickly and accurately within the given time only by using a wolf!";
+			mes "[測試監考官 Freeze]";
+			mes "測驗期間受測者不能移動，只能靠狼在限定時間內快速準確地拆除所有炸彈，測驗才算完成！";
 			next;
-			mes "[Test Supervisor, Freeze]";
-			mes "^0000ffThe way to control an wolf is to press the alt key and left-click the surface, then the wolf moves to the point where you've clicked on!^000000";
-			mes "^0000ffWhen you target the bomb and press one more, it starts to attack!^000000";
+			mes "[測試監考官 Freeze]";
+			mes "^0000ff控制狼的方法是按住 Alt 鍵並左鍵點擊地面，狼就會移動到你點擊的位置！^000000";
+			mes "^0000ff鎖定炸彈後再按一次，狼就會開始攻擊！^000000";
 			next;
-			mes "[Test Supervisor, Freeze]";
-			mes "The 3rd test time limit is about 3 minutes, when you get 10 over 20 points, you can pass the practical test!";
+			mes "[測試監考官 Freeze]";
+			mes "第三項測驗的時限約為 3 分鐘，拿到 20 分中的 10 分以上就能通過實技測驗！";
 			next;
-			mes "[Test Supervisor, Freeze]";
-			mes "Well, then first get this Wolf' flutes and after summoning the wolf, talk to me!";
+			mes "[測試監考官 Freeze]";
+			mes "那麼，先拿去這支狼笛，召喚出狼之後再來跟我說話！";
 			getitem 12380,1; //Desert_Wolf_Babe_Scroll
 			setquest 8261;
 			close;
 		}
 		if (getmercinfo(1) == 2034) {
 			erasequest 8261;
-			mes "Good! Then I'll start the test right now!";
+			mes "好！那我現在就開始測驗！";
 			next;
-			mes "[Test Supervisor, Freeze]";
-			mes "Keep in mind! You need to remove the egg bomb before it gets exploded by only using a wolf!";
+			mes "[測試監考官 Freeze]";
+			mes "記住！你必須只靠狼，在蛋炸彈爆炸前把它拆除！";
 			next;
-			mes "[Test Supervisor, Freeze]";
-			mes "Then, good luck!";
+			mes "[測試監考官 Freeze]";
+			mes "那麼，祝你好運！";
 			sc_start SC_STONE,120000,10;
 			close2;
 			donpcevent "Test Supervisor#jr_13::OnDisable";
@@ -1500,27 +1500,27 @@ job3_rang02,251,49,3	script	Test Supervisor#jr_13	732,{
 			end;
 		}
 		if (countitem(12380) < 1) {
-			mes "Huh?! There's no wolf, no Test Flute, where did you get rid of them?!";
+			mes "咦？！狼也沒有，測驗笛也沒有，你把它們弄到哪去了？！";
 			next;
-			mes "[Test Supervisor, Freeze]";
-			mes "I'll give you one more time specially, so hold yourself together!";
+			mes "[測試監考官 Freeze]";
+			mes "這次特別再給你一次機會，給我振作點！";
 			next;
-			mes "[Test Supervisor, Freeze]";
-			mes "Summon the wolf quickly, and talk to me again!";
+			mes "[測試監考官 Freeze]";
+			mes "快點召喚出狼，再來跟我說話！";
 			getitem 12380,1; //Desert_Wolf_Babe_Scroll
 			close;
 		}
-		mes "Ha? What are you doing?";
+		mes "哈？你在做什麼？";
 		next;
-		mes "[Test Supervisor, Freeze]";
-		mes "Play the Test Flute quickly to summon the wolf and talk to me!";
+		mes "[測試監考官 Freeze]";
+		mes "快吹響測驗笛召喚出狼，再來跟我說話！";
 		close;
 	}
 	mes "你是誰？";
 	next;
-	mes "[Test Supervisor, Freeze]";
-	mes "This area is for the Ranger Job Change test!";
-	mes "You are not authorized to be here, please get out!";
+	mes "[測試監考官 Freeze]";
+	mes "這裡是遊俠轉職測驗的場地！";
+	mes "你沒有權限待在這裡，請離開！";
 	close;
 OnInit:
 	disablenpc "Test Supervisor#jr_13";
@@ -1538,33 +1538,33 @@ OnDisable:
 	disablenpc "Test Supervisor#jr_13";
 	end;
 OnTimer3000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : Welcome to the 3rd practical test field! I am the 3rd practical Test Supervisor Freeze!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 歡迎來到第三項實技測驗場！我是第三項實技測驗的監考官 Freeze！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer6000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : For the smooth testing progress for the other testers, if you don't talk to me again in 2 minutes to start the 3rd test, the test will end!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 為了讓其他受測者能順利進行，如果你兩分鐘內不再跟我說話開始第三項測驗，測驗就會結束！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer9000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : Don't hesitate and let's begin!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 別猶豫了，我們開始吧！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer60000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : For the smooth testing progress for the other testers, if you don't talk to me again in 1 minute to start the 3rd test, the test will end!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 為了讓其他受測者能順利進行，如果你一分鐘內不再跟我說話開始第三項測驗，測驗就會結束！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer63000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : Don't hesitate and let's begin!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 別猶豫了，我們開始吧！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer120000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : Why aren't you starting the test?",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 你為什麼還不開始測驗？",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer123000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : You weren't on time for the test, so I am ending the 3rd practical test!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 你沒有準時開始測驗，所以我要結束第三項實技測驗！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnTimer127000:
 	set $@job_rang_point03,0;
-	mapannounce "job3_rang02","Test Supervisor, Freeze : It's too bad, but try again!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 很可惜，再試一次吧！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	mapwarp "job3_rang02","tur_dun01",93,165;
 	end;
 OnTimer130000:
-	mapannounce "job3_rang02","Test Supervisor, Freeze : It's too bad, but try again!",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","測試監考官 Freeze : 很可惜，再試一次吧！",bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	mapwarp "job3_rang02","tur_dun01",93,165;
 	end;
 OnTimer133000:
@@ -1589,7 +1589,7 @@ OnEnable:
 		case 1: set .@str$,"I... no, I can't stand anymore!!"; break;
 		case 2: set .@str$,"I am almost done now... Don't stop me."; break;
 	}
-	mapannounce "job3_rang02","Egg Bomb : "+.@str$,bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","蛋炸彈 : "+.@str$,bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	end;
 OnDisable:
 	stopnpctimer;
@@ -1603,11 +1603,11 @@ OnMyMobDead:
 		case 1: set .@str$,"Don't be relieved. Misery always comes from carelessness."; break;
 		case 2: set .@str$,"Alas, it was only a dream for a short time..."; break;
 	}
-	mapannounce "job3_rang02","Egg Bomb : "+.@str$,bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","蛋炸彈 : "+.@str$,bc_map,"0x87ceeb"; //FW_NORMAL 12 0 0
 	donpcevent strnpcinfo(0)+"::OnDisable";
 	end;
 OnTimer10000:
-	mapannounce "job3_rang02","Egg Bomb : Ughhhhhhhhhhhhhh!!! So what did I say!!",bc_map,"0xFF9900"; //FW_NORMAL 12 0 0
+	mapannounce "job3_rang02","蛋炸彈 : 啊啊啊啊啊啊啊！！所以我不是說過了嗎！！",bc_map,"0xFF9900"; //FW_NORMAL 12 0 0
 	donpcevent strnpcinfo(0)+"::OnDisable";
 	end;
 }
@@ -1627,93 +1627,93 @@ job3_rang02,259,58,0	duplicate(Egg Bomb#0)	Egg Bomb#26	139
 job3_rang02,254,52,0	duplicate(Egg Bomb#0)	Egg Bomb#27	139
 job3_rang02,247,42,0	duplicate(Egg Bomb#0)	Egg Bomb#28	139
 
-job3_rang01,90,43,3	script	Ranger Master#jr_29	832,{
-	mes "[Ranger Master, Neveragain]";
+job3_rang01,90,43,3	script	遊俠大師#jr_29::Ranger Master#jr_29	832,{
+	mes "[遊俠大師 Neveragain]";
 	if (job_ranger01 < 6) {
-		mes "... ...Huh?";
-		mes "It's weird... How did you get here?";
+		mes "……咦？";
+		mes "好奇怪……你是怎麼來到這裡的？";
 		next;
-		mes "[Ranger Master, Neveragain]";
-		mes "You don't seem to belong here...";
+		mes "[遊俠大師 Neveragain]";
+		mes "你好像不該出現在這裡……";
 		next;
-		mes "[Ranger Master, Neveragain]";
-		mes "Go away.";
-		mes "You are not supposed to be here.";
+		mes "[遊俠大師 Neveragain]";
+		mes "走開。";
+		mes "你不應該待在這裡。";
 		close2;
 		warp "alberta",117,57;
 		end;
 	} else if (job_ranger01 == 6 || job_ranger01 == 7) {
 		if (BaseLevel < 99 || JobLevel < 50) {
 			mes "不要。";
-			mes "I can tell just by looking at you that you seem to be inexperienced.";
+			mes "只看你一眼就知道，你似乎還很缺乏經驗。";
 			next;
-			mes "[Ranger Master, Neveragain]";
-			mes "Have more pride in your job and get more experience, and then when you grow as a Hunter or a Sniper you can make an aura by yourself, please come back again.";
+			mes "[遊俠大師 Neveragain]";
+			mes "請對你的職業更有自信，多累積些經驗。等你成長為獵人或狙擊手，能自己製造光環時，請再來找我。";
 			close2;
 			warp "alberta",117,57;
 			end;
 		}
 		mes "恭喜！";
-		mes "You've completed all the rough practical tests!";
+		mes "你已經完成了所有艱難的實技測驗！";
 		if (job_ranger01 == 6) {
 			set job_ranger01,7;
 			changequest 8259,8262;
 		}
 		next;
-		mes "[Ranger Master, Neveragain]";
-		mes "Well, you've had enough experience so I won't need to drag on.";
+		mes "[遊俠大師 Neveragain]";
+		mes "嗯，你的經驗已經足夠了，所以我就不囉嗦了。";
 		next;
-		mes "[Ranger Master, Neveragain]";
-		mes "Before you do a job change ^0000ffdismiss your Falcon^000000, and check if you've used all of your ^0000ffSkill Points^000000.";
+		mes "[遊俠大師 Neveragain]";
+		mes "轉職前請先^0000ff解除你的獵鷹^000000，並確認你是否已經用完所有的^0000ff技能點數^000000。";
 		next;
-		if(select("Wait a minute:I am ready") == 1) {
-			mes "[Ranger Master, Neveragain]";
-			mes "I am not running away so take your time.";
+		if(select("等一下:我準備好了") == 1) {
+			mes "[遊俠大師 Neveragain]";
+			mes "我不會逃跑，慢慢來沒關係。";
 			close;
 		}
-		mes "[Ranger Master, Neveragain]";
+		mes "[遊俠大師 Neveragain]";
 		if (checkfalcon()) {
-			mes "Didn't you dismiss your falcon??";
+			mes "你不是還沒解除獵鷹嗎？？";
 			next;
-			mes "[Ranger Master, Neveragain]";
-			mes "Please dismiss your falcon, and come back to me.";
+			mes "[遊俠大師 Neveragain]";
+			mes "請解除你的獵鷹，然後再回來找我。";
 			close;
 		}
 		if (SkillPoint != 0) {
-			mes "I think you need to learn more.";
+			mes "我覺得你還需要多學一點。";
 			next;
-			mes "[Ranger Master Neveragain]";
-			mes "Use up all of your skill points before continuing on.";
+			mes "[遊俠大師 Neveragain]";
+			mes "在繼續之前，請先用完所有技能點數。";
 			close;
 		}
-		mes "Good. No falcon and you've used up all your skill points.";
+		mes "很好。獵鷹已解除，技能點數也全部用完了。";
 		next;
-		mes "[Ranger Master, Neveragain]";
-		mes "Okay, before you really change the job into a ranger, I'll ask you on more time.";
-		mes "Do you really want to become a ranger?";
+		mes "[遊俠大師 Neveragain]";
+		mes "好，在你真正轉職成遊俠之前，我再問你一次。";
+		mes "你真的想成為遊俠嗎？";
 		next;
-		if(select("No:Yes!") == 1) {
-			mes "[Ranger Master, Neveragain]";
-			mes "...Um? That's not the answer that I was waiting for...";
+		if(select("否:是！") == 1) {
+			mes "[遊俠大師 Neveragain]";
+			mes "……嗯？那不是我在等的答案……";
 			next;
-			mes "[Ranger Master, Neveragain]";
-			mes "Even after passing through all the rough practical tests, you don't want to become a ranger... are you sure?";
+			mes "[遊俠大師 Neveragain]";
+			mes "明明通過了所有艱難的實技測驗，你卻不想成為遊俠……你確定嗎？";
 			close;
 		}
-		mes "[Ranger Master, Neveragain]";
+		mes "[遊俠大師 Neveragain]";
 		if (ismounting()) {
-			mes "You are on a riding pet,";
-			mes "so you cannot change your job.";
-			mes "Please unequip your riding pet and try again!";
+			mes "你正騎著寵物，";
+			mes "所以無法轉職。";
+			mes "請先解除騎乘寵物再試一次！";
 			close;
 		}
 		if (BaseJob != Job_Hunter) {
-			mes "Wait, who are you?";
-			mes "You are not a Hunter or a Sniper?!";
+			mes "等等，你是誰？";
+			mes "你不是獵人或狙擊手嗎？！";
 			next;
-			mes "[Ranger Master, Neveragain]";
+			mes "[遊俠大師 Neveragain]";
 			mes "你在這裡做什麼？";
-			mes "You are not supposed to be here. Get out!";
+			mes "你不應該待在這裡，滾出去！";
 			set job_ranger01,0;
 			for(set .@i,8254; .@i<=8262; set .@i,.@i+1)
 				if (checkquest(.@i) > -1) erasequest .@i;
@@ -1721,19 +1721,19 @@ job3_rang01,90,43,3	script	Ranger Master#jr_29	832,{
 			warp "alberta",117,57;
 			end;
 		}
-		mes "Your firm answer seems very trustworthy!";
+		mes "你的堅定回答看起來很可靠！";
 		next;
 		nude;
 		if (countitem(1703) < 1) {
-			mes "[Ranger Master, Neveragain]";
-			mes "Umm?";
-			mes "You need to return the borrowed stuff.";
-			mes "Where is the bow that was given to you for the job change test?";
+			mes "[遊俠大師 Neveragain]";
+			mes "嗯？";
+			mes "你得把借來的東西還回來。";
+			mes "請問轉職測驗時借給你的那把弓在哪裡？";
 			close;
 		}
-		mes "[Ranger Master, Neveragain]";
-		mes "From now on be active as a splendid Ranger!";
-		mes "I wish you luck in your future!";
+		mes "[遊俠大師 Neveragain]";
+		mes "從現在起，請作為一名出色的遊俠活躍吧！";
+		mes "祝你未來一切順利！";
 		delitem 1703,1; //Bow__
 		set job_ranger01,8;
 		completequest 8262;
@@ -1743,22 +1743,22 @@ job3_rang01,90,43,3	script	Ranger Master#jr_29	832,{
 		getitem 6124,1; //Wolf's_Flute
 		close;
 	}
-	mes "Hey, you look great.";
+	mes "嘿，你看起來很不錯。";
 	mes "你在這裡做什麼？";
 	next;
-	switch(select("I just came by:Please let me be out")) {
+	switch(select("我只是路過:請讓我離開")) {
 	case 1:
-		mes "[Ranger Master, Neveragain]";
-		mes "Well, there's nothing to see and you came.";
+		mes "[遊俠大師 Neveragain]";
+		mes "嗯，這裡沒什麼好看的，你還是來了。";
 		next;
-		mes "[Ranger Master, Neveragain]";
-		mes "Take a rest as long as you want.";
-		mes "It's the place where you can have a tea easily.";
+		mes "[遊俠大師 Neveragain]";
+		mes "想休息多久都行。";
+		mes "這裡是可以輕鬆喝杯茶的地方。";
 		close;
 	case 2:
-		mes "[Ranger Master, Neveragain]";
-		mes "It was good to see you.";
-		mes "Don't lose the dignity as a Ranger wherever you go.";
+		mes "[遊俠大師 Neveragain]";
+		mes "很高興見到你。";
+		mes "無論到哪裡，都別失去身為遊俠的尊嚴。";
 		close2;
 		warp "alberta",117,57;
 		end;
@@ -1767,21 +1767,21 @@ job3_rang01,90,43,3	script	Ranger Master#jr_29	832,{
 
 job3_rang01,58,1,0	script	工人#job_ranger::Worker#job_ranger	88,{
 	callfunc "F_GM_NPC";
-	switch(select("Enable Waiting Room:Disable Waiting Room:Enable 1st Test:Disable 1st Test:Enable 2nd Test:Disable 2nd Test:Enable 3rd Test:Disable 3rd Test:Cancel")) {
+	switch(select("開啟等候室:關閉等候室:開啟第一項測驗:關閉第一項測驗:開啟第二項測驗:關閉第二項測驗:開啟第三項測驗:關閉第三項測驗:取消")) {
 	case 1:
-		mes "Enabled Waiting Room";
+		mes "已開啟等候室";
 		donpcevent "Test Waiting Room#jr_03::OnEnable";
 		close;
 	case 2:
-		mes "Disabled Waiting Room";
+		mes "已關閉等候室";
 		donpcevent "Test Waiting Room#jr_03::OnDisable";
 		close;
 	case 3:
-		mes "1st Test Enabled";
+		mes "第一項測驗已開啟";
 		donpcevent "Test Supervisor#jr_04::OnEnable";
 		close;
 	case 4:
-		mes "1st Test Disabled";
+		mes "第一項測驗已關閉";
 		donpcevent "Test Supervisor#jr_04::OnDisable";
 		donpcevent "First Test Timer#jr_05::OnDisable";
 		donpcevent "CallCorrectAnswer#jr::OnReset";
@@ -1790,19 +1790,19 @@ job3_rang01,58,1,0	script	工人#job_ranger::Worker#job_ranger	88,{
 		donpcevent "CallWrongAnswer#jr::OnDisable";
 		close;
 	case 5:
-		mes "2nd Test Enabled";
+		mes "第二項測驗已開啟";
 		donpcevent "Second Test Timer#jr_08::OnEnable";
 		close;
 	case 6:
-		mes "2nd Test Disabled";
+		mes "第二項測驗已關閉";
 		donpcevent "Second Test Timer#jr_08::OnDisable";
 		close;
 	case 7:
-		mes "3rd Test has been Enabled";
+		mes "第三項測驗已開啟";
 		donpcevent "Third Test Timer#jr_12::OnEnable";
 		close;
 	case 8:
-		mes "3rd Test has been Disabled";
+		mes "第三項測驗已關閉";
 		donpcevent "Third Test Timer#jr_12::OnDisable";
 		for(set .@i,14; .@i<=28; set .@i,.@i+1)
 			donpcevent "Egg Bomb#"+.@i+"::OnDisable";

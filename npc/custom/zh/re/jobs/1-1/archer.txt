@@ -12,118 +12,118 @@
 //= 1.0 First Version. [Kisuka]
 //= 1.1 Added support for Baby classes. [Euphy]
 //============================================================ 
-payon_in02,64,71,4	script	Archer Guildsman#archer	85,{
+payon_in02,64,71,4	script	弓箭手公會#archer::Archer Guildsman#archer	85,{
 	if (Upper == 1) {
 		if (Class == Job_Novice_High && (ADVJOB == Job_Sniper || ADVJOB == Job_Clown || ADVJOB == Job_Gypsy)) {
-			mes "[Archer Guildsman]";
-			mes "Hey, I know you.";
-			mes "You took this test";
-			mes "before, didn't you?";
+			mes "[弓箭手公會]";
+			mes "嘿，我認得你。";
+			mes "你參加過這個";
+			mes "測驗，對吧？";
 			next;
-			mes "[Archer Guildsman]";
-			mes "Ah, you must have been";
-			mes "to Valhalla and been reborn.";
-			mes "Wow, that's so impressive!";
+			mes "[弓箭手公會]";
+			mes "啊，你一定是";
+			mes "去過英靈殿並轉生了吧。";
+			mes "哇，真是令人佩服！";
 			next;
 			if (!callfunc("F_CanChangeJob")) {
-				mes "[Archer Guildsman]";
+				mes "[弓箭手公會]";
 				mes "呃……";
-				mes "You'd better learn all the Basic Skills first before you can become an Archer.";
+				mes "你最好先學會所有基本技能，再成為弓箭手。";
 				next;
-				mes "[Archer Guildsman]";
-				mes "Alright, see you later.";
+				mes "[弓箭手公會]";
+				mes "好吧，待會見。";
 				close;
 			}
-			mes "[Archer Guildsman]";
-			mes "Well then. I don't";
-			mes "need to say anything else.";
-			mes "I know you'll make a great Archer...";
+			mes "[弓箭手公會]";
+			mes "嗯，那麼。我";
+			mes "沒有其他要說的了。";
+			mes "我知道你會成為出色的弓箭手……";
 			next;
 			skill "NV_TRICKDEAD",0,SKILL_PERM;
 			jobchange Job_Archer_high;
 			skill "AC_MAKINGARROW",1,SKILL_PERM;
 			skill "AC_CHARGEARROW",1,SKILL_PERM;
-			mes "[Archer Guildsman]";
-			mes "Although there's no special";
-			mes "reward for you this time, I hope you understand. Take care of yourself.";
+			mes "[弓箭手公會]";
+			mes "雖然這次沒有";
+			mes "特別的獎勵，希望你能體諒。請多保重。";
 			close;
 		}else{
-			mes "[Archer Guildsman]";
+			mes "[弓箭手公會]";
 			mes "喔……？";
-			mes "Hey, what are";
-			mes "you doing here...?";
+			mes "喂，你";
+			mes "來這裡做什麼……？";
 			next;
-			mes "[Archer Guildsman]";
-			mes "I can tell that you're not cut out to be an Archer. It sort of feels like you're meant to do";
-			mes "something else...";
+			mes "[弓箭手公會]";
+			mes "我看得出你不適合當弓箭手。感覺你似乎註定要去做";
+			mes "別的事情……";
 			close;
 		}
 	}
-	mes "[Archer Guildsman]";
-	mes "Nice to meet you. How may I help you?";
+	mes "[弓箭手公會]";
+	mes "很高興見到你。有什麼我能幫你的嗎？";
 	next;
-	switch(select("I want to be an Archer.:I need the requirements, please.:Nothing, thanks.")) {
+	switch(select("我想成為弓箭手。:請告訴我轉職條件。:沒事，謝謝。")) {
 	case 1:
-		mes "[Archer Guildsman]";
+		mes "[弓箭手公會]";
 		if(BaseJob != Job_Novice) {
 			if(BaseJob == Job_Archer)
-				mes "Haha, you are kidding me...";
+				mes "哈哈，你在開玩笑吧……";
 			else {
-				mes "I feel sorry but only Novices can change their job.";
-				mes "You already have your own decent job, don't you?";
+				mes "很抱歉，只有初心者才能轉職。";
+				mes "你已經有自己的好職業了，不是嗎？";
 			}
 			close;
 		}else{
-			mes "You are... "+strcharinfo(0)+"，對吧？";
+			mes "你是…… "+strcharinfo(0)+"，對吧？";
 			next;
 			if (!callfunc("F_CanChangeJob")) {
-				mes "[Archer Guildsman]";
-				mes "Well, you're not at the right skill level.";
-				mes "Your job level must be at least ^4A4AFF10^000000 and your Basic Skill level should reach ^4A4AFFlevel 9";
+				mes "[弓箭手公會]";
+				mes "嗯，你的技能等級還不夠。";
+				mes "你的職業等級必須至少達到 ^4A4AFF10^000000，基本技能等級應達到 ^4A4AFF等級 9";
 				next;
-				mes "[Archer Guildsman]";
-				mes "Because an Archer needs extremely high concentration, so we do not accept those who have little patience.";
+				mes "[弓箭手公會]";
+				mes "因為弓箭手需要極高的專注力，所以我們不接納缺乏耐心的人。";
 				close;
 			}
-			mes "[Archer Guildsman]";
-			mes "Your Basic Skill is now enough..";
-			mes "....Hm~~ so you are now ready to be an Archer. I will take the step right away.";
+			mes "[弓箭手公會]";
+			mes "你的基本技能現在已經足夠了……";
+			mes "……嗯~~ 所以你現在已經準備好成為弓箭手了。我馬上為你辦理。";
 			next;
-			mes "[Archer Guildsman]";
-			mes "Congratulations! You are now an Archer! Also, we hope that you actively participate in many programs for the revival of the Archer Guild.";
-			mes "Ah, items have arrived from the Production Department. Here, take these! These are all yours!";
+			mes "[弓箭手公會]";
+			mes "恭喜！你現在是弓箭手了！另外，我們希望你積極參與許多為復興弓箭手公會而推行的計畫。";
+			mes "啊，生產部門送來的道具到了。來，拿去吧！這些都是你的！";
 			callfunc "Job_Change",Job_Archer;
 			getitem 1742,1;	// N_Composite_Bow
 			getitem 12004,1;	// Arrow_Container
 			getitem 12009,1;	// Silver_Arrow_Container
 			getitem 12008,1;	// Fire_Arrow_Container
 			next;
-			mes "[Archer Guildsman]";
-			mes "Having a bow and arrows, now you became a real Archer.";
-			mes "If you open the arrow container, there are arrows in it and then you can equip them.";
-			mes "Well, I expect to hear better news from you. It's time to say goodbye.";
+			mes "[弓箭手公會]";
+			mes "有了弓與箭，你現在才算是真正的弓箭手。";
+			mes "打開箭矢容器，裡面有箭矢，然後你就可以裝備了。";
+			mes "嗯，我期待聽到你更好的消息。該說再見了。";
 			mes "再見。";
 			close;
 		}
 	case 2:
-		mes "[Archer Guildsman]";
-		mes "An Archer has skills using a bow and has various talents.";
-		mes "The greatest ability of an Archer is attacking enemies from a long distance.";
+		mes "[弓箭手公會]";
+		mes "弓箭手擅長使用弓箭的技能，並擁有各種才能。";
+		mes "弓箭手最大的能力，是從遠距離攻擊敵人。";
 		next;
-		mes "[Archer Guildsman]";
-		mes "Although an Archer has weaker HP, he or she can shoot enemies at a long range,";
-		mes "so an Archer is safer in a real battle.";
+		mes "[弓箭手公會]";
+		mes "雖然弓箭手的 HP 較低，但他們能夠在遠距離射擊敵人，";
+		mes "因此弓箭手在實際戰鬥中更為安全。";
 		next;
-		mes "[Archer Guildsman]";
-		mes "Although an Archer in Ragnarok has lower HP, he or she has high accuracy and attack rate so that the archer can kill monsters before they get close to an Archer.";
+		mes "[弓箭手公會]";
+		mes "雖然在拉格納羅克中弓箭手的 HP 較低，但他們擁有很高的命中率與攻擊速度，能在怪物接近之前將其擊倒。";
 		next;
-		mes "[Archer Guildsman]";
-		mes "^8C2121An Archer can change jobs to a Hunter.^000000";
-		mes "^8C2121Other than Hunter, if you are a man, you can change your job to Bard and if you are a woman, you can change your job to Dancer.^000000";
+		mes "[弓箭手公會]";
+		mes "^8C2121弓箭手可以轉職為獵人。^000000";
+		mes "^8C2121除了獵人之外，男性可以轉職為吟遊詩人，女性則可以轉職為舞孃。^000000";
 		close;
 	case 3:
-		mes "[Archer Guildsman]";
-		mes "If you have any questions, feel free to come and ask me.";
+		mes "[弓箭手公會]";
+		mes "如果你有任何問題，歡迎隨時來問我。";
 		close;
 	}
 }

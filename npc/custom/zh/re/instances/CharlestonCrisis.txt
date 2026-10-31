@@ -23,7 +23,7 @@ verus04,75,114,5	script	Charleston#mcd	4_F_CHARLESTON02,{
 			mes "[Charleston]";
 			mes "Currently I'm unable to move, having a problem with one of my components. Could you help me get the replacement parts from the factory?";
 			next;
-			if (select( "Sure.", "不要。" ) == 1) {
+			if (select( "當然。", "不要。" ) == 1) {
 				mes "[Charleston]";
 				mes "The task won't be difficult if you're at least Level 130, healthy, free of chronic disease, and not on prescription drugs.";
 				next;
@@ -176,7 +176,7 @@ verus04,81,112,5	script	Machine#mcd	PORTAL,{
 		switch( instance_enter(.@md_name$) ) {
 		case IE_OTHER:
 			mes "[Machine]";
-			mes "^ff0000An unknown error occurred.^000000";
+			mes "^ff0000發生未知的錯誤。^000000";
 			close;
 		case IE_NOINSTANCE:
 			mes "[Machine]";
@@ -316,7 +316,7 @@ OnTouch_:
 		mes "I don't care who you're with. I just need to know if you can help me.";
 		'ep15_1_mcd01 = 2;
 		next;
-		if (select( "I can help.", "我很忙。" ) == 2) {
+		if (select( "我可以幫忙。", "我很忙。" ) == 2) {
 			mes "[Dr. Ve]";
 			mes "Sigh, I don't care who, so long as I get the help I need.";
 			npctalk "Dr. Ve: Sigh, I don't care who, so long as I get the help I need.";
@@ -380,12 +380,12 @@ OnTouch_:
 		if ('ep15_1_mcd01 == 1)
 			'ep15_1_mcd01 = 2;
 		next;
-		if (select( "I can help.", "I don't know them." ) == 2) {
+		if (select( "我可以幫忙。", "I don't know them." ) == 2) {
 			mes "[Charleston 1]";
 			mes "I just saw that you are talking, then I will wait for someone to help!";
 			close3;
 		}
-		unittalk getcharid(3), "I can help.";
+		unittalk getcharid(3), "我可以幫忙。";
 		mes "[Charleston 1]";
 		mes "Thank you so much! Give me some time to put some data in order. Then, I'll tell you what happened.";
 		npctalk "Charleston 1: Thank you so much! Give me some time to put some data in order. Then, I'll tell you what happened.", .@charleston_1$;
@@ -1676,7 +1676,7 @@ OnTimer300:
 			mes "[Shalosh]";
 			mes "The noise stopped. I can send you back to where you came if you want.";
 			next;
-			if (select( "Go back.", "Stay." ) == 2) {
+			if (select( "退回去。", "Stay." ) == 2) {
 				mes "[Shalosh]";
 				mes "The invitee is unable to interfere with the original time, and staying can change nothing.";
 				close3;
@@ -1887,7 +1887,7 @@ OnTouch_:
 1@mcd,130,127,0	warp	8gate#1	2,2,1@mcd,129,143
 1@mcd,130,134,0	warp	9gate#1	2,2,1@mcd,130,121
 
-1@mcd,127,262,0	script	mob#1	HIDDEN_WARP_NPC,5,5,{
+1@mcd,127,262,0	script	怪物#1::mob#1	HIDDEN_WARP_NPC,5,5,{
 	end;
 OnTouch_:
 	disablenpc();
@@ -1967,15 +1967,15 @@ OnTouch_:
 		end;
 	}
 }
-1@mcd,67,234,0	duplicate(mob#1)	mob#2	HIDDEN_WARP_NPC,5,5
-1@mcd,33,192,0	duplicate(mob#1)	mob#3	HIDDEN_WARP_NPC,5,5
-1@mcd,75,59,0	duplicate(mob#1)	mob#4	HIDDEN_WARP_NPC,5,5
-1@mcd,109,33,0	duplicate(mob#1)	mob#5	HIDDEN_WARP_NPC,5,5
-1@mcd,133,49,0	duplicate(mob#1)	mob#6	HIDDEN_WARP_NPC,5,5
-1@mcd,204,74,0	duplicate(mob#1)	mob#7	HIDDEN_WARP_NPC,5,5
-1@mcd,204,224,0	duplicate(mob#1)	mob#8	HIDDEN_WARP_NPC,5,5
-1@mcd,157,61,0	duplicate(mob#1)	mob#9	HIDDEN_WARP_NPC,5,5
-1@mcd,175,147,0	duplicate(mob#1)	mob#10	HIDDEN_WARP_NPC,10,10
+1@mcd,67,234,0	duplicate(mob#1)	怪物#2::mob#2	HIDDEN_WARP_NPC,5,5
+1@mcd,33,192,0	duplicate(mob#1)	怪物#3::mob#3	HIDDEN_WARP_NPC,5,5
+1@mcd,75,59,0	duplicate(mob#1)	怪物#4::mob#4	HIDDEN_WARP_NPC,5,5
+1@mcd,109,33,0	duplicate(mob#1)	怪物#5::mob#5	HIDDEN_WARP_NPC,5,5
+1@mcd,133,49,0	duplicate(mob#1)	怪物#6::mob#6	HIDDEN_WARP_NPC,5,5
+1@mcd,204,74,0	duplicate(mob#1)	怪物#7::mob#7	HIDDEN_WARP_NPC,5,5
+1@mcd,204,224,0	duplicate(mob#1)	怪物#8::mob#8	HIDDEN_WARP_NPC,5,5
+1@mcd,157,61,0	duplicate(mob#1)	怪物#9::mob#9	HIDDEN_WARP_NPC,5,5
+1@mcd,175,147,0	duplicate(mob#1)	怪物#10::mob#10	HIDDEN_WARP_NPC,10,10
 
 1@mcd,114,82,4	script	IGU#01	4_F_IU,{
 	cutin "igu04.bmp",2;

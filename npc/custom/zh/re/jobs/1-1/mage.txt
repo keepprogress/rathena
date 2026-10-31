@@ -12,118 +12,118 @@
 //= 1.0 First Version. [Kisuka]
 //= 1.1 Added support for Baby classes. [Euphy]
 //============================================================ 
-geffen_in,164,124,4	script	Mage Guildsman#mage	123,{
+geffen_in,164,124,4	script	魔法師公會#mage::Mage Guildsman#mage	123,{
 	if (Upper == 1) {
 		if (ADVJOB == Job_High_Wizard || ADVJOB == Job_Professor) {
 			if (Class == Job_Novice_High) {
-				mes "[Mage Guildsman]";
-				mes "Whoa, long time no see! But weren't you supposed to be dead?";
+				mes "[魔法師公會]";
+				mes "哇，好久不見！不過你不是應該已經死了嗎？";
 				next;
-				mes "[Mage Guildsman]";
-				mes "Ah, you must have been reborn. Well, I'm glad to have you back.";
+				mes "[魔法師公會]";
+				mes "啊，你一定是轉生了。嗯，很高興你回來了。";
 				next;
 				if (!callfunc("F_CanChangeJob")) {
-					mes "[Mage Guildsman]";
-					mes "I'm sorry, but I don't think you're ready to learn magic yet. Why don't you go finish learning the Basic Skills first?";
+					mes "[魔法師公會]";
+					mes "很抱歉，我想你還沒準備好學習魔法。何不先去學完基本技能呢？";
 					next;
-					mes "[Mage Guildsman]";
-					mes "Take your time. The more you learn, the more ready you'll be to learn magic again.";
+					mes "[魔法師公會]";
+					mes "慢慢來。你學得越多，就越能準備好再次學習魔法。";
 					close;
 				}
-				mes "[Mage Guildsman]";
-				mes "Well, since you have passed the Mage test once, I will not question your qualification. You want to have your magic skills back immediately, don't you?";
+				mes "[魔法師公會]";
+				mes "嗯，既然你曾通過過魔法師的測驗，我就不會質疑你的資格。你想立刻恢復你的魔法技能，對吧？";
 				next;
 				skill "NV_TRICKDEAD",0,SKILL_PERM;
 				jobchange Job_Mage_High;
 				skill "MG_ENERGYCOAT",1,SKILL_PERM;
-				mes "[Mage Guildsman]";
-				mes "Wow, for some reason, you look way better than you did before. Anyway, I believe you will do a better job being a Mage as well.";
+				mes "[魔法師公會]";
+				mes "哇，不知為何，你看起來比之前好多了。總之，我相信你當魔法師也會做得更好。";
 				close;
 			}else{
-				mes "[Mage Guildsman]";
-				mes "Is there anything more I can help you with? If not, why don't you go test your skills? The world is waiting for you~!";
+				mes "[魔法師公會]";
+				mes "還有什麼我能幫你的嗎？如果沒有，何不去測試一下你的技能呢？世界正在等著你~！";
 				close;
 			}
 		}else{
-			mes "[Mage Guildsman]";
-			mes "What, are you interested in the Mage guild? I didn't want to tell you this, but you don't belong here.";
+			mes "[魔法師公會]";
+			mes "什麼，你對魔法師公會有興趣嗎？我本不想告訴你，但你並不屬於這裡。";
 			next;
-			mes "[Mage Guildsman]";
-			mes "I am not sure why you're still standing in front of me, but I can tell that you're not meant to be a Mage.";
+			mes "[魔法師公會]";
+			mes "不太明白你為什麼還站在我面前，不過我看得出來你不適合當魔法師。";
 			close;
 		}
 	}
-	mes "[Mage Guildsman]";
+	mes "[魔法師公會]";
 	if(BaseJob != Job_Novice) {
 		if(BaseJob == Job_Mage) {
-			mes "Hey, haven't you realized? You're already a Mage, silly!";
-			mes "One of these days you'll realize the power inside of you when you can make Fire with your mind!";
+			mes "嘿，你還沒發現嗎？你早就是魔法師了，傻瓜！";
+			mes "總有一天你會意識到自己體內的力量，到時候你就能用意念製造火焰！";
 		} else
-			mes "Hey~ C'mon. Quit playing games. You can't be a Mage because you already have another Job.";
+			mes "嘿～別鬧了，別再玩遊戲。你不能當魔法師，因為你已經有其他職業了。";
 		close;
 	}else{
-		mes "Hey?";
+		mes "嘿？";
 		next;
-		switch(select("I want to be a Mage:What are the requirements to be a Mage?:Nothing, thanks.")) {
+		switch(select("我想成為魔法師:成為魔法師需要什麼條件？:沒什麼，謝謝。")) {
 		case 1:
-			mes "[Mage Guildsman]";
-			mes "Wanna be a Mage? Eh...";
+			mes "[魔法師公會]";
+			mes "想當魔法師？唔……";
 			next;
-			mes "[Mage Guildsman]";
+			mes "[魔法師公會]";
 			if (Sex == SEX_MALE) {
-				mes "Hey, look at you! You're kinda cute~! Not my type though...";
+				mes "嘿，看看你！你還挺可愛的～！不過不是我的菜……";
 			}else{
-				mes "Oooh, you're such a hot babe~!";
-				mes "I like girls like you~";
+				mes "喔喔，你真是個大美女～！";
+				mes "我喜歡像你這樣的女孩～";
 			}
-			mes "Right, you said that you wanna be a Mage?";
+			mes "對了，你說你想當魔法師？";
 			next;
-			if(select("I want to be a Mage.:Nothing, thanks.") == 2) {
-				mes "[Mage Guildsman]";
-				mes "Whaaaaat~?! Right after you tell me that you wanna become a Mage, you change your mind?! Be a bit more decisive!";
+			if(select("我想成為魔法師。:沒什麼，謝謝。") == 2) {
+				mes "[魔法師公會]";
+				mes "什麼～？！你剛說想當魔法師，馬上就改變主意了？！做事乾脆一點！";
 				close;
 			}
-			mes "[Mage Guildsman]";
+			mes "[魔法師公會]";
 			if (!callfunc("F_CanChangeJob")) {
-				mes "Oh, man your Basic Skill Level doesn't reach enough to be a Mage.";
-				mes "Go back and level up your Basic Skill.";
+				mes "喔，老兄，你的基本技能等級還不夠當魔法師。";
+				mes "回去把你的基本技能練到更高等級吧。";
 				close;
 			}
-			mes "Alright.. sign the application form.... Wow~ you have good handwriting! Ahh, okay. That's enough.";
-			mes "You are... "+strcharinfo(0)+".";
+			mes "好吧……在申請表上簽名吧……哇～你的字寫得真漂亮！啊，好了。夠了。";
+			mes "你是…… "+strcharinfo(0)+".";
 			next;
-			mes "[Mage Guildsman]";
-			mes "Hmm I can see that you've tried hard in your own way. Though it seems to be a little clumsy, but well I think it's okay!";
-			mes "Good! Always sticking to the basics is the best! I will transform you right away.";
+			mes "[魔法師公會]";
+			mes "嗯，我看得出你用自己的方式很努力。雖然看起來有點笨拙，不過我想還行！";
+			mes "很好！紮實練好基本功才是最棒的！我馬上幫你轉職。";
 			next;
-			mes "[Mage Guildsman]";
-			mes "Hahh..! You are now a Mage, one of our colleagues!";
-			mes "We welcome you to the Mage Guild, our new friend!";
+			mes "[魔法師公會]";
+			mes "哈啊……！你現在是魔法師了，是我們的同伴之一！";
+			mes "歡迎你加入魔法師公會，我們的新朋友！";
 			next;
-			mes "[Mage Guildsman]";
-			mes "'Welcome to the Mage Guild~'";
-			mes "Congratulations on becoming a member of the Mage Guild! Go for it!";
+			mes "[魔法師公會]";
+			mes "「歡迎來到魔法師公會～」";
+			mes "恭喜你成為魔法師公會的一員！加油！";
 			callfunc "Job_Change",Job_Mage;
 			getitem 1639,1;	// N_Rod
 			close;
 		case 2:
-			mes "[Mage Guildsman]";
-			mes "Wanna be a Mage, eh?";
-			mes "I'd be happy to explain the requirements for a pretty girl like you!";
+			mes "[魔法師公會]";
+			mes "想當魔法師，是吧？";
+			mes "像你這樣的美女，我很樂意說明條件！";
 			next;
-			mes "[Mage Guildsman]";
-			mes "First of all, you have to reach Novice Job Level 10 and learn all of the Basic Skills.";
+			mes "[魔法師公會]";
+			mes "首先，你必須將新手職業等級練到10，並學會所有基本技能。";
 			next;
-			mes "[Mage Guildsman]";
-			mes "In the past, there was a complicated potion making test. Because of that, we'd lost an aplicant slowly.";
-			mes "So, we decided to accept all aplicants who meet the basic requirements.";
+			mes "[魔法師公會]";
+			mes "以前有一道複雜的藥水製作測驗。因為這樣，我們的申請者一直在流失。";
+			mes "所以，我們決定接受所有符合基本條件的申請者。";
 			next;
-			mes "[Mage Guildsman]";
-			mes "Don't hesitate. Just be a magician!";
+			mes "[魔法師公會]";
+			mes "別猶豫，去當魔法師吧！";
 			close;
 		case 3:
-			mes "[Mage Guildsman]";
-			mes "Nothing...?";
+			mes "[魔法師公會]";
+			mes "沒什麼……？";
 			close;
 		}
 	}

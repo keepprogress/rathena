@@ -1452,7 +1452,7 @@ gef_dun01,132,223,5	script	Grimm#ilgf	4_M_MINISTER,{
 		select("Would you be so kind as to heal me?");
 		emotion ET_SMILE;
 		mes "[Grimm]";
-		mes "Sure thing. Any time you want, " + ( Sex ? "Brother." : "Sister." );
+		mes "Sure thing. Any time you want, " + ( Sex ? "Brother." : "姊妹。" );
 		specialeffect2 EF_HEAL2;
 		npctalk "He's such a hypocrite. I can never trust priests again, and it's his fault.", "Mojo#ilgf", bc_self;
 		next;
@@ -1500,7 +1500,7 @@ gef_dun01,132,223,5	script	Grimm#ilgf	4_M_MINISTER,{
 		next;
 		emotion ET_QUESTION, getnpcid(0, "Mojo#ilgf");
 		mes "[Mojo]";
-		mes "Why are you looking at me?";
+		mes "你為什麼盯著我看？";
 		npctalk "I had nothing to do with it.", "Mojo#ilgf", bc_self;
 		next;
 		mes "[Grimm]";
@@ -1756,7 +1756,7 @@ gef_dun01,132,223,5	script	Grimm#ilgf	4_M_MINISTER,{
 		next;
 		mes "[Mojo]";
 		mes "No, I don't remember. When Sister Gem returns, I'm going to tell on you!";
-		npctalk "Go ahead.";
+		npctalk "去吧。";
 		next;
 		mes "[Grimm]";
 		mes "Now, Adventurer. Let me know when you're ready.";
@@ -2039,7 +2039,7 @@ gef_d01_i,116,228,3	script	Antoine#ilgf01	4_GEFFEN_01,{
 		mes "You've seen those Nightmares and Drainliars, right? Did you notice how they look different from the kinds outside this place? Why do you think that is?";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "I don't know.";
+		mes "我不知道。";
 		next;
 		mes "[Antoine]";
 		mes "Everything in this place is interesting. Especially those Sweet Nightmares. They're full of contradictions.";
@@ -2456,11 +2456,11 @@ gef_d01_i,250,164,5	script(CLOAKED)	Priest#ilgf01	4_M_MINISTER,5,5,{
 	if (ill_vampire != 6)
 		end;
 	.@char_id = .@char_id;
-	mes "[Priest]";
+	mes "[祭司]";
 	mes "What do I do? I can't walk because of my leg. I can't teleport because I don't have enough energy left.";
 	next;
 	emotion ET_CRY;
-	mes "[Priest]";
+	mes "[祭司]";
 	mes "*Gasp* Am I going to die? Am I? I can't believe I'm going to die in a place like this!";
 	sleep2 500;
 	cloakoffnpcself( "Undead#ilgf08" );
@@ -2468,7 +2468,7 @@ gef_d01_i,250,164,5	script(CLOAKED)	Priest#ilgf01	4_M_MINISTER,5,5,{
 	npctalk "Grr...", "Undead#ilgf08", bc_self;
 	npctalk "Grrgghh...", "Undead#ilgf09", bc_self;
 	next;
-	mes "[Priest]";
+	mes "[祭司]";
 	mes "YELP! Not again! Help!";
 	next;
 	select("Typical priest... Wait, is that him?");
@@ -2778,7 +2778,7 @@ OnTouch:
 	sleep2 1500;
 	npctalk "Like what?", "", bc_self;
 	sleep2 1500;
-	npctalk "I don't know.", "Wizard#ilgf15", bc_self;
+	npctalk "我不知道。", "Wizard#ilgf15", bc_self;
 	sleep2 1500;
 	unittalk getcharid(3), "" + strcharinfo(0) + " : This... It must be an old memory of the notebook's owner.", bc_self;
 	sleep2 2500;
@@ -3175,7 +3175,7 @@ gef_d01_i,81,135,5	script	Wizard#ilgf01	4_F_BOMI,5,5,{
 		next;
 		npctalk "How could you do this to me?!", "", bc_self;
 		sleep2 1000;
-		npctalk "I'm sorry.", "Dracula#ilgf01", bc_self;
+		npctalk "抱歉。", "Dracula#ilgf01", bc_self;
 		sleep2 1500;
 		specialeffect EF_GUARD2, AREA, "Dracula#ilgf01";
 		cloakonnpcself( "Dracula#ilgf01" );
@@ -4438,7 +4438,7 @@ gef_d01_i,191,96,3	script	巫師#ilgf02::Wizard#ilgf02	4_M_JOB_WIZARD,5,5,{
 		mes "Erm, you want to teach me?";
 		next;
 		mes "[King]";
-		mes "Sure.";
+		mes "當然。";
 		next;
 		mes "[Jojo]";
 		mes "為什麼？";
@@ -5325,7 +5325,7 @@ ice_d03_i,155,43,3	script(CLOAKED)	Zeith#frozen02	4_M_GUILLOTINE,{
 		mes "謝謝您，" + strcharinfo(0) + "!";
 		next;
 		mes "[^0000ffZeith^000000]";
-		mes "Let's get out of here.";
+		mes "我們離開這裡吧。";
 		mes "I don't want to be frozen again!";
 		next;
 		mes "[^ff0000Vrid^000000]";
@@ -5530,7 +5530,7 @@ alberta,211,28,5	script	Knight Aylvar#illtur	4_M_YOUNGKNIGHT,{
 			mes " - ^0000CDLevel 150 and over can do this quest.^000000 - ";
 			close;
 		}
-		if (select( "What's going on?", "I'm very busy." ) == 2) {
+		if (select( "發生什麼事了？", "I'm very busy." ) == 2) {
 			npctalk "Aylvar : Leiphen, my friend... Please be safe.", "", bc_self;
 			mes "[Knight Aylvar]";
 			mes "Sorry to bother you.";
@@ -8446,7 +8446,7 @@ com_d02_i,266,76,6	duplicate(dummy_cloaked_npc)	Silhouette#LuE092	4_GHOST_STAND
 
 
 // Daily quests
-com_d02_i,238,266,4	script	Request Board#Lu	4_BOARD3,{
+com_d02_i,238,266,4	script	委託告示板#Lu::Request Board#Lu	4_BOARD3,{
 	if (checkweight(1201,3) == 0) {
 		mes "- 你的道具太多，無法繼續。 -";
 		close;
@@ -9168,7 +9168,7 @@ izlude,132,49,5	script	Gein#Gein	4W_M_01,{
 		mes "[Gein]";
 		mes "Who??";
 		next;
-		select( "Who?" );
+		select( "誰？" );
 		mes "[Raket]";
 		mes "His name is <FONT COLOR = 4D4DFF><FONT SIZE = 16><B>Jerrymon</FONT></FONT></B>, a marine scientist. I've met my father a few times. I know you are in the East Library of Prontera.";
 		next;
@@ -9881,7 +9881,7 @@ iz_d04_i,129,232,5	script	守門人#guard1::Gatekeeper#guard1	4_M_KY_SOLD,{
 		close;
 	}
 	mes "[守門人]";
-	mes "Then be careful.";
+	mes "那就小心點。";
 	close2;
 	warp "iz_d05_i",141,186;
 	end;
@@ -9897,7 +9897,7 @@ iz_d05_i,141,188,5	script	守衛#guard2::Guardian#guard2	4_M_KY_SOLD,{
 		close;
 	}
 	mes "[守門人]";
-	mes "Then be careful.";
+	mes "那就小心點。";
 	close2;
 	warp "iz_d04_i",129,227;
 	end;
@@ -10122,7 +10122,7 @@ anthell02,172,189,5	script	Yolanda#1F	HIDDEN_NPC,{
 		mes "Oh, wait!";
 		mes "There adventurer, wait a minute!";
 		next;
-		select( "Me?" );
+		select( "我？" );
 		mes "[Mirko]";
 		mes "Have you been here in a while?";
 		mes "That's great. Here, we recently found a way to go deeper.";
@@ -10159,7 +10159,7 @@ anthell02,172,189,5	script	Yolanda#1F	HIDDEN_NPC,{
 		mes "An adventurer is waiting for you.";
 		mes "Let's chat later, huh?";
 		mes "Okay, so adventurer.";
-		mes "Your name is " + strcharinfo(0) + "?";
+		mes "你的名字是 " + strcharinfo(0) + "?";
 		next;
 		mes "[Mirko]";
 		mes "Yes, " + strcharinfo(0) + ".";
@@ -10348,7 +10348,7 @@ anthell02,177,190,3	script	Mirko#1F	4_M_SAGE_A,{
 		mes "Oh, wait!";
 		mes "There adventurer, wait a minute!";
 		next;
-		select( "Me?" );
+		select( "我？" );
 		mes "[Mirko]";
 		mes "Have you been here in a while?";
 		mes "That's great. Here, we recently found a way to go deeper.";
@@ -10422,7 +10422,7 @@ anthell02,177,190,3	script	Mirko#1F	4_M_SAGE_A,{
 			mes "[Mirko]";
 			mes "Sorry for the sudden request.";
 			mes "Anyway, the investigation hasn't been completed yet, so we're nervous...";
-			mes "Tell me when you're ready.";
+			mes "準備好了再告訴我。";
 			close;
 		}
 		mes "[Mirko]";
@@ -10746,7 +10746,7 @@ anthell02,177,190,3	script	Mirko#1F	4_M_SAGE_A,{
 		mes "May I continue exploring?";
 		next;
 		mes "[Gona]";
-		mes "Don't worry about that.";
+		mes "那件事別擔心。";
 		mes "Adventurer's flair... Whoops!";
 		next;
 		mes "[Mirko]";
@@ -10824,7 +10824,7 @@ anthell02,177,190,3	script	Mirko#1F	4_M_SAGE_A,{
 		erasequest 8731;
 		setquest 8732;
 		mes "[Mirko]";
-		mes "Good job!";
+		mes "做得好！";
 		mes "Then I'll take care of you tomorrow too.";
 		getitem 25271,1;	// IllusionStone
 		getexp 3181074,2404545;
@@ -10869,7 +10869,7 @@ anthell02,177,190,3	script	Mirko#1F	4_M_SAGE_A,{
 		erasequest 8733;
 		setquest 8734;
 		mes "[Mirko]";
-		mes "Good job!";
+		mes "做得好！";
 		mes "Then I'll ask you again tomorrow.";
 		getitem 25271,1;	// IllusionStone
 		getexp 3151005,2395672;
@@ -10970,7 +10970,7 @@ anthell02,177,190,3	script	Mirko#1F	4_M_SAGE_A,{
 		erasequest 8737;
 		setquest 8738;
 		mes "[Mirko]";
-		mes "Good job!";
+		mes "做得好！";
 		mes "Then I'll take care of you tomorrow too.";
 		getitem 25271,1;	// IllusionStone
 		getexp 3113916,2347020;
@@ -11638,7 +11638,7 @@ ant_d02_i,259,147,7	script(CLOAKED)	Khahris#part4	HIDDEN_NPC,{
 		next;
 		mes "[Khahris]";
 		mes "Who am I, Briashen...?";
-		mes "Who am I...?";
+		mes "我是誰……？";
 		setquest 8727;
 		if (isbegin_quest(8725) != 1 || isbegin_quest(8726) != 1 || isbegin_quest(8727) != 1) {
 			specialeffect EF_DEFENDER;
@@ -12136,7 +12136,7 @@ ein_d02_i,170,193,5	script	Steven#IBT	4W_M_02,3,3,{
 	}
 	if (ill_teddy == 4) {
 		mes "[Steven]";
-		mes "What...";
+		mes "什麼……";
 		mes "那是……";
 		next;
 		mes "[Steven]";
@@ -12165,7 +12165,7 @@ ein_d02_i,170,193,5	script	Steven#IBT	4W_M_02,3,3,{
 		mes "Ugh...things got messy...";
 		next;
 		mes "[Steven]";
-		mes "Hey.";
+		mes "喂。";
 		mes "Do me a favor.";
 		mes "He has to go to the hospital today and won't have enough money.";
 		next;
@@ -12185,7 +12185,7 @@ ein_d02_i,170,193,5	script	Steven#IBT	4W_M_02,3,3,{
 	}
 	if (ill_teddy == 5) {
 		mes "[Steven]";
-		mes "Hey.";
+		mes "喂。";
 		mes "Do me a favor.";
 		mes "He has to go to the hospital today and won't have enough money.";
 		next;
@@ -12359,7 +12359,7 @@ ein_d02_i,170,193,5	script	Steven#IBT	4W_M_02,3,3,{
 	case 2:
 		mes "[Steven]";
 		mes "哇……";
-		mes "Good job!";
+		mes "做得好！";
 		mes "Are you feeling a little safer now?";
 		erasequest 11565;
 		setquest 11566;
@@ -12635,7 +12635,7 @@ ein_d02_i,168,206,5	script	Gloomy Teddy Bear#ITB	4_TEDDY_BEAR_B_L,{
 		next;
 		mes "[Gloomy Teddy Bear]";
 		mes "We're... not supposed to come back...";
-		mes "I have to go back...";
+		mes "我得回去了……";
 		close;
 	}
 	switch( checkquest(11569,PLAYTIME) ) {
@@ -12659,7 +12659,7 @@ ein_d02_i,168,206,5	script	Gloomy Teddy Bear#ITB	4_TEDDY_BEAR_B_L,{
 		next;
 		mes "[Gloomy Teddy Bear]";
 		mes "We're... not supposed to come back...";
-		mes "I have to go back...";
+		mes "我得回去了……";
 		next;
 		mes "[Gloomy Teddy Bear]";
 		mes "Hey... don't just stand there, help me...";
