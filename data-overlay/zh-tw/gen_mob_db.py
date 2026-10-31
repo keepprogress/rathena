@@ -29,7 +29,8 @@ mobs = [(int(i), a, n.strip().strip('"')) for i, a, n in re.findall(
 	r'- Id: (\d+)\n\s+AegisName: (\S+)\n\s+Name: (.+)', (root / 'db/re/mob_db.yml').read_text('utf-8'))]
 
 cc = opencc.OpenCC('s2tw')
-t = (rocn / 'client-overlay/data/luafiles514/lua files/navigation/navi_mob_krpri.lub').read_bytes().decode('gbk', errors='replace')
+assert cc.convert('俄希托斯') == '俄希托斯', 'OpenCC 太舊（1.1.x 會把音譯的托轉成託），請用 1.4 以上'
+t =(rocn / 'client-overlay/data/luafiles514/lua files/navigation/navi_mob_krpri.lub').read_bytes().decode('gbk', errors='replace')
 navi = {}
 for m in re.finditer(r'\{\s*"\w+",\s*\d+,\s*\d+,\s*\d+,\s*"([^"]*)",\s*"([^"]*)"', t):
 	navi.setdefault(m.group(2).upper(), cc.convert(m.group(1)).strip())
