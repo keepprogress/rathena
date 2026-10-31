@@ -1,0 +1,142 @@
+//===== rAthena Script ======================================= 
+//= 3rd Item Seller
+//===== By: ================================================== 
+//= Masao, Mercurial
+//===== Current Version: ===================================== 
+//= 1.5
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Sells some 3rd Job related items:
+//= - Poison Herbs, Rune Stones, Rare Herbs, Points
+//===== Additional Comments: ================================= 
+//= 1.0 First Version.
+//= 1.1 Optimized Poison Herb Salesman NPC
+//= 1.2 Optimized and standardized. [Euphy]
+//= 1.3 Added Malangdo/Mora Points NPC. [Euphy]
+//= 1.4 Updated to match the official scripts. [Euphy]
+//= 1.5 Added Izlude duplicates. [Euphy]
+//= 1.5a Remove useless array & misc. [Capuche]
+//= 1.6 Changing Shape of NPCs. [JohnnyPlayy]
+//============================================================ 
+
+// Poison Herb Merchants (Guillotine Cross) :: poison_herb_3rd_trader
+//============================================================
+-	shop	Herb_Seller	HIDDEN_NPC,no,7932:4000,7933:4000,7934:4000,7935:4000,7936:4000,7937:4000,7931:5000
+
+-	script	::phs	HIDDEN_NPC,{
+	npctalk "你需要毒藥嗎？", "", bc_self;
+	callshop "Herb_Seller",1;
+	end;
+}
+
+job3_guil01,79,96,3	duplicate(phs)	毒草商人::Poison Herb Merchant	4_F_YUNYANG
+morocc,193,100,4	duplicate(phs)	毒草商人#moc::Poison Herb Merchant#moc	4_F_YUNYANG
+lhz_in02,16,205,4	duplicate(phs)	毒草商人#lhz::Poison Herb Merchant#lhz	4_F_YUNYANG
+
+// Rune Stone Merchants (Rune Knight) :: rune_3rd_trader
+//============================================================
+-	shop	Runes_Seller	HIDDEN_NPC,no,12737:1000,12734:2500,12738:7500,12735:18000,12736:50000,7939:20000,7938:10000
+
+-	script	::runesale	HIDDEN_NPC,{
+	npctalk "符文有好幾種喔。", "", bc_self;
+	callshop "Runes_Seller",1;
+	end;
+}
+
+job3_rune01,90,62,3	duplicate(runesale)	符文商人#job3::Rune Merchant#job3	4W_M_01
+prontera,168,228,3	duplicate(runesale)	符文商人#prt::Rune Merchant#prt	4W_M_01
+
+// Rare Herb Merchants (Guillotine Cross) :: rare_herb_3rd_trader
+//============================================================
+job3_guil01,91,93,3	script	稀有草藥收集者::Rare Herb Collector	1_M_03,{
+	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 2000) {
+		mes "- 等一下！！ -";
+		mes "- 你目前攜帶的 -";
+		mes "- 道具太多了。 -";
+		mes "- 請再試一次 -";
+		mes "- 等你減輕一些負重後。 -";
+		close;
+	}
+	if (Class == Job_Guillotine_Cross || Class == Job_Guillotine_Cross_T || Class == Job_Baby_Guillotine_Cross) {
+		mes "[稀有毒草收集者]";
+		mes "我走遍世界收集稀有的毒草。最近我開始經手一種名叫伊茲多爾的草藥。如果你有興趣，可以向我購買。";
+		next;
+		.@i = select("要怎麼買？:用動物之血交換:用苦味草藥交換:用致命毒草交換:用冰凍玫瑰交換:用門特交換:用希娜爾交換")-2;
+		if (.@i == -1) {
+			mes "[稀有毒草收集者]";
+			mes "只要 10,000 Zeny 再加上其中一種稀有道具，就能買到：動物之血、苦味草藥、致命毒草、冰凍玫瑰、門特或希娜爾。";
+			next;
+			mes "[稀有毒草收集者]";
+			mes "你問我為什麼要收錢？那只是對像我這樣的收集者表示一點敬意罷了。哈哈哈……";
+			close;
+		} else {
+			setarray .@exchange[0],702,621,631,749,605,703;
+			.@item = .@exchange[.@i];
+			.@price = 10000;
+
+			mes "[稀有毒草收集者]";
+			mes "你要多少？";
+			mes "最多只能購買 '2000' 個。";
+			mes "如果要取消，請輸入 '0'。";
+			next;
+			input .@amount;
+			if (.@amount == 0) {
+				mes "[稀有毒草收集者]";
+				mes "你已取消交易。";
+				close;
+			}
+			if (.@amount > 2000) {
+				mes "[稀有毒草收集者]";
+				mes "數量必須少於 2,000！";
+				close;
+			}
+			.@total = .@amount * .@price;
+			if (countitem(.@item) < .@amount || Zeny < .@total) {
+				mes "[稀有毒草收集者]";
+				mes "喂，等你備齊交換所需的所有條件再回來吧。";
+				close;
+			}
+			mes "[稀有毒草收集者]";
+			mes "很好。我已經收到錢和特殊道具了。";
+			delitem .@item, .@amount;
+			Zeny = Zeny - .@total;
+			getitem 709, .@amount; //Izidor
+			close;
+		}
+	}
+	mes "[稀有毒草收集者]";
+	mes "我走遍世界收集稀有毒草。不過我可不想把草藥賣給你這種人……哈哈哈……";
+	close;
+}
+
+// Point Merchants (Sorcerer) :: point_3rd_trader
+//============================================================
+-	shop	Shard_Seller	HIDDEN_NPC,no,6360:200,6363:200,6361:200,6362:200,1000291:-1,1000292:-1,1000293:-1,1000294:-1,1000295:-1
+
+-	script	::pss	HIDDEN_NPC,{
+	npctalk "你有每種屬性的元素嗎？", "", bc_self;
+	callshop "Shard_Seller",1;
+	end;
+}
+
+gef_tower,105,172,5	duplicate(pss)	點數商人#Sorcerer::Point Merchant#Sorcerer	8_F_GIRL
+prt_in,131,66,0	duplicate(pss)	點數商人#Prontera::Point Merchant#Prontera	8_F_GIRL
+alberta,105,52,7	duplicate(pss)	點數商人#Alberta::Point Merchant#Alberta	8_F_GIRL
+aldebaran,133,114,5	duplicate(pss)	點數商人#Aldebaran::Point Merchant#Aldebaran	8_F_GIRL
+comodo,193,159,5	duplicate(pss)	點數商人#Comodo::Point Merchant#Comodo	8_F_GIRL
+geffen,129,49,5	duplicate(pss)	點數商人#Geffen::Point Merchant#Geffen	8_F_GIRL
+izlude,138,163,5	duplicate(pss)	點數商人#Izlude::Point Merchant#Izlude	8_F_GIRL	// Old coordinates: izlude (135,121)
+izlude_a,138,163,5	duplicate(pss)	點數商人#Izlude_a::Point Merchant#Izlude_a	8_F_GIRL
+izlude_b,138,163,5	duplicate(pss)	點數商人#Izlude_b::Point Merchant#Izlude_b	8_F_GIRL
+izlude_c,138,163,5	duplicate(pss)	點數商人#Izlude_c::Point Merchant#Izlude_c	8_F_GIRL
+izlude_d,138,163,5	duplicate(pss)	點數商人#Izlude_d::Point Merchant#Izlude_d	8_F_GIRL
+malangdo,214,163,5	duplicate(pss)	點數商人#Malangdo::Point Merchant#Malangdo	8_F_GIRL
+mora,115,118,3	duplicate(pss)	點數商人#Mora::Point Merchant#Mora	8_F_GIRL
+ra_in01,256,273,3	duplicate(pss)	點數商人#Rachel::Point Merchant#Rachel	8_F_GIRL
+veins,202,128,5	duplicate(pss)	點數商人#Veins::Point Merchant#Veins	8_F_GIRL
+dicastes01,207,200,5	duplicate(pss)	點數商人#Dicastes::Point Merchant#Dicastes	8_F_GIRL
+manuk,261,206,3	duplicate(pss)	點數商人#Manuk::Point Merchant#Manuk	8_F_GIRL
+splendide,207,160,5	duplicate(pss)	點數商人#Splendide::Point Merchant#Splendide	8_F_GIRL
+mid_camp,224,237,3	duplicate(pss)	點數商人#Midgard::Point Merchant#Midgard	8_F_GIRL

@@ -1,0 +1,48 @@
+//===== rAthena Script =======================================
+//= Pet Groomer
+//===== Description: =========================================
+// Update Pet Groomer NPCs
+//===== Changelogs: ==========================================
+//= 1.0 First Version. [Haydrich]
+//============================================================
+
+-	shop	Pet_Items	-1,25377:-1:0,537:-1,643:-1,10013:-1,10014:-1,6113:-1,6114:-1,6115:-1,6110:-1,6100:-1,6098:-1,6112:-1,6104:-1,6108:-1,6111:-1,6095:-1,7824:-1,6097:-1,6107:-1,6105:-1,6099:-1,25231:-1,25232:-1,25233:-1,6106:-1,11616:-1,6109:-1,1000552:-1,1000889:-1
+
+-	script	#PetGroomer	HIDDEN_NPC,{
+	mes "[寵物美容師]";
+	mes "哈囉！你需要一些 Q 寵物飼料嗎？";
+	mes "或許也需要一些裝飾你 Q 寵物的飾品？";
+	mes "我們也有 Q 寵物的馴服道具！";
+	next;
+	switch( select( "購買寵物飼料。", "兌換 Q 寵物相關用品。", "我下次再來" )) {
+		case 1:
+			mes "[寵物美容師]";
+			mes "好的，那請自行購買。";
+			close2;
+			callshop "Pet_Items", 1;
+			end;
+		case 2:
+			mes "[寵物美容師]";
+			mes "好的，我們來交換吧。";
+			close2;
+			callshop "barter_Pet_Groomer";
+			end;
+		case 3:
+			mes "[寵物美容師]";
+			mes "好的，隨時歡迎再來。";
+			close;
+	}
+}
+
+//= Duplicate
+//============================================================
+prontera,218,211,4	duplicate(#PetGroomer)	寵物美容師#prt::Pet Groomer#prt	4_M_TELEPORTER
+moc_ruins,118,170,4	duplicate(#PetGroomer)	寵物美容師#moc::Pet Groomer#moc	4_M_TELEPORTER
+morocc,203,87,4	duplicate(#PetGroomer)	寵物美容師#moc1::Pet Groomer#moc1	4_M_TELEPORTER
+geffen,193,152,4	duplicate(#PetGroomer)	寵物美容師#gef::Pet Groomer#gef	4_F_TELEPORTER
+payon,177,131,4	duplicate(#PetGroomer)	寵物美容師#pay::Pet Groomer#pay	4_F_TELEPORTER
+izlude_in,72,98,3	duplicate(#PetGroomer)	寵物美容師#iz::Pet Groomer#iz	4_F_TELEPORTER
+yuno,197,114,4	duplicate(#PetGroomer)	寵物美容師#yuno::Pet Groomer#yuno	4_F_TELEPORTER
+lighthalzen,222,191,4	duplicate(#PetGroomer)	寵物美容師#lhz::Pet Groomer#lhz	4_M_TELEPORTER
+brasilis,201,309,3	duplicate(#PetGroomer)	寵物美容師#bra::Pet Groomer#bra	4_M_BRZ_MAN1
+lasagna,179,176,6	duplicate(#PetGroomer)	寵物美容師#las::Pet Groomer#las	4_M_TELEPORTER

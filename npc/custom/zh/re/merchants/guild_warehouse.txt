@@ -1,0 +1,111 @@
+//===== rAthena Script =======================================
+//= Guild Warehouse Manager
+//===== Description: =========================================
+//= [Walkthrough Conversion]
+//= Gives players access to their guild storage and log.
+//===== Changelogs: ==========================================
+//= 1.0 First Version. [Lemongrass]
+//============================================================
+
+-	script	GuildWarehouse	-1,{
+	mes "[倉庫管理員]";
+	mes "你好嗎？我們專門經營公會倉庫。這是我們的^0000cd故事^000000:";
+	mes "為什麼公會成員不能共用一個倉庫？我們就是從這個簡單的問題開始的。";
+	next;
+	mes "[倉庫管理員]";
+	mes "你可以支付 1000 Zeny 開啟倉庫，或查看公會的使用紀錄。";
+	mes "有什麼我能幫你的嗎？";
+	next;
+	if( select( "開啟公會倉庫:查看倉庫使用紀錄" ) == 1 ){
+		.@guildid = getcharid( 2 );
+
+		if( .@guildid == 0 ){
+			mes "[倉庫管理員]";
+			mes "只有公會成員才能使用公會倉庫。";
+			close;
+		}
+
+		if( getgdskilllv( .@guildid, "GD_GUILD_STORAGE" ) == 0 || !guild_has_permission( GUILD_PERM_STORAGE ) ){
+			mes "[倉庫管理員]";
+			mes "看來你的公會目前還無法使用公會倉庫，或是你沒有倉庫的存取權限。";
+			mes "請在確認公會技能與倉庫存取權限後再來。";
+			close;
+		}
+
+		if( Zeny < 1000 ){
+			mes "[倉庫管理員]";
+			mes "很抱歉，你的金錢不足以支付手續費。";
+			mes "手續費為 1000 Zeny。";
+			close;
+		}
+
+		mes "[倉庫管理員]";
+		mes "那我就為你開啟公會倉庫。祝你有段難忘的時光！";
+		close2;
+
+		if( Zeny < 1000 ){
+			// Cheat prevention
+			end;
+		}
+
+		if( guildopenstorage() == GSTORAGE_OPEN ){
+			Zeny -= 1000;
+			end;
+		}else{
+			mes "[倉庫管理員]";
+			mes "很抱歉，現在有其他人正在使用倉庫。";
+			mes "請稍後再試一次。";
+			close;
+		}
+	}else{
+		.@guildid = getcharid( 2 );
+
+		if( .@guildid == 0 ){
+			mes "[倉庫管理員]";
+			mes "只有公會成員才能使用公會倉庫。";
+			close;
+		}
+
+		if( getgdskilllv( .@guildid, "GD_GUILD_STORAGE" ) == 0 || !guild_has_permission( GUILD_PERM_STORAGE ) ){
+			mes "[倉庫管理員]";
+			mes "看來你的公會目前還無法使用公會倉庫，或是你沒有倉庫的存取權限。";
+			mes "請在確認公會技能與倉庫存取權限後再來。";
+			close;
+		}
+
+		mes "[倉庫管理員]";
+		mes "我來為你顯示倉庫的使用紀錄。使用紀錄最多保留 3 個月。";
+		mes "祝你玩得愉快！";
+		close2;
+		guildopenstorage_log();
+		end;
+	}
+}
+
+alberta,114,65,5	duplicate(GuildWarehouse)	公會倉庫管理員#alberta::Guild Warehouse Manager#alberta	896
+aldebaran,146,122,3	duplicate(GuildWarehouse)	公會倉庫管理員#aldebaran::Guild Warehouse Manager#aldebaran	896
+amatsu,100,156,5	duplicate(GuildWarehouse)	公會倉庫管理員#amatsu::Guild Warehouse Manager#amatsu	896
+ayothaya,203,173,3	duplicate(GuildWarehouse)	公會倉庫管理員#ayothaya::Guild Warehouse Manager#ayothaya	896
+brasilis,204,227,3	duplicate(GuildWarehouse)	公會倉庫管理員#brasilis::Guild Warehouse Manager#brasilis	896
+comodo,204,153,3	duplicate(GuildWarehouse)	公會倉庫管理員#comodo::Guild Warehouse Manager#comodo	896
+dewata,196,193,3	duplicate(GuildWarehouse)	公會倉庫管理員#dewata::Guild Warehouse Manager#dewata	896
+einbech,182,124,3	duplicate(GuildWarehouse)	公會倉庫管理員#einbech::Guild Warehouse Manager#einbech	896
+einbroch,238,203,3	duplicate(GuildWarehouse)	公會倉庫管理員#einbroch::Guild Warehouse Manager#einbroch	896
+geffen,128,68,3	duplicate(GuildWarehouse)	公會倉庫管理員#geffen::Guild Warehouse Manager#geffen	896
+gonryun,164,127,5	duplicate(GuildWarehouse)	公會倉庫管理員#gonryun::Guild Warehouse Manager#gonryun	896
+harboro1,288,212,5	duplicate(GuildWarehouse)	公會倉庫管理員#harboro1::Guild Warehouse Manager#harboro1	896
+hugel,91,158,5	duplicate(GuildWarehouse)	公會倉庫管理員#hugel::Guild Warehouse Manager#hugel	896
+izlude,133,149,3	duplicate(GuildWarehouse)	公會倉庫管理員#izlude::Guild Warehouse Manager#izlude	896
+lighthalzen,162,102,3	duplicate(GuildWarehouse)	公會倉庫管理員#lighthalzen::Guild Warehouse Manager#lighthalzen	896
+louyang,210,111,5	duplicate(GuildWarehouse)	公會倉庫管理員#louyang::Guild Warehouse Manager#louyang	896
+malaya,238,206,3	duplicate(GuildWarehouse)	公會倉庫管理員#malaya::Guild Warehouse Manager#malaya	896
+morocc,168,107,3	duplicate(GuildWarehouse)	公會倉庫管理員#morocc::Guild Warehouse Manager#morocc	896
+moscovia,211,200,5	duplicate(GuildWarehouse)	公會倉庫管理員#moscovia::Guild Warehouse Manager#moscovia	896
+niflheim,200,184,3	duplicate(GuildWarehouse)	公會倉庫管理員#niflheim::Guild Warehouse Manager#niflheim	896
+payon,180,106,3	duplicate(GuildWarehouse)	公會倉庫管理員#payon::Guild Warehouse Manager#payon	896
+prontera,150,191,3	duplicate(GuildWarehouse)	公會倉庫管理員#prontera::Guild Warehouse Manager#prontera	896
+rachel,123,145,3	duplicate(GuildWarehouse)	公會倉庫管理員#rachel::Guild Warehouse Manager#rachel	896
+umbala,106,160,3	duplicate(GuildWarehouse)	公會倉庫管理員#umbala::Guild Warehouse Manager#umbala	896
+veins,205,130,3	duplicate(GuildWarehouse)	公會倉庫管理員#veins::Guild Warehouse Manager#veins	896
+xmas,155,140,5	duplicate(GuildWarehouse)	公會倉庫管理員#xmas::Guild Warehouse Manager#xmas	896
+yuno,176,187,3	duplicate(GuildWarehouse)	公會倉庫管理員#yuno::Guild Warehouse Manager#yuno	896

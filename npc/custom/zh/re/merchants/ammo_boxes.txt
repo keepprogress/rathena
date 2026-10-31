@@ -1,0 +1,290 @@
+//===== rAthena Script =======================================
+//= Magazine Dealers
+//===== Description: =========================================
+//= Turns bullets into magazines/packs.
+//===== Changelogs: ==========================================
+//= 1.0 First version. [SinSloth]
+//= 1.1 Optimized version - Reduced to only one function [SinSloth]
+//= 1.2 Optimized^2, corrected npc's name [ultramage]
+//= 1.2a Optimized. Please, ommit extra NPC names [Lupus]
+//= 1.3 Updated to match AEGIS script. [Kisuka]
+//= 1.4 Updated to match AEGIS script again. [Masao]
+//= 1.5 Moved Izlude duplicate to pre-re/re paths. [Euphy]
+//= 2.0 Clean-up. [Capuche]
+//= 2.1 Fixes Issue #1482, where Rebellion jobs cannot use this npc. [Limestone]
+//= 2.2 Updated to new bullets. [Aleos]
+//============================================================
+
+que_ng,187,149,3	script	雜誌商肯尼::mdk	4_M_01,{
+	mes "[肯尼]";
+	mes "子彈袋能讓你更輕鬆地攜帶子彈。";
+	mes "來看看吧～";
+	next;
+	switch(select("各式子彈盒:球彈交換:舊球彈交換:獨頭彈交換:取消")) {
+	case 1:
+		switch(select("子彈盒:血腥子彈盒:白銀子彈盒:AP彈藥子彈盒:烈焰彈藥子彈盒:冰凍彈藥子彈盒:雷電彈藥子彈盒:魔石彈藥子彈盒:淨化彈藥子彈盒:閃光子彈盒:雷電子彈盒:冰子彈盒:毒子彈盒:盲目子彈盒:取消")) {
+			case 1: callsub S_Casing,13200,12149;
+			case 2: callsub S_Casing,13222,22737;
+			case 3: callsub S_Casing,13221,22738;
+			case 4: callsub S_Casing,13215,22744;
+			case 5: callsub S_Casing,13216,22745;
+			case 6: callsub S_Casing,13217,22746;
+			case 7: callsub S_Casing,13218,22747;
+			case 8: callsub S_Casing,13219,22748;
+			case 9: callsub S_Casing,13220,22749;
+			case 10: callsub S_Casing,13228,23123;
+			case 11: callsub S_Casing,13229,23124;
+			case 12: callsub S_Casing,13230,23125;
+			case 13: callsub S_Casing,13231,23126;
+			case 14: callsub S_Casing,13232,23127;
+			case 15: callsub S_Close;
+		}
+	case 2:
+		switch(select("火焰子彈:疾風子彈:冰凍子彈:毒子彈:盲目子彈:取消")) {
+		case 1: callsub S_Sphere_Exchange,13223,13228;
+		case 2: callsub S_Sphere_Exchange,13224,13229;
+		case 3: callsub S_Sphere_Exchange,13227,13230;
+		case 4: callsub S_Sphere_Exchange,13225,13231;
+		case 5: callsub S_Sphere_Exchange,13226,13232;
+		case 6: callsub S_Close;
+		}
+	case 3:
+		switch(select("火焰球彈:疾風球彈:冰凍球彈:毒球彈:盲目球彈:取消")) {
+		case 1: callsub S_Old_Sphere_Exchange,13203,13228;
+		case 2: callsub S_Old_Sphere_Exchange,13204,13229;
+		case 3: callsub S_Old_Sphere_Exchange,13207,13230;
+		case 4: callsub S_Old_Sphere_Exchange,13205,13231;
+		case 5: callsub S_Old_Sphere_Exchange,13206,13232;
+		case 6: callsub S_Close;
+		}
+	case 4:
+		switch(select("獨頭彈 L:獨頭彈 M:獨頭彈 H:獨頭彈 SH:獨頭彈 XH:取消")) {
+		case 1: callsub S_Slug_Exchange,13210,24;
+		case 2: callsub S_Slug_Exchange,13211,12;
+		case 3: callsub S_Slug_Exchange,13212,8;
+		case 4: callsub S_Slug_Exchange,13213,6;
+		case 5: callsub S_Slug_Exchange,13214,5;
+		case 6: callsub S_Close;
+		}
+	case 5:
+		callsub S_Close;
+	}
+
+S_Casing:
+	.@bullet_id = getarg(0);
+	.@pack_id = getarg(1);
+	.@bullet_str$ = getitemname(.@bullet_id);
+	.@pack_str$ = getitemname(.@pack_id);
+	.@bullet_count = countitem(.@bullet_id);
+	.@pack_count = .@bullet_count / 500;
+
+	if (.@bullet_count < 500 || getequipid(EQI_AMMO) != -1 || BaseClass != Job_Gunslinger) {
+		mes "[肯尼]";
+		mes "哎呀～交換需要剛好的數量喔。再去多拿一些來吧。";
+		mes "你必須持有 500 個以上的^FF0000" + .@bullet_str$ + "^000000，可以嗎？還有，要交換的話，請別^FF0000穿戴^000000它們。";
+		close;
+	}
+
+	mes "[肯尼]";
+	mes "你選擇了^FF0000" + .@pack_str$ + "^000000.";
+	mes "你需要 500 個^3131FF" + .@bullet_str$ + "^000000 來製作 1 個^3131FF" + .@bullet_str$ + "^000000 道具，費用是 ^3131FF500^000000 Zeny。";
+	mes "你想交換幾個呢？";
+	next;
+	switch(select("全部交換:只製作 1 個:取消")) {
+		case 1:
+			mes "[肯尼]";
+			mes "子彈數量: ^3131FF" + .@bullet_count;
+			mes "子彈袋組合: ^3131FF" + .@pack_count;
+			mes "所需 Zeny: ^3131FF" + .@pack_count * 500;
+			next;
+			mes "你要交換嗎？";
+			next;
+			switch(select("交換:取消")) {
+				case 1:
+					if (Zeny < .@pack_count * 500) {
+						mes "[肯尼]";
+						mes "哎呀～交換需要剛好的 Zeny 數量喔。再去多拿一些來吧。";
+						mes "你必須持有^FF0000" + .@pack_count * 500 + "^000000，可以嗎？";
+						close;
+					}
+					mes "[肯尼]";
+					mes "全部完成了。";
+					mes "背包負重超過 70% 時，子彈袋就會失去作用。請多留意。";
+					Zeny -= .@pack_count * 500;
+					delitem .@bullet_id, .@pack_count * 500;
+					getitem .@pack_id, .@pack_count;
+					close;
+				case 2:
+					close;
+			}
+		case 2:
+			if (Zeny < 500) {
+				mes "[肯尼]";
+				mes "哎呀～交換需要剛好的 Zeny 數量喔。再去多拿一些來吧。";
+				mes "你必須持有^FF0000500^000000，可以嗎？";
+				close;
+			}
+			mes "[肯尼]";
+			mes "全部完成了。";
+			mes "背包負重超過 70% 時，子彈袋就會失去作用。請多留意。";
+			Zeny -= 500;
+			delitem .@bullet_id, 500;
+			getitem .@pack_id, 1;
+			close;
+		case 3:
+			callsub S_Close;
+	}
+
+S_Sphere_Exchange:
+	.@old_id = getarg(0);
+	.@new_id = getarg(1);
+	.@old_str$ = getitemname(.@old_id);
+	.@new_str$ = getitemname(.@new_id);
+	.@old_count = countitem(.@old_id);
+	.@new_count = .@old_count / 10;
+
+	if (.@old_count < 10 || getequipid(EQI_AMMO) != -1 || BaseClass != Job_Gunslinger) {
+		mes "[肯尼]";
+		mes "哎呀～交換需要剛好的數量喔。再去多拿一些來吧。";
+		mes "你必須持有 10 個以上的^FF0000" + .@old_str$ + "^000000，可以嗎？還有，要交換的話，請別^FF0000穿戴^000000它們。";
+		close;
+	}
+
+	mes "[肯尼]";
+	mes "你選擇了^FF0000" + .@old_str$ + "^000000.";
+	mes "你需要 10 個^3131FF" + .@old_str$ + "^000000 來製作 1 個^3131FF" + .@new_str$ + "^000000 道具。";
+	mes "你想交換幾個呢？";
+	next;
+	switch(select("全部交換:只製作 1 個:取消")) {
+		case 1:
+			mes "[肯尼]";
+			mes .@old_str$ + " 數量: ^3131FF" + .@old_count;
+			mes .@new_str$ + " 數量: ^3131FF" + .@new_count;
+			next;
+			mes "你要交換嗎？";
+			next;
+			switch(select("交換:取消")) {
+				case 1:
+					mes "[肯尼]";
+					mes "全部完成了。";
+					delitem .@old_id, .@new_count * 10;
+					getitem .@new_id, .@new_count;
+					close;
+				case 2:
+					close;
+			}
+		case 2:
+			mes "[肯尼]";
+			mes "全部完成了。";
+			delitem .@old_id, 10;
+			getitem .@new_id, 1;
+			close;
+		case 3:
+			callsub S_Close;
+	}
+
+S_Old_Sphere_Exchange:
+	.@old_id = getarg(0);
+	.@new_id = getarg(1);
+	.@old_str$ = getitemname(.@old_id);
+	.@new_str$ = getitemname(.@new_id);
+	.@old_count = countitem(.@old_id);
+
+	if (.@old_count < 1 || getequipid(EQI_AMMO) != -1 || BaseClass != Job_Gunslinger) {
+		mes "[肯尼]";
+		mes "哎呀～交換需要剛好的數量喔。再去多拿一些來吧。";
+		mes "你必須持有 1 個以上的^FF0000" + .@old_str$ + "^000000，可以嗎？還有，要交換的話，請別^FF0000穿戴^000000它們。";
+		close;
+	}
+
+	mes "[肯尼]";
+	mes "你選擇了^FF0000" + .@old_str$ + "^000000.";
+	mes "你需要 1 個^3131FF" + .@old_str$ + "^000000 來製作 1 個^3131FF" + .@new_str$ + "^000000 道具。";
+	mes "你想交換幾個呢？";
+	next;
+	switch(select("全部交換:只製作 1 個:取消")) {
+		case 1:
+			mes "[肯尼]";
+			mes .@old_str$ + " 數量: ^3131FF" + .@old_count;
+			mes .@new_str$ + " 數量: ^3131FF" + .@old_count;
+			next;
+			mes "你要交換嗎？";
+			next;
+			switch(select("交換:取消")) {
+				case 1:
+					mes "[肯尼]";
+					mes "全部完成了。";
+					delitem .@old_id, .@old_count;
+					getitem .@new_id, .@old_count;
+					close;
+				case 2:
+					close;
+			}
+		case 2:
+			mes "[肯尼]";
+			mes "全部完成了。";
+			delitem .@old_id, 1;
+			getitem .@new_id, 1;
+			close;
+		case 3:
+			callsub S_Close;
+	}
+
+S_Slug_Exchange:
+	.@slug_id = getarg(0);
+	.@req_count = getarg(1);
+	.@slug_str$ = getitemname(.@slug_id);
+	.@new_slug_str$ = getitemname(25187);
+	.@count = countitem(.@slug_id);
+	.@new_count = .@count / .@req_count;
+
+	if (.@count < .@req_count || getequipid(EQI_AMMO) != -1 || BaseClass != Job_Gunslinger) {
+		mes "[肯尼]";
+		mes "哎呀～交換需要剛好的數量喔。再去多拿一些來吧。";
+		mes "你必須持有 " + .@req_count + " 個以上的^FF0000" + .@slug_str$ + "^000000，可以嗎？還有，要交換的話，請別^FF0000穿戴^000000它們。";
+		close;
+	}
+
+	mes "[肯尼]";
+	mes "你選擇了^FF0000" + .@slug_str$ + "^000000.";
+	mes "你需要 " + .@req_count + " ^3131FF" + .@slug_str$ + "^000000 來製作 1 個^3131FF" + .@new_slug_str$ + "^000000 道具。";
+	mes "你想交換幾個呢？";
+	next;
+	switch(select("全部交換:只製作 1 個:取消")) {
+		case 1:
+			mes "[肯尼]";
+			mes .@slug_str$ + " 數量: ^3131FF" + .@count;
+			mes .@new_slug_str$ + " 數量: ^3131FF" + .@new_count;
+			next;
+			mes "你要交換嗎？";
+			next;
+			switch(select("交換:取消")) {
+				case 1:
+					mes "[肯尼]";
+					mes "全部完成了。";
+					delitem .@slug_id, .@new_count * .@req_count;
+					getitem 25187, .@new_count;
+					close;
+				case 2:
+					close;
+			}
+		case 2:
+			mes "[肯尼]";
+			mes "全部完成了。";
+			delitem .@slug_id, .@req_count;
+			getitem 25187, 1;
+			close;
+		case 3:
+			callsub S_Close;
+	}
+
+S_Close:
+	mes "[肯尼]";
+	mes "好的。";
+	mes "如果還需要什麼，";
+	mes "請再來找我吧。";
+	close;
+}
+
+alberta,118,157,3	duplicate(mdk)	雜誌商肯尼#al::Magazine Dealer Kenny#al	4_M_01
+izlude_in,74,104,5	duplicate(mdk)	雜誌商肯尼#iz::Magazine Dealer Kenny#iz	4_M_01

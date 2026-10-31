@@ -1,0 +1,101 @@
+//===== rAthena Script =======================================
+//= Vending Machine NPCs for Novice.
+//===== Description: ========================================= 
+//= [Walkthrough Conversion]
+//= Exchangers NPCs for Novice.
+//===== Additional Comments: =================================
+//= 1.0 Firt version. [Aleos] [Secret]
+//= 1.1 Additionnal clean-up. [Capuche]
+//============================================================
+
+-	script	novice_vending_machine#main	-1,{
+	.@storage_ticket = 7059;	// Cargo_Free_Ticket
+	.@storage_ticket_name$ = getitemname(.@storage_ticket);
+
+	mes "初學者自動販賣機。";
+	mes "有許多按鈕。";
+	next;
+	switch( select( "說明", "交易 " + .@storage_ticket_name$, "交易初學者裝備" ) ) {
+	case 1:
+		mes "[兌換 " + .@storage_ticket_name$ + "]";
+		mes "4 " + .@storage_ticket_name$ + " 可以兌換為 1 張傳送、飛行船或手推車服務的免費券，或 1 張大嘴鳥騎乘免費券、15 個初學者蒼蠅翅膀、5 個初學者蝴蝶翅膀、30 瓶初學者藥水。";
+		next;
+		mes "[交易初學者裝備]";
+		mes "克里亞圖拉學院的初學者盔甲、帽子、涼鞋、主匕首與護盾，可以兌換為 4 " + .@storage_ticket_name$ + ".";
+		next;
+		mes "[交易初學者裝備]";
+		mes "個初學者蛋殼。初學者蛋殼可以兌換為克里亞髮型變更券，用於更換你的髮型。";
+		close;
+	case 2:
+		setarray .@exchange[0],
+			7060,1,		// Warp_Free_Ticket
+			7311,1,		// Free_Flying_Ship_Ticket
+			7061,1,		// Cart_Free_Ticket
+			7310,1,		// Free_Peco_Ticket
+			12323,15,	// N_Fly_Wing
+			12324,5,	// N_Butterfly_Wing
+			569,30;		// Novice_Potion
+		.@size = getarraysize(.@exchange);
+
+		for ( .@i = 0; .@i < .@size; .@i += 2 ) {
+			if (.@exchange[.@i+1] > 1)
+				.@menu$ += .@exchange[.@i+1] + " ";
+			.@menu$ += getitemname(.@exchange[.@i]) + ":";
+		}
+		.@s = (select(.@menu$) - 1) * 2;
+		if (countitem(.@storage_ticket) < 4) {
+			mes "數量 " + .@storage_ticket_name$ + " 不足，無法進行兌換。";
+			close;
+		}
+		if (.@exchange[.@s+1] > 1)
+			.@amount$ = .@exchange[.@s+1] + " ";
+		mes "已兌換 4 " + .@storage_ticket_name$ + " 換成 " + .@amount$ + getitemname(.@exchange[.@s]);
+		delitem .@storage_ticket,4;
+		getitem .@exchange[.@s],.@exchange[.@s+1];
+		close;
+	case 3:
+		mes "將所有初學者裝備兌換成兌換券。";
+		mes "請選擇「繼續」以進行。";
+		next;
+		if (select( "繼續", "取消。" ) == 2) {
+			mes "交易已中斷。";
+			close;
+		}
+		mes "正在將所有裝備兌換為兌換券。";
+		setarray .@list[0],2352,2510,2414,1243,2112,5055;
+		.@size = getarraysize(.@list);
+		
+		for ( .@i = 0, .@i < .@size; .@i++ ) {
+			.@count = countitem(.@list[.@i]);	// note: maybe check if equipped items are skipped
+			if (.@count < 1)
+				continue;
+			switch(.@list[.@i]) {
+			case 2352:	// Novice_Plate
+			case 2510:	// Novice_Hood
+			case 2414:	// Novice_Boots
+			case 1243:	// Novice_Knife
+			case 2112:	// Novice_Guard
+				delitem .@list[.@i], .@count;
+				getitem .@storage_ticket,(4*.@count);	// Cargo_Free_Ticket
+				break;
+			case 5055:	// Novice_Egg_Cap
+				delitem .@list[.@i], .@count;
+				getitem 6593,.@count;	// Cryptura_Hair_Coupon
+				break;
+			}
+		}
+		close;
+	}
+}
+izlude_in,69,177,5	duplicate(novice_vending_machine#main)	初學者自販機#iz::Vending Machine for Nov#iz	2_VENDING_MACHINE1
+payon_in02,71,75,5	duplicate(novice_vending_machine#main)	初學者自販機#pay::Vending Machine for Nov#pay	2_VENDING_MACHINE1
+prt_church,187,27,3	duplicate(novice_vending_machine#main)	初學者自販機#prt::Vending Machine for Nov#prt	2_VENDING_MACHINE1
+
+// unknown facing
+alberta_in,60,52,3	duplicate(novice_vending_machine#main)	初學者自販機#alb::Vending Machine for Nov#alb	2_VENDING_MACHINE1
+geffen_in,158,107,3	duplicate(novice_vending_machine#main)	初學者自販機#gef::Vending Machine for Nov#gef	2_VENDING_MACHINE1
+moc_para01,17,37,3	duplicate(novice_vending_machine#main)	初學者自販機#para::Vending Machine for Nov#para	2_VENDING_MACHINE1
+moc_prydb1,38,124,3	duplicate(novice_vending_machine#main)	初學者自販機#pryd::Vending Machine for Nov#pryd	2_VENDING_MACHINE1
+payon_in01,59,20,3	duplicate(novice_vending_machine#main)	初學者自販機#pay2::Vending Machine for Nov#pay2	2_VENDING_MACHINE1
+que_ng,28,73,3	duplicate(novice_vending_machine#main)	初學者自販機#que_ng1::Vending Machine for Nov#que_ng1	2_VENDING_MACHINE1
+que_ng,168,39,3	duplicate(novice_vending_machine#main)	初學者自販機#que_ng2::Vending Machine for Nov#que_ng2	2_VENDING_MACHINE1

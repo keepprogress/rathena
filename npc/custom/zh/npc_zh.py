@@ -23,7 +23,8 @@ MEMORY = ZH_DIR / 'translations.json'
 # 只有這些指令的字串會顯示給玩家
 DISPLAY = re.compile(
 	r'^\s*(mes|mesf|npctalk|dispbottom|announce|mapannounce|areaannounce|message|unittalk|showscript)\b'
-	r'|\b(select|prompt|Disp)\s*\(|^\s*menu\b')  # Disp 是 custom/warper.txt 組選單的函式
+	r'|\b(select|prompt|Disp)\s*\(|^\s*menu\b'  # Disp 是 custom/warper.txt 組選單的函式
+	r'|\.@K_Menu0\$')  # 卡普拉選單：選項陣列和 == 比對同一批字串，一起翻才對得上
 STRING = re.compile(r'"((?:[^"\\]|\\.)*)"')
 # 顯示行裡當成名稱/變數名傳給這些函式的字串不能翻（例：getvariableofnpc(.x,"MVP Summoner")、getd("Mission"+.@i)）
 CODE_ARG = re.compile(r'\b(getvariableofnpc|getd|setd|callfunc|callsub|donpcevent|getmonsterinfo|strnpcinfo|getmapusers)\s*\([^()]*$')
@@ -36,6 +37,9 @@ HEADER = re.compile(
 # 依 npc/ 下的相對路徑：(原文, 改成)，每組在原檔必須剛好出現一次
 TWEAKS = {
 	'custom/healer.txt': [('.@Buffs = 0;', '.@Buffs = 1;')],  # 私服常見：治療順便加速度/祝福
+	# 新手島依編號送到 izlude_a～d 分流（同一張地圖的複本），上游只在 izlude 放傳送師
+	'custom/warper.txt': [(_w := 'izlude,134,150,4\tduplicate(Warper)\t傳送師#izl::Warper#izl\t811\t//Pre-RE: (132,120)',
+		_w + ''.join(f'\nizlude_{c},134,150,4\tduplicate(Warper)\t傳送師#izl_{c}::Warper#izl_{c}\t811' for c in 'abcd'))],
 }
 NAME_BYTES = 23  # 名稱封包 24 位元組含結尾 0，超過會把中文字切半
 
@@ -85,8 +89,9 @@ def display_strings(text):
 
 assert [s for *_, s in display_strings(
 	'menu "A",L1,\n\t"B",L2;\nset .@a$,"x";\nmes "Cost "+callfunc("F_InsertComma",1);\nDisp("C:D"); Pick("","ama_fild01");\n'
-	'mes "Room "+getvariableofnpc(.t,"MVP Summoner")+" min "+getd("Mission"+.@i+"_")+" ok";')
-] == ['A', 'B', 'Cost ', 'C:D', 'Room ', ' min ', ' ok']
+	'mes "Room "+getvariableofnpc(.t,"MVP Summoner")+" min "+getd("Mission"+.@i+"_")+" ok";\n'
+	'case 1: setarray .@K_Menu0$[0],"Save","Cancel";\nif (.@K_Menu0$[.@j] == "Save")')
+] == ['A', 'B', 'Cost ', 'C:D', 'Room ', ' min ', ' ok', 'Save', 'Cancel', 'Save']
 
 
 def name_key(disp):

@@ -1,0 +1,438 @@
+//===== rAthena Script ======================================= 
+//= Eden Group Quests - Common NPCs
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 2.0
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= Eden Group Headquarter NPC's.
+//===== Additional Comments: ================================= 
+//= 1.0 First Version.
+//= 1.1 Removed showevent use, and use of duplicates.
+//=     Commented out warps that should not be active.
+//= 1.2 Reduced 300+ copy-paste lines to 1 duplicated NPC. [Brian]
+//= 1.3 Some little optimization here and there. [Masao]
+//= 1.4 Updated to match the new Izlude Map. [Masao]
+//= 1.5 Added some missing Eden Group Teleport Officers. [Masao]
+//= 1.6 Added Izlude RE coordinates. [Euphy]
+//= 1.7 Added Malaya teleporter. [Euphy]
+//= 1.8 Updated to match the latest official script. [Euphy]
+//= 1.9 Added support to Para_Team_Mark_ in Eden Group. [AtlantisRO/Ragno]
+//= 2.0 Added use of F_HasEdenGroupMark function. [Ragno]
+//============================================================
+
+// Common NPCs :: lv_tre
+//============================================================
+moc_para01,27,35,5	script	秘書萊姆::Secretary Lime Evenor	4_F_EDEN_OFFICER,{
+	if (checkweight(1201,1) == 0 || (MaxWeight - Weight) < 2000) {
+		mes "- 等一下！！ -";
+		mes "- 你目前攜帶的 -";
+		mes "- 道具太多了。 -";
+		mes "- 請再試一次 -";
+		mes "- 等你減輕一些負重後。 -";
+		close;
+	}
+	if (countitem(6219) > 0) {
+		mes "[萊姆·伊芬諾]";
+		mes "感謝許多冒險者造訪我們的伊甸園，我們最近為訪客準備了新版的伊甸園徽章。";
+		mes "也可以把舊版的伊甸園徽章換成新版的。";
+		next;
+		mes "[萊姆·伊芬諾]";
+		mes "雖然會有些微的延遲，但新版伊甸園徽章會把你傳回目前記錄的位置。";
+		mes "你要交換你的徽章嗎？";
+		next;
+		if (select("好啊:不用了。") == 2){
+			mes "[萊姆·伊芬諾]";
+			mes "你有什麼理由不交換呢……？";
+			close;
+		}
+		delitem 6219,1;
+		getitem 22508,1;
+		mes "[萊姆·伊芬諾]";
+		mes "給你。歡迎再來～";
+		close;
+	}
+	mes "[萊姆·伊芬諾]";
+	mes "追隨夢想與浪漫的人，都會聽我說話。我們是被稱為「伊甸之園」的樂園代表，也就是伊甸園。世上再也找不到像這樣的地方了。";
+	mes "你好，有什麼可以幫你的嗎？";
+	next;
+	while (1) {
+		switch (select("伊甸園是什麼？:加入伊甸園:登記新任務:搜尋任務:取消")) {
+		case 1:
+			mes "[萊姆·伊芬諾]";
+			mes "伊甸園是一個幫助米德加德受困民眾的團體。";
+			next;
+			mes "[萊姆·伊芬諾]";
+			mes "如果有人需要幫助，我們會把委託貼在布告欄上，並介紹給熱心助人的成員。";
+			next;
+			mes "[萊姆·伊芬諾]";
+			mes "伊甸園成員會審核任務，並協助張貼任務的人。";
+			mes "成員會為了獎勵而執行這些任務。";
+			next;
+			mes "[萊姆·伊芬諾]";
+			mes "如果你對米德加德還不太熟悉，這是探索世界的好方法。";
+			mes "或者，如果你夠成熟，也可以一邊執行任務、一邊環遊世界、結交新朋友。你的大名將會傳遍各地。";
+			next;
+			break;
+		case 2:
+			if (!callfunc("F_HasEdenGroupMark")) {
+				mes "[萊姆·伊芬諾]";
+				mes "只要在我這裡登記，你就能成為伊甸園的成員。";
+				mes "你想加入伊甸園嗎？";
+				next;
+				switch (select("是，我要加入:不，我不想加入")) {
+				case 1:
+					mes "[萊姆·伊芬諾]";
+					mes "好的。很好！請在這裡寫下你的名字。";
+					input .@input$;
+					next;
+					mes "[萊姆·伊芬諾]";
+					mes "寫完了嗎？";
+					mes "我來看看。";
+					next;
+					mes "[萊姆·伊芬諾]";
+					mes "你的名字是^3131FFBo"+.@input$+"Ba^000000……是這樣嗎？";
+					mes "咦？不是嗎？？";
+					next;
+					emotion ET_SWEAT;
+					mes "[萊姆·伊芬諾]";
+					mes "嗯，那不是你寫的嗎？";
+					mes "好吧，嗯，好像有點難看懂。";
+					next;
+					mes "[萊姆·伊芬諾]";
+					mes "可以請你再寫一次名字嗎？請寫得^3131FF清楚^000000一點。";
+					input .@input$;
+					next;
+					mes "[萊姆·伊芬諾]";
+					mes "啊～哈。你是^3131FF"+strcharinfo(0)+"^000000.";
+					mes "這次我看懂了。";
+					next;
+					emotion ET_BEST;
+					mes "[萊姆·伊芬諾]";
+					mes "我們已經把你的名字登記在名單上了。";
+					mes "歡迎加入伊甸園的新成員！";
+					next;
+					mes "[萊姆·伊芬諾]";
+					mes "希望你能以伊甸園成員的身分大展身手。";
+					getitem 22508,1; //Para_Team_Mark_
+					next;
+					break;
+				case 2:
+					mes "[萊姆·伊芬諾]";
+					mes "你對伊甸園還有疑問嗎？";
+					next;
+					break;
+				}
+			} else {
+				mes "[萊姆·伊芬諾]";
+				mes "你已經是伊甸園的成員了。";
+				next;
+			}
+			break;
+		case 3:
+			mes "[萊姆·伊芬諾]";
+			mes "你想登記一些希望我們幫忙完成的任務嗎？";
+			next;
+			if(select("是，我要登記:不，我不要") == 1) {
+				mes "[萊姆·伊芬諾]";
+				mes "好。請在上面寫下你的名字。";
+				input .@input$;
+				next;
+				mes "[萊姆·伊芬諾]";
+				mes "^3131FF"+strcharinfo(0)+"^000000……那是你的名字嗎？";
+				mes "嗯，你的字跡不太清楚，我看不懂。";
+				next;
+				mes "[萊姆·伊芬諾]";
+				mes "^3131FF"+strcharinfo(0)+"^000000，告訴我你想登記什麼任務吧。";
+				mes "我們該去哪張地圖？";
+				input .@input$;
+				next;
+				mes "[萊姆·伊芬諾]";
+				mes "^3131FF任務地圖: "+.@inputstr$+"^000000";
+				mes "嗯，我記下來了。";
+				next;
+				mes "[萊姆·伊芬諾]";
+				mes "請告訴我你在找哪種任務。";
+				mes "簡單寫成「獵殺 10 隻波利」這樣就行了。";
+				input .@input$;
+				next;
+				mes "[萊姆·伊芬諾]";
+				mes "寫完了嗎？";
+				mes "我來確認一下。";
+				next;
+				mes "[萊姆·伊芬諾]";
+				mes "咦……………";
+				next;
+				mes "[萊姆·伊芬諾]";
+				mes "嗯……咦？？……………………";
+				next;
+				emotion ET_THINK;
+				mes "[萊姆·伊芬諾]";
+				mes "我想你應該先完成我們的一個任務，再接新的任務比較好。";
+				next;
+				emotion ET_HNG;
+				mes "[萊姆·伊芬諾]";
+				mes "^3131FF委託人: 萊姆·伊芬諾^000000";
+				mes "^3131FF任務: 練習你的字跡一個月。^000000";
+				mes "你的字實在太難看了！";
+				next;
+				mes "[萊姆·伊芬諾]";
+				mes "^3131FF任務:"+.@input$+"^000000";
+				mes "總之，你的新任務登記完成了。";
+				next;
+				mes "[萊姆·伊芬諾]";
+				mes "任務已經額滿了，請等待名額空出來。";
+				mes "請耐心等候輪到你。";
+				next;
+			}
+			break;
+		case 4:
+			if (callfunc("F_HasEdenGroupMark")) {
+				mes "[萊姆·伊芬諾]";
+				mes "想以伊甸園成員的身分試試看任務嗎？";
+				next;
+				mes "[萊姆·伊芬諾]";
+				mes "看看布告欄的右側，有各式各樣的任務在等你喔。";
+				mes "請仔細閱讀任務清單與條件，然後選擇一個任務。";
+				next;
+			}
+			else {
+				mes "[萊姆·伊芬諾]";
+				mes "要執行任務的話，你得先加入伊甸園。";
+				close;
+			}
+			break;
+		case 5:
+			mes "[萊姆·伊芬諾]";
+			mes "有任何問題請再來找我。";
+			close;
+		}
+	}
+	close;
+}
+
+-	script	Eden Teleport Officer#0::eto	-1,{
+	mes "[伊甸園傳送員]";
+	mes "那些茫然地在這個奇妙世界裡遊蕩的人，聽好了，過來找我！";
+	mes "伊甸園會幫助你，為你展現美好的未來。";
+	next;
+	mes "[伊甸園傳送員]";
+	mes "你無所事事，只是在浪費時間嗎？";
+	mes "你想做點好事，卻沒有人給你工作嗎？";
+	mes "你想成為解決問題的人嗎？";
+	mes "伊甸園會為你解決問題。";
+	next;
+	switch (select("前往伊甸園:不想再聊了")) {
+	case 1:
+		mes "[伊甸園傳送員]";
+		mes "那就去我們的秘密基地吧！";
+		set nak_warp,strnpcinfo(2);
+		close2;
+		warp "moc_para01",31,14;
+		end;
+	case 2:
+		mes "[伊甸園傳送員]";
+		mes "如果你不知道未來該做什麼，別猶豫，儘管告訴我！隨時來找我聊聊，好嗎？";
+		close;
+	}
+}
+prontera,124,76,3	duplicate(eto)	伊甸園傳送員#1::Eden Teleport Officer#1	729
+moc_ruins,68,164,3	duplicate(eto)	伊甸園傳送員#2::Eden Teleport Officer#2	729
+geffen,132,66,3	duplicate(eto)	伊甸園傳送員#3::Eden Teleport Officer#3	729
+alberta,124,67,3	duplicate(eto)	伊甸園傳送員#4::Eden Teleport Officer#4	729
+aldebaran,133,119,5	duplicate(eto)	伊甸園傳送員#5::Eden Teleport Officer#5	729
+izlude_in,68,162,1	duplicate(eto)	伊甸園傳送員#6::Eden Teleport Officer#6	729
+prt_church,103,78,3	duplicate(eto)	伊甸園傳送員#7::Eden Teleport Officer#7	729
+geffen_in,160,104,5	duplicate(eto)	伊甸園傳送員#8::Eden Teleport Officer#8	729
+moc_prydb1,53,126,3	duplicate(eto)	伊甸園傳送員#9::Eden Teleport Officer#9	729
+alberta_in,75,39,3	duplicate(eto)	伊甸園傳送員#10::Eden Teleport Officer#10	729
+payon_in02,58,58,1	duplicate(eto)	伊甸園傳送員#11::Eden Teleport Officer#11	729
+payon,177,111,3	duplicate(eto)	伊甸園傳送員#12::Eden Teleport Officer#12	729
+que_ng,33,73,3	duplicate(eto)	伊甸園傳送員#13::Eden Teleport Officer#13	729
+que_ng,144,161,5	duplicate(eto)	伊甸園傳送員#14::Eden Teleport Officer#14	729
+yuno,144,189,5	duplicate(eto)	伊甸園傳送員#15::Eden Teleport Officer#15	729
+rachel,125,144,3	duplicate(eto)	伊甸園傳送員#16::Eden Teleport Officer#16	729
+comodo,202,151,4	duplicate(eto)	伊甸園傳送員#17::Eden Teleport Officer#17	729
+hugel,93,153,4	duplicate(eto)	伊甸園傳送員#18::Eden Teleport Officer#18	729
+veins,220,109,4	duplicate(eto)	伊甸園傳送員#19::Eden Teleport Officer#19	729
+einbroch,250,211,4	duplicate(eto)	伊甸園傳送員#20::Eden Teleport Officer#20	729
+lighthalzen,164,86,4	duplicate(eto)	伊甸園傳送員#21::Eden Teleport Officer#21	729
+amatsu,100,145,5	duplicate(eto)	伊甸園傳送員#22::Eden Teleport Officer#22	729
+ayothaya,221,191,3	duplicate(eto)	伊甸園傳送員#23::Eden Teleport Officer#23	729
+louyang,224,107,3	duplicate(eto)	伊甸園傳送員#24::Eden Teleport Officer#24	729
+gonryun,162,122,5	duplicate(eto)	伊甸園傳送員#25::Eden Teleport Officer#25	729
+moscovia,209,197,5	duplicate(eto)	伊甸園傳送員#26::Eden Teleport Officer#26	729
+brasilis,191,224,3	duplicate(eto)	伊甸園傳送員#27::Eden Teleport Officer#27	729
+dewata,192,193,5	duplicate(eto)	伊甸園傳送員#28::Eden Teleport Officer#28	729
+morocc,161,97,5	duplicate(eto)	伊甸園傳送員#29::Eden Teleport Officer#29	729
+izlude,131,148,4	duplicate(eto)	伊甸園傳送員#30::Eden Teleport Officer#30	729
+izlude_a,131,148,4	duplicate(eto)	伊甸園傳送員#30::eto_iz_a	729
+izlude_b,131,148,4	duplicate(eto)	伊甸園傳送員#30::eto_iz_b	729
+izlude_c,131,148,4	duplicate(eto)	伊甸園傳送員#30::eto_iz_c	729
+izlude_d,131,148,4	duplicate(eto)	伊甸園傳送員#30::eto_iz_d	729
+umbala,105,158,3	duplicate(eto)	伊甸園傳送員#31::Eden Teleport Officer#31	729
+malaya,225,218,1	duplicate(eto)	伊甸園傳送員#32::Eden Teleport Officer#32	729
+verus04,116,243,0	duplicate(eto)	伊甸園傳送員#33::Eden Teleport Officer#33	729
+
+moc_para01,30,10,0	script	#eden_out	45,1,1,{
+OnTouch:
+	switch (nak_warp) {
+		case 1: warp "prontera",116,72; end;
+		case 2: warp "moc_ruins",64,161; end;
+		case 3: warp "geffen",120,39; end;
+		case 4: warp "alberta",117,56; end;
+		case 5: warp "aldebaran",168,112; end;
+		case 6: warp "izlude_in",73,165; end;
+		case 7: warp "prt_church",99,78; end;
+		case 8: warp "geffen_in",162,99; end;
+		case 9: warp "moc_prydb1",51,118; end;
+		case 10: warp "alberta_in",73,43; end;
+		case 11: warp "payon_in02",64,60; end;
+		case 12: warp "payon",161,58; end;
+		case 13: warp "que_ng",33,63; end;
+		case 14: warp "que_ng",144,166; end;
+		case 15: warp "yuno",158,125; end;
+		case 16: warp "rachel",115,125; end;
+		case 17: warp "comodo",192,145; end;
+		case 18: warp "hugel",88,148; end;
+		case 19: warp "veins",216,104; end;
+		case 20: warp "einbroch",246,204; end;
+		case 21: warp "lighthalzen",159,95; end;
+		case 22: warp "amatsu",110,150; end;
+		case 23: warp "ayothaya",217,178; end;
+		case 24: warp "louyang",217,103; end;
+		case 25: warp "gonryun",155,120; end;
+		case 26: warp "moscovia",218,198; end;
+		case 27: warp "brasilis",190,220; end;
+		case 28: warp "dewata",192,182; end;
+		case 29: warp "morocc",161,97; end;
+		case 30: warp "izlude",134,118; end;	// Old coordinates: (127,142)
+		case 31: warp "umbala",94,154; end;
+		case 32: warp "malaya",234,199; end;
+		case 33: warp "verus04",115,243; end;
+		default: warp "prontera",116,72; end;
+	}
+	end;
+}
+
+moc_para01,47,39,3	script	#warp_2_pass	111,{
+	if (callfunc("F_HasEdenGroupMark")) {
+		mes "[萊姆·伊芬諾]";
+		mes "哦，這裡是只有伊甸園成員才能進入的專屬地點。";
+		mes "只要你是成員，隨時都能來！";
+		next;
+		switch (select("進入:不進去")) {
+		case 1:
+			mes "這扇門裝飾得很漂亮，但看起來有點太重了。";
+			close2;
+			warp "moc_para01",106,14;
+			end;
+		case 2:
+			mes "[萊姆·伊芬諾]";
+			mes "嗯，如果你沒興趣的話。";
+			close;
+		}
+	}
+	mes "[萊姆·伊芬諾]";
+	mes "哦，這裡是伊甸園成員專屬的地方。";
+	mes "如果你想進去，就得先加入伊甸園。";
+	close;
+}
+
+moc_para01,16,22,7	script	年邁的冒險者#eden::Old Adventurer#eden	900,{
+	mes "[年邁的冒險者]";
+	mes "太過分了，我就算看起來老，還是很強壯的！她叫什麼名字？萊姆·伊芬諾？她就這樣無視我，好像我是個老糊塗的傢伙似的。";
+	next;
+	mes "[年邁的冒險者]";
+	mes "我是來加入伊甸園的！我不應該受到這種對待！";
+	mes "你也覺得我看起來像老糊塗嗎？";
+	close;
+}
+
+moc_para01,182,48,3	script	伊甸園負責人#eden::Eden's Chief#eden	886,{
+	set .@eggf,rand(1,118);
+	set .@eggf_1,.@eggf + 1;
+	set .@eggf_2,.@eggf + 2;
+	set .@eggf_6,.@eggf + 6;
+	mes "[伊甸園負責人]";
+	mes ""+.@eggf+".. "+.@eggf_1+"... "+.@eggf_2+".... "+.@eggf_6+"..?";
+	next;
+	emotion ET_CRY;
+	mes "[伊甸園負責人]";
+	mes "哎呀，糟糕！我數到第幾顆蛋了？";
+	mes "啊啊！！我完全忘了！我得重新數一次！";
+	next;
+	emotion ET_CRY;
+	mes "[伊甸園負責人]";
+	mes "你為什麼要我做這種事？這是什麼任務啊？";
+	next;
+	emotion ET_CRY;
+	mes "[伊甸園負責人]";
+	mes "你要拿那些煎蛋做什麼？我敢說你吃不完的。你就是想找我麻煩，對吧？";
+	close;
+}
+
+moc_para01,172,28,5	script	伊甸園實習生#eden::Eden's Intern#eden	883,{
+	mes "[伊甸園實習生]";
+	mes "其實，我已經察覺到了。";
+	next;
+	mes "[伊甸園實習生]";
+	mes "除非你想失敗，否則我們就得拚命工作。";
+	next;
+	mes "[伊甸園實習生]";
+	mes "可是，我還沒學過製藥的知識呢。";
+	next;
+	mes "[伊甸園實習生]";
+	mes "我會失敗的，我做不來。";
+	close;
+}
+
+moc_para01,20,35,5	script	辦公室助理妮德::Office Assistant Neede	814,{
+	mes "[妮德]";
+	mes "我幾年前就成為伊甸園的成員了，但感覺就像昨天的事一樣。";
+	mes "我一直忙著工作，連在這裡待了多少年都沒有注意到。";
+	next;
+	mes "[妮德]";
+	mes "回想起來，每天都像一場戰爭。";
+	next;
+	mes "[妮德]";
+	mes "^3131FF右邊那家餐廳的主廚^000000";
+	mes "每次煮菜都放太多調味料，味道瀰漫整個大廳。我們得定期開窗，因為實在受不了那個味道！";
+	next;
+	mes "[妮德]";
+	mes "還有，你有看到^3131FF大廳北側的十字路口^000000那邊的^3131FF健身房^000000嗎？他們運動的時候總是大吼大叫，我在這裡都聽得見！";
+	next;
+	emotion ET_ANGER;
+	mes "[妮德]";
+	mes "而且，^3131FF二樓^000000那個怪女孩一直哭個不停。她的哭聲快把我逼瘋了。";
+	next;
+	mes "[妮德]";
+	mes "啊，那個怪女孩其實是我們的老闆……";
+	next;
+	mes "[妮德]";
+	mes "我不知道她在搞什麼。但她一直又哭又叫。哦，有時候還會聽到「砰！」的巨響……我不知道是從哪裡傳來的。";
+	next;
+	emotion ET_HUK;
+	mes "[妮德]";
+	mes "等等！";
+	mes "噓！這是秘密，不能告訴任何人！";
+	next;
+	mes "[妮德]";
+	emotion ET_OHNO;
+	mes "我不信任伊芬諾。她從不表露情緒……她一定會去向老闆告我的狀。";
+	next;
+	emotion ET_HNG, getnpcid(0, "Secretary Lime Evenor");
+	mes "[萊姆·伊芬諾]";
+	mes "我才不是那種女孩呢。";
+	next;
+	emotion ET_KEK;
+	mes "[妮德]";
+	mes "咦？你聽到了嗎？天啊～！";
+	close;
+}
+
+function	script	F_HasEdenGroupMark	{
+	return (countitem(6219) > 0 || countitem(22508) > 0);
+}

@@ -1,0 +1,63 @@
+//===== rAthena Script =======================================
+//= Izlude Dungeon Renewal Warp Script
+//===== By: ==================================================
+//= Athena (1.0)
+//= Nana (1.1)
+//===== Current Version: =====================================
+//= 1.3
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Warp Points for Bibilyn Island & Undersea Cave
+//===== Additional Comments: =================================
+//= 1.2 Moved common warps to base path. [Euphy]
+//= 1.3 Added Undersea Tunnel 6th floor warper.
+//============================================================
+
+// Undersea Tunnel Warper :: iz_dun05
+//============================================================
+iz_dun04,130,234,5	script	守門人#iz_dun::Gatekeeper#iz_dun	413,{
+	mes "[守門人]";
+	mes "站住！";
+	mes "冒險者，你來這裡有什麼事嗎？";
+	mes "我們在這座水下城市發現了新的樓層。";
+	next;
+	mes "[守門人]";
+	mes "你覺得自己能應付這個挑戰嗎？";
+	mes "這裡的怪物等級介於 110 到 124 之間。";
+	mes "而且你一定要小心克拉肯！";
+	next;
+	switch(select("放出克拉肯！:我留在這裡。")) {
+	case 1:
+		mes "[守門人]";
+		mes "小心，祝你好運。";
+		mes "如果看到克拉肯，一定要有朋友幫忙，或是像我們一樣快逃。";
+		close2;
+		warp "iz_dun05",141,187;
+		end;
+	case 2:
+		mes "[守門人]";
+		mes "探索新區域之前，最好先做好準備。";
+		mes "準備好要出發再回來吧。";
+		close;
+	}
+}
+
+iz_dun05,142,190,5	script	衛兵#iz_dun::Guard#iz_dun	413,{
+	mes "[守門人]";
+	mes "所以你是想回到第五層去嗎？";
+	next;
+	switch(select("是！:不，我留下來。")) {
+	case 1:
+		mes "[守門人]";
+		mes "冒險者，路上小心。";
+		close2;
+		warp "iz_dun04",129,232;
+		end;
+	case 2:
+		mes "[守門人]";
+		mes "你不去了嗎？";
+		mes "你比我想的還要勇敢呢。";
+		close;
+	}
+}

@@ -1,0 +1,332 @@
+//===== rAthena Script ======================================= 
+//= Mercenary related NPCs
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.5
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Sells Lancer, Sword, and Archer mercenaries,
+//= along with related mercenary items.
+//===== Additional Comments: ================================= 
+//= 1.0 First version. [L0ne_W0lf]
+//= 1.1 Optimization. [Zephyrus]
+//= 1.2 Removed redundent input. [L0ne_W0lf]
+//= 1.3 Duplicates now spawned from floating NPCs. [L0ne_W0lf]
+//= 1.4 Optimized and fixed wrong item id. [Joseph]
+//= 1.5 Added Mercenary Guild Switch & fixed a bug
+//=		in izlude duplicate. [Capuche]
+//= 1.5a Change to F_GM_NPC function in Mercenary Guild Switch
+//============================================================ 
+
+-	script	Mercenary Manager#main	-1,{
+	setarray .@name$, 	"Spear", 			"Sword", 			"Bow";
+	setarray .@faith$, 	"SPEAR_MERC_GUILD",	"SWORD_MERC_GUILD",	"ARCH_MERC_GUILD";
+	setarray .@item, 	12182,				12172,				12162;
+	.@npc$ = strnpcinfo(2);
+	for (.@size = getarraysize(.@name$); .@type < .@size; .@type++)
+		if( compare( .@npc$,.@name$[.@type] ) ) break;
+	.@faith_merc = mercenary_get_faith(getd(.@faith$[.@type]));
+	mes "[傭兵管理員]";
+	mes "歡迎來到";
+	mes .@name$[.@type] + " 傭兵公會。";
+	mes "有什麼我能為你做的嗎？";
+	next;
+	switch(select("雇用傭兵:傭兵資訊:不用了:十級傭兵")) {
+		case 1:
+			mes "[傭兵管理員]";
+			mes "你想雇用一位";
+			mes .@name$[.@type] + " 傭兵嗎？";
+			mes "你有興趣雇用哪個等級的";
+			mes "傭兵？";
+			next;
+			for (.@i = 1; .@i <= 9; .@i++)
+				.@menu$ = .@menu$ + callfunc("F_GetNumSuffix",.@i) + " Grade " + .@name$[.@type] + " Mercenary:";
+			.@Grade = select(.@menu$);
+			.@BaseLevel = 5 + (.@Grade * 10);
+			.@BaseLevel = (.@val > 90)? 90 : .@BaseLevel;
+			.@ZenyCost = 7 * .@Grade;
+			setarray .@FaithCost[7], 50,100,300;
+			.@FaithCost = .@FaithCost[.@Grade];
+			mes "[傭兵管理員]";
+			mes "所以你想雇用 " + callfunc("F_GetNumSuffix",.@Grade);
+			mes "等級 " + .@name$[.@type] + " 傭兵嗎？";
+			mes "你必須達到";
+			mes "基本等級 " + .@BaseLevel + " 以上，並且";
+			mes "必須支付 " + .@ZenyCost + ",000 Zeny 的雇用費。";
+			next;
+			if(select("是:否") == 2) {
+				mes "[傭兵管理員]";
+				mes "哦，是嗎？那麼，現在";
+				mes "可能不是個好時機";
+				mes "讓你考慮雇用";
+				mes "傭兵，不過請隨時";
+				mes "回來，如果你的";
+				mes "需求有所改變。謝謝你~";
+			}
+			else if(.@FaithCost && .@faith_merc < .@FaithCost) {
+				mes "[傭兵管理員]";
+				mes "哦……你的忠誠度評價";
+				mes "在 " + .@name$[.@type] + " 傭兵";
+				mes "公會的忠誠度還不夠高，無法";
+				mes "雇用這位傭兵。請";
+				mes "在與我們累積到";
+				mes "" + .@FaithCost + " 以上的忠誠度後再回來。";
+			}
+			else if (BaseLevel < .@BaseLevel) {
+				mes "[傭兵管理員]";
+				mes "很抱歉，你的基本";
+				mes "等級還不夠高";
+				mes "，無法雇用這位傭兵。";
+				mes "請在";
+				mes "達到基本等級 " + .@BaseLevel + ".";
+			}
+			else if (Zeny < .@ZenyCost * 1000) {
+				mes "[傭兵管理員]";
+				mes "很抱歉，您";
+				mes "你的 Zeny 不足";
+				mes "，無法雇用這位傭兵。";
+				mes "雇用費用為 " + .@ZenyCost + ",000 Zeny。";
+			}
+			else {
+				mes "[傭兵管理員]";
+				mes "太好了！我們的傭兵";
+				mes "都是真誠且忠心的，";
+				mes "致力於保護他們的委託人。";
+				mes "被召喚的傭兵會";
+				mes "為你提供支援，為期";
+				mes "30 分鐘。那麼，保重。";
+				Zeny = Zeny - (.@ZenyCost * 1000);
+				getitem .@item[.@type] - 10 + .@Grade, 1;
+			}
+			close;
+		case 2:
+			mes "[傭兵管理員]";
+			mes "傭兵是士兵，";
+			mes "會在你身旁";
+			mes "於戰場上作戰，不過";
+			mes "有幾項條款";
+			mes "需要達成才能雇用他們。";
+			next;
+			mes "[傭兵管理員]";
+			mes "你必須滿足";
+			mes "等級要求，並支付 Zeny";
+			mes "雇用傭兵的費用。";
+			mes "更高等級的傭兵";
+			mes "還需要你";
+			mes "與我們建立忠誠度。";
+			next;
+			mes "[傭兵管理員]";
+			mes "傭兵契約不能";
+			mes "轉讓給他人，";
+			mes "而我們只允許傭兵與委託人之間的基本等級相差 5 級，";
+			mes "因此你無法雇用比你強太多的傭兵。";
+			next;
+			mes "[傭兵管理員]";
+			mes "那麼，你可以在";
+			mes "正式簽約時了解細節，";
+			mes "與我們的";
+			mes "傭兵簽約時，會拿到";
+			mes "能把傭兵召喚到你身邊的";
+			mes "召喚卷軸。";
+			next;
+			mes "[傭兵管理員]";
+			mes "你不能把這張卷軸";
+			mes "轉交給任何其他人，而";
+			mes "傭兵只會留";
+			mes "在你身邊 30 分鐘，";
+			mes "也就是你召喚他之後。別忘了";
+			mes "時間限制，好嗎？";
+			close;
+		case 3:
+			mes "[傭兵管理員]";
+			mes "咦？你不需要任何";
+			mes "協助嗎？那麼，隨時";
+			mes "來問我，如果你有";
+			mes "關於傭兵的疑問。";
+			close;
+		case 4:
+			mes "[傭兵管理員]";
+			mes "十級傭兵是";
+			mes "我們最好的傭兵，";
+			mes "而我們採用不同的標準，";
+			mes "讓委託人來雇用他們。";
+			mes "不需要 Zeny 雇用費，但你";
+			mes "必須有 500 點忠誠度。";
+			next;
+			mes "[傭兵管理員]";
+			mes "一旦你與";
+			mes "十級傭兵簽訂契約，";
+			mes "你的忠誠度評價會";
+			mes "減少 400。換句話說，";
+			mes "你要付出 400 點忠誠度";
+			mes "才能雇用十級傭兵。";
+			next;
+			mes "[傭兵管理員]";
+			mes "你也必須達到";
+			mes "基本等級需達 90 以上，才能";
+			mes "僱用十階傭兵。";
+			mes "你還有興趣";
+			mes "締結這份契約嗎？";
+			next;
+			if (select("是:否") == 2) {
+				mes "[傭兵管理員]";
+				mes "我明白……要";
+				mes "付出許多努力與犧牲，";
+				mes "才能走到";
+				mes "能僱用十階";
+				mes "傭兵的地步。你是否考慮過";
+				mes "僱用較低階的傭兵呢？";
+			}
+			else if (.@faith_merc < 500) {
+				mes "[傭兵管理員]";
+				mes "很抱歉，你的";
+				mes "忠誠度太";
+				mes "低，無法僱用十階";
+				mes "傭兵。你必須擁有";
+				mes "500 點以上的忠誠度，";
+				mes "才能與其締結契約。";
+			}
+			else if (BaseLevel < 90) {
+				mes "[傭兵管理員]";
+				mes "很抱歉，你必須";
+				mes "基本等級達到 90 以上，";
+				mes "才能締結";
+				mes "與十階傭兵的契約。";
+			}
+			else {
+				mes "[傭兵管理員]";
+				mes "恭喜！看來你";
+				mes "打算";
+				mes "接下一些非常危險的工作，";
+				mes "因為你正要僱用十階";
+				mes "傭兵。祝你";
+				mes "與他合作順利。";
+				mercenary_set_faith getd(.@faith$[.@type]),-400;
+				getitem .@item[.@type],1;
+			}
+			close;
+	}
+}
+prontera,41,337,5	duplicate(Mercenary Manager#main)	傭兵管理員#Spear::Mercenary Manager#Spear	8W_SOLDIER
+pay_arche,99,167,4	duplicate(Mercenary Manager#main)	傭兵管理員#Bow::Mercenary Manager#Bow	4_M_JOB_HUNTER
+
+// Mercenary Merchant NPCs
+//============================================================
+-	script	Mercenary Merchant#dummy::MercMerchant	-1,{
+	mes "[傭兵道具商人]";
+	mes "你好，我販售";
+	mes "傭兵能使用的";
+	mes "道具。你有特別";
+	mes "想找的";
+	mes "東西嗎？";
+	next;
+	setarray .@item, 12184,	12185,	12241,	12242,	12243;
+	setarray .@cost, 2500,	5000,	800,	1500,	3000;
+	for (.@size = getarraysize(.@item); .@i < .@size; .@i++)
+		.@menu$ = .@menu$ + getitemname(.@item[.@i]) + ":";
+	.@m = select(.@menu$)-1;
+	.@str$ = .@cost[.@m] + "";
+	.@len = getstrlen(.@str$);
+	.@str_cost$ = (.@len <= 3)? .@str$ : insertchar(.@str$,",",.@len-3);
+	mes "[傭兵道具商人]";
+	mes getitemname(.@item[.@m]);
+	mes "每個售價 " + .@str_cost$ + " Zeny。";
+	mes "你要買多少？";
+	next;
+	input .@input;
+	if (!.@input) {
+		mes "[傭兵道具商人]";
+		mes "你改變主意了嗎？";
+		mes "好的，隨時回來";
+		mes "找我，";
+		mes "想買傭兵藥水都可以。";
+		close;
+	}
+	else if (.@input < 0 || .@input > 10000) {
+		mes "[傭兵道具商人]";
+		mes "很抱歉，您";
+		mes "最多一次只能購買";
+		mes "10,000 瓶這種藥水。";
+		mes "請輸入";
+		mes "1 到 10,000 之間的數字。";
+		close;
+	}
+	else if (set(.@total_po, .@input * .@cost[.@m]) > Zeny) {
+		mes "[傭兵道具商人]";
+		mes "很抱歉，您";
+		mes "你的 Zeny 不足以";
+		mes "買這麼多藥水。嗯，";
+		mes "我會在這裡，";
+		mes "等你準備好要";
+		mes "為傭兵購買東西。";
+		close;
+	}
+	else if (!checkweight(.@item[.@m], .@input)) {
+		mes "[傭兵道具商人]";
+		mes "如果我把這麼多";
+		mes "藥水交給你，你";
+		mes "將無法全部隨身攜帶。";
+		mes "請先";
+		mes "在背包裡騰出一些空間，";
+		mes "再回來。";
+		close;
+	}
+	mes "[傭兵道具商人]";
+	if (.@input == 1) 
+		mes "這是你的 " + getitemname(.@item[.@m]) + ".";
+	else {
+		mes "給你，就是這個";
+		mes callfunc("F_InsertPlural",.@input,getitemname(.@item[.@m])) + ".";
+	}
+	mes "謝謝，請";
+	mes "在需要更多";
+	mes "傭兵藥水時再來。";
+	Zeny = Zeny - .@total_po;
+	getitem .@item[.@m], .@input;
+	close;
+}
+prontera,30,337,4	duplicate(MercMerchant)	傭兵商人#Spear::Mercenary Merchant#Spear	8_F_GIRL
+pay_arche,102,167,5	duplicate(MercMerchant)	傭兵商人#Bow::Mercenary Merchant#Bow	4_F_CAPEGIRL
+
+// Mercenary Switch NPCs
+//============================================================
+-	script	Mercenary_Switch	-1,{
+
+	setarray .@name$, "Spear","Sword","Bow";
+	.@npc$ = strnpcinfo(2);
+	for (.@size = getarraysize(.@name$); .@type < .@size; .@type++)
+		if (.@npc$ == .@name$[.@type]) break;
+
+	mes "[檢查員]";
+	mes "請輸入密碼。";
+	next;
+	.@i = callfunc("F_GM_NPC",1854,0,0,10000);
+	mes "[檢查員]";
+	if (.@i == -2)
+		mes "錯誤。";
+	else if (.@i == 0)
+		mes "數字錯誤";
+	else if (.@i == 1) {
+		mes "請選擇。";
+		next;
+		switch( select( "關閉傭兵 NPC","開啟傭兵 NPC" ) ) {
+		case 1:
+			mes "NPC 已關閉。";
+			disablenpc "Mercenary Manager#" + .@name$[.@type];
+			disablenpc "Mercenary Merchant#" + .@name$[.@type];
+			break;
+		case 2:
+			mes "NPC 已開啟。";
+			enablenpc "Mercenary Manager#" + .@name$[.@type];
+			enablenpc "Mercenary Merchant#" + .@name$[.@type];
+			break;
+		}
+	}
+	close;
+}
+prontera,299,379,5	duplicate(Mercenary_Switch)	傭兵開關#Spear::Mercenary Switch#Spear	8W_SOLDIER
+pay_arche,170,185,5	duplicate(Mercenary_Switch)	傭兵開關#Bow::Mercenary Switch#Bow	4_F_CAPEGIRL
+izlude,245,250,4	duplicate(Mercenary_Switch)	傭兵開關#Sword::Mercenary Switch#Sword	4_F_HUWOMAN
