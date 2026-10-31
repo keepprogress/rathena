@@ -11,6 +11,7 @@
 | `build_zhtw.py` | Pi `~/apps/robrowser` | roBrowser 的 `DATA_OVERRIDE_PATH`（文字表、技能、貼圖） |
 | `gen_tex.py` | Omarchy（Pillow + Noto Sans CJK TC） | 按鈕貼圖的韓文換繁中，給 `build_zhtw.py` 的 `tex-zh/` |
 | `gen_jobnames.py` | Pi | roBrowser `src/DB/Monsters/JobNameTable.js`（已含在 patch 裡） |
+| `ui_zh.py` + `ui_translations.json` | Pi | 就地改寫 roBrowser 原始碼裡寫死的英文介面字（視窗、選單提示、右鍵選單、/指令說明、世界地圖地名） |
 | `robrowser-caddo.patch` | Pi | roBrowser 改動：選角 hover、單擊空位建角、繁中職業名 |
 
 NPC 對話另見 `npc/custom/zh/npc_zh.py`。
@@ -28,6 +29,7 @@ rsync -a --delete /tmp/overlay.new/ overlay/ && docker restart robrowserlegacy
 
 # roBrowser 原始碼（Pi ~/apps/robrowser，src/ 是上游 clone，檔案是 CRLF）
 git -C src apply <repo>/data-overlay/zh-tw/robrowser-caddo.patch
+python3 -I <repo>/data-overlay/zh-tw/ui_zh.py apply src   # 可重複跑；重產 patch 前要先 checkout 掉翻譯
 cd src && docker build --target slim -f ../Dockerfile.caddo -t robrowserlegacy:slim . && cd .. && docker rm -f robrowserlegacy && ./run.sh
 ```
 
@@ -35,3 +37,4 @@ cd src && docker build --target slim -f ../Dockerfile.caddo -t robrowserlegacy:s
 - 重跑 `gen_item_db.py`：上游改價時，舊檔會把價格蓋回舊值。
 - 重跑 `gen_mob_db.py`：新怪物會列在 stderr，翻好加進 `mob_names_extra.json` 再重跑。
 - NPC：`npc_zh.py extract` 找新字串。
+- roBrowser 更新後：在乾淨 clone 上 `ui_zh.py extract src` 列出新字串，翻好 `merge` 再 `apply`（`auto <rocn> src` 先列出台服 msgstringtable 查得到的與世界地圖地名，短詞常對錯，要人工看）。
