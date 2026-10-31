@@ -8,6 +8,7 @@
 ## 結構
 - `lub/` —— iteminfo / skillinfo / questinfo 等中文化來源（Lua）
 - `grf/` —— 圖檔、texture、bgm 等資源來源
+- `zh-tw/` —— 繁中在地化（台服用語）的產生腳本與 roBrowser patch，見 `zh-tw/README.md`
 
 ## 編碼規則（重要）
 - `iteminfo.lub` 的 **頂層 Lua 檔本身用 UTF-8**
