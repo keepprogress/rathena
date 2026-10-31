@@ -96,6 +96,19 @@ def merge_quests(base, tw):
 	return ''.join(tw_recs.get(rec.split('#')[0], rec) if rec.count('#') == 6 else rec for rec in split(base))
 
 
+def on_off(text):
+	"""台服訊息的開關狀態寫成 On/Off，中文句子裡的換成開啟/關閉；純英文的指令說明不動。
+	不用 \\b：中文字算 \\w，「功能On Off」中間沒有字界。"""
+	if not re.search(r'[一-鿿]', text):
+		return text
+	text = re.sub(r'(?i)(?<![a-z])on[ /]off(?![a-z])', '開/關', text)
+	return re.sub(r'(?<![A-Za-z])(On|ON|Off|OFF)(?![A-Za-z])',
+	              lambda m: '開啟' if m.group().lower() == 'on' else '關閉', text)
+
+
+assert on_off('技能On Off') == '技能開/關' and on_off('[/nt ON] ') == '[/nt ON] '
+assert on_off('自動拒絕[/nt ON]') == '自動拒絕[/nt 開啟]' and on_off('討伐計次 Off') == '討伐計次 關閉'
+assert on_off('Zoom Out 功能 (On)') == 'Zoom Out 功能 (開啟)'
 assert lua_big5('a = "功" -- 功\nb = [[功]]') == b'a = "\xa5\\\\" -- \xa5\\\nb = [[\xa5\\]]'
 assert merge_lines(b'a#1#\r\nb#2#\r\n', b'b#X#') == b'a#1#\r\nb#X#\r\n'
 assert merge_quests('1#a#b#c#d#e#\n\n2#f#g#h#i#j#\n', '2#F#G#H#I#J#\n') == '1#a#b#c#d#e#\n\n2#F#G#H#I#J#\n\n'
@@ -138,6 +151,8 @@ def csv_rows(path):
 # 優先用台服原文（盜賊、刺客等台服譯名），沒有才用簡中轉繁
 tw = dict(csv_rows(rocn / 'data/msgstringtable.csv/tw_msgstringtable.csv'))
 zh = dict(csv_rows(src_root / 'msgstringtable.csv'))
+# 台服留英文、但遊戲畫面看得到的（導航與世界地圖的勾選框）
+OVERRIDES = {'MSI_NAVIGATION_NPC': 'NPC', 'MSI_NAVIGATION_MOB': '魔物'}
 lines, from_tw, missing = [], 0, 0
 for key, value in csv_rows(kro_csv):
 	try:
@@ -146,7 +161,8 @@ for key, value in csv_rows(kro_csv):
 	except (KeyError, ValueError):
 		missing += key not in zh
 		text = cc.convert(base64.b64decode(zh.get(key, value)).decode('utf-8'))
-	lines.append(key + ',' + base64.b64encode(text.encode('utf-8')).decode())
+	text = OVERRIDES.get(base64.b64decode(key).decode(), text)
+	lines.append(key + ',' + base64.b64encode(on_off(text).encode('utf-8')).decode())
 # roBrowser 以檔尾是否為 '=' 判斷 base64 格式，'//' 開頭的行會被略過
 if not lines[-1].endswith('='):
 	lines.append('//=')

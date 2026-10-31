@@ -1,5 +1,5 @@
 diff --git a/src/DB/DBManager.js b/src/DB/DBManager.js
-index 2ced1954..803427a9 100644
+index 2ced1954..5eaadcde 100644
 --- a/src/DB/DBManager.js
 +++ b/src/DB/DBManager.js
 @@ -5548,13 +5548,14 @@ function loadItemInfo(filename, callback, onEnd) {
@@ -18,6 +18,35 @@ index 2ced1954..803427a9 100644
  									if not result then
  										return false, msg
  									end
+@@ -7492,8 +7493,27 @@ function loadLuaValue(file_path, variable_name, callback, onEnd) {
+ 				// Create and execute a wrapper Lua code to extract the variable
+ 				lua.doStringSync(
+ 					String.raw`
++							-- 雙位元組編碼（Big5、GBK）的第二個位元組可能是 0x5C，整個字元照抄才不會被拆成跳脫字元；
++							-- JSON 字串也不能有換行等控制字元。shortcut: UTF-8 字串裡緊接在中文後的 " 或 \ 會漏跳脫，有 UTF-8 的表再改
+ 							local function escape_str(str)
+-								return str:gsub("\\", "\\\\"):gsub("\"", "\\\"")
++								local out, i = {}, 1
++								while i <= #str do
++									local c = str:byte(i)
++									if c >= 0x81 and c <= 0xFE then
++										out[#out + 1] = str:sub(i, i + 1)
++										i = i + 2
++									else
++										if c == 0x5C or c == 0x22 then
++											out[#out + 1] = "\\" .. string.char(c)
++										elseif c < 0x20 then
++											out[#out + 1] = string.format("\\u%04x", c)
++										else
++											out[#out + 1] = string.char(c)
++										end
++										i = i + 1
++									end
++								end
++								return table.concat(out)
+ 							end
+ 
+ 							local function to_json(value)
 diff --git a/src/DB/Monsters/JobNameTable.js b/src/DB/Monsters/JobNameTable.js
 new file mode 100644
 index 00000000..d8ac20ec
@@ -310,6 +339,77 @@ index 49379aff..201aed88 100644
  import Session from 'Engine/SessionStorage.js';
  import Entity from 'Renderer/Entity/Entity.js';
  import SpriteRenderer from 'Renderer/SpriteRenderer.js';
+diff --git a/src/UI/Components/Navigation/Navigation.html b/src/UI/Components/Navigation/Navigation.html
+index 38ff7c87..da6d8a6d 100644
+--- a/src/UI/Components/Navigation/Navigation.html
++++ b/src/UI/Components/Navigation/Navigation.html
+@@ -13,9 +13,9 @@
+ 	<div class="content">
+ 		<div class="search-container">
+ 			<select class="search-type">
+-				<option value="ALL">ALL</option>
++				<option value="ALL">全部</option>
+ 				<option value="NPC">NPC</option>
+-				<option value="MOB">MOB</option>
++				<option value="MOB">魔物</option>
+ 			</select>
+ 			<div class="search-left" data-background="basic_interface/txtbox_l.bmp"></div>
+ 			<div class="search-middle" data-background="basic_interface/txtbox_m.bmp"></div>
+diff --git a/src/UI/Components/Navigation/Navigation.js b/src/UI/Components/Navigation/Navigation.js
+index a192d64c..5d979109 100644
+--- a/src/UI/Components/Navigation/Navigation.js
++++ b/src/UI/Components/Navigation/Navigation.js
+@@ -159,6 +159,11 @@ function normalizeMapName(mapName) {
+ 	return mapName;
+ }
+ 
++// 地圖代號換成 mapnametable 的名稱，查不到就照舊顯示代號
++function mapLabel(mapName) {
++	return DB.getMapName(mapName + '.rsw', mapName);
++}
++
+ /**
+  * Format coordinates with consistent styling
+  */
+@@ -183,7 +188,7 @@ function formatTargetCoordinates(x, y, options) {
+ 	if (options.noPathFound) {
+ 		text += ' (no path found)';
+ 	} else if (options.targetMap && options.targetMap !== getCurrentMap()) {
+-		text += ` (${options.targetMap})`;
++		text += ` (${mapLabel(options.targetMap)})`;
+ 	}
+ 
+ 	return text;
+@@ -196,9 +201,9 @@ function formatLocationTitle(currentMap, targetMap, displayName) {
+ 	let text;
+ 
+ 	if (!displayName && targetMap && currentMap !== targetMap) {
+-		text = `[${currentMap} → ${targetMap}]`;
++		text = `[${mapLabel(currentMap)} → ${mapLabel(targetMap)}]`;
+ 	} else {
+-		text = `[${displayName || currentMap}]`;
++		text = `[${displayName || mapLabel(currentMap)}]`;
+ 	}
+ 
+ 	return text;
+@@ -519,7 +524,7 @@ Navigation.displaySearchResults = function displaySearchResults(results) {
+ 		resultItem.innerHTML =
+ 			`<span class="result-type ${typeIcon}">${result.type}</span>` +
+ 			`<span class="result-name">${result.name}</span>` +
+-			`<span class="result-map">${result.mapName}</span>`;
++			`<span class="result-map">${mapLabel(result.mapName)}</span>`;
+ 
+ 		// Store result data
+ 		resultItem._resultData = result;
+@@ -1092,7 +1097,7 @@ Navigation.setMapNameText = function setMapNameText(mapName) {
+ 
+ 	const mapNameEl = root.querySelector('.map-name');
+ 	if (mapNameEl) {
+-		mapNameEl.textContent = normalizeMapName(mapName);
++		mapNameEl.textContent = mapLabel(normalizeMapName(mapName));
+ 	}
+ };
+ 
 diff --git a/src/UI/Components/PartyFriends/PartyFriendsCommon.js b/src/UI/Components/PartyFriends/PartyFriendsCommon.js
 index c73c2701..9505a8c7 100644
 --- a/src/UI/Components/PartyFriends/PartyFriendsCommon.js
@@ -323,6 +423,18 @@ index c73c2701..9505a8c7 100644
  import Client from 'Core/Client.js';
  import Renderer from 'Renderer/Renderer.js';
  import Session from 'Engine/SessionStorage.js';
+diff --git a/src/UI/Components/Rodex/Rodex.css b/src/UI/Components/Rodex/Rodex.css
+index 644329d9..169b9c6d 100644
+--- a/src/UI/Components/Rodex/Rodex.css
++++ b/src/UI/Components/Rodex/Rodex.css
+@@ -122,6 +122,7 @@ #Rodex .body .searchbar .search-sender-text {
+ }
+ #Rodex .body .searchbar .search-text {
+ 	color: #212163;
++	white-space: nowrap; /* 標籤寬 10px，中文會逐字換行 */
+ }
+ #Rodex .body .searchbar .search {
+ 	position: absolute;
 diff --git a/src/UI/Components/Rodex/WriteRodex.js b/src/UI/Components/Rodex/WriteRodex.js
 index 5a0ea2f3..6512ebe3 100644
 --- a/src/UI/Components/Rodex/WriteRodex.js
@@ -336,3 +448,24 @@ index 5a0ea2f3..6512ebe3 100644
  import Preferences from 'Core/Preferences.js';
  import Renderer from 'Renderer/Renderer.js';
  import ItemInfo from 'UI/Components/ItemInfo/ItemInfo.js';
+diff --git a/src/UI/Components/SoundOption/SoundOption.html b/src/UI/Components/SoundOption/SoundOption.html
+index 67618c91..aee5c5fd 100644
+--- a/src/UI/Components/SoundOption/SoundOption.html
++++ b/src/UI/Components/SoundOption/SoundOption.html
+@@ -23,14 +23,14 @@
+ 				<td data-text="1495">BGM</td>
+ 				<td>
+ 					<input class="bgm" type="range" value="50" max="100" min="0" step="1" />
+-					<input type="checkbox" class="bgm_state" />on
++					<input type="checkbox" class="bgm_state" />開啟
+ 				</td>
+ 			</tr>
+ 			<tr>
+ 				<td data-text="1496">Effect</td>
+ 				<td>
+ 					<input class="sound" type="range" value="50" max="100" min="0" step="1" />
+-					<input type="checkbox" class="sound_state" />on
++					<input type="checkbox" class="sound_state" />開啟
+ 				</td>
+ 			</tr>
+ 		</table>

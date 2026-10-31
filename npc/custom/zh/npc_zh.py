@@ -8,6 +8,7 @@
 
 翻譯記憶在 npc/custom/zh/translations.json（{原文: 譯文}）。
 上游改版後重跑 extract → 翻譯新字串 → merge → apply 即可。
+NPC 名稱沿用對話標頭的「[名字]」譯文；太長或要跟標頭不同時另設「#名字」。
 """
 import json
 import re
@@ -25,7 +26,11 @@ DISPLAY = re.compile(
 STRING = re.compile(r'"((?:[^"\\]|\\.)*)"')
 # 譯文必須原樣保留的記號：格式佔位符、顏色碼、客戶端標籤（<NAVI> 等）與 <INFO> 裡的座標/ID
 KEEP = re.compile(r'%[-+ #0]*\d*(?:\.\d+)?[sdifxXuc%]|\^[0-9A-Fa-f]{6}|<INFO>[^<]*</INFO>|</?[A-Z]+>')
-
+# 放在地圖上的 NPC 標頭；浮動 NPC（-）與 function 沒有看得到的名字
+HEADER = re.compile(
+	r'^((?!function\t)[^/\t-][^\t]*\t(?:script|duplicate\([^)]*\)|shop|cashshop|itemshop|pointshop|marketshop|trader)\t)'
+	r'([^\t]+)(?=\t)')
+NAME_BYTES = 23  # 名稱封包 24 位元組含結尾 0，超過會把中文字切半
 
 def strip_comment(line):
 	"""回傳去掉 // 註解後的長度（略過字串內的 //）。"""
@@ -66,6 +71,34 @@ def display_strings(text):
 	return found
 
 
+def name_key(disp):
+	return disp if disp.startswith('[') else f'[{disp}]'
+
+
+def npc_name(name, memory):
+	"""回傳中文化的 NPC 名稱，沒有譯文回傳 None。寫成「中文#後綴::原唯一名」：
+	#後綴留給 strnpcinfo(2) 組名稱，donpcevent、duplicate 等照舊用原唯一名。"""
+	shown, _, unique = name.partition('::')
+	disp, sharp, tag = shown.partition('#')
+	if not re.search('[A-Za-z]', disp):
+		return None
+	zh = memory.get('#' + disp) or memory.get(name_key(disp), '')
+	if zh and not disp.startswith('[') and not memory.get('#' + disp):
+		zh = zh[1:-1]
+	if not zh:
+		return None
+	if len(zh.encode()) > NAME_BYTES:
+		print(f'名稱太長，請在翻譯記憶加 "#{disp}": {zh}', file=sys.stderr)
+		return None
+	return f'{zh}{sharp}{tag}::{unique or name}'
+
+
+assert npc_name('Lumin#ac', {'[Lumin]': '[露敏]'}) == '露敏#ac::Lumin#ac'
+assert npc_name('Kafra::kaf_1', {'[Kafra]': '[卡普拉]', '#Kafra': '卡普拉職員'}) == '卡普拉職員::kaf_1'
+assert npc_name('[Armory]#a', {'[Armory]': '[軍械室]'}) == '[軍械室]#a::[Armory]#a'
+assert npc_name('#hidden', {}) is None and npc_name('Nobody', {}) is None
+
+
 def check(src, dst):
 	"""譯文要保留原文的佔位符、顏色碼、選單 ':' 與前後空白，也不能引入未跳脫的引號。"""
 	if sorted(KEEP.findall(src)) != sorted(KEEP.findall(dst)):
@@ -89,9 +122,15 @@ def main():
 	if cmd == 'extract':
 		todo = {}
 		for path in args:
-			for *_, s in display_strings(Path(path).read_text('utf-8', errors='surrogateescape')):
+			text = Path(path).read_text('utf-8', errors='surrogateescape')
+			for *_, s in display_strings(text):
 				if s not in memory:
 					todo[s] = ''
+			for line in text.split('\n'):
+				if (m := HEADER.match(line)):
+					disp = m.group(2).split('::')[0].split('#')[0]
+					if re.search('[A-Za-z]', disp) and not npc_name(m.group(2), memory):
+						todo['#' + disp if name_key(disp) in memory else name_key(disp)] = ''
 		print(json.dumps(todo, ensure_ascii=False, indent=0))
 	elif cmd in ('merge', 'check'):
 		bad = 0
@@ -117,10 +156,15 @@ def main():
 				if s in memory:
 					lines[n] = lines[n][:a] + memory[s] + lines[n][b:]
 					done += 1
+			names = 0
+			for n, line in enumerate(lines):
+				if (m := HEADER.match(line)) and (zh := npc_name(m.group(2), memory)):
+					lines[n] = m.group(1) + zh + line[m.end():]
+					names += 1
 			out = ZH_DIR / src_path.relative_to(ROOT / 'npc')
 			out.parent.mkdir(parents=True, exist_ok=True)
 			out.write_text('\n'.join(lines), 'utf-8', errors='surrogateescape')
-			print(f'{out.relative_to(ROOT)}: {done}/{len(hits)} 句已翻譯')
+			print(f'{out.relative_to(ROOT)}: {done}/{len(hits)} 句已翻譯, NPC 名稱 {names}')
 	else:
 		sys.exit(__doc__)
 

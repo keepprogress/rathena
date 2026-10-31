@@ -12,9 +12,9 @@
 | `gen_tex.py` | Omarchy（Pillow + Noto Sans CJK TC） | 按鈕貼圖的韓文換繁中，給 `build_zhtw.py` 的 `tex-zh/` |
 | `gen_jobnames.py` | Pi | roBrowser `src/DB/Monsters/JobNameTable.js`（已含在 patch 裡） |
 | `ui_zh.py` + `ui_translations.json` | Pi | 就地改寫 roBrowser 原始碼裡寫死的英文介面字（視窗、選單提示、右鍵選單、/指令說明、世界地圖地名） |
-| `robrowser-caddo.patch` | Pi | roBrowser 改動：選角 hover、單擊空位建角、繁中職業名、讀 99Max itemInfo 拼錯的 `identifiedDiSPlayName`（否則道具名全空） |
+| `robrowser-caddo.patch` | Pi | roBrowser 改動：選角 hover、單擊空位建角、繁中職業名、讀 99Max itemInfo 拼錯的 `identifiedDiSPlayName`（否則道具名全空）、`loadLuaValue` 的 Lua→JSON 不拆 Big5 雙位元組字並跳脫換行（否則成就表、導航表整份丟掉）、導航視窗顯示中文地名、音效設定「開啟」、RodEx 搜尋標籤不換行 |
 
-NPC 對話另見 `npc/custom/zh/npc_zh.py`。
+NPC 對話與 NPC 名稱另見 `npc/custom/zh/npc_zh.py`。
 
 ## 指令
 

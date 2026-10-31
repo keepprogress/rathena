@@ -78,6 +78,8 @@ LABELS = [
 	(r'make_character/btn_create_', '建立', 'button', None),
 	(r'^win_msgbox', '訊息', 'button', (16, 1, 140, 16)),  # 只換標題列，避開左邊的圓形圖示
 	(r'basic_interface/tab_que_0[123]', '進行|保留|全部', 'vertical', None),  # 任務視窗左側分頁
+	# 新版任務視窗整張背景，只處理左側分頁條；第四頁程式裡叫 cooldown
+	(r'renew_questui/bg_quest[1234]\.', '進行中|推薦|保留中|冷卻中', 'vertical', (0, 20, 30, 430)),
 ]
 
 
@@ -115,7 +117,7 @@ def vertical(im, labels):
 	rows = sorted({y for _, y in text})
 	groups = [[rows[0]]]
 	for y in rows[1:]:
-		if y - groups[-1][-1] > 4:  # 字與字間隔 ≤3 列，分頁之間 ≥8 列
+		if y - groups[-1][-1] > 7:  # 字與字間隔 ≤5 列，分頁之間 ≥9 列
 			groups.append([])
 		groups[-1].append(y)
 	if len(groups) != len(labels):
@@ -125,11 +127,12 @@ def vertical(im, labels):
 		fill = next(px[x + d * s, y] for d in range(1, w) for s in (-1, 1)
 			if 0 <= x + d * s < w and px[x + d * s, y] != MAGENTA and lum(px[x + d * s, y]) > 230)
 		px[x, y] = fill
-	draw = ImageDraw.Draw(im)
-	font, box = fit('進', 12, 10)
+	tabs = [[p for p in text if ys[0] <= p[1] <= ys[-1]] for ys in groups]
+	glyph = max(bbox(pts)[2] - bbox(pts)[0] + 1 for pts in tabs)  # 照原字寬選字級
+	font, box = fit('進', glyph + 2, glyph)
 	step = box[3] - box[1] + 1
-	for ys, label in zip(groups, labels):
-		pts = [p for p in text if ys[0] <= p[1] <= ys[-1]]
+	draw = ImageDraw.Draw(im)
+	for pts, label in zip(tabs, labels):
 		x0, y0, x1, y1 = bbox(pts)
 		color = max(set(colors[p] for p in pts), key=[colors[p] for p in pts].count)
 		cx, cy = (x0 + x1 + 1) / 2, (y0 + y1 + 1) / 2
@@ -141,7 +144,10 @@ def vertical(im, labels):
 
 def convert(im, label, kind, region):
 	if kind == 'vertical':
-		return vertical(im, label.split('|'))
+		box = region or (0, 0, *im.size)
+		tabs = im.crop(box)
+		vertical(tabs, label.split('|'))
+		return im.paste(tabs, box[:2])
 	px = im.load()
 	w, h = im.size
 	x0, y0, x1, y1 = region or (3, 2, w - 3, h - 2)  # 內縮避開按鈕邊框
