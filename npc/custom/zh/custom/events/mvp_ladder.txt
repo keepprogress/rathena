@@ -126,7 +126,7 @@ prontera,164,171,3	script	MvP Ladder Warper	56,{
 			if ( isloggedin( $@partymemberaid[.@i], $@partymembercid[.@i] ) ) {
 				attachrid $@partymemberaid[.@i];
 				if ( strcharinfo(3) == .eventmap$ )
-					getitem .finish_item_id, .finish_item_amount;
+					{ getitem .finish_item_id, .finish_item_amount; #CASHPOINTS += 50; dispbottom "獲得 50 商城點數，目前共 " + #CASHPOINTS + " 點。"; }
 			}
 		}
 		set .@timeused, gettimetick(2) - .@time_enter;
@@ -136,7 +136,7 @@ prontera,164,171,3	script	MvP Ladder Warper	56,{
 				if ( isloggedin( $@partymemberaid[.@i], $@partymembercid[.@i] ) ) {
 					attachrid $@partymemberaid[.@i];
 					if ( strcharinfo(3) == .eventmap$ )
-						getitem .bonus_item_id, .bonus_item_amount;
+						{ getitem .bonus_item_id, .bonus_item_amount; #CASHPOINTS += 30; dispbottom "獲得 30 商城點數，目前共 " + #CASHPOINTS + " 點。"; }
 				}
 			}
 		}
@@ -168,7 +168,7 @@ OnMvpDead:
 			if ( isloggedin( $@partymemberaid[.@i], $@partymembercid[.@i] ) ) {
 				attachrid $@partymemberaid[.@i];
 				if ( strcharinfo(3) == .eventmap$ )
-					getitem .round_item_id, .round_item_amount;
+					{ getitem .round_item_id, .round_item_amount; #CASHPOINTS += 5; dispbottom "獲得 5 商城點數，目前共 " + #CASHPOINTS + " 點。"; }
 			}
 		}
 	}

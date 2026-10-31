@@ -42,6 +42,15 @@ TWEAKS = {
 	# 新手島依編號送到 izlude_a～d 分流（同一張地圖的複本），上游只在 izlude 放傳送師
 	'custom/warper.txt': [(_w := 'izlude,134,150,4\tduplicate(Warper)\t傳送師#izl::Warper#izl\t811\t//Pre-RE: (132,120)',
 		_w + ''.join(f'\nizlude_{c},134,150,4\tduplicate(Warper)\t傳送師#izl_{c}::Warper#izl_{c}\t811' for c in 'abcd'))],
+	# 活動另外給商城點數（點數商城 / 轉蛋機用，見 custom/etc/cash_shop.txt）
+	'custom/events/cluckers.txt': [(_g := 'getitem $cluck_item_id,$cluck_item_amount;', _g + ' ' + (_cash := lambda n:
+		f'#CASHPOINTS += {n}; dispbottom "獲得 {n} 商城點數，目前共 " + #CASHPOINTS + " 點。";')(20))],
+	'custom/events/devil_square.txt': [('OnTreasureDead:\n\t.mob--;', 'OnTreasureDead:\n\t.mob--;\n\t' + _cash(20))],
+	'custom/events/mushroom_event.txt': [(_g := 'getitem .prize, .amount;', _g + '\n\t' + _cash(5))],
+	'custom/events/mvp_ladder.txt': [(_g, '{ ' + _g + ' ' + _cash(n) + ' }') for _g, n in (
+		('getitem .round_item_id, .round_item_amount;', 5),
+		('getitem .finish_item_id, .finish_item_amount;', 50),
+		('getitem .bonus_item_id, .bonus_item_amount;', 30))],
 }
 CUSTOM_CONF = ROOT / 'npc/scripts_custom.conf'
 CONF_BEGIN, CONF_END = '// npc_zh.py conf: begin\n', '// npc_zh.py conf: end\n'

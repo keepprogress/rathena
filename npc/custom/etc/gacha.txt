@@ -23,8 +23,8 @@ prontera,156,180,4	script	Gacha Machine#cgacha	76,{
 	// -- Greeting --
 	mes "[轉蛋機]";
 	mes "歡迎光臨！";
-	mes "每次轉蛋費用：^0055FF" + ((.use_item)? .ticket_amount + " 個 " + getitemname(.ticket_id) : F_InsertComma(.price) + " Zeny") + "^000000";
-	mes "10 連抽：^0055FF" + ((.use_item)? (.ticket_amount * 10) + " 個 " + getitemname(.ticket_id) : F_InsertComma(.price * 10) + " Zeny") + "^000000 (保證至少 1 個稀有獎)";
+	mes "每次轉蛋費用：^0055FF" + ((.use_item)? .ticket_amount + " 個 " + getitemname(.ticket_id) : .price + " 商城點數") + "^000000";
+	mes "10 連抽：^0055FF" + ((.use_item)? (.ticket_amount * 10) + " 個 " + getitemname(.ticket_id) : (.price * 10) + " 商城點數") + "^000000 (保證至少 1 個稀有獎)";
 	next;
 
 	switch (select("單抽 (1 次):10 連抽:查看獎項機率:離開")) {
@@ -54,12 +54,12 @@ prontera,156,180,4	script	Gacha Machine#cgacha	76,{
 		}
 		delitem .ticket_id, .ticket_amount * .@pulls;
 	} else {
-		if (Zeny < .price * .@pulls) {
+		if (#CASHPOINTS < .price * .@pulls) {
 			mes "[轉蛋機]";
-			mes "您的 Zeny 不足。";
+			mes "您的商城點數不足（目前 " + #CASHPOINTS + " 點）。";
 			close;
 		}
-		Zeny -= .price * .@pulls;
+		#CASHPOINTS -= .price * .@pulls;
 	}
 
 	// -- Roll --
@@ -145,7 +145,7 @@ OnInit:
 
 	// Cost: set use_item = 1 to charge a ticket item, 0 to charge Zeny.
 	.use_item       = 0;
-	.price          = 10000;		// Zeny per pull (when use_item = 0)
+	.price          = 30;		// 商城點數 per pull；期望值約 29 點（5%×3 高濃縮 60 點、20%×5 濃縮 20 點）
 	.ticket_id      = 7711;			// Ticket item id (when use_item = 1)
 	.ticket_amount  = 1;			// Tickets per pull
 
@@ -159,19 +159,17 @@ OnInit:
 	.w_total = .w_top + .w_mid + .w_low;
 
 	// --- Top tier prizes (rare) ---
-	.top_qty = 1;
+	.top_qty = 3;
 	setarray .top_items[0],
-		617,	// Old Violet Box
-		644,	// Gift Box
-		12103;	// Bloody Branch
+		6240,	// 高濃縮神之金屬
+		6241;	// 高濃縮鋁
 	.top_size = getarraysize(.top_items);
 
 	// --- Mid tier prizes ---
-	.mid_qty = 1;
+	.mid_qty = 5;
 	setarray .mid_items[0],
-		603,	// Old Blue Box
-		616,	// Old Card Album
-		12246;	// Mystical Card Album
+		7619,	// 濃縮鋁
+		7620;	// 濃縮神之金屬
 	.mid_size = getarraysize(.mid_items);
 
 	// --- Low tier prizes (common) ---

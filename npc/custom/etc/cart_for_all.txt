@@ -1,0 +1,15 @@
+//===== rAthena Script =======================================
+//= 全職業手推車
+//===== Description: =========================================
+//= pc_setcart() 需要 MC_PUSHCART 技能才會成功，所以每次登入
+//= 暫時補上 10 級（flag 1：不寫入存檔、不受重置技能影響），再掛上手推車。
+//============================================================
+
+-	script	CartForAll	-1,{
+OnPCLoginEvent:
+	if (getskilllv("MC_PUSHCART") < 10)
+		skill "MC_PUSHCART", 10, 1;
+	if (!checkcart())
+		setcart;
+	end;
+}

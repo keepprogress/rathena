@@ -61,6 +61,7 @@ OnMobKilled:
 	if (playerattached() == 0)
 		end;
 	getitem .prize, .amount;
+	#CASHPOINTS += 5; dispbottom "獲得 5 商城點數，目前共 " + #CASHPOINTS + " 點。";
 	.@spawn = mobcount( .event_map$, strnpcinfo(0) + "::OnMobKilled" );
 	if (.@spawn > 0)
 		announce "[ " + strcharinfo(0) + " ] 擊殺了一隻蘑菇。目前還剩 " + .@spawn + " 隻蘑菇。",bc_map;
