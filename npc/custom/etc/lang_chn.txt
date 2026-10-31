@@ -1,0 +1,20 @@
+//===== rAthena Script =======================================
+//= Default Language: Traditional Chinese (預設繁體中文)
+//===== Description: =========================================
+//= Switches each account to the Chinese message table
+//= (conf/msg_conf/map_msg_chn.conf) on its first login.
+//= Players can still change it later with @langtype.
+//===== Requirements: ========================================
+//= map-server built with the Chinese language enabled:
+//      ./configure ... CPPFLAGS=-DLANG_ENABLE=0x08
+//============================================================
+
+-	script	LangDefaultChn	-1,{
+OnPCLoginEvent:
+	// Only once per account, so a later @langtype choice sticks
+	if (!#lang_default_set) {
+		#lang_default_set = 1;
+		atcommand "@langtype chn";
+	}
+	end;
+}
