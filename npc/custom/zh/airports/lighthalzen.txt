@@ -1,0 +1,85 @@
+//===== rAthena Script ======================================= 
+//= Lighthalzen Airport Staff
+//===== By: ================================================== 
+//= L0ne_W0lf, Muad_Dib
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= Lighthalzen Airport Staff
+//===== Additional Comments: ================================= 
+//= 1.0 First version.
+//============================================================ 
+
+lhz_airport,143,43,5	script	機場職員#lhz_air1a::lhz_airport1	90,{
+	mes "[機場職員]";
+	mes "歡迎來到";
+	mes "里希塔樂鎮機場，";
+	mes "我們提供直飛";
+	mes "航班前往艾音布羅克、朱諾與毀葛。";
+	next;
+	if (select("登上飛空艇。:取消。") == 1) {
+		mes "[機場職員]";
+		mes "登機費為";
+		mes "1,200 Zeny，不過您可以";
+		mes "兌換";
+		mes "飛空艇免費票來免除費用。";
+		next;
+		if (select("是:否") == 1) {
+			if (countitem(7311) > 0) {
+				delitem 7311,1; //Free_Flying_Ship_Ticket
+				warp "lhz_airport",148,51;
+				end;
+			}
+			if (Zeny >= 1200) {
+				set Zeny, Zeny - 1200;
+				warp "lhz_airport",148,51;
+				end;
+			}
+			mes "[飛行船職員]";
+			mes "很抱歉，您";
+			mes "身上沒有 1,200 Zeny";
+			mes "可以支付登機費。";
+			close;
+		}
+	}
+	mes "[機場職員]";
+	mes "謝謝您，";
+	mes "歡迎再次光臨。";
+	mes "祝您有美好的一天~";
+	close;
+}
+
+lhz_airport,158,43,5	duplicate(lhz_airport1)	飛行船職員#lhz_air1b::Airship Staff#lhz_air1b	90
+lhz_airport,126,43,5	duplicate(lhz_airport1)	飛行船職員#lhz_air1c::Airship Staff#lhz_air1c	90
+
+lhz_airport,143,49,3	script	抵達職員#lhz_air2a::lhz_airport2	90,{
+	mes "[抵達職員]";
+	mes "歡迎來到里希塔樂鎮機場。";
+	mes "如果您是剛抵達的旅客，";
+	mes "請讓我帶您前往主航廈。否則，請";
+	mes "登上出發的飛空艇前往您的目的地。";
+	next;
+	if (select("前往主航廈。:取消。") == 1) {
+		mes "[抵達職員]";
+		mes "進入主航廈後，您需要再次支付";
+		mes "飛空艇的登機費。您應該";
+		mes "只有在里希塔樂鎮是目的地時才離開。我們要";
+		mes "前往主航廈嗎？";
+		next;
+		if (select("是:否") == 1) {
+			warp "lhz_airport",142,40;
+			end;
+		}
+	}
+	mes "[抵達職員]";
+	mes "好的，謝謝您";
+	mes "的惠顧，";
+	mes "希望您";
+	mes "旅途愉快~";
+	close;
+}
+
+lhz_airport,126,51,3	duplicate(lhz_airport2)	抵達職員#lhz_air2b::Arrival Staff#lhz_air2b	90
+lhz_airport,158,50,3	duplicate(lhz_airport2)	抵達職員#lhz_air2c::Arrival Staff#lhz_air2c	90

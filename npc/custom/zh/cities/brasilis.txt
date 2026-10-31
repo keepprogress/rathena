@@ -1,0 +1,169 @@
+//===== rAthena Script =======================================
+//= Brasilis Town
+//===== Description: =========================================
+//= [Official Conversion]
+//= Brasilis Town Script
+//===== Changelog: ===========================================
+//= 1.0 First version. Transportation and Basic NPCs. [L0ne_W0lf]
+//= 1.1 Fixed Zeny not being removed for payment. [Kisuka]
+//= 1.2 Updated dialog, added Ice Cream Maker. [L0ne_W0lf]
+//= 1.3 Moved Alberta NPC to pre-re/re paths. [Euphy]
+//= 1.4 Added VIP features. [Euphy]
+//============================================================
+
+// Brasilis Transportation :: brasilis_trans
+//============================================================
+-	script	::Crewman_bra2	-1,{
+	mes "[船員]";
+	mes "嘿，你聽過一個叫巴西的地方嗎？";
+	mes "那是一座熱帶城市，像沙漠一樣炎熱，卻也常下雨。是個非常神秘的地方。";
+	next;
+	mes "[船員]";
+	mes "我們最近發現了一條新的海路，能輕鬆抵達那裡。";
+	if (VIP_SCRIPT) {
+		set .@cost, vip_status(VIP_STATUS_ACTIVE)?1000:10000;
+		mes "來回只要10,000 Zeny，VIP 只要1,000！所以你要不要去？"; //custom translation (VIP)
+	} else {
+		set .@cost,10000;
+		mes "來回只要10,000 Zeny！所以你要不要去？";
+	}
+	next;
+	switch(select("帶我去巴西！:我還是待在這裡。")) {
+	case 1:
+		if (Zeny < .@cost) {
+			mes "[船員]";
+			mes "我說 "+callfunc("F_InsertComma",.@cost)+" Zeny。";
+			close;
+		}
+		else {
+			mes "[船員]";
+			mes "太酷了~!! 出發吧~!";
+			set Zeny, Zeny-.@cost;
+			close2;
+			warp "brasilis",314,60;
+			end;
+		}
+	case 2:
+		mes "[船員]";
+		mes "嗯，如果你哪天有興趣，告訴我，我就能帶你去。";
+		close;
+	}
+}
+
+brasilis,316,57,3	script	船員#bra1::Crewman#bra1	100,{
+	mes "[船員]";
+	mes "我的船要回艾爾貝塔，你要跟我們一起去嗎？";
+	next;
+	switch(select("返回艾爾貝塔。:還不想走~。")) {
+	case 1:
+		mes "[船員]";
+		mes "我真的很想家。";
+		close2;
+		if (checkre(0))
+			warp "alberta",245,87;
+		else
+			warp "alberta",244,115;
+		end;
+	case 2:
+		mes "[船員]";
+		mes "好吧，隨你便。那我們回去時再見囉。";
+		close;
+	}
+}
+
+// Generic Brasilis NPCs :: brazil_tre
+//============================================================
+brasilis,155,165,3	script	告示牌#bra1::Signpost#bra1	858,{
+	mes ":: 藝術博物館 ::";
+	close;
+}
+
+brasilis,191,239,3	script	告示牌#bra2::Signpost#bra2	858,{
+	mes ":: 維拉斯紀念碑 ::";
+	close;
+}
+
+brasilis,240,247,3	script	告示牌#bra3::Signpost#bra3	858,{
+	mes ":: 市場 ::";
+	mes " ";
+	mes "- 藥水與武器應有盡有 -";
+	close;
+}
+
+brasilis,303,309,3	script	告示牌#bra4::Signpost#bra4	858,{
+	mes ":: 叢林纜車 ::";
+	mes "- 膽小者請勿進入 -";
+	close;
+}
+
+brasilis,278,137,3	script	告示牌#bra5::Signpost#bra5	858,{
+	mes ":: 巴西飯店 ::";
+	close;
+}
+
+brasilis,137,77,5	script	霜淇淋販售員::Ice-Cream Maker	85,{
+	mes "[霜淇淋販售員]";
+	mes "過來~過來~";
+	mes "霜淇淋是炎熱天氣的最佳點心~";
+	mes "只要 ^3355FF100 Zeny^000000~";
+	mes "霜淇淋~";
+	mes "來買霜淇淋吧！";
+	next;
+	switch(select("給我一個！:霜淇淋？:取消。")) {
+	case 1:
+		mes "[霜淇淋販售員]";
+		mes "因為想吃冰涼霜淇淋的人太多了，每次只能點 5 個。";
+		mes "那你要幾個？";
+		next;
+		while(1) {
+			input .@input; //,1,5;
+			if (.@input == 0) {
+				mes "[霜淇淋販售員]";
+				mes "一個都不要？";
+				mes "好吧，讓開點，我還有客人要招呼。";
+				close;
+			}
+			else if ((.@input < 0) || (.@input > 5)) {
+				mes "[霜淇淋販售員]";
+				mes "哇。";
+				mes "你點太多了。";
+				mes "如果你吃超過 5 個，可能得跟肚子裡的怪物打一架。冷靜點，老兄。";
+				next;
+			}
+			else
+				break;
+		}
+		set .@icecream_hap,.@input*100;
+		if (Zeny < .@icecream_hap) {
+			mes "[霜淇淋販售員]";
+			mes "老兄~！您沒有足夠的Zeny。";
+			mes "只要 ^3355FF100 Zeny^000000~ 真的！";
+			close;
+		}
+		if (!checkweight(536,.@input)) {
+			mes "[霜淇淋販售員]";
+			mes "你的行李好像太多了。";
+			mes "買這個之前，先減輕一下你的行囊。";
+			close;
+		}
+		set Zeny, Zeny-.@icecream_hap;
+		getitem 536,.@input; //Ice_Cream
+		close;
+	case 2:
+		mes "[霜淇淋販售員]";
+		mes "「霜淇淋是……";
+		mes "等等，你不知道";
+		mes "霜淇淋是什麼嗎？";
+		mes "你是從哪塊石頭底下";
+		mes "爬出來的？";
+		next;
+		mes "[霜淇淋販售員]";
+		mes "我甚至不打算提這聽起來有多奇怪。";
+		mes "總之，趁冰涼的時候，就在這裡買霜淇淋吧。";
+		close;
+	case 3:
+		mes "[霜淇淋販售員]";
+		mes "別錯過品嚐天下第一霜淇淋的機會~！";
+		close;
+	}
+}

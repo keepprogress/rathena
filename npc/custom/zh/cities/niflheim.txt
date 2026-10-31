@@ -1,0 +1,355 @@
+//===== rAthena Script =======================================
+//= Niflheim Script
+//===== By: ==================================================
+//= Fyrien, Dizzy, PKGINGO
+//= Official NPCs translated and re-edited by Celest
+//===== Current Version: =====================================
+//= 1.5
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= [Official Conversion]
+//= Official NPC's for Niflheim
+//= 1.01 Splitted file(guides, shops). Fixed rand() bugs,
+//=      missing labels bugs, optimization [Lupus]
+//= 1.03 fixed end; -> close;
+//= 1.04-1.05 fixed several bugs with missing CLOSE button, wrong var name
+//=     in Piano Keys quest
+//=     fixed zeny/item, exploit in Sairin, some optimizations [Lupus]
+//= 1.06 some typos in some variables fixed (thx 2 Dr.Evil) [Lupus]
+//= 1.07 Fixed typos [Nexon]
+//= 1.08 Commented "Traveler" out as it is not official & we have correct Bungee quest in.
+//=     Also removed TODO, as they are already done. [Vicious_Pucca]
+//= 1.1 Replaced nif_q_done with MISC_QUEST & 32. nif_t -> @nif_t [Lupus]
+//= 1.2 Removed Duplicates [Silent]
+//= 1.3 Moved Book of Devil and Piano quest to quests/quests_niflheim.txt [Evera]
+//= 1.4 Rescripted to Aegis 10.3 standards. [L0ne_W0lf]
+//=     Removed Cursed Spirits as they were custom.
+//= 1.5 Added dummy "OnMyMobDead" event to Cursed Spirit. [L0ne_W0lf]
+//============================================================
+
+niflheim,52,147,3	script	基茲#nif::Keedz#nif	796,{
+	mes "[基茲]";
+	mes "我不允許任何活人";
+	mes "踏進這個地方！";
+	close;
+}
+
+niflheim,195,211,6	script	吉甘提亞#nif::Gigantia#nif	796,3,3,{
+	if (isequipped(5038) || isequipped(2257) || isequipped(2256)) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "怎麼了？";
+		next;
+		mes "[吉甘提亞]";
+		mes "就……";
+		mes "過來這裡。";
+		mes "我有件事";
+		mes "必須為你辦。";
+		next;
+		mes "[吉甘提亞]";
+		mes "你的角歪了。";
+		mes "記得時時確認你的角";
+		mes "戴得端正整齊。";
+		mes "亡者頭盔時時刻刻";
+		mes "都在看著你。";
+		close;
+	}
+	mes "[吉甘提亞]";
+	mes "亡者頭盔知道";
+	mes "也看得一清二楚。躲藏";
+	mes "是沒用的，想逃離";
+	mes "死亡甜美的懷抱。";
+	close;
+
+OnTouch_:
+	if (isequipped(5038) || isequipped(2257) || isequipped(2256)) {
+		mes "[吉甘提亞]";
+		mes "喂，等一下！";
+		close;
+	}
+	end;
+}
+
+nif_in,16,27,1	script	不死雞#nif::Undead Chicken#nif	800,{
+	percentheal -5,0;
+	mes "[不死雞]";
+	mes "我以前是一隻普通的雞，過著平靜的生活。可是有一天我慘遭人類殺害並被吃掉了。嘿嘿……現在輪到我了！*咯咯咯*";
+	next;
+	mes "["+ strcharinfo(0) +"]";
+	mes "哎唷……！";
+	mes "一隻雞……";
+	mes "它咬我！";
+	next;
+	mes "[不死雞]";
+	mes "呵呵~！";
+	mes "我不但能說話，還能大啖";
+	mes "活人的血肉！";
+	mes "當殭屍真是太棒了！";
+	mes "*咯咯咯*";
+	close;
+}
+
+nif_in,16,30,4	script	不死使魔#nif::Undead Familiar#nif	799,{
+	percentheal -5,0;
+	mes "[瓦托曼]";
+	mes "哦哦，真方便，一個活";
+	mes "人~！新鮮的血";
+	mes "總是很美味……！我想我就";
+	mes "稍微啜一小口吧。";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "痛！我的血管！";
+	mes "你剛剛是";
+	mes "在吸我的血嗎？！";
+	next;
+	mes "[瓦托曼]";
+	mes "哇哈哈~";
+	mes "愚蠢的凡人！";
+	mes "小心我的力量！";
+	close;
+}
+
+nif_in,156,93,5	script	孩童#niflheim::Child#niflheim	793,{
+	mes "[阿拉奇娜·安]";
+	mes "這……這裡是哪裡……？";
+	mes "我記得我正在睡覺，";
+	mes "醒來時就已經在這裡了……";
+	mes "媽媽，你有看到我媽媽嗎？";
+	mes "我想回家……*嗚嗚*";
+	next;
+	switch(select("關於女巫:關於詛咒:取消。")) {
+	case 1:
+		mes "[阿拉奇娜·安]";
+		mes "女巫……？我從來沒見過女巫，只在書上讀過。不確定她們是不是真的存在，但如果真的有，那可就太恐怖了……";
+		next;
+		mes "[阿拉奇娜·安]";
+		mes "這裡怎麼這麼冷……？";
+		mes "你、你不冷，也不害怕嗎？我想回家……那邊很暖和。能幫我回去嗎……拜託了？救、救救我……";
+		close;
+	case 2:
+		mes "[阿拉奇娜·安]";
+		mes "詛、詛咒……？";
+		mes "我奶奶說，世上有很多詛咒。有些一看就知道是詛咒，但也有一些詛咒會跟著你過一輩子……";
+		next;
+		mes "[阿拉奇娜·安]";
+		mes "奶奶說，詛咒也可能以其他形式出現……比如有人總是對你生氣，怎麼也不肯原諒你，那也可以算是一種詛咒。";
+		next;
+		mes "[阿拉奇娜·安]";
+		mes "我奶奶告訴我，只有一種咒語能解開用神聖祝福也解不掉的強大詛咒……";
+		next;
+		mes "[阿拉奇娜·安]";
+		mes "Klaatu...";
+		mes "Verata.....";
+		mes "Ne...ni...umm...?";
+		mes "最後那一段是什麼？";
+		mes "我、我想不起來";
+		mes "咒語的最後一段！";
+		next;
+		mes "[阿拉奇娜·安]";
+		mes "只要照那個順序念咒語，就能解除某人的憤怒與怨恨。如果是在邪靈附近念，詛咒可能會轉移到他身上。";
+		next;
+		mes "[阿拉奇娜·安]";
+		mes "你為什麼要問我這些可怕的事……？我只想回家……";
+		close;
+	case 3:
+		mes "[阿拉奇娜·安]";
+		mes "這裡好冷……";
+		mes "我好冷……";
+		mes "我好想回家，";
+		mes "離開這個可怕的地方……";
+		next;
+		mes "[阿拉奇娜·安]";
+		mes "拜託……幫幫我。";
+		mes "能帶我一起走嗎……？";
+		close;
+	}
+}
+
+niflheim,350,258,1	script	被詛咒的靈魂#nif::Cursed Spirit#nif	802,{
+	killmonster "niflheim","Cursed Spirit#nif::OnMyMobDead";
+	mes "[艾許·布魯斯]";
+	mes "我感覺你身上";
+	mes "中了強大的咒術……";
+	mes "嗯……很明顯你";
+	mes "想要做什麼……。";
+	next;
+	mes "[艾許·布魯斯]";
+	mes "你是想擺脫";
+	mes "你的詛咒吧……。";
+	mes "把它轉給我就行！！";
+	next;
+	mes "[艾許·布魯斯]";
+	mes "就因為我是被詛咒的靈魂，你們冒險者就以為能把詛咒丟給我嗎？！";
+	emotion ET_FRET;
+	next;
+	mes "[艾許·布魯斯]";
+	mes "我絕不允許";
+	mes "你繼續待在這裡……。";
+	mes "現在就離開，否則我會";
+	mes "強行把你趕走……。";
+	next;
+	mes "[艾許·布魯斯]";
+	mes "……還有……";
+	mes "……不管你做什麼……";
+	mes "……絕對不要碰我的書……";
+	next;
+	switch(select("碰第一本書:碰第二本書:碰第三本書:好，我走了。")) {
+	case 1:
+		monster "niflheim",349,259,"Rideword",1478,1,"Cursed Spirit#nif::OnMyMobDead";
+		mes "[艾許·布魯斯]";
+		mes "...!...";
+		mes "你竟敢碰我的書";
+		mes "明明我特別說過";
+		mes "「不准碰我的書！」";
+		next;
+		mes "[艾許·布魯斯]";
+		mes "……！……咕嚕嚕！";
+		mes "我要把你撕成碎片……！";
+		mes "受永恆的詛咒束縛吧……！";
+		close;
+	case 2:
+		mes "[艾許·布魯斯]";
+		mes "...!...";
+		mes "你居然敢碰我的書？！";
+		mes "我明明剛說過不要";
+		mes "碰它們……？！";
+		mes "愚蠢的凡人！";
+		mes "……滾開！";
+		close2;
+		warp "niflheim",34,162;
+		end;
+	case 3:
+		mes "[艾許·布魯斯]";
+		mes "穆哈哈哈……。";
+		mes "頑固的凡人~！";
+		mes "好吧！我就給你";
+		mes "一次機會，讓你";
+		mes "施放一次咒語。";
+		next;
+		mes "[艾許·布魯斯]";
+		mes "可是祝福";
+		mes "對這個詛咒";
+		mes "是沒用的……";
+		mes "而能解除";
+		mes "你詛咒的咒語，";
+		mes "早已失傳於歲月之中~！";
+		emotion ET_KIK;
+		next;
+		if (select("Clover:Klaatu:Klaytos") == 2)
+			set .@spell,.@spell+1;
+		if (select("Verit:Veritas:Verata") == 3)
+			set .@spell,.@spell+1;
+		if (select("Necktie:Necklace:Nero:^FFFFFFNictu!!!^000000") == 4)
+			set .@spell,.@spell+1;
+		if (.@spell == 3) {
+			switch(rand(1,5)) {
+			case 1:
+				if (morison_meat < 15) {
+					set morrison_meat,15;
+					mes "[艾許·布魯斯]";
+					mes "你……你解開了詛咒！";
+					mes "你怎麼會知道那個咒語？！";
+					next;
+					mes "[艾許·布魯斯]";
+					mes "你大概以為我會";
+					mes "此刻痛苦地融化掉吧，對吧？";
+					mes "嗯……很抱歉讓你失望了，";
+					mes "凡人，我可是永遠不會死的！";
+					close;
+				}
+				mes "[艾許·布魯斯]";
+				mes "……！你念對了咒語？！";
+				mes "...!...";
+				mes "可是……你還是中咒的……";
+				mes "嗚哈啊啊啊啊啊……！";
+				close;
+			case 2:
+				if (thai_head == 1) {
+					set thai_head,2;
+					mes "[艾許·布魯斯]";
+					mes "這是……";
+					mes "什麼感覺？";
+					next;
+					mes "[艾許·布魯斯]";
+					mes "不……！";
+					mes "不要啊啊啊啊啊！";
+					next;
+					mes "[艾許·布魯斯]";
+					mes "你的咒語為什麼非得生效不可？！";
+					close;
+				}
+				mes "[艾許·布魯斯]";
+				mes "你……";
+				mes "居然念對了咒語？！";
+				next;
+				mes "[艾許·布魯斯]";
+				mes "呵呵~";
+				mes "可是你還是中咒的……";
+				close;
+			case 3:
+				if (thai_head == 8) {
+					set thai_head,7;
+					mes "[艾許·布魯斯]";
+					mes "你……你解開了詛咒！";
+					mes "是誰教你那個咒語的？！";
+					next;
+					mes "[艾許·布魯斯]";
+					mes "你大概以為我會";
+					mes "此刻痛苦地融化掉吧，對吧？";
+					mes "嗯……很抱歉讓你失望了，";
+					mes "凡人，我可是永遠不會死的！";
+					next;
+					mes "[艾許·布魯斯]";
+					mes "只要我……";
+					mes "還在……";
+					mes "被詛咒。";
+					next;
+					mes "[艾許·布魯斯]";
+					mes "不要啊啊！";
+					close;
+				}
+				mes "[艾許·布魯斯]";
+				mes "……！你念對了咒語？！";
+				mes "...!...";
+				mes "可是……你還是中咒的……";
+				mes "嗚哈啊啊啊啊啊……！";
+				close;
+			case 4:
+				mes "[艾許·布魯斯]";
+				mes "……！你念對了咒語？！";
+				mes "...!...";
+				mes "可是……你還是中咒的……";
+				mes "穆哈哈哈哈……！";
+				close;
+			}
+		}
+		monster "niflheim",345,259,"Orc Skeleton",1462,1,"Cursed Spirit#nif::OnMyMobDead";
+		monster "niflheim",347,261,"Orc Skeleton",1462,1,"Cursed Spirit#nif::OnMyMobDead";
+		monster "niflheim",344,253,"Orc Skeleton",1462,1,"Cursed Spirit#nif::OnMyMobDead";
+		monster "niflheim",346,251,"Orc Skeleton",1462,1,"Cursed Spirit#nif::OnMyMobDead";
+		monster "niflheim",349,249,"Orc Skeleton",1462,1,"Cursed Spirit#nif::OnMyMobDead";
+		monster "niflheim",350,260,"Orc Skeleton",1462,1,"Cursed Spirit#nif::OnMyMobDead";
+		monster "niflheim",353,256,"Orc Skeleton",1462,1,"Cursed Spirit#nif::OnMyMobDead";
+		mes "[艾許·布魯斯]";
+		mes "穆哈哈哈哈！";
+		mes "那不是正確的咒語！";
+		mes "現在，死亡在等著你！";
+		mes "你將永遠被";
+		mes "詛咒束縛……！";
+		close;
+	case 4:
+		mes "[艾許·布魯斯]";
+		mes "...";
+		mes ".....";
+		next;
+		mes "[艾許·布魯斯]";
+		mes "那麼。";
+		mes "離開的時候，";
+		mes "別急到";
+		mes "自己絆倒了。";
+		close;
+	}
+
+OnMyMobDead:
+	end;
+}

@@ -1,0 +1,249 @@
+//===== rAthena Script =======================================
+//= BattleGround System - KvM Entrance NPCs
+//===== Description: =========================================
+//= [Official Conversion]
+//= Kreiger Von Midgard Battleground Entrance NPCs
+//= Original NPCs scrapped from bg_common.
+//===== Changelogs: ==========================================
+//= 1.0 First Version. [L0ne_W0lf]
+//= 1.1 Corrected some typos, and shifted messages around.
+//=     Corrected iRO style quest log entries, however it's
+//=     advisable that you not use them, as they conflict.
+//= 1.2 Added battle_config checks to allow this script to use the new queue interface or the previous method. [Aleos]
+//============================================================
+
+// KvM Officer - Guillaume
+//============================================================
+bat_room,164,178,5	script	KVM傭兵官#1::KVM Mercenary Officer#1	418,{
+	if (getbattleflag("feature.bgqueue"))
+		end;
+	/*
+	set .@kvm,checkquest(6026,PLAYTIME);
+	if ((.@kvm == 0) || (.@kvm == 1)) {
+		mes "[Croix Mercenary Officer]";
+		mes "I know that you've already signed with the Croix. Go back and join their team. We will not accept traitors to fight for us.";
+		close;
+	}
+	else if (.@kvm == 2) erasequest 6026;
+	*/
+	set .@permit,checkquest(6025,PLAYTIME);
+	if ((.@permit == 0) || (.@permit == 1)) {
+		mes "[基尤姆傭兵官]";
+		mes "看來你最近參加過KVM戰役。必須等待5分鐘才能再次報名。";
+		close;
+	}
+	else if (.@permit == 2) erasequest 6025;
+	mes "[基尤姆傭兵官]";
+	mes "讓他們見識基尤姆的真正實力！";
+	next;
+	switch(select("我會和你一起戰鬥。:結束對話。")) {
+	case 1:
+		mes "[基尤姆傭兵官]";
+		mes "讓他們見識我們有多強。";
+		mes "今天，所有人都將聽見基尤姆的凱旋吶喊！";
+		close2;
+		//setquest 6025;
+		if (BaseLevel > 79)  warp "bat_room",169,223;
+		else if (BaseLevel < 60) warp "bat_room",197,223;
+		else warp "bat_room",225,223;
+		end;
+	case 2:
+		mes "[基尤姆傭兵官]";
+		mes "我們會贏！";
+		close;
+	}
+}
+
+// Guillaume Knight - KvM
+//============================================================
+bat_room,167,178,5	script	紀堯姆騎士#kvm::Guillaume Knight#kvm	417,{
+	mes "[紀堯姆騎士]";
+	mes "你好。";
+	mes "你想知道什麼？";
+	next;
+	switch(select("報名KVM:什麼是KVM？:如何參加KVM？:查詢我的克里格點數。")) {
+	case 1:
+		mes "[紀堯姆騎士]";
+		if (getbattleflag("feature.bgqueue"))
+			mes "如果你已準備好戰鬥，請點擊介面上的^0000FF戰鬥按鈕^000000來報名KVM戰役！";
+		else {
+			mes "目前尚無法報名。";
+			mes "要報名的話，請前往KVM傭兵官處。";
+		}
+		close;
+	case 2:
+		mes "[紀堯姆騎士]";
+		mes "KVM是克里格·馮·米德加德的縮寫。";
+		mes "冒險者，你知道通往新世界的道路已經開啟了嗎？";
+		next;
+		mes "[紀堯姆騎士]";
+		mes "我們基尤姆政府已擬定數項前往新世界的計畫。";
+		mes "而KVM就是其中之一。";
+		next;
+		mes "[紀堯姆騎士]";
+		mes "這意味著，身為米德加德大陸眾多國家之一的我們，";
+		mes "已決定僱用大量冒險者，立即前往新世界。";
+		next;
+		mes "[紀堯姆騎士]";
+		mes "因此，為了挑選最優秀的冒險者，我們舉辦了KVM。";
+		mes "我們期待許多冒險者的響應。";
+		next;
+		mes "[紀堯姆騎士]";
+		mes "我們也會為參與者準備獎勵！";
+		mes "至於獎勵，請洽詢KVM後勤官。";
+		close;
+	case 3:
+		mes "[紀堯姆騎士]";
+		if (getbattleflag("feature.bgqueue")) {
+			mes "基本上，KVM是3對3的戰鬥。";
+			mes "請點擊介面上的^0000FF戰鬥按鈕^000000來報名，可以組隊或單獨報名。";
+		} else {
+			mes "基本上，KVM是5對5的戰鬥。";
+			mes "首先，你要向KVM接待員報名，可以組隊或個人報名。";
+		}
+		next;
+		mes "[紀堯姆騎士]";
+		if (getbattleflag("feature.bgqueue"))
+			mes "組隊報名是指你打算與隊伍或公會成員一同參加KVM時使用，";
+		else
+			mes "組隊報名是指你打算與隊伍成員一同參加KVM時使用，";
+		mes "個人報名則是你打算單獨參加KVM時使用。";
+		next;
+		mes "[紀堯姆騎士]";
+		if (getbattleflag("feature.bgqueue"))
+			mes "請注意，一旦取消，你將^0000FF1分鐘內無法再次報名^000000。";
+		else {
+			mes "請向KVM官員報名，當你在普隆德時，他會再與你聯絡。";
+			next;
+			mes "[紀堯姆騎士]";
+			mes "接著進入戰場，並依照戰場中的指示行動。";
+			next;
+			mes "[紀堯姆騎士]";
+			mes "但請留意，除非你在KVM辦公室，否則他無法與你聯絡。";
+		}
+		close;
+	case 4:
+		mes "[紀堯姆騎士]";
+		mes "你的克里格點數為:";
+		mes ""+kvm_point+".";
+		close;
+	}
+}
+
+// KvM Officer - Croix
+//============================================================
+bat_room,164,121,1	script	KVM傭兵官#2::KVM Mercenary Officer#2	414,{
+	if (getbattleflag("feature.bgqueue"))
+		end;
+	/*
+	set .@kvm,checkquest(6025,PLAYTIME);
+	if ((.@kvm == 0) || (.@kvm == 1)) {
+		mes "[Croix Mercenary Officer]";
+		mes "I know that you've already signed with the Guillaume. Go back and join their team. We will not accept traitors to fight for us.";
+		close;
+	}
+	else if (.@kvm == 2) erasequest 6025;
+	*/
+	set .@permit,checkquest(6025,PLAYTIME);
+	if ((.@permit == 0) || (.@permit == 1)) {
+		mes "[克魯瓦傭兵官]";
+		mes "看來你最近參加過KVM戰役。必須等待5分鐘才能再次報名。";
+		close;
+	}
+	else if (.@permit == 2) erasequest 6025;
+	mes "[克魯瓦傭兵官]";
+	mes "讓他們見識克魯瓦的真正實力！";
+	next;
+	switch(select("我會和你一起戰鬥。:結束對話。")) {
+	case 1:
+		mes "[克魯瓦傭兵官]";
+		mes "讓他們見識我們有多強。";
+		mes "今天，所有人都將聽見克魯瓦的凱旋吶喊！";
+		close2;
+		//setquest 6026;
+		if (BaseLevel > 79) warp "bat_room",169,207;
+		else if (BaseLevel < 60) warp "bat_room",197,207;
+		else warp "bat_room",225,207;
+		end;
+	case 2:
+		mes "[克魯瓦傭兵官]";
+		mes "我們會贏！";
+		close;
+	}
+}
+
+// Croix Knight - KvM
+//============================================================
+bat_room,167,121,1	script	克魯瓦騎士#kvm::Croix Knight#kvm	413,{
+	mes "[克魯瓦騎士]";
+	mes "你好。";
+	mes "你想知道什麼？";
+	next;
+	switch(select("報名KVM:什麼是KVM？:如何參加KVM？:查詢我的克里格點數。")) {
+	case 1:
+		mes "[克魯瓦騎士]";
+		if (getbattleflag("feature.bgqueue"))
+			mes "如果你已準備好戰鬥，請點擊介面上的^0000FF戰鬥按鈕^000000來報名KVM戰役！";
+		else {
+			mes "目前尚無法報名。";
+			mes "要報名的話，請前往KVM傭兵官處。";
+		}
+		close;
+	case 2:
+		mes "[克魯瓦騎士]";
+		mes "KVM是克里格·馮·米德加德的縮寫。";
+		mes "冒險者，你知道通往新世界的道路已經開啟了嗎？";
+		next;
+		mes "[克魯瓦騎士]";
+		mes "我們克魯瓦政府已擬定數項前往新世界的計畫。";
+		mes "而KVM就是其中之一。";
+		next;
+		mes "[克魯瓦騎士]";
+		mes "這意味著，身為米德加德大陸眾多國家之一的我們，";
+		mes "已決定僱用大量冒險者，立即前往新世界。";
+		next;
+		mes "[克魯瓦騎士]";
+		mes "因此，為了挑選最優秀的冒險者，我們舉辦了KVM。";
+		mes "我們期待許多冒險者的響應。";
+		next;
+		mes "[克魯瓦騎士]";
+		mes "我們也會為參與者準備獎勵！";
+		mes "至於獎勵，請洽詢KVM後勤官。";
+		close;
+	case 3:
+		mes "[克魯瓦騎士]";
+		if (getbattleflag("feature.bgqueue")) {
+			mes "基本上，KVM是3對3的戰鬥。";
+			mes "請點擊介面上的^0000FF戰鬥按鈕^000000來報名，可以組隊或單獨報名。";
+		} else {
+			mes "基本上，KVM是5對5的戰鬥。";
+			mes "首先，你要向KVM接待員報名，可以組隊或個人報名。";
+		}
+		next;
+		mes "[克魯瓦騎士]";
+		if (getbattleflag("feature.bgqueue"))
+			mes "組隊報名是指你打算與隊伍或公會成員一同參加KVM時使用，";
+		else
+			mes "組隊報名是指你打算與隊伍成員一同參加KVM時使用，";
+		mes "個人報名則是你打算單獨參加KVM時使用。";
+		next;
+		mes "[克魯瓦騎士]";
+		if (getbattleflag("feature.bgqueue"))
+			mes "請注意，一旦取消，你將^0000FF1分鐘內無法再次報名^000000。";
+		else {
+			mes "請向KVM官員報名，當你在普隆德時，他會再與你聯絡。";
+			next;
+			mes "[克魯瓦騎士]";
+			mes "接著進入戰場，並依照戰場中的指示行動。";
+			next;
+			mes "[克魯瓦騎士]";
+			mes "但請留意，除非你在KVM辦公室，否則他無法與你聯絡。";
+		}
+		close;
+	case 4:
+		mes "[克魯瓦騎士]";
+		mes "你的克里格點數為:";
+		mes ""+kvm_point+".";
+		close;
+	}
+}

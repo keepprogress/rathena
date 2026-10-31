@@ -1,0 +1,356 @@
+//===== rAthena Script =======================================
+//= BattleGround System - Tierra Gorge Entrance NPCs
+//===== Description: =========================================
+//= [Official Conversion]
+//= Tierra Gorge Battleground Entrance NPCs
+//===== Additional Comments: =================================
+//= 1.0 First Version. [L0ne_W0lf]
+//= 1.1 Fixed silly copy paste errors. (bugreport:4401)
+//= 1.2 Added battle_config checks to allow this script to use the new queue interface or the previous method. [Aleos]
+//============================================================
+
+// First Tierra Gorge Officers - Guillaume
+//============================================================
+bat_room,124,178,5	script	提耶拉峽谷官員#01a::Tierra Gorge Officer#01a	418,{
+	if (getbattleflag("feature.bgqueue"))
+		end;
+	if (checkweight(1201,1) == 0) {
+		mes "- 等一下！！ -";
+		mes "- 你目前攜帶的 -";
+		mes "- 道具太多了。 -";
+		mes "- 請再試一次 -";
+		mes "- 等你減輕一些負重後。 -";
+		close;
+	}
+	mes "[紀堯姆軍官]";
+	mes "讓那些臭克魯瓦人見識一下紀堯姆軍的實力吧！";
+	next;
+	switch(select("我想加入你們的軍隊！:結束對話")) {
+	case 1:
+		if ((BaseJob == Job_Novice) || (BaseJob == Job_Super_Novice)) {
+			mes "[紀堯姆軍官]";
+			mes "很高興你想加入我們，與克魯瓦軍團作戰，但很抱歉:我不能讓你這樣的新兵在殘酷的戰場上送死。";
+		}
+		else {
+			if (BaseLevel < 80) {
+				mes "[紀堯姆軍官]";
+				mes "很高興你想加入我們，與克魯瓦軍團作戰，但很抱歉:我不能讓你這樣的新兵在殘酷的戰場上送死。";
+			}
+			else {
+				set .@chk_urtime,checkquest(2069,PLAYTIME);
+				if ((.@chk_urtime == 0)|| (.@chk_urtime == 1)) {
+					mes "[紀堯姆軍官]";
+					mes "你看起來才剛從戰場上回來。";
+					mes "你還不能回去。去休息吧，敵人就交給我們！";
+				}
+				else {
+					if (.@chk_urtime == 2)
+						erasequest 2069;
+					set .@mapcount,getmapusers("bat_a01");
+					if (.@mapcount > 0) {
+						mes "[紀堯姆軍官]";
+						mes "我收到報告，已有精銳部隊被派往戰場，正在與克魯瓦人作戰。";
+						mes "你何不先等一下？我建議你在此之前磨利武器，準備好補給。";
+					}
+					else {
+						if ($@TierraBG1) {
+							mes "[紀堯姆軍官]";
+							mes "精銳部隊已準備好隨時派往戰場。";
+							mes "你何不先等一下？我建議你在此之前磨利武器，準備好補給。";
+						}
+						else {
+							mes "[紀堯姆軍官]";
+							mes "你看起來已經準備好作戰了！";
+							mes "去讓克魯瓦人見識真正的恐懼吧！";
+							mes "今天，我們的勝利吶喊將響徹整個戰場！";
+							close2;
+							warp "bat_room",57,223;
+							end;
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		mes "[紀堯姆軍官]";
+		mes "今天，我們必將獲勝！";
+		break;
+	}
+	close;
+}
+
+bat_room,140,178,5	script	提耶拉峽谷官員#02a::Tierra Gorge Officer#02a	418,{
+	if (getbattleflag("feature.bgqueue"))
+		end;
+	if (checkweight(1201,1) == 0) {
+		mes "- 等一下！！ -";
+		mes "- 你目前攜帶的 -";
+		mes "- 道具太多了。 -";
+		mes "- 請再試一次 -";
+		mes "- 等你減輕一些負重後。 -";
+		close;
+	}
+	mes "[紀堯姆軍官]";
+	mes "讓那些臭克魯瓦人見識一下紀堯姆軍的實力吧！";
+	next;
+	switch(select("我想加入你們的軍隊！:結束對話")) {
+	case 1:
+		if ((BaseJob == Job_Novice) || (BaseJob == Job_Super_Novice)) {
+			mes "[紀堯姆軍官]";
+			mes "很高興你想加入我們，與克魯瓦軍團作戰，但很抱歉:我不能讓你這樣的新兵在殘酷的戰場上送死。";
+		}
+		else {
+			if (BaseLevel < 80) {
+				mes "[紀堯姆軍官]";
+				mes "很高興你想加入我們，與克魯瓦軍團作戰，但很抱歉:我不能讓你這樣的新兵在殘酷的戰場上送死。";
+			}
+			else {
+				set .@chk_urtime,checkquest(2069,PLAYTIME);
+				if (.@chk_urtime == 1) {
+					mes "[紀堯姆軍官]";
+					mes "你看起來才剛從戰場上回來。";
+					mes "你還不能回去。去休息吧，敵人就交給我們！";
+				}
+				else {
+					if (.@chk_urtime == 2)
+						erasequest 2069;
+					set .@mapcount,getmapusers("bat_a02");
+					if (.@mapcount > 0) {
+						mes "[紀堯姆軍官]";
+						mes "我收到報告，已有精銳部隊被派往戰場，正在與克魯瓦人作戰。";
+						mes "你何不先等一下？我建議你在此之前磨利武器，準備好補給。";
+					}
+					else {
+						if ($@TierraBG2) {
+							mes "[紀堯姆軍官]";
+							mes "精銳部隊已準備好隨時派往戰場。";
+							mes "你何不先等一下？我建議你在此之前磨利武器，準備好補給。";
+						}
+						else {
+							mes "[紀堯姆軍官]";
+							mes "你看起來已經準備好作戰了！";
+							mes "去讓克魯瓦人見識真正的恐懼吧！";
+							mes "今天，我們的勝利吶喊將響徹整個戰場！";
+							close2;
+							warp "bat_room",114,223;
+							end;
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		mes "[紀堯姆軍官]";
+		mes "今天，我們必將獲勝！";
+		break;
+	}
+	close;
+}
+
+bat_room,127,178,5	script	紀堯姆騎士#1::Guillaume Knight#1	417,{
+	mes "[紀堯姆騎士]";
+	mes "提耶拉峽谷由兩側陡峭的峭壁構成，基尤姆與克魯瓦軍的補給站分別位於11點與7點方向。";
+	next;
+	mes "[紀堯姆騎士]";
+	mes "戰鬥從你軍隊的船艦出發，目標是比敵方更快摧毀對方的糧食補給站。";
+	next;
+	mes "[紀堯姆騎士]";
+	mes "戰場上的治療者每25秒會復活士兵，使其能重新投入戰鬥。";
+	mes "佔領戰場中央中立旗幟的軍隊將獲得額外的復活點數，代表其士兵的復活次數會多於對方，取得優勢。";
+	next;
+	mes "[紀堯姆騎士]";
+	mes "兩座補給站之間以狹窄的短路相連，但入口皆被路障封鎖。";
+	mes "請盡快思考並行動。軍隊的勝利取決於你的貢獻。";
+	next;
+	mes "[紀堯姆騎士]";
+	if (getbattleflag("feature.bgqueue"))
+		mes "準備好的話，請先點擊介面上的 ^0000FF戰鬥按鈕^000000。";
+	else {
+		mes "請記住:加入戰役時，你將獲得一枚代幣，代表在一段設定時間內無法參加同類型戰役。";
+		mes "您可以按下 Alt+U 鍵查看剩餘時間。";
+	}
+	next;
+	mes "[紀堯姆騎士]";
+	if (getbattleflag("feature.bgqueue"))
+		mes "請注意，一旦取消，^0000FF您將有 1 分鐘無法重新報名^000000！";
+	else
+		mes "你準備好戰鬥了嗎？那就向我旁邊的招募官報名吧！";
+	close;
+}
+
+bat_room,143,178,5	duplicate(Guillaume Knight#1)	紀堯姆騎士#2::Guillaume Knight#2	417
+
+bat_room,127,121,1	script	克魯瓦騎士#1::Croix Knight#1	413,{
+	mes "[克魯瓦騎士]";
+	mes "提耶拉峽谷由兩側陡峭的峭壁構成，基尤姆與克魯瓦軍的補給站分別位於11點與7點方向。";
+	next;
+	mes "[克魯瓦騎士]";
+	mes "戰鬥從你軍隊的船艦出發，目標是比敵方更快摧毀對方的糧食補給站。";
+	next;
+	mes "[克魯瓦騎士]";
+	mes "戰場上的治療者每25秒會復活士兵，使其能重新投入戰鬥。";
+	mes "佔領戰場中央中立旗幟的軍隊將獲得額外的復活點數，代表其士兵的復活次數會多於對方，取得優勢。";
+	next;
+	mes "[克魯瓦騎士]";
+	mes "兩座補給站之間以狹窄的短路相連，但入口皆被路障封鎖。";
+	mes "請盡快思考並行動。軍隊的勝利取決於你的貢獻。";
+	next;
+	mes "[克魯瓦騎士]";
+	if (getbattleflag("feature.bgqueue"))
+		mes "準備好的話，請先點擊介面上的 ^0000FF戰鬥按鈕^000000。";
+	else {
+		mes "請記住:加入戰役時，你將獲得一枚代幣，代表在一段設定時間內無法參加同類型戰役。";
+		mes "您可以按下 Alt+U 鍵查看剩餘時間。";
+	}
+	next;
+	mes "[克魯瓦騎士]";
+	if (getbattleflag("feature.bgqueue"))
+		mes "請注意，一旦取消，^0000FF您將有 1 分鐘無法重新報名^000000！";
+	else
+		mes "你準備好戰鬥了嗎？那就向我旁邊的招募官報名吧！";
+	close;
+}
+
+bat_room,143,121,1	duplicate(Croix Knight#1)	克魯瓦騎士#2::Croix Knight#2	413
+
+// Second Tierra Gorge Officers - Croix
+//============================================================
+bat_room,125,121,1	script	提耶拉峽谷官員#01b::Tierra Gorge Officer#01b	414,{
+	if (getbattleflag("feature.bgqueue"))
+		end;
+	if (checkweight(1201,1) == 0) {
+		mes "- 等一下！！ -";
+		mes "- 你目前攜帶的 -";
+		mes "- 道具太多了。 -";
+		mes "- 請再試一次 -";
+		mes "- 等你減輕一些負重後。 -";
+		close;
+	}
+	mes "[克魯瓦軍官]";
+	mes "讓那些臭紀堯姆人見識一下克魯瓦軍的實力吧！";
+	next;
+	switch(select("我想加入你們的軍隊！:結束對話")) {
+	case 1:
+		if ((BaseJob == Job_Novice) || (BaseJob == Job_Super_Novice)) {
+			mes "[克魯瓦軍官]";
+			mes "很高興你想加入我們，與紀堯姆軍團作戰，但很抱歉:我不能讓你這樣的新兵在殘酷的戰場上送死。";
+		}
+		else {
+			if (BaseLevel < 80) {
+				mes "[克魯瓦軍官]";
+				mes "很高興你想加入我們，與紀堯姆軍團作戰，但很抱歉:我不能讓你這樣的新兵在殘酷的戰場上送死。";
+			}
+			else {
+				set .@chk_urtime,checkquest(2069,PLAYTIME);
+				if ((.@chk_urtime == 0)|| (.@chk_urtime == 1)) {
+					mes "[克魯瓦軍官]";
+					mes "你看起來才剛從戰場上回來。";
+					mes "你還不能回去。去休息吧，敵人就交給我們！";
+				}
+				else {
+					if (.@chk_urtime == 2)
+						erasequest 2069;
+					set .@mapcount,getmapusers("bat_a02");
+					if (.@mapcount > 0) {
+						mes "[克魯瓦軍官]";
+						mes "我收到報告，已有精銳部隊被派往戰場，正在與紀堯姆人作戰。";
+						mes "你何不先等一下？我建議你在此之前磨利武器，準備好補給。";
+					}
+					else {
+						if ($@TierraBG1) {
+							mes "[克魯瓦軍官]";
+							mes "精銳部隊已準備好隨時派往戰場。";
+							mes "你何不先等一下？我建議你在此之前磨利武器，準備好補給。";
+						}
+						else {
+							mes "[克魯瓦軍官]";
+							mes "你看起來已經準備好作戰了！";
+							mes "去讓紀堯姆人見識真正的恐懼吧！";
+							mes "今天，我們的勝利吶喊將響徹整個戰場！";
+							close2;
+							warp "bat_room",57,207;
+							end;
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		mes "[克魯瓦軍官]";
+		mes "今天，我們必將獲勝！";
+		break;
+	}
+	close;
+}
+
+bat_room,140,121,1	script	提耶拉峽谷官員#02b::Tierra Gorge Officer#02b	414,{
+	if (getbattleflag("feature.bgqueue"))
+		end;
+	if (checkweight(1201,1) == 0) {
+		mes "- 等一下！！ -";
+		mes "- 你目前攜帶的 -";
+		mes "- 道具太多了。 -";
+		mes "- 請再試一次 -";
+		mes "- 等你減輕一些負重後。 -";
+		close;
+	}
+	mes "[克魯瓦軍官]";
+	mes "讓那些臭紀堯姆人見識一下克魯瓦軍的實力吧！";
+	next;
+	switch(select("我想加入你們的軍隊！:結束對話")) {
+	case 1:
+		if ((BaseJob == Job_Novice) || (BaseJob == Job_Super_Novice)) {
+			mes "[克魯瓦軍官]";
+			mes "很高興你想加入我們，與紀堯姆軍團作戰，但很抱歉:我不能讓你這樣的新兵在殘酷的戰場上送死。";
+		}
+		else {
+			if (BaseLevel < 80) {
+				mes "[克魯瓦軍官]";
+				mes "很高興你想加入我們，與紀堯姆軍團作戰，但很抱歉:我不能讓你這樣的新兵在殘酷的戰場上送死。";
+			}
+			else {
+				set .@chk_urtime,checkquest(2069,PLAYTIME);
+				if (.@chk_urtime == 1) {
+					mes "[克魯瓦軍官]";
+					mes "你看起來才剛從戰場上回來。";
+					mes "你還不能回去。去休息吧，敵人就交給我們！";
+				}
+				else {
+					if (.@chk_urtime == 2)
+						erasequest 2069;
+					set .@mapcount,getmapusers("bat_a02");
+					if (.@mapcount > 0) {
+						mes "[克魯瓦軍官]";
+						mes "我收到報告，已有精銳部隊被派往戰場，正在與紀堯姆人作戰。";
+						mes "你何不先等一下？我建議你在此之前磨利武器，準備好補給。";
+					}
+					else {
+						if ($@TierraBG2) {
+							mes "[克魯瓦軍官]";
+							mes "精銳部隊已準備好隨時派往戰場。";
+							mes "你何不先等一下？我建議你在此之前磨利武器，準備好補給。";
+						}
+						else {
+							mes "[克魯瓦軍官]";
+							mes "你看起來已經準備好作戰了！";
+							mes "去讓紀堯姆人見識真正的恐懼吧！";
+							mes "今天，我們的勝利吶喊將響徹整個戰場！";
+							close2;
+							warp "bat_room",114,207;
+							end;
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		mes "[克魯瓦軍官]";
+		mes "今天，我們必將獲勝！";
+		break;
+	}
+	close;
+}

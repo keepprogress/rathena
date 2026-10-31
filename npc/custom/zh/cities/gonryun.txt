@@ -1,0 +1,424 @@
+//===== rAthena Script =======================================
+//= Kunlun Town
+//===== By: ==================================================
+//= x[tsk], KarLaeda
+//===== Current Version: =====================================
+//= 1.6
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= [Official Conversion]
+//= Kunlun Town Script
+//===== Additional Comments: =================================
+//= 1.5 Rescripted to Aegis 10.3 standards. [L0ne_W0lf]
+//=     Moved Lost Knife mini-quest to quest file.
+//= 1.6 Moved Alberta NPC to pre-re/re paths. [Euphy]
+//============================================================
+
+// Kunlun Transportation
+//============================================================
+-	script	::Kunlun_Envoy_gonryun	-1,{
+	mes "[瓦白虎]";
+	mes "午安~";
+	mes "容我邀請各位";
+	mes "來到我的故鄉昆侖。";
+	mes "能為各位引路是我的榮幸，";
+	mes "各位這般尊貴的貴賓，";
+	mes "遠道來自盧恩-米德加茲王國。";
+	next;
+	switch(select("關於昆侖:前往昆侖:取消")) {
+	case 1:
+		mes "[瓦白虎]";
+		mes "昆侖是個美麗的地方，";
+		mes "歷史悠久，其";
+		mes "獨特的傳統。我也認為";
+		mes "昆侖是最適合";
+		mes "觀光的地方。";
+		next;
+		mes "[瓦白虎]";
+		mes "當你抵達";
+		mes "昆侖港口，就能看見";
+		mes "縮小複製的";
+		mes "阿爾貝塔";
+		mes "與普隆德拉的建築。";
+		next;
+		mes "[瓦白虎]";
+		mes "欣賞完風景後，悠閒地";
+		mes "散步一番，走進美麗的";
+		mes "光柱之中，它會";
+		mes "帶你升上雲端，";
+		mes "前往昆侖村。";
+		next;
+		mes "[瓦白虎]";
+		mes "我聽說在";
+		mes "盧恩-米德加茲大陸上，";
+		mes "還有另一座城市，";
+		mes "懸浮在空中，";
+		mes "靠的是一股古老而神秘的力量……";
+		next;
+		mes "[瓦白虎]";
+		mes "嗯，我們的昆侖也是飄浮在";
+		mes "空中，但不需要任何";
+		mes "所謂的科技或";
+		mes "電力供應。我們認為";
+		mes "我們的土地格外受到眷顧……";
+		next;
+		mes "[瓦白虎]";
+		mes "來到昆侖時，別忘了";
+		mes "品嚐我們的特色美食，";
+		mes "例如巨型粽子與天堂蟠桃。";
+		next;
+		mes "[瓦白虎]";
+		mes "最好先做好準備，";
+		mes "如果你打算造訪";
+		mes "昆侖地城。我必須";
+		mes "說，那可不是拿來遊玩的安全地方。";
+		next;
+		mes "[瓦白虎]";
+		mes "如果你有興趣前往";
+		mes "昆侖，請不必猶豫，儘管";
+		mes "告訴我。能為您效勞是我莫大的榮幸，";
+		mes "尊貴的客人。";
+		close;
+	case 2:
+		mes "[瓦白虎]";
+		mes "選擇得好，我很高興";
+		mes "能有您這位客人~";
+		mes "不過，前往昆侖的船需要";
+		mes "支付少許費用。";
+		next;
+		mes "[瓦白虎]";
+		mes "請您支付 10,000 Zeny";
+		mes "作為出發前的費用，這筆費用";
+		mes "也包含返回";
+		mes "阿爾貝塔的車資。我隨時準備好";
+		mes "為您引路前往昆侖。";
+		next;
+		mes "[瓦白虎]";
+		mes "您要搭船嗎？";
+		next;
+		if (select("前往昆侖~!:不了。") == 1) {
+			if (Zeny > 9999) {
+				mes "[瓦白虎]";
+				mes "謝謝您，我這就為您引路。";
+				close2;
+				set Zeny, Zeny-10000;
+				warp "gon_fild01",258,82;
+				end;
+			}
+			mes "[瓦白虎]";
+			mes "很抱歉，您必須持有";
+			mes "10,000 Zeny 才能前往昆侖。";
+			mes "請確認您身上有足夠的";
+			mes "Zeny。謝謝，也請";
+			mes "歡迎再次光臨。";
+			close;
+		}
+		mes "[瓦白虎]";
+		mes "我知道了。不過，只要您";
+		mes "改變主意，請";
+		mes "隨時告訴我。能為您效勞將是";
+		mes "我莫大的榮幸，";
+		mes "尊貴的客人。";
+		close;
+	case 3:
+		mes "[瓦白虎]";
+		mes "我知道了。不過，只要您";
+		mes "改變主意，請隨時告訴我，";
+		mes "能為您效勞將是我莫大的榮幸，尊貴的客人。";
+		close;
+	}
+}
+
+gon_fild01,255,79,7	script	昆侖使者#gon2::Kunlun Envoy#gon2	776,{
+	mes "[瓦白虎]";
+	mes "所以，您的旅程還愉快嗎？";
+	mes "看來是時候該";
+	mes "回家了。前往盧恩-米德加茲的船隨時都能出發。";
+	next;
+	if (select("返回阿爾貝塔:取消") == 1) {
+		mes "[瓦白虎]";
+		mes "歡迎再次光臨。";
+		mes "希望您能讓朋友們";
+		mes "在您回去後得知昆侖的事，";
+		mes "現在，就讓我為您引路";
+		mes "回到艾爾貝塔。";
+		close2;
+		if (checkre(0))
+			warp "alberta",245,87;
+		else
+			warp "alberta",243,67;
+		end;
+	}
+	mes "[瓦白虎]";
+	mes "慢慢來，我的客人。";
+	mes "應該還有許多地方";
+	mes "是您可能錯過的。";
+	close;
+}
+
+gon_fild01,187,239,7	script	昆侖使者#gon3::Kunlun Envoy#gon3	776,{
+	mes "[張青龍]";
+	mes "請往北走，進入昆侖。";
+	mes "希望您在";
+	mes "昆侖停留期間玩得愉快。";
+	close;
+}
+
+gonryun,153,64,7	script	昆侖使者#gon4::Kunlun Envoy#gon4	776,{
+	mes "[張青龍]";
+	mes "請隨意，自在一點。";
+	mes "如果您想回去，我";
+	mes "非常樂意為您引路";
+	mes "前往阿爾貝塔的船。";
+	next;
+	if (select("返回港口:取消") == 1) {
+		mes "[張青龍]";
+		mes "希望您旅途愉快。";
+		mes "現在，就讓我為您引路回去";
+		mes "港口。";
+		close2;
+		warp "gon_fild01",258,82;
+		end;
+	}
+	mes "[張青龍]";
+	mes "慢慢來，我的客人。";
+	mes "應該還有許多地方";
+	mes "是您可能錯過的。";
+	close;
+}
+
+// Generic Kunlun NPCs
+//============================================================
+gonryun,200,82,3	script	簡忠勳#gon::Jian Chung Xun#gon	774,{
+	mes "[簡忠勳]";
+	mes "我非常喜愛慶典。";
+	mes "所以我很愛這座城鎮。";
+	mes "這座城鎮讓我覺得自己彷彿";
+	mes "全年都身處慶典之中。";
+	close;
+}
+
+gonryun,268,88,3	script	梁準布#gon::Liang Zhun Bu#gon	776,{
+	mes "[梁準布]";
+	mes "我們為身為一個獨立的";
+	mes "國家而自豪，並且一直在對抗";
+	mes "那些覬覦這片神聖土地";
+	mes "多年的邪惡侵略者……";
+	next;
+	mes "[梁準布]";
+	mes "但我們已經成功擊退";
+	mes "每一次入侵！只要";
+	mes "我們相信自己，";
+	mes "我們就永遠不會忘記";
+	mes "在掙扎中支持我們的凱旋之歌。";
+	close;
+}
+
+gonryun,118,111,5	script	錢元霜#gon::Qian Yuen Shuang#gon	89,{
+	mes "[錢元霜]";
+	mes "這座城鎮的首領是一位";
+	mes "待人以誠的人。";
+	mes "不過，我聽說";
+	mes "有些人不喜歡他的性格……";
+	next;
+	mes "[錢元霜]";
+	mes "嗯，我喜歡我的城鎮。首領的";
+	mes "努力讓我們的城鎮變得更安全。";
+	mes "我只希望其他人也能";
+	mes "同樣看待他所做的一切。";
+	close;
+}
+
+gonryun,181,161,3	script	荊文真#gon::Jing Wen Zhen#gon	773,{
+	mes "[荊文真]";
+	mes "我們昆侖城裡的男人，";
+	mes "個個都勇敢無畏。";
+	mes "但是，他們卻";
+	mes "無法成家。真是太可惜了……";
+	next;
+	mes "[荊文真]";
+	mes "這全都是因為";
+	mes "男性比女性多。";
+	mes "我甚至不確定";
+	mes "我的兒子是否能夠";
+	mes "替我找到一位媳婦。";
+	close;
+}
+
+gonryun,113,135,6	script	守門人#gon::Gatekeeper#gon	780,{
+	mes "[昆侖守衛]";
+	mes "歡迎。";
+	mes "這裡是昆侖首領史言文的住所。";
+	next;
+	mes "[昆侖守衛]";
+	mes "您在此處最好守規矩，";
+	mes "若我們發現任何";
+	mes "可疑之處，會立刻逮捕您。";
+	next;
+	mes "[昆侖守衛]";
+	mes "不過請放心，您看起來";
+	mes "是個值得信賴的人。";
+	mes "我相信不會發生任何事。祝您參觀愉快。";
+	close;
+}
+
+gonryun,113,127,6	script	守門人#gon2::Gatekeeper#gon2	780,{
+	mes "[昆侖守衛]";
+	mes "歡迎。";
+	mes "這裡是昆侖首領史言文的住所。";
+	next;
+	mes "[昆侖守衛]";
+	mes "您在此處最好守規矩，";
+	mes "若我們發現任何";
+	mes "可疑之處，會立刻逮捕您。";
+	next;
+	mes "[昆侖守衛]";
+	mes "不過請放心，您看起來";
+	mes "是個值得信賴的人。";
+	mes "我相信不會發生任何事。祝您參觀愉快。";
+	close;
+}
+
+gon_in,73,82,5	script	季忠哲#gon::Ji Chung Zhe#gon	778,{
+	if (nakha >= 0 && nakha <= 2) {
+		mes "[季忠哲]";
+		mes "............";
+		next;
+		mes "[季忠哲]";
+		mes "唉唷……這";
+		mes "真是令人擔心的事。";
+		close;
+	}
+	if (nakha == 3) {
+		// set cha,1;// unused
+		mes "[季忠哲]";
+		mes "我是季忠哲，一位知名的茶";
+		mes "釀造師。每天我都全心";
+		mes "投入於釀製美味可口的茶。";
+		next;
+		mes "[季忠哲]";
+		mes "*嘆氣* 但最近，我做的茶";
+		mes "一直都不是";
+		mes "很好……要是我能有些特別的材料就好了……";
+		next;
+		mes "[季忠哲]";
+		mes "我聽說如果使用";
+		mes "蛇，就能調出真正的";
+		mes "非凡飲品~";
+		mes "但是……哪裡能找到";
+		mes "而且要怎麼抓到牠？";
+		mes "嗯……";
+		close;
+	}
+}
+
+gon_in,173,27,3	script	俞九夏#gon::Yu Jiu Xia#gon	774,{
+	mes "[俞九夏]";
+	mes "唉，果然如此。";
+	mes "他們不肯把酒賣給我。";
+	mes "也許是因為我太年輕……";
+	mes "嗯……我好奇那是什麼味道……";
+	next;
+	mes "[俞九夏]";
+	mes "不過，我知道他們正在釀造";
+	mes "連小孩子都能";
+	mes "像我一樣享受的美味茶。";
+	mes "光是";
+	mes "想到這款新茶，就讓我口水直流。";
+	close;
+}
+
+gonryun,166,196,3	script	士兵#gon::Soldier#gon	780,{
+	if (b_sword < 7) {
+		mes "[瓦秋武]";
+		mes "讓我告訴你一件";
+		mes "關於這個地方的有趣事情~";
+		mes "很久以前，這整片區域曾經是一座神社。";
+		next;
+		mes "[瓦秋武]";
+		mes "在那些日子裡，道士隱士";
+		mes "常聚集在這裡，為了";
+		mes "抵達天空王國。然而，";
+		mes "他們慘敗了……怪物們慢慢開始出現……";
+		close;
+	}
+	else if ((b_sword > 6) && (b_sword < 10)) {
+		mes "[瓦秋武]";
+		mes "你不覺得昨晚";
+		mes "相當吵鬧嗎？全都是因為";
+		mes "那個小偷。他鬧出了";
+		mes "好大的動靜……吵得";
+		mes "我完全睡不著……";
+		next;
+		mes "[瓦秋武]";
+		mes "啊~~~~!";
+		mes "就在那一片";
+		mes "騷動之中，我看見";
+		mes "有東西直直地";
+		mes "衝進了神社。";
+		next;
+		mes "[瓦秋武]";
+		mes "它移動得非常快，快到";
+		mes "我甚至分不出那是什麼。";
+		mes "就我所能辨認的，它";
+		mes "看起來像人類。我在想";
+		mes "那到底是什麼……";
+		next;
+		mes "[瓦秋武]";
+		mes "那可能就是";
+		mes "那個小偷，但它移動得";
+		mes "太快了，簡直像";
+		mes "一道殘影。";
+		close;
+	}
+	mes "[瓦秋武]";
+	mes "讓我告訴你一件";
+	mes "有趣吧~這整片區域";
+	mes "曾經是一座神社。";
+	next;
+	mes "[瓦秋武]";
+	mes "很久以前，道士隱士";
+	mes "常聚集在這裡，為了";
+	mes "抵達天空王國。然而，";
+	mes "他們慘敗了……怪物們慢慢開始出現。";
+	next;
+	mes "[瓦秋武]";
+	mes "城鎮正在為";
+	mes "慶典做準備，但有些事情正在拖延";
+	mes "進度。這種事情從未發生過……";
+	close;
+}
+
+gonryun,169,71,3	script	導覽員#gon::Guidev#gon	770,{
+	mes "[李西椒]";
+	mes "歡迎來到昆侖！";
+	mes "您是否欣賞了沿途";
+	mes "所有令人驚嘆的景色？";
+	mes "這裡的建築或許不大，但我們";
+	mes "都全力以赴地建造了這座城市。";
+	next;
+	mes "[李西椒]";
+	mes "我這裡有一些";
+	mes "盧恩-米德加茲王國的縮小模型。";
+	mes "您可以一眼看盡整個";
+	mes "普隆德拉。這些傑作的工藝";
+	mes "實在令人驚豔！";
+	next;
+	mes "[李西椒]";
+	mes "如果您仔細環顧四周，";
+	mes "會發現各式各樣美麗的";
+	mes "景致遍布整座城鎮。";
+	close;
+}
+
+//============================================================
+// Old changelog
+//============================================================
+// May be missing npc's and dialogue.
+//= 1.1 Fixed Typos [Nexon]
+//= 1.2 Removed Duplicates [Silent]
+//= 1.3 Max NPC Name is 23 [Toms]
+//= 1.3a Removed temp NPC plugs due Broken Sword quest [Lupus]
+//= 1.4 Added missing NPC [KarLaeda]
+//============================================================

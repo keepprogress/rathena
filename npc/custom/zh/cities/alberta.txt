@@ -1,0 +1,408 @@
+//===== rAthena Script =======================================
+//= Alberta Town
+//===== By: ==================================================
+//= DZeroX
+//===== Current Version: =====================================
+//= 1.6
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Town-specific Alberta NPCs
+//===== Additional Comments: =================================
+//= 1.0 Converted from Aegis 10.4 [DZeroX]
+//= 1.1 Optimized, missing next, REMOVED .GATs! again [Lupus]
+//= 1.2 Implemented progression fixes provided by $ephiroth. [L0ne_W0lf]
+//= 1.2b More pregression clean up provided by Barron-Monster. [L0ne_W0lf]
+//= 1.3 Removed npc "Tourist#al" as it's a quest NPC. [L0ne_W0lf]
+//= 1.4 Removed "Fastidious Old Man" duplicate. [L0ne_W0lf]
+//= 1.5 Updated to match AEGIS script. [Kisuka]
+//= 1.6 Added Izlude RE coordinates. [Euphy]
+//= 1.7 Bug fixes and syntax. [Capuche]
+//============================================================
+
+alberta,97,51,0	script	法比安::Fabian	84,{
+	mes "[法比安]";
+	mes "喂……當你走遍世界各地，會聽到一些奇怪的事情。";
+	next;
+	mes "[法比安]";
+	mes "我聽說過，有一種卡片蘊藏著怪物的力量。要是有人拿到這種卡片，就能使用那隻怪物的力量。";
+	next;
+	mes "[法比安]";
+	mes "我猜那大概只是某種流行或騙局，讓你去收集所有卡片之類的。說真的，卡片怎麼可能真的蘊含怪物的力量呢？！";
+	next;
+	mes "[法比安]";
+	mes "真的假的……";
+	close;
+}
+
+alberta,53,39,0	script	史泰納::Steiner	100,{
+	mes "[史泰納]";
+	mes "哦……！";
+	mes "歡迎來到艾爾貝塔，";
+	mes "年輕的冒險者！";
+	next;
+	mes "[史泰納]";
+	mes "不好意思，我看起來可能有點心不在焉。我在這裡走來走去，是想想一個計畫。聽說吉芬有間店在賣能抵抗魔法的防具。";
+	next;
+	mes "[史泰納]";
+	mes "如果我大量買進，再拿到這裡以更高的價格賣出去……";
+	close;
+}
+
+alberta_in,20,183,0	script	查德::Chad	1_M_03,{
+	mes "[查德]";
+	mes "大家都說傳說中的武器剛尼爾長矛從不會失手。我在想這是不是真的……";
+	next;
+	mes "[查德]";
+	mes "大家還說，嬰兒是在送來之前由白鸛組裝的，女孩喜歡裝酷的男生，還有聖誕老人確實存在！不過這些只有在露緹才是真的。";
+	next;
+	mes "[查德]";
+	mes "我在想……";
+	mes "如果那些話裡";
+	mes "有可能";
+	mes "是真的……";
+	close;
+}
+
+alberta,131,139,2	script	醉酒老先生::Drunken Old Man	1_M_JOBGUIDER,{
+	mes "[迪格爾]";
+	mes "^666666*打嗝*^000000";
+	mes "你、你是在";
+	mes "看什麼？滾開！！";
+	next;
+	switch(select("閉嘴。","別管他。")) {
+	case 1:
+		mes "[迪格爾]";
+		mes "哈哈哈哈 ^666666*打嗝*^000000……你還真有膽。我現在看起來或許一無是處，但我以前可是'Going Mary'號上的水手。";
+		next;
+		switch(select("沒聽過。","真的假的？開玩笑的吧！")) {
+		case 1:
+			mes "[迪格爾]";
+			mes "沒聽過？！大家都知道那艘惡名昭彰的海盜船'Going Mary'！ ^666666*打嗝~*^000000";
+			next;
+			mes "[迪格爾]";
+			mes "啊~ 那些美好的日子。要是……要是我們當時沒遇上那場暴風雨……^666666*打嗝*^000000";
+			next;
+			mes "[迪格爾]";
+			mes "啊~船長。我最想念的就是我們船長……在船長的劍下，沒有任何敵人能活下來。";
+			close;
+		case 2:
+			mes "[迪格爾]";
+			mes "沒錯！沒有人能跟'Going Mary'號的船員合得來！而且劍術對決中，沒人能打敗船長！";
+			next;
+			mes "[迪格爾]";
+			mes "船長~！！！ ^666666*打嗝~*^000000 他會這樣揮劍，然後……然後！！";
+			next;
+			mes "[迪格爾]";
+			mes "船長正在對付的那個混蛋，還有他身邊的任何同伴，全都被火焰包圍了！";
+			next;
+			mes "[迪格爾]";
+			mes "天啊，那把劍一定有某種神秘力量，或者船長真的厲害到不行……！";
+			next;
+			mes "[迪格爾]";
+			mes "唉~~ ^666666*啜泣* *啜泣……*^000000 天啊，我好想念大家！現在我好沮喪！拜託，現在請你離開吧。";
+			close;
+		}
+	case 2:
+		mes "[迪格爾]";
+		mes "沒錯！";
+		mes "快走開~";
+		close;
+	}
+}
+
+alberta,58,80,2	script	夏其爾::Shakir	99,{
+	mes "[夏其爾]";
+	if (rand(2)) {
+		mes "我們商人在販賣商品時有自己的交涉技巧。這項技巧能讓我們比其他人賣出更多錢。";
+		next;
+		mes "[夏其爾]";
+		mes "這可不是光大喊'請再多給點錢！'就行了。你必須要有魅力，並且精通說話技巧！";
+		next;
+		mes "[夏其爾]";
+		mes "這項厲害的技巧能讓我們多賺最多 24% 的 Zeny。但記得要努力練習才能學會！！";
+	} else {
+		mes "我們商人可以";
+		mes "在路邊擺攤";
+		mes "做生意。";
+		next;
+		mes "[夏其爾]";
+		mes "靠折價購買技能，我們可以從城鎮的商店以非常便宜的價格買入商品，並裝進我們租來的手推車裡。";
+		next;
+		mes "[夏其爾]";
+		mes "接著，我們就能四處旅行，把商品賣出去賺取利潤！";
+		next;
+		mes "[夏其爾]";
+		mes "這樣做生意既方便又安全。雖然很容易打瞌睡，但可別睡著了。";
+	}
+	close;
+}
+
+alberta,62,156,2	script	索妮婭::Sonya	102,{
+	mes "[索妮婭]";
+	switch(rand(3)){
+	case 0:
+		mes "嘿，你知道嗎，有一次我在森林裡散步，看到一根綠色的小莖在到處移動。";
+		next;
+		mes "[索妮婭]";
+		mes "我過去想看看那是什麼，結果一伸手去摸，那根莖居然打了我的手！";
+		next;
+		mes "[索妮婭]";
+		mes "我嚇了一跳，往後跳了一下，這才發現那不是莖，而是一隻非常小的動物。";
+		next;
+		mes "[索妮婭]";
+		mes "還好我沒有惹惱它。就算是最小的動物，被惹毛了也很危險。";
+		close;
+	case 1:
+		mes "你知道那些住在通往斐揚路上森林裡、看起來懶洋洋的熊嗎？";
+		next;
+		mes "[索妮婭]";
+		mes "我只是好玩，丟了一顆石頭過去，結果它突然朝我衝過來！我嚇死了，開始逃跑，然後砰！！！";
+		next;
+		mes "[索妮婭]";
+		mes "它撞上一根低矮的樹枝，把自己撞暈了！我發誓，再也不會為了好玩去惹動物了！";
+		close;
+	case 2:
+		mes "我曾經看過一群狼去對付那些巨大又懶洋洋的熊！";
+		next;
+		mes "[索妮婭]";
+		mes "狼的合作性比看起來強得多。如果其中一隻遭到攻擊，附近的狼都會跑來幫忙。";
+		next;
+		mes "[索妮婭]";
+		mes "如果同類就在附近，你最好三思再跟牠們交手。小心:別被圍攻了！";
+		close;
+	}
+}
+
+alberta,93,174,2	script	阿爾瑪奶奶::Grandmother Alma	103,{
+	mes "[阿爾瑪奶奶]";
+	mes "不久前，";
+	mes "一艘廢棄的船";
+	mes "漂進了";
+	mes "艾爾貝塔港口。";
+	next;
+	mes "[阿爾瑪奶奶]";
+	mes "鎮上有些居民希望能救出倖存者，便進入了那艘船。然而，他們全都嚇得逃了出來，說船裡有屍體在四處走動。";
+	next;
+	mes "[阿爾瑪奶奶]";
+	mes "船上還布滿了危險的海洋生物，就算想進去，他們也進不去。";
+	next;
+	mes "[阿爾瑪奶奶]";
+	mes "我們對那艘看起來不祥的船束手無策，只好就這樣放著不管。如今，探險隊會嘗試進入那艘船，把裡面的怪物全部消滅。";
+	next;
+	mes "[阿爾瑪奶奶]";
+	mes "所以，像你這樣的年輕人參加成為新進隊員，或許是個不錯的經驗。不過，如果你不夠強，還是不值得冒著生命危險去做。";
+	close;
+}
+
+alberta,189,151,5	script	費斯克::Fisk	4W_SAILOR,{
+	mes "[費斯克]";
+	mes "嘿，夥計，";
+	mes "你想";
+	mes "去哪裡？";
+	next;
+	switch(select("沉沒船 -> 250 Zeny。","依斯魯得水母 -> 500 Zeny。","算了。")) {
+	case 1:
+		if (Zeny < 250) {
+			mes "[費斯克]";
+			mes "喂，別想騙我！我說的是 250 Zeny！";
+			close;
+		}
+		Zeny = Zeny - 250;
+		warp "alb2trea",43,53;
+		end;
+	case 2:
+		if (Zeny < 500) {
+			mes "[費斯克]";
+			mes "沒有先付 500 Zeny，你絕對到不了那裡！";
+			close;
+		}
+		Zeny = Zeny - 500;
+		if (checkre(0))
+			warp "izlude",195,212;
+		else
+			warp "izlude",176,182;
+		end;
+	case 3:
+		mes "[費斯克]";
+		mes "好吧……";
+		mes "旱鴨子。";
+		close;
+	}
+}
+
+alb2trea,39,50,6	script	費斯克#a2t::Fisk#a2t	4W_SAILOR,{
+	mes "[費斯克]";
+	mes "所以你想回艾爾貝塔的大陸，是吧？";
+	next;
+	if (select("是的，麻煩了。","我改變主意了。") == 1)
+		warp "alberta",192,169;
+	close;
+}
+
+alberta,195,151,2	script	保羅::Paul	4_M_04,{
+	mes "[保羅]";
+	mes "午安~";
+	mes "你想要";
+	mes "加入";
+	mes "沉沒船的探險隊";
+	mes "嗎？";
+	next;
+	mes "[保羅]";
+	mes "哦！加入之前，我得先提醒你。如果你不夠強，最好不要去。";
+	next;
+	mes "[保羅]";
+	mes "所以，你要";
+	mes "報名嗎？";
+	mes "入場";
+	mes "費用只要";
+	mes "200 Zeny。";
+	next;
+	switch(select("我要報名！","嗯，不用了，謝謝。")) {
+	case 1:
+		if (Zeny < 200) {
+			mes "[保羅]";
+			mes "看來你沒有錢啊，朋友。不過等你有能力付錢時再來吧。";
+			close;
+		}
+		Zeny = Zeny - 200;
+		warp "alb2trea",62,69;
+		close;
+	case 2:
+		mes "[保羅]";
+		mes "好吧，那就這樣……";
+		mes "我會在這裡";
+		mes "如果你改變";
+		mes "心意的話。";
+		close;
+	}
+}
+
+alberta,190,173,4	script	費利克斯::Phelix	4_M_03,{
+	mes "[費利克斯]";
+	if ((MaxWeight - Weight) < 10000) {
+		mes "等一下！！";
+		mes "你帶了太多東西了！";
+		mes "我無法再接受更多道具了！";
+		mes "請減少道具的數量，";
+		mes "然後再來找我。";
+		close;
+	}
+	if (@event_zelopy == 0) {
+		mes "你到底在這裡幹什麼？";
+		mes "這艘船上沒有任何東西是白拿的，你想要什麼就得自己去賺！！";
+		next;
+		mes "[費利克斯]";
+		mes "嗯，那你何不拿 10 個果凍來給我，我就給你 1 瓶藥水。怎麼樣？";
+		mes "如果你那點本事做不到，那就拿 3 個果凍換 1 根胡蘿蔔吧。";
+		next;
+		mes "[費利克斯]";
+		mes "如果你對我的提議有興趣，就把我提到的東西拿來給我。";
+		@event_zelopy = 1;
+		close;
+	}
+	mes "嗯……你想用果凍換紅色藥水或是胡蘿蔔，是吧？那你要哪一個？";
+	next;
+	switch(select("請給我紅色藥水。","請給我胡蘿蔔。")) {
+	case 1:
+		mes "[費利克斯]";
+		mes "好吧……";
+		mes "我們來看看";
+		mes "你有什麼……";
+		next;
+		mes "[費利克斯]";
+		if (countitem(909) < 10) {
+			mes "喂！你沒在聽嗎？我說的是 10 個果凍換 1 瓶紅色藥水……你聾了嗎？";
+			close;
+		} else {
+			.@max = countitem(909)/10;
+			mes "嗯，還不錯……";
+			mes "你想要幾瓶";
+			mes "藥水？";
+			next;
+			switch(select("能拿多少就拿多少，麻煩了。","我要這麼多。","算了，我還是比較喜歡我的果凍。")) {
+			case 1:
+				delitem 909,.@max*10;// Jellopy
+				getitem 501,.@max;// Red_Potion
+				break;
+			case 2:
+				mes "[費利克斯]";
+				mes "我一次最多只給你 100 個，所以別浪費時間了，好嗎？如果你不要，就說 '0' 就好。";
+				mes "目前你最多只能拿到 " + .@max + " 但記住，最多 100 個，你是想把我累垮嗎？";
+				input .@amount;
+				next;
+				mes "[費利克斯]";
+				if (.@amount <= 0) {
+					mes "非常感謝，隨時歡迎再來。";
+					close;
+				}
+				if (.@amount > 100) {
+					mes "喂，我剛剛怎麼說的？一次最多 100 個！你是想害死我吧！";
+					close;
+				}
+				if (countitem(909) < .@amount*10) {
+					mes "嗯，看來你的果凍不夠。如果還想跟我換別的東西，就去多弄點果凍來吧。";
+					close;
+				}
+				delitem 909,.@amount*10;// Jellopy
+				getitem 501,.@amount;// Red_Potion
+				break;
+			case 3:
+				mes "[費利克斯]";
+				mes "沒問題，";
+				mes "下次見。";
+				close;
+			}
+			mes "[費利克斯]";
+			mes "拿去吧！照我答應你的。別一次全都喝光了。";
+			close;
+		}
+	case 2:
+		mes "[費利克斯]";
+		mes "好吧，我們來看看你有什麼……";
+		next;
+		mes "[費利克斯]";
+		if (countitem(909) < 3) {
+			mes "嗯，聽好了，我說的是 3 個果凍換 1 根胡蘿蔔……懂了嗎？";
+			close;
+		}
+		.@max = countitem(909)/3;
+		mes "還不賴，小子……";
+		mes "你要多少？";
+		next;
+		switch(select("能拿多少就拿多少，麻煩了","我要這麼多。","算了，我還是比較喜歡我的果凍。")) {
+		case 1:
+			delitem 909,.@max*3;// Jellopy
+			getitem 515,.@max;// Carrot
+			break;
+		case 2:
+			mes "[費利克斯]";
+			mes "我一次最多只給你 100 個，所以別浪費時間了，好嗎？如果你不要，就說 '0' 就好。";
+			input .@amount;
+			next;
+			mes "[費利克斯]";
+			if (.@amount == 0) {
+				mes "那好吧，下次見。";
+				close;
+			}
+			if (.@amount > 100) {
+				mes "喂，小子，我說最多 100 個，不能再多了！我可不會為了你這種人累垮自己！";
+				close;
+			}
+			if (countitem(909) < .@amount*3) {
+				mes "看來你的東西不夠。如果還想要別的，就再去多弄點來。";
+				close;
+			}
+			delitem 909,.@amount*3;// Jellopy
+			getitem 515,.@amount;// Carrot
+			break;
+		case 3:
+			mes "[費利克斯]";
+			mes "待會見。";
+			close;
+		}
+		mes "[費利克斯]";
+		mes "拿去吧~！照我答應你的。別吃得太撐了。";
+		close;
+	}
+}

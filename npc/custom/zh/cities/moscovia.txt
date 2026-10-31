@@ -1,0 +1,138 @@
+//===== rAthena Script =======================================
+//= Moscovia Town
+//===== By: ==================================================
+//= Kisuka
+//===== Current Version: =====================================
+//= 1.2
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Moscovia Town Script
+//===== Additional Comments: =================================
+//= 1.0 First Version. [Kisuka]
+//= 1.1 Removed villagers (they are part of a quest). [Kisuka]
+//= 1.2 Moved Alberta NPC to pre-re/re paths. [Euphy]
+//============================================================
+
+// Moscovia Transportation :: mosk_trans
+//============================================================
+-	script	::PR_Officer_moscovia	-1,{
+	mes "[莫斯科公關員]";
+	mes "莫斯科維亞！你知道莫斯科維亞嗎？";
+	mes "那片延伸在無盡大海上的樂園……";
+	mes "歡迎來到莫斯科維亞";
+	mes "那裡充滿冒險與神秘。";
+	next;
+	switch(select("關於莫斯科維亞……:前往莫斯科維亞。:取消")) {
+		case 1:
+			mes "[莫斯科公關員]";
+			mes "莫斯科維亞是一個美麗的王國，";
+			mes "位於盧恩-";
+			mes "米德迦爾特以北的島嶼上。";
+			next;
+			mes "[莫斯科公關員]";
+			mes "我相信你一定會";
+			mes "深深著迷";
+			mes "於莫斯科維亞的美麗景色";
+			mes "與華麗的宮殿。";
+			next;
+			mes "[莫斯科公關員]";
+			mes "既然我們漫長的冬天已經";
+			mes "過去了，";
+			mes "我很高興現在能向你展示";
+			mes "我們美麗的故鄉。";
+			next;
+			mes "[莫斯科公關員]";
+			mes "如果你想造訪莫斯科維亞，";
+			mes "現在就是好機會！";
+			mes "我會協助你享受愉快的旅程";
+			mes "前往莫斯科維亞！";
+			close;
+
+		case 2:
+			mes "[莫斯科公關員]";
+			mes "好，那我們現在就出發吧。";
+			mes "你需要支付我 10,000 Zeny";
+			mes "才能前往莫斯科維亞。";
+			mes "但等你回來的時候，";
+			mes "就不需要付費了。";
+			next;
+			mes "[莫斯科公關員]";
+			mes "現在可以出發了嗎？";
+			next;
+			if (select("出發吧！:取消") == 2) {
+				mes "[莫斯科公關員]";
+				mes "如果你現在太忙，";
+				mes "隨時想去都可以再跟我說。";
+				mes "我隨時都準備好帶任何人前往莫斯科維亞。";
+				close;
+			}
+			if (Zeny < 10000) {
+				mes "[莫斯科公關員]";
+				mes "很抱歉，你的";
+				mes "Zeny 現在不夠";
+				mes "你需要 10,000 Zeny";
+				mes "才能前往莫斯科維亞";
+				mes "謝謝。";
+				close;
+			} else {
+				mes "[莫斯科公關員]";
+				mes "好，我們現在出發了。";
+				close2;
+				set Zeny,Zeny - 10000;
+				warp "moscovia",163,55;
+				end;
+			}
+		case 3:
+			mes "[莫斯科公關員]";
+			mes "如果你現在太忙，";
+			mes "隨時想去都可以再跟我說。";
+			mes "我隨時都準備好帶任何人前往莫斯科維亞。";
+			close;
+	}
+}
+
+moscovia,166,53,4	script	莫斯科公關員#2::Moscovia P.R. Officer#2	960,{
+	mes "[莫斯科公關員]";
+	mes "旅途還愉快嗎？";
+	mes "你在莫斯科維亞有留下美好的回憶嗎？";
+	mes "船隻現在即將離開";
+	mes "前往盧恩-米德迦爾特。";
+	next;
+	if (select("返回阿爾伯塔:取消") == 2) {
+		mes "[莫斯科公關員]";
+		mes "如果你還想再看看，";
+		mes "請慢慢來。";
+		close;
+	}
+	mes "[莫斯科公關員]";
+	mes "歡迎很快再來拜訪。";
+	mes "好，那我們出發吧。";
+	close2;
+	if (checkre(0))
+		warp "alberta",244,86;
+	else
+		warp "alberta",243,67;
+	end;
+}
+
+
+// Moscovia Palace :: mos_swan
+//============================================================
+moscovia,253,166,4	script	士兵#mosk1::Soldier#mosk1	966,{
+	mes "[士兵]";
+	mes "我們親愛的亞歷克塞三世沙皇就在宮殿裡。";
+	mes "他統治著莫斯科維亞。";
+	mes "請小心別惹他生氣。";
+	close;
+}
+
+-	script	Soldier#mosk::MoscSoldier	966,{
+	mes "[士兵]";
+	mes "請保持安靜，否則沙皇會生氣的。";
+	close;
+}
+mosk_in,118,66,5	duplicate(MoscSoldier)	士兵#mosk02::Soldier#mosk02	966
+mosk_in,133,110,3	duplicate(MoscSoldier)	士兵#mosk03::Soldier#mosk03	966
+mosk_in,133,73,3	duplicate(MoscSoldier)	士兵#mosk04::Soldier#mosk04	966
+mosk_in,113,124,5	duplicate(MoscSoldier)	士兵#mosk05::Soldier#mosk05	966

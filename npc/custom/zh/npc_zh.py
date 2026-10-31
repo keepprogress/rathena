@@ -160,6 +160,8 @@ def main():
 						todo['#' + disp if name_key(disp) in memory else name_key(disp)] = ''
 		# 夾著 EUC-KR 位元組的字串（韓文資源名、韓文對話）不翻，原樣保留
 		todo = {k: v for k, v in todo.items() if not re.search('[\udc80-\udcff]', k)}
+		# 顯示行裡混著的代號：地圖名（rockrdg1）、事件標籤（[OnPoringKilled]）、色碼（0x70dbdb）
+		todo = {k: v for k, v in todo.items() if not re.fullmatch(r'[a-z0-9_@.hmtBc]+|\[On\w+\]|0x[0-9A-Fa-f]+', k)}
 		print(json.dumps(todo, ensure_ascii=False, indent=0))
 	elif cmd in ('merge', 'check'):
 		bad = 0

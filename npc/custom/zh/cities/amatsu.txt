@@ -1,0 +1,606 @@
+//===== rAthena Script =======================================
+//= Amatsu Town
+//===== By: ==================================================
+//= rAthena Dev Team
+//===== Current Version: =====================================
+//= 1.4
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= [Official Conversion]
+//= Amatsu Town Script
+//===== Additional Comments: =================================
+//= 1.3 Rescripted to Aegis 10.3 Standards. [L0ne_W0lf]
+//=     Moved elemental stone trader to 'elemental_trader.txt'
+//= 1.4 Moved Alberta NPC to pre-re/re paths. [Euphy]
+//============================================================
+
+// Amatsu Transportation
+//============================================================
+-	script	::Sea_Captain_amatsu	-1,{
+	mes "[沃爾特莫爾斯]";
+	mes "嘿，你好。";
+	mes "您有聽說過嗎？有";
+	mes "完全不同於";
+	mes "盧恩米德加王國的其他國家嗎？";
+	next;
+	switch(select("關於天津町……:前往天津町:取消")) {
+	case 1:
+		mes "[沃爾特莫爾斯]";
+		mes "我聽說有一艘漂流的船";
+		mes "意外地發現了它……";
+		mes "那艘船被完全摧毀了";
+		mes "在濃霧中被猛烈的暴風雨擊毀。";
+		mes " ";
+		next;
+		mes "[沃爾特莫爾斯]";
+		mes "總之，那艘船";
+		mes "在海灘上擱淺。他就是在那裡";
+		mes "抵達了一個名叫天津町的城鎮。";
+		next;
+		mes "[沃爾特莫爾斯]";
+		mes "城鎮居民很同情他，";
+		mes "並照顧了他的傷口。";
+		mes "他在那裡住到完成了地圖的製作為止。";
+		next;
+		mes "[沃爾特莫爾斯]";
+		mes "他回到";
+		mes "盧恩米德加後去世了。所幸，";
+		mes "地圖被交給了我們的國王，崔斯坦三世。";
+		next;
+		mes "[沃爾特莫爾斯]";
+		mes "崔斯坦三世國王宣布，";
+		mes "他將獎勵任何";
+		mes "有勇氣前往天津町並散布此地圖副本的人。";
+		next;
+		mes "[沃爾特莫爾斯]";
+		mes "許多勇敢且愛冒險的";
+		mes "船長們接受了";
+		mes "這項挑戰。若能與天津町貿易，";
+		mes "將能獲得大筆財富，還能得到崔斯坦三世國王的獎賞……";
+		next;
+		mes "[沃爾特莫爾斯]";
+		mes "然而，他們全都失敗了！";
+		mes "要克服各種洋流";
+		mes "與惡劣的天氣，需要許多";
+		mes "經驗才行。但他們全都被貪婪蒙蔽了雙眼……";
+		next;
+		mes "[沃爾特莫爾斯]";
+		mes "最後，一位偉大的人物發現了";
+		mes "前往天津町的完美航線……";
+		mes "沒錯！那就是我。我是沃爾特";
+		mes "莫爾斯。我開始了與天津町的貿易！哈哈哈！嗯，關於天津町的事就講到這裡。";
+		next;
+		mes "[沃爾特莫爾斯]";
+		mes "我靠著貿易賺了不少錢，";
+		mes "多年來一直如此，現在我對";
+		mes "觀光旅遊很感興趣。如果您想前往天津町，請告訴我～！";
+		close;
+	case 2:
+		mes "[沃爾特莫爾斯]";
+		mes "喔？前往天津町";
+		mes "的路可是很遠的，所以我們";
+		mes "才會收取船資。您不會以為橫渡大海與洋流很容易吧？";
+		next;
+		mes "[沃爾特莫爾斯]";
+		mes "來回一趟要 10,000 Zeny！我";
+		mes "為您準備了一間寬敞舒適的";
+		mes "安全貿易船客房。這是一個 ";
+		mes "合理的價格，考慮到";
+		mes "這不是單程票。";
+		next;
+		mes "[沃爾特莫爾斯]";
+		mes "現在要出發了嗎？您沒忘記";
+		mes "船資吧？我們出發吧。";
+		next;
+		if (select("全員登船！:取消") == 1) {
+			if (Zeny > 9999) {
+				mes "[沃爾特莫爾斯]";
+				mes "好的，我要發動引擎了！";
+				close2;
+				set Zeny, Zeny-10000;
+				warp "amatsu",197,83;
+				end;
+			}
+			mes "[沃爾特莫爾斯]";
+			mes "您有在聽我說話嗎？";
+			mes "10,000 Zeny。如果您";
+			mes "什麼都沒有，就去找些寶物";
+			mes "之類的，像是沉船裡……快把錢拿出來！";
+			close;
+		}
+		mes "[沃爾特莫爾斯]";
+		mes "如果您是冒險者，";
+		mes "這是個好機會";
+		mes "去體驗不同的文化……嗯，就看您的決定了。";
+		close;
+	case 3:
+		mes "[沃爾特莫爾斯]";
+		mes "如果您厭倦了日常的";
+		mes "生活，就到遙遠的";
+		mes "海洋另一端的國家旅行吧。";
+		mes "像是，嗯，天津町之類的～";
+		close;
+	}
+}
+
+amatsu,194,79,5	script	海上船長#ama2::Sea Captain#ama2	709,{
+	mes "[沃爾特莫爾斯]";
+	mes "您回來了……玩得";
+	mes "還開心嗎？天津町的旅程……？";
+	mes "好的，我會送您";
+	mes "回到艾爾貝塔。";
+	next;
+	if (select("返回艾爾貝塔:取消") == 1) {
+		mes "[沃爾特莫爾斯]";
+		mes "那麼出發吧。您一定有";
+		mes "很多話想說吧，";
+		mes "對吧？全員登船了。";
+		close2;
+		if (checkre(0))
+			warp "alberta",245,87;
+		else
+			warp "alberta",243,91;
+		end;
+	}
+	mes "[沃爾特莫爾斯]";
+	mes "嗯，請慢慢來。";
+	mes "前往艾爾貝塔的船";
+	mes "隨時都準備好出發了……";
+	close;
+}
+
+// Generic Amatsu NPCs
+//============================================================
+amatsu,230,160,3	script	井邊少女#ama::Well-side Maiden#ama	757,{
+	mes "[優子]";
+	mes "我平常都會來這口井打水，";
+	mes "但每當起霧或下雨時，";
+	mes "不知為何，";
+	mes "天氣一變成某種樣子，";
+	mes "我就覺得……";
+	next;
+	mes "[優子]";
+	mes "……有人……或是某種東西正在";
+	mes "掙扎著想從";
+	mes "這口井的底部爬出來……";
+	mes "真的讓我毛骨悚然。";
+	close;
+}
+
+amatsu,179,107,4	script	約翰#ama::John#ama	86,{
+	mes "[約翰]";
+	mes "嗨～";
+	mes "您不是這附近的人吧。";
+	mes "嘿嘿，又一個外地人。";
+	mes "跟我一樣……";
+	next;
+	mes "[約翰]";
+	mes "已經整整五年了，";
+	mes "自從我開始";
+	mes "在這裡做生意……";
+	next;
+	mes "[約翰]";
+	mes "一開始，我心想，'";
+	mes "真是個好機會！'在";
+	mes "盧恩米德加王國與";
+	mes "天津町的貿易開始時。";
+	next;
+	mes "[約翰]";
+	mes "我想做一番大事業，";
+	mes "好好把握";
+	mes "這個新的機會。";
+	next;
+	mes "[約翰]";
+	mes "於是，我決定前往";
+	mes "天津町，學習製作";
+	mes "天津町的料理。然後，我就能";
+	mes "回到我的家鄉，做出";
+	mes "這種異國料理，與大家分享。";
+	next;
+	mes "[約翰]";
+	mes "但是，我愛上了天津町，";
+	mes "結果就一直待在";
+	mes "這裡，已經過了五年。";
+	mes "這段時間以來，我";
+	mes "一直在學習天津町料理，";
+	next;
+	mes "[約翰]";
+	mes "並為";
+	mes "城鎮居民做這些菜，還享受";
+	mes "與當地人聊天的樂趣，";
+	mes "就這樣待在這個地方。";
+	next;
+	mes "[約翰]";
+	mes "但最近，街對面";
+	mes "明蝦壽司大師開了他的店。";
+	mes "...";
+	mes "現在，我唯一的客人只剩蒼蠅了。";
+	next;
+	mes "[約翰]";
+	mes "我原本希望實現我的";
+	mes "成為名廚的夢想，";
+	mes "在天津町，可是……";
+	mes "看來一切都結束了……";
+	close;
+}
+
+amatsu,205,163,3	script	咪咪#ama::Mimi#ama	759,{
+	mes "[咪咪]";
+	mes "噗呼呼～！";
+	mes "你有看到天津町的小姐在";
+	mes "港口附近嗎？她不是很";
+	mes "漂亮嗎？";
+	next;
+	mes "[咪咪]";
+	mes "我長大後要參加";
+	mes "天津町小姐選拔賽。";
+	next;
+	mes "[咪咪]";
+	mes "我確信我是最漂亮的";
+	mes "在這個城鎮裡……";
+	mes "女人隨時都能再多化點妝。";
+	close;
+}
+
+amatsu,185,115,3	script	醉漢#ama::Drunken Man#ama	765,{
+	mes "[酒鬼]";
+	mes "*打嗝*……我老婆簡直就像，";
+	mes "……像個男性……*打嗝*……";
+	mes "這次我真的……*打嗝*……不回家了……*打嗝*";
+	next;
+	if (select("別喝了快回家:一起喝吧") == 1) {
+		mes "[酒鬼]";
+		mes "什麼？！你要我被";
+		mes "我老婆的大拳頭打嗎？";
+		mes "沒錯！我說的是「大拳頭！」";
+		next;
+		mes "[酒鬼]";
+		mes "說來遺憾，我娶了一個";
+		mes "長著男性般大手的女人……";
+		mes "一雙能徒手打死老虎的粗壯大手。";
+		next;
+		mes "[醉漢]";
+		mes "是在哈……哈什麼的";
+		mes "城鎮裡。她因為我";
+		mes "輸了點錢……*打嗝*";
+		next;
+		mes "[醉漢]";
+		mes "人生~~ 什麼~~ 都不是~~~";
+		mes "什麼是Zeny~~~~ ";
+		mes "*打嗝*...... *打嗝*.......";
+		mes ".......................";
+		mes "........Z.z..z...zzz...呼嚕嚕";
+		close;
+	}
+	mes "[酒鬼]";
+	mes "嘿嘿……好小子……";
+	mes "但你知道的 *打嗝*";
+	mes "我一點也不會分給你的！嘿嘿嘿……";
+	next;
+	mes "[酒鬼]";
+	mes "如果你請我喝一杯，我就考慮考慮……嘿嘿……*打嗝*..";
+	close;
+}
+
+amatsu,217,179,1	script	老奶奶#ama::Grandma#ama	760,{
+	mes "[初枝]";
+	mes "我很擔心我丈夫。";
+	mes "他今天在某個遠方的城鎮輸了一大筆錢。";
+	next;
+	mes "[初枝]";
+	mes "我氣壞了，他就跑掉了，";
+	mes "嚇得要死！我好擔心……萬一他";
+	mes "又跑去酒吧開始喝酒怎麼辦？那位男性就是沒骨氣。*呼*";
+	close;
+}
+
+amatsu,287,266,3	script	賈布羅#ama::Jyaburo#ama	766,{
+	mes "[賈布羅]";
+	mes "這個地方對我來說很特別。";
+	mes "這裡充滿了我妻子的回憶。";
+	next;
+	mes "[賈布羅]";
+	mes "就是在那棵大樹下，";
+	mes "我第一次向她告白。當時";
+	mes "我真的不知道她也對我有好感。";
+	next;
+	mes "[賈布羅]";
+	mes "那天之後，我們在這裡";
+	mes "聊了很多。安靜";
+	mes "又平和，這裡是我們";
+	mes "最喜歡一起待著的地方。";
+	next;
+	mes "[賈布羅]";
+	mes "我在這裡閉上眼睛，";
+	mes "就能想起我們美好的時光，";
+	mes "彷彿就發生在昨天。";
+	mes "...";
+	next;
+	mes "[賈布羅]";
+	mes "我老婆過世了……";
+	mes "所以現在我只能一個人";
+	mes "來這裡……但我每次來這裡，都覺得她就在我身邊。";
+	next;
+	mes "[賈布羅]";
+	mes "你有沒有什麼";
+	mes "在意的人？如果你有";
+	mes "特別的對象，別猶豫";
+	mes "也別退縮。一定要好好對待";
+	mes "那個人。";
+	next;
+	mes "[賈布羅]";
+	mes "人類的生命";
+	mes "是如此短暫。但我們能夠歡笑";
+	mes "走過人生，忘掉那些";
+	mes "悲傷。";
+	mes "……要永遠快樂。";
+	close;
+}
+
+// Legendary Tree
+//============================================================
+amatsu,269,221,1	script	求婚少女#ama::Propose Girl#ama	758,{
+	set jap_tree,1;
+	mes "[布塔莉詩子]";
+	mes "很高興認識你。";
+	mes "我叫布塔莉詩子。";
+	mes "我的興趣是聽音樂。";
+	mes "我是古典音樂的狂熱愛好者。";
+	next;
+	mes "[布塔莉詩子]";
+	mes "關於";
+	mes "我們城鎮裡的山丘，有個古老的故事。";
+	mes "你聽過這個故事嗎？";
+	next;
+	mes "[布塔莉詩子]";
+	mes "據說如果你在";
+	mes "那棵樹下求婚，你和你的";
+	mes "愛人將會永遠幸福地生活。";
+	next;
+	mes "[布塔莉詩子]";
+	mes "不過，求婚不是隨時都能";
+	mes "進行的。傳說中只能在星期六傍晚進行。";
+	next;
+	mes "[布塔莉詩子]";
+	mes "求婚之後，必須";
+	mes "在星期日傍晚前回覆。這是最關鍵的部分。";
+	next;
+	emotion ET_BIGTHROB;
+	mes "[布塔莉詩子]";
+	mes "如果你喜歡某個人……";
+	mes "你應該試著在";
+	mes "那棵樹下求婚。我相信 ";
+	mes "會有好事發生的。";
+	close;
+}
+
+amatsu,243,202,3	script	戲劇老師#ama::Drama Teacher#ama	760,{
+	set jap_tree,2;
+	mes "[空龜老師]";
+	mes "這裡是一個美麗的地方，";
+	mes "櫻花永遠盛開。";
+	mes "此外，這座城鎮是";
+	mes "傳說中的戲劇「白色樹精」。 ";
+	next;
+	if (Sex == SEX_MALE) {
+		mes "[空龜老師]";
+		mes "如果你認識一位";
+		mes "有演戲天分的女孩，請";
+		mes "帶她來見我。我一直在";
+		mes "尋找能夠";
+		mes "扮演「白色樹精」的女孩。";
+		next;
+		mes "[空龜老師]";
+		mes "「白色樹精」是一位櫻花樹的";
+		mes "妖精……要找到能夠";
+		mes "演出這個角色的女孩";
+		mes "實在很難……「白色樹精……」";
+		close;
+	}
+	emotion ET_SURPRISE;
+	mes "[空龜老師]";
+	mes "你有興趣演戲嗎？";
+	mes "我需要一個能看出";
+	mes "演戲中的熱情，";
+	mes "並理解我構想的人。";
+	next;
+	mes "[空龜老師]";
+	mes "當你站上舞台時，";
+	mes "你必須成為";
+	mes "那個角色。你的演技需要";
+	mes "打動";
+	mes "觀眾的心，觸動他們的靈魂。";
+	next;
+	mes "[空龜老師]";
+	mes "每個人的人生就像一齣 ";
+	mes "戲劇，對吧？好好享受你的人生";
+	mes "做你自己，等你準備好";
+	mes "的那一天，再來找我。";
+	close;
+}
+
+amatsu,283,203,1	script	波努波努#ama1::Bonubonu#ama1	1323,{
+	end;
+}
+
+amatsu,283,203,1	script	波努波努#ama2::Bonubonu#ama2	111,{
+	set jap_tree,3;
+	emotion ET_PROFUSELY_SWEAT;
+	mes "[波努波努]";
+	mes "山丘上的那棵樹";
+	mes "是一棵非常古老的樹。是一棵大型的";
+	mes "永遠盛開的櫻花樹。";
+	next;
+	emotion ET_PROFUSELY_SWEAT;
+	mes "[波努波努]";
+	mes "這棵樹有種特別的地方，";
+	mes "讓我坐在它下面時，";
+	mes "能忘掉人生中所有的煩惱。";
+	next;
+	emotion ET_PROFUSELY_SWEAT;
+	mes "[波努波努]";
+	mes "這棵樹的一切都";
+	mes "美妙極了……";
+	mes "我真的無法形容";
+	mes "看著它時的感受……";
+	mes "它讓我屏住了呼吸……";
+	next;
+	emotion ET_PROFUSELY_SWEAT;
+	mes "[波努波努]";
+	mes "你應該去拜訪那棵樹，";
+	mes "在那裡待一段時間。";
+	mes "它真的是一棵神奇而優雅的樹……";
+	close;
+}
+
+amatsu,274,178,7	script	獸醫#ama::Veterinarian#ama	735,{
+	set jap_tree,4;
+	mes "[櫻井誠一]";
+	mes "啊……我可不是怪人，所以";
+	mes "別緊張。我只是一位普通的";
+	mes "獸醫。我的工作是治療";
+	mes "生病的動物。";
+	mes " ";
+	next;
+	mes "[櫻井誠一]";
+	mes "對了……你知道嗎？";
+	mes "關於那棵櫻花樹的故事，";
+	mes "在山丘上……我想你應該還沒聽說過吧……";
+	next;
+	mes "[櫻井誠一]";
+	mes "那棵樹有個秘密，";
+	mes "能保持它的美麗和潔白。";
+	mes "秘密是……";
+	mes "目前還有屍體埋在……";
+	mes "那棵樹下……";
+	next;
+	if (select("太可怕了！:你一定是在開玩笑吧。") == 1) {
+		mes "[櫻井誠一]";
+		mes "咕呼呼……說不定……";
+		mes "對了，你想不想";
+		mes "跟我打個賭……？";
+		next;
+		emotion ET_THINK;
+		mes "[櫻井誠一]";
+		mes "如果我..........";
+		mes "............";
+		mes ".........";
+		next;
+		mes "^3355FF他的聲音越來越低";
+		mes "隨著風吹，越來越低。";
+		mes "最後，我連他的聲音都聽不見了。我甚至想不起他想告訴我什麼……^000000";
+		close;
+	}
+	mes "[櫻井誠一]";
+	mes "你怎麼想是你的事。但總有一天，你也可能被埋在下面……";
+	next;
+	emotion ET_THINK;
+	mes "[櫻井誠一]";
+	mes "哈哈……哈哈哈.....";
+	mes "...............";
+	mes "...........";
+	next;
+	mes "^3355FF他的笑聲越來越低";
+	mes "隨著風吹，越來越低。";
+	mes "最後，我什麼都聽不見了。我甚至想不起他想告訴我什麼……^000000";
+	close;
+}
+
+amatsu,262,197,1	script	傳說之樹::Legendary Tree	111,{
+	if (jap_tree == 1) {
+		mes "^3355FF正如她所說，這棵樹";
+		mes "似乎是一個著名的地方，";
+		mes "是情侶求婚的聖地。";
+		mes "樹皮上刻著幾個";
+		mes "愛心與情侶名字縮寫的記號，";
+		mes "刻在樹皮上。^000000";
+		next;
+		mes "^3355FF除了求婚之外，人們";
+		mes "也會在這棵樹下聚集，";
+		mes "討論重要的";
+		mes "事情。我可以聽到";
+		mes "各式各樣的故事，";
+		mes "在這個壯麗的地方。^000000";
+		close;
+	}
+	else if (jap_tree == 2) {
+		mes "^3355FF傳說中的戲劇「白色樹精」.....";
+		mes "我從沒聽過這個名字，但";
+		mes "聽起來有些耳熟。";
+		mes "櫻花樹的妖精……她在";
+		mes "戲中會是什麼角色呢？^000000";
+		next;
+		if (Sex == SEX_MALE) {
+			mes "^3355FF我想找到";
+			mes "一位有天分的人，";
+			mes "幫助她演戲，直到";
+			mes "她演出這齣戲為止。不過，";
+			mes "這似乎說起來容易，做起來難。^000000";
+			close;
+		}
+		mes "^3355FF我或許有某種";
+		mes "尚未被發掘的演戲天分。我想：「如果我打扮起來，就應該去演「白色樹精……」」^000000";
+		close;
+	}
+	else if (jap_tree == 3) {
+		mes "^3355FF和其他櫻花樹不同，";
+		mes "這棵樹有濃烈的香氣。";
+		mes "我整個人陷入一種放鬆的";
+		mes "心情。香氣讓";
+		mes "我的重擔都消散了，我感到";
+		mes "非常舒服。^000000";
+		next;
+		mes "^3355FF雖然只有短短幾刻，";
+		mes "但我能忘掉";
+		mes "人生的重擔。我希望";
+		mes "能再回來，";
+		mes "坐在這棵樹下……^000000";
+		close;
+	}
+	else if (jap_tree == 4) {
+		mes "^3355FF這股濃烈的香氣";
+		mes "讓我頭暈。和";
+		mes "其他櫻花樹不同，這棵樹的";
+		mes "閃閃發光的白色花瓣";
+		mes "感覺很奇怪。^000000";
+		next;
+		mes "^3355FF感覺就像我的靈魂";
+		mes "正在被抽走，如果我繼續待在這裡";
+		mes "待得更久。驚鴻一瞥";
+		mes "那棵櫻花樹之後，我心想";
+		mes "「我必須趕快離開這裡。」^000000";
+		close;
+	}
+	mes "^3355FF山丘上有一棵櫻花樹，";
+	mes "它看起來";
+	mes "和其他的樹不一樣。";
+	mes "這棵樹似乎有";
+	mes "悠久的歷史……^000000";
+	next;
+	mes "^3355FF這裡有人住嗎？";
+	mes "我環顧了一下，";
+	mes "發現";
+	mes "山下有人。";
+	mes "我最好去問問她關於這棵樹的事。^000000";
+	close;
+}
+
+//============================================================
+// Old changelog
+//============================================================
+//= Amatsu Town NPCs : Revision 2 (Fox quest fix)
+//= Translated by Makenshi and dj
+//= Revisions and edits by Valaris and Darkchild
+//= 1.01 event_sushi -> ama_sushi fixed
+//=      and other fixes, thanks to Shinomori
+//= 1.02 Fixed & Spell Checked [massdriller]
+//= 1.03 Fixed 2 NPC names, slight optimization [Lupus]
+//= 1.04 Fixed a few typos [Nexon]
+//= 1.05 Changed all breaks to ends. [Skotlex]
+//= 1.06 The Captain now uses iRO dialog [MasterOfMuppets]
+//= 1.07 Implemented a missing NPC [MasterOfMuppets]
+//= 1.08 Removed Duplicates [Silent]
+//= 1.1 Split quests into quests/quests_amatsu.txt [Evera]
+//= 1.2	Fixed missing name [Evera]
+//============================================================

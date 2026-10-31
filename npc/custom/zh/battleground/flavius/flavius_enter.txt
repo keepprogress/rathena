@@ -1,0 +1,351 @@
+//===== rAthena Script =======================================
+//= BattleGround System - Flavius Entrance NPCs
+//===== Description: =========================================
+//= [Official Conversion]
+//= Flavius Battleground Entrance NPCs
+//===== Changelogs: ==========================================
+//= 1.0 First Version. [L0ne_W0lf]
+//= 1.1 Added battle_config checks to allow this script to use the new queue interface or the previous method. [Aleos]
+//============================================================
+
+// Flavius Officer - Guillaume
+//============================================================
+bat_room,133,178,5	script	弗拉維斯軍官#01a::Flavius Officer#01a	418,{
+	if (getbattleflag("feature.bgqueue"))
+		end;
+	if (checkweight(1201,1) == 0) {
+		mes "- 等一下！！ -";
+		mes "- 你目前攜帶的 -";
+		mes "- 道具太多了。 -";
+		mes "- 請再試一次 -";
+		mes "- 等你減輕一些負重後。 -";
+		close;
+	}
+	mes "[紀堯姆軍官]";
+	mes "讓那些臭克魯瓦人見識一下紀堯姆軍的實力吧！";
+	next;
+	switch(select("我想加入你們的軍隊！:結束對話")) {
+	case 1:
+		if ((BaseJob == Job_Novice) || (BaseJob == Job_Super_Novice)) {
+			mes "[紀堯姆軍官]";
+			mes "很高興你想加入我們，與克魯瓦軍團作戰，但很抱歉:我不能讓你這樣的新兵在殘酷的戰場上送死。";
+		}
+		else {
+			if (BaseLevel < 80) {
+				mes "[紀堯姆軍官]";
+				mes "很高興你想加入我們，與克魯瓦軍團作戰，但很抱歉:我不能讓你這樣的新兵在殘酷的戰場上送死。";
+			}
+			else {
+				set .@chk_urtime,checkquest(2070,PLAYTIME);
+				if ((.@chk_urtime == 0)|| (.@chk_urtime == 1)) {
+					mes "[紀堯姆軍官]";
+					mes "你看起來才剛從戰場上回來。";
+					mes "你還不能回去。去休息吧，敵人就交給我們！";
+				}
+				else {
+					if (.@chk_urtime == 2)
+						erasequest 2070;
+					set .@mapcount2,getmapusers("bat_b01");
+					if (.@mapcount2 > 0) {
+						mes "[紀堯姆軍官]";
+						mes "我收到報告，已有精銳部隊被派往戰場，正在與克魯瓦人作戰。";
+						mes "你何不先等一下？我建議你在此之前磨利武器，準備好補給。";
+					}
+					else {
+						if ($@FlaviusBG1 > 0) {
+							mes "[紀堯姆軍官]";
+							mes "精銳部隊已準備好隨時派往戰場。";
+							mes "你何不先等一下？我建議你在此之前磨利武器，準備好補給。";
+						}
+						else {
+							mes "[紀堯姆軍官]";
+							mes "你看起來已經準備好作戰了！";
+							mes "去讓克魯瓦人見識真正的恐懼吧！";
+							mes "今天，我們的勝利吶喊將響徹整個戰場！";
+							close2;
+							warp "bat_room",85,223;
+							end;
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		mes "[紀堯姆軍官]";
+		mes "今天，我們必將獲勝！";
+		break;
+	}
+	close;
+}
+
+bat_room,133,121,1	script	弗拉維斯軍官#01b::Flavius Officer#01b	414,{
+	if (getbattleflag("feature.bgqueue"))
+		end;
+	if (checkweight(1201,1) == 0) {
+		mes "- 等一下！！ -";
+		mes "- 你目前攜帶的 -";
+		mes "- 道具太多了。 -";
+		mes "- 請再試一次 -";
+		mes "- 等你減輕一些負重後。 -";
+		close;
+	}
+	mes "[克魯瓦軍官]";
+	mes "讓紀堯姆人見識一下克魯瓦軍的實力吧！";
+	next;
+	switch(select("我想加入你們的軍隊！:結束對話")) {
+	case 1:
+		if ((BaseJob == Job_Novice) || (BaseJob == Job_Super_Novice)) {
+			mes "[克魯瓦軍官]";
+			mes "很高興你想加入我們，與紀堯姆軍團作戰，但很抱歉:我不能讓你這樣的新兵在殘酷的戰場上送死。";
+		}
+		else {
+			if (BaseLevel < 80) {
+				mes "[克魯瓦軍官]";
+				mes "很高興你想加入我們，與紀堯姆軍團作戰，但很抱歉:我不能讓你這樣的新兵在殘酷的戰場上送死。";
+			}
+			else {
+				set .@chk_urtime,checkquest(2070,PLAYTIME);
+				if ((.@chk_urtime == 0)|| (.@chk_urtime == 1)) {
+					mes "[克魯瓦軍官]";
+					mes "你看起來才剛從戰場上回來。";
+					mes "你還不能回去。去休息吧，敵人就交給我們！";
+				}
+				else {
+					if (.@chk_urtime == 2)
+						erasequest 2070;
+					set .@mapcount2,getmapusers("bat_b01");
+					if (.@mapcount2 > 0) {
+						mes "[克魯瓦軍官]";
+						mes "我收到報告，已有精銳部隊被派往戰場，正在與紀堯姆人作戰。";
+						mes "你何不先等一下？我建議你在此之前磨利武器，準備好補給。";
+					}
+					else {
+						if ($@FlaviusBG1 > 0) {
+							mes "[克魯瓦軍官]";
+							mes "精銳部隊已準備好隨時派往戰場。";
+							mes "你何不先等一下？我建議你在此之前磨利武器，準備好補給。";
+						}
+						else {
+							mes "[克魯瓦軍官]";
+							mes "你看起來已經準備好作戰了！";
+							mes "去讓紀堯姆人見識真正的恐懼吧！";
+							mes "今天，我們的勝利吶喊將響徹整個戰場！";
+							close2;
+							warp "bat_room",85,207;
+							end;
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		mes "[克魯瓦軍官]";
+		mes "今天，我們必將獲勝！";
+		break;
+	}
+	close;
+}
+
+bat_room,135,178,5	script	紀堯姆騎士#3::Guillaume Knight#3	417,{
+	mes "[紀堯姆騎士]";
+	mes "弗拉維斯戰役的目標是搶先摧毀敵方水晶，先取得 2 分。";
+	next;
+	mes "[紀堯姆騎士]";
+	mes "雙方的水晶都受到特殊屏障保護，無法被直接攻擊摧毀。";
+	next;
+	mes "[紀堯姆騎士]";
+	mes "但只要摧毀守護敵方軍營的守護者，就能移除屏障。";
+	next;
+	mes "[紀堯姆騎士]";
+	mes "水晶對所有技能免疫，只能以物理攻擊摧毀敵方水晶。";
+	next;
+	mes "[紀堯姆騎士]";
+	if (getbattleflag("feature.bgqueue"))
+		mes "準備好的話，請先點擊介面上的 ^0000FF戰鬥按鈕^000000。";
+	else {
+		mes "請注意:參加戰役時，您會獲得一個代幣，代表在一段時間內無法再參加同類戰役。";
+		mes "您可以按下 Alt+U 鍵查看剩餘時間。";
+	}
+	next;
+	mes "[紀堯姆騎士]";
+	if (getbattleflag("feature.bgqueue"))
+		mes "請注意，一旦取消，^0000FF您將有 1 分鐘無法重新報名^000000！";
+	else
+		mes "準備好作戰了嗎？那就向我旁邊的招募員報名吧！";
+	close;
+}
+
+bat_room,151,178,5	duplicate(Guillaume Knight#3)	紀堯姆騎士#4::Guillaume Knight#4	417
+
+bat_room,135,121,1	script	克魯瓦騎士#3::Croix Knight#3	413,{
+	mes "[克魯瓦騎士]";
+	mes "弗拉維斯戰役的目標是搶先摧毀敵方水晶，先取得 2 分。";
+	next;
+	mes "[克魯瓦騎士]";
+	mes "雙方的水晶都受到特殊屏障保護，無法被直接攻擊摧毀。";
+	next;
+	mes "[克魯瓦騎士]";
+	mes "但只要摧毀守護敵方軍營的守護者，就能移除屏障。";
+	next;
+	mes "[克魯瓦騎士]";
+	mes "水晶對所有技能免疫，只能以物理攻擊摧毀敵方水晶。";
+	next;
+	mes "[克魯瓦騎士]";
+	if (getbattleflag("feature.bgqueue"))
+		mes "準備好的話，請先點擊介面上的 ^0000FF戰鬥按鈕^000000。";
+	else {
+		mes "請注意:參加戰役時，您會獲得一個代幣，代表在一段時間內無法再參加同類戰役。";
+		mes "您可以按下 Alt+U 鍵查看剩餘時間。";
+	}
+	next;
+	mes "[克魯瓦騎士]";
+	if (getbattleflag("feature.bgqueue"))
+		mes "請注意，一旦取消，^0000FF您將有 1 分鐘無法重新報名^000000！";
+	else
+		mes "準備好作戰了嗎？那就向我旁邊的招募員報名吧！";
+	close;
+}
+
+bat_room,151,121,1	duplicate(Croix Knight#3)	克魯瓦騎士#4::Croix Knight#4	413
+
+// Flavius Officer - Croix
+//============================================================
+bat_room,148,178,5	script	弗拉維斯軍官#02a::Flavius Officer#02a	418,{
+	if (getbattleflag("feature.bgqueue"))
+		end;
+	if (checkweight(1201,1) == 0) {
+		mes "- 等一下！！ -";
+		mes "- 你目前攜帶的 -";
+		mes "- 道具太多了。 -";
+		mes "- 請再試一次 -";
+		mes "- 等你減輕一些負重後。 -";
+		close;
+	}
+	mes "[紀堯姆軍官]";
+	mes "讓那些臭克魯瓦人見識一下紀堯姆軍的實力吧！";
+	next;
+	switch(select("我想加入你們的軍隊！:結束對話")) {
+	case 1:
+		if ((BaseJob == Job_Novice) || (BaseJob == Job_Super_Novice)) {
+			mes "[紀堯姆軍官]";
+			mes "很高興你想加入我們，與克魯瓦軍團作戰，但很抱歉:我不能讓你這樣的新兵在殘酷的戰場上送死。";
+		}
+		else {
+			if (BaseLevel < 80) {
+				mes "[紀堯姆軍官]";
+				mes "很高興你想加入我們，與克魯瓦軍團作戰，但很抱歉:我不能讓你這樣的新兵在殘酷的戰場上送死。";
+			}
+			else {
+				set .@chk_urtime,checkquest(2070,PLAYTIME);
+				if ((.@chk_urtime == 0)|| (.@chk_urtime == 1)) {
+					mes "[紀堯姆軍官]";
+					mes "你看起來才剛從戰場上回來。";
+					mes "你還不能回去。去休息吧，敵人就交給我們！";
+				}
+				else {
+					if (.@chk_urtime == 2)
+						erasequest 2070;
+					set .@mapcount2,getmapusers("bat_b02");
+					if (.@mapcount2 > 0) {
+						mes "[紀堯姆軍官]";
+						mes "我收到報告，已有精銳部隊被派往戰場，正在與克魯瓦人作戰。";
+						mes "你何不先等一下？我建議你在此之前磨利武器，準備好補給。";
+					}
+					else {
+						if ($@FlaviusBG2 > 0) {
+							mes "[紀堯姆軍官]";
+							mes "精銳部隊已準備好隨時派往戰場。";
+							mes "你何不先等一下？我建議你在此之前磨利武器，準備好補給。";
+						}
+						else {
+							mes "[紀堯姆軍官]";
+							mes "你看起來已經準備好作戰了！";
+							mes "去讓克魯瓦人見識真正的恐懼吧！";
+							mes "今天，我們的勝利吶喊將響徹整個戰場！";
+							close2;
+							warp "bat_room",141,224;
+							end;
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		mes "[紀堯姆軍官]";
+		mes "今天，我們必將獲勝！";
+		break;
+	}
+	close;
+}
+
+bat_room,148,121,1	script	弗拉維斯軍官#02b::Flavius Officer#02b	414,{
+	if (getbattleflag("feature.bgqueue"))
+		end;
+	if (checkweight(1201,1) == 0) {
+		mes "- 等一下！！ -";
+		mes "- 你目前攜帶的 -";
+		mes "- 道具太多了。 -";
+		mes "- 請再試一次 -";
+		mes "- 等你減輕一些負重後。 -";
+		close;
+	}
+	mes "[克魯瓦軍官]";
+	mes "讓那些臭紀堯姆人見識一下克魯瓦軍的實力吧！";
+	next;
+	switch(select("我想加入你們的軍隊！:結束對話")) {
+	case 1:
+		if ((BaseJob == Job_Novice) || (BaseJob == Job_Super_Novice)) {
+			mes "[克魯瓦軍官]";
+			mes "很高興你想加入我們，與紀堯姆軍團作戰，但很抱歉:我不能讓你這樣的新兵在殘酷的戰場上送死。";
+		}
+		else {
+			if (BaseLevel < 80) {
+				mes "[克魯瓦軍官]";
+				mes "很高興你想加入我們，與紀堯姆軍團作戰，但很抱歉:我不能讓你這樣的新兵在殘酷的戰場上送死。";
+			}
+			else {
+				set .@chk_urtime,checkquest(2070,PLAYTIME);
+				if ((.@chk_urtime == 0)|| (.@chk_urtime == 1)) {
+					mes "[克魯瓦軍官]";
+					mes "你看起來才剛從戰場上回來。";
+					mes "你還不能回去。去休息吧，敵人就交給我們！";
+				}
+				else {
+					if (.@chk_urtime == 2)
+						erasequest 2070;
+					set .@mapcount2,getmapusers("bat_b02");
+					if (.@mapcount2 > 0) {
+						mes "[克魯瓦軍官]";
+						mes "我收到報告，已有精銳部隊被派往戰場，正在與紀堯姆人作戰。";
+						mes "你何不先等一下？我建議你在此之前磨利武器，準備好補給。";
+					}
+					else {
+						if ($@FlaviusBG2 > 0) {
+							mes "[克魯瓦軍官]";
+							mes "精銳部隊已準備好隨時派往戰場。";
+							mes "你何不先等一下？我建議你在此之前磨利武器，準備好補給。";
+						}
+						else {
+							mes "[克魯瓦軍官]";
+							mes "你看起來已經準備好作戰了！";
+							mes "去讓紀堯姆人見識真正的恐懼吧！";
+							mes "今天，我們的勝利吶喊將響徹整個戰場！";
+							close2;
+							warp "bat_room",141,207;
+							end;
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		mes "[克魯瓦軍官]";
+		mes "今天，我們必將獲勝！";
+		break;
+	}
+	close;
+}
