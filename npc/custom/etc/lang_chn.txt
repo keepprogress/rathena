@@ -11,10 +11,13 @@
 
 -	script	LangDefaultChn	-1,{
 OnPCLoginEvent:
-	// Only once per account, so a later @langtype choice sticks
-	if (!#lang_default_set) {
-		#lang_default_set = 1;
+	// Only once per account, so a later @langtype choice sticks; counted only when it worked
+	// (#lang_default_set was set even when it failed, on a map-server built without chn)
+	if (!#lang_chn_done) {
+		#lang_default_set = 0;
 		atcommand "@langtype chn";
+		if (#langtype == 4) // chn
+			#lang_chn_done = 1;
 	}
 	end;
 }
