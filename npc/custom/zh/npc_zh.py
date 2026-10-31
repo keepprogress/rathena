@@ -177,6 +177,7 @@ def main():
 			MEMORY.write_text(json.dumps(memory, ensure_ascii=False, indent='\t', sort_keys=True) + '\n', 'utf-8')
 		print(f'memory {len(memory)}, rejected {bad}')
 	elif cmd == 'apply':
+		locked = locked_names(upstream() + [str(p.relative_to(ROOT)) for p in (ROOT / 'npc/custom').rglob('*.txt') if ZH_DIR not in p.parents])
 		for path in args:
 			src_path = (ROOT / path).resolve()
 			text = src_path.read_text('utf-8', errors='surrogateescape')  # 保留韓文資源名等非 UTF-8 位元組
@@ -191,7 +192,7 @@ def main():
 					done += 1
 			names = 0
 			for n, line in enumerate(lines):
-				if (m := HEADER.match(line)) and (zh := npc_name(m.group(2), memory)):
+				if (m := HEADER.match(line)) and unique_name(m.group(2)) not in locked and (zh := npc_name(m.group(2), memory)):
 					lines[n] = m.group(1) + zh + line[m.end():]
 					names += 1
 			rel = src_path.relative_to(ROOT / 'npc')
@@ -214,6 +215,41 @@ def main():
 		print(f'{CUSTOM_CONF.relative_to(ROOT)}: {len(files)} 個中文副本')
 	else:
 		sys.exit(__doc__)
+
+
+NPC_DEF = re.compile(r'^[^\t/]+\t(?:script|duplicate\(([^)]*)\))\t([^\t]+)\t')
+# 程式碼拿自己的名字當身分用（instance_npcname、donpcevent、hideonnpc、比對）時，
+# strnpcinfo(0)/(1) 會回傳顯示名稱，改成中文就找不到 NPC：這些 NPC 與複製它們的 NPC 名稱維持原文
+SELF_NAME = re.compile(r'strnpcinfo\(\s*[01]\s*\)|\bF_Mora_Mist\b')
+
+
+def unique_name(name):
+	return name.split('::')[1] if '::' in name else name
+
+
+def locked_names(paths):
+	"""回傳程式碼用到自己名字的 NPC 唯一名（含複製它們的 NPC）。"""
+	locked, dups = set(), []
+	for path in paths:
+		cur = None
+		for line in (ROOT / path).read_text('utf-8', errors='surrogateescape').split('\n'):
+			if (m := NPC_DEF.match(line)):
+				cur = unique_name(m.group(2))
+				if m.group(1):
+					dups.append((m.group(1), cur))
+			elif line.startswith('function\t'):
+				cur = None
+			code = line[:strip_comment(line)]
+			if cur and SELF_NAME.search(code) and not DISPLAY.search(code):
+				locked.add(cur)
+	grew = True
+	while grew:  # 複製的複製也要鎖
+		grew = False
+		for src, name in dups:
+			if src in locked and name not in locked:
+				locked.add(name)
+				grew = True
+	return locked
 
 
 def upstream(conf='npc/re/scripts_main.conf', seen=None):

@@ -20,42 +20,42 @@
 //= 1.8 Moved Craft Book Merchant to Renewal path. [Euphy]
 //============================================================ 
 
-alde_alche,24,188,3	script	Guild Dealer	740,{
+alde_alche,24,188,3	script	公會莊家::Guild Dealer	740,{
 	if (checkweight(1201,1) == 0) {
-		mes "- Wait a minute! -";
-		mes "- Currently you are carrying -";
+		mes "- 等一下！ -";
+		mes "- 你目前攜帶了 -";
 		mes "- 道具太多了。 -";
-		mes "- Please come back again -";
-		mes "- after you store some items into kafra storage. -";
+		mes "- 請再來 -";
+		mes "- 在你把部分道具存入卡普拉倉庫後。 -";
 		close;
 	}
-	mes "[Gever Al Sharp]";
+	mes "[傑維爾]";
 	mes "歡迎來到";
-	mes "Alchemist Union.";
-	mes "How can I assist you today?";
+	mes "煉金師公會。";
+	mes "今天有什麼可以為您效勞的嗎？";
 	next;
-	switch(select("Purchase materials.:Purchase a production manual.:Quit.")) {
+	switch(select("購買材料。:購買製作說明書。:離開。")) {
 	case 1:
-		mes "[Gever Al Sharp]";
-		mes "What would you like?";
+		mes "[傑維爾]";
+		mes "您想要什麼？";
 		next;
-		if (select("Medicine Bowl - 8 Zeny:Cancel.") == 1) {
-			mes "[Gever Al Sharp]";
+		if (select("藥缽 - 8 Zeny:取消。") == 1) {
+			mes "[傑維爾]";
 			mes "你要多少？";
-			mes "Enter '0' if you want to quit.";
+			mes "若要離開請輸入 '0'。";
 			next;
 			while(1) {
 				input .@input,0,2001;
 				if (.@input == 0) {
-					mes "[Gever Al Sharp]";
-					mes "The deal was cancelled.";
-					mes "Come again next time.";
+					mes "[傑維爾]";
+					mes "交易已取消。";
+					mes "下次再來。";
 					close;
 				}
 				else if (.@input < 1 || .@input > 2000) {
-					mes "[Gever Al Sharp]";
-					mes "The number must";
-					mes "be less than 2000.";
+					mes "[傑維爾]";
+					mes "數量必須";
+					mes "少於 2000。";
 					next;
 				}
 				else {
@@ -65,41 +65,41 @@ alde_alche,24,188,3	script	Guild Dealer	740,{
 			set .@sell,.@input * 8;
 			set .@item_weight,.@input * 10;
 			if (Zeny < .@sell) {
-				mes "[Gever Al Sharp]";
-				mes "You don't";
-				mes "have enough zeny.";
-				mes "Check how much zeny";
-				mes "you have first.";
+				mes "[傑維爾]";
+				mes "你沒有";
+				mes "足夠的 zeny。";
+				mes "請先確認";
+				mes "你有多少 zeny。";
 				close;
 			}
 			if ((MaxWeight - Weight) < .@item_weight) {
-				mes "[Gever Al Sharp]";
-				mes "It doesn't seem like";
-				mes "you can carry everything.";
-				mes "Please check the space";
-				mes "in your inventory.";
+				mes "[傑維爾]";
+				mes "看來";
+				mes "你無法全部攜帶。";
+				mes "請確認";
+				mes "道具欄的空間。";
 				close;
 			}
 			set Zeny, Zeny-.@sell;
 			getitem 7134,.@input; //Medicine_Bowl
-			mes "[Gever Al Sharp]";
+			mes "[傑維爾]";
 			mes "謝謝。";
-			mes "Come again.";
+			mes "下次再來。";
 			close;
 		}
-		mes "[Gever Al Sharp]";
-		mes "Well then,";
-		mes "come again when";
-		mes "you need to purchase";
-		mes "materials related to";
-		mes "Alchemy, alright?";
+		mes "[傑維爾]";
+		mes "那麼，";
+		mes "請在";
+		mes "需要購買";
+		mes "與";
+		mes "煉金術相關的材料時再來，好嗎？";
 		close;
 	case 2:
-		mes "[Gever Al Sharp]";
-		mes "What do you need?";
-		mes "Manuals are generally 100,000 zeny. But there are a couple of special manuals that will cost more.";
+		mes "[傑維爾]";
+		mes "你需要什麼？";
+		mes "製作說明書一般為 100,000 zeny。不過有幾本特殊的說明書價格更高。";
 		next;
-		switch(select("Potion Creation Guide:Alcohol Creation Guide:Bottle Grenade Creation Guide:Acid Bottle Creation Guide:Plant Bottle Creation Guide:Marine Sphere Bottle Creation Guide:Glistening Coat Creation Guide:Condensed Potion Creation Guide:Cancel Deal.")) {
+		switch(select("一般藥水製作說明書:酒精製作說明書:火煙瓶製作說明書:鹽酸瓶製作說明書:植物瓶製作說明書:刺錘瓶製作說明書:護貝藥製作說明書:纖細藥水製作說明書:取消交易。")) {
 		case 1:
 			callsub S_SellManual,7144,100000; //Normal_Potion_Book
 			break;
@@ -125,15 +125,15 @@ alde_alche,24,188,3	script	Guild Dealer	740,{
 			callsub S_SellManual,7133,240000; //Slim_Potion_Create_Book
 			break;
 		case 9:
-			mes "[Gever Al Sharp]";
+			mes "[傑維爾]";
 			mes "那麼……";
-			mes "Come back if you";
-			mes "ever need to buy";
-			mes "a production manual.";
+			mes "如果你";
+			mes "之後需要購買";
+			mes "製作說明書，歡迎再來。";
 			close;
 		}
 	case 3:
-		mes "[Gever Al Sharp]";
+		mes "[傑維爾]";
 		mes "那好吧，";
 		mes "祝你有美好的一天。";
 		close;
@@ -144,27 +144,27 @@ S_SellManual:
 	.@zeny_req = getarg(1);
 
 	if (Zeny < .@zeny_req) {
-		mes "[Gever Al Sharp]";
-		mes "You don't";
-		mes "have enough zeny.";
-		mes "Check how much zeny";
-		mes "you have first.";
+		mes "[傑維爾]";
+		mes "你沒有";
+		mes "足夠的 zeny。";
+		mes "請先確認";
+		mes "你有多少 zeny。";
 		close;
 	}
-	mes "[Gever Al Sharp]";
+	mes "[傑維爾]";
 	mes getitemname(.@item_id) +"?";
-	mes "That'll be "+ .@zeny_req +" Zeny。";
+	mes "那將會是 "+ .@zeny_req +" Zeny。";
 	next;
-	if (select("Purchase.:Quit.") == 1) {
+	if (select("購買。:離開。") == 1) {
 		Zeny = Zeny - .@zeny_req;
 		getitem .@item_id,1;
-		mes "[Gever Al Sharp]";
+		mes "[傑維爾]";
 		mes "感謝您";
-		mes "your patronage.";
+		mes "您的惠顧。";
 		close;
 	}
-	mes "[Gever Al Sharp]";
-	mes "Come again";
+	mes "[傑維爾]";
+	mes "歡迎再來";
 	mes "下次見。";
 	close;
 }

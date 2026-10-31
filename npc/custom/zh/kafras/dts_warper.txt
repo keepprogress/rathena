@@ -57,7 +57,7 @@
 //= 2.9a Tweaked NPC sprite & cutin used. [Liam]
 //============================================================ 
 
-einbroch,246,70,0	script	Vote Timer#ein	-1,{
+einbroch,246,70,0	script	投票計時#ein::Vote Timer#ein	-1,{
 OnInit:
 	if ($dts) {
 		set $dts,0;
@@ -229,7 +229,7 @@ OnTimer60000:
 	end;
 }
 
-einbroch,245,71,0	script	Vote Timer2#ein	-1,{
+einbroch,245,71,0	script	投票計時2#ein::Vote Timer2#ein	-1,{
 OnEnable:
 	initnpctimer;
 	end;
@@ -251,7 +251,7 @@ OnTimer60000:
 	end;
 }
 
-einbroch,246,71,0	script	Vote Timer3#ein	-1,{
+einbroch,246,71,0	script	投票計時3#ein::Vote Timer3#ein	-1,{
 OnEnable:
 	initnpctimer;
 	end;
@@ -274,7 +274,7 @@ OnTimer60000:
 	end;
 }
 
-einbroch,247,71,0	script	Vote Timer4#ein	-1,{
+einbroch,247,71,0	script	投票計時4#ein::Vote Timer4#ein	-1,{
 OnEnable:
 	initnpctimer;
 	end;
@@ -313,47 +313,47 @@ function	script	F_VoteKafra	{
 	case 8: cutin "kafra_08",2; break;
 	case 9: cutin "kafra_09",2; break;
 	}
-	mes "[Kafra Voting Staff]";
+	mes "[卡普拉投票職員]";
 	mes "你好，冒險者。";
-	mes "As you may be aware, we";
-	mes "are holding an election to";
-	mes "determine which company will";
-	mes "provide the Dungeon Teleport";
-	mes "Service. How may I help you?";
+	mes "如您所知，我們";
+	mes "正在舉行選舉，以";
+	mes "決定由哪家公司";
+	mes "提供地城傳送";
+	mes "服務。請問有什麼可以幫您的？";
 	next;
-	switch(select("Reason for Election:Cast a Vote:Use Teleport Service:Cancel")) {
+	switch(select("選舉說明:投票:使用傳送服務:取消")) {
 	case 1:
-		mes "[Kafra Voting Staff]";
-		mes "Cool Event Corp and the";
-		mes "Kafra Corporation have both";
-		mes "been planning to provide a";
-		mes "Teleport Service to dungeons.";
+		mes "[卡普拉投票職員]";
+		mes "酷樂活動公司與";
+		mes "卡普拉公司雙方";
+		mes "都計畫提供一項";
+		mes "前往地城的傳送服務。";
 		next;
-		mes "[Kafra Voting Staff]";
-		mes "But due to technological";
-		mes "limitations, only one company";
-		mes "can serve as provider for this";
-		mes "Dungeon Teleport Service at a";
-		mes "time. There, both companies have agreed to hold special elections.";
+		mes "[卡普拉投票職員]";
+		mes "但由於技術上的";
+		mes "限制，同一時間只能有一家公司";
+		mes "擔任此項";
+		mes "地城傳送服務的提供者。";
+		mes "因此雙方同意舉辦特別選舉。";
 		next;
-		mes "[Kafra Voting Staff]";
-		mes "Each company has its own";
-		mes "policies and guarantees in";
-		mes "regards to the Dungeon Teleport Service, and in this election, the";
-		mes "customers will ultimately decide and choose what's best for them.";
+		mes "[卡普拉投票職員]";
+		mes "兩家公司各自有其";
+		mes "政策與保證，";
+		mes "關於地城傳送服務的規定。在本次選舉中，";
+		mes "最終將由顧客決定並選擇最適合自己的服務。";
 		next;
-		mes "[Kafra Voting Staff]";
-		mes "For now, the Dungeon";
-		mes "Teleport Service will be";
-		mes "provided in a series of trial periods. This way, customers can";
-		mes "see the benefits of both companies before making the final decision.";
+		mes "[卡普拉投票職員]";
+		mes "目前，地城";
+		mes "傳送服務將會";
+		mes "以一系列試用期的方式提供。如此一來，顧客";
+		mes "能在做出最終決定前，先體驗兩家公司的好處。";
 		next;
-		mes "[Kafra Voting Staff]";
-		mes "If you are qualified,";
-		mes "please vote in each election";
-		mes "to decide which company will";
-		mes "provide the Dungeon Teleport";
-		mes "Service for the next trial period. Thank you for your support~";
+		mes "[卡普拉投票職員]";
+		mes "如果您符合資格，";
+		mes "請在每次選舉中投票，";
+		mes "以決定由哪家公司";
+		mes "提供地城傳送";
+		mes "於下一個試用期提供傳送服務。感謝您的支持～";
 		break;
 	case 2:
 		//if (lhz_boss < 17) {
@@ -371,169 +371,169 @@ function	script	F_VoteKafra	{
 		//else {
 			if ($DTS_Result == 0) {
 				if (lhz_vote <= $DTS_VoteCount) {
-					mes "[Kafra Voting Staff]";
-					mes "We, the Kafra Corporation,";
-					mes "are planning to provide the";
-					mes "Dungeon Teleport Service";
-					mes "to the following dungeons...";
+					mes "[卡普拉投票職員]";
+					mes "我們卡普拉公司，";
+					mes "計畫提供";
+					mes "地城傳送服務";
+					mes "前往以下地城……";
 					next;
 					mes " ";
 					mes " ";
 					if ($DTS_KafraWins == 0) {
-						mes "^FF0000Toy Factory, Level 2^000000";
+						mes "^FF0000薑餅城玩具工廠 2 層^000000";
 					}
 					else if ($DTS_KafraWins == 1) {
-						mes "^FF0000Toy Factory, Level 2^000000";
-						mes "^FF0000Al De Baran Clock Tower, Level 3 ^000000";
+						mes "^FF0000薑餅城玩具工廠 2 層^000000";
+						mes "^FF0000艾爾帕蘭鐘塔 3 層 ^000000";
 					}
 					else {
-						mes "^FF0000Toy Factory, Level 2^000000";
-						mes "^FF0000Al De Baran Clock Tower, Level 3 Lava Dungeon, Level 2^000000";
+						mes "^FF0000薑餅城玩具工廠 2 層^000000";
+						mes "^FF0000艾爾帕蘭鐘塔 3 層、凝固的岩漿地城 2 層^000000";
 					}
 					next;
-					mes "[Kafra Voting Staff]";
-					mes "If you are interested in";
-					mes "a Teleport Service to this";
-					mes "area, then please vote for";
-					mes "us. Would you like to vote";
-					mes "for the Kafra Corporation?";
+					mes "[卡普拉投票職員]";
+					mes "如果您對";
+					mes "前往此";
+					mes "區域的傳送服務有興趣，請";
+					mes "投票支持我們。您想要投票";
+					mes "支持卡普拉公司嗎？";
 					next;
-					switch(select("No:Yes")) {
+					switch(select("否:是")) {
 					case 1:
-						mes "[Kafra Voting Staff]";
-						mes "I understand. But if you";
-						mes "happen to change your mind,";
-						mes "you are welcome to come back";
-						mes "at any time. Thank you and";
-						mes "have a good day, adventurer.";
+						mes "[卡普拉投票職員]";
+						mes "我明白。但如果您";
+						mes "改變心意，";
+						mes "隨時歡迎再回來";
+						mes "。謝謝您，";
+						mes "祝您有美好的一天，冒險者。";
 						break;
 					case 2:
 						set lhz_vote,$DTS_VoteCount+1;
 						set $DTS_KafraVotes,$DTS_KafraVotes+1;
-						mes "[Kafra Voting Staff]";
-						mes "Thanks for your vote!";
-						mes "We'll continue to do our best";
-						mes "to provide the highest quality";
-						mes "service to our customers. Have";
-						mes "a good day and remember that the Kafra service is on your side~";
+						mes "[卡普拉投票職員]";
+						mes "感謝您的投票！";
+						mes "我們會繼續努力";
+						mes "提供最優質的";
+						mes "服務給我們的顧客。祝您";
+						mes "有美好的一天，請記得卡普拉的服務永遠站在您這邊～";
 						break;
 					}
 				}
 				else {
-					mes "[Kafra Voting Staff]";
-					mes "I'm sorry, but you've ";
-					mes "already participated in";
-					mes "this election. When the next";
-					mes "election comes, you will be";
-					mes "able to vote once again.";
-					mes "Thank you for your support~";
+					mes "[卡普拉投票職員]";
+					mes "很抱歉，您已經 ";
+					mes "參與過";
+					mes "本次選舉了。下一次";
+					mes "選舉時，您就";
+					mes "能再次投票。";
+					mes "感謝您的支持～";
 				}
 			}
 			else if ($DTS_Result == 3) {
 				if (lhz_vote <= $DTS_VoteCount) {
-					mes "[Kafra Voting Staff]";
-					mes "After totalling the number of";
-					mes "votes from the last election,";
-					mes "we have concluded that the";
-					mes "minimum voter participation";
-					mes "condition was not satisfied.";
+					mes "[卡普拉投票職員]";
+					mes "統計上一次選舉的";
+					mes "票數後，";
+					mes "我們認為";
+					mes "最低投票人數";
+					mes "條件未達成。";
 					next;
-					mes "[Kafra Voting Staff]";
-					mes "Therefore, another election to";
-					mes "determine which company will";
-					mes "provide the Dungeon Teleport";
-					mes "Service will be held. The Kafra";
-					mes "Corporation will teleport to";
-					mes "the following dungeons...";
+					mes "[卡普拉投票職員]";
+					mes "因此，將再次舉行選舉，";
+					mes "決定由哪家公司";
+					mes "提供地城傳送";
+					mes "以決定傳送服務提供者。卡普拉";
+					mes "公司將會傳送至";
+					mes "以下地城……";
 					next;
 					mes " ";
 					mes " ";
 					if ($DTS_KafraWins == 0) {
-						mes "^FF0000Toy Factory, Level 2^000000";
+						mes "^FF0000薑餅城玩具工廠 2 層^000000";
 					}
 					else if ($DTS_KafraWins == 1) {
-						mes "^FF0000Toy Factory, Level 2^000000";
-						mes "^FF0000Al De Baran Clock Tower, Level 3 ^000000";
+						mes "^FF0000薑餅城玩具工廠 2 層^000000";
+						mes "^FF0000艾爾帕蘭鐘塔 3 層 ^000000";
 					}
 					else {
-						mes "^FF0000Toy Factory, Level 2^000000";
-						mes "^FF0000Al De Baran Clock Tower, Level 3 Lava Dungeon, Level 2^000000";
+						mes "^FF0000薑餅城玩具工廠 2 層^000000";
+						mes "^FF0000艾爾帕蘭鐘塔 3 層、凝固的岩漿地城 2 層^000000";
 					}
 					next;
-					mes "[Kafra Voting Staff]";
-					mes "If you are interested in";
-					mes "a Teleport Service to these";
-					mes "areas, then please vote for";
-					mes "us. Would you like to vote";
-					mes "for the Kafra Corporation?";
+					mes "[卡普拉投票職員]";
+					mes "如果您對";
+					mes "前往這些";
+					mes "區域的傳送服務，請投票給";
+					mes "投票支持我們。您想要投票";
+					mes "支持卡普拉公司嗎？";
 					next;
-					switch(select("No:Yes")) {
+					switch(select("否:是")) {
 					case 1:
-						mes "[Kafra Voting Staff]";
-						mes "I understand. But if you";
-						mes "happen to change your mind,";
-						mes "you are welcome to come back";
-						mes "at any time. Thank you and";
-						mes "have a good day, adventurer.";
+						mes "[卡普拉投票職員]";
+						mes "我明白。但如果您";
+						mes "改變心意，";
+						mes "隨時歡迎再回來";
+						mes "。謝謝您，";
+						mes "祝您有美好的一天，冒險者。";
 						break;
 					case 2:
 						set lhz_vote,$DTS_VoteCount+1;
 						set $DTS_KafraVotes,$DTS_KafraVotes+1;
-						mes "[Kafra Voting Staff]";
-						mes "Thanks for your vote!";
-						mes "We'll continue to do our best";
-						mes "to provide the highest quality";
-						mes "service to our customers. Have";
-						mes "a good day and remember that the Kafra service is on your side~";
+						mes "[卡普拉投票職員]";
+						mes "感謝您的投票！";
+						mes "我們會繼續努力";
+						mes "提供最優質的";
+						mes "服務給我們的顧客。祝您";
+						mes "有美好的一天，請記得卡普拉的服務永遠站在您這邊～";
 						break;
 					}
 				}
 				else {
-					mes "[Kafra Voting Staff]";
-					mes "After totalling the number of";
-					mes "votes from the last election,";
-					mes "we have concluded that the";
-					mes "minimum voter participation";
-					mes "condition was not satisfied.";
+					mes "[卡普拉投票職員]";
+					mes "統計上一次選舉的";
+					mes "票數後，";
+					mes "我們認為";
+					mes "最低投票人數";
+					mes "條件未達成。";
 					next;
-					mes "[Kafra Voting Staff]";
-					mes "Therefore, another election to";
-					mes "determine which company will";
-					mes "provide the Dungeon Teleport";
-					mes "Service will be held. However,";
-					mes "since you've already voted, you cannot vote again in this election.";
+					mes "[卡普拉投票職員]";
+					mes "因此，將再次舉行選舉，";
+					mes "決定由哪家公司";
+					mes "提供地城傳送";
+					mes "卡普拉公司。但是，";
+					mes "因為您已經投過票了，本次選舉無法再次投票。";
 					next;
-					mes "[Kafra Voting Staff]";
-					mes "Your participation in these";
-					mes "elections is much appreciated,";
-					mes "and we encourage you to vote";
-					mes "again during the next election.";
-					mes "Thank you and have a nice day~";
+					mes "[卡普拉投票職員]";
+					mes "感謝您參與這些";
+					mes "選舉，";
+					mes "也鼓勵您在";
+					mes "下一次選舉時再次投票。";
+					mes "謝謝您，祝您有美好的一天～";
 				}
 			}
 			else {
-				mes "[Kafra Voting Staff]";
-				mes "I'm sorry, but there are";
-				mes "no elections taking place at";
-				mes "this time. When the polls are";
-				mes "open, we encourage you to take";
-				mes "part and voice your opinions.";
-				mes "Thank you for your support~";
+				mes "[卡普拉投票職員]";
+				mes "很抱歉，目前";
+				mes "沒有正在進行的選舉";
+				mes "。投票開放時，";
+				mes "我們鼓勵您";
+				mes "踴躍參與，表達您的意見。";
+				mes "感謝您的支持～";
 			}
 		//}
 		break;
 	case 3:
 		if ($DTS_Result == 2) {
-			mes "[Kafra Voting Staff]";
-			mes "Thank you for choosing the";
-			mes "Dungeon Teleport Service.";
-			mes "Please keep in mind that the";
-			mes "Free Warp Tickets and Kafra";
-			mes "Special Reserve Points do not";
-			mes "apply in this special service.";
+			mes "[卡普拉投票職員]";
+			mes "感謝您選擇";
+			mes "地城傳送服務。";
+			mes "請注意，";
+			mes "免費傳送券與卡普拉";
+			mes "特別儲值點數不";
+			mes "適用於此特殊服務。";
 			next;
 			if ($DTS_KafraWins == 0) {
-				switch(select("Toy Factory, Level 2 -> 4,000 z:Cancel")) {
+				switch(select("薑餅城玩具工廠 2 層 -> 4,000 z:取消")) {
 				case 1:
 					if (Zeny >= 4000) {
 						cutin "",255;
@@ -542,23 +542,23 @@ function	script	F_VoteKafra	{
 						end;
 					}
 					else {
-						mes "[Kafra Voting Staff]";
+						mes "[卡普拉投票職員]";
 						mes "很抱歉，您";
-						mes "have enough money to pay";
-						mes "the 4,000 zeny fee to teleport";
-						mes "to the Toy Factory. Please";
-						mes "check your funds again.";
+						mes "錢不夠支付";
+						mes "前往的 4,000 zeny 費用";
+						mes "薑餅城玩具工廠。請";
+						mes "再次確認您的金額。";
 					}
 					break;
 				case 2:
-					mes "[Kafra Voting Staff]";
+					mes "[卡普拉投票職員]";
 					mes "在此，卡普拉公司";
 					mes "一直致力於為您提供最優質的服務。我們希望能符合您冒險的需求與卓越的標準。";
 					break;
 				}
 			}
 			else if ($DTS_KafraWins == 1) {
-				switch(select("Toy Factory, Level 2 -> 4,000 z:Clock Tower, Level 3 -> 4,000 z:Cancel")) {
+				switch(select("薑餅城玩具工廠 2 層 -> 4,000 z:艾爾帕蘭鐘塔 3 層 -> 4,000 z:取消")) {
 				case 1:
 					if (Zeny >= 4000) {
 						set Zeny, Zeny-4000;
@@ -567,12 +567,12 @@ function	script	F_VoteKafra	{
 						end;
 					}
 					else {
-						mes "[Kafra Voting Staff]";
+						mes "[卡普拉投票職員]";
 						mes "很抱歉，您";
-						mes "have enough money to pay";
-						mes "the 4,000 zeny fee to teleport";
-						mes "to the Toy Factory. Please";
-						mes "check your funds again.";
+						mes "錢不夠支付";
+						mes "前往的 4,000 zeny 費用";
+						mes "薑餅城玩具工廠。請";
+						mes "再次確認您的金額。";
 					}
 					break;
 				case 2:
@@ -583,23 +583,23 @@ function	script	F_VoteKafra	{
 						end;
 					}
 					else {
-						mes "[Kafra Voting Staff]";
+						mes "[卡普拉投票職員]";
 						mes "很抱歉，您";
-						mes "have enough money to pay";
-						mes "the 4,000 zeny fee to teleport";
-						mes "to the Clock Tower. Please";
-						mes "check your funds again.";
+						mes "錢不夠支付";
+						mes "前往的 4,000 zeny 費用";
+						mes "艾爾帕蘭鐘塔。請";
+						mes "再次確認您的金額。";
 					}
 					break;
 				case 3:
-					mes "[Kafra Voting Staff]";
+					mes "[卡普拉投票職員]";
 					mes "在此，卡普拉公司";
 					mes "一直致力於為您提供最優質的服務。我們希望能符合您冒險的需求與卓越的標準。";
 					break;
 				}
 			}
 			else {
-				switch(select("Toy Factory, Level 2 -> 4,000 z:Clock Tower, Level 3 -> 4,000 z:Lava Dungeon, Level 2 -> 4,000 z:Cancel")) {
+				switch(select("薑餅城玩具工廠 2 層 -> 4,000 z:艾爾帕蘭鐘塔 3 層 -> 4,000 z:凝固的岩漿地城 2 層 -> 4,000 z:取消")) {
 				case 1:
 					if (Zeny >= 4000) {
 						set Zeny, Zeny-4000;
@@ -608,12 +608,12 @@ function	script	F_VoteKafra	{
 						end;
 					}
 					else {
-						mes "[Kafra Voting Staff]";
+						mes "[卡普拉投票職員]";
 						mes "很抱歉，您";
-						mes "have enough money to pay";
-						mes "the 4,000 zeny fee to teleport";
-						mes "to the Toy Factory. Please";
-						mes "check your funds again.";
+						mes "錢不夠支付";
+						mes "前往的 4,000 zeny 費用";
+						mes "薑餅城玩具工廠。請";
+						mes "再次確認您的金額。";
 					}
 					break;
 				case 2:
@@ -624,12 +624,12 @@ function	script	F_VoteKafra	{
 						end;
 					}
 					else {
-						mes "[Kafra Voting Staff]";
+						mes "[卡普拉投票職員]";
 						mes "很抱歉，您";
-						mes "have enough money to pay";
-						mes "the 4,000 zeny fee to teleport";
-						mes "to the Clock Tower. Please";
-						mes "check your funds again.";
+						mes "錢不夠支付";
+						mes "前往的 4,000 zeny 費用";
+						mes "艾爾帕蘭鐘塔。請";
+						mes "再次確認您的金額。";
 					}
 					break;
 				case 3:
@@ -640,16 +640,16 @@ function	script	F_VoteKafra	{
 						end;
 					}
 					else {
-						mes "[Kafra Voting Staff]";
+						mes "[卡普拉投票職員]";
 						mes "很抱歉，您";
-						mes "have enough money to pay";
-						mes "the 4,000 zeny fee to teleport";
-						mes "to the Lava Dungeon. Please";
-						mes "check your funds again.";
+						mes "錢不夠支付";
+						mes "前往的 4,000 zeny 費用";
+						mes "凝固的岩漿地城。請";
+						mes "再次確認您的金額。";
 					}
 					break;
 				case 4:
-					mes "[Kafra Voting Staff]";
+					mes "[卡普拉投票職員]";
 					mes "在此，卡普拉公司";
 					mes "一直致力於為您提供最優質的服務。我們希望能符合您冒險的需求與卓越的標準。";
 					break;
@@ -657,25 +657,25 @@ function	script	F_VoteKafra	{
 			}
 		}
 		else if ($DTS_Result == 1) {
-			mes "[Kafra Voting Staff]";
-			mes "I'm sorry, but because of";
-			mes "the results from the most";
-			mes "recent election, Cool Event";
-			mes "Corp. is currently handling";
-			mes "the Dungeon Teleport Service. We apologize for the inconvenience.";
+			mes "[卡普拉投票職員]";
+			mes "很抱歉，由於";
+			mes "最近一次";
+			mes "選舉的結果，酷樂活動";
+			mes "公司目前正在負責";
+			mes "地城傳送服務。對此我們深感抱歉。";
 		}
 		else {
-			mes "[Kafra Voting Staff]";
+			mes "[卡普拉投票職員]";
 			mes "很抱歉，";
-			mes "Dungeon Teleport Service";
-			mes "is not active during the voting";
-			mes "period. Once the election is";
-			mes "over, the Dungeon Teleport";
-			mes "Service will become available.";
+			mes "地城傳送服務";
+			mes "投票期間無法使用，";
+			mes "選舉結束後，";
+			mes "地城傳送服務";
+			mes "將恢復可用。";
 		}
 		break;
 	case 4:
-		mes "[Kafra Voting Staff]";
+		mes "[卡普拉投票職員]";
 		mes "在此，卡普拉公司";
 		mes "一直致力於為您提供最優質的服務。我們希望能符合您冒險的需求與卓越的標準。";
 		break;
@@ -685,78 +685,78 @@ function	script	F_VoteKafra	{
 	end;
 }
 
-yuno,162,191,4	script	Kafra Voting Staff#yuno	861,{
+yuno,162,191,4	script	卡普拉投票職員#yuno::Kafra Voting Staff#yuno	861,{
 	callfunc "F_VoteKafra",9;
 }
-prontera,164,125,4	script	Kafra Voting Staff#prt	116,{
+prontera,164,125,4	script	卡普拉投票職員#prt::Kafra Voting Staff#prt	116,{
 	callfunc "F_VoteKafra",2;
 }
-moc_ruins,104,133,4	script	Kafra Voting Staff#moc	116,{
+moc_ruins,104,133,4	script	卡普拉投票職員#moc::Kafra Voting Staff#moc	116,{
 	callfunc "F_VoteKafra",2;
 }
-geffen,122,37,4	script	Kafra Voting Staff#gef	116,{
+geffen,122,37,4	script	卡普拉投票職員#gef::Kafra Voting Staff#gef	116,{
 	callfunc "F_VoteKafra",2;
 }
-payon,158,182,4	script	Kafra Voting Staff#pay	116,{
+payon,158,182,4	script	卡普拉投票職員#pay::Kafra Voting Staff#pay	116,{
 	callfunc "F_VoteKafra",2;
 }
-alberta,119,70,4	script	Kafra Voting Staff#alb	116,{
+alberta,119,70,4	script	卡普拉投票職員#alb::Kafra Voting Staff#alb	116,{
 	callfunc "F_VoteKafra",2;
 }
-aldebaran,145,102,4	script	Kafra Voting Staff#alde	116,{
+aldebaran,145,102,4	script	卡普拉投票職員#alde::Kafra Voting Staff#alde	116,{
 	callfunc "F_VoteKafra",2;
 }
-lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
+lighthalzen,163,60,4	script	卡普拉投票職員#lght::Kafra Voting Staff#lght	861,{
 	callfunc "F_VoteKafra",9;
 }
 
 -	script	Cool Event Staff::VotingStaffCCE	874,{
 	callfunc "F_ClearGarbage";				//Clear outdated, unused variables
 	cutin "zonda_01",2;
-	mes "[Cool Event Corp. Voting Staff]";
-	mes "Hello! Don't forget to make";
-	mes "your voice be heard and make";
-	mes "sure you vote in the elections";
-	mes "between Cool Event Corp. and";
-	mes "Kafra Corporation for control of the Dungeon Teleport Service!";
+	mes "[酷樂投票職員]";
+	mes "您好！別忘了要";
+	mes "讓您的聲音被聽見，";
+	mes "並在";
+	mes "酷樂活動公司與";
+	mes "卡普拉公司之間的選舉中投票，爭取地城傳送服務的主導權！";
 	next;
-	switch(select("Reason for Election:Cast a Vote:Use Teleport Service:Cancel")) {
+	switch(select("選舉說明:投票:使用傳送服務:取消")) {
 	case 1:
-		mes "[Cool Event Corp. Voting Staff]";
-		mes "Cool Event Corp. has been";
-		mes "planning to provide a new";
-		mes "Dungeon Teleport Service to";
-		mes "its customers, a service not";
-		mes "already provided by the Kafra";
-		mes "Corporation. However...";
+		mes "[酷樂投票職員]";
+		mes "酷樂活動公司";
+		mes "一直計畫提供一項新的";
+		mes "地城傳送服務給";
+		mes "顧客，這是卡普拉公司";
+		mes "尚未提供的服務。";
+		mes "然而……";
 		next;
-		mes "[Cool Event Corp. Voting Staff]";
-		mes "Kafra Corporation, which";
-		mes "already monopolizes the";
-		mes "public teleportation market,";
-		mes "actually also had plans to";
-		mes "provide a similar service.";
+		mes "[酷樂投票職員]";
+		mes "卡普拉公司，";
+		mes "已經壟斷了";
+		mes "公共傳送市場，";
+		mes "其實也有計畫";
+		mes "提供類似的服務。";
 		next;
-		mes "[Cool Event Corp. Voting Staff]";
-		mes "Because of technological";
-		mes "limitations, only one company";
-		mes "can be chosen as the provider";
-		mes "of this Dungeon Teleport Service. Hence, we will let the customers";
-		mes "decide through these elections.";
+		mes "[酷樂投票職員]";
+		mes "由於技術上的";
+		mes "限制，同一時間只能有一家公司";
+		mes "被選為提供者";
+		mes "這項地城傳送服務。因此，我們將由顧客";
+		mes "透過這些選舉來決定。";
 		next;
-		mes "[Cool Event Corp. Voting Staff]";
-		mes "Multiple elections will be";
-		mes "held so that our customers";
-		mes "can test out the special services of each company for themselves.";
-		mes "However, keep in mind that you must be eligible in order to vote.";
+		mes "[酷樂投票職員]";
+		mes "將會舉行多次選舉，";
+		mes "讓我們的顧客";
+		mes "能親自體驗兩家公司各自的特殊服務。";
+		mes "不過，請注意您必須符合資格才能投票。";
 		next;
-		mes "[Cool Event Corp. Voting Staff]";
-		mes "For voter eligibility";
-		mes "details, please visit our";
-		mes "headquarters in the city of";
-		mes "Lighthalzen located in the";
-		mes "Schwarzwald Republic.";
-		mes "Thank you for your time.";
+		mes "[酷樂投票職員]";
+		mes "投票資格";
+		mes "的詳細資訊，請造訪";
+		mes "位於";
+		mes "光明城的總部";
+		mes "施瓦茨瓦德共和國。";
+		mes "感謝您抽空來訪。";
 		break;
 	case 2:
 		//if (lhz_boss < 17) {
@@ -773,167 +773,167 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 		//else {
 			if ($DTS_Result == 0) {
 				if (lhz_vote <= $DTS_VoteCount) {
-					mes "[Cool Event Corp. Voting Staff]";
-					mes "Cool Event Corp.,";
-					mes "if chosen to provide the";
-					mes "Dungeon Teleport Service,";
-					mes "will teleport adventurers to";
-					mes "the following dungeons...";
+					mes "[酷樂投票職員]";
+					mes "酷樂活動公司，";
+					mes "若被選為";
+					mes "地城傳送服務的提供者，";
+					mes "將會把冒險者傳送至";
+					mes "以下地城……";
 					next;
 					mes " ";
 					mes " ";
 					if ($DTS_JondaWins == 0) {
-						mes "^FF0000Byalan Dungeon, Level 3^000000";
+						mes "^FF0000海盜地洞密穴 3 層^000000";
 					}
 					else if ($DTS_JondaWins == 1) {
-						mes "^FF0000Byalan Dungeon, Level 3^000000";
-						mes "^FF0000Clock Tower, 3rd Floor^000000";
+						mes "^FF0000海盜地洞密穴 3 層^000000";
+						mes "^FF0000艾爾帕蘭鐘塔 3 樓^000000";
 					}
 					else {
-						mes "^FF0000Byalan Dungeon, Level 3^000000";
-						mes "^FF0000Clock Tower, 3rd Floor^000000";
-						mes "^FF0000Glast Heim Entrance^000000";
+						mes "^FF0000海盜地洞密穴 3 層^000000";
+						mes "^FF0000艾爾帕蘭鐘塔 3 樓^000000";
+						mes "^FF0000古城入口^000000";
 					}
 					next;
-					mes "[Cool Event Corp. Voting Staff]";
-					mes "If you are interested in";
-					mes "these destinations, then";
-					mes "it would be in your best";
-					mes "interest to vote for us.";
-					mes "Would you like to vote";
-					mes "for Cool Event Corp.?";
+					mes "[酷樂投票職員]";
+					mes "如果您對";
+					mes "這些地點，那麼";
+					mes "對您最有利的做法";
+					mes "就是投票支持我們。";
+					mes "您想要投票";
+					mes "支持酷樂活動公司嗎？";
 					next;
-					switch(select("No:Yes")) {
+					switch(select("否:是")) {
 					case 1:
-						mes "[Cool Event Corp. Voting Staff]";
-						mes "Ah, I see... Well, if you";
-						mes "happen to change your mind,";
-						mes "feel free to come back and";
-						mes "cast your vote for Cool Event";
-						mes "Corp, alright? Have a nice day~";
+						mes "[酷樂投票職員]";
+						mes "啊，原來如此……那麼如果您";
+						mes "改變心意，";
+						mes "隨時都可以回來";
+						mes "投票支持酷樂活動";
+						mes "公司，好嗎？祝您有美好的一天～";
 						break;
 					case 2:
 						set lhz_vote,$DTS_VoteCount+1;
 						set $DTS_JondaVotes,$DTS_JondaVotes+1;
-						mes "[Cool Event Corp. Voting Staff]";
-						mes "Thank you for your vote!";
-						mes "It's customers like you who";
-						mes "ensure the success and great";
-						mes "service that you have come to";
-						mes "expect from Cool Event Corp.";
-						mes "Thank you and have a nice day~";
+						mes "[酷樂投票職員]";
+						mes "感謝您的投票！";
+						mes "正是像您這樣的顧客，";
+						mes "才能確保我們的成功，";
+						mes "以及您一直期待的";
+						mes "酷樂活動公司優質服務。";
+						mes "謝謝您，祝您有美好的一天～";
 						break;
 					}
 				}
 				else {
-					mes "[Cool Event Corp. Voting Staff]";
-					mes "I'm sorry, but you've";
-					mes "already cast your vote";
-					mes "in this election. However,";
-					mes "please don't let that stop you";
-					mes "from voting for Cool Event";
-					mes "Corp. in the next election~";
+					mes "[酷樂投票職員]";
+					mes "很抱歉，您已經";
+					mes "投過票了";
+					mes "在本次選舉中。不過，";
+					mes "請不要因此卻步";
+					mes "，在下一次選舉中";
+					mes "也請投票支持酷樂活動公司～";
 				}
 			}
 			else if ($DTS_Result == 3) {
 				if (lhz_vote <= $DTS_VoteCount) {
-					mes "[Cool Event Corp. Voting Staff]";
-					mes "Unfortunately, there wasn't";
-					mes "enough voter turnout in the";
-					mes "last election, so we're holding";
-					mes "another election to determine";
-					mes "which company will provide the";
-					mes "Dungeon Teleport Service.";
+					mes "[酷樂投票職員]";
+					mes "很遺憾，上一次選舉";
+					mes "的投票人數不足，";
+					mes "因此我們將再舉行一次";
+					mes "選舉，以決定";
+					mes "由哪家公司提供地城傳送服務。";
+					mes "地城傳送服務。";
 					next;
-					mes "[Cool Event Corp. Voting Staff]";
-					mes "Cool Event Corp.,";
-					mes "if chosen to provide the";
-					mes "Dungeon Teleport Service,";
-					mes "will teleport adventurers to";
-					mes "the following dungeons...";
+					mes "[酷樂投票職員]";
+					mes "酷樂活動公司，";
+					mes "若被選為";
+					mes "地城傳送服務的提供者，";
+					mes "將會把冒險者傳送至";
+					mes "以下地城……";
 					next;
 					mes " ";
 					mes " ";
 					if ($DTS_JondaWins == 0) {
-						mes "^FF0000Byalan Dungeon, Level 3^000000";
+						mes "^FF0000海盜地洞密穴 3 層^000000";
 					}
 					else if ($DTS_JondaWins == 1) {
-						mes "^FF0000Byalan Dungeon, Level 3^000000";
-						mes "^FF0000Clock Tower, 3rd Floor^000000";
+						mes "^FF0000海盜地洞密穴 3 層^000000";
+						mes "^FF0000艾爾帕蘭鐘塔 3 樓^000000";
 					}
 					else {
-						mes "^FF0000Byalan Dungeon, Level 3^000000";
-						mes "^FF0000Clock Tower, 3rd Floor^000000";
-						mes "^FF0000Glast Heim Entrance^000000";
+						mes "^FF0000海盜地洞密穴 3 層^000000";
+						mes "^FF0000艾爾帕蘭鐘塔 3 樓^000000";
+						mes "^FF0000古城入口^000000";
 					}
 					next;
-					mes "[Cool Event Corp. Voting Staff]";
-					mes "If you are interested in";
-					mes "these destinations, then";
-					mes "it would be in your best";
-					mes "interest to vote for us.";
-					mes "Would you like to vote";
-					mes "for Cool Event Corp.?";
+					mes "[酷樂投票職員]";
+					mes "如果您對";
+					mes "這些地點，那麼";
+					mes "對您最有利的做法";
+					mes "就是投票支持我們。";
+					mes "您想要投票";
+					mes "支持酷樂活動公司嗎？";
 					next;
-					switch(select("No:Yes")) {
+					switch(select("否:是")) {
 					case 1:
-						mes "[Cool Event Corp. Voting Staff]";
-						mes "Ah, I see... Well, if you";
-						mes "happen to change your mind,";
-						mes "feel free to come back and";
-						mes "cast your vote for Cool Event";
-						mes "Corp, alright? Have a nice day~";
+						mes "[酷樂投票職員]";
+						mes "啊，原來如此……那麼如果您";
+						mes "改變心意，";
+						mes "隨時都可以回來";
+						mes "投票支持酷樂活動";
+						mes "公司，好嗎？祝您有美好的一天～";
 						break;
 					case 2:
 						set lhz_vote,$DTS_VoteCount+1;
 						set $DTS_JondaVotes,$DTS_JondaVotes+1;
-						mes "[Cool Event Corp. Voting Staff]";
-						mes "Thank you for your vote!";
-						mes "It's customers like you who";
-						mes "ensure the success and great";
-						mes "service that you have come to";
-						mes "expect from Cool Event Corp.";
-						mes "Thank you and have a nice day~";
+						mes "[酷樂投票職員]";
+						mes "感謝您的投票！";
+						mes "正是像您這樣的顧客，";
+						mes "才能確保我們的成功，";
+						mes "以及您一直期待的";
+						mes "酷樂活動公司優質服務。";
+						mes "謝謝您，祝您有美好的一天～";
 						break;
 					}
 				}
 				else {
-					mes "[Cool Event Corp. Voting Staff]";
-					mes "Unfortunately, there wasn't";
-					mes "enough voter turnout in the";
-					mes "last election, so we're holding";
-					mes "another election to determine";
-					mes "which company will provide the";
-					mes "Dungeon Teleport Service.";
+					mes "[酷樂投票職員]";
+					mes "很遺憾，上一次選舉";
+					mes "的投票人數不足，";
+					mes "因此我們將再舉行一次";
+					mes "選舉，以決定";
+					mes "由哪家公司提供地城傳送服務。";
+					mes "地城傳送服務。";
 					next;
-					mes "[Cool Event Corp. Voting Staff]";
-					mes "We appreciate that";
-					mes "you've already participated";
-					mes "in this second election by";
-					mes "casting your vote. Thank";
-					mes "you for your support~";
+					mes "[酷樂投票職員]";
+					mes "我們感謝您";
+					mes "已經參與過";
+					mes "這次的第二次選舉，";
+					mes "並投下您的一票。感謝";
+					mes "您的支持～";
 				}
 			}
 			else {
-				mes "[Cool Event Corp. Voting Staff]";
-				mes "I'm sorry, but an election is";
-				mes "not currently being held at this time. Please come and cast your";
-				mes "vote at the next election to decide which company will provide the";
-				mes "Dungeon Teleport Service.";
+				mes "[酷樂投票職員]";
+				mes "很抱歉，目前";
+				mes "並沒有舉行選舉。請在下一次選舉時前來投下您的";
+				mes "一票，以決定由哪家公司提供";
+				mes "地城傳送服務。";
 			}
 		//}
 		break;
 	case 3:
 		if ($DTS_Result == 1) {
-			mes "[Cool Event Corp. Voting Staff]";
-			mes "Please remember that we";
-			mes "cannot accept Free Warp Tickets";
-			mes "or award Special Reserve Points";
-			mes "for this service. Now, please";
-			mes "choose your destination.";
+			mes "[酷樂投票職員]";
+			mes "請記得，我們";
+			mes "無法接受免費傳送券";
+			mes "或贈予特別儲值點數";
+			mes "於此服務。現在請";
+			mes "選擇您的目的地。";
 			next;
 			if ($DTS_JondaWins == 0) {
-				switch(select("Byalan Dungeon, Level 3 -> 4,000 z:Cancel")) {
+				switch(select("海盜地洞密穴 3 層 -> 4,000 z:取消")) {
 				case 1:
 					if (Zeny >= 4000) {
 						set Zeny, Zeny-4000;
@@ -942,26 +942,26 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 						end;
 					}
 					else {
-						mes "[Cool Event Corp. Voting Staff]";
-						mes "I'm sorry, but you do";
-						mes "not have enough zeny to";
-						mes "teleport to this destination.";
-						mes "The teleport fee is 4,000 zeny.";
+						mes "[酷樂投票職員]";
+						mes "很抱歉，您";
+						mes "的 zeny 不足以";
+						mes "傳送至此目的地。";
+						mes "傳送費用為 4,000 zeny。";
 					}
 					break;
 				case 2:
-					mes "[Cool Event Corp. Voting Staff]";
-					mes "Always be assured that";
-					mes "Cool Event Corp. will do";
-					mes "everything in its power to";
-					mes "ensure the satisfaction of";
-					mes "its customers, young and old";
-					mes "and big and small. Thank you~";
+					mes "[酷樂投票職員]";
+					mes "請放心，";
+					mes "酷樂活動公司";
+					mes "會盡全力";
+					mes "確保";
+					mes "所有顧客，不分老少，";
+					mes "不論大小，感謝您的惠顧～";
 					break;
 				}
 			}
 			else if ($DTS_JondaWins == 1) {
-				switch(select("Byalan Dungeon, Level 3 -> 4,000 z:Clock Tower, 3rd Floor -> 4,000 z:Cancel")) {
+				switch(select("海盜地洞密穴 3 層 -> 4,000 z:艾爾帕蘭鐘塔 3 樓 -> 4,000 z:取消")) {
 				case 1:
 					if (Zeny >= 4000) {
 						set Zeny, Zeny-4000;
@@ -970,11 +970,11 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 						end;
 					}
 					else {
-						mes "[Cool Event Corp. Voting Staff]";
-						mes "I'm sorry, but you do";
-						mes "not have enough zeny to";
-						mes "teleport to this destination.";
-						mes "The teleport fee is 4,000 zeny.";
+						mes "[酷樂投票職員]";
+						mes "很抱歉，您";
+						mes "的 zeny 不足以";
+						mes "傳送至此目的地。";
+						mes "傳送費用為 4,000 zeny。";
 					}
 					break;
 				case 2:
@@ -985,33 +985,33 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 						end;
 					}
 					else {
-						mes "[Cool Event Corp. Voting Staff]";
-						mes "I'm sorry, but you do";
-						mes "not have enough zeny to";
-						mes "teleport to this destination.";
-						mes "The teleport fee is 4,000 zeny.";
+						mes "[酷樂投票職員]";
+						mes "很抱歉，您";
+						mes "的 zeny 不足以";
+						mes "傳送至此目的地。";
+						mes "傳送費用為 4,000 zeny。";
 					}
 					break;
 				case 3:
-					mes "[Cool Event Corp. Voting Staff]";
-					mes "Always be assured that";
-					mes "Cool Event Corp. will do";
-					mes "everything in its power to";
-					mes "ensure the satisfaction of";
-					mes "its customers, young and old";
-					mes "and big and small. Thank you~";
+					mes "[酷樂投票職員]";
+					mes "請放心，";
+					mes "酷樂活動公司";
+					mes "會盡全力";
+					mes "確保";
+					mes "所有顧客，不分老少，";
+					mes "不論大小，感謝您的惠顧～";
 					break;
 				}
 			}
 			else {
-				mes "[Cool Event Corp. Voting Staff]";
-				mes "Please remember that we";
-				mes "cannot accept Free Warp Tickets";
-				mes "or award Special Reserve Points";
-				mes "for this service. Now, please";
-				mes "choose your destination.";
+				mes "[酷樂投票職員]";
+				mes "請記得，我們";
+				mes "無法接受免費傳送券";
+				mes "或贈予特別儲值點數";
+				mes "於此服務。現在請";
+				mes "選擇您的目的地。";
 				next;
-				switch(select("Byalan Dungeon, Level 3 -> 4,000 z:Clock Tower, 3rd Floor -> 4,000 z:Glast Heim Entrance -> 4,000 z:Cancel")) {
+				switch(select("海盜地洞密穴 3 層 -> 4,000 z:艾爾帕蘭鐘塔 3 樓 -> 4,000 z:古城入口 -> 4,000 z:取消")) {
 				case 1:
 					if (Zeny >= 4000) {
 						set Zeny, Zeny-4000;
@@ -1020,11 +1020,11 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 						end;
 					}
 					else {
-						mes "[Cool Event Corp. Voting Staff]";
-						mes "I'm sorry, but you do";
-						mes "not have enough zeny to";
-						mes "teleport to this destination.";
-						mes "The teleport fee is 4,000 zeny.";
+						mes "[酷樂投票職員]";
+						mes "很抱歉，您";
+						mes "的 zeny 不足以";
+						mes "傳送至此目的地。";
+						mes "傳送費用為 4,000 zeny。";
 					}
 					break;
 				case 2:
@@ -1035,11 +1035,11 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 						end;
 					}
 					else {
-						mes "[Cool Event Corp. Voting Staff]";
-						mes "I'm sorry, but you do";
-						mes "not have enough zeny to";
-						mes "teleport to this destination.";
-						mes "The teleport fee is 4,000 zeny.";
+						mes "[酷樂投票職員]";
+						mes "很抱歉，您";
+						mes "的 zeny 不足以";
+						mes "傳送至此目的地。";
+						mes "傳送費用為 4,000 zeny。";
 					}
 					break;
 				case 3:
@@ -1050,51 +1050,51 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 						end;
 					}
 					else {
-						mes "[Cool Event Corp. Voting Staff]";
-						mes "I'm sorry, but you do";
-						mes "not have enough zeny to";
-						mes "teleport to this destination.";
-						mes "The teleport fee is 4,000 zeny.";
+						mes "[酷樂投票職員]";
+						mes "很抱歉，您";
+						mes "的 zeny 不足以";
+						mes "傳送至此目的地。";
+						mes "傳送費用為 4,000 zeny。";
 					}
 					break;
 				case 4:
-					mes "[Cool Event Corp. Voting Staff]";
-					mes "Always be assured that";
-					mes "Cool Event Corp. will do";
-					mes "everything in its power to";
-					mes "ensure the satisfaction of";
-					mes "its customers, young and old";
-					mes "and big and small. Thank you~";
+					mes "[酷樂投票職員]";
+					mes "請放心，";
+					mes "酷樂活動公司";
+					mes "會盡全力";
+					mes "確保";
+					mes "所有顧客，不分老少，";
+					mes "不論大小，感謝您的惠顧～";
 					break;
 				}
 			}
 		}
 		else if ($DTS_Result == 2) {
-			mes "[Cool Event Corp. Voting Staff]";
-			mes "I'm sorry, but Cool Event";
-			mes "Corp. does not currently offer";
-			mes "the Dungeon Teleport Service";
-			mes "due to the results of the last";
-			mes "election. Please vote for us";
-			mes "next time, alright? Good day~";
+			mes "[酷樂投票職員]";
+			mes "很抱歉，酷樂活動";
+			mes "公司目前不提供";
+			mes "地城傳送服務";
+			mes "，因為上一次";
+			mes "選舉的結果。請在";
+			mes "下次投票支持我們，好嗎？祝您愉快～";
 		}
 		else {
-			mes "[Cool Event Corp. Voting Staff]";
+			mes "[酷樂投票職員]";
 			mes "很抱歉，";
-			mes "Dungeon Teleport Service is";
-			mes "unavailable during elections";
-			mes "and will be reactivated after the election results are announced.";
-			mes "Thank you and have a nice day.";
+			mes "地城傳送服務";
+			mes "在選舉期間無法使用，";
+			mes "並將於選舉結果公布後恢復使用。";
+			mes "感謝您，祝您有美好的一天。";
 		}
 		break;
 	case 4:
-		mes "[Cool Event Corp. Voting Staff]";
+		mes "[酷樂投票職員]";
 		mes "酷活動公司一直";
-		mes "working to make sure that";
-		mes "not only are our customers";
-		mes "satisfied, but that we also";
-		mes "exceed your utmost standards.";
-		mes "Thank you and have a good day.";
+		mes "我們努力確保";
+		mes "不只是我們的顧客";
+		mes "感到滿意，我們也";
+		mes "能超越您的期望。";
+		mes "感謝您，祝您有美好的一天。";
 		break;
 	}
 	close2;
@@ -1111,7 +1111,7 @@ alberta,114,70,6	duplicate(VotingStaffCCE)	活動工作人員#alb::Cool Event St
 aldebaran,138,102,6	duplicate(VotingStaffCCE)	活動工作人員#alde::Cool Event Staff#alde	874
 lighthalzen,154,60,6	duplicate(VotingStaffCCE)	活動工作人員#lhz::Cool Event Staff#lhz	874
 
-yuno,103,225,0	script	Scrutiny Association#5	-1,{
+yuno,103,225,0	script	監票協會#5::Scrutiny Association#5	-1,{
 OnInit:
 	initnpctimer;
 	end;
@@ -1123,54 +1123,54 @@ OnEnable:
 OnTimer7200000:
 	stopnpctimer;
 	if (($DTS_Result == 0) || ($DTS_Result == 3)) {
-		announce "Currently, the Dungeon Teleport Service Provider Election is being held in all major cities. Your participation is appreciated.",bc_all,"0x70dbdb";
+		announce "目前，地城傳送服務提供者選舉正在各大城市舉行。感謝您的參與。",bc_all,"0x70dbdb";
 	}
 	donpcevent "Scrutiny Association#5::OnEnable";
 	end;
 }
 
-einbroch,248,71,0	script	Scrutiny Association#6	-1,{
+einbroch,248,71,0	script	監票協會#6::Scrutiny Association#6	-1,{
 OnEnable:
 	initnpctimer;
 	end;
 
 OnTimer1000:
-	announce "All the votes for the Dungeon Teleport Service Provider Election have been received and counted.",bc_all,"0x70dbdb";
+	announce "地城傳送服務提供者選舉的所有票數已全部收到並完成計票。",bc_all,"0x70dbdb";
 	end;
 
 OnTimer5000:
-	announce "The results are now in...",bc_all,"0x70dbdb";
+	announce "結果出爐了……",bc_all,"0x70dbdb";
 	end;
 
 OnTimer10000:
-	announce "This time, Cool Event Corp. will be the Dungeon Teleport Service Provider.",bc_all,"0x70dbdb";
+	announce "這次由酷樂活動公司擔任地城傳送服務的提供者。",bc_all,"0x70dbdb";
 	end;
 
 OnTimer15000:
-	announce "Many thanks to all of you who have voted and shown your support.",bc_all,"0x70dbdb";
+	announce "感謝所有投票支持的各位。",bc_all,"0x70dbdb";
 	stopnpctimer;
 	end;
 }
 
-einbroch,249,71,0	script	Scrutiny Association#7	-1,{
+einbroch,249,71,0	script	監票協會#7::Scrutiny Association#7	-1,{
 OnEnable:
 	initnpctimer;
 	end;
 
 OnTimer1000:
-	announce "All the votes for the Dungeon Teleport Service Provider Election have been received and counted.",bc_all,"0x70dbdb";
+	announce "地城傳送服務提供者選舉的所有票數已全部收到並完成計票。",bc_all,"0x70dbdb";
 	end;
 
 OnTimer5000:
-	announce "The results are now in...",bc_all,"0x70dbdb";
+	announce "結果出爐了……",bc_all,"0x70dbdb";
 	end;
 
 OnTimer10000:
-	announce "This time, Kafra Corporation will be the Dungeon Teleport Service Provider.",bc_all,"0x70dbdb";
+	announce "這次由卡普拉公司擔任地城傳送服務的提供者。",bc_all,"0x70dbdb";
 	end;
 
 OnTimer15000:
-	announce "Many thanks to all of you who have voted and shown your support.",bc_all,"0x70dbdb";
+	announce "感謝所有投票支持的各位。",bc_all,"0x70dbdb";
 	stopnpctimer;
 	end;
 }
@@ -1178,7 +1178,7 @@ OnTimer15000:
 /*
 // GM only NPC used for modifying values related to the DTS system.
 // Disabled in official script.
-sec_in02,17,160,4	script	Vote Globalvar Girl#yuno	864,{
+sec_in02,17,160,4	script	投票女孩#yuno::Vote Globalvar Girl#yuno	864,{
 	callfunc "F_GM_NPC";
 	mes "[Christy's Maid]";
 	mes "Lady Christy!";

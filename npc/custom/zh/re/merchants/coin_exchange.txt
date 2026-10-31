@@ -48,7 +48,7 @@ malangdo,220,167,5	script	Coin Exchanger CX-1	564,{
 	switch(.@i) {
 	case 1:
 		mes "[Coin Exchanger CX-1]";
-		mes "Thank you for coming.";
+		mes "感謝光臨。";
 		close;
 	default:
 		.@coin = .@coins[.@i-1];
@@ -58,7 +58,7 @@ malangdo,220,167,5	script	Coin Exchanger CX-1	564,{
 	if (countitem(.@coin) == 0) {
 		mes "[Coin Exchanger CX-1]";
 		mes "You chose a coin that you don't have.";
-		mes "Thank you for coming.";
+		mes "感謝光臨。";
 		close;
 	}
 	mes "[Coin Exchanger CX-1]";
@@ -85,19 +85,19 @@ malangdo,220,167,5	script	Coin Exchanger CX-1	564,{
 	.@i = select(.@menu$)-2;
 	if (.@i == -1) {
 		mes "[Coin Exchanger CX-1]";
-		mes "Thank you for coming.";
+		mes "感謝光臨。";
 		close;
 	}
 	if (.@exchange_id[.@i] == 0) {
 		mes "[Coin Exchanger CX-1]";
 		mes "This coin is not available to exchange to "+.@exchange_name$[.@i]+" coin.";
-		mes "Thank you for coming.";
+		mes "感謝光臨。";
 		close;
 	}
 	if (countitem(.@coin) < .@exchange_rate[.@i]) {
 		mes "[Coin Exchanger CX-1]";
 		mes "You don't have enough coins to exchange to "+.@exchange_name$[.@i]+" coin.";
-		mes "Thank you for coming.";
+		mes "感謝光臨。";
 		close;
 	}
 	.@exchange_total = .@exchange_rate[(!.@i)] - .@exchange_loss[(!.@i)];
@@ -161,14 +161,14 @@ L_AddItem:
 	switch(select("Stop:"+.@ven_menu$)) {
 	case 1:
 		mes "[Special Vending Machine]";
-		mes "Thank you for coming.";
+		mes "感謝光臨。";
 		close;
 	case 2:
 		if (countitem(6417) < .@cost) {
 			mes "[Special Vending Machine]";
 			mes "Not enough Silvervine Fruit.";
 			mes "Closing the transaction.";
-			mes "Thank you for coming.";
+			mes "感謝光臨。";
 			close;
 		}
 		mes "[Special Vending Machine]";
@@ -256,7 +256,7 @@ malangdo,233,180,3	script	Dark MachineTX100	564,{
 	.@i = select(.@menu$)-1;
 	if (.@i == 0) {
 		mes "[Dark Machine TX100]";
-		mes "Thank you for coming.";
+		mes "感謝光臨。";
 		close;
 	}
 	.@coin = .@coins[.@i];
@@ -304,7 +304,7 @@ malangdo,233,180,3	script	Dark MachineTX100	564,{
 	.@i = select(.@menu$)-2;
 	if (.@i == -1) {
 		mes "[Dark Machine TX100]";
-		mes "Thank you for coming.";
+		mes "感謝光臨。";
 		close;
 	}
 	if (.@exchange_id[.@i] == 0) {
@@ -1018,7 +1018,7 @@ ecl_in01,33,98,5	script	Herb Merchant Plafina#a	443,{
 	}
 	if (countitem(6081) < (.cost[.@item]*.@buy) ) {
 		mes "[Herb Merchant]";
-		mes "You don't have enough coins.";
+		mes "你的金幣不夠。";
 		close;
 	}
 	mes "[Herb Merchant]";

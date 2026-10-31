@@ -402,7 +402,7 @@ function	script	Func_Socket2	{
 	else
 	{
 		mes getitemname(.@item_id) +"? Okay, then you need to bring me";
-		mes "^FF0000"+ (.@zeny_req >= 1000 ? (.@zeny_req/1000 +",000") : .@zeny_req) +",000 zeny as service charge and "+ .@req_amount[0] +" "+ getitemname(.@item_req[0]) + (.@req_amount[0] > 1 && .@item_req[0] != 999 ? "s":"") +" as the requirement.";
+		mes "^FF0000"+ (.@zeny_req >= 1000 ? (.@zeny_req/1000 +",000") : .@zeny_req) +",000 zeny as service charge and "+ .@req_amount[0] +" "+ getitemname(.@item_req[0]) + (.@req_amount[0] > 1 && .@item_req[0] != 999 ? "寶石":"") +" as the requirement.";
 		mes "^FF0000Of course, don't forget to bring me a "+ getitemname(.@item_id) +".";
 		mes "^FF0000You should have all items.^000000";
 	}
@@ -410,8 +410,8 @@ function	script	Func_Socket2	{
 	mes "[Leablem]";
 	mes "Did you already bring all of them?";
 	mes "For your information, if you fail to create a slot,";
-	mes "you will lose all the item requirement as well as the target "+ ((getiteminfo(.@item_id, ITEMINFO_LOCATIONS)&EQP_HAND_R) ? "weapon" : "armor") +".";
-	mes "Also remember, if the "+ ((getiteminfo(.@item_id, ITEMINFO_LOCATIONS)&EQP_HAND_R) ? "weapon" : "armor") +" has been upgraded, and has been inserted with a card,";
+	mes "you will lose all the item requirement as well as the target "+ ((getiteminfo(.@item_id, ITEMINFO_LOCATIONS)&EQP_HAND_R) ? "武器" : "防具") +".";
+	mes "Also remember, if the "+ ((getiteminfo(.@item_id, ITEMINFO_LOCATIONS)&EQP_HAND_R) ? "武器" : "防具") +" has been upgraded, and has been inserted with a card,";
 	mes "you will lose them even if you succeed in creating a slot.";
 	next;
 	switch(select("Ask for slot creation.:Try next time."))

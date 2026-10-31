@@ -72,7 +72,7 @@ function	script	refinenew	{
 	}
 	if (.@equipped == 0) {
 		mes "["+ .@npc_name$ +"]";
-		mes "I don't think I can refine any items you have...";
+		mes "我想我無法精煉你擁有的任何道具……";
 		close;
 	}
 	.@part = .@indices[ select(.@menu$) ];
@@ -125,7 +125,7 @@ function	script	refinenew	{
 	mes "["+ .@npc_name$ +"]";
 	mes "Hmm " + .@article$ + " " + .@type$ + ", is that ok?";
 	mes "If you want to refine this " + .@type$ + ",";
-	mes "I will need 1 ^003366" + getitemname(.@material) + "^000000 and " + callfunc("F_InsertComma",.@price) + " Zeny。";
+	mes "I will need 1 ^003366" + getitemname(.@material) + "^000000 和 " + callfunc("F_InsertComma",.@price) + " Zeny。";
 	mes "Are you sure you want to continue?";
 	next;
 	if (select("是:否") == 2) {
@@ -199,7 +199,7 @@ function	script	refinenew	{
 				mes "The upgrade level has dropped...";
 			} else {
 				mes "["+ .@npc_name$ +"]";
-				mes "Clang! Clang! Clang!";
+				mes "鏘！鏘！鏘！";
 				failedrefitem .@part;
 				next;
 				emotion (!rand(5))?ET_MONEY:ET_HUK;
@@ -313,7 +313,7 @@ function	script	refinenew	{
 				mes "The upgrade level has dropped...";
 			} else {
 				mes "["+ .@npc_name$ +"]";
-				mes "Clang! Clang! Clang!";
+				mes "鏘！鏘！鏘！";
 				failedrefitem .@part;
 				next;
 				emotion (!rand(5))?ET_MONEY:ET_HUK;
@@ -509,7 +509,7 @@ malangdo,224,172,6	script	Clink#mal_normal	544,{
 	}
 	if (getequippercentrefinery(.@part) < 100) {
 		mes "[Clink]";
-		mes "Wow!!";
+		mes "哇！！";
 		mes "This "+.@type$+" has been refined quite a bit, huh?";
 		mes "You do know that this might break, right?";
 		next;

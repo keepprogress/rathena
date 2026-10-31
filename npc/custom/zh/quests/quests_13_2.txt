@@ -531,7 +531,7 @@ spl_fild01,170,74,0	duplicate(FishingHole_spl3)	School of Fish#14	844
 
 // Two Tribes :: ep13_2_msg
 //============================================================
-spl_in01,32,306,3	script	Splendide Guard#ep13md01	447,2,2,{
+spl_in01,32,306,3	script	斯普倫衛兵#ep13md01::Splendide Guard#ep13md01	447,2,2,{
 	if (checkweight(1201,2) == 0) {
 		mes "等一下！！";
 		mes "You have too many items.";
@@ -542,11 +542,11 @@ spl_in01,32,306,3	script	Splendide Guard#ep13md01	447,2,2,{
 	}
 	if ((isequipped(2782) == 1) && (ep13_2_rhea > 99)) {
 		if (ep13_mdrama == 0) {
-			mes "[Splendide Guard]";
+			mes "[斯普倫衛兵]";
 			mes "Outsider?";
 			mes "Outsiders have been coming more frequently.";
 			next;
-			mes "[Splendide Guard]";
+			mes "[斯普倫衛兵]";
 			mes "It seems like our superiors have permitted your entrance, so I won't stop you either.";
 			next;
 			mes "[Arc]";
@@ -765,7 +765,7 @@ spl_in01,32,306,3	script	Splendide Guard#ep13md01	447,2,2,{
 			next;
 			select("What are you trying to do?");
 			mes "[Arc]";
-			mes "Can't you see?";
+			mes "你看不出來嗎？";
 			mes "I'm going out to look for Terra. She took the Bradium with her, it has got to be something to do with that Sapha.";
 			next;
 			select("Is it okay for you to leave your post?");
@@ -916,7 +916,7 @@ spl_in01,32,306,3	script	Splendide Guard#ep13md01	447,2,2,{
 			close;
 		}
 		else {
-			mes "[Splendide Guard]";
+			mes "[斯普倫衛兵]";
 			mes "NeiVil !";
 			mes "narNoth nesMush.";
 			mes "AnuDur AmanDana Goth nar!";
@@ -930,7 +930,7 @@ spl_in01,32,306,3	script	Splendide Guard#ep13md01	447,2,2,{
 OnTouch:
 	if (isequipped(2782) == 1) {
 		if (ep13_mdrama < 1) {
-			mes "[Splendide Guard]";
+			mes "[斯普倫衛兵]";
 			mes "Halt.";
 			mes "This area is restricted unless you have been given permission.";
 			mes "Especially to outsiders like you.";
@@ -938,7 +938,7 @@ OnTouch:
 		}
 	}
 	else {
-		mes "[Splendide Guard]";
+		mes "[斯普倫衛兵]";
 		mes "Tal-!";
 		mes "AnuDur AmanDana Goth nar!";
 		mes "Agoltas Me...";
@@ -3519,8 +3519,8 @@ OnTimer300000:
 mid_camp,197,237,3	script	Schwarzwald Mechanic#1	869,{
 	if( !checkweight(2782,1)) { // Custom weight check.
 		mes "[Mechanic Engineer Dorance]";
-		mes "It looks like you're carrying too many things.";
-		mes "Why not put some of your items in storage and come back?";
+		mes "看來你帶的東西太多了。";
+		mes "何不把一些道具存進倉庫再回來呢？";
 		close;
 	}
 	if (ep13_1_edq > 2 || ep13_start == 100) {
@@ -4625,7 +4625,7 @@ mid_camp,7,3,0	script	Translator Preparation#1	708,{
 			mes "Currently the Report Quest's Set Item is "+ep13_1_edq+".";
 			mes "Do you want to proceed?";
 			next;
-			if(select("No:Yes") == 1) {
+			if(select("否:是") == 1) {
 				mes "[EP 13 Translator Quest Preparation]";
 				mes "Cancelled";
 				close;
@@ -4641,7 +4641,7 @@ mid_camp,7,3,0	script	Translator Preparation#1	708,{
 			mes "[EP 13 Translator Quest Preparation]";
 			mes "Do you want to proceed?";
 			next;
-			if(select("No:Yes") == 1) {
+			if(select("否:是") == 1) {
 				mes "[EP 13 Translator Quest Preparation]";
 				mes "Cancelled";
 				close;
@@ -4725,8 +4725,8 @@ man_in01,372,221,5	script	科學家#lifeguard::Scientist#lifeguard	449,{
 		}
 		else if ((ep13_2_tre == 1) || (ep13_2_tre == 100)) {
 			if (checkweight(1201,1) == 0) {
-				mes "It looks like you're carrying too many things.";
-				mes "Why not put some of your items in storage and come back?";
+				mes "看來你帶的東西太多了。";
+				mes "何不把一些道具存進倉庫再回來呢？";
 				close;
 			}
 			set .@dayq_chk,checkquest(2182,PLAYTIME);
@@ -5474,8 +5474,8 @@ spl_in01,30,324,3	script	High Laphine#grenouille	446,{
 	if ((isequipped(2782) == 1) && (ep13_2_rhea == 100)) {
 		if (checkweight(1201,1) == 0) {
 			mes "[Grenouille]";
-			mes "It looks like you're carrying too many things.";
-			mes "Why not put some of your items in storage and come back?";
+			mes "看來你帶的東西太多了。";
+			mes "何不把一些道具存進倉庫再回來呢？";
 			close;
 		}
 		set .@dayq_chk,checkquest(2186,PLAYTIME);
@@ -5704,12 +5704,12 @@ spl_in01,30,324,3	script	High Laphine#grenouille	446,{
 	}
 }
 
-spl_in02,139,65,3	script	Middle-Ranked Laphine#la	438,{
+spl_in02,139,65,3	script	中階拉芬#la::Middle-Ranked Laphine#la	438,{
 	if ((isequipped(2782) == 1) && (ep13_2_rhea == 100)) {
 		if (checkweight(1201,1) == 0) {
 			mes "[Flowery]";
-			mes "It looks like you're carrying too many things.";
-			mes "Why not put some of your items in storage and come back?";
+			mes "看來你帶的東西太多了。";
+			mes "何不把一些道具存進倉庫再回來呢？";
 			close;
 		}
 		if (ep13_2_tre1 == 1) {
@@ -5775,7 +5775,7 @@ spl_in02,139,65,3	script	Middle-Ranked Laphine#la	438,{
 		
 	}
 	else {
-		mes "[Middle-Ranked Laphine]";
+		mes "[中階拉芬]";
 		mes "NeiKoFulo An DielOdesMush Or KoDanaOsa Ir FarBurnes Ir ";
 		mes "NeOsaVa Mu BurVeTi Ra OsaDeh";
 		close;
@@ -6331,7 +6331,7 @@ mid_camp,283,198,5	script	Bazett Teablack#ep13bs	883,{
 				mes "What about it?";
 				mes "Are you interested?";
 				next;
-				switch(select("Sure.:Not really.")) {
+				switch(select("好啊:不太想")) {
 				case 1:
 					mes "[Industrious Man]";
 					mes "Haha... I just know that I'm right!";
