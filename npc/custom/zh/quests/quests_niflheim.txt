@@ -31,28 +31,28 @@
 
 // Piano Quest :: nif_ryu
 //============================================================
-niflheim,224,243,3	script	Alreg#nif	795,{
+niflheim,224,243,3	script	阿爾雷格#nif::Alreg#nif	795,{
 	if (nif_piano) set nif_piano,0;
-	mes "[Alreg]";
-	mes "Me like meat, muheh.";
-	mes "You! Look tempting.";
+	mes "[阿爾雷格]";
+	mes "我喜歡吃肉，嘿嘿。";
+	mes "你！看起來很美味。";
 	next;
-	mes "[Alreg]";
-	mes "Me want to taste you.";
+	mes "[阿爾雷格]";
+	mes "我想嚐嚐你。";
 	next;
-	mes "^FF3355*Crunch* Crunch*^000000";
+	mes "^FF3355*嘎吱* 嘎吱*^000000";
 	if (nif_esc == 0 && (MISC_QUEST & 32) == 0) {
 		percentheal -60,0;
 		next;
 		mes "["+ strcharinfo(0) +"]";
-		mes "NooOOoOOoOoO~!";
+		mes "不要啊啊啊啊~！";
 		next;
-		mes "[Alreg]";
-		mes "It long time since I had meat";
-		mes "so... so good. You taste";
-		mes "good. Alreg give you this";
-		mes "for payback. Present!";
-		mes "*Burrrp*";
+		mes "[阿爾雷格]";
+		mes "好久沒吃肉了";
+		mes "……真好吃。你的味道";
+		mes "很好。阿爾雷格把這個給你";
+		mes "作為回禮。送你！";
+		mes "*打飽嗝*";
 		set nif_esc,rand(1,2);
 		getitem 7184,1; //Piano_Keyboard
 		close;
@@ -60,118 +60,118 @@ niflheim,224,243,3	script	Alreg#nif	795,{
 	percentheal -30,0;
 	next;
 	mes "["+ strcharinfo(0) +"]";
-	mes "Ow~! What are you";
-	mes "trying to do, kill me?!";
+	mes "哎唷～！你在";
+	mes "做什麼，想殺了我嗎？！";
 	next;
-	mes "[Alreg]";
-	mes "Hm? Oh, no no no.";
-	mes "Me am trying to eat you.";
+	mes "[阿爾雷格]";
+	mes "嗯？喔，不不不。";
+	mes "我是想把你吃掉。";
 	close;
 }
 
-nif_in,105,81,3	script	Crayu#nif	794,{
-	mes "[Crayu]";
-	mes "Living one...";
-	mes "Listen to this song...";
-	mes "It's been sung by many for a";
-	mes "long time, but nobody knows";
-	mes "when it was made or who wrote it.";
+nif_in,105,81,3	script	克雷尤#nif::Crayu#nif	794,{
+	mes "[克雷尤]";
+	mes "活人……";
+	mes "聽聽這首歌……";
+	mes "很久以來，許多人";
+	mes "一直在傳唱它，但沒人知道";
+	mes "它是何時、由誰所作。";
 	next;
-	mes "[Crayu]";
-	mes "^FF00001. Mountain sunset to the west";
-	mes "^FF00002. Where the purple dusk falls ";
-	mes "^FF00003. Surrounded by beautiful melody";
-	mes "^FF00004. You become the key that ignores its master^000000";
+	mes "[克雷尤]";
+	mes "^FF00001. 西方山頭的落日";
+	mes "^FF00002. 紫色黃昏降臨之處 ";
+	mes "^FF00003. 被美妙的旋律環繞";
+	mes "^FF00004. 你成了無視主人的那把鑰匙^000000";
 	next;
 	if (nif_esc == 1 || nif_esc == 4) {
-		mes "[Crayu]";
-		mes "Okay, wait! Here's a test for you!";
+		mes "[克雷尤]";
+		mes "好，等等！給你一個考驗！";
 		switch(rand(1,4)) {
 		case 1:
 			set .@songline$,"Mountain sunset to the west";
-			mes "Write down the first line of the song.";
+			mes "把這首歌的第一句寫下來。";
 			break;
 		case 2:
 			set .@songline$,"Where the purple dusk falls";
-			mes "Write down the second line of the song.";
+			mes "把這首歌的第二句寫下來。";
 			break;
 		case 3:
 			set .@songline$,"Surrounded by beautiful melody";
-			mes "Write down the third line of the song.";
+			mes "把這首歌的第三句寫下來。";
 			break;
 		case 4:
 			set .@songline$,"You become the key that ignores its master";
-			mes "Write down the fourth line of the song.";
+			mes "把這首歌的第四句寫下來。";
 			break;
 		}
 		next;
 		input .@input$;
 		if (.@input$ == .@songline$) {
-			mes "[Crayu]";
+			mes "[克雷尤]";
 			mes "太好了……！";
-			mes "So you've been listening~!";
-			mes "That makes you one of my";
-			mes "favorite guests. Here's a";
-			mes "little reward for you.";
+			mes "原來你一直在聽～！";
+			mes "這樣你就是我的";
+			mes "最愛的賓客之一。這是";
+			mes "給你的小小獎勵。";
 			next;
 			if (nif_esc == 1) set nif_esc,3;
 			else set nif_esc,6;
 			getitem 7184,1; //Piano_Keyboard
-			mes "[Crayu]";
-			mes "Lastly, I hope you will show your";
-			mes "respect to other Bards, just as";
-			mes "you have done for me.";
+			mes "[克雷尤]";
+			mes "最後，希望你能展現你的";
+			mes "對其他吟遊詩人的尊重，就像";
+			mes "你對我所做的那樣。";
 			close;
 		}
 		else {
-			mes "[Crayu]";
-			mes "*Sigh*... If you had only";
-			mes "listened to me, it would";
-			mes "have been easy to answer.";
-			mes "Try to remember the line";
-			mes "and try again!";
+			mes "[克雷尤]";
+			mes "*嘆氣*……要是你";
+			mes "早點聽我的話，就";
+			mes "能輕鬆答出來了。";
+			mes "試著記住那句歌詞";
+			mes "然後再試一次！";
 			close;
 		}
 	}
 	next;
-	mes "[Crayu]";
-	mes "I wonder what the lyrics mean...";
-	mes "They seem quite profound...";
-	mes "I have the feeling that this song";
-	mes "carries some secret.";
+	mes "[克雷尤]";
+	mes "我很好奇這歌詞是什麼意思……";
+	mes "感覺很有深意……";
+	mes "我有種感覺，這首歌";
+	mes "藏著某種秘密。";
 	close;
 }
 
-nif_in,31,20,3	script	Kuzkahina#nif	794,{
+nif_in,31,20,3	script	庫茲卡希娜#nif::Kuzkahina#nif	794,{
 	if (nif_esc == 2 || nif_esc == 3) {
-		mes "[Kuzkahina]";
+		mes "[庫茲卡希娜]";
 		mes "我不懂，";
-		mes "why I can't make any";
-		mes "money with this store...";
-		mes "Even when I was alive";
-		mes "I could never make any";
-		mes "money with my businesses...";
+		mes "為什麼我的店";
+		mes "一點錢都賺不到……";
+		mes "就算我還活著的時候，";
+		mes "我的生意也";
+		mes "從來沒賺過錢……";
 		next;
-		mes "[Kuzkahina]";
-		mes "Hey you! Make yourself useful";
-		mes "and throw this away when you leave.";
+		mes "[庫茲卡希娜]";
+		mes "喂，你！幫點忙，";
+		mes "離開時順便把這個丟掉。";
 		set nif_esc,nif_esc+2;
 		getitem 7184,1; //Piano_Keyboard
 		next;
-		mes "[Kuzkahina]";
-		mes "Gosh, what's with this store?";
-		mes "How did I end up hiring such useless employees...?";
-		mes "*mumble mumble*";
-		mes "*mumble mumble*";
+		mes "[庫茲卡希娜]";
+		mes "天啊，這間店到底是怎麼回事？";
+		mes "我怎麼會雇用這麼沒用的職員……？";
+		mes "*嘟嘟囔囔*";
+		mes "*嘟嘟囔囔*";
 		close;
 	}
-	mes "[Kuzkahina]";
+	mes "[庫茲卡希娜]";
 	mes "我不懂，";
-	mes "why I can't make any";
-	mes "money with this store...";
-	mes "Even when I was alive";
-	mes "I could never make any";
-	mes "money with my businesses...";
+	mes "為什麼我的店";
+	mes "一點錢都賺不到……";
+	mes "就算我還活著的時候，";
+	mes "我的生意也";
+	mes "從來沒賺過錢……";
 	close;
 }
 
@@ -180,11 +180,11 @@ niflheim,208,103,1	script	#Graveyard1	111,1,1,{
 
 OnTouch_:
 	if (nif_esc == 5 || nif_esc == 7 || nif_esc == 8 || nif_esc == 10) {
-		mes "^3355FFYou found something";
-		mes "half-buried near a grave.";
-		mes "It looks very well-shaped.^000000";
+		mes "^3355FF你發現了某樣東西";
+		mes "半埋在墳墓附近。";
+		mes "看起來形狀非常端正。^000000";
 		next;
-		mes "^3355FFWould you like to pick it up?^000000";
+		mes "^3355FF要把它撿起來嗎？^000000";
 		if (select("是:否") == 1) {
 			if (nif_esc < 10)
 				set nif_esc,nif_esc+2;
@@ -202,11 +202,11 @@ niflheim,169,71,1	script	#Graveyard2	111,1,1,{
 
 OnTouch_:
 	if (nif_esc == 6 || nif_esc == 9) {
-		mes "^3355FFYou found something";
-		mes "half-buried near a grave.";
-		mes "It looks very well-shaped.^000000";
+		mes "^3355FF你發現了某樣東西";
+		mes "半埋在墳墓附近。";
+		mes "看起來形狀非常端正。^000000";
 		next;
-		mes "^3355FFWould you like to pick it up?^000000";
+		mes "^3355FF要把它撿起來嗎？^000000";
 		if (select("是:否") == 1) {
 			set nif_esc,nif_esc+2;
 			getitem 7184,1; //Piano_Keyboard
@@ -221,29 +221,29 @@ nif_in,115,181,0	script	#Piano	111,1,1,{
 
 OnTouch_:
 	if (nif_esc == 0 && (MISC_QUEST & 32) == 0) {
-		mes "^3355FFYou see a big, heavy piano.";
-		mes "You get the feeling that";
-		mes "its music would sound magnificient.^000000";
+		mes "^3355FF你看見一架又大又重的鋼琴。";
+		mes "你有種感覺，";
+		mes "它的琴聲一定非常動聽。^000000";
 		next;
-		mes "^3355FFAs you examine the piano,";
-		mes "you find that 7 keys";
-		mes "are missing in the";
-		mes "middle of the keyboard.";
-		mes "If you had all the keys,";
-		mes "you could play music...^000000";
+		mes "^3355FF當你仔細檢查這架鋼琴時，";
+		mes "你發現有7個琴鍵";
+		mes "不見了，";
+		mes "就在鍵盤的中央。";
+		mes "要是有所有琴鍵，";
+		mes "就能彈奏出音樂……^000000";
 		close;
 	}
 	if (nif_esc == 11 && countitem(7184) > 5) {
 		set nif_esc,12;
 		delitem 7184,6; //Piano_Keyboard
-		mes "^3355FFYou took the keys you've found";
-		mes "and inserted them into";
-		mes "each empty space.^000000";
+		mes "^3355FF你把找到的琴鍵";
+		mes "裝進去，";
+		mes "放進每個空位。^000000";
 		next;
-		mes "^3355FFBut then you realize";
-		mes "that you're missing the last";
-		mes "key for the space on the far";
-		mes "left of the keyboard...^000000";
+		mes "^3355FF但隨後你發現";
+		mes "還缺少最後一個";
+		mes "位於鍵盤最左邊空位的";
+		mes "琴鍵……^000000";
 		close;
 	}
 	end;
@@ -254,9 +254,9 @@ OnTouch_:
 
 OnTouch_:
 	if (nif_esc == 12 || nif_esc == 13 || (MISC_QUEST & 32)) {
-		mes "^3355FFAs you bend towards";
-		mes "the final empty key space";
-		mes "to take a better look at it...^000000";
+		mes "^3355FF當你俯身靠近";
+		mes "最後那個空著的琴鍵位置，";
+		mes "想仔細看清楚時……^000000";
 		next;
 		soundeffect "complete.wav",0;
 		next;
@@ -264,10 +264,10 @@ OnTouch_:
 			set MISC_QUEST,MISC_QUEST | 32;
 			set nif_piano, 0;
 		}
-		mes "^3355FFYou begin to feel dizzy and";
-		mes "your body feels as if it were";
-		mes "floating in air. Then, your";
-		mes "vision starts to blur...^000000";
+		mes "^3355FF你開始感到頭暈，";
+		mes "身體彷彿";
+		mes "飄浮在空中。接著，你的";
+		mes "視線開始模糊……^000000";
 		close2;
 		warp "nif_in",179,163;
 		end;
@@ -275,21 +275,21 @@ OnTouch_:
 	end;
 }
 
-nif_in,188,168,3	script	Witch#nif	792,{
-	mes "[Kirkena]";
-	mes "Huh? ...You're alive, aren't you?";
-	mes "I'm not sure how more of you are";
-	mes "able to get here and I don't";
-	mes "know your reasons for coming,";
-	mes "but this place is dangerous for";
+nif_in,188,168,3	script	女巫#nif::Witch#nif	792,{
+	mes "[柯爾凱娜]";
+	mes "咦？……你還活著吧？";
+	mes "我不知道你們怎麼";
+	mes "能來到這裡，";
+	mes "也不知道你們的來意，";
+	mes "但這裡對活人來說";
 	mes "活人懷有怨恨。";
 	next;
-	mes "[Kirkena]";
-	mes "I am sending you back";
-	mes "outside of this town.";
-	mes "If you can help it, you";
-	mes "better not come back to";
-	mes "this place.";
+	mes "[柯爾凱娜]";
+	mes "很危險。我要送你";
+	mes "回到城鎮外面。";
+	mes "如果可以的話，你";
+	mes "最好別再回來";
+	mes "。";
 	close2;
 	warp "umbala",138,208;
 	end;
@@ -297,140 +297,140 @@ nif_in,188,168,3	script	Witch#nif	792,{
 
 // Message Delivery Quest :: nif_npc_lackee
 //============================================================
-prt_in,161,20,3	script	Erious#nif	92,{
+prt_in,161,20,3	script	艾里歐斯#nif::Erious#nif	92,{
 	if (MISC_QUEST & 16384) {
-		mes "[Erious]";
-		mes "I wish you safety from harm";
-		mes "in your journeys, adventurer.";
+		mes "[艾里歐斯]";
+		mes "願你的旅途";
+		mes "平安無恙，冒險者。";
 		close;
 	}
 	if (nif_revive == 0) {
-		mes "[Erious]";
-		mes "*Sob*Sob*";
-		mes "*Cries* Wahhh...!";
-		mes "Elly, how could you";
-		mes "leave me this way...";
+		mes "[艾里歐斯]";
+		mes "*嗚咽*嗚咽*";
+		mes "*哭泣* 哇啊……！";
+		mes "愛莉，你怎麼能";
+		mes "就這樣丟下我……";
 		emotion ET_CRY;
 		next;
-		if (select("Comfort him.:Neglect him.") == 1) {
-			mes "[Erious]";
-			mes "Ah, thank you for your kindness.";
-			mes "*Sob* My wife died while I was on";
-			mes "a trip. I'm so sorry that I";
-			mes "couldn't be with her when";
-			mes "the end came...";
+		if (select("安慰他:忽視他") == 1) {
+			mes "[艾里歐斯]";
+			mes "啊，謝謝你的好意。";
+			mes "*啜泣* 我妻子在我出門";
+			mes "旅行時過世了。我很抱歉";
+			mes "沒能在她";
+			mes "最後時刻陪在她身邊……";
 			next;
-			mes "[Erious]";
-			mes "I wish I could talk to my Elly,";
-			mes "although I know it's too late now.";
-			mes "*Cries* But... there is one last";
-			mes "hope that I have. My absolute";
-			mes "final chance...";
+			mes "[艾里歐斯]";
+			mes "我多希望能再和我的愛莉說說話，";
+			mes "雖然我知道現在已經太遲了。";
+			mes "*哭泣* 但是……我還有最後";
+			mes "一個希望。我的";
+			mes "最後一次機會……";
 			next;
-			mes "[Erious]";
-			mes "I was told that somewhere";
-			mes "in this world, there exists a town";
-			mes "where the dead reside. I might be";
-			mes "able to meet my wife there, but";
-			mes "I cannot leave my children here";
-			mes "without me. *Cries*";
+			mes "[艾里歐斯]";
+			mes "我聽說在某個地方，";
+			mes "這世界上有一座城鎮，";
+			mes "死者居住在那裡。我或許能";
+			mes "在那裡見到我的妻子，但";
+			mes "我不能把孩子們";
+			mes "獨自留在這裡。*哭泣*";
 			next;
-			if (select("I can deliver your message to her.:I am so sorry to hear that.") == 1) {
-				mes "[Erious]";
-				mes "Oh, can you?";
-				mes "Thank you so much for your";
-				mes "generosity. If you can do";
-				mes "this for me, I would be";
-				mes "greatly indebted to you.";
+			if (select("我可以替你傳話:聽到這消息我很遺憾。") == 1) {
+				mes "[艾里歐斯]";
+				mes "喔，你可以嗎？";
+				mes "真的非常感謝你";
+				mes "好心。如果你能";
+				mes "替我做到這件事，我會";
+				mes "非常感激你。";
 				next;
-				mes "[Erious]";
-				mes "You're an adventurer, aren't you?";
-				mes "If your journeys take you to that";
-				mes "town of the dead, and if you";
-				mes "happen to meet her by chance...";
+				mes "[艾里歐斯]";
+				mes "你是冒險者，對吧？";
+				mes "如果你的旅途帶你去到";
+				mes "那座死者之城，而且";
+				mes "恰巧遇見她……";
 				next;
-				mes "[Erious]";
-				mes "Please send Elly a message for me,";
-				mes "let her know that what happened";
-				mes "a month ago was all my fault.";
-				mes "Thank you for your help,";
-				mes "and please take care.";
+				mes "[艾里歐斯]";
+				mes "請替我向愛莉帶句話，";
+				mes "告訴她，發生的那件事";
+				mes "一個月前，全都是我的錯。";
+				mes "感謝你的幫忙，";
+				mes "也請你保重。";
 				set nif_revive,1;
 				setquest 11038;
 				close;
 			}
-			mes "[Erious]";
-			mes "*Cries* Is there no way that I";
-			mes "can see her again? If I could";
-			mes "talk to her at least once more,";
-			mes "even if it's the last time,";
-			mes "I would do anything...";
+			mes "[艾里歐斯]";
+			mes "*哭泣* 難道我就沒有辦法";
+			mes "再見她一面嗎？如果能";
+			mes "至少再跟她說一次話，";
+			mes "哪怕只是最後一次，";
+			mes "我也願意做任何事……";
 			close;
 		}
-		mes "[Erious]";
-		mes "*Cries* Eeeeelllllyyyy~~~~!";
-		mes "I never thought that would be";
-		mes "the last time we would see";
-		mes "each other...";
+		mes "[艾里歐斯]";
+		mes "*哭泣* 愛莉~~~~！";
+		mes "我從沒想過那會是";
+		mes "我們最後一次";
+		mes "見面……";
 		mes "*嗚嗚*……";
 		close;
 	}
 	else if (nif_revive == 1) {
-		mes "[Erious]";
-		mes "This place I was told about...";
-		mes "The town of the dead...";
-		mes "From what I remember, it was";
-		mes "located near some rest area.";
+		mes "[艾里歐斯]";
+		mes "我聽說的那個地方……";
+		mes "死者之城……";
+		mes "據我記得，那裡";
+		mes "位於某處安息之地附近。";
 		next;
-		mes "[Erious]";
-		mes "All day and night, it's filled";
-		mes "with never ending screams of";
-		mes "agony and despair. I hope that";
-		mes "this will be helpful in your search.";
+		mes "[艾里歐斯]";
+		mes "日日夜夜，那裡充滿";
+		mes "永無止境的";
+		mes "痛苦與絕望的哀嚎。希望";
+		mes "這些資訊能幫上你的尋找。";
 		close;
 	}
 	else if (nif_revive == 5 || nif_revive == 6) {
-		mes "[Erious]";
-		mes "Oh my! You really found the town,";
-		mes "have you? I really appreciate that";
-		mes "you've endured all this hardship";
-		mes "for me... Um...So in the end...";
-		mes "Were you able to meet my Elly?";
+		mes "[艾里歐斯]";
+		mes "天哪！你真的找到了那座城鎮，";
+		mes "是嗎？我真的非常感謝你";
+		mes "為我忍受了這一切";
+		mes "的辛苦……嗯……所以最後……";
+		mes "你有見到我的愛莉嗎？";
 		next;
-		if (select("Yes.:Sorry, I couldn't.") == 1) {
+		if (select("見到了:抱歉，沒見到") == 1) {
 			if (nif_revive == 6 && countitem(934) > 0) {
-				mes "[Erious]";
-				mes "Are you serious? What did she say?";
-				mes "Did she say she will forgive me?";
+				mes "[艾里歐斯]";
+				mes "真的嗎？她說了什麼？";
+				mes "她說會原諒我嗎？";
 				next;
-				select("Yes. And she gave me...this.");
+				select("是的。她還給了我……這個。");
 				delitem 934,1; //Mementos
-				mes "[Erious]";
-				mes "Ah...In this box were the gifts";
-				mes "I gave her when we started";
-				mes "seeing each other. She had a";
-				mes "serious illness even before we";
-				mes "met, so I promised her that I";
-				mes "would cure her illness...";
+				mes "[艾里歐斯]";
+				mes "啊……這個盒子裡裝的是";
+				mes "我們剛開始交往時，我送給她的";
+				mes "禮物。她在遇見我之前，";
+				mes "就患有嚴重的疾病，";
+				mes "所以我答應她，";
+				mes "會治好她的病……";
 				next;
-				mes "[Erious]";
-				mes "That's why I went on that trip...";
-				mes "to find a cure or medicine";
-				mes "for her... But my efforts turned";
-				mes "out to be a good for nothing.";
+				mes "[艾里歐斯]";
+				mes "所以我才出門去那趟旅行……";
+				mes "想找到治療的方法或藥物，";
+				mes "為她而努力……但我的努力";
+				mes "最後一文不值。";
 				mes "...................";
 				mes ".........";
 				next;
-				mes "[Erious]";
-				mes "Anyway, I appreciate your";
-				mes "generousity. I want to pay";
-				mes "you back for all the trouble";
-				mes "I caused you, but I only have";
-				mes "the medicine I found for her";
-				mes "illness during this trip.";
+				mes "[艾里歐斯]";
+				mes "總之，我很感謝你的";
+				mes "好心。我想";
+				mes "回報你為我所受的所有";
+				mes "麻煩，但我只有";
+				mes "我為她的病找到的藥，";
+				mes "就是這趟旅途中找到的。";
 				next;
-				mes "[Erious]";
-				mes "I hope you will take this medicine";
+				mes "[艾里歐斯]";
+				mes "希望你能收下這個藥";
 				mes "作為我感謝的表示。";
 				next;
 				if (checkweight(610,26)) {
@@ -440,42 +440,42 @@ prt_in,161,20,3	script	Erious#nif	92,{
 					getitem 607,2; //Yggdrasilberry
 					getitem 608,2; //Seed_Of_Yggdrasil
 					getitem 610,10; //Leaf_Of_Yggdrasil
-					mes "[Erious]";
+					mes "[艾里歐斯]";
 					mes "謝謝你的一切。";
-					mes "I wish you luck and safety";
-					mes "in your adventures.";
+					mes "願你在冒險中";
+					mes "好運平安。";
 					close;
 				}
-				mes "[Erious]";
-				mes "I have something to give you,";
-				mes "but you're carrying too much";
-				mes "stuff for me to give it to";
-				mes "right now. Why don't you";
-				mes "store your items somewhere?";
+				mes "[艾里歐斯]";
+				mes "我有東西要給你，";
+				mes "但你身上帶的東西";
+				mes "太多了，我沒辦法";
+				mes "現在就交給你。你為什麼不";
+				mes "先把道具存放在某處呢？";
 				close;
 			}
 			else if (nif_revive == 6 && countitem(934) < 1) {
-				mes "[Erious]";
-				mes "Hmm...this is odd. I'm sure she would give you something as a token of meeting her. By any chance, is there anything that you've forgetten to bring me?";
+				mes "[艾里歐斯]";
+				mes "嗯……這就奇怪了。我相信她會給你一件見面的信物。你是不是忘了帶什麼東西給我？";
 				close;
 			}
-			mes "[Erious]";
-			mes "I guess you misunderstood";
-			mes "something or you're trying";
-			mes "to scam a man in grief.";
+			mes "[艾里歐斯]";
+			mes "我想你是誤會了";
+			mes "什麼，或是你";
+			mes "想騙一個悲傷的男人。";
 			close;
 		}
 		if (nif_revive == 5) {
-			mes "[Erious]";
-			mes "I see...you have failed to find";
-			mes "her... However, I also understand";
-			mes "that fulfilling my request may";
-			mes "be impossible...";
+			mes "[艾里歐斯]";
+			mes "我知道了……你沒能找到";
+			mes "她……不過，我也明白";
+			mes "要實現我的請求，";
+			mes "或許是不可能的……";
 			next;
-			mes "[Erious]";
-			mes "You've really gone out of your way";
-			mes "to help me, so I want to give you";
-			mes "something as a token of my";
+			mes "[艾里歐斯]";
+			mes "你真的為了我的事";
+			mes "費了不少心力，所以我想給你";
+			mes "一件東西，作為我的心意，";
 			mes "gratitute.";
 			next;
 			if (checkweight(610,10)) {
@@ -483,203 +483,203 @@ prt_in,161,20,3	script	Erious#nif	92,{
 				set nif_revive,0;
 				completequest 11042;
 				getitem 610,10; //Leaf_Of_Yggdrasil
-				mes "[Erious]";
+				mes "[艾里歐斯]";
 				mes "謝謝你的一切。";
-				mes "I wish you luck and safety";
-				mes "from harm in your journeys.";
+				mes "願你在冒險中";
+				mes "願你旅途中平安無恙。";
 				close;
 			}
-			mes "[Erious]";
-			mes "I have something to give you,";
-			mes "but you're carrying too much";
-			mes "stuff for me to give it to";
-			mes "right now. Why don't you";
-			mes "store your items somewhere?";
+			mes "[艾里歐斯]";
+			mes "我有東西要給你，";
+			mes "但你身上帶的東西";
+			mes "太多了，我沒辦法";
+			mes "現在就交給你。你為什麼不";
+			mes "先把道具存放在某處呢？";
 			close;
 		}
-		mes "[Erious]";
+		mes "[艾里歐斯]";
 		mes "原來如此……";
-		mes "...Wait! Doesn't that belong";
-		mes "to my wife, Elly? Why are you";
-		mes "trying to cheat a grieving man...?";
+		mes "……等等！那不是屬於";
+		mes "我妻子愛莉的嗎？你為什麼";
+		mes "要欺騙一個悲傷的男人……？";
 		close;
 	}
 	end;
 }
 
-umbala,215,181,3	script	Billik	733,{
+umbala,215,181,3	script	比利克::Billik	733,{
 	if (nif_revive > 1 || (MISC_QUEST & 16384)) {
-		mes "[Billik]";
-		mes "Well, long time no see.";
-		mes "If you have a chance in the";
-		mes "future, let's meet in the";
-		mes "town of the dead later.";
+		mes "[比利克]";
+		mes "哎呀，好久不見。";
+		mes "如果未來有機會，";
+		mes "我們在";
+		mes "死者之城再見吧。";
 		mes "哈哈哈~";
 		emotion ET_BEST;
 		close;
 	}
 	if (nif_revive == 1) {
-		mes "[Billik]";
-		mes "The Town of the dead...";
-		mes "It's a very dangerous place.";
-		mes "Why would you want to go there?";
+		mes "[比利克]";
+		mes "死者之城……";
+		mes "那是個非常危險的地方。";
+		mes "你為什麼想去那裡？";
 		next;
-		if (select("I have to meet somebody there.:It's a part of my adventure.") == 1) {
-			mes "[Billik]";
-			mes "Someone you have to meet there...";
-			mes "Hmm... I suppose you wish to";
-			mes "contact the dead...";
-			mes "I can also see that you're";
-			mes "determined to go.";
+		if (select("我要去見一個人:這是我冒險的一部分") == 1) {
+			mes "[比利克]";
+			mes "你要在那裡見的人……";
+			mes "嗯……我猜你是想";
+			mes "與死者聯絡……";
+			mes "我也看得出來，你";
+			mes "下定決心要去。";
 			next;
-			mes "[Billik]";
-			mes "*Sigh* Okay, if you really want to";
-			mes "go, you must find a man named";
-			mes "'Feylin.' It's very important to";
-			mes "let him know that I introduced";
-			mes "him to you.";
+			mes "[比利克]";
+			mes "*嘆氣* 好吧，如果你真的想";
+			mes "去，你必須找一個叫";
+			mes "「費林」。很重要的是要讓";
+			mes "他知道是我把";
+			mes "你介紹給他的。";
 			next;
-			mes "[Billik]";
-			mes "He's not very trusting, but he";
-			mes "likes roses a lot, so bring a rose";
-			mes "for him. That way, he'll know for";
-			mes "sure that I've sent you.";
+			mes "[比利克]";
+			mes "他不太信任別人，但他";
+			mes "很喜歡玫瑰，所以帶一朵玫瑰";
+			mes "給他。這樣他就能確定";
+			mes "是我派你來的。";
 			set nif_revive,2;
 			changequest 11038,11039;
 			next;
-			mes "[Billik]";
-			mes "The town of the dead is located";
-			mes "north of this place. Remember, it";
-			mes "is very dangerous to go there,";
-			mes "even for well experienced";
-			mes "adventurers, so...";
+			mes "[比利克]";
+			mes "死者之城位於";
+			mes "這裡的北方。記住，";
+			mes "去那裡非常危險，";
+			mes "就算是經驗豐富的";
+			mes "冒險者也一樣……";
 			mes "小心。";
 			close;
 		}
-		mes "[Billik]";
-		mes "Hahaha~ I guess you like adventure";
-		mes "as much as I do. Although it's a";
-		mes "very dangrous place, you will be";
-		mes "paid back for your effort after";
-		mes "you get there. But be careful.";
+		mes "[比利克]";
+		mes "哈哈哈～我猜你跟我一樣";
+		mes "熱愛冒險。雖然那是個";
+		mes "非常危險的地方，你";
+		mes "在抵達之後，";
+		mes "會得到應有的回報。但要小心。";
 		close;
 	}
 	else if (nif_revive == 0) {
-		mes "[Billik]";
-		mes "What brings you here? I'm busy,";
-		mes "leave if you don't have any business.";
+		mes "[比利克]";
+		mes "你來這裡做什麼？我很忙，";
+		mes "沒事的話就快離開。";
 		close;
 	}
 }
 
-niflheim,153,215,3	script	Feylin	794,{
+niflheim,153,215,3	script	費林::Feylin	794,{
 	if (nif_revive == 2) {
-		mes "[Feylin]";
-		mes "Poor "+((Sex == SEX_MALE)?"guy":"少女")+"...";
-		mes "Dying at such a young age...";
-		mes "I am always sorry to see the";
-		mes "young pass away.";
+		mes "[費林]";
+		mes "可憐的 "+((Sex == SEX_MALE)?"guy":"少女")+"...";
+		mes "這麼年輕就死去……";
+		mes "我總是為年輕人";
+		mes "早逝感到難過。";
 		next;
-		mes "[Feylin]";
+		mes "[費林]";
 		mes "............??";
-		mes "Oh, I see you're not dead yet,";
-		mes "are you? It's unbelievable to";
-		mes "see another living person";
-		mes "in this town.";
+		mes "喔，我看你還沒死，";
+		mes "是嗎？在這座城鎮裡";
+		mes "能再見到活人";
+		mes "真是難以置信。";
 		next;
-		mes "[Feylin]";
-		mes "Are you coming to rescue someone,";
-		mes "or do you have another purpose?";
-		mes "If you came here to meet a";
-		mes "deceased friend of yours, you've";
-		mes "come to the wrong person.";
+		mes "[費林]";
+		mes "你是來救人的嗎，";
+		mes "還是有其他目的？";
+		mes "如果你是來見";
+		mes "你已故的朋友，那你";
+		mes "找錯人了。";
 		next;
-		mes "[Feylin]";
-		mes "Nobody in Niflheim can";
-		mes "perform that kind of miracle...";
+		mes "[費林]";
+		mes "尼芙菲姆沒有任何人";
+		mes "能辦到那種奇蹟……";
 		next;
-		mes "[Feylin]";
-		mes "I can tell you have been through";
-		mes "much hardship, but unfortunately,";
-		mes "you came here for nothing. I hope";
-		mes "you go back to where you came";
-		mes "from before it's too late.";
+		mes "[費林]";
+		mes "看得出你吃了很多苦，";
+		mes "但很遺憾，";
+		mes "你是白跑一趟了。希望你";
+		mes "在為時已晚之前，";
+		mes "回到你來的地方。";
 		set nif_revive,3;
 		changequest 11039,11040;
 		close;
 	}
 	else if (nif_revive == 3) {
-		mes "[Feylin]";
-		mes "I've asked you to leave this";
-		mes "town immediately. I'm sorry";
-		mes "but I know nothing about what";
-		mes "you are asking.";
+		mes "[費林]";
+		mes "我已經請你立刻";
+		mes "離開這座城鎮了。很抱歉，";
+		mes "但我對你問的事";
+		mes "一無所知。";
 		emotion ET_FRET;
 		next;
-		if (select("But...:I am sorry.") == 1) {
-			mes "[Feylin]";
-			mes "You must know something...";
-			mes "Otherwise, you wouldn't be";
-			mes "so stubborn. I am not sure";
-			mes "who told you contacting the";
-			mes "dead might be possible...";
+		if (select("但是……:很抱歉。") == 1) {
+			mes "[費林]";
+			mes "你一定知道什麼……";
+			mes "不然你不會";
+			mes "這麼固執。我不確定";
+			mes "是誰告訴你，與";
+			mes "死者聯絡可能辦得到……";
 			next;
-			mes "[Feylin]";
-			mes "But I surely wouldn't have told";
-			mes "you. Besides, speaking about";
-			mes "such things is taboo.";
+			mes "[費林]";
+			mes "但我當然不會告訴";
+			mes "你的。而且，談論";
+			mes "這種事是禁忌。";
 			set nif_revive,4;
 			changequest 11040,11041;
 			close;
 		}
-		mes "[Feylin]";
-		mes "Please consider leaving this";
-		mes "place as soon as possible.";
-		mes "Nobody should stay in";
-		mes "Niflheim for too long.";
+		mes "[費林]";
+		mes "請考慮儘快";
+		mes "離開這個地方。";
+		mes "沒有人應該";
+		mes "在尼芙菲姆待太久。";
 		close;
 	}
 	else if (nif_revive == 4) {
 		if (countitem(748) > 0) {
-			mes "[Feylin]";
-			mes "Huh, Billik must have sent you.";
-			mes "Since I'm indebted to him, I";
-			mes "suppose I will help you.";
-			mes "But let me warn you.";
-			mes "The price that I demand may be";
-			mes "more that you expect...";
+			mes "[費林]";
+			mes "咦，一定是比利克派你來的。";
+			mes "既然我欠他人情，我";
+			mes "想我會幫你的。";
+			mes "不過我要先警告你。";
+			mes "我要的代價";
+			mes "可能比你預期的還多……";
 			next;
-			if (select("I'm willing to do this.:I don't think I can do this.") == 1) {
+			if (select("我願意這麼做:我想我做不到。") == 1) {
 				if (BaseLevel > 79) {
-					mes "[Feylin]";
-					mes "Alright, but you must promise";
-					mes "me that you will not let other";
-					mes "people know what I am about";
-					mes "to tell you.";
+					mes "[費林]";
+					mes "好吧，但你必須答應我";
+					mes "不會讓其他";
+					mes "人知道我即將";
+					mes "告訴你的事。";
 					next;
-					mes "[Feylin]";
-					mes "This sorcery requires great";
-					mes "sacrifice. Needless to say, there";
-					mes "is a chance that this spell may";
-					mes "fail. I must also have";
-					mes "10 Yggdrasil Leaf to cast this";
-					mes "spell. Do you wish to continue?";
+					mes "[費林]";
+					mes "這種魔法需要極大的";
+					mes "犧牲。不用說，這魔法";
+					mes "有可能失敗。";
+					mes "我還必須準備";
+					mes "10片天地樹葉子才能施展這個";
+					mes "魔法。你想繼續嗎？";
 					next;
 					if (select("是:否") == 1) {
 						if (countitem(610) > 9) {
-							mes "[Feylin]";
-							mes "I see. Then we shall begin.";
+							mes "[費林]";
+							mes "我知道了。那我們就開始吧。";
 							mes "Woombahsokasabahah!";
 							mes "Woombah woombah hoombabah!";
-							mes "Yeeeeep!";
+							mes "耶啊啊！";
 							next;
 							set .@nif_revive1,rand(1,100);
 							if (.@nif_revive1 > 0) && (.@nif_revive1 < 88) {
-								mes "[Feylin]";
-								mes "...I am sorry.";
-								mes "I have failed to summon";
-								mes "who you wish to see. I am";
-								mes "really sorry for this result.";
+								mes "[費林]";
+								mes "……很抱歉。";
+								mes "我沒能召喚";
+								mes "你想見的人。我";
+								mes "非常抱歉造成這種結果。";
 								emotion ET_HUK;
 								delitem 748,1; //Witherless_Rose
 								delitem 610,10; //Leaf_Of_Yggdrasil
@@ -687,112 +687,112 @@ niflheim,153,215,3	script	Feylin	794,{
 								changequest 11041,11042;
 								percentheal -99,0;
 								next;
-								mes "[Feylin]";
-								mes "Unfortunately, it may be";
-								mes "impossible to summon the";
-								mes "spirit of the person with";
-								mes "whom you wished to speak...";
+								mes "[費林]";
+								mes "很遺憾，";
+								mes "或許無法召喚";
+								mes "你想與之交談的那人的";
+								mes "靈魂……";
 								close;
 							}
 							else if (.@nif_revive1 > 87) && (.@nif_revive1 < 101) {
 								delitem 748,1; //Witherless_Rose
 								delitem 610,10; //Leaf_Of_Yggdrasil
 								percentheal -50,0;
-								mes "[Feylin]";
+								mes "[費林]";
 								mes "..........";
 								mes "..........";
 								next;
 								mes "[艾莉]";
 								mes "..........";
-								mes ".....Umm...";
-								mes "...Wasn't I just dead?";
-								mes "Um, do I know you?";
+								mes "……嗯……";
+								mes "……我不是剛死掉嗎？";
+								mes "嗯，我認識你嗎？";
 								next;
-								select("I brought a message from your husband.");
+								select("我帶來了你丈夫的訊息。");
 								mes "[艾莉]";
-								mes "Oh...I see...I'm sorry that I could not meet him before I died...";
-								mes "So what is his message for me?";
+								mes "喔……我知道了……很抱歉我死前沒能見他一面……";
+								mes "那他要對我說什麼？";
 								next;
-								select("Forgive him for what happened a month ago.");
+								select("請原諒他一個月前發生的事。");
 								mes "[艾莉]";
-								mes "*Sigh* He's such a nice husband...";
-								mes "He pays such attention, even to";
-								mes "the little things. Though, I";
-								mes "should be the one apologizing";
-								mes "to him...";
+								mes "*嘆氣* 他真是個好丈夫……";
+								mes "他連";
+								mes "小地方都很用心。不過，我";
+								mes "應該向他道歉的";
+								mes "才對……";
 								next;
 								mes "[艾莉]";
-								mes "Please give him this box, and tell";
-								mes "him to forget about me. He should";
-								mes "live the rest of his life happily";
-								mes "with someone else. Oh, also let";
-								mes "him know that I forgive him.";
+								mes "請把這個盒子交給他，並告訴";
+								mes "他忘了我吧。他應該";
+								mes "快樂地過完剩下的人生，";
+								mes "和別人在一起。喔，還要讓";
+								mes "他知道我原諒他。";
 								set nif_revive,6;
 								changequest 11040,11043;
 								getitem 934,1; //Mementos
 								next;
 								mes "[艾莉]";
-								mes "I am glad to hear from my";
-								mes "husband one more time. But I";
-								mes "think I have to go now.";
+								mes "能再聽到";
+								mes "我丈夫的消息，我很高興。不過我";
+								mes "想我得走了。";
 								mes "辛苦你了。";
-								mes "Farewell...";
+								mes "再會……";
 								next;
 								mes "[艾莉]";
 								mes ".....................";
 								mes "....................";
 								next;
-								mes "[Feylin]";
-								mes "I guess you have accomplished what";
-								mes "you wanted. Well then, be careful";
-								mes "when you go back...";
+								mes "[費林]";
+								mes "我想你已經完成了";
+								mes "你想做的事。那麼，回去的路上";
+								mes "請小心……";
 								close;
 							}
 						}
 						else {
-							mes "[Feylin]";
-							mes "If you don't have the";
-							mes "items, we cannot proceed.";
-							mes "Remember, I need 10 Yggdrasil";
-							mes "Leaves to perform this spell.";
-							mes "Please bring them as soon";
+							mes "[費林]";
+							mes "如果你沒有";
+							mes "道具，我們無法進行下去。";
+							mes "記住，我需要10片天地樹";
+							mes "葉子才能施展這個魔法。";
+							mes "請盡快帶來";
 							mes "回來。";
 							close;
 						}
 					}
-					mes "[Feylin]";
-					mes "I hope you will bring the items";
-					mes "first. But... I don't have the";
-					mes "confidence to promise that";
-					mes "this spell will cast successfully.";
+					mes "[費林]";
+					mes "我希望你能帶來道具";
+					mes "。但是……我沒有";
+					mes "把握能保證";
+					mes "這個魔法一定能成功施展。";
 					close;
 				}
-				mes "[Feylin]";
-				mes "Hmm... You don't seem to have";
-				mes "the strength to endure the";
-				mes "casting of this spell. At";
-				mes "your current strength, this";
-				mes "spell will kill you.";
-				mes "I cannot take that risk.";
+				mes "[費林]";
+				mes "嗯……你似乎沒有";
+				mes "承受";
+				mes "施展這個魔法的力量。以";
+				mes "你目前的實力，這";
+				mes "個魔法會害死你。";
+				mes "我不能冒這個險。";
 				close;
 			}
-			mes "[Feylin]";
+			mes "[費林]";
 			mes "你做了明智的決定。";
-			mes "It's not a good idea to perform";
-			mes "this kind of sorcery in the";
-			mes "first place because of the";
-			mes "risks involved...";
+			mes "在這種情況下施展";
+			mes "這種魔法本來就";
+			mes "不是好主意，因為";
+			mes "風險很大……";
 			close;
 		}
-		mes "[Feylin]";
-		mes "No matter how many times you ask";
-		mes "me, I cannot help you. Please";
-		mes "leave this place as soon as you can.";
+		mes "[費林]";
+		mes "不管你問幾次，";
+		mes "我都幫不了你。請";
+		mes "儘快離開這裡。";
 		close;
 	}
-	mes "[Feylin]";
-	mes "What makes you to come to such";
-	mes "a dangerous town? Please leave";
-	mes "this place as soon as you can.";
+	mes "[費林]";
+	mes "是什麼讓你來到這樣";
+	mes "危險的城鎮？請";
+	mes "儘快離開這裡。";
 	close;
 }

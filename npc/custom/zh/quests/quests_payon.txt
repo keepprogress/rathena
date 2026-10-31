@@ -29,92 +29,92 @@ payon_in01,99,72,4	script	老奶奶::Granny	103,{
 	}
 	if (countitem(1049) > 3) {
 		mes "[老奶奶]";
-		mes "I wish I could make some clothing for my grandchildren for the festival season...";
+		mes "我真希望能為孫子們做些節日的衣服……";
 		next;
 		mes "[老奶奶]";
-		mes "Oh! Would you give me your ^3355FFSkirt of Virgin^000000? I'd need four of them. Please, I'm begging you.";
+		mes "喔！你能把你的^3355FF處女裙^000000給我嗎？我需要四件。拜託，我求求你。";
 		next;
-		switch(select("Alright.:No way!")) {
+		switch(select("好吧。:不可能！")) {
 		case 1:
 			delitem 1049,4; //Skirt_Of_Virgin
 			mes "[老奶奶]";
-			mes "Oh! Thank you so much~ Now I can make some clothes for Kitty Cutty~";
+			mes "噢！真是太謝謝你了～這下我可以替 Kitty Cutty 做些衣服了～";
 			next;
 			mes "[老奶奶]";
-			mes "Ah, Wait! I almost forgot. I was quite a popular actress back in my youth. My actor friends gave me a wedding present when I left the Troupe. I've kept it to remind me of those precious times.";
+			mes "啊，等等！我差點忘了。年輕時我可是相當受歡迎的女演員呢。離開劇團時，演員朋友們送了我一份結婚禮物。我一直珍藏著，好讓自己記得那些珍貴的時光。";
 			next;
 			mes "[老奶奶]";
-			mes "If it's okay...";
-			mes "I'd like to give you this.";
+			mes "如果可以的話……";
+			mes "我想把這個送給你。";
 			next;
 			getitem 2293,1; //Pretend_Murdered
 			mes "[老奶奶]";
-			mes "Goodbye, adventurer~!";
-			mes "Thank you for making an old woman so happy...";
+			mes "再見了，冒險者～！";
+			mes "謝謝你讓老太婆我這麼開心……";
 			close;
 		case 2:
 			mes "[老奶奶]";
-			mes "*Sigh* How can I get ^3355FFSkirt of Virgin^000000 by myself? I'm just so weak and feeble, even rolling in my rocking chair exhausts me. *Sniff* All I want is to make my grandchildren happy...";
+			mes "*唉* 我一個人要怎麼拿到 ^3355FF韓服^000000 呢？我實在太虛弱了，連在搖椅上翻個身都累。*抽泣* 我只想讓孫子們開心啊……";
 			close;
 		}
 	}
 	else {
 		mes "[老奶奶]";
-		mes "I gather Mushrooms on the Mountain of Payon everyday. Time passes and before I know it, it's already fesitval season. I wish I could make clothing for my family this time of the year.";
+		mes "我每天都會在斐揚山採蘑菇。時間過得真快，一眨眼就到了慶典的季節。真希望這個時候能為家人做些衣服。";
 		next;
 		mes "[老奶奶]";
 		mes "...";
-		mes "But for that, I need ^3355FF4 Skirt of Virgin^000000...";
+		mes "但要做這些，我需要 ^3355FF4 件韓服^000000……";
 		next;
 		mes "[老奶奶]";
-		mes "Young traveler, please help me. When you find some ^3355FFSkirt of Virgin^000000, please bring them to me. I'd really appreciate it...";
+		mes "年輕的旅人，請幫幫我。如果你找到一些 ^3355FF韓服^000000，請把它們帶來給我。我會非常感激的……";
 		close;
 	}
 }
 
 // 'Ear Muffs' Quest
 //============================================================
-payon_in01,18,10,4	script	Mystic Lady	76,{
-	mes "[Mystic Lady]";
-	mes "My family has produced and sold the special Winter product ^3355FFEar Muffs^000000 for many years. We just moved here, but the weather is always warm so we can hardly make a living.";
+payon_in01,18,10,4	script	神秘女士::Mystic Lady	76,{
+	mes "[神秘女士]";
+	mes "我們家世代都在生產和販售冬季特產 ^3355FF耳罩^000000。我們才剛搬來這裡，可是這裡天氣總是暖和，我們幾乎無法維持生計。";
 	next;
-	mes "[Mystic Lady]";
-	mes "If you plan to travel to colder regions, I suggest that you bring some ^3355FFEar Muffs^000000...";
+	mes "[神秘女士]";
+	mes "如果你打算前往寒冷的地區，建議你帶些 ^3355FF耳罩^000000……";
 	emotion ET_THINK;
 	next;
-	mes "[Mystic Lady]";
-	mes "Ear Muffs are my family's specialty, and we provide it to customers who have ^FF33551 Cursed Ruby^000000, ^3311AA1 Headset,^000000 ^3355FF 200 Feathers^000000 and ^DDDD005000 Zeny^000000.";
+	mes "[神秘女士]";
+	mes "耳罩是我們家的招牌商品，我們只提供給持有 ^FF33551 詛咒紅寶石^000000、^3311AA1 耳機，^000000 ^3355FF 200 根羽毛^000000 與 ^DDDD005000 Zeny^000000 的客人。";
 	emotion ET_THINK;
 	next;
-	switch(select("Oh Yeah? That sounds good.:No thank you, Ma'am.")) {
+	switch(select("哦？聽起來不錯嘛。:不用了，謝謝您，女士。")) {
 	case 1:
 		if ((countitem(724) > 0) && (countitem(949) > 199) && (countitem(5001) > 0) && (Zeny > 4999)) {
-			mes "[Mystic Lady]";
+			mes "[神秘女士]";
 			delitem 724,1; //Cardinal_Jewel_
 			delitem 949,200; //Feather
 			delitem 5001,1; //Headset
 			set Zeny,Zeny-5000;
-			mes "Here, I will give you this pre-made one.";
+			mes "這裡，我把這個現成的送你吧。";
 			getitem 2283,1; //Ear_Mufs
 			next;
-			mes "[Mystic Lady]";
-			mes "Thank you for buying our product. You won't regret purchasing our Ear Muffs: Satisfaction guaranteed~";
+			mes "[神秘女士]";
+			mes "感謝您購買我們的商品。您絕對不會後悔買下我們的耳罩: 保證滿意～";
 			emotion ET_THINK;
 			close;
 		}
 		else {
-			mes "[Mystic Lady]";
+			mes "[神秘女士]";
 			mes "唉呀……";
-			mes "You don't have enough money or items. Unfortunately, we can't give any discounts. Please understand that we have to make a living...";
+			mes "您的錢或道具不夠。很抱歉，我們無法打折。請您體諒，我們也得生活……";
 			emotion ET_THINK;
 			close;
 		}
 	case 2:
-		mes "[Mystic Lady]";
-		mes "That's fine.";
-		mes "I believe we";
-		mes "will meet again.";
-		mes "...One of these days.";
+		mes "[神秘女士]";
+		mes "沒關係。";
+		mes "我想我們";
+		mes "還會再見面的。";
+		mes "……改天吧。";
 		emotion ET_THINK;
 		close;
 	}
@@ -125,91 +125,91 @@ payon_in01,18,10,4	script	Mystic Lady	76,{
 payon_in02,25,71,4	script	男孩::Boy	86,{
 	if (countitem(701) > 4) {
 		mes "[年輕男性]";
-		mes "ArrrGggghh!";
-		mes "Ah, No I can't...";
+		mes "啊啊啊啊！";
+		mes "啊，不，我做不到……";
 		next;
 		mes "[年輕男性]";
-		mes "*Huk*";
-		mes "Now even my eyes have gone mad!! Why do these bugs suddenly seem so cute?! Nooooooo~!!!";
+		mes "*嗚*";
+		mes "現在連我的眼睛都瘋了！！為什麼這些蟲子突然看起來這麼可愛？！不要啊～！！！";
 		next;
-		switch(select("Show Ora Ora:Give Ora Ora:Cancel")) {
+		switch(select("出示歐拉歐拉:給予歐拉歐拉:取消")) {
 		case 1:
 			mes "[年輕男性]";
-			mes "Oooooohhhh!!!";
-			mes "Is, is this";
-			mes "the one?!";
+			mes "喔喔喔喔！！！";
+			mes "這、這是";
+			mes "正是那個嗎？！";
 			mes "這個……";
-			mes "Ora Ora!!";
+			mes "歐拉歐拉！！";
 			next;
 			mes "[年輕男性]";
-			mes "I'll make it short! Give it to me, and I will give you my treasure! So how's my idea? Wanna deal?";
+			mes "我長話短說！把它給我，我就把我的寶物給你！我的提議怎麼樣？要成交嗎？";
 			close;
 		case 2:
 			if (countitem(701) > 4) {
 				delitem 701,5; //Ora_Ora
 			}
 			mes "[年輕男性]";
-			mes "Muhahahahah!!!";
-			mes "I finally have this!";
-			mes "Ora Ora!";
-			mes "Stupid and Disgusting";
-			mes "Thief Bugs!!";
-			mes "You will pay!!!";
+			mes "哈哈哈哈哈！！！";
+			mes "我終於得到這個了！";
+			mes "歐拉歐拉！";
+			mes "愚蠢又噁心";
+			mes "盜賊蟲！！";
+			mes "你會付出代價的！！！";
 			next;
 			mes "[年輕男性]";
-			mes "Huk...Huk...";
-			mes "Sorry, I was out of control with pleasure for a while. Now, I will give my treasure as promised.";
+			mes "嗚…嗚…";
+			mes "抱歉，我剛才一時太高興，失控了。現在，我就照約定把我的寶物給你。";
 			next;
 			getitem 5004,1; //Oxygen_Mask
 			mes "[年輕男性]";
-			mes "When you wear this over your mouth and start to breathe, it filters junk out before getting to your lungs.";
+			mes "把這個戴在嘴上開始呼吸，它會在雜質進入肺部之前把它們過濾掉。";
 			next;
 			mes "[年輕男性]";
-			mes "Kakakakakaka!";
+			mes "卡卡卡卡卡！";
 			mes "真等不及";
-			mes "to use this";
-			mes "Ora Ora!";
+			mes "使用這個的時候";
+			mes "歐拉歐拉！";
 			close;
 		case 3:
 			mes "[年輕男性]";
-			mes "Huhuhuhuhu...";
-			mes "What if I can't get rid of all these Thief Bugs? I might even grow to love them... *Huk*";
+			mes "呼呼呼呼呼……";
+			mes "要是我沒辦法把這些盜賊蟲全部清掉怎麼辦？說不定我還會愛上牠們呢……*嗚*";
 			close;
 		}
 	}
 	else {
 		mes "[年輕男性]";
-		mes "Wahhhhhh! I, I...";
-		mes "I can't take it any more!";
-		mes "You little stinky filthy bastards!";
+		mes "哇啊啊啊！我、我……";
+		mes "我再也受不了了！";
+		mes "你們這群骯髒臭烘烘的混蛋！";
 		next;
-		switch(select("Continue:Cancel")) {
+		switch(select("繼續:取消")) {
 		case 1:
 			mes "[年輕男性]";
 			mes "唉……";
-			mes "It all started when my parents passed away when I was a little kid. Early on I had to work for a living, and had a really hard time.";
+			mes "這一切都始於我還是小孩的時候，父母過世了。我很早就得開始工作謀生，日子過得非常辛苦。";
 			next;
 			mes "[年輕男性]";
-			mes "I've worked for 10 years in hopes of buying my dream house where I could find some sense of peace and comfort again. Eventually I thought I had enough zeny to afford my very own sweet home.";
+			mes "我工作了十年，希望能買下夢想中的房子，讓自己重新找回一些平靜與安穩。後來我以為自己終於攢夠了 zeny，足以負擔屬於自己的溫馨小窩。";
 			next;
 			mes "[年輕男性]";
-			mes "Unfortunately I didn't have enough money to buy the nice house that I had my eye on. But then, I found this house, which was bigger and cheaper than the first. I bought it without thinking...";
+			mes "可惜我的錢還是不夠買我看上的那間好房子。後來我找到了這間房子，比原本那間更大也更便宜。我沒多想就買下了……";
 			next;
 			mes "[年輕男性]";
-			mes "Sweet Jesus! Turns out, it's a Heaven for Thief Bugs!!!";
+			mes "天哪！結果這裡根本是盜賊蟲的天堂！！！";
 			next;
 			mes "[年輕男性]";
-			mes "I tried to do everything I could do. I coaxed them, killed them, but it only brought peace for a moment! I even tried to burn this house down...!";
+			mes "我能做的都試過了。我哄過牠們、也殺過牠們，可是只換來片刻的安寧！我甚至還想把這棟房子燒掉……！";
 			next;
 			mes "[年輕男性]";
-			mes "*Gasp* I mean, really, do I need ^3355FF Ora Ora^000000 to get rid of them? People say it is very rarely seen in distant countries.";
+			mes "*喘氣* 我是說，真的需要 ^3355FF歐拉歐拉^000000 來趕走牠們嗎？聽說這東西在遙遠的國家也很少見。";
 			next;
 			mes "[年輕男性]";
-			mes "If I could afford 5 of them, I won't have to be frustrated with these disgusting bugs any more...";
+			mes "要是我能負擔得起五個，就不用再為這些噁心的蟲子感到煩躁了……";
 			close;
 		case 2:
 			mes "[年輕男性]";
-			mes "This never ending fight with the bugs has really exhausted me. I give up. Do as you wish you scumbags!";
+			mes "跟這些蟲子的無止盡戰鬥真的讓我精疲力竭。我放棄了。你們這些混蛋，想怎樣就怎樣吧！";
 			close;
 		}
 	}
@@ -218,37 +218,37 @@ payon_in02,25,71,4	script	男孩::Boy	86,{
 // 'Helm of Angel' and 'Deviruchi Cap' Quest
 //============================================================
 -	script	Young man#12	89,{
-	mes "[Young man]";
-	mes "...What is it?";
+	mes "[年輕人]";
+	mes "……怎麼了？";
 	next;
-	switch(select("Can you make me a special item?:Hey.")) {
+	switch(select("能幫我做一件特殊道具嗎？:嘿。")) {
 	case 1:
-		mes "[Young man]";
-		mes "Huh? So you already know what I specialize in, eh? I suppose there's no need for the usual secrecy. Tell me what you want.";
+		mes "[年輕人]";
+		mes "咦？你已經知道我的專長了啊？看來也不必像平常那樣保密了。說說你想要什麼吧。";
 		next;
-		switch(select("Helm of Angel.:Deviruchi Cap.:I will come next time.")) {
+		switch(select("天使頭盔。:小惡魔帽。:下次再來。")) {
 		case 1:
-			mes "[Young man]";
-			mes "1 Helm (with slot).";
-			mes "1 Angel Wing.";
-			mes "5 Fang of Garm.";
-			mes "That's all I require.";
+			mes "[年輕人]";
+			mes "1 個金屬頭盔(有孔)。";
+			mes "1 片天使之翼。";
+			mes "5 個迦姆之牙。";
+			mes "我需要的就這些了。";
 			next;
-			mes "[Young man]";
-			mes "Wait! Just so you know, I don't care if the items in your inventory have been upgraded, or have cards attached.";
+			mes "[年輕人]";
+			mes "等等！先跟你說清楚，你背包裡的道具有沒有強化過、或有沒有插卡，我都不在乎。";
 			next;
-			mes "[Young man]";
-			mes "I mean, any cards or upgrades in the items I will use to make something for you will be lost once I make the item. So be careful when you hand stuff over to me.";
+			mes "[年輕人]";
+			mes "我的意思是，用來幫你製作東西的道具，一旦我做好就會失去所有卡片與強化。所以把東西交給我時要小心。";
 			next;
-			mes "[Young man]";
-			mes "Did you gather the items? Then hand them over.";
+			mes "[年輕人]";
+			mes "材料都收集齊了嗎？那就交給我吧。";
 			next;
 			switch(select("把道具交給他。:不要把道具交給他。")) {
 			case 1:
 				if ((countitem(2229) > 0) && (countitem(2254) > 0) && (countitem(7036) > 4)) {
-					mes "[Young man]";
-					mes ".....Hm.";
-					mes "Fine, here's your Helm of Angel. Take it.";
+					mes "[年輕人]";
+					mes "……嗯。";
+					mes "好了，這是你的天使頭盔，拿去吧。";
 					delitem 2229,1; //Helm_
 					delitem 2254,1; //Angelic_Chain
 					delitem 7036,5; //Fang_Of_Garm
@@ -257,35 +257,35 @@ payon_in02,25,71,4	script	男孩::Boy	86,{
 					end;
 				}
 				else {
-					mes "[Young man]";
-					mes "...The number of items is not right. You better double check.";
+					mes "[年輕人]";
+					mes "……數量不對。你最好再確認一下。";
 					close;
 				}
 			case 2:
-				mes "[Young man]";
-				mes "Do as you wish...";
+				mes "[年輕人]";
+				mes "隨你便吧……";
 				close;
 			}
 		case 2:
-			mes "[Young man]";
-			mes "600 Little Evil Horn.";
-			mes "40 Talon of Griffon.";
-			mes "That's all I require.";
+			mes "[年輕人]";
+			mes "600 個小惡魔之角。";
+			mes "40 個獅鷲鳥指甲。";
+			mes "我需要的就這些了。";
 			next;
-			mes "[Young man]";
-			mes "Wait! Just so you know, I don't care if the items in your inventory have been upgraded, or have cards attached.";
+			mes "[年輕人]";
+			mes "等等！先跟你說清楚，你背包裡的道具有沒有強化過、或有沒有插卡，我都不在乎。";
 			next;
-			mes "[Young man]";
-			mes "I mean, any cards or upgrades in the items I will use to make something for you will be lost once I make the item. So be careful when you hand stuff over to me.";
+			mes "[年輕人]";
+			mes "我的意思是，用來幫你製作東西的道具，一旦我做好就會失去所有卡片與強化。所以把東西交給我時要小心。";
 			next;
-			mes "[Young man]";
-			mes "Did you gather the items? Then hand them over.";
+			mes "[年輕人]";
+			mes "材料都收集齊了嗎？那就交給我吧。";
 			next;
 			switch(select("把道具交給他。:不要把道具交給他。")) {
 			case 1:
 				if ((countitem(1038) > 599) && (countitem(7048) > 39)) {
-					mes "[Young man]";
-					mes ".....Hm. Here's your Deviruchi Hat. Please take it.";
+					mes "[年輕人]";
+					mes "……嗯。這是你的小惡魔帽，請收下。";
 					delitem 1038,600; //Petite_DiablOfs_Horn
 					delitem 7048,40; //Talon_Of_Griffin
 					close2;
@@ -293,24 +293,24 @@ payon_in02,25,71,4	script	男孩::Boy	86,{
 					end;
 				}
 				else {
-					mes "[Young man]";
-					mes "...The number of items isn't right. You better double check.";
+					mes "[年輕人]";
+					mes "……數量不對。你最好再確認一下。";
 					close;
 				}
 			case 2:
-				mes "[Young man]";
-				mes "Do as you wish...";
+				mes "[年輕人]";
+				mes "隨你便吧……";
 				close;
 			}
 		case 3:
-			mes "[Young man]";
-			mes "Hm. Alright.";
-			mes "Then we shall meet again.";
+			mes "[年輕人]";
+			mes "嗯。好吧。";
+			mes "那就後會有期了。";
 			close;
 		}
 	case 2:
-		mes "[Young man]";
-		mes "Hm.";
+		mes "[年輕人]";
+		mes "嗯。";
 		mes "保重。";
 		close;
 	}

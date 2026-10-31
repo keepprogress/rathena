@@ -19,117 +19,117 @@
 
 // Blacksmith: 'Welding Mask' Quest
 //============================================================
-geffen_in,144,166,4	script	Blacksmith	63,{
-	mes "[Blacksmith]";
-	mes "You've never heard of me? Why, I'm the Veteran Blacksmith of this land. I've spent 30 years in this hot and bloody hellfire, bending steel to my iron will!";
+geffen_in,144,166,4	script	鐵匠::Blacksmith	63,{
+	mes "[鐵匠]";
+	mes "你從沒聽過我？哎呀，我可是這片土地上的老鐵匠。我在這炙熱又血腥的地獄之火中耗了三十年，以鐵一般的意志鍛造鋼鐵！";
 	next;
-	mes "[Blacksmith]";
+	mes "[鐵匠]";
 	mes "但是……";
-	mes "I am growing older and my prowess begins to fade with age. So I've invented something for young, hot, upcoming Blacksmiths, in hopes that they too will master my craft...";
+	mes "我年紀漸長，技藝也隨之衰退。所以我發明了一樣東西，給年輕有為的新銳鐵匠們，希望他們也能掌握我的技藝……";
 	next;
-	switch(select("What is it?:...")) {
+	switch(select("那是什麼？:……")) {
 	case 1:
-		mes "[Blacksmith]";
-		mes "We Blacksmiths must always manipulate steel under extreme heat, and the hot air and melted metals are more than most people can stand.";
+		mes "[鐵匠]";
+		mes "我們鐵匠必須在極高的溫度下操控鋼鐵，灼熱的空氣與熔化的金屬，大多數人都無法承受。";
 		next;
-		mes "[Blacksmith]";
-		mes "For the sake of our craft, our beautiful, yet masculine faces are put at risk...";
+		mes "[鐵匠]";
+		mes "為了我們的技藝，我們這張俊美又陽剛的臉龐也因此身陷危險……";
 		next;
-		mes "[Blacksmith]";
-		mes "But with this wonder of technology, there's no need to worry! Behold, the ^3355FFWelding Mask^000000 !!";
+		mes "[鐵匠]";
+		mes "但有了這項科技奇蹟，就不必擔心了！看吧，這就是^3355FF焊接面罩^000000 !!";
 		next;
-		mes "[Blacksmith]";
-		mes "It works by covering your face with a fat metal plate. Truly, it's an item that everyone should want! If not yourself, it'd be a good idea to give this to a friend who is studying smithing.";
+		mes "[鐵匠]";
+		mes "它的原理是用厚厚的金屬板蓋住你的臉。這真的是每個人都該想要的道具！如果不是給你自己，送給正在學習鍛造的朋友也是個好主意。";
 		next;
-		mes "[Blacksmith]";
-		mes "So how about it ? If you give me ^2244FF50 Steel^000000 and ^4422FFonly 2000 Zeny^000000, I will make it for you right away~!!";
+		mes "[鐵匠]";
+		mes "那麼，怎麼樣 ? 如果你給我^2244FF50 鋼鐵^000000，再加上^4422FF僅 2000 Zeny^000000，我馬上就幫你做～！！";
 		next;
-		switch(select("Hm... Not bad. Alright.:How does it work again?")) {
+		switch(select("嗯……還不錯。好吧。:這東西是怎麼運作的來著？")) {
 		case 1:
 			if ((countitem(999) > 49) && (Zeny > 1999)){
-				mes "[Blacksmith]";
-				mes "Ah, I see that you appreciate a Blacksmith's work! Alright, I'll do it right away !!";
+				mes "[鐵匠]";
+				mes "啊，我看得出你很欣賞鐵匠的手藝！好，我馬上就做！！";
 				next;
 				delitem 999,50;  //Steel
 				set Zeny,Zeny-2000;
 				getitem 2292,1; // Welding_Mask
-				mes "[Blacksmith]";
-				mes "Hahaha~! Make good use of that!";
+				mes "[鐵匠]";
+				mes "哈哈哈～！好好利用它吧！";
 				close;
 			}
 			else {
-				mes "[Blacksmith]";
+				mes "[鐵匠]";
 				mes "嗯……";
-				mes "You do not have the items I require.";
+				mes "你沒有我需要的道具。";
 				next;
-				mes "[Blacksmith]";
-				mes "A common Blacksmith would interpret this as a sign of disrepect, but I will forgive you. Just don't forget what I need if you want me to make you this mask.";
+				mes "[鐵匠]";
+				mes "一般的鐵匠會把這視為不敬，不過我會原諒你。若你想要我替你做這個面罩，別忘了我需要什麼。";
 				close;
 			}
 		case 2:
-			mes "[Blacksmith]";
-			mes "The ^3355FFWelding Mask^000000 protects your face by covering it with a fat metal plate. This invention is the result of 30 years of endless toil at the hammer and anvil.";
+			mes "[鐵匠]";
+			mes "^3355FF焊接面罩^000000以厚重的金屬板覆蓋臉部來保護你。這項發明是我三十年來在鐵鎚與鐵砧前無盡辛勞的成果。";
 			close;
 		}
 	case 2:
-		mes "[Blacksmith]";
+		mes "[鐵匠]";
 		mes "啊……！";
-		mes "I guess this is the first time you've met a Blacksmith as great as me, and you're just speechless with awe. Please, take your time and speak up when you are ready.";
+		mes "我想這大概是你第一次遇到像我這樣偉大的鐵匠，讓你驚嘆到說不出話來吧。不急，準備好了再開口吧。";
 		next;
-		mes "^3355FFThis guy seems";
-		mes "a little full";
-		mes "of himself.^000000";
+		mes "^3355FF這傢伙似乎";
+		mes "有點";
+		mes "自視甚高。^000000";
 		close;
 	}
 }
 
 // Eric: 'Headset' Quest
 //============================================================
-geffen_in,30,71,4	script	Eric	83,{
-	mes "[Eric]";
+geffen_in,30,71,4	script	艾瑞克::Eric	83,{
+	mes "[艾瑞克]";
 	mes "請仔細聽";
-	mes "to my story";
-	mes "of my blessed";
+	mes "聽聽我的故事";
+	mes "我那蒙受眷顧的";
 	mes "grandfather.";
 	next;
-	switch(select("Talk:Ask about Items needed:Manufacture:Quit")) {
+	switch(select("交談:詢問所需道具:製作:離開")) {
 	case 1:
-		mes "[Eric]";
-		mes "My Grandfather, who passed away a few years ago, was special to me. He always stayed with me, and took care of me. He was much better than my old man, who was always busy working.";
+		mes "[艾瑞克]";
+		mes "我的祖父幾年前過世，對我來說非常特別。他總是陪伴我、照顧我。他比我那總是忙於工作的老爹好太多了。";
 		next;
-		mes "[Eric]";
-		mes "To me, Grandfather's library was always like a fantasy land where I could escape. I spent most of my time there.";
+		mes "[艾瑞克]";
+		mes "對我來說，祖父的圖書館總像是一片能讓我逃避現實的幻想之地，我大部分時間都待在那裡。";
 		next;
-		mes "[Eric]";
-		mes "I learned a lot of things from his books in the Library. Grandfather was interested in Alchemy and Music, and his Library was filled with many mysterious old books.";
+		mes "[艾瑞克]";
+		mes "我從他在圖書館裡的書學到很多東西。祖父對煉金術與音樂很有興趣，他的圖書館裡擺滿了許多神祕的古書。";
 		next;
-		mes "[Eric]";
-		mes "One day...";
-		mes "As usual, I went to the Library and discovered an interesting schematic.";
+		mes "[艾瑞克]";
+		mes "有一天……";
+		mes "一如往常，我去了圖書館，發現了一張有趣的設計圖。";
 		next;
-		mes "[Eric]";
-		mes "It showed some instrument which looked like Ear Muffs that, when worn on the head, could transmit music or whispers to the ears through a thin wire.";
+		mes "[艾瑞克]";
+		mes "上面畫著一種樂器，外形看起來像耳罩，戴在頭上時，能透過細線將音樂或耳語傳進耳朵裡。";
 		next;
-		mes "[Eric]";
+		mes "[艾瑞克]";
 		mes "我想……";
-		mes "It is my grand father's unfinished work. I met a few Alchemists and asked them to produce it, but they rejected my offer...";
+		mes "這是我祖父未完成的作品。我找過幾位煉金術師，請他們幫忙製作，但他們都拒絕了我的請求……";
 		next;
-		mes "[Eric]";
-		mes "In the end, I thought 'I've gotta make it myself.' So I researched for a few years, and now I fully understand how to make that thing. But, I could never gather the materials to make it!";
+		mes "[艾瑞克]";
+		mes "最後，我心想「只能自己動手了」。於是我研究了好幾年，現在我完全明白該怎麼做了。但是，我始終湊不齊製作所需的材料！";
 		next;
-		mes "[Eric]";
-		mes "If I can get those articles, I would build it right away. If you are interested in my idea, would you bring them for me?";
+		mes "[艾瑞克]";
+		mes "如果我能弄到那些材料，我馬上就能做出來。如果你對我的想法有興趣，能幫我帶來嗎？";
 		next;
-		mes "[Eric]";
-		mes "All I wanna do is build this thing in honor of my grandfather and finish the work he started. If you ask me to keep it, I wouldn't mind.";
+		mes "[艾瑞克]";
+		mes "我只想把這東西做出來，以紀念我的祖父，完成他未竟的心願。如果你想留著它，我也不介意。";
 		close;
 	case 2:
-		mes "[Eric]";
-		mes "40 ^3355FFSteel^000000";
-		mes "1 ^3355FFOridecon^000000";
-		mes "1 ^3355FFAlcohol^000000";
-		mes "1 ^3355FFCoal^000000";
-		mes "These are the things I need for Grandfather's masterpiece.";
+		mes "[艾瑞克]";
+		mes "40 ^3355FF鋼鐵^000000";
+		mes "1 ^3355FF神之金屬^000000";
+		mes "1 ^3355FF酒精^000000";
+		mes "1 ^3355FF煤礦^000000";
+		mes "這些是祖父傑作所需的材料。";
 		close;
 	case 3:
 		if ((countitem(999) > 39) && (countitem(984) > 0) && (countitem(970) > 0) && (countitem(1003) > 0)) {
@@ -138,27 +138,27 @@ geffen_in,30,71,4	script	Eric	83,{
 			delitem 970,1; //Alchol
 			delitem 1003,1; //Coal
 			getitem 5001,1; //Headset
-			mes "*Tap! Tap! Tap!*";
+			mes "*叩！叩！叩！*";
 			next;
-			mes "[Eric]";
+			mes "[艾瑞克]";
 			mes "謝謝。";
-			mes "Because of you, I could accomplish my grandfather's wish. He would be happy if he looked down on me from Heaven.";
+			mes "多虧了你，我才能完成祖父的心願。如果他能從天堂俯視著我，一定會很開心。";
 			next;
-			mes "[Eric]";
-			mes "As I said, please take this. I am just proud that I can make this by myself.";
+			mes "[艾瑞克]";
+			mes "如我所說，請收下這個吧。我只是很自豪，能靠自己做出這東西。";
 			close;
 		}
 		else {
-			mes "[Eric]";
-			mes "Thank you for trying to help me, but you didn't bring all the items I need. I think you will find them all soon though.";
+			mes "[艾瑞克]";
+			mes "謝謝你想幫我，但你沒帶來我需要的所有材料。不過我想你很快就能全部找齊。";
 			close;
 		}
 	case 4:
-		mes "[Eric]";
-		mes "N-no?";
+		mes "[艾瑞克]";
+		mes "不、不要嗎？";
 		mes "嗯……";
-		mes "You have your own";
-		mes "worries, I suppose.";
+		mes "你有你自己的";
+		mes "煩惱吧，我想。";
 		mes "再見。";
 		close;
 	}
@@ -166,82 +166,82 @@ geffen_in,30,71,4	script	Eric	83,{
 
 // Number Match Game :: gef_yagu
 //============================================================
-geffen,122,77,4	script	Nia#yagu	700,{
-	mes "[Nia]";
-	mes "Hello, I'm Nia, the fifth";
-	mes "disciple of Mawong, the";
-	mes "gaming mastermind. Now,";
-	mes "how would you like to play a";
-	mes "Number Match game with me?";
+geffen,122,77,4	script	妮雅#yagu::Nia#yagu	700,{
+	mes "[妮雅]";
+	mes "你好，我是妮雅，第五位";
+	mes "馬旺的弟子，";
+	mes "遊戲大師。好了，";
+	mes "你想不想來玩一場";
+	mes "數字配對遊戲？";
 	next;
-	switch(select("Number Match Game?:Practice Number Match:Play Number Match:Record Holder:Cancel")) {
+	switch(select("數字配對遊戲？:練習數字配對:開始數字配對:最高紀錄:取消")) {
 	case 1:
-		mes "[Nia]";
-		mes "Ah, well, the objective of";
-		mes "the Number Match game is to";
-		mes "guess the number I'm thinking";
-		mes "of. Of course, there are a few";
-		mes "rules that limit the numbers";
-		mes "that I can choose from.";
+		mes "[妮雅]";
+		mes "啊，嗯，這個";
+		mes "數字配對遊戲的目標，就是";
+		mes "猜中我心裡想的";
+		mes "數字。當然，有幾個";
+		mes "規則限制了數字";
+		mes "我可以選的範圍。";
 		next;
-		mes "[Nia]";
-		mes "All the numbers that I make";
-		mes "up must be 3 digits, I can't";
-		mes "use 0 for any of the digits,";
-		mes "and I can't use the same";
-		mes "number for any of the digits";
-		mes "more than once.";
+		mes "[妮雅]";
+		mes "我想出的所有數字";
+		mes "都必須是三位數，而且我不能";
+		mes "在任何一位使用 0，";
+		mes "也不能使用相同的";
+		mes "數字在任何一位上";
+		mes "重複出現。";
 		next;
-		mes "[Nia]";
-		mes "So, for example, I can't";
-		mes "use the numbers 103, 112,";
-		mes "252, or 701. Those numbers";
-		mes "either have a 0, or they use";
-		mes "the same number in the digits";
-		mes "more than once. Got it now?";
+		mes "[妮雅]";
+		mes "舉例來說，我不能";
+		mes "使用 103、112、";
+		mes "252 或 701。這些數字";
+		mes "不是含有 0，就是";
+		mes "在數位上";
+		mes "重複使用同一個數字。懂了嗎？";
 		next;
-		mes "[Nia]";
-		mes "Now, you only get 5 guesses,";
-		mes "and after each guess, I'll tell";
-		mes "you how many digits you guessed";
-		mes "correctly, followed by the number of correctly guessed digits in";
-		mes "the correct digit place.";
+		mes "[妮雅]";
+		mes "現在，你只有 5 次機會猜，";
+		mes "每猜一次，我會告訴你";
+		mes "你猜中了幾個數字，";
+		mes "以及其中有幾個數字猜對了";
+		mes "正確的位置。";
 		next;
-		mes "[Nia]";
-		mes "For example, let's say the";
-		mes "number I come up with is 168.";
-		mes "If your first guess is 678, then you guessed two of the digits,";
-		mes "6 and 8, correctly. However,";
-		mes "only 8 is in the correct place.";
+		mes "[妮雅]";
+		mes "舉例來說，假設";
+		mes "我想的數字是 168。";
+		mes "如果你第一次猜 678，那你猜中了其中兩個數字，";
+		mes "也就是 6 和 8，但是";
+		mes "只有 8 的位置是正確的。";
 		next;
-		mes "[Nia]";
-		mes "You know, it'd be a good idea";
-		mes "if you try the Practice Mode";
-		mes "first. Then, when you're more";
-		mes "comfortable, play the actual";
-		mes "Number Match game. Don't forget that speed counts for your score!";
+		mes "[妮雅]";
+		mes "你知道，最好是";
+		mes "先試試練習模式，";
+		mes "然後，等你比較";
+		mes "熟悉了，再玩真正的";
+		mes "數字配對遊戲。別忘了，速度會影響你的分數！";
 		next;
-		mes "[Nia]";
-		mes "Ah, if you happen to";
-		mes "make a new record in the";
-		mes "Number Match game, you'll";
-		mes "have your name recorded,";
-		mes "so don't miss this chance for";
-		mes "fame and maybe even fortune~";
+		mes "[妮雅]";
+		mes "啊，如果你恰好";
+		mes "創下新紀錄，在";
+		mes "數字配對遊戲中，你將會";
+		mes "讓你的大名被記錄下來，";
+		mes "千萬別錯過這個機會，";
+		mes "名利雙收的機會喔~";
 		close;
 	case 2:
-		mes "[Nia]";
-		mes "Great, let's do a practice";
-		mes "Number Match game. Please";
-		mes "try to guess my number, okay?";
-		mes "If you want to cancel, then please enter a number greater than 1,000.";
+		mes "[妮雅]";
+		mes "太好了，我們來玩一場";
+		mes "數字配對遊戲的練習賽。請";
+		mes "試著猜猜我的數字，好嗎？";
+		mes "如果你想取消，請輸入大於 1,000 的數字。";
 		set .@practice,1;
 		break;
 	case 3:
-		mes "[Nia]";
-		mes "Great, let's play Number Match!";
-		mes "You will have 5 chances to guess the number that I'm thinking of.";
-		mes "If you want to cancel, then please enter a number greater than 1,000.";
+		mes "[妮雅]";
+		mes "太好了，我們來玩數字配對吧！";
+		mes "你會有 5 次機會猜出我心中的數字。";
+		mes "如果你想取消，請輸入大於 1,000 的數字。";
 		set .@practice,0;
 		break;
 	case 4:
@@ -251,19 +251,19 @@ geffen,122,77,4	script	Nia#yagu	700,{
 		set .@score_record, $050908_minus1_yagu;
 		set .@score_min, .@score_record / 60;
 		set .@score_sec, .@score_record % 60;
-		mes "[Nia]";
-		mes "^ff0000" + .@name_record$ + "^000000 is the";
-		mes "record holder for the Number";
-		mes "Match game with a time of";
-		mes "^ff0000" + .@score_min + " minutes, " + .@score_sec + " seconds^000000.";
+		mes "[妮雅]";
+		mes "^ff0000" + .@name_record$ + "^000000 是";
+		mes "數字配對遊戲的";
+		mes "最快紀錄保持者，時間為";
+		mes "^ff0000" + .@score_min + " 分 " + .@score_sec + " 秒^000000。";
 		close;
 	case 5:
-		mes "[Nia]";
-		mes "Take care of yourself,";
-		mes "adventurer. If you ever";
-		mes "feel like playing a Number";
-		mes "Match game, come and talk";
-		mes "to me, alright? See you~";
+		mes "[妮雅]";
+		mes "一路保重，";
+		mes "冒險者。如果你哪天";
+		mes "想玩數字";
+		mes "配對遊戲，就來找我說一聲";
+		mes "好嗎？再見囉~";
 		close;
 	}
 	next;
@@ -290,9 +290,9 @@ geffen,122,77,4	script	Nia#yagu	700,{
 		// Guess a number that meets all conditions.
 		while(1) {
 			if (input(.@input,100,999) != 0) {
-				mes "[Nia]";
-				mes "You've canceled the";
-				mes "Number Match game.";
+				mes "[妮雅]";
+				mes "你已取消了";
+				mes "數字配對遊戲。";
 				close;
 			}
 			set .@input100, .@input / 100;
@@ -302,21 +302,21 @@ geffen,122,77,4	script	Nia#yagu	700,{
 				if ((.@input100 != .@input10) && (.@input100 != .@input1) && (.@input10 != .@input1))
 					break;
 			}
-			mes "[Nia]";
-			mes "You entered one of the";
-			mes "digits as 0, or input the";
-			mes "same numerical value in";
-			mes "the digits more than once.";
-			mes "Please enter another guess.";
+			mes "[妮雅]";
+			mes "你輸入的其中一個";
+			mes "數字是 0，或是輸入了";
+			mes "相同的數值在";
+			mes "多個位數中重複出現。";
+			mes "請再輸入一次猜測的數字。";
 			next;
 		}
 
 		set .@retry, .@retry+1;
-		mes "[Nia]";
+		mes "[妮雅]";
 		mes "^ff0000"+strcharinfo(0)+"^000000,";
-		mes "your guess is ^0000ff"+.@input+"^000000.";
-		mes "Give me a moment to";
-		mes "come up with your results.";
+		mes "你猜的是 ^0000ff"+.@input+"^000000.";
+		mes "請稍等一下，我";
+		mes "來公布你的結果。";
 		next;
 
 		// Correct digits in correct locations.
@@ -339,13 +339,13 @@ geffen,122,77,4	script	Nia#yagu	700,{
 
 		if (.@strike == 3) {
 			if (.@practice) {
-				mes "[Nia]";
-				mes "Yes, the number that";
-				mes "I guessed was ^ff0000"+.@yagu+"^000000!";
-				mes "Congratulations, you";
-				mes "just won this practice";
-				mes "game! Now you should be";
-				mes "ready for the real thing~";
+				mes "[妮雅]";
+				mes "沒錯，我心中的數字是";
+				mes "我想的是 ^ff0000"+.@yagu+"^000000!";
+				mes "恭喜你，";
+				mes "剛剛贏得了這場練習賽";
+				mes "！現在你應該已經";
+				mes "準備好迎接真正的挑戰了~";
 				close;
 			} else {
 
@@ -366,56 +366,56 @@ geffen,122,77,4	script	Nia#yagu	700,{
 				if (.@score_record >= .@total_time || !.@score_record) { //custom (second condition)
 					set $050908_minus1_yagu$, strcharinfo(0);
 					set $050908_minus1_yagu, .@total_time;
-					mes "[Nia]";
-					mes "Great! You guessed";
-					mes "my number, which was";
-					mes "^ff0000" + .@yagu + "^000000. You finished in";
-					mes "^ff0000" + .@total_min + " minutes, " + .@total_sec + " seconds^000000,";
-					mes "breaking the previous record";
-					mes "of ^ff0000" + .@score_min + " minutes, " + .@score_sec + " seconds^000000.";
+					mes "[妮雅]";
+					mes "太棒了！你猜中了";
+					mes "我心中的數字，就是";
+					mes "^ff0000" + .@yagu + "^000000。你花費了";
+					mes "^ff0000" + .@total_min + " 分 " + .@total_sec + " 秒^000000，";
+					mes "打破了先前的紀錄";
+					mes "的 ^ff0000" + .@score_min + " 分 " + .@score_sec + " 秒^000000。";
 					next;
-					mes "[Nia]";
+					mes "[妮雅]";
 					mes "^ff0000" + .@name_record$ + "^000000";
-					mes "set that old record,";
-					mes "but now you are the";
-					mes "new person to beat in the";
-					mes "Match Game. Congratulations";
-					mes "for setting a new record!";
+					mes "保持的舊紀錄，";
+					mes "但現在你成了";
+					mes "數字配對遊戲中";
+					mes "新的挑戰對象。恭喜";
+					mes "你刷新了紀錄！";
 					close;
 				}
-				mes "[Nia]";
-				mes "Nice work, you guessed";
-				mes "my number! The answer, of";
-				mes "course, was ^ff0000" + .@yagu + "^000000. You managed";
-				mes "to guess this number correctly";
-				mes "in ^ff0000" + .@total_min + " minutes, " + .@total_sec + " seconds^000000.";
+				mes "[妮雅]";
+				mes "做得好，你猜中了";
+				mes "我的數字！答案，當然";
+				mes "就是 ^ff0000" + .@yagu + "^000000。你成功";
+				mes "猜對了這個數字，";
+				mes "耗時 ^ff0000" + .@total_min + " 分 " + .@total_sec + " 秒^000000。";
 				next;
-				mes "[Nia]";
+				mes "[妮雅]";
 				mes "^ff0000" + .@name_record$ + "^000000 所有，";
-				mes "the current Number Match";
-				mes "record holder with a time";
-				mes "of ^ff0000" + .@score_min + " minutes, " + .@score_sec + " seconds^000000.";
-				mes "Good luck, and hopefully you";
-				mes "can break this record someday~";
+				mes "目前數字配對遊戲的";
+				mes "最快紀錄保持者，時間為";
+				mes "的 ^ff0000" + .@score_min + " 分 " + .@score_sec + " 秒^000000。";
+				mes "祝你好運，希望你";
+				mes "有朝一日能打破這個紀錄~";
 				close;
 			}
 		} else {
 			if (.@practice) {
-				mes "[Nia]";
-				mes "Your guess has ^ff0000" + .@ball + "^000000 of the";
-				mes "correct numbers. ^ff0000" + .@strike + "^000000 of the";
-				mes "digits in your guess have";
-				mes "the correct number in the";
-				mes "correct digit placement.";
-				mes "Alright, try it again~";
+				mes "[妮雅]";
+				mes "你的猜測中有 ^ff0000" + .@ball + "^000000 個";
+				mes "數字正確，^ff0000" + .@strike + "^000000 個";
+				mes "位數中，有";
+				mes "數字正確且";
+				mes "位置也正確。";
+				mes "好吧，再試一次吧~";
 				next;
 			} else {
-				mes "[Nia]";
-				mes "Your last guess had ^ff0000" + .@ball + "^000000";
-				mes "of the correct numbers,";
-				mes "and ^ff0000" + .@strike + "^000000 digits in your guess";
-				mes "had the correct number in";
-				mes "the correct digit placement.";
+				mes "[妮雅]";
+				mes "你上次的猜測中有 ^ff0000" + .@ball + "^000000";
+				mes "個數字正確，";
+				mes "以及 ^ff0000" + .@strike + "^000000 個位數，";
+				mes "數字正確且";
+				mes "位置也正確。";
 				switch(.@retry) {
 					case 1: mes "You have four guesses left."; break;
 					case 2: mes "You have three guesses left."; break;
