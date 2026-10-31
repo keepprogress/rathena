@@ -15,22 +15,22 @@
 //= 1.2 Navigation system update. [Euphy]
 //============================================================ 
 
-gonryun,163,60,4	script	Kunlun Guide#01gonryun	780,{
-	mes "[He Yuen Zhe]";
-	mes "Ni Hao!";
-	mes "Welcome to ^8B4513Kunlun^000000~";
-	mes "Take a walk around and experience";
-	mes "the ancient history and tradition";
-	mes "of our breath taking city.";
+gonryun,163,60,4	script	崑崙嚮導#01gonryun::Kunlun Guide#01gonryun	780,{
+	mes "[何元哲]";
+	mes "你好！";
+	mes "歡迎來到^8B4513崑崙^000000~";
+	mes "四處走走，體驗";
+	mes "古老的歷史與傳統";
+	mes "這座令人屏息的城市吧。";
 	next;
-	mes "[He Yuen Zhe]";
-	mes "I am responsible for helping you";
-	mes "with any questions you may have.";
-	mes "Please feel free to ask me anything.";
+	mes "[何元哲]";
+	mes "我負責協助你";
+	mes "解答你可能有的任何疑問。";
+	mes "有任何問題都請儘管問我。";
 	F_Navi("[He Yuen Zhe]");
 	while (1) {
 		next;
-		switch(select("[ Kafra Employee ]:[ Chief's Residence ]:[ Tool Dealer ]:[ Weapon Dealer ]:[ Armor Dealer ]:[ Wine Maker ]:[ Kunlun Envoy ]:Remove Marks from Mini-Map:Cancel")) {
+		switch(select("[ 卡普拉職員 ]:[ 族長住所 ]:[ 工具商人 ]:[ 武器商人 ]:[ 防具商人 ]:[ 釀酒師 ]:[ 崑崙使者 ]:從小地圖移除標記:取消")) {
 		case 1:
 			callsub L_Mark, "^0000FFKafra Employee^000000";
 			viewpoint 1,159,122,0,0x0A82FF;
@@ -60,8 +60,8 @@ gonryun,163,60,4	script	Kunlun Guide#01gonryun	780,{
 			viewpoint 1,161,11,6,0x00BFFF;
 			break;
 		case 8:
-			mes "[He Yuen Zhe]";
-			mes "I'll remove all marks from your mini-map.";
+			mes "[何元哲]";
+			mes "我會移除你小地圖上的所有標記。";
 			mes "還有什麼我能為你效勞的嗎？";
 			viewpoint 2,1,1,0,0xFFFFFF;
 			viewpoint 2,1,1,1,0xFFFFFF;
@@ -72,17 +72,17 @@ gonryun,163,60,4	script	Kunlun Guide#01gonryun	780,{
 			viewpoint 2,1,1,6,0xFFFFFF;
 			break;
 		case 9:
-			mes "[He Yuen Zhe]";
-			mes "Bon voyage!";
+			mes "[何元哲]";
+			mes "一路順風！";
 			close;
 		}
 	}
 	end;
 L_Mark:
-	mes "[He Yuen Zhe]";
-	mes "此外 "+getarg(0)+" is";
-	mes "marked on your mini-map.";
-	mes "Check your mini-map.";
+	mes "[何元哲]";
+	mes "此外 "+getarg(0)+" 已";
+	mes "標記在你的小地圖上。";
+	mes "請查看您的小地圖。";
 	mes "還有什麼我能為你效勞的嗎？";
 	return;
 }

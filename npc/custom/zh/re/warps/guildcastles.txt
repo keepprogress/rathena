@@ -85,7 +85,7 @@ OnTouch:
 S_Warp:
 	.@castle$ = getarg(0);
 	if (jobcanentermap(.@castle$) == 0) {
-		mes "3rd and expansion job level can't enter in WoE TE.";
+		mes "三轉與擴充職業等級的玩家無法進入攻城戰 TE。";
 		close;
 	}
 
@@ -99,25 +99,25 @@ S_Warp:
 
 	if (WoeTETimeStart(3600) == 1) {
 		if (!.@guild_id || !.@my_guild_id) {
-			mes "It's time for preparing to WoE. Only Alliance guild is able to enter.";
+			mes "攻城戰準備時間到了。只有同盟公會能夠進入。";
 			close;
 		}
 		if (getguildalliance(.@my_guild_id,.@guild_id) != 1) {
-			mes "It's time for preparing to WoE. Only Alliance guild is able to enter.";
+			mes "攻城戰準備時間到了。只有同盟公會能夠進入。";
 			close;
 		}
-		mes "Welcome alliance guild.";
+		mes "歡迎同盟公會。";
 		close2;
 	}
 	warp .@castle$,getarg(1),getarg(2);
 	end;
 }
 
-te_prt_gld,129,65,0	duplicate(warp_TE_castle)	prtg-1_prtg-1-01#1_te	WARPNPC,1,1
-te_prt_gld,240,124,0	duplicate(warp_TE_castle)	prtg-2_prtg-2#2_te	WARPNPC,1,1
-te_prt_gld,153,141,0	duplicate(warp_TE_castle)	prtg-3_prtg-3#3_te	WARPNPC,1,1
-te_prt_gld,107,240,0	duplicate(warp_TE_castle)	prtg-4_prtg-4#4_te	WARPNPC,1,1
-te_prt_gld,212,240,0	duplicate(warp_TE_castle)	prtg-5_prtg-5#5_te	WARPNPC,1,1
+te_prt_gld,129,65,0	duplicate(warp_TE_castle)	prtg-1_prtg-1-01#1_te::prtg-1_prtg-1-01#1_te	WARPNPC,1,1
+te_prt_gld,240,124,0	duplicate(warp_TE_castle)	prtg-2_prtg-2#2_te::prtg-2_prtg-2#2_te	WARPNPC,1,1
+te_prt_gld,153,141,0	duplicate(warp_TE_castle)	prtg-3_prtg-3#3_te::prtg-3_prtg-3#3_te	WARPNPC,1,1
+te_prt_gld,107,240,0	duplicate(warp_TE_castle)	prtg-4_prtg-4#4_te::prtg-4_prtg-4#4_te	WARPNPC,1,1
+te_prt_gld,212,240,0	duplicate(warp_TE_castle)	prtg-5_prtg-5#5_te::prtg-5_prtg-5#5_te	WARPNPC,1,1
 
 
 // te_prtcas01
@@ -210,11 +210,11 @@ aldebaran,35,140,0	warp	alde-a_aldeg01	1,1,te_alde_gld,280,160
 te_alde_gld,284,160,0	warp	aldeg01_alde-a	1,1,aldebaran,39,140
 */
 
-te_alde_gld,48,79,0	duplicate(warp_TE_castle)	aldeg-1_aldeg-1-1#6_te	WARPNPC,1,1
-te_alde_gld,95,253,0	duplicate(warp_TE_castle)	aldeg-2_aldeg-2-1#7_te	WARPNPC,1,1
-te_alde_gld,142,81,0	duplicate(warp_TE_castle)	aldeg-3_aldeg-3-1#8_te	WARPNPC,1,1
-te_alde_gld,243,242,0	duplicate(warp_TE_castle)	aldeg-4_aldeg-4-1#9_te	WARPNPC,1,1
-te_alde_gld,259,90,0	duplicate(warp_TE_castle)	aldeg-5_aldeg-5-1#10_te	WARPNPC,1,1
+te_alde_gld,48,79,0	duplicate(warp_TE_castle)	aldeg-1_aldeg-1-1#6_te::aldeg-1_aldeg-1-1#6_te	WARPNPC,1,1
+te_alde_gld,95,253,0	duplicate(warp_TE_castle)	aldeg-2_aldeg-2-1#7_te::aldeg-2_aldeg-2-1#7_te	WARPNPC,1,1
+te_alde_gld,142,81,0	duplicate(warp_TE_castle)	aldeg-3_aldeg-3-1#8_te::aldeg-3_aldeg-3-1#8_te	WARPNPC,1,1
+te_alde_gld,243,242,0	duplicate(warp_TE_castle)	aldeg-4_aldeg-4-1#9_te::aldeg-4_aldeg-4-1#9_te	WARPNPC,1,1
+te_alde_gld,259,90,0	duplicate(warp_TE_castle)	aldeg-5_aldeg-5-1#10_te::aldeg-5_aldeg-5-1#10_te	WARPNPC,1,1
 
 // te_aldecas1
 te_aldecas1,34,252,0	warp	aldeg-1-1_aldeg-1#te	1,1,te_alde_gld,48,83
@@ -285,7 +285,7 @@ te_aldecas4,156,210,0	warp	aldeg-4-13_aldeg-4-5#te	1,1,te_aldecas4,169,97
 te_aldecas4,108,210,0	warp	aldeg-4-14_aldeg-4-4#te	1,1,te_aldecas4,186,92
 
 // aldeg-4-15
-te_aldecas4,132,231,0	script	aldeg-4-15_aldeg-4-#te	WARPNPC,1,1,{
+te_aldecas4,132,231,0	script	aldeg-4-15_aldeg-4-#te::aldeg-4-15_aldeg-4-#te	WARPNPC,1,1,{
 OnTouch:
 	.@aldeg4 = rand(1,5);
 	if (.@aldeg4 == 1)

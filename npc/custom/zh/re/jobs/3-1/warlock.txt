@@ -74,12 +74,12 @@ morocc,95,132,0	duplicate(#distorted_space_)	#distorted_space_1	139,1,1
 splendide,141,284,0	duplicate(#distorted_space_)	#distorted_space_2	139,1,1
 
 function	script	F_Warlock	{
-	mes "[Assistant]";
+	mes "[助手]";
 	mes "Huh!!! Human!?!";
 	mes "How did you enter here?";
 	mes "This is only connected with a special gate!";
 	next;
-	mes "[Assistant]";
+	mes "[助手]";
 	mes "I don't know how...";
 	mes "But we should leave before my master spots you...!";
 	next;
@@ -87,7 +87,7 @@ function	script	F_Warlock	{
 	mes "What's that noise out there?";
 	mes "I warned them to be quiet while I'm meditating.";
 	next;
-	mes "[Assistant]";
+	mes "[助手]";
 	mes "Huh!?!";
 	mes "老闆……";
 	mes "It's nothing...";
@@ -95,7 +95,7 @@ function	script	F_Warlock	{
 	mes "[主人]";
 	mes "Oh~ there's a human being in front of me.";
 	next;
-	mes "[Assistant]";
+	mes "[助手]";
 	mes "Oh this thing?";
 	mes "I was just leading it out.";
 	next;
@@ -212,7 +212,7 @@ function	script	F_Warlock	{
 	end;
 }
 
-spl_in02,77,107,5	script	Assistant#Warlock1	446,{
+spl_in02,77,107,5	script	助手#Warlock1::Assistant#Warlock1	446,{
 	if (job_wl == 0) {
 		callfunc "F_Warlock";
 		end;
@@ -459,16 +459,16 @@ spl_in02,60,231,5	script	Yoop#Warlock	446,{
 	}
 }
 
-spl_in02,84,103,3	script	Assistant#Warlock2	439,{
+spl_in02,84,103,3	script	助手#Warlock2::Assistant#Warlock2	439,{
 	if (job_wl == 0) {
 		callfunc "F_Warlock";
 		end;
 	} else if (job_wl == 1) {
-		mes "[Assistant]";
+		mes "[助手]";
 		mes "Human! What do you want?";
 		close;
 	} else if (job_wl < 6) {
-		mes "[Assistant]";
+		mes "[助手]";
 		mes "It's not me you are looking for currently.";
 		close;
 	} else if (job_wl == 6) {
@@ -550,12 +550,12 @@ spl_in02,84,103,3	script	Assistant#Warlock2	439,{
 	}
 }
 
-spl_in02,78,110,5	script	Assistant#Warlock3	437,{
+spl_in02,78,110,5	script	助手#Warlock3::Assistant#Warlock3	437,{
 	if (job_wl == 0) {
 		callfunc "F_Warlock";
 		end;
 	}
-	mes "[Assistant]";
+	mes "[助手]";
 	mes "......";
 	switch(job_wl) {
 		case 1: mes "If you don't have anything to say to me, would you just leave?"; break;
@@ -565,13 +565,13 @@ spl_in02,78,110,5	script	Assistant#Warlock3	437,{
 	next;
 	switch(select("Leave:Stay")) {
 	case 1:
-		mes "[Assistant]";
+		mes "[助手]";
 		mes "Then be careful.";
 		close2;
 		warp "splendide",200,100;
 		end;
 	case 2:
-		mes "[Assistant]";
+		mes "[助手]";
 		mes "......";
 		close;
 	}
@@ -636,7 +636,7 @@ spl_in02,80,108,5	script	Guild Master#Warlock	465,{
 		mes "[Master Egnoloria]";
 		mes "......";
 		next;
-		mes "[Assistant]";
+		mes "[助手]";
 		mes "Master is meditating.";
 		mes "安靜點。";
 		close;

@@ -14,7 +14,7 @@
 //= 1.0 First / Optimized Version
 //============================================================
 
-prt_in,253,168,4	script	Alora	862,{
+prt_in,253,168,4	script	艾洛拉::Alora	862,{
 
 // Mysterious Dyestuff
 	set .@dyeID, 6220;
@@ -35,11 +35,11 @@ prt_in,253,168,4	script	Alora	862,{
 // Magestic Goats - Normal, Evolved
 	setarray .@hg_7[1], 2256, 5217;
 
-	mes "[Alora]";
-	mes "Hello, I can change your headgear's color if you bring me a Mysterious Dyestuff.";
+	mes "[艾洛拉]";
+	mes "您好，如果你帶來神秘染料，我可以幫你改變頭飾的顏色。";
 	next;
-	mes "[Alora]";
-	mes "Do you have a headgear that you would like to dye?";
+	mes "[艾洛拉]";
+	mes "你有想要染色的頭飾嗎？";
 	next;
 	for(set .@i,1; .@i < getarraysize(.@hgn$); set .@i,.@i+1) {
 		if(.@i == 1)    set .@menu$, .@hgn$[.@i];
@@ -48,13 +48,13 @@ prt_in,253,168,4	script	Alora	862,{
 	set .@menu$, .@menu$ +":Cancel";
 	set .@t, select(.@menu$);
 	if(.@t == getarraysize(.@hgn$)) {
-		mes "[Alora]";
-		mes "Have a good journey adventurer!";
-		mes "If you ever are curious to try a new color on your Kafra headgear or the ones you found on your adventures please come to me!";
+		mes "[艾洛拉]";
+		mes "祝你旅途愉快，冒險者！";
+		mes "如果你想為卡普拉頭飾或冒險中找到的頭飾嘗試新顏色，請來找我！";
 		close;
 	}
-	mes "[Alora]";
-	mes "Okay, what color do you want to change it to?";
+	mes "[艾洛拉]";
+	mes "好的，你想改成什麼顏色？";
 	next;
 	for(set .@i,1; .@i < getarraysize(getd(".@hg_"+.@t+"")); set .@i,.@i+1) {
 		if(.@i == 1 && .@t != 5)
@@ -69,23 +69,23 @@ prt_in,253,168,4	script	Alora	862,{
 	set .@menu$, .@menu$ +":Cancel";
 	set .@c, select(.@menu$);
 	if(.@c == getarraysize(getd(".@hg_"+.@t+""))) {
-		mes "[Alora]";
-		mes "Oh, okay no problem!";
+		mes "[艾洛拉]";
+		mes "喔，好的，沒問題！";
 		close;
 	}
 	set .@dyHG, getd(".@hg_"+.@t+"["+.@c+"]");
-	mes "[Alora]";
-	mes "Oh I'm so excited aren't you?";
-	mes "And just to be sure, what color is the "+ .@hgn$[.@t] +" you want me to use?";
+	mes "[艾洛拉]";
+	mes "喔，我好興奮，你不覺得嗎？";
+	mes "為了確定起見，要使用的 "+ .@hgn$[.@t] +" 是什麼顏色？";
 	next;
-	mes "[Alora]";
-	mes "Please understand that I'm going to use the ^FF00001st "+ .@hgn$[.@t] +" of that color in your inventory!^000000";
+	mes "[艾洛拉]";
+	mes "請注意，我會使用你背包中^FF0000第一個 "+ .@hgn$[.@t] +" 那種顏色的！^000000";
 	next;
-	mes "[Alora]";
-	mes "Any upgrades and cards will be dissolved by the mysterious dye, so be sure you are ok with having a ^0000FF+0 "+ getitemname(.@dyHG) +" without any cards.^000000";
+	mes "[艾洛拉]";
+	mes "任何強化與卡片都會被神秘染料溶解，所以請確認你能接受一件 ^0000FF+0 "+ getitemname(.@dyHG) +" 並且沒有任何卡片。^000000";
 	next;
 	mes "["+ strcharinfo(0) +"]";
-	mes "Ok, thanks for the warning, I think I'll give you my";
+	mes "好的，謝謝你的提醒，我想我會把我的";
 	next;
 	set .@menu$, "Nevermind";
 	for(set .@i,1; .@i < getarraysize(getd(".@hg_"+.@t+"")); set .@i,.@i+1) {
@@ -94,24 +94,24 @@ prt_in,253,168,4	script	Alora	862,{
 	}
 	set .@mine, select(.@menu$) - 1;
 	if(!.@mine) {
-		mes "[Alora]";
-		mes "It's best to be very sure, have a safe journey.";
+		mes "[艾洛拉]";
+		mes "最好再三確認，一路平安。";
 		close;
 	}
 	set .@myHG, getd(".@hg_"+.@t+"["+.@mine+"]");
 	if(.@dyHG == .@myHG) {
-		mes "[Alora]";
-		mes "Woah what happened?";
+		mes "[艾洛拉]";
+		mes "哇！發生什麼事了？";
 		close;
 	}
 	if(!countitem(.@dyeID) || !countitem(.@myHG)) {
-		mes "[Alora]";
-		mes "Oh my, you seem to be missing something.";
+		mes "[艾洛拉]";
+		mes "喔天啊，你似乎少了什麼東西。";
 		close;
 	}
-	mes "[Alora]";
-	mes "Looks great doesn't it?!";
-	mes "I hope you'll come back to dye more pretty headgears!";
+	mes "[艾洛拉]";
+	mes "看起來很棒吧？！";
+	mes "希望你會再回來，染更多漂亮的頭飾！";
 	delitem .@dyeID,1; // Dyestuff
 	delitem .@myHG,1;  // Your headgear
 	getitem .@dyHG,1;  // Dyed headgear

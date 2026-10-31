@@ -66,28 +66,28 @@ force_1-2,33,178,0	warp	force_10_09	1,1,force_1-2,59,178
 sec_in02,79,180,3	script	#arenacontrol	81,{
 	set .@i, callfunc("F_GM_NPC",1357,0);
 	if (.@i == -1) {
-		mes "Error!";
+		mes "錯誤！";
 		close;
 	} else if (.@i == 0) {
-		mes "Closing control panel.";
+		mes "正在關閉控制面板。";
 		close;
 	} else {
-		mes "Opening Control Panel";
-		mes "' A - R - E - N - A '";
+		mes "正在開啟控制面板";
+		mes "' 競技場 '";
 		next;
-		mes "Please select a";
-		mes "state for the arena.";
+		mes "請選擇";
+		mes "競技場的狀態。";
 		next;
-		switch(select("Open.:Closed.")) {
+		switch(select("開放:關閉")) {
 		case 1:
-			mes "Currently";
-			mes "opening arena.";
+			mes "目前";
+			mes "競技場正在開放。";
 			specialeffect EF_ENHANCE;
 			enablenpc "welcome_arena";
 			close;
 		case 2:
-			mes "Currently";
-			mes "closing arena.";
+			mes "目前";
+			mes "競技場正在關閉。";
 			specialeffect EF_EXIT;
 			disablenpc "welcome_arena";
 			close;

@@ -24,7 +24,7 @@
 //= 1.4 Updated to match AEGIS script. [Kisuka]
 //============================================================
 
-alberta_in,16,28,4	script	Pharmacist	61,{
+alberta_in,16,28,4	script	藥劑師::Pharmacist	61,{
 	if (checkweight(1201,1) == 0) {
 		mes "- 請稍等！ -";
 		mes "- 你目前攜帶的 -";
@@ -76,13 +76,13 @@ alberta_in,16,28,4	script	Pharmacist	61,{
 					mes "滾開！";
 					close;
 				}
-				mes "How many?";
+				mes "要製作幾個？";
 				next;
-				switch(select("Make as many as I can.:I want to choose an amount.:Actually, I don't want anything.")) {
+				switch(select("盡量製作:我要自己選數量:其實我什麼都不要。")) {
 				case 1:
 					if ((countitem(507) < .@max) || (countitem(508) < .@max) || (countitem(713) < .@max) || (Zeny < .@max*3)) {
 						mes "[老藥師]";
-						mes "You rascal! You don't even have all the materials and you want me to make you potions?!";
+						mes "你這小子！材料都還沒備齊，就想叫我幫你做藥水？！";
 						close;
 					}
 					set Zeny,Zeny-(.@max*5);
@@ -93,22 +93,22 @@ alberta_in,16,28,4	script	Pharmacist	61,{
 					break;
 				case 2:
 					mes "[老藥師]";
-					mes "Then pick a number below 100. If you don't want any, just enter '0'. With the materials you have, you can make about "+.@max+" potions.";
+					mes "那就選個 100 以下的數字吧。不想要的話，輸入 '0' 就好。以你現有的材料，大約可以製作 "+.@max+" 瓶藥水。";
 					next;
 					input .@amount,0,101;
 					if (.@amount == 0) {
 						mes "[老藥師]";
-						mes "Make up your mind, will you?!";
+						mes "你到底想好了沒有？！";
 						close;
 					}
 					if (.@amount > 100) {
 						mes "[老藥師]";
-						mes "Are you deaf? I said less than 100!";
+						mes "你聾了嗎？我說的是 100 以下！";
 						close;
 					}
 					if ((countitem(507) < .@amount) || (countitem(508) < .@amount) || (countitem(713) < .@amount) || (Zeny < .@amount*3)) {
 						mes "[老藥師]";
-						mes "You rascal! You don't even have all the materials and you want me to make you potions?!";
+						mes "你這小子！材料都還沒備齊，就想叫我幫你做藥水？！";
 						close;
 					}
 					next;
@@ -121,13 +121,13 @@ alberta_in,16,28,4	script	Pharmacist	61,{
 				case 3:
 					mes "[老藥師]";
 					mes "什麼？！";
-					mes "Grrr...";
-					mes "Bleh!";
+					mes "哼……";
+					mes "呸！";
 					mes "滾開！";
 					close;
 				}
 				mes "[老藥師]";
-				mes "Here you go. It's all done so you can take it. But remember! Abusing medicine is not good.";
+				mes "給你。已經做好了，拿去吧。不過要記住！藥物亂用可不好。";
 				close;
 			case 3:
 				callsub L_Making,508,10,503;
@@ -140,43 +140,43 @@ alberta_in,16,28,4	script	Pharmacist	61,{
 			case 7:
 				mes "[老藥師]";
 				mes "什麼？！";
-				mes "Grrr...";
-				mes "Bleh!";
+				mes "哼……";
+				mes "呸！";
 				mes "滾開！";
 				close;
 			}
 		}
 	case 2:
 		mes "[老藥師]";
-		mes "With medicine, you can increase a person's ability to regenerate. But, they're only good up to a point. *Sigh* I'm starting to think of the days when I was young. I must be getting old.";
+		mes "藥物確實能提升人的恢復能力，但也只到某個程度為止。*嘆氣* 我開始懷念年輕的時候了，看來我真的老了。";
 		next;
 		mes "[老藥師]";
-		mes "Anyways, a potion is merely a potion. Nothing more and nothing less.";
+		mes "總之，藥水就只是藥水，沒什麼特別的。";
 		close;
 	case 3:
 		mes "[老藥師]";
-		mes "Hrrrmm...";
-		mes "You young ones can be quite annoying. But, since you asked, I'll explain.";
+		mes "嗯嗯……";
+		mes "你們這些年輕人真是煩人。不過既然你問了，我就跟你說明。";
 		next;
 		mes "[老藥師]";
-		mes "Herbs work well by themselves, but if you use my special techniques and skills to make potions out of them, the effect is much much greater.";
+		mes "藥草單獨使用就有效，但如果用我的獨門技術把它們製成藥水，效果會好上許多許多。";
 		next;
 		mes "[老藥師]";
-		mes "If you ask eagerly and politely, I will make them for you. But, not for free... Don't worry though, I only charge a small fee, so it's not that expensive.";
+		mes "如果你誠心有禮地來求我，我就幫你做。不過可不是白做的……別擔心，我只收一點小手續費，不會太貴。";
 		next;
 		mes "[老藥師]";
-		mes "Red Potion - ^0098E52 Red Herbs, 1 Empty Bottle, 2 zeny fee.^000000";
-		mes "Orange Potion - ^0098E51 Red Herb, 1 Yellow Herb, 1 Empty Bottle, 5 zeny fee.^000000";
-		mes "Yellow Potion - ^0098E52 Yellow Herbs, 1 Empty Bottle, 10 zeny.^000000";
+		mes "紅色藥水 - ^0098E52 紅色藥草、1 個空瓶，手續費 2 Zeny。^000000";
+		mes "赤色藥水 - ^0098E51 紅色藥草、1 黃色藥草、1 個空瓶，手續費 5 Zeny。^000000";
+		mes "黃色藥水 - ^0098E52 黃色藥草、1 個空瓶，10 Zeny。^000000";
 		next;
 		mes "[老藥師]";
-		mes "White Potion - ^0098E52 White Herbs, 1 Empty Bottle, 20 zeny fee.^000000";
-		mes "Blue Potion - ^0098E52 Blue Herbs, 1 Empty Bottle, 30 zeny fee.^000000";
-		mes "Green Potion - ^0098E52 Green Herbs, 1 Empty Bottle, 3 zeny fee.^000000";
+		mes "白色藥水 - ^0098E52 白色藥草、1 個空瓶，手續費 20 Zeny。^000000";
+		mes "藍色藥水 - ^0098E52 藍色藥草、1 個空瓶，手續費 30 Zeny。^000000";
+		mes "綠色藥水 - ^0098E52 綠色藥草、1 個空瓶，手續費 3 Zeny。^000000";
 		close;
 	case 4:
 		mes "[老藥師]";
-		mes "What a boring person. If you have something to say, why don't you say it?!";
+		mes "真是個無聊的人。有話要說就直說啊！";
 		close;
 	}
 	
@@ -200,13 +200,13 @@ L_Making:
 		mes "滾開！";
 		close;
 	}
-	mes "How many?";
+	mes "要製作幾個？";
 	next;
-	switch(select("Make as many as I can.:I want to choose an amount.:Actually, I don't want anything.")) {
+	switch(select("盡量製作:我要自己選數量:其實我什麼都不要。")) {
 	case 1:
 		if ((countitem(.@item_req) < .@max*2) || countitem(713) < .@max || (Zeny < .@max*.@req_amount)) {
 			mes "[老藥師]";
-			mes "You rascal! You don't even have all the materials and you want me to make you potions?!";
+			mes "你這小子！材料都還沒備齊，就想叫我幫你做藥水？！";
 			close;
 		}
 		Zeny = Zeny - (.@max*.@req_amount);
@@ -216,22 +216,22 @@ L_Making:
 		break;
 	case 2:
 		mes "[老藥師]";
-		mes "Then pick a number below 100. If you don't want any, just enter '0'. With the materials you have, you can make about "+.@max+" potions.";
+		mes "那就選個 100 以下的數字吧。不想要的話，輸入 '0' 就好。以你現有的材料，大約可以製作 "+.@max+" 瓶藥水。";
 		next;
 		input .@amount;
 		if (.@amount == 0) {
 			mes "[老藥師]";
-			mes "Make up your mind, will you?!";
+			mes "你到底想好了沒有？！";
 			close;
 		}
 		if (.@amount > 100) {
 			mes "[老藥師]";
-			mes "Are you deaf? I said less than 100!";
+			mes "你聾了嗎？我說的是 100 以下！";
 			close;
 		}
 		if ((countitem(.@item_req) < .@amount*2) || countitem(713) < .@amount || (Zeny < .@amount*.@req_amount)) {
 			mes "[老藥師]";
-			mes "You rascal! You don't even have all the materials and you want me to make you potions?!";
+			mes "你這小子！材料都還沒備齊，就想叫我幫你做藥水？！";
 			close;
 		}
 		Zeny = Zeny - (.@max*.@req_amount);
@@ -242,12 +242,12 @@ L_Making:
 	case 3:
 		mes "[老藥師]";
 		mes "什麼？！";
-		mes "Grrr...";
-		mes "Bleh!";
+		mes "哼……";
+		mes "呸！";
 		mes "滾開！";
 		close;
 	}
 	mes "[老藥師]";
-	mes "Here you go. It's all done so you can take it. But remember! Abusing medicine is not good.";
+	mes "給你。已經做好了，拿去吧。不過要記住！藥物亂用可不好。";
 	close;
 }

@@ -21,42 +21,42 @@
 //============================================================
 //= Illusion of Moonlight
 //============================================================
-pay_d03_i,160,45,3	script	Gemcutter#ilp20	4_TOWER_17,3,3,{
-	mes "[ Gemcutter ]";
-	mes "Do you have business with me?";
+pay_d03_i,160,45,3	script	寶石匠#ilp20::Gemcutter#ilp20	4_TOWER_17,3,3,{
+	mes "[ 寶石切割師 ]";
+	mes "你有事找我嗎？";
 	next;
-	switch( select( "What are you doing here?", "Upgrade equipments" ) ) {
+	switch( select( "你在這裡做什麼？", "升級裝備" ) ) {
 	case 1:
-		mes "[ Gemcutter ]";
-		mes "I came to the ruined village,";
-		mes "looking for some materials. Touched some strange light, and now I'm here.";
+		mes "[ 寶石切割師 ]";
+		mes "我來到了廢棄的村莊，";
+		mes "我本來在找一些材料，碰到一道奇怪的光，然後就來到這裡了。";
 		next;
-		mes "[ Gemcutter ]";
-		mes "I've decided to stick around for a little while. Figured I'd be safe so long as I stay close to this soldier.";
-		mes "I have a proposition for you. I want some materials that can only be found in this place.";
+		mes "[ 寶石切割師 ]";
+		mes "我決定暫時留下來。只要待在這名士兵身邊，應該就安全了。";
+		mes "我有個提議要跟你談。我想要一些只能在這個地方找到的材料。";
 		next;
-		mes "[ Gemcutter ]";
-		mes "Get them for me, and I'll improve your equipment in exchange. Just so you know, I can only improve certain types.";
+		mes "[ 寶石切割師 ]";
+		mes "幫我弄來，我就會強化你的裝備作為交換。先說明一下，我只能強化特定種類。";
 		next;
-		mes "[ Gemcutter ]";
-		mes "If you're interested, we can discuss the details of our bargain.";
+		mes "[ 寶石切割師 ]";
+		mes "如果你有興趣，我們可以談談交易的細節。";
 		close;
 	case 2:
-		mes "[ Gemcutter ]";
-		mes "Make sure ^0000FFyour equipment is refined to at least +9^000000 before bringing it to me.";
-		mes "That's the minimum requirement for my upgrade service to have any visible effects on your equipment.";
+		mes "[ 寶石切割師 ]";
+		mes "帶來給我之前，請確認^0000FF你的裝備至少精煉到 +9^000000。";
+		mes "這是我的強化服務能對裝備產生明顯效果的最低要求。";
 		next;
-		mes "[ Gemcutter ]";
-		mes "Make sure you're ^0000FFequipped with the item that you want to improve.^000000";
-		mes "Otherwise, I can't evaluate its condition.";
+		mes "[ 寶石切割師 ]";
+		mes "請確認你^0000FF已裝備著想要強化的道具。^000000";
+		mes "否則，我無法評估它的狀態。";
 		next;
-		mes "[ Gemcutter ]";
-		mes "As you may have guessed, your equipment will transform into something new after this.";
-		mes "In other words, ^0000FFIt'll lose its current refining levels, cards and enchantments.^000000";
+		mes "[ 寶石切割師 ]";
+		mes "如你所料，你的裝備之後會轉變成全新的東西。";
+		mes "換句話說，^0000FF它會失去目前的精煉等級、卡片與附魔。^000000";
 		next;
-		mes "[ Gemcutter ]";
-		mes "And I need ^0000FFIllusion Stones and some other materials^000000 to upgrade your equipment.";
-		mes "Pick an item you want and I'll tell you what I need.";
+		mes "[ 寶石切割師 ]";
+		mes "強化你的裝備還需要^0000FF幻影石與其他一些材料^000000。";
+		mes "選一個想要的道具，我會告訴你需要什麼。";
 		close2;
 		callshop( "barter_ill_moonlight" );
 		end;
@@ -65,7 +65,7 @@ pay_d03_i,160,45,3	script	Gemcutter#ilp20	4_TOWER_17,3,3,{
 
 OnTouch:
 	if (illusion_moonlight > 7)
-		npctalk "What kind of place is this?", "", bc_self;
+		npctalk "這是什麼地方？", "", bc_self;
 	end;
 }
 
@@ -73,58 +73,58 @@ OnTouch:
 //============================================================
 //= Illusion of Vampire
 //============================================================
-gef_dun01,139,228,3	script	Great Merchant#illgef	4_M_HUMERCHANT,{
-	mes "[Great Merchant]";
-	mes "Adventurer, do you have ^0000cdIllusion Stones^000000? If you have a ^0000cdweapon, a piece armor^000000, or ^0000cdan accessory at Refining Level 9 or higher^000000, ";
-	mes "then I can exchange it for something better at the cost of some Illusion Stones and other materials.";
+gef_dun01,139,228,3	script	大商人#illgef::Great Merchant#illgef	4_M_HUMERCHANT,{
+	mes "[大商人]";
+	mes "冒險者，你有^0000cd幻影石^000000嗎？如果你有^0000cd精煉等級9以上的武器、一件護甲^000000，或^0000cd一個飾品^000000， ";
+	mes "那我就能以一些幻影石與其他材料，把它兌換成更好的東西。";
 	next;
-	mes "[Great Merchant]";
-	mes "So, what do you want?";
+	mes "[大商人]";
+	mes "那麼，你想要什麼？";
 	next;
-	switch( select( "Exchange illusion equipment", "What are Illusion Stones?", "Can I strengthen the exchanged item?", "取消" ) ) {
+	switch( select( "兌換幻影裝備", "幻影石是什麼？", "兌換後的道具可以再強化嗎？", "取消" ) ) {
 	case 1:
 		specialeffect EF_HFLIMOON3;
 		emotion ET_BEST;
-		mes "[Great Merchant]";
-		mes "Use it well and come see me later if you find more Illusion Stones! *Chuckle*";
+		mes "[大商人]";
+		mes "好好運用，之後如果找到更多幻影石，再來找我！*呵呵*";
 		close2;
 		callshop( "barter_ill_vampire" );
 		end;
 	case 2:
-		mes "[Great Merchant]";
-		mes "What are ^0000cdIllusion Stones^000000, you ask? Well... I don't think anyone knows exactly what they are.";
+		mes "[大商人]";
+		mes "你問^0000cd幻影石^000000是什麼？嗯……我想沒有人確切知道它們是什麼。";
 		next;
-		mes "[Great Merchant]";
-		mes "I only know they're rare and can only be found in some special places, and I'm here to collect them for my clients.";
+		mes "[大商人]";
+		mes "我只知道它們很稀有，只能在某些特殊地點找到，而我來這裡是為客戶收集它們。";
 		next;
-		mes "[Great Merchant]";
-		mes "My clients want to figure out what these stones are. They're paying me a lot of money,";
+		mes "[大商人]";
+		mes "我的客戶想弄清楚這些石頭究竟是什麼，他們付我很多錢，";
 		next;
-		mes "[Great Merchant]";
-		mes "so I could offer adventurers like you ^0000cdexpensive equipment in exchange for the stones^000000, and still fetch a profit.";
+		mes "[大商人]";
+		mes "所以我能用^0000cd昂貴的裝備^000000向你這樣的冒險者換取這些石頭，還能賺到利潤。";
 		next;
-		mes "[Great Merchant]";
-		mes "Bring ^0000cda piece of refined equipment, Illusion Stones^000000, and various materials that are only found in this place. I'll ^0000cdupgrade the equipment, weapon, armor, or accessory?^000000for you.";
+		mes "[大商人]";
+		mes "帶來^0000cd一件精煉過的裝備、幻影石^000000，以及只有這個地方才找得到的各種材料。我會為你^0000cd強化裝備（武器、護甲或飾品）^000000。";
 		next;
-		mes "[Great Merchant]";
-		mes "This benefits both of us. Let me know if you're interested in my proposition.";
+		mes "[大商人]";
+		mes "這對我們雙方都有好處。如果對我的提議有興趣，請告訴我。";
 		close;
 	case 3:
-		mes "[Great Merchant]";
-		mes "So, you want to reinforce the equipment you get. You're thorough. I like that!";
+		mes "[大商人]";
+		mes "原來你想強化你拿到的裝備。你很細心，我喜歡！";
 		next;
-		mes "[Great Merchant]";
-		mes "A while ago, an adventurer who passed through this place told me that a chemist in Prontera refines the Illusion equipment in exchange for Illusion Stones.";
+		mes "[大商人]";
+		mes "前不久，有位路過這裡的冒險者跟我說，普隆德拉有位化學家會用幻影石來精煉幻影裝備。";
 		next;
-		mes "[Great Merchant]";
-		mes "It seems Illusion Stones are a popular topic everywhere. Everyone wants to know about what they are.";
+		mes "[大商人]";
+		mes "看來幻影石到處都是熱門話題，大家都想知道它們是什麼。";
 		next;
-		mes "[Great Merchant]";
-		mes "If you want to refine your equipment, then go to the <NAVI>Illusion Enchanter<INFO>prontera,90,115,000,0,</INFO></NAVI> near the Town Office.";
+		mes "[大商人]";
+		mes "如果想精煉你的裝備，就去市政廳附近的<NAVI>幻影附魔師<INFO>prontera,90,115,000,0,</INFO></NAVI>那裡吧。";
 		close;
 	case 4:
-		mes "[Great Merchant]";
-		mes "Did you find anything you liked? If you need anything, please let me know at any time.";
+		mes "[大商人]";
+		mes "有看到喜歡的東西嗎？如果還需要什麼，隨時告訴我。";
 		close;
 	}
 	end;
@@ -135,42 +135,42 @@ gef_dun01,139,228,3	script	Great Merchant#illgef	4_M_HUMERCHANT,{
 //============================================================
 
 // illusion exchange npc - trade items for illusion gears
-ice_dun02,153,18,3	script	Illusion Stone Research	4_M_ALCHE_B,{
+ice_dun02,153,18,3	script	幻影石研究::Illusion Stone Research	4_M_ALCHE_B,{
 	disable_items;
-	mes "[Illusion Stone Researcher]";
-	mes "Ah, Illusion Stones are truly mysterious...";
+	mes "[幻影石研究員]";
+	mes "啊，幻影石真的很神秘……";
 	next;
-	switch( select( "What are you doing here?", "Upgrade equipments", "取消" ) ) {
+	switch( select( "你在這裡做什麼？", "升級裝備", "取消" ) ) {
 	case 1:
-		mes "[Illusion Stone Researcher]";
-		mes "I'm here to find some Illusion Stones that I need for my research.";
+		mes "[幻影石研究員]";
+		mes "我來這裡是為了找一些研究需要的幻影石。";
 		next;
-		mes "[Illusion Stone Researcher]";
-		mes "This cave is very mysterious, but I'm not strong enough to explore it by myself.";
-		mes "If you go in there, could you procure some things for me?";
+		mes "[幻影石研究員]";
+		mes "這個洞穴非常神秘，但我的實力不足以獨自探索。";
+		mes "如果你進去的話，能幫我弄些東西嗎？";
 		next;
-		mes "[Illusion Stone Researcher]";
-		mes "In exchange, I'll improve your equipment.";
+		mes "[幻影石研究員]";
+		mes "作為交換，我會強化你的裝備。";
 		mes "您覺得如何？";
 		close;
 	case 2:
-		mes "[Illusion Stone Researcher]";
-		mes "Make sure ^4d4dffyour equipment is refined to at least +9^000000 before bringing it to me.";
-		mes "Make sure you're ^4d4dffequipped with the item that you want to improve^000000.";
+		mes "[幻影石研究員]";
+		mes "帶來給我之前，請確認^4d4dff你的裝備至少精煉到 +9^000000。";
+		mes "請確認你^4d4dff已裝備著想要強化的道具^000000。";
 		next;
-		mes "[Illusion Stone Researcher]";
-		mes "As you may have guessed, your equipment will transform into something new after this.";
-		mes "In other words, ^4d4dffit'll lose its current Refining and Upgrade levels.^000000";
+		mes "[幻影石研究員]";
+		mes "如你所料，你的裝備之後會轉變成全新的東西。";
+		mes "換句話說，^4d4dff它會失去目前的精煉與強化等級。^000000";
 		next;
-		mes "[Illusion Stone Researcher]";
-		mes "And I need ^4d4dffIllusion Stones and some other materials^000000 to upgrade your equipment.";
-		mes "Pick an item you want. I'll tell you what I need.";
+		mes "[幻影石研究員]";
+		mes "強化你的裝備還需要^4d4dff幻影石與其他一些材料^000000。";
+		mes "選一個想要的道具，我會告訴你需要什麼。";
 		close2;
 		callshop( "barter_ill_frozen" );
 		end;
 	case 3:
-		mes "[Illusion Stone Researcher]";
-		mes "It's just hard to get..";
+		mes "[幻影石研究員]";
+		mes "就是很難取得……";
 		close;
 	}
 	end;
@@ -179,81 +179,81 @@ ice_dun02,153,18,3	script	Illusion Stone Research	4_M_ALCHE_B,{
 
 // illusion enhancing - enhance the illusion gears
 // note: unknown enhance rate
-prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
+prontera,90,115,5	script	幻影附魔師#0::Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 2000) {
-		mes "I'm overweight. I'd better lighten my bag first.";
+		mes "我負重太多了，最好先減輕背包。";
 		close;
 	}
 	disable_items;
 	if (isbegin_quest(12415) == 0) {
-		mes "[Illusion Enchanter]";
-		mes "Oh, do you have Illusion equipment?";
+		mes "[幻影附魔師]";
+		mes "喔，你有幻影裝備嗎？";
 		next;
-		select("No. I don't even know what Illusion equipment is.");
-		mes "[Illusion Enchanter]";
-		mes "Oops, I'm sorry. I should've introduced myself first.";
+		select("沒有。我連幻影裝備是什麼都不知道。");
+		mes "[幻影附魔師]";
+		mes "哎呀，抱歉，我應該先自我介紹的。";
 		next;
-		mes "[Illusion Enchanter]";
-		mes "I'm a chemist specializing in the study of Illusion Stones, which have been circulating among adventurers.";
+		mes "[幻影附魔師]";
+		mes "我是專研幻影石的化學家，這些石頭最近在冒險者之間流通。";
 		next;
-		select("Illusion Stones?");
-		mes "[Illusion Enchanter]";
-		mes "You don't know, don't you? They're the hottest trend these days.";
+		select("幻影石？");
+		mes "[幻影附魔師]";
+		mes "你不知道吧？它們可是最近最夯的話題。";
 		next;
-		select("I don't care about trends.");
-		mes "[Illusion Enchanter]";
-		mes "You must have heard about the strange places that have sprung up here and there lately. Illusion Stones are only found in those places,";
+		select("我對流行沒興趣。");
+		mes "[幻影附魔師]";
+		mes "你一定聽說過最近到處冒出來的奇怪地點吧。幻影石只在那些地方找得到，";
 		next;
-		mes "[Illusion Enchanter]";
-		mes "and their atomic structure is unlike any mineral I've seen. *Blah Blah* ...Their chemical chains... *Blah Blah*";
+		mes "[幻影附魔師]";
+		mes "而且它們的原子結構跟我見過的任何礦物都不一樣。*嘰哩呱啦*……它們的化學鏈……*嘰哩呱啦*";
 		next;
-		select("(Uh-oh, he's zoning out!)");
-		mes "[Illusion Enchanter]";
-		mes "Anyway, I can enchant equipment that is exchanged for or purchased with Illusion Stones. I call them the Illusion equipment.";
+		select("（糟糕，他又神遊了！）");
+		mes "[幻影附魔師]";
+		mes "總之，我能附魔以幻影石兌換或購買的裝備。我把它們稱為幻影裝備。";
 		next;
-		select("(He has no sense when it comes to names.)");
-		mes "[Illusion Enchanter]";
-		mes "This equipment at least responds positively to Illusion Stones, or it has the potential to be enchanted successfully.";
+		select("（他在取名字這方面毫無天分。）");
+		mes "[幻影附魔師]";
+		mes "這些裝備至少會對幻影石有正面反應，或具備成功附魔的潛力。";
 		next;
-		mes "[Illusion Enchanter]";
-		mes "Explore the worlds of illusions, collect Illusion Stones, and exchange them for equipment. I can enchant the equipment for you.";
+		mes "[幻影附魔師]";
+		mes "探索幻影的世界，收集幻影石，再用它們兌換裝備。我可以為你附魔這些裝備。";
 		next;
-		mes "[Illusion Enchanter]";
-		mes "This benefits both of us. I need Illusion Stones for my studies, and you need powerful equipment for your adventures.";
+		mes "[幻影附魔師]";
+		mes "這對我們雙方都有好處。我需要幻影石做研究，而你需要強力的裝備來冒險。";
 		next;
-		mes "[Illusion Enchanter]";
-		mes "That said, my service is not for free. It requires a few Illusion Stones and Zeny.";
+		mes "[幻影附魔師]";
+		mes "話雖如此，我的服務可不是免費的，需要一些幻影石和 Zeny。";
 		next;
-		mes "[Illusion Enchanter]";
-		mes "If you're interested, how'd you like to get a membership for my service? You can get discounts that way!";
+		mes "[幻影附魔師]";
+		mes "如果有興趣，要不要辦個會員？這樣就能享有折扣！";
 		next;
-		if (select( "Sure!", "Not interested." ) == 2) {
-			mes "[Illusion Enchanter]";
-			mes "Okay, but let me know if you change your mind.";
+		if (select( "好啊！", "沒興趣。" ) == 2) {
+			mes "[幻影附魔師]";
+			mes "好吧，但如果改變主意了再告訴我。";
 			close;
 		}
-		mes "[Illusion Enchanter]";
-		mes "Alright, then I'll add you to my member list. I hope you'll have some Illusion equipment next time I see you.";
+		mes "[幻影附魔師]";
+		mes "好，那我把你加入會員名單。希望下次見面時你能帶些幻影裝備來。";
 		setquest 12415;
 		completequest 12415;
 		close;
 	}
-	mes "[Illusion Enchanter]";
-	mes "I can enchant Illusion equipment.";
+	mes "[幻影附魔師]";
+	mes "我可以為幻影裝備附魔。";
 	next;
-	switch( select( "How much do you charge?", "Add stats to Illusion equipment.", "Reset enchanted Illusion equipment." ) ) {
+	switch( select( "收費多少？", "為幻影裝備增加能力值。", "重置已附魔的幻影裝備。" ) ) {
 	case 1:
-		mes "[Illusion Enchanter]";
-		mes "First, let me tell you that I can only enchant certain types of Illusion equipment.";
+		mes "[幻影附魔師]";
+		mes "首先，我要先告訴你，我只能附魔特定種類的幻影裝備。";
 		next;
-		mes "[Illusion Enchanter]";
-		mes "Up to 2 sockets can be enchanted, and enchanting each socket requires 5 Illusion Stones. You can reset enchanted Illusion equipment at any time.";
+		mes "[幻影附魔師]";
+		mes "最多可以附魔 2 個插槽，每個插槽需要 5 顆幻影石。已附魔的幻影裝備隨時都可以重置。";
 		next;
-		mes "[Illusion Enchanter]";
-		mes "Enchanting never fails, but resetting sometimes failes. Even modern science can't change that.";
+		mes "[幻影附魔師]";
+		mes "附魔從不會失敗，但重置有時會失敗。就連現代科學也改變不了這一點。";
 		next;
-		mes "[Illusion Enchanter]";
-		mes "Resetting requires a different amount of Zeny depending on the success chance you choose. Select the menu if you'd like to see the available payment options.";
+		mes "[幻影附魔師]";
+		mes "重置所需的 Zeny 會依你選擇的成功率而不同。如果想看可選的付費方式，請選擇選單。";
 		close;
 	case 2:
 		.@reset = false;
@@ -263,7 +263,7 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 		break;
 	}
 	setarray .@location[0], EQI_HAND_R, EQI_ARMOR, EQI_SHOES, EQI_GARMENT, EQI_ACC_R, EQI_ACC_L, EQI_HEAD_TOP, EQI_HAND_L;
-	.@s = select( "Right-handed Weapon", "防具", "Shoes", "Garment", "Right Accessory", "Left accessory", "Helm (Upper)", "Left-handed Weapon/Shield" ) - 1;
+	.@s = select( "右手武器", "防具", "長靴", "披風", "右飾品", "左飾品", "金屬頭盔（上）", "左手武器/盾牌" ) - 1;
 	.@loc = .@location[.@s];
 	.@eq_id = getequipid(.@loc);
 
@@ -351,18 +351,18 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 		case 490070:	// Morrigane's_Pendant_IL
 			break;
 		case -1:
-			mes "[Illusion Enchanter]";
-			mes "You must be equipped with an item in the selected location to have it enchanted.";
+			mes "[幻影附魔師]";
+			mes "必須在所選部位裝備道具，才能進行附魔。";
 			close;
 		default:
-			mes "[Illusion Enchanter]";
-			mes "This equipment is not from a world of fantastic illusions. I'm offended that you even showed it to me.";
+			mes "[幻影附魔師]";
+			mes "這件裝備並非來自幻想的世界。你竟然拿給我看，真令人不快。";
 			close;
 	}
 
 	for ( .@i = 0; .@i < MAX_ITEM_RDM_OPT-1; ++.@i ) {
 		if (getequiprandomoption(.@loc, .@i, ROA_ID) > 0) {
-			mes "^ff0000Random options are checked for that equipment. The equipment cannot be enchanted.^000000";
+			mes "^ff0000這件裝備有隨機屬性，無法附魔。^000000";
 			close;
 		}
 	}
@@ -380,14 +380,14 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 			.@loc_enchant = EQI_HAND_R;	// the equipment is a weapon so the enchantments must be for weapons
 		break;
 	default:	// illusion weapon level 4 can't be enhanced
-		mes "[Illusion Enchanter]";
-		mes "This is the best of all Illusion equipment. There's no technology available in this day and age that can enchant it. Even the most skilled enchanter can't do that.";
+		mes "[幻影附魔師]";
+		mes "這是所有幻影裝備中最頂級的。現今任何技術都無法為它附魔，就連最厲害的附魔師也做不到。";
 		next;
-		mes "[Illusion Enchanter]";
-		mes "Well, not unless he's willing to risk his mental and physical health.";
+		mes "[幻影附魔師]";
+		mes "除非他願意拿身心健康去冒險吧。";
 		next;
-		mes "[Illusion Enchanter]";
-		mes "But who knows? Maybe someday you'll meet someone who is talented enough to handle this precious equipment.";
+		mes "[幻影附魔師]";
+		mes "不過誰知道呢？也許有一天你會遇到有能力處理這件珍貴裝備的人。";
 		close;
 	}
 
@@ -403,17 +403,17 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 		.@item_req_count = 5;
 
 		if (.@card[2] > 0 && .@card[3] > 0) {
-			mes "[Illusion Enchanter]";
-			mes "This equipment is already enchanted to the maximum limit.";
+			mes "[幻影附魔師]";
+			mes "這件裝備已經附魔到上限了。";
 			close;
 		}
 		if (.@weapon_lvl > 0) {
-			mes "[Illusion Enchanter]";
-			mes "What kind of effect would you like to add?";
+			mes "[幻影附魔師]";
+			mes "想增加哪種效果？";
 			next;
-			.@weapon_enchant_type = select( "Melee", "Ranged", "Magic" );
+			.@weapon_enchant_type = select( "近戰", "遠程", "魔法" );
 		}
-		mes "[Illusion Enchanter]";
+		mes "[幻影附魔師]";
 		if (.@card[3] > 0) {
 			.@slot = 2;
 			.@string$ = "second";
@@ -422,16 +422,16 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 			.@slot = 3;
 			.@string$ = "first";
 		}
-		mes "I'll try to enchant the " + .@string$ + " ability for your item. ^ff0000Its existing Refining level and cards will not be damaged. It will not be destroyed, even if this attempt fails.^000000 Do you want to continue?";
+		mes "我會嘗試為你道具的 " + .@string$ + " 能力附魔。^ff0000現有的精煉等級與卡片不會受損，即使這次失敗，道具也不會被毀壞。^000000 要繼續嗎？";
 		next;
-		if (select( "I'll come back later.", "Sure!" ) == 1) {
-			mes "[Illusion Enchanter]";
-			mes "No problem. Come back if you change your mind.";
+		if (select( "我之後再來。", "好啊！" ) == 1) {
+			mes "[幻影附魔師]";
+			mes "沒問題。如果改變主意再來吧。";
 			close;
 		}
 		if (countitem(.@item_req) < .@item_req_count) {
-			mes "[Illusion Enchanter]";
-			mes "This item requires " + .@item_req_count + " " + getitemname(.@item_req) + ", and you don't have all that I need from you.";
+			mes "[幻影附魔師]";
+			mes "這個道具需要 " + .@item_req_count + " " + getitemname(.@item_req) + "，但你沒有我需要的全部材料。";
 			close;
 		}
 
@@ -443,32 +443,32 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 		delitem .@item_req, .@item_req_count;
 		delequip .@loc;
 		getitem2 .@eq_id,1,1,.@refine,0,.@card[0],.@card[1],.@card[2],.@card[3];
-		mes "[Illusion Enchanter]";
-		mes "It's done. Please check.";
+		mes "[幻影附魔師]";
+		mes "完成了，請確認。";
 		specialeffect2 EF_REPAIRWEAPON;
 		close;
 
 	case true:
 		if (!F_IsCharm(.@card[2]) || !F_IsCharm(.@card[3])) {
-			mes "[Illusion Enchanter]";
-			mes "Only fully enchanted items can be reset. Please enchant it twice, and if you still want to reset it, then bring it to me.";
+			mes "[幻影附魔師]";
+			mes "只有完全附魔過的道具才能重置。請先附魔兩次，如果還想重置，再帶來給我。";
 			close;
 		}
-		mes "[Illusion Enchanter]";
-		mes "Your resetting chance varies, depending on the amount of Zeny you pay. What would you like to do?";
+		mes "[幻影附魔師]";
+		mes "重置的成功率會依你支付的 Zeny 數量而變化。你想怎麼做？";
 		next;
-		.@s = select( "I'll come back later.", "100,000 Zeny (50%)", "200,000 Zeny (60%)", "300,000 Zeny (70%)", "400,000 Zeny (80%)", "500,000 Zeny (90%)" ) - 1;
+		.@s = select( "我之後再來。", "100,000 Zeny (50%)", "200,000 Zeny (60%)", "300,000 Zeny (70%)", "400,000 Zeny (80%)", "500,000 Zeny (90%)" ) - 1;
 		if (.@s == 0) {
-			mes "[Illusion Enchanter]";
-			mes "No problem. Come back if you change your mind.";
+			mes "[幻影附魔師]";
+			mes "沒問題。如果改變主意再來吧。";
 			close;
 		}
 		.@cost = 100000 * .@s;
 		.@rate = 40 + 10 * .@s;
 
 		if (Zeny < .@cost) {
-			mes "[Illusion Enchanter]";
-			mes "You don't have enough money.";
+			mes "[幻影附魔師]";
+			mes "你的錢不夠。";
 			close;
 		}
 
@@ -480,13 +480,13 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 		delequip .@loc;
 		if (rand(100) < .@rate) {
 			getitem2 .@eq_id,1,1,.@refine,0,.@card[0],.@card[1],0,0;
-			mes "[Illusion Enchanter]";
-			mes "It's done. Please check.";
+			mes "[幻影附魔師]";
+			mes "完成了，請確認。";
 			specialeffect2 EF_REPAIRWEAPON;
 			close;
 		}
-		mes "[Illusion Enchanter]";
-		mes "Ah, that was unfortunate. Well, you can't always be lucky.";
+		mes "[幻影附魔師]";
+		mes "啊，真可惜。唉，運氣也不會每次都好。";
 		specialeffect2 EF_LORD;
 		close;
 	}
@@ -724,7 +724,7 @@ S_Enchant:
 
 OnTouch:
 	if (isbegin_quest(12415) == 0)
-		npctalk "Illusion Enchanter: Come talk to me if you're interested in the Illusion equipment!", "", bc_self;
+		npctalk "幻影附魔師: 如果對幻影裝備有興趣，就來找我聊聊！", "", bc_self;
 	end;
 }
 
@@ -734,36 +734,36 @@ OnTouch:
 //============================================================
 
 // Exchange npc
-alberta,226,28,3	script	Equipment Researcher	4_TOWER_15,{
+alberta,226,28,3	script	裝備研究員::Equipment Researcher	4_TOWER_15,{
 	.@illusion_stone_name$ = getitemname(25271);
 
-	mes "[Equipment Researcher]";
-	mes "I'm the one who researches " + .@illusion_stone_name$ + " to enhance armors and weapons.";
-	mes "If you have the materials I need for my research, wouldn't you hand them over?";
-	mes "If you give me some equipment and some materials, I'll exchange them for my reinforced equipment.";
+	mes "[裝備研究員]";
+	mes "我是研究 " + .@illusion_stone_name$ + " 來強化護甲與武器的人。";
+	mes "如果你有我研究需要的材料，難道不願意交出來嗎？";
+	mes "如果你給我一些裝備和材料，我會用強化過的裝備跟你交換。";
 	next;
-	switch( select( "What are you doing here?", "Exchange equipment" ) ) {
+	switch( select( "你在這裡做什麼？", "兌換裝備" ) ) {
 	case 1:
-		mes "[Equipment Researcher]";
-		mes "I'm working on how to use an " + .@illusion_stone_name$ + " to strengthen equipment.";
-		mes "I went to go to the place where " + .@illusion_stone_name$ + " was found, and I barely got back..";
+		mes "[裝備研究員]";
+		mes "我正在研究如何使用一種 " + .@illusion_stone_name$ + " 來強化裝備。";
+		mes "我曾經去過 " + .@illusion_stone_name$ + " 被發現的地方，好不容易才回來……";
 		next;
-		mes "[Equipment Researcher]";
-		mes "I think I met a girl...";
-		mes "Anyway, after that, I couldn't find a way to go back.";
-		mes "Here, we're getting research materials from adventurers with " + .@illusion_stone_name$ + ", and I'm offering enhanced equipment instead.";
+		mes "[裝備研究員]";
+		mes "我好像遇到了一個女孩……";
+		mes "總之，之後我就找不到回去的方法了。";
+		mes "我們在這裡從冒險者那裡取得研究材料，他們拿著 " + .@illusion_stone_name$ + "，而我會以強化裝備來作為交換。";
 		close;
 	case 2:
-		mes "[Equipment Researcher]";
-		mes "What are the equipment I can exchange? Wait a minute. I'll let you know.";
+		mes "[裝備研究員]";
+		mes "我能兌換哪些裝備？等一下，我告訴你。";
 		next;
-		mes "[Equipment Researcher]";
-		mes "As a material, you can bring ^0000CDexisting equipment that have been refined to +9 or higher.^000000";
-		mes "And I need some ^0000CD" + .@illusion_stone_name$ + " and other materials.^000000";
+		mes "[裝備研究員]";
+		mes "作為材料，你可以帶來^0000CD精煉到 +9 以上的現有裝備。^000000";
+		mes "另外我還需要一些 ^0000CD" + .@illusion_stone_name$ + " 以及其他材料。^000000";
 		next;
-		mes "[Equipment Researcher]";
-		mes "Of course, we're giving you new equipment, so don't forget that all the existing ^0000CDsmelting and enchantments^000000 will disappear.";
-		mes "So, what kind of weapon do you want?";
+		mes "[裝備研究員]";
+		mes "當然，我們會給你新的裝備，所以別忘了，所有現有的^0000CD精煉與附魔^000000都會消失。";
+		mes "那麼，你想要哪種武器？";
 		close2;
 		callshop( "barter_ill_turtle" );
 		end;
@@ -776,17 +776,17 @@ alberta,226,28,3	script	Equipment Researcher	4_TOWER_15,{
 //============================================================
 
 // Exchange npc
-com_d02_i,234,266,6	script	Village Soap#Lu	4_M_ORIENT01,{
-	mes "[Village Soap]";
-	mes "I've also rolled up my sleeves for the adventurers who work hard for the village. Can I make your equipment stronger? Is there anything on the list you want?";
+com_d02_i,234,266,6	script	村莊肥皂#Lu::Village Soap#Lu	4_M_ORIENT01,{
+	mes "[村莊肥皂]";
+	mes "我也為了替村裡努力的冒險者出一分力。要不要幫你的裝備變強？清單上有沒有你想要的？";
 	next;
-	if (select( "Look at the illusion equipment", "取消" ) == 2) {
-		mes "[Village Soap]";
-		mes "Please come later. Just bring the ingredients and I'll make it for you.";
+	if (select( "看看幻影裝備", "取消" ) == 2) {
+		mes "[村莊肥皂]";
+		mes "請晚點再來。把材料帶來，我就會為你做。";
 		close;
 	}
-	mes "[Village Soap]";
-	mes "Who made it? It might be useful for you to take it with you.";
+	mes "[村莊肥皂]";
+	mes "這是誰做的？帶著它也許會有用。";
 	close2;
 	callshop( "barter_ill_luanda" );
 	end;
@@ -797,25 +797,25 @@ com_d02_i,234,266,6	script	Village Soap#Lu	4_M_ORIENT01,{
 //= Illusion of Underwater
 //============================================================
 
-iz_d04_i,134,228,4	script	Horen#Horen	4_M_BIBI,{
+iz_d04_i,134,228,4	script	霍倫#Horen::Horen#Horen	4_M_BIBI,{
 	if (checkweight(1201,3) == 0) {
-		mes "Conversation cannot proceed because you have too many items.";
-		mes "Please clean up your inventory and try again.";
+		mes "道具數量過多，無法繼續對話。";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
-	mes "[Horen]";
-	mes "Hello. If you have rare materials from this place, I can enhance your equipment.";
+	mes "[霍倫]";
+	mes "你好。如果你有這裡的稀有材料，我可以強化你的裝備。";
 	next;
-	mes "[Horen]";
-	mes "Would you like to see upgradeable equipment?";
+	mes "[霍倫]";
+	mes "想看看可以強化的裝備嗎？";
 	next;
 	if (select( "是", "否" ) == 2) {
-		mes "[Horen]";
-		mes "Come back if interested.";
+		mes "[霍倫]";
+		mes "有興趣的話再來。";
 		close;
 	}
-	mes "[Horen]";
-	mes "There are many types, so take your time. If you want something, I can enhance it right away.";
+	mes "[霍倫]";
+	mes "種類很多，慢慢挑吧。如果你想要什麼，我可以馬上為你強化。";
 	close2;
 	callshop( "barter_ill_underwater" );
 	end;
@@ -825,16 +825,16 @@ iz_d04_i,134,228,4	script	Horen#Horen	4_M_BIBI,{
 //= Illusion of Twins
 //============================================================
 // ant_d02_i,175,186,3	script	From#iltw	MECHANIC,{
-ant_d02_i,175,186,3	script	From#iltw	HIDDEN_NPC,{
+ant_d02_i,175,186,3	script	弗羅姆#iltw::From#iltw	HIDDEN_NPC,{
 	if (checkweight(1201,3) == 0) {
-		mes "- You cannot proceed with the quest because you have too many items. -";
+		mes "- 道具數量過多，無法繼續任務。 -";
 		close;
 	}
-	mes "[From]";
-	mes "I feel like I'm going crazy.";
-	mes "It's because of my mood. I'm human and it's not like you're mistaken.";
-	mes "I'll help you if you get a lot here.";
-	mes "Do you want to enhance your equipment?";
+	mes "[弗羅姆]";
+	mes "我覺得自己快瘋了。";
+	mes "這是因為我的心情。我又不是什麼怪物，你並沒有認錯。";
+	mes "如果你在這裡拿到很多，我會幫你。";
+	mes "想強化你的裝備嗎？";
 	close2;
 	callshop( "barter_ill_twins" );
 	end;
@@ -853,20 +853,20 @@ OnInit:
 //= Illusion Merchant
 //============================================================
 -	marketshop	market_resonance_stone	-1,100003:2000000:99999,100004:2000000:99999
-prontera,88,113,5	script	Illusion Merchant#0829	HIDDEN_NPC,{
-	mes "[Illusion Merchant]";
-	mes "I'm selling two random optional weapon grant scrolls that I made myself. You can choose the payment method you like.";
+prontera,88,113,5	script	幻影商人#0829::Illusion Merchant#0829	HIDDEN_NPC,{
+	mes "[幻影商人]";
+	mes "我在販售兩種我自己做的隨機選項武器附加卷軸。你可以選擇喜歡的付款方式。";
 	next;
-	switch( select( "Purchase with Zeny.", "Purchase with Illusion Stones" )) {
+	switch( select( "以 Zeny 購買。", "以幻影石購買" )) {
 		case 1:
-			mes "[Illusion Merchant]";
-			mes "I hope you like it.";
+			mes "[幻影商人]";
+			mes "希望你會喜歡。";
 			close2;
 			callshop "market_resonance_stone";
 			end;
 		case 2:
-			mes "[Illusion Merchant]";
-			mes "I hope you like it.";
+			mes "[幻影商人]";
+			mes "希望你會喜歡。";
 			close2;
 			callshop "resonance_stone_barter";
 			end;
@@ -891,45 +891,45 @@ OnInit:
 //= Illusion of Teddy Bear
 //============================================================
 
-ein_d02_i,177,158,3	script	Bear Wanting Illusion Stone#ITB	4_NASARIAN,{
+ein_d02_i,177,158,3	script	想要幻影石熊#ITB::Bear Wanting Illusion Stone#ITB	4_NASARIAN,{
 	.@item_name$ = getitemname(25271); // IllusionStone
-	mes "[Bear Wanting " + .@item_name$ + "]";
-	mes "If you give me an " + .@item_name$ + ", I'll do something nice for you!";
+	mes "[想要 " + .@item_name$ + "]";
+	mes "如果你給我一個 " + .@item_name$ + "，我會為你做點好事！";
 	next;
-	switch( select( "Reason for being here", "Good thing [Illusion equipment]", "離開" ) ) {
+	switch( select( "來這裡的原因", "好東西 [幻影裝備]", "離開" ) ) {
 	case 1:
-		mes "[Bear Wanting " + .@item_name$ + "]";
-		mes "I don't know why...!";
-		mes "The other teddy bears were in line, so I was in line too!";
-		mes "Whoaaaaaa!!!!";
-		mes "I didn't know it was here!";
+		mes "[想要 " + .@item_name$ + "]";
+		mes "我也不知道為什麼……！";
+		mes "其他小熊都在排隊，所以我也跟著排！";
+		mes "哇啊啊啊啊！！！！";
+		mes "我不知道這裡有這個！";
 		next;
-		mes "[Bear Wanting " + .@item_name$ + "]";
-		mes "A teddy bear with an " + .@item_name$ + "!";
-		mes "Strong!";
-		mes "I don't have any " + .@item_name$ + "些寶石！";
-		mes "Less... stronger...";
+		mes "[想要 " + .@item_name$ + "]";
+		mes "一隻帶著 " + .@item_name$ + "!";
+		mes "很強！";
+		mes "我沒有任何 " + .@item_name$ + "些寶石！";
+		mes "變少了……變弱了……";
 		next;
-		mes "[Bear Wanting " + .@item_name$ + "]";
-		mes "What are " + .@item_name$ + "嗎？";
-		mes "I don't know but I want some!";
+		mes "[想要 " + .@item_name$ + "]";
+		mes "什麼是 " + .@item_name$ + "嗎？";
+		mes "我不知道是什麼，但我想要！";
 		close;
 	case 2:
-		mes "[Bear Wanting " + .@item_name$ + "]";
-		mes "Makes you good with what you have!";
+		mes "[想要 " + .@item_name$ + "]";
+		mes "讓你善用手邊已有的東西！";
 		next;
-		mes "[Bear Wanting " + .@item_name$ + "]";
-		mes "If you want to do well, bring equipment refined to ^ff0000+9 or higher. It'll all disappear... haha?^000000";
+		mes "[想要 " + .@item_name$ + "]";
+		mes "想要表現得好，就帶精煉到^ff0000+9以上的裝備來。全都會消失……哈哈？^000000";
 		next;
-		mes "[Bear Wanting " + .@item_name$ + "]";
-		mes "^ff0000" + .@item_name$ + "^000000!!! " + .@item_name$ + " is the most important thing, but... other materials are also needed.";
-		mes "For every good thing you need another good thing.";
+		mes "[想要 " + .@item_name$ + "]";
+		mes "^ff0000" + .@item_name$ + "^000000!!! " + .@item_name$ + " 最重要，不過……其他材料也是需要的。";
+		mes "每件好東西都需要另一件好東西。";
 		next;
 		close2;
 		callshop( "barter_ill_teddy" );
 		end;
 	case 3:
-		mes "[Bear Wanting " + .@item_name$ + "]";
+		mes "[想要 " + .@item_name$ + "]";
 		mes "好吧……";
 		close;
 	}

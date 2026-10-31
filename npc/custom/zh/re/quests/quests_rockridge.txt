@@ -15,7 +15,7 @@ alberta,240,103,5	script	Karam Pucci#alberta	4_M_SEAMAN,3,3,{
 			mes "Hello, up-and-coming adventurer!";
 			mes "May I talk to you for a second?";
 			next;
-			if (select( "有什麼我能為你做的嗎？", "I'm busy." ) == 2) {
+			if (select( "有什麼我能為你做的嗎？", "我很忙。" ) == 2) {
 				mes "[Karam Pucci]";
 				mes "That's heartless.";
 				mes "I was going to tell you about a new continent, but if you don't want to know, that's fine by me.";
@@ -446,7 +446,7 @@ har_in01,20,30,5	script	Wyatt Warp#har_in01	4_M_YATTWARP,{
 	}
 	if (rock_main_quest == 2) {
 		mes "[Wyatt Warp]";
-		mes "What is it?";
+		mes "那是什麼？";
 		mes "I have a very urgent and grave matter at hand. Please don't interrupt me.";
 		next;
 		select("I know about the Buffalo Bandits.");
@@ -972,7 +972,7 @@ OnTouch:
 }
 
 // Prison
-har_in01,100,14,3	script	Vigilante#srdg01	4_M_CACTUSLADY,{
+har_in01,100,14,3	script	自警團員#srdg01::Vigilante#srdg01	4_M_CACTUSLADY,{
 	setpcblock PCBLOCK_NPC, true;
 	npctalk "You'd better not do anything stupid.", "", bc_self;
 	sleep2 1000;
@@ -1112,7 +1112,7 @@ har_in01,89,26,5	script	Johnny James#har_in01	4_M_JOHNNYJAMES,{
 		mes "if you let me go.";
 		mes "And one more condition.";
 		next;
-		select("Go on.");
+		select("繼續吧。");
 		mes "[Johnny James]";
 		mes "...Can you take care of that traitor, Albert?";
 		mes "I'll tell you the password you can use to call him out of hiding.";
@@ -1317,7 +1317,7 @@ rockrdg1,156,312,3	script	Unmoving Freight Train#	4_ENERGY_RED,{
 		sleep2 3000;
 		npctalk "Ivoka and our Cacti friends, you did a good job! You can take him away now.", "Wyatt Warp#revt03", bc_self;
 		sleep2 1000;
-		npctalk "Let's go!", "Cactus Gunslinger#revt05", bc_self;
+		npctalk "走吧！", "Cactus Gunslinger#revt05", bc_self;
 		npctalk "We've got you now!", "Cactus Gunslinger#revt06", bc_self;
 		npctalk "Stop resisting!", "Cactus Gunslinger#revt07", bc_self;
 		sleep2 1000;
@@ -1493,7 +1493,7 @@ harboro1,288,193,5	script	Shawn McCurdy#harboro1	4_M_SEANMCCURDY,{
 		next;
 		mes "[Shawn McCurdy]";
 		mes "We know another passage leads to the second floor of the mine.";
-		mes "Let's go!";
+		mes "走吧！";
 		close;
 	}
 	if (rock_main_quest == 22) {
@@ -1818,7 +1818,7 @@ rockrdg2,279,313,3	script	Concaved Rock#revt09	4_ENERGY_RED,{
 		next;
 		if (select( "Knock, knock-knock-knock, knock.", "Knock, knock, knock." ) == 2) {
 			mes "I feel as if I should help them make a snowman.";
-			mes "Nothing happened.";
+			mes "什麼也沒發生。";
 			close;
 		}
 		npctalk "Boss? Is that you, Boss?", "Albert Ford#rockrdg2", bc_self;
@@ -1921,7 +1921,7 @@ rockrdg2,295,309,3	script	Albert Ford#rockrdg2	4_M_ALBERTFORD,{
 			mes "你在說什麼？";
 			mes "The Boss has betrayed us?";
 			mes "Why would he do that?";
-			mes "Stop lying!";
+			mes "別騙人了！";
 			unittalk .@account_id, "" + .@player_name$ + " : Why do you think I'm lying?", bc_self;
 			next;
 			mes "[Albert Ford]";
@@ -2103,7 +2103,7 @@ rockrdg2,295,309,3	script	Albert Ford#rockrdg2	4_M_ALBERTFORD,{
 		}
 		mes "[Albert Ford]";
 		mes "What is it this time?";
-		mes "I'm busy.";
+		mes "我很忙。";
 		next;
 		select("Did something happen inside the mine?");
 		mes "[Albert Ford]";
@@ -2305,7 +2305,7 @@ rockrdg1,341,133,3	script	Mrs. Cacturon#rrrem01	4_M_CACTUSLADY,{
 			mes "Sure, I can do that. You want me to ^0000CDfind 5 Agave Juice Mixes and hunt 30 Coyotes^000000, right?";
 			next;
 			mes "[Mrs. Cacturon]";
-			mes "Yes. Thank you.";
+			mes "好的。謝謝。";
 			mes "I doubt you could find all 7 packs. At least a couple of them must be torn and spilled by now.";
 			next;
 			mes "[Mrs. Cacturon]";
@@ -3031,14 +3031,14 @@ rockrdg1,262,90,7	script	Crouched Horse#rr	4_M_CACTUSMAN1,{
 			next;
 			if (select( "Mm, not now.", "Sure thing. I'll be right back." ) == 1) {
 				mes "[Crouched Horse]";
-				mes "Oh, I see.";
+				mes "喔，我明白了。";
 				mes "Hm... I understand.";
 				mes "You can come back when you're not busy.";
 				close;
 			}
 			mes "[Crouched Horse]";
 			mes "Oh, thank you!";
-			mes "You can find";
+			mes "你可以在";
 			mes "purple ore fragments";
 			mes "while hunting in this area.";
 			mes "Just bring me 10. That's all I need.";
@@ -3115,7 +3115,7 @@ rockrdg1,262,90,7	script	Crouched Horse#rr	4_M_CACTUSMAN1,{
 		next;
 		if (select( "Not this time.", "Sure thing. It'd be my pleasure." ) == 1) {
 			mes "[Crouched Horse]";
-			mes "Oh, I see.";
+			mes "喔，我明白了。";
 			mes "Hm... I understand.";
 			mes "Feel free to come back if you change your mind.";
 			close;
@@ -3133,11 +3133,11 @@ rockrdg1,262,90,7	script	Crouched Horse#rr	4_M_CACTUSMAN1,{
 harboro1,231,254,3	script	Exotic Merchant	1_M_MERCHANT,{
 	disable_items;
 	if (checkweight(1201,1) == 0) {
-		mes "I'm carrying too many types of items. I should lighten my bag first.";
+		mes "我身上帶的道具種類太多了，應該先把包包減輕一下。";
 		close;
 	}
 	if ((MaxWeight - Weight) < 10000) {
-		mes "I'm overweight. I'd better lighten my bag first.";
+		mes "我負重太多了，最好先減輕背包。";
 		close;
 	}
 	switch( checkquest(12411,PLAYTIME) ) {
@@ -3232,11 +3232,11 @@ harboro1,231,254,3	script	Exotic Merchant	1_M_MERCHANT,{
 harboro1,357,163,3	script	Food Distributer	4_COOK,{
 	disable_items;
 	if (checkweight(1201,1) == 0) {
-		mes "I'm carrying too many types of items. I should lighten my bag first.";
+		mes "我身上帶的道具種類太多了，應該先把包包減輕一下。";
 		close;
 	}
 	if ((MaxWeight - Weight) < 10000) {
-		mes "I'm overweight. I'd better lighten my bag first.";
+		mes "我負重太多了，最好先減輕背包。";
 		close;
 	}
 	if (BaseLevel < 100) {
@@ -3403,7 +3403,7 @@ S_Food:
 	.@amount = getarg(2);
 	if (countitem(.@item_id) < .@amount) {
 		mes "[Food Distributer]";
-		mes "Bring me " + .@amount + " " + mesitemlink( .@item_id, false ) + " from Midgard. You can buy them from merchants in big cities.";
+		mes "請幫我帶來 " + .@amount + " " + mesitemlink( .@item_id, false ) + " from Midgard. You can buy them from merchants in big cities.";
 		close;
 	}
 	delitem .@item_id, .@amount;
@@ -3476,11 +3476,11 @@ OnEnable:
 harboro1,357,155,3	script	Steel Vigilante#1	4_M_MASKMAN,{
 	disable_items;
 	if (checkweight(1201,1) == 0) {
-		mes "I'm carrying too many types of items. I should lighten my bag first.";
+		mes "我身上帶的道具種類太多了，應該先把包包減輕一下。";
 		close;
 	}
 	if ((MaxWeight - Weight) < 10000) {
-		mes "I'm overweight. I'd better lighten my bag first.";
+		mes "我負重太多了，最好先減輕背包。";
 		close;
 	}
 	if (BaseLevel < 100) {
@@ -3521,7 +3521,7 @@ harboro1,357,155,3	script	Steel Vigilante#1	4_M_MASKMAN,{
 		mes "[Steel Vigilante]";
 		mes "Ah, come on, don't be like that. Help this poor man out here.";
 		next;
-		if (select( "好的。", "Let me think." ) == 2) {
+		if (select( "好的。", "讓我想想。" ) == 2) {
 			mes "[Steel Vigilante]";
 			mes "Okay, okay, I understand if you're busy. But I'm offering you benefits both of us.";
 			next;
@@ -3662,11 +3662,11 @@ harboro1,357,155,3	script	Steel Vigilante#1	4_M_MASKMAN,{
 harboro1,357,152,3	script	Steel Vigilante#2	4_M_ACROSS,{
 	disable_items;
 	if (checkweight(1201,1) == 0) {
-		mes "I'm carrying too many types of items. I should lighten my bag first.";
+		mes "我身上帶的道具種類太多了，應該先把包包減輕一下。";
 		close;
 	}
 	if ((MaxWeight - Weight) < 10000) {
-		mes "I'm overweight. I'd better lighten my bag first.";
+		mes "我負重太多了，最好先減輕背包。";
 		close;
 	}
 	if (BaseLevel < 140) {
@@ -3699,7 +3699,7 @@ harboro1,357,152,3	script	Steel Vigilante#2	4_M_ACROSS,{
 		mes "[Steel Vigilante]";
 		mes "You're pretty strong. Can you handle something tough?";
 		next;
-		if (select( "Sure, why not?", "Let me think." ) == 2) {
+		if (select( "Sure, why not?", "讓我想想。" ) == 2) {
 			mes "[Steel Vigilante]";
 			mes "Alright, take your time.";
 			close;
@@ -3845,11 +3845,11 @@ OnEnable:
 harboro1,334,135,6	script	Desalination Facility Manager	4_M_YURI,{
 	disable_items;
 	if (checkweight(1201,1) == 0) {
-		mes "I'm carrying too many types of items. I should lighten my bag first.";
+		mes "我身上帶的道具種類太多了，應該先把包包減輕一下。";
 		close;
 	}
 	if ((MaxWeight - Weight) < 10000) {
-		mes "I'm overweight. I'd better lighten my bag first.";
+		mes "我負重太多了，最好先減輕背包。";
 		close;
 	}
 	if (BaseLevel < 100) {
@@ -3908,7 +3908,7 @@ harboro1,334,135,6	script	Desalination Facility Manager	4_M_YURI,{
 		mes "[Desalination Facility Manager]";
 		mes "Say, how'd you like to work for me? I'll pay you generously.";
 		next;
-		if (select( "Tell me what this job entails.", "Let me think." ) == 2) {
+		if (select( "Tell me what this job entails.", "讓我想想。" ) == 2) {
 			mes "[Desalination Facility Manager]";
 			mes "You don't have to think! This benefits both of us!";
 			next;
@@ -3969,7 +3969,7 @@ harboro1,334,135,6	script	Desalination Facility Manager	4_M_YURI,{
 		mes "[Desalination Facility Manager]";
 		mes "Does this mean you're willing to go downstairs?";
 		next;
-		if (select( "是的。", "Let me think." ) == 2) {
+		if (select( "是的。", "讓我想想。" ) == 2) {
 			mes "[Desalination Facility Manager]";
 			mes "Alright, take your time.";
 			close;
@@ -4149,14 +4149,14 @@ harboro1,138,157,5	script	Donovan	4_M_EINMAN2,{
 		next;
 		if (select( "I can do that.", "Sorry, I'm busy." ) == 2) {
 			mes "[Donovan]";
-			mes "Oh, I see.";
-			mes "I understand.";
+			mes "喔，我明白了。";
+			mes "我懂了。";
 			mes "But come back if you change your mind.";
 			close;
 		}
 		mes "[Donovan]";
 		mes "You know how to enter the basement, right?";
-		mes "Thank you for your help.";
+		mes "謝謝你的幫忙。";
 		erasequest 9459;// Too Early for Pipe Cleaning
 		setquest 9458;// Pipe Cleaning
 		close;
@@ -4204,8 +4204,8 @@ harboro1,138,157,5	script	Donovan	4_M_EINMAN2,{
 		next;
 		if (select( "Sure.", "Sorry, I'm busy." ) == 2) {
 			mes "[Donovan]";
-			mes "Oh, I see.";
-			mes "I understand.";
+			mes "喔，我明白了。";
+			mes "我懂了。";
 			mes "But come back if you change your mind.";
 			close;
 		}
@@ -4225,7 +4225,7 @@ harboro1,138,157,5	script	Donovan	4_M_EINMAN2,{
 		next;
 		mes "[Donovan]";
 		mes "We call him Quiet Joe.";
-		mes "Thank you for your help.";
+		mes "謝謝你的幫忙。";
 		setquest 9458;// Pipe Cleaning
 		close;
 	case 0:
@@ -4255,7 +4255,7 @@ harboro1,138,157,5	script	Donovan	4_M_EINMAN2,{
 		mes "[Donovan]";
 		mes "Getting rid of them";
 		mes "takes up a lot of my time.";
-		mes "Thank you for your help.";
+		mes "謝謝你的幫忙。";
 		mes "I could always use help getting rid of sea anemones.";
 		mes "歡迎再次光臨。";
 		erasequest 9458;// Pipe Cleaning
@@ -4798,7 +4798,7 @@ rockrdg2,295,328,5	script	Frail Ghast#rockdaily	4_M_COWRAIDERS2,{
 		mes "[Frail Ghast]";
 		mes "Ah, stranger! You came to help again, right?";
 		next;
-		if (select( "Help.", "Decline." ) == 2) {
+		if (select( "Help.", "拒絕。" ) == 2) {
 			mes "[Frail Ghast]";
 			mes "Why not? Are you too busy today?";
 			close;
@@ -4848,7 +4848,7 @@ rockrdg2,295,328,5	script	Frail Ghast#rockdaily	4_M_COWRAIDERS2,{
 		mes "Hunt ^FF000020 Gasters^000000 before I get in there.";
 		mes "I'll repay you. Please?";
 		next;
-		if (select( "Help.", "Decline." ) == 2) {
+		if (select( "Help.", "拒絕。" ) == 2) {
 			mes "[Frail Ghast]";
 			mes "Come on, I said I'd repay you.";
 			mes "Bah! Alright, then I won't force you.";
@@ -4931,7 +4931,7 @@ harboro1,347,65,3	script	Mrs. McPhy#rockdaily	1_F_MERCHANT_02,{
 		mes "[Mrs. McPhy]";
 		mes "As I told you before, we've got something for you this time: ^0000CD1 Rock Ridge Coin^000000. Say, could you help us?";
 		next;
-		if (select( "Help.", "Decline." ) == 2) {
+		if (select( "Help.", "拒絕。" ) == 2) {
 			mes "[Mrs. McPhy]";
 			mes "We have no one else to turn to. Please come back if you change your mind.";
 			close;
@@ -5050,7 +5050,7 @@ harboro1,347,65,3	script	Mrs. McPhy#rockdaily	1_F_MERCHANT_02,{
 		mes "[Mrs. McPhy]";
 		mes "I can't live like this anymore! Guess what Spotty stole this time? My ring!";
 		next;
-		if (select( "Check what's going on.", "Quit." ) == 2) {
+		if (select( "Check what's going on.", "離開。" ) == 2) {
 			mes "[Mrs. McPhy]";
 			mes "HONEY! Are you even listening to me?!";
 			close;
@@ -5103,7 +5103,7 @@ harboro1,347,65,3	script	Mrs. McPhy#rockdaily	1_F_MERCHANT_02,{
 		if (select( "Say you want to help them find the ring.", "Say hello." ) == 2) {
 			mes "[Mr. McPhy]";
 			mes "Why, hello to you, too.";
-			mes "You're silly.";
+			mes "你真傻。";
 			close;
 		}
 		mes "[Mrs. McPhy]";
@@ -5367,7 +5367,7 @@ harboro1,344,61,5	script	Mr. McPhy#rockdaily	4W_M_02,{
 		mes "[Mr. McPhy]";
 		mes "I believe the universe has brought you to us as an act of Providence. Do you mind if I ask you one more favor?";
 		next;
-		if (select( "Listen to what he has to say.", "Decline." ) == 2) {
+		if (select( "Listen to what he has to say.", "拒絕。" ) == 2) {
 			mes "[Mr. McPhy]";
 			mes "I can really repay you this time. Please let me know if you change your mind.";
 			close;
@@ -5387,7 +5387,7 @@ harboro1,344,61,5	script	Mr. McPhy#rockdaily	4W_M_02,{
 		mes "[Mr. McPhy]";
 		mes "Since you brought back my wife's gold ring, I've been taking odd jobs to supplement our income. We can afford to repay you now.";
 		next;
-		if (select( "Help him.", "Decline." ) == 2) {
+		if (select( "Help him.", "拒絕。" ) == 2) {
 			mes "[Mr. McPhy]";
 			mes "You're not afraid of the bandits, are you?";
 			mes "Okay, I understand if you can't help us.";
@@ -5661,7 +5661,7 @@ OnTouch:
 
 harboro1,60,215,5	script	Karam Pucci#harboro1	4_M_SEAMAN,{
 	mes "[Karam Pucci]";
-	mes "Do you want to go back to Alberta?";
+	mes "你想回艾伯塔嗎？";
 	next;
 	if (select( "是的。", "不要。" ) == 2) {
 		mes "[Karam Pucci]";
@@ -6225,7 +6225,7 @@ harboro1,187,236,3	script	客人#srdg01::Customer#srdg01	4_TOWER_04,{
 	next;
 	emotion ET_QUESTION, getnpcid(0, "Customer#srdg02");
 	mes "[客人]";
-	mes "Where?";
+	mes "在哪裡？";
 	next;
 	mes "[客人]";
 	mes "The sheriff's office. Those in the underground jail are fed three times a day, and the food is so great that some people actually commit a misdemeanor for it.";
@@ -6354,28 +6354,28 @@ harboro1,168,216,3	script	Hilliard#rockn09	4_TOWER_12,{
 	close;
 }
 
-harboro1,156,215,5	script	Innkeeper#rockridge	1_ETC_01,{
-	mes "[Innkeeper]";
+harboro1,156,215,5	script	旅館老闆#rockridge::Innkeeper#rockridge	1_ETC_01,{
+	mes "[旅館老闆]";
 	mes "Welcome to the Lazy Owl's Inn.";
 	next;
-	mes "[Innkeeper]";
+	mes "[旅館老闆]";
 	mes "Looking for a place to stay? You came to the right place!";
 	mes "Would you like a room? It's 5,000 Zeny.";
 	next;
-	switch( select( "Save.", "Get a room at 5,000 Zeny.", "Quit." ) ) {
+	switch( select( "Save.", "Get a room at 5,000 Zeny.", "離開。" ) ) {
 	case 1:
-		mes "[Innkeeper]";
+		mes "[旅館老闆]";
 		mes "Saved. Please come again.";
 		savepoint "harboro1",156,211,2,2;
 		close;
 	case 2:
 		if (Zeny < 5000) {
-			mes "[Innkeeper]";
+			mes "[旅館老闆]";
 			mes "I'm sorry, but it's 5,000 Zeny to get a room.";
 			mes "If you don't have enough money, then I can't let you stay.";
 			close;
 		}
-		mes "[Innkeeper]";
+		mes "[旅館老闆]";
 		mes "Enjoy your stay at the Lazy Owl's.";
 		close2;
 		Zeny = Zeny - 5000;
@@ -6383,7 +6383,7 @@ harboro1,156,215,5	script	Innkeeper#rockridge	1_ETC_01,{
 		warp "harboro1",157,210;
 		end;
 	case 3:
-		mes "[Innkeeper]";
+		mes "[旅館老闆]";
 		mes "歡迎再次光臨。";
 		close;
 	}
@@ -6470,32 +6470,32 @@ harboro1,174,125,3	script	村民#srdg01::Villager#srdg01	1_M_INNKEEPER,{
 	end;
 }
 
-harboro1,184,123,5	script	Traveler#srdg02_1	4_M_SIT_NOVICE,{
-	mes "[Traveler]";
+harboro1,184,123,5	script	旅人#srdg02_1::Traveler#srdg02_1	4_M_SIT_NOVICE,{
+	mes "[旅人]";
 	mes "Maybe we should explore beyond the mine, and go deep as far as we can.";
 	next;
-	mes "[Traveler]";
+	mes "[旅人]";
 	mes "What if it's too dangerous? I said we should take a detour and go someplace else.";
 	next;
-	mes "[Traveler]";
+	mes "[旅人]";
 	mes "Or we could become the pathfinders of an unknown world!";
 	next;
-	mes "[Traveler]";
+	mes "[旅人]";
 	mes "No. The east side is overrun with the Buffalo Bandits. We should wait until the situation with them is resolved.";
 	next;
-	mes "[Traveler]";
+	mes "[旅人]";
 	mes "Those darn Buffalo Bandits!";
 	close;
 }
 
-harboro1,188,123,3	script	Traveler#srdg02_2	4_M_SITDOWN,{
-	mes "[Traveler]";
+harboro1,188,123,3	script	旅人#srdg02_2::Traveler#srdg02_2	4_M_SITDOWN,{
+	mes "[旅人]";
 	mes "I've decided! I'm going to join the Vigilantes!";
 	next;
-	mes "[Traveler]";
+	mes "[旅人]";
 	mes "Are you sure they'll let you in?";
 	next;
-	mes "[Traveler]";
+	mes "[旅人]";
 	mes "I don't know, but I'm tired of twiddling my thumbs. This can't be the end of our journey!";
 	close;
 }
@@ -6618,7 +6618,7 @@ harboro1,270,252,6	script	銀行職員#dy::Bank Clerk#dy	4_M_MANAGER,{
 	switch( select( "Check my bank account.", "Buy an investment product.", "What's GC Bank?", "I'm just stopping by." ) ) {
 	case 1:
 		mes "[銀行職員]";
-		mes "" + strcharinfo(0) + ", right?";
+		mes "" + strcharinfo(0) + "，對吧？";
 		next;
 		mes "[銀行職員]";
 		mes "You don't have an account with us, but you do have an account under the name of " + strcharinfo(0) + ". Is there anything else I can do for you today?";
@@ -6779,15 +6779,15 @@ harboro1,312,173,8	script	Bounty Hunter#rockn18	8_F_GIRL,{
 	close;
 }
 
-harboro1,301,175,7	script	Shepherd#srdg01	4_F_JOB_BLACKSMITH,{
+harboro1,301,175,7	script	牧羊人#srdg01::Shepherd#srdg01	4_F_JOB_BLACKSMITH,{
 	emotion ET_CRY;
-	mes "[Shepherd]";
+	mes "[牧羊人]";
 	mes "I'm sorry, guys. I should've never taken you here...";
 	next;
-	mes "[Shepherd]";
+	mes "[牧羊人]";
 	mes "I didn't know there was no grass here.";
 	next;
-	mes "[Shepherd]";
+	mes "[牧羊人]";
 	mes "Just hang in there. I'm growing some grass for you out there. If it grows well, you wouldn't have to be hungry anymore.";
 	close;
 }
@@ -6897,7 +6897,7 @@ harboro2,118,264,5	script	老婦人#srdg01::Old Woman#srdg01	4_F_LGTGRAND,{
 	mes "Remember when we first came here?";
 	next;
 	mes "[老婦人]";
-	mes "I do.";
+	mes "我願意。";
 	next;
 	mes "[老先生]";
 	mes "We built this house from scratch, on our own from the foundation stones to the roofing.";
@@ -7046,7 +7046,7 @@ harboro1,1,1,3	script	Manager#1	CLEAR_NPC,3,0,{
 		mes "^0000ffDo you want to delete all the equipment this character is wearing?^000000";
 		mes "^0000ffPPL Removal version.^000000";
 		next;
-		switch( select( "Quit.", "Delete all." ) ) {
+		switch( select( "離開。", "Delete all." ) ) {
 		case 1:
 			mes "Deletion aborted.";
 			close;

@@ -9,8 +9,8 @@
 
 te_aldecas1,226,34,3	script	Blacksmith Cano#tegod01	4_M_RACHMAN1,{
 	if (checkweight(1201,1) == 0) {
-		mes "You have too many items to proceed with the quest.";
-		mes "Please lighten your load and try again.";
+		mes "你持有的道具太多，無法進行任務。";
+		mes "請減輕負重後再試一次。";
 		close;
 	}
 
@@ -223,7 +223,7 @@ te_aldecas1,226,34,3	script	Blacksmith Cano#tegod01	4_M_RACHMAN1,{
 				mes "I can't believe I'm finally touching these materials myself...";
 				next;
 				mes "["+ .@npc_name$ +"]";
-				mes "Here it is.";
+				mes "給你。";
 				mes "Wasn't it fast although we had to go through many steps?";
 				mes "I was so overwhelmed that it felt as short as a moment.";
 				next;
@@ -317,7 +317,7 @@ S_Fuse:
 	mes "["+ .@npc_name$ +"]";
 	mes "Which material do you want to make?";
 	next;
-	switch( select( "Muspellium","Essence of Rune","Forget it." ) ) {
+	switch( select( "Muspellium","Essence of Rune","算了。" ) ) {
 	case 1:
 		mes "["+ .@npc_name$ +"]";
 		if (countitem(985) > 49 && countitem(984) > 49) {
@@ -325,7 +325,7 @@ S_Fuse:
 			next;
 			mes "["+ .@npc_name$ +"]";
 			mes "It shouldn't take long.";
-			mes "Here it is.";
+			mes "給你。";
 			mes "It is an essential material for making Hervor and Jormungand.";
 			delitem 985,50;// Elunium
 			delitem 984,50;// Oridecon
@@ -345,7 +345,7 @@ S_Fuse:
 			next;
 			mes "["+ .@npc_name$ +"]";
 			mes "It shouldn't take long.";
-			mes "Here it is.";
+			mes "給你。";
 			mes "It is an essential material for making Hervor and Jormungand.";
 			delitem 12735,200;// Runstone_Ancient
 			delitem 12736,100;// Runstone_Mystic

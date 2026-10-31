@@ -310,7 +310,7 @@ ba_pw01,87,290,3	script	Alp#ep172_bapw1-00	4_M_BLACKMAN,{
 		cutin "bu_alp3",2;
 		mes "[Alp]";
 		mes "You're here...";
-		mes "This way...";
+		mes "這邊請……";
 		close2;
 		cutin "",255;
 		navigateto("ba_in01",20,319);
@@ -349,7 +349,7 @@ ba_in01,20,319,3	script	Lasis#ep172_bain1-00	4_M_REBELLION,{
 		next;
 		cutin "bu_maggi2",2;
 		mes "[Magi]";
-		mes "See you later~";
+		mes "待會見~";
 		next;
 		cutin "bu_mark2",2;
 		mes "[馬克]";
@@ -384,7 +384,7 @@ ba_in01,18,323,5	duplicate(dummy_cloaked_npc)	Magi#ep172_bain01-00	4_F_PINKWOMAN
 ba_maison,70,145,3	script	Tamarin#ep172_bamaison-00	4_EP17_TAMARIN,{
 	if (checkweight(1000103,5) == 0) {
 		mes "- 您的道具太多了。";
-		mes "Please clear your inventory and try again. -";
+		mes "請清空背包後再試一次。 -";
 		close;
 	}
 	if (ep17_2_main == 7 || ep17_2_main == 8) {
@@ -609,7 +609,7 @@ ba_maison,70,145,3	script	Tamarin#ep172_bamaison-00	4_EP17_TAMARIN,{
 		mes "We are requesting the collection of the Guardian Parts remnants around the mansion, it seems to have been attacked recently and it's harming the residential environment of the mansion.";
 		mes "Please collect 20 Guardian Parts to improve the environmental image of the mansion.";
 		next;
-		if (select( "Accept.", "Decline." ) == 2) {
+		if (select( "接受。", "拒絕。" ) == 2) {
 			cutin "ep172_tamarin04",2;
 			mes "[Tamarin]";
 			mes "I hope you have safe and comfortable time here.";
@@ -655,7 +655,7 @@ ba_maison,68,146,5	duplicate(dummy_cloaked_npc)	Magi#ep172_bamaison-00	4_F_PINKW
 ba_maison,74,150,3	script	Mansion Manager ��#172nw01	4_EP17_MASTER_A,{
 	if (checkweight(1000103,15) == 0) {
 		mes "The number of items in your possession is too high, so you cannot proceed with the conversation.";
-		mes "Please clean up your inventory and try again.";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
 	if (ep17_2_main < 8) {
@@ -1165,7 +1165,7 @@ ba_maison,70,150,5	script(CLOAKED)	Meimei#172nw01	4_F_REBELLION3,{
 ba_maison,146,109,5	script	Tasty#172nw01	4_EP17_BASIC_B,{
 	if (checkweight(1000103,5) == 0) {
 		mes "The number of items in your possession is too high, so you cannot proceed with the conversation.";
-		mes "Please clean up your inventory and try again.";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
 	if (ep17_2_main == 10) {
@@ -1527,7 +1527,7 @@ ba_maison,245,206,5	script	Gabriel#172nw01	4_EP17_GUARD_B,5,5,{
 OnTouch:
 	if (checkweight(1000103,5) == 0) {
 		mes "The number of items in your possession is too high, so you cannot proceed with the conversation.";
-		mes "Please clean up your inventory and try again.";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
 	if (ep17_2_main < 10) {
@@ -1661,7 +1661,7 @@ OnTouch:
 ba_in01,206,106,3	script	Philofontes#jh5_1	4_M_PHILOFONTES,{
 	if (ep17_2_main < 15) {
 		cutin "ep16_tes01",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "Can you meet Alpha first and then come back here at the teahouse?";
 		mes "It seems that the first thing you need to do here is register yourself as a guest.";
 		mes "- A preceding quest still exist. -";
@@ -1669,7 +1669,7 @@ ba_in01,206,106,3	script	Philofontes#jh5_1	4_M_PHILOFONTES,{
 	}
 	if (ep17_2_main == 15) {
 		cutin "ep16_tes01",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "Dien, please check the authenticity again.";
 		mes "This is a document that the goverment examined when the mercenaries stayed here at the Varmundt Mansion.";
 		next;
@@ -1685,7 +1685,7 @@ ba_in01,206,106,3	script	Philofontes#jh5_1	4_M_PHILOFONTES,{
 		mes "(The mood looks bad, Let's observe for now.)";
 		next;
 		cutin "ep16_tes01",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "If you take a look, you'll be to understand this evidence.";
 		mes "It's a proof that the goverment tried to talk to the mercenaries, but they didn't respond to it.";
 		next;
@@ -1700,11 +1700,11 @@ ba_in01,206,106,3	script	Philofontes#jh5_1	4_M_PHILOFONTES,{
 		mes "You've been lying to us several times already!";
 		next;
 		cutin "ep16_tes03",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "Why would you think that we'll deliberately use false documents...!";
-		mes "Ah, " + strcharinfo(0) + ", since when have you been here? I've shown you a shameful side of me.";
+		mes "啊， " + strcharinfo(0) + ", since when have you been here? I've shown you a shameful side of me.";
 		next;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "I'm talking with the Rebellion <NAVI>[Elders]<INFO>ba_in01,203,103,0,0,0</INFO></NAVI>, but it's difficult to verify events that happened in the past...";
 		ep17_2_main = 16;
 		erasequest 17381;
@@ -1713,7 +1713,7 @@ ba_in01,206,106,3	script	Philofontes#jh5_1	4_M_PHILOFONTES,{
 	}
 	if (ep17_2_main == 16) {
 		cutin "ep16_tes03",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "I'm talking with the Rebellion <NAVI>[Elders]<INFO>ba_in01,203,103,0,0,0</INFO></NAVI>, but they're quite stubborn, perhaps because they're already seniors.";
 		next;
 		cutin "ep162_rds02",2;
@@ -1723,7 +1723,7 @@ ba_in01,206,106,3	script	Philofontes#jh5_1	4_M_PHILOFONTES,{
 	}
 	if (ep17_2_main == 17) {
 		cutin "ep16_tes01",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "Adventurer, please go to the managers of the mansion and find out what happened about the time when the mercenaries stayed here in Varmundt Mansion.";
 		close3;
 	}
@@ -1770,7 +1770,7 @@ ba_in01,203,103,5	script	Dien#jh5_1	4_F_DIENE,{
 		mes "I'd rather find another way, instead of wasting my time doing something contradictory.";
 		next;
 		cutin "ep16_tes02",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "... what else could there be, other than to examine the records and write report.";
 		mes "Are you saying that you can't believe goverment-made report unconditionally?";
 		next;
@@ -1783,7 +1783,7 @@ ba_in01,203,103,5	script	Dien#jh5_1	4_F_DIENE,{
 		mes "No matter how much we use that record with mixed opinions, we won't be able to reach an agreement.";
 		next;
 		cutin "ep16_tes02",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "...as a result, this happened.";
 		next;
 		cutin "16loo_01",2;
@@ -1816,7 +1816,7 @@ ba_in01,203,103,5	script	Dien#jh5_1	4_F_DIENE,{
 		mes "Lucky, Why aren't you listening to us and taking the government's side?";
 		next;
 		cutin "ep16_tes01",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "It's a reasonable way. But who will witness it?";
 		mes "If I said I would, you wouldn't believe me.";
 		next;
@@ -1829,7 +1829,7 @@ ba_in01,203,103,5	script	Dien#jh5_1	4_F_DIENE,{
 		mes "How would you know if the government really tried to talk to the mercenaries, also how would you know that the mercenaries rejected it. You're just bringing us evidence that none of us have know.";
 		next;
 		cutin "ep16_tes03",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "The elders wouldn't even go out to investigate themselves...,";
 		mes "Adventurer, you're the only one that the elders will believe.";
 		next;
@@ -1841,16 +1841,16 @@ ba_in01,203,103,5	script	Dien#jh5_1	4_F_DIENE,{
 		mes "Will you listen to the managers for us, adventurer?";
 		next;
 		cutin "ep16_tes01",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "The existence of the adventurer is very important to both parties and invaluable in this place where various enemy forces are in motion.";
 		next;
 		cutin "ep16_tes03",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "Adventurer, please go to the managers of the mansion and find out what happened about the time when the mercenaries stayed here in Varmundt Mansion.";
 		next;
-		if (select( "Accept.", "拒絕。" ) == 2) {
+		if (select( "接受。", "拒絕。" ) == 2) {
 			cutin "ep16_tes02",2;
-			mes "[Tess]";
+			mes "[泰絲]";
 			mes "Are you busy or it's just a bad time?";
 			mes "Don't you like what I asked you to do?";
 			mes "I can't force you to do it.";
@@ -1937,10 +1937,10 @@ ba_in01,202,108,5	script	Rookie#jh5	4_M_ROOKIE,{
 		mes "This person doesn't really look like a mercenary. Why would a person like this be near Varmundt Mansion and be killed?";
 		next;
 		cutin "ep16_tes01",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "Wait... Show me the data too.";
 		next;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "..................";
 		mes "..................";
 		emotion ET_SURPRISE, getnpcid(0,"Philofontes#jh5_1");
@@ -1950,11 +1950,11 @@ ba_in01,202,108,5	script	Rookie#jh5	4_M_ROOKIE,{
 		mes "Is there something bothering you about this data?";
 		next;
 		cutin "ep16_tes01",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "We know who this person is.";
 		mes "This person is one of the commissioner the government sent to the mercenaries for the negotiation.";
 		next;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "It's said that the commissioner didn't come back after being sent, the commissioner was later presumed as a missing person.";
 		mes "But, later found dead in the Varmundt Mansion.";
 		next;
@@ -1979,12 +1979,12 @@ ba_in01,202,108,5	script	Rookie#jh5	4_M_ROOKIE,{
 			break;
 		case 2:
 			cutin "ep16_tes02",2;
-			mes "[Tess]";
+			mes "[泰絲]";
 			mes "Why would someone from the government kill the one they sent?";
 			emotion ET_QUESTION, getnpcid(0,"Philofontes#jh5_1");
 			next;
 			cutin "ep16_tes03",2;
-			mes "[Tess]";
+			mes "[泰絲]";
 			mes "Even if it's the government's opposition, it would have been difficult to commit murder without escaping the eyes of the mercenaries' and workers inside the Varmundt Mansion.";
 			break;
 		case 3:
@@ -2119,7 +2119,7 @@ ba_in01,208,110,3	script	Ridsh#jh5_1	4_F_LEEDSH,{
 		cutin "",255;
 		select( "Tell about various suspicious activities." );
 		cutin "ep16_tes01",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "From the mercenaries' perspective, he was suspicious.";
 		mes "However, it seems only a few people knew about it, and they believe each other, so the whole thing was not revealed.";
 		next;
@@ -2135,7 +2135,7 @@ ba_in01,208,110,3	script	Ridsh#jh5_1	4_F_LEEDSH,{
 		mes "The Mercenary War might have ended differently.";
 		next;
 		cutin "ep16_tes02",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "I'm glad to know the truth.";
 		mes "The government offered an aid, but they were stopped by the companies...";
 		next;
@@ -2145,7 +2145,7 @@ ba_in01,208,110,3	script	Ridsh#jh5_1	4_F_LEEDSH,{
 		mes "You weren't making false evidence. You just didn't know the truth.";
 		next;
 		cutin "ep16_tes01",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "I also want to apologize, for not believing your side of the story and forcing the evidence that we have brought.";
 		next;
 		cloakoffnpcself( "Kaya Toss#jh5_1" );
@@ -2160,7 +2160,7 @@ ba_in01,208,110,3	script	Ridsh#jh5_1	4_F_LEEDSH,{
 		next;
 		cutin "ep162_dn01",2;
 		mes "[Dien]";
-		mes "What is it?";
+		mes "那是什麼？";
 		next;
 		cutin "ep171_kaya01",2;
 		mes "[Kaya Toss]";
@@ -2311,7 +2311,7 @@ ba_in01,205,109,3	script(CLOAKED)	Tatio#jh5_1	4_M_TATIO,{
 		mes "Hasn't the use of warp magic restriction in your country has been lifted?";
 		next;
 		cutin "ep16_tes01",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "Yes, that kind of consideration was given by the corporate.";
 		next;
 		cutin "ep15_tatio01",2;
@@ -2356,7 +2356,7 @@ ba_in01,205,109,3	script(CLOAKED)	Tatio#jh5_1	4_M_TATIO,{
 		mes "It's hard to tell everything now, but I promise to work with the government and the private sector, rather than the corporate itself.";
 		next;
 		cutin "ep16_tes02",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "So, you're planning to tell your secretary's opinion to the president, right?";
 		next;
 		cutin "ep15_tatio01",2;
@@ -2375,7 +2375,7 @@ ba_in01,205,109,3	script(CLOAKED)	Tatio#jh5_1	4_M_TATIO,{
 		mes "For that purpose, the corporate wants to talk more with the government and the Rebellions.";
 		next;
 		cutin "ep16_tes01",2;
-		mes "[Tess]";
+		mes "[泰絲]";
 		mes "This is also what the goverment is hoping for.";
 		mes "I have a lot to talk about in the future.";
 		next;
@@ -2512,7 +2512,7 @@ ba_maison,103,92,3	script	Kaya Toss#jh5_2	4_EP17_KAYA,{
 		next;
 		cutin "ep171_kaya01",2;
 		mes "[Kaya Toss]";
-		mes "What do you mean?";
+		mes "什麼意思？";
 		next;
 		cutin "",255;
 		mes "[???]";
@@ -3162,7 +3162,7 @@ ba_maison,237,307,3	duplicate(dummy_cloaked_npc)	Mercenary#jh5_81	1_M_02
 ba_maison,234,307,5	duplicate(dummy_cloaked_npc)	Mercenary#jh5_72	1_M_INNKEEPER
 ba_maison,237,307,3	duplicate(dummy_cloaked_npc)	Mercenary#jh5_82	2_F_MAGICMASTER
 
-ba_maison,357,291,3	script	Cleaning Robot#jh5_1	4_EP17_CLEANER_W,{
+ba_maison,357,291,3	script	清潔機器人#jh5_1::Cleaning Robot#jh5_1	4_EP17_CLEANER_W,{
 	if (isbegin_quest(16453) == 1) {
 		cutin "ep172_omega",2;
 		mes "- A little away from the reception area, a cleaning robot lies discharged in the shadow. It seems like it's been here for a very long time. -";
@@ -3254,7 +3254,7 @@ ba_maison,116,67,5	script(CLOAKED)	Rookie#ep172_m_rk01	4_M_ROOKIE,{
 		sleep2 1500;
 		npctalk "Surprise!", "", bc_self;
 		cutin "ep171_elyumina02",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Those guys are really crazy! Why the hell are you doing this to me? Traitor? You traitor?";
 		mes "Do you think it is right for enemies to call you a traitor?";
 		next;
@@ -3264,18 +3264,18 @@ ba_maison,116,67,5	script(CLOAKED)	Rookie#ep172_m_rk01	4_M_ROOKIE,{
 		mes "I don't understand what you're saying? Did you just speak a human language just now?";
 		next;
 		cutin "ep171_elyumina02",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Ha-! Is that it?";
 		mes "Hey, why do you keep leaving me alone?";
 		mes "Don't leave me alone, even if I'm mean and sarcastic! Please, do you understand?";
 		next;
 		cutin "",255;
 		select( "發生什麼事了？" );
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "The manager who brought the meal suddenly changed and attack Elyumina.";
 		mes "Fortunately, I was on the guest list, and the manager reverted to it's normal state right away,";
 		next;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "The manager used the tray that it was carrying to struck Elyumina in the head so strong, that it made a loud sound.";
 		npctalk "I thought you saw the lettuce flying to you.", "Rebellion#ep172_m_rb01", bc_self;
 		next;
@@ -3286,7 +3286,7 @@ ba_maison,116,67,5	script(CLOAKED)	Rookie#ep172_m_rk01	4_M_ROOKIE,{
 		mes "Well, are you all right?";
 		next;
 		cutin "ep171_elyumina02",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Great? Did you experience it? That wasn't even the end! You heartless bastard!";
 		mes "There's also the manager who was sweeping the garden, and suddenly attacked me!";
 		mes "It kept saying 'kill the traitor'!";
@@ -3303,7 +3303,7 @@ ba_maison,116,67,5	script(CLOAKED)	Rookie#ep172_m_rk01	4_M_ROOKIE,{
 		npctalk "I always have something to do!", "Rebellion#ep172_m_rb01", bc_self;
 		next;
 		cutin "ep171_elyumina03",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "You, I'll return now.";
 		mes "Never come empty-handed you hear!";
 		mes "I need to find a safe place!";
@@ -3339,8 +3339,8 @@ OnInit:
 }
 
 ba_maison,118,68,3	duplicate(dummy_cloaked_npc)	Manager#ep172_m_ap0	4_EP17_MASTER_A
-ba_maison,120,67,3	duplicate(dummy_cloaked_npc)	Elyumina#ep172_m_el01	4_EP17_ELYUMINA
-ba_maison,122,66,1	duplicate(dummy_cloaked_npc)	Rebellion#ep172_m_rb01	4_M_REBELLION3
+ba_maison,120,67,3	duplicate(dummy_cloaked_npc)	艾露米娜#ep172_m_el01::Elyumina#ep172_m_el01	4_EP17_ELYUMINA
+ba_maison,122,66,1	duplicate(dummy_cloaked_npc)	反抗軍#ep172_m_rb01::Rebellion#ep172_m_rb01	4_M_REBELLION3
 
 ba_maison,150,47,0	script	#ep172_body-0	CLEAR_NPC,{
 	.@id = atoi(replacestr(strnpcinfo(2), "ep172_body-", ""));
@@ -3403,7 +3403,7 @@ ba_maison,70,256,3	duplicate(dummy_cloaked_npc)	#ep172_beta-9	4_EP17_BROKENBETA
 ba_maison,303,141,3	script	Elena Bolkova#ep172_eln	4_F_ELENA,{
 	if (checkweight(1000103,10) == 0) {
 		mes "You cannot proceed with the quest because you have too many items in your possession.";
-		mes "Please clean up your inventory and try again.";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
 	if (ep17_2_main == 27) {
@@ -3563,17 +3563,17 @@ OnInit:
 ba_maison,301,148,5	duplicate(dummy_cloaked_npc)	Eisen Werner#ep172_eiz	4_M_EISEN
 
 
-ba_in01,35,142,5	script	Rebellion#ep172_rb02	4_M_REBELLION3,{
+ba_in01,35,142,5	script	反抗軍#ep172_rb02::Rebellion#ep172_rb02	4_M_REBELLION3,{
 	if (ep17_2_main < 28) {
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "There is nothing particular here.";
 		close;
 	}
-	mes "[Rebellion]";
+	mes "[反抗軍]";
 	mes "Are you going in?";
 	next;
 	if (select( "是的。", "不要。" ) == 2) {
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "I'll stay here and keep this place safe.";
 		close;
 	}
@@ -3596,7 +3596,7 @@ ba_in01,20,145,3	script	Elena Bolkova#ep172_eln_	4_F_ELENA,{
 		mes "I talked to Alpha for a moment.";
 		next;
 		mes "[Rookie]";
-		mes "Who is that?";
+		mes "那是誰？";
 		next;
 		cutin "162elena_01",2;
 		mes "[Elena Bolkova]";
@@ -3615,12 +3615,12 @@ ba_in01,20,145,3	script	Elena Bolkova#ep172_eln_	4_F_ELENA,{
 		mes "Are you lying to me?";
 		next;
 		cutin "ep171_elyumina02",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Who are you to treat me like that?!";
 		mes "Are you a dog of those punks?";
 		next;
 		cutin "ep171_elyumina03",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "They betrayed me first, and they're calling me a traitor.";
 		mes "Are you with those punks?";
 		next;
@@ -3630,7 +3630,7 @@ ba_in01,20,145,3	script	Elena Bolkova#ep172_eln_	4_F_ELENA,{
 		mes "No, are you really a member of the Illusion?";
 		next;
 		cutin "ep171_elyumina04",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "What the hell are you talking about?! Why would I be held here when I'm not even one of the Illusion!";
 		mes "What should I do, You didn't recognize the Great Elyumina. Do you want me to hit your head?";
 		next;
@@ -3640,7 +3640,7 @@ ba_in01,20,145,3	script	Elena Bolkova#ep172_eln_	4_F_ELENA,{
 		mes "If you want any information from me, bring me a decent Illusion member.";
 		next;
 		cutin "ep171_elyumina02",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "No, did you wuss out just now?";
 		mes "Hey, I've been telling you that I'm a member of the Illusion for a while now. Do you even know how many years I've been doing this for?";
 		next;
@@ -3664,7 +3664,7 @@ ba_in01,20,145,3	script	Elena Bolkova#ep172_eln_	4_F_ELENA,{
 		mes "Unless that 'chip' exist in you, you're not one of the Illusion. Do you get it now? You kid.";
 		next;
 		cutin "ep171_elyumina04",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Ho? Did you hear that, Rookie? It's called 'chip'.";
 		mes "This stupid thing blew it all out of his mouth.";
 		mes "Fucking bastards, they left me alone.";
@@ -3675,12 +3675,12 @@ ba_in01,20,145,3	script	Elena Bolkova#ep172_eln_	4_F_ELENA,{
 		mes "Wa... wait...!";
 		next;
 		cutin "ep171_elyumina04",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Is it too late to make a stupid expression now?";
 		mes "Are you a self proclaimed elite member of the Illusion?";
 		mes "Rookie! I'll rip this off his neck and make a tracker to trace those 'chips'!";
 		next;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Yeah! Let's do it! Revenge on the traitors! Chaos! Destruction! Revenge! Fall!";
 		close2;
 		setpcblock PCBLOCK_NPC, true;
@@ -3697,7 +3697,7 @@ ba_in01,20,145,3	script	Elena Bolkova#ep172_eln_	4_F_ELENA,{
 		sleep2 1000;
 		setpcblock PCBLOCK_NPC, false;
 		cutin "ep171_elyumina01",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "How dare you play with me?";
 		mes "How dare you ignore the Great Elyumina, the line is very short, isn't it?";
 		next;
@@ -3713,16 +3713,16 @@ ba_in01,20,145,3	script	Elena Bolkova#ep172_eln_	4_F_ELENA,{
 		mes "Mina, what are you going to do now?";
 		next;
 		cutin "ep171_elyumina04",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "To guarantee my research rights, I'm going to make you something you'd like.";
 		mes "No, I just can't stand being harassed like this just because I'm a traitor, right?";
 		next;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "I'll investigate the 'chip' planted in this guy's body and create a tracker that respond to this 'chip'.";
 		mes "I've been building something before to protect myself from those hearthunters.";
 		next;
 		cutin "ep171_elyumina01",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "I wouldn't have gone this far too if I didn't protect my own life.";
 		mes "Anyway, Please get me some materials that I need while I'm trying to rip off this guy. what's this guy called again, Eisen?";
 		next;
@@ -3731,7 +3731,7 @@ ba_in01,20,145,3	script	Elena Bolkova#ep172_eln_	4_F_ELENA,{
 		mes "What materials do you need?";
 		next;
 		cutin "ep171_elyumina01",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "10 Fluorescent Liquid, 10 Broken Sword, and some modules...";
 		next;
 		cutin "16loo_01",0;
@@ -3797,15 +3797,15 @@ ba_in01,13,149,5	script(CLOAKED)	Eisen Werner#ep172_eiz2	4_M_EISEN,{
 	close;
 }
 
-ba_in01,15,147,3	script	Elyumina#ep172_elmn02	4_EP17_ELYUMINA,{
+ba_in01,15,147,3	script	艾露米娜#ep172_elmn02::Elyumina#ep172_elmn02	4_EP17_ELYUMINA,{
 	if (checkweight(1201,3) == 0) {
 		mes "You cannot proceed with the quest because you have too many items in your possession.";
-		mes "Please clean up your inventory and try again.";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
 	if (ep17_2_main == 28) {
 		cutin "ep171_elyumina01",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Now you're safe, and all you have to do is chase those traitors to the end.";
 		mes "Hahahahaha!! I'll be the winner who survived until the end.";
 		close3;
@@ -3813,29 +3813,29 @@ ba_in01,15,147,3	script	Elyumina#ep172_elmn02	4_EP17_ELYUMINA,{
 	if (ep17_2_main == 29) {
 		if (countitem(7110) < 10 || countitem(7326) < 10) {
 			cutin "ep171_elyumina04",2;
-			mes "[Elyumina]";
+			mes "[艾露米娜]";
 			mes "Hmm~ Modules modules~ Hmm~";
 			mes "Cores cores~ Hmm~";
 			mes "What are you doing? Why didn't bring the materials I told you about?";
 			close3;
 		}
 		cutin "ep171_elyumina04",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Good, good~ Hmm";
 		mes "If you do this here...";
 		next;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "A masterpiece is born!";
 		mes "If you send a signal, the receiver will~";
 		next;
 		specialeffect EF_GUIDEDATTACK, AREA, "Eisen Werner#ep172_eiz2";
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "That's a good catch!";
 		mes "Now, with this, go after the remnant of the Heart Hunter and the traitors.";
 		next;
 		select( "By myself?" );
 		cutin "ep171_elyumina03",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Can you do it alone when I'm holding the tracker?";
 		mes "I can't believe I was caught by this guy.";
 		mes "It's a disgrace to me, the great Elyumina.";
@@ -3867,17 +3867,17 @@ ba_in01,15,147,3	script	Elyumina#ep172_elmn02	4_EP17_ELYUMINA,{
 	}
 	if (ep17_2_main == 32) {
 		cutin "ep171_elyumina01",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "I've heard the news. Those bastards.";
 		mes "However, Is it true that all the important Illusion members we're able to run away?";
 		next;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "You hid like rats, and you secretly operated at night, right?";
 		mes "Let's see how far they can ran away.";
 		close3;
 	}
 	cutin "ep171_elyumina04",2;
-	mes "[Elyumina]";
+	mes "[艾露米娜]";
 	mes "*Chuckles*, I'll go find those traitors.";
 	mes "Adventurer, *Chuckles*";
 	close3;
@@ -4011,7 +4011,7 @@ OnInit:
 ba_in01,26,266,3	script	Smart Elly#ep172_ely01	4_EP17_TABLET,{
 	if (checkweight(1000103,15) == 0) {
 		mes "You cannot proceed with the quest because you have too many items in your possession.";
-		mes "Please clean up your inventory and try again.";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
 	if (ep17_2_main < 32) {
@@ -4189,7 +4189,7 @@ ba_in01,26,266,3	script	Smart Elly#ep172_ely01	4_EP17_TABLET,{
 		next;
 		select( "什麼？" );
 		mes "[" + strcharinfo(0) + "]";
-		mes "What should I do?";
+		mes "我該怎麼辦？";
 		next;
 		mes "[Elly]";
 		mes "The location of the collaborator has been roughly secured. According to the report, they are awaiting further instructions, so...";
@@ -4213,7 +4213,7 @@ ba_in01,26,266,3	script	Smart Elly#ep172_ely01	4_EP17_TABLET,{
 		next;
 		cutin "16loo_03.bmp",0;
 		mes "[Rookie]";
-		mes "Not really...";
+		mes "沒有啦……";
 		mes "I think it would be a little awkward if we all went.";
 		next;
 		cutin "ep162_est01.bmp",1;
@@ -4236,7 +4236,7 @@ ba_in01,26,266,3	script	Smart Elly#ep172_ely01	4_EP17_TABLET,{
 		select( "Why are they looking at me?" );
 		cutin "",255;
 		mes "[" + strcharinfo(0) + "]";
-		mes "What do I do?";
+		mes "我該怎麼辦？";
 		next;
 		cutin "ep172_beta.bmp",2;
 		mes "[Elly]";
@@ -4523,7 +4523,7 @@ prt_cas,140,344,3	script	Chamberlain Bell#ep172	4_M_RUSMAN1,{
 	mes "I was waiting for your return.";
 	mes "Where should I take you?";
 	next;
-	if (select( "Go out.", "Talk." ) == 2) {
+	if (select( "Go out.", "交談" ) == 2) {
 		mes "[Bell]";
 		mes "I didn't expect at all that it would turn out like this.";
 		close;
@@ -4861,7 +4861,7 @@ ba_in01,385,37,3	duplicate(dummy_cloaked_npc)	Sweep#172ba01	4_EP17_CLEANER
 ba_bath,165,43,3	script	Shrine#172ba02	4_EP17_BUCKETS,5,5,{
 	if (checkweight(1201,3) == 0) {
 		mes "The number of items in your possession is too high, so you cannot proceed with the conversation.";
-		mes "Please clean up your inventory and try again.";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
 	if (ep17_2_bath == 0) {
@@ -4903,7 +4903,7 @@ ba_bath,165,43,3	script	Shrine#172ba02	4_EP17_BUCKETS,5,5,{
 		mes "[Rookie]";
 		mes "Denny and Canine. The humans are likely to be individual or groups of Illusion remnants or a third party. There is also the possibility of them using a different exit other than what is known, so check the facilities carefully.";
 		npctalk "好的。", "Denny#172ba02", bc_self;
-		npctalk "Let's go.", "Canine#172ba02", bc_self;
+		npctalk "走吧。", "Canine#172ba02", bc_self;
 		next;
 		cloakonnpcself( "Denny#172ba02" );
 		cloakonnpcself( "Canine#172ba02" );
@@ -5077,7 +5077,7 @@ ba_bath,166,42,3	script(CLOAKED)	Rookie#172ba02	4_M_ROOKIE,{
 ba_bath,286,68,5	script	Boiler#172ba02	4_EP17_BASIC_B,{
 	if (checkweight(1201,3) == 0) {
 		mes "The number of items in your possession is too high, so you cannot proceed with the conversation.";
-		mes "Please clean up your inventory and try again.";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
 	if (ep17_2_bath == 2) {
@@ -5360,7 +5360,7 @@ ba_bath,286,68,5	script	Boiler#172ba02	4_EP17_BASIC_B,{
 		mes "Hmm... " + strcharinfo(0) + "? Are you free?";
 		next;
 		cutin "",255;
-		select( "Why?" );
+		select( "為什麼？" );
 		cutin "ep172_beta",2;
 		mes "[Boiler]";
 		mes "If you're free, please help me. I'm short on hands. The valve and the boiler needs to be fixed. But I'm alone and the other dolls are busy.";
@@ -5371,7 +5371,7 @@ ba_bath,286,68,5	script	Boiler#172ba02	4_EP17_BASIC_B,{
 		mes "But, what can I do right now? There's no other me. I should ask for help. So please help me if you're free.";
 		next;
 		cutin "",255;
-		if (select( "I'll help you.", "I have to go take a bath." ) == 2) {
+		if (select( "我會幫你的。", "I have to go take a bath." ) == 2) {
 			cutin "ep172_beta",2;
 			mes "[Boiler]";
 			mes "Really? Then there's nothing I can do. You also look tired, so I'll send you herbs for recovery. Goodbye.";
@@ -6426,7 +6426,7 @@ ba_bath,280,297,5	duplicate(dummy_cloaked_npc)	Sweep#172ba03	4_EP17_CLEANER
 ba_bath,288,68,3	script	Sweep#172ba02	4_EP17_CLEANER,{
 	if (checkweight(1000103,2) == 0) {
 		mes "The number of items in your possession is too high, so you cannot proceed with the conversation.";
-		mes "Please clean up your inventory and try again.";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
 	if (ep17_2_bath == 2) {
@@ -6643,7 +6643,7 @@ ba_bath,31,276,5	script	Cold Spring#bathifo	4_BOARD3,{
 ba_2whs01,150,51,5	script	Chirp#172wh01	4_EP17_BASKET,{
 	if (checkweight(1000103,3) == 0) {
 		mes "The number of items in your possession is too high, so you cannot proceed with the conversation.";
-		mes "Please clean up your inventory and try again.";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
 	if (BaseLevel < 160) {
@@ -6733,7 +6733,7 @@ ba_2whs01,150,51,5	script	Chirp#172wh01	4_EP17_BASKET,{
 		mes "This is only possible because it is a very large space unlike what you see outside. So if you're waiting for it, please go back and wait for me... I'll bring it to you soon.";
 		next;
 		cutin "",255;
-		select( "Why?" );
+		select( "為什麼？" );
 		cutin "ep172_beta",2;
 		mes "[Chirp]";
 		mes "I think I'll be delayed a little because of the broken cleaning robots. It's an automatic robot that was hacked by the intruders. I'm thinking of how to clean the mess it made.";
@@ -6888,7 +6888,7 @@ ba_2whs01,150,51,5	script	Chirp#172wh01	4_EP17_BASKET,{
 		mes "... Is that so? If you're a combatant, you're job is to deal with these kind of things, isn't it? Wouldn't that hurt you?";
 		next;
 		cutin "",255;
-		select( "Not at all." );
+		select( "完全沒有。" );
 		cutin "ep172_beta",2;
 		mes "[Chirp]";
 		mes "I see, you're a human being who finds pleasure with these kind of things. I've heard of it before. Then I'd like to ask you a favor. Oh, of course, I'll reward you for it.";
@@ -6947,7 +6947,7 @@ ba_2whs01,150,51,5	script	Chirp#172wh01	4_EP17_BASKET,{
 			mes "I think it's from the basement. If it's really from the basement, it's a big deal.";
 			next;
 			cutin "",255;
-			select( "Why?" );
+			select( "為什麼？" );
 			cutin "ep172_beta",2;
 			mes "[Chirp]";
 			mes "Unlike this warehouse, only Varmundt can enter the basement. There are a lot of secrets and dangerous thing there.";
@@ -7557,7 +7557,7 @@ ba_2whs02,37,312,3	script(CLOAKED)	Head#ep172_2whs01	4_GHOSTRING,{
 		mes "[T2WH-0448]";
 		mes "It won't work as it is. You shouldn't have open the door. I'm too small and fragile.";
 		next;
-		select( "What should I do?" );
+		select( "我該怎麼辦？" );
 		mes "[T2WH-0448]";
 		mes "This is the place where the master used to make things out of all the things he had collected.";
 		mes "It's how I was born.";
@@ -7653,7 +7653,7 @@ OnInit:
 ba_2whs02,31,50,0	script	Junk#ep172_whs2body	4_ENERGY_BLACK,{
 	if (checkweight(1000101,1) == 0) {
 		mes "The number of items in your possession is too high, so you cannot proceed with the conversation.";
-		mes "Please clean up your inventory and try again.";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
 	if (ep17_2_chirp == 7) {
@@ -7687,7 +7687,7 @@ OnInit:
 ba_2whs02,129,82,0	script	Junk#ep172_whs2arm	4_ENERGY_BLACK,{
 	if (checkweight(1000101,1) == 0) {
 		mes "The number of items in your possession is too high, so you cannot proceed with the conversation.";
-		mes "Please clean up your inventory and try again.";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
 	if (ep17_2_chirp == 8) {
@@ -7721,7 +7721,7 @@ OnInit:
 ba_2whs02,239,124,0	script	Junk#ep172_whs2leg	4_ENERGY_BLACK,{
 	if (checkweight(1000101,1) == 0) {
 		mes "The number of items in your possession is too high, so you cannot proceed with the conversation.";
-		mes "Please clean up your inventory and try again.";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
 	if (ep17_2_chirp == 9) {
@@ -7757,7 +7757,7 @@ OnInit:
 // Daily Quest : Cleaning Robot Omega
 ba_in01,24,322,3	script	Cleaning Robot ��#ba_pw01_02Q	20640,{
 	if (checkweight(1000103,2) == 0) {
-		mes "- You cannot proceed because you have too many items. -";
+		mes "- 你的道具太多，無法繼續。 -";
 		close;
 	}
 	setpcblock PCBLOCK_NPC, true;
@@ -8257,7 +8257,7 @@ OnTouch:
 		next;
 		cutin "ep172_tamarin02",2;
 		mes "[Tamarin]";
-		mes "Uhh...";
+		mes "呃……";
 		mes "What's going on here?";
 		next;
 		mes "Click";
@@ -8384,7 +8384,7 @@ ba_in01,213,186,3	duplicate(dummy_cloaked_npc)	#fire4_0	4_TRACE
 ba_lib,157,19,5	script	Mansion Manager ��#ep172_balib	4_EP17_BASIC_B,{
 	if (checkweight(1000103,5) == 0) {
 		mes "- 您的道具太多了。";
-		mes "Please clear your inventory and try again. -";
+		mes "請清空背包後再試一次。 -";
 		close;
 	}
 	// Sidequest quest
@@ -8804,7 +8804,7 @@ OnInit:
 // ba_maison,311,206,3	script	Luina#greeen	4_EP17_BASIC_B,{
 ba_maison,306,206,5	script	Cotton#greeen	4_EP17_BASIC_B,{
 	if (checkweight(1000103,2) == 0) {
-		mes "- You cannot proceed with the quest because you have too many items. -";
+		mes "- 道具數量過多，無法繼續任務。 -";
 		close;
 	}
 	if (BaseLevel < 150) {
@@ -8888,7 +8888,7 @@ ba_maison,306,206,5	script	Cotton#greeen	4_EP17_BASIC_B,{
 			case 8594: .@color$ = "^9ABF94Green"; break;
 		}
 		mes "[Cotton]";
-		mes "Thank you very much!";
+		mes "非常感謝！";
 		mes "For today. I'd like you to play with 20 " + .@color$ + " Pitayas^000000 please.";
 		mes "You can distinguish them by color. You can go in right now. Have fun!";
 		setquest .@quest;
@@ -8939,7 +8939,7 @@ ba_maison,309,206,5	script	Kitty#greeen	EP17_2_PITAYA_G,{
 ba_maison,79,278,3	script	Europa#eorpa	4_EP17_BASIC_B,{
 	if (checkweight(1000103,1) == 0) {
 		mes "The number of items in your possession is too high, so you cannot proceed with the conversation.";
-		mes "Please clean up your inventory and try again.";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
 	if (BaseLevel < 180) {
@@ -9038,14 +9038,14 @@ ba_maison,79,278,3	script	Europa#eorpa	4_EP17_BASIC_B,{
 			mes "[Europa]";
 			mes "I'm sorry to ask after saying my thanks, but it's quite urgent, so could you do me a favor?";
 			next;
-			select( "What is it?" );
+			select( "那是什麼？" );
 			mes "[Europa]";
 			mes "As I mentioned, the Illusion, ^0000CDMagic Poisoned Sanare^000000, are still installing the jamming chips that I mentioned in the second horsepower plant. If I went in like this, I'll probably end up malfunctioning again.";
 			next;
 			mes "[Europa]";
 			mes "Adventurer, could you go in the second horsepower plant and collect 10 ^0000CDPotato Chips^000000?";
 			next;
-			if (select( "Accept.", "拒絕。" ) == 2) {
+			if (select( "接受。", "拒絕。" ) == 2) {
 				mes "[Europa]";
 				mes "If it continue like this, I'll probably end up malfunctioning again. I need your help.";
 				close;
@@ -9103,7 +9103,7 @@ ba_maison,79,278,3	script	Europa#eorpa	4_EP17_BASIC_B,{
 		mes "Adventurer, are you here to help me again?";
 		mes "Then, could you collect 10 ^0000CDPotato Chips^000000 from the ^0000CDMagic Poisoned Sanare^000000 in the second horsepower plant again?";
 		next;
-		if (select( "Accept.", "拒絕。" ) == 2) {
+		if (select( "接受。", "拒絕。" ) == 2) {
 			mes "[Europa]";
 			mes "If it continue like this, I'll probably end up malfunctioning again. I need your help.";
 			close;
@@ -9153,7 +9153,7 @@ OnInit:
 ba_in01,28,255,5	script	Manager Beta Almond#ep172_amd01	4_EP17_BASIC_B,{
 	if (checkweight(1000103,4) == 0) {
 		mes "You cannot proceed with the quest because you have too many items in your possession.";
-		mes "Please clean up your inventory and try again.";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
 	if (ep17_2_main < 33) {
@@ -9310,7 +9310,7 @@ OnInit:
 ba_in01,32,250,3	script	Sweety#ep172_swty	4_EP17_SWEETY,{
 	if (checkweight(1000103,4) == 0) {
 		mes "You cannot proceed with the quest because you have too many items in your possession.";
-		mes "Please clean up your inventory and try again.";
+		mes "請整理你的物品欄後再試一次。";
 		close;
 	}
 	if (ep17_2_main < 33) {
@@ -9522,17 +9522,17 @@ ba_pw02,42,267,5	script	Lensis#jh_ba	20629,{
 	if (ep172_watergarden == 0) {
 		cloakoffnpcself( "Elyumina#jh_ba1" );
 		cutin "ep171_elyumina01",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "I just realized, My way of thinking is wrong. This guy called Varmundt isn't he amazing?";
 		mes "To think these beautiful automatic dolls exist. I should've come in more earlier.";
 		npctalk "Elyumina : If I had, I wouldn't have been caught.", "Elyumina#jh_ba1", bc_self;
 		emotion ET_SURPRISE, getnpcid(0,"Elyumina#jh_ba1");
 		next;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "It's beautiful, this form of connection that allows the core entity to freely control sub-objects deployed throughout the mansion with centralized network control method...";
 		next;
 		cutin "ep171_elyumina04",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "and yet, it's operating in a way that makes the individuality of the sub-objects stands out.";
 		mes "It's fun. I wonder what kind of machine it works with.";
 		emotion ET_BIGTHROB, getnpcid(0,"Elyumina#jh_ba1");
@@ -9552,7 +9552,7 @@ ba_pw02,42,267,5	script	Lensis#jh_ba	20629,{
 		mes "I guess you can't hear us because you're too absorbed in the new machines and the automatic doll. You're like a kid with a new toy, Ms. Criminal Scientist.";
 		next;
 		cutin "ep171_elyumina01",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Are you an automatic doll that manages this place? Can I talk to you for a moment?";
 		mes "Don't worry, I'm not a suspicious person.";
 		emotion ET_DELIGHT, getnpcid(0,"Elyumina#jh_ba1");
@@ -9568,7 +9568,7 @@ ba_pw02,42,267,5	script	Lensis#jh_ba	20629,{
 		next;
 		cloakonnpcself( "Elyumina#jh_ba1" );
 		cutin "ep171_elyumina03",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Wait, wait a minute. I'm properly licensed... Argh!";
 		specialeffect EF_ICECRASH, AREA, "Elyumina#jh_ba1";
 		emotion ET_HUK, getnpcid(0,"Elyumina#jh_ba1");
@@ -9582,12 +9582,12 @@ ba_pw02,42,267,5	script	Lensis#jh_ba	20629,{
 		cloakoffnpcself( "Elyumina#jh_ba1" );
 		cloakoffnpcself( "Rookie#jh_ba1" );
 		cutin "ep171_elyumina03",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Ugh! Cough, cough, cough!";
 		mes "Argh! What the hell is this? I almost died! I can't believe you did it in such a lovely way. You're all wet!";
 		emotion ET_KEK, getnpcid(0,"Elyumina#jh_ba1");
 		next;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "You know how to be forgiven for just being pretty, don't you? The world is not that easy! ... wh, what kind of headache is this?";
 		next;
 		cutin "16loo_01",2;
@@ -9612,7 +9612,7 @@ ba_pw02,42,267,5	script	Lensis#jh_ba	20629,{
 		mes "You know Mina is no longer an Ilusion.";
 		next;
 		cutin "ep171_elyumina03",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Wait, I'm a little weird... My head hurts, I'm starting to feel dizzy and nauseous.";
 		next;
 		cutin "16loo_03",2;
@@ -9716,7 +9716,7 @@ ba_maison,169,270,5	script	Need#jh_ba	4_EP17_BASIC_B,{
 		mes "I'm sure the adventurer will have the medical facility ready for you to get treatment right away. So, cheer up.";
 		next;
 		cutin "ep171_elyumina03",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Ugh... it feels weird. Ah, I can see the machine flowing and the river of screws...";
 		next;
 		cutin "16lei_03",2;
@@ -9729,7 +9729,7 @@ ba_maison,169,270,5	script	Need#jh_ba	4_EP17_BASIC_B,{
 		mes "Don't worry, I won't let them harm you. I'll call for security assistance!";
 		next;
 		cutin "ep171_elyumina03",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Oh... I'm feeling a little bit better now. Intruder or whatever. All I have to do is cross that river, ahahaha...";
 		next;
 		cutin "16loo_03",2;
@@ -9763,7 +9763,7 @@ ba_maison,169,270,5	script	Need#jh_ba	4_EP17_BASIC_B,{
 		mes "We can't give intruders the same benefit as the guests.";
 		next;
 		cutin "ep171_elyumina03",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Yes, yes. I suppose so. Okay, just leave it alone......";
 		mes "Because if you just leave it, it will die on its own. Goodbye, my beloved machines, I'm going first.";
 		next;
@@ -9785,7 +9785,7 @@ ba_maison,169,270,5	script	Need#jh_ba	4_EP17_BASIC_B,{
 		mes "I want to save this person. Tell me how!";
 		next;
 		cutin "ep171_elyumina03",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "...... Why are you doing that? What am I saying? Of course, I'm the Great Elyumina, but you...";
 		next;
 		cutin "ep172_beta",2;
@@ -9853,7 +9853,7 @@ ba_maison,176,270,3	script(CLOAKED)	Lazy#jh_ba2	4_M_LAZY,{
 
 
 // Water Garden instance - Step 3
-ba_maison,234,51,5	script	Elyumina#jh_ba3	4_EP17_ELYUMINA,{
+ba_maison,234,51,5	script	艾露米娜#jh_ba3::Elyumina#jh_ba3	4_EP17_ELYUMINA,{
 	if (checkweight(1000103,20) == 0) {	// (custom)
 		mes "^008800Wait a sec!!";
 		mes "You cannot receive any more items because you're carrying too many items. Please try again after you lighten up.^000000";
@@ -9861,11 +9861,11 @@ ba_maison,234,51,5	script	Elyumina#jh_ba3	4_EP17_ELYUMINA,{
 	}
 	if (ep172_watergarden == 2) {
 		cutin "ep171_elyumina01",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "..............................,";
 		next;
 		cutin "ep171_elyumina03",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Damn it... Am I afraid to die like this!";
 		mes "Tch, something that's wet doesn't dry out well.";
 		close2;
@@ -9883,7 +9883,7 @@ ba_maison,234,51,5	script	Elyumina#jh_ba3	4_EP17_ELYUMINA,{
 			cloakoffnpcself( "Rookie#jh_ba3" );
 			cloakoffnpcself( "Lazy#jh_ba3" );
 			cutin "ep171_elyumina03",2;
-			mes "[Elyumina]";
+			mes "[艾露米娜]";
 			mes "I'm dizzy... don't shake me.";
 			mes "I can't go, even if I force myself, I can't go. I'll just give you trouble when I go.";
 			next;
@@ -9892,7 +9892,7 @@ ba_maison,234,51,5	script	Elyumina#jh_ba3	4_EP17_ELYUMINA,{
 			mes "...Woah, you cared about that? Ms. Criminal Scientist, this is a surprise.";
 			next;
 			cutin "ep171_elyumina02",2;
-			mes "[Elyumina]";
+			mes "[艾露米娜]";
 			mes "Shut up! There's no need for consideration for idiots!";
 			mes "I'm resting here anyway. I can't move a leg.";
 			next;
@@ -9916,7 +9916,7 @@ ba_maison,234,51,5	script	Elyumina#jh_ba3	4_EP17_ELYUMINA,{
 			end;
 		case 2:
 			cutin "ep171_elyumina03",2;
-			mes "[Elyumina]";
+			mes "[艾露米娜]";
 			mes "Ugh, I think I lost my mind for a moment and came back to see the end of the world!";
 			mes "Ah, this is driving me crazy. Hey, when's the antidote going to be finished?";
 			emotion ET_KEK;
@@ -9933,7 +9933,7 @@ ba_maison,234,51,5	script	Elyumina#jh_ba3	4_EP17_ELYUMINA,{
 		cloakoffnpcself( "Lazy#jh_ba3" );
 		select( "Hand over the antidote." );
 		cutin "ep171_elyumina03",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "...... What is this?";
 		mes "Oh..., Is that it. The antidote.";
 		next;
@@ -9942,7 +9942,7 @@ ba_maison,234,51,5	script	Elyumina#jh_ba3	4_EP17_ELYUMINA,{
 		mes "I'm sorry to make you suffer alone. We should have been there for you.";
 		next;
 		cutin "ep171_elyumina01",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "...... you know, thank you.";
 		next;
 		cutin "16lei_03",2;
@@ -9950,7 +9950,7 @@ ba_maison,234,51,5	script	Elyumina#jh_ba3	4_EP17_ELYUMINA,{
 		mes "Huh, I can't hear you well. Speak up, please.";
 		next;
 		cutin "ep171_elyumina03",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Don't worry, I didn't say that to you!";
 		next;
 		cutin "16lei_01",2;
@@ -9958,24 +9958,24 @@ ba_maison,234,51,5	script	Elyumina#jh_ba3	4_EP17_ELYUMINA,{
 		mes "Yeah, right, why don't you go ahead and try it? It's hard to look over the Criminal Scientist when you're lingering beside me.";
 		next;
 		cutin "ep171_elyumina03",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Oh, I'm so sick of it...";
 		mes "Anyways, you, " + strcharinfo(0) + ". Thank you for getting me the antidote.";
 		next;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "And you... Was it Rocky? Lucky? Anyways, Rebellion, thank you for running around for me.";
 		npctalk "......Rookie, it's Rookie.", "Rookie#jh_ba3", bc_self;
 		npctalk "What about me? Are you not thanking me?", "Lazy#jh_ba3", bc_self;
 		next;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Like you guys said, I'm not an Illusion already.";
 		mes "I don't feel like I belong there anyway. I only stayed because they supported my research.";
 		next;
 		cutin "ep171_elyumina01",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "It's different when someone insist on it and others acknowledge it.";
 		next;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Also being hated by such cute, smart, automatic dolls... is not so bad.";
 		next;
 		cutin "16lei_03",2;
@@ -9983,11 +9983,11 @@ ba_maison,234,51,5	script	Elyumina#jh_ba3	4_EP17_ELYUMINA,{
 		mes "I think that's the main point of what I want to say...?";
 		next;
 		cutin "ep171_elyumina01",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Anyway, I'm not going to get involved with those idiots again. I promise.";
 		next;
 		cutin "ep171_elyumina04",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "And if there's anything I can do, I'll cooperate on catching them.";
 		next;
 		cutin "16loo_03",2;
@@ -10015,11 +10015,11 @@ ba_maison,234,51,5	script	Elyumina#jh_ba3	4_EP17_ELYUMINA,{
 		end;
 	}
 	cutin "ep171_elyumina03",2;
-	mes "[Elyumina]";
+	mes "[艾露米娜]";
 	mes "Adventurer, be quiet! I can't be caught here alone!";
 	next;
 	cutin "ep171_elyumina02",2;
-	mes "[Elyumina]";
+	mes "[艾露米娜]";
 	mes "You, if you're going to take away my precious opportunity to talk to the automatic dolls of Varmundt, I'll kill you!";
 	close2;
 	cutin "",255;
@@ -10119,11 +10119,11 @@ ba_maison,239,47,3	script	Seihyu#jh_ba	4_EP17_SCISSORE,{
 			mes "According to the definition, she is definitely not a colleague.";
 			next;
 			cutin "ep171_elyumina03",2;
-			mes "[Elyumina]";
+			mes "[艾露米娜]";
 			mes "Humans being are stupid. That's why I'm doing something different than the beautiful thinking of a machine......... it's kind of miserable but that's my story.";
 			next;
 			cutin "ep171_elyumina04",2;
-			mes "[Elyumina]";
+			mes "[艾露米娜]";
 			mes "Anyway, a machine with such curiosity, it's so attractive. I want to know more about your way of thinking.";
 			next;
 			cutin "ep172_beta",2;
@@ -10137,7 +10137,7 @@ ba_maison,239,47,3	script	Seihyu#jh_ba	4_EP17_SCISSORE,{
 			mes "Is that so? Did you save her for the reason that she could be helpful in the future?";
 			next;
 			cutin "ep171_elyumina04",2;
-			mes "[Elyumina]";
+			mes "[艾露米娜]";
 			mes "Ha, haha... Isn't it similar to an automatic doll?";
 			mes "You are working like this to be helpful, to help people.";
 			next;
@@ -10153,7 +10153,7 @@ ba_maison,239,47,3	script	Seihyu#jh_ba	4_EP17_SCISSORE,{
 			mes "Based on the data collected overtime, human beings are a species that hurts each other if necessary.";
 			next;
 			cutin "ep171_elyumina03",2;
-			mes "[Elyumina]";
+			mes "[艾露米娜]";
 			mes "I didn't want to kill anyone.";
 			mes "But they were so weak and stupid that they kept dying on their own.";
 			next;
@@ -10189,7 +10189,7 @@ ba_maison,239,47,3	script	Seihyu#jh_ba	4_EP17_SCISSORE,{
 		mes "This is just a deal. I'm still aware of my duty to exclude the intruders.";
 		next;
 		cutin "ep171_elyumina04",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "At this point, I'm starting to feel nauseous. I will definitely make you fall for me.";
 		next;
 		cutin "16lei_02",2;
@@ -10202,7 +10202,7 @@ ba_maison,239,47,3	script	Seihyu#jh_ba	4_EP17_SCISSORE,{
 		mes "Mina, can you move? They say it's dangerous inside...";
 		next;
 		cutin "ep171_elyumina03",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "...... sorry, I can't overdo it.";
 		mes "It's hard even just to walk now.";
 		next;
@@ -10244,7 +10244,7 @@ ba_maison,239,47,3	script	Seihyu#jh_ba	4_EP17_SCISSORE,{
 		mes "I think it's in and out of it's mind, that automatic doll......";
 		next;
 		cutin "ep171_elyumina01",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "The automatic doll is okay though.";
 		close2;
 		cutin "",255;
@@ -10306,7 +10306,7 @@ ba_maison,239,47,3	script	Seihyu#jh_ba	4_EP17_SCISSORE,{
 			mes ".....................";
 			next;
 			cutin "ep171_elyumina01",2;
-			mes "[Elyumina]";
+			mes "[艾露米娜]";
 			mes "It's so nice to see smart automatic dolls made by others.";
 			mes "I want to study and analyze... If only this dizziness goes away...";
 			next;
@@ -10381,7 +10381,7 @@ ba_maison,239,47,3	script	Seihyu#jh_ba	4_EP17_SCISSORE,{
 			mes "can you go into the water garden to hunt down and secure me a ^0000CDSilva Papilla^000000?";
 			next;
 			cutin "",255;
-			if (select( "I'll help you.", "I can't help you right now." ) == 2)
+			if (select( "我會幫你的。", "I can't help you right now." ) == 2)
 				break;
 			mes "Thank you. After you hunt one down, the other gardeners will handle the rest.";
 			mes "You can speak to <NAVI>[Harad]<INFO>ba_maison,238,44,0,101,0</INFO></NAVI> next to me, and enter the water garden.";
@@ -10462,7 +10462,7 @@ ba_maison,239,47,3	script	Seihyu#jh_ba	4_EP17_SCISSORE,{
 			mes "can you go into the water garden to hunt down and secure me a ^0000CDGrand Papilla^000000?";
 			next;
 			cutin "",255;
-			if (select( "I'll help you.", "I can't help you right now." ) == 2)
+			if (select( "我會幫你的。", "I can't help you right now." ) == 2)
 				break;
 			mes "[Seihyu]";
 			mes "Thank you. After you hunt one down, the other gardeners will handle the rest.";

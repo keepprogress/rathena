@@ -316,7 +316,7 @@ OnTouch_:
 		mes "I don't care who you're with. I just need to know if you can help me.";
 		'ep15_1_mcd01 = 2;
 		next;
-		if (select( "I can help.", "I'm busy." ) == 2) {
+		if (select( "I can help.", "我很忙。" ) == 2) {
 			mes "[Dr. Ve]";
 			mes "Sigh, I don't care who, so long as I get the help I need.";
 			npctalk "Dr. Ve: Sigh, I don't care who, so long as I get the help I need.";
@@ -1461,7 +1461,7 @@ OnStop:
 	end;
 }
 
-1@mcd,129,149,0	script	end#1	HIDDEN_WARP_NPC,{
+1@mcd,129,149,0	script	end#1::end#1	HIDDEN_WARP_NPC,{
 	end;
 OnStart:
 	.@npc1$ = instance_npcname("Dr. Ve#3");
@@ -1618,7 +1618,7 @@ OnTimer300:
 	mes "[Shalosh]";
 	mes "......";
 	next;
-	switch( select( "Talk.", "I need help.", "I want to go back." ) ) {
+	switch( select( "交談", "I need help.", "我想回去。" ) ) {
 	case 1:
 		if ('ep15_1_mcd01 == 17) {
 			mes "[Shalosh]";
@@ -1729,7 +1729,7 @@ OnTimer300:
 		mes "[Main Computer]";
 		mes "To accelerate the main computer's processing rate and reclaim the factory, 50 Steps must be disposed.";
 		next;
-		if (select( "Perform the request.", "Quit." ) == 1) {
+		if (select( "Perform the request.", "離開。" ) == 1) {
 			mes "[Main Computer]";
 			mes "Requires 50 Steps to be disposed.";
 			if (isbegin_quest(13188) == 1)

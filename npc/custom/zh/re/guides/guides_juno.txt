@@ -15,18 +15,18 @@
 //= 1.2 Navigation system update. [Euphy]
 //============================================================ 
 
-yuno,59,212,4	script	Juno Guide#yuno01::GuideJuno	700,{
-	mes "[Juno Guide]";
-	mes "A place that takes the vision of the future, and gives it form in the present. Welcome to";
-	mes "the city of ^8B4513Juno^000000!";
+yuno,59,212,4	script	朱諾嚮導#yuno01::GuideJuno	700,{
+	mes "[朱諾嚮導]";
+	mes "這裡是將未來的願景化為現實的地方。歡迎來到";
+	mes "^8B4513朱諾^000000城！";
 	F_Navi("[Juno Guide]");
 	next;
 	while (1) {
-		switch(select("[ Main Facilities ]:[ Merchants & Helpers ]:Remove marks from Mini-Map:Cancel")) {
+		switch(select("[ 主要設施 ]:[ 商人與助手 ]:從小地圖移除標記:取消")) {
 		case 1:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ Tool Shop ]:[ Forge ]:[ Airport ]:[ Government Building ]:[ Street of Book Stores ]:[ Inn & Pub ]:[ Sage Castle ]:[ Monster Academy ]:[ Library of the Republic ]:[ Weapon & Armor Shop ]:[ Juphero Plaza ]:[ Monster Museum ]:[ Schweicherbil Magic Academy ]:Previous Menu")) {
+				switch(select("[ 工具店 ]:[ 鍛造所 ]:[ 機場 ]:[ 政府大樓 ]:[ 書店街 ]:[ 旅館與酒吧 ]:[ 賢者城堡 ]:[ 魔物學院 ]:[ 共和國圖書館 ]:[ 武器與防具店 ]:[ 朱菲洛廣場 ]:[ 魔物博物館 ]:[ 施薇希爾比魔法學院 ]:上一選單")) {
 				case 1:
 					callsub L_Mark, F_Navi("Tool Shop","yuno,194,140","^FF0000");
 					viewpoint 1,194,140,0,0xFF0000;
@@ -88,9 +88,9 @@ yuno,59,212,4	script	Juno Guide#yuno01::GuideJuno	700,{
 					next;
 					break;
 				case 13:
-					mes "[Juno Guide]";
+					mes "[朱諾嚮導]";
 					mes "我會把";
-					mes F_Navi("Schweicherbil Magic Academy","yuno,323,280","^CD1039");
+					mes F_Navi("施薇希爾比魔法學院","yuno,323,280","^CD1039");
 					mes "你的小地圖上標示它的位置。";
 					mes "你想看看其他地點嗎？";
 					viewpoint 1,323,280,12,0xCD1039;
@@ -105,7 +105,7 @@ yuno,59,212,4	script	Juno Guide#yuno01::GuideJuno	700,{
 		case 2:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ Kafra Employees ]:[ Eden Teleport Officer ]:Previous Menu")) {
+				switch(select("[ 卡普拉職員 ]:[ 伊甸園傳送官 ]:上一選單")) {
 				case 1:
 					callsub L_Mark, "^FA8072Kafra Employees^000000";
 					viewpoint 1,152,187,13,0xFA8072;
@@ -125,7 +125,7 @@ yuno,59,212,4	script	Juno Guide#yuno01::GuideJuno	700,{
 			}
 			break;
 		case 3:
-			mes "[Juno Guide]";
+			mes "[朱諾嚮導]";
 			mes "好的，我會移除你小地圖上的所有標記。";
 			mes "還有什麼我能為你效勞的嗎？";
 			viewpoint 2,194,140,0,0xFFFFFF;
@@ -148,18 +148,18 @@ yuno,59,212,4	script	Juno Guide#yuno01::GuideJuno	700,{
 			next;
 			break;
 		case 4:
-			mes "[Juno Guide]";
-			mes "Have fun on your adventures!";
+			mes "[朱諾嚮導]";
+			mes "祝你冒險愉快！";
 			close;
 		}
 	}
 	end;
 L_Mark:
-	mes "[Juno Guide]";
-	mes "I will mark the location";
-	mes "of the "+getarg(0);
+	mes "[朱諾嚮導]";
+	mes "我會在小地圖上標示出";
+	mes "的 "+getarg(0);
 	mes "你的小地圖上標示它的位置。";
 	mes "你想看看其他地點嗎？";
 	return;
 }
-yuno,153,47,4	duplicate(GuideJuno)	Juno Guide#yuno02	700
+yuno,153,47,4	duplicate(GuideJuno)	朱諾嚮導#yuno02::Juno Guide#yuno02	700

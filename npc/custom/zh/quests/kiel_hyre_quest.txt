@@ -508,7 +508,7 @@ yuno,217,114,6	script	小朋友#kh::Little Kid#kh	96,{
 			case 2:
 				mes "[Cezu]";
 				mes "Okay okay~";
-				mes "Please come again!";
+				mes "歡迎下次再來！";
 				close;
 			}
 		}
@@ -773,7 +773,7 @@ yuno_fild08,158,194,6	script	Security Guard#1::KHAGuard	852,{
 			end;
 		case 2:
 			mes "[Security Guard]";
-			mes "If you don't have";
+			mes "如果你沒有";
 			mes "an appoointment, then";
 			mes "don't loiter around in";
 			mes "front of the academy!";
@@ -1893,7 +1893,7 @@ yuno_fild08,71,170,0	script	Grave#kh	111,{
 				else {
 					mes "[Security System]";
 					mes "密碼錯誤。";
-					mes "Please try again.";
+					mes "請再試一次。";
 					close;
 				}
 			}
@@ -1909,7 +1909,7 @@ yuno_fild08,71,170,0	script	Grave#kh	111,{
 		mes "^3355FFThe door to the";
 		mes "factory is wide open.^000000";
 		next;
-		switch(select("Enter:Cancel")) {
+		switch(select("進入:取消")) {
 		case 1:
 			warp "kh_dun01",3,230;
 			end;
@@ -2057,7 +2057,7 @@ yuno_fild02,75,218,0	script	Door#kh2	111,{
 	else {
 		mes "^3355FFThe door is open.^000000";
 		next;
-		switch(select("Enter:Cancel")) {
+		switch(select("進入:取消")) {
 		case 1:
 			warp "kh_vila",188,18;
 			end;
@@ -2115,7 +2115,7 @@ kh_vila,191,14,0	script	Wall#kh	139,1,1,{
 		mes "open, revealing";
 		mes "a secret path.^000000";
 		next;
-		switch(select("Enter:Cancel")) {
+		switch(select("進入:取消")) {
 		case 1:
 			warp "kh_vila",17,177;
 			end;
@@ -2409,7 +2409,7 @@ kh_vila,33,184,0	script	Pot#khp1	111,{
 		case 2:
 			mes "^3355FFNo, no...";
 			mes "We'd better try";
-			mes "something else.^000000";
+			mes "其他方法。^000000";
 			close;
 		}
 	}
@@ -2624,7 +2624,7 @@ OnTouch:
 //----------------------------------------------------------------------------
 // Cottage interior, upstairs; Drawer, first room nightstand
 //----------------------------------------------------------------------------
-kh_vila,115,186,0	script	Drawer#khp1	111,{
+kh_vila,115,186,0	script	抽屜#khp1::Drawer#khp1	111,{
 	if (checkweight(7492,1) == 0) {
 		mes "^3355FFThere's something inside";
 		mes "this drawer, but you can't";
@@ -2951,7 +2951,7 @@ kh_vila,123,170,0	script	Medicine Chest#khp1	111,{
 				close;
 			}
 			mes "^3355FFYou tried sprinkling";
-			mes "the "+.@KHPotionColor$+" liquid from the";
+			mes "需先學會 "+.@KHPotionColor$+" liquid from the";
 			mes "medicine cabinet onto";
 			mes "the blank paper with the";
 			mes "Kiel Hyre Foundation seal.";
@@ -3134,7 +3134,7 @@ kh_vila,136,68,0	script	Sword Hilt#kh	111,{
 		mes "path that leads to";
 		mes "the secret laboratory.^000000";
 		next;
-		switch(select("Enter:Cancel")) {
+		switch(select("進入:取消")) {
 		case 1:
 			warp "kh_vila",178,72;
 			end;
@@ -3808,9 +3808,9 @@ kh_dun01,36,195,0	duplicate(KHAccess)	Entrance Device#khd1	111
 //----------------------------------------------------------------------------
 // Kiel's Steward
 //----------------------------------------------------------------------------
-kh_mansion,78,55,5	script	Steward#kh	109,{
+kh_mansion,78,55,5	script	管家#kh::Steward#kh	109,{
 	if (KielHyreQuest < 46) {
-		mes "[Steward]";
+		mes "[管家]";
 		mes "This is a private residence,";
 		mes "please leave.";
 		close2;
@@ -3818,7 +3818,7 @@ kh_mansion,78,55,5	script	Steward#kh	109,{
 		end;
 	}
 	if ((KielHyreQuest >= 46) && (KielHyreQuest < 50)) {
-		mes "[Steward]";
+		mes "[管家]";
 		mes "Greetings.";
 		mes "Have you been invited";
 		mes "by the master of";
@@ -3826,7 +3826,7 @@ kh_mansion,78,55,5	script	Steward#kh	109,{
 		next;
 		switch(select("Present Golden Key:????")) {
 		case 1:
-			mes "[Steward]";
+			mes "[管家]";
 			mes "Ah, Master "+strcharinfo(0)+".";
 			mes "I've been expecting your";
 			mes "arrival. Please, this way.";
@@ -3834,7 +3834,7 @@ kh_mansion,78,55,5	script	Steward#kh	109,{
 			warp "kh_mansion",21,14;
 			end;
 		case 2:
-			mes "[Steward]";
+			mes "[管家]";
 			mes "If you have not been";
 			mes "invited by the master of";
 			mes "this mansion, then I'm";
@@ -3846,7 +3846,7 @@ kh_mansion,78,55,5	script	Steward#kh	109,{
 		}
 	}
 	if ((KielHyreQuest >= 50) && (KielHyreQuest < 64) || (KielHyreQuest >= 70)) {
-		mes "[Steward]";
+		mes "[管家]";
 		mes "Ah, Master "+strcharinfo(0)+".";
 		mes "It is a pleasure to";
 		mes "receive your company";
@@ -3855,14 +3855,14 @@ kh_mansion,78,55,5	script	Steward#kh	109,{
 		next;
 		switch(select("是:否")) {
 		case 1:
-			mes "[Steward]";
+			mes "[管家]";
 			mes "好的。";
 			mes "Right this way~";
 			close2;
 			warp "kh_mansion",21,14;
 			end;
 		case 2:
-			mes "[Steward]";
+			mes "[管家]";
 			mes "好的。";
 			mes "Please make";
 			mes "yourself at home.";
@@ -3870,7 +3870,7 @@ kh_mansion,78,55,5	script	Steward#kh	109,{
 		}
 	}
 	if ((KielHyreQuest == 52) || (KielHyreQuest == 54) || (KielHyreQuest >= 64) && (KielHyreQuest <= 70)) {
-		mes "[Steward]";
+		mes "[管家]";
 		mes "Ah, Master "+strcharinfo(0)+".";
 		mes "It is a pleasure to";
 		mes "receive your company";
@@ -3879,14 +3879,14 @@ kh_mansion,78,55,5	script	Steward#kh	109,{
 		next;
 		switch(select("^FF0000Kiel Hyre^000000:^3355FFMitchell^000000")) {
 		case 1:
-			mes "[Steward]";
+			mes "[管家]";
 			mes "好的。";
 			mes "Right this way~";
 			close2;
 			warp "kh_mansion",21,14;
 			end;
 		case 2:
-			mes "[Steward]";
+			mes "[管家]";
 			mes "Oh...? You must.";
 			mes "be here to deliver";
 			mes "good news. Excuse me...";
@@ -3895,7 +3895,7 @@ kh_mansion,78,55,5	script	Steward#kh	109,{
 			mes "^3355FFlooked around to check^000000";
 			mes "^3355FFif anyone is watching him.^000000";
 			next;
-			mes "[Steward]";
+			mes "[管家]";
 			mes "I believe it should";
 			mes "be safe enough to let";
 			mes "you go see him now...";
@@ -4018,7 +4018,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	903,{
 			}
 			if (.@KHQRead == 3) {
 				mes "[Kiel Hyre]";
-				mes "If you don't have";
+				mes "如果你沒有";
 				mes "anymore questions for me,";
 				mes "then would you please";
 				mes "let me rest?? I'm still not";
@@ -4043,7 +4043,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	903,{
 	}
 	else if ((KielHyreQuest >= 50) && (KielHyreQuest < 64)) {
 		mes "[Kiel Hyre]";
-		mes "If you don't have";
+		mes "如果你沒有";
 		mes "anymore questions for me,";
 		mes "then would you please";
 		mes "let me rest?? I'm still not";
@@ -4067,7 +4067,7 @@ kh_mansion,22,28,4	script	Kiel Hyre#kh	903,{
 	else if (KielHyreQuest == 68) {
 		cutin "kh_kyel02",2;
 		mes "[Kiel Hyre]";
-		mes "Ah, "+strcharinfo(0)+".";
+		mes "啊， "+strcharinfo(0)+".";
 		mes "It's you. So how can";
 		mes "I help you today?";
 		next;
@@ -5085,7 +5085,7 @@ OnTouch:
 	}
 	else if (KielHyreQuest == 54) {
 		mes "[米切爾]";
-		mes "Are you ready?";
+		mes "你準備好了嗎？";
 		mes "I'll let you board";
 		mes "the federal Airship so";
 		mes "you can get to Juno, and";
@@ -6780,7 +6780,7 @@ kh_kiehl02,50,52,4	script	Kiehl#Original	902,{
 		mes "Show yourself!";
 		next;
 		mes "[????]";
-		mes "Please.";
+		mes "麻煩你了。";
 		mes "Don't insult me.";
 		mes "You know this voice.";
 		mes "It's been talking to";
@@ -6795,7 +6795,7 @@ kh_kiehl02,50,52,4	script	Kiehl#Original	902,{
 		next;
 		cutin "kh_kiel01",0;
 		mes "[Kiehl]";
-		mes "Hahahahaha!";
+		mes "哈哈哈哈哈！";
 		mes "I'm a robot!";
 		mes "I can make extra";
 		mes "bodies, switch brains";

@@ -17,45 +17,45 @@
 //= 1.4 Corrected NPC names to fall within proper restrictions. [L0ne_W0lf]
 //============================================================
 
-hu_fild05,168,304,0	script	Column#abyss1	111,{
+hu_fild05,168,304,0	script	柱子#abyss1::Column#abyss1	111,{
 
-	mes "^3355FFThere are 3 oddly";
-	mes "shaped grooves on";
-	mes "the surface of this";
-	mes "column. It seems that";
-	mes "certain dragon body parts";
-	mes "would fit perfectly into";
-	mes "the column grooves.^000000";
+	mes "^3355FF這根柱子上有3個";
+	mes "形狀古怪的凹槽，";
+	mes "分布在這根柱子";
+	mes "表面。看來";
+	mes "某些龍的身體部位";
+	mes "正好可以嵌入";
+	mes "這些凹槽中。^000000";
 	if((countitem(1035)) && (countitem(1036)) && (countitem(1037)))
 	{
 		next;
-		switch( select( "Insert Dragon Body Parts","Eat Dragon Body Parts" ) )
+		switch( select( "插入龍的身體部位","吞食龍的身體部位" ) )
 		{
 			case 1:
-				mes "^3355FFYou carefully place a";
-				mes "Dragon Canine into one of";
-				mes "the grooves, and then you";
-				mes "hear a powerful rumbling";
-				mes "from within the column.^000000";
+				mes "^3355FF你小心翼翼地將一個";
+				mes "龍牙放進其中一個";
+				mes "凹槽，接著你";
+				mes "聽見柱子內傳來";
+				mes "強烈的隆隆聲。^000000";
 				specialeffect EF_WINDHIT;
 				next;
-				mes "^3355FFYou slowly insert a";
-				mes "Dragon Scale into another";
-				mes "of the column's grooves,";
-				mes "trigerring another small";
-				mes "tremor from the column.^000000";
+				mes "^3355FF你緩緩地將一片";
+				mes "龍鱗放進另一個";
+				mes "凹槽中，";
+				mes "引發柱子再次";
+				mes "輕微震動。^000000";
 				specialeffect EF_WINDHIT;
 				next;
-				mes "^3355FFYou cautiously insert";
-				mes "a Dragon Tail into the";
-				mes "final groove. Lights shine";
-				mes "forth from cracks in the";
-				mes "column's surface...^000000";
+				mes "^3355FF你小心翼翼地將";
+				mes "一條龍尾插入";
+				mes "最後一個凹槽。光芒";
+				mes "從柱子表面的裂縫中";
+				mes "射出……^000000";
 				specialeffect EF_WINDHIT;
 				next;
-				mes "^3355FFThe ground beneath";
-				mes "your feet begins to";
-				mes "violently shake.^000000";
+				mes "^3355FF腳下的地面";
+				mes "開始";
+				mes "劇烈搖晃。^000000";
 				specialeffect EF_BOWLINGBASH;
 				donpcevent "AbyssWarp::OnWarp";
 				specialeffect2 EF_PORTAL;
@@ -67,13 +67,13 @@ hu_fild05,168,304,0	script	Column#abyss1	111,{
 				end;
 
 			case 2:
-				mes "^3355FFYou gingerly place a";
-				mes "Dragon's Canine, a Dragon";
-				mes "Scale, and a Dragon Tail into";
-				mes "your mouth and slowly begin";
-				mes "to chew. Nothing happens";
-				mes "and the taste of these items";
-				mes "is surprisingly putrid.^000000";
+				mes "^3355FF你小心地把";
+				mes "龍牙、龍鱗";
+				mes "與龍尾放進";
+				mes "嘴裡，然後慢慢開始";
+				mes "咀嚼。什麼也沒發生，";
+				mes "而這些東西的味道";
+				mes "竟然出奇地腐臭。^000000";
 				next;
 				emotion ET_HUNGRY, playerattached();
 				delitem 1035,1;
@@ -86,35 +86,35 @@ hu_fild05,168,304,0	script	Column#abyss1	111,{
 	close;
 }
 
-hu_fild05,171,211,0	script	Column#abyss2	111,1,1,{
+hu_fild05,171,211,0	script	柱子#abyss2::Column#abyss2	111,1,1,{
 
-	mes "^3355FFThis column looks";
-	mes "very similar to the";
-	mes "one you've seen in";
-	mes "the lake. There is";
-	mes "a conspicious blue";
-	mes "groove on its surface.^000000";
+	mes "^3355FF這根柱子看起來";
+	mes "非常相似，與";
+	mes "你在";
+	mes "湖中見過的那根。";
+	mes "表面有一道醒目的藍色";
+	mes "凹槽。^000000";
 	next;
-	switch( select( "Touch the Groove","Remove Item from Groove" ) )
+	switch( select( "觸碰凹槽","從凹槽取出物品" ) )
 	{
 		case 1:
-			mes "^3355FF*Clatter Clatter*^000000";
+			mes "^3355FF*喀啦喀啦*^000000";
 			next;
-			mes "^3355FFThe light emanating from";
-			mes "the groove distorts and";
-			mes "the column starts to shake.";
-			mes "You hear a faint rumbling";
-			mes "from inside the column.^000000";
+			mes "^3355FF凹槽散發出的光芒";
+			mes "扭曲，接著";
+			mes "柱子開始搖晃。";
+			mes "你聽見柱子內傳來";
+			mes "微弱的隆隆聲。^000000";
 			specialeffect EF_WINDHIT;
 			next;
-			mes "*Ggghhhhhzzzz!*";
-			mes "*BAM!*";
+			mes "*嗚嗚嗚嘶嘶！*";
+			mes "*砰！*";
 			next;
-			mes "^3355FFThe light shining from";
-			mes "the column's groove grows";
-			mes "brighter as you feel the";
-			mes "ground beneath your feet";
-			mes "begin to slowly sink away...^000000";
+			mes "^3355FF凹槽射出的光芒";
+			mes "越來越亮，";
+			mes "你感覺到";
+			mes "腳下的地面";
+			mes "開始緩緩下沉……^000000";
 			next;
 			specialeffect EF_BOWLINGBASH;
 			specialeffect2 EF_PORTAL;
@@ -123,20 +123,20 @@ hu_fild05,171,211,0	script	Column#abyss2	111,1,1,{
 			end;
 
 		case 2:
-			mes "^3355FF*Ppppsssh!*";
-			mes "You accidentally";
-			mes "broke the item.^000000";
+			mes "^3355FF*噗嘶！*";
+			mes "你不小心";
+			mes "弄壞了物品。^000000";
 			specialeffect EF_WINDHIT;
 			next;
-			mes "^3355FF*Gggggggghhhhhhhhzzzzzzjjjjhh!*^000000";
+			mes "^3355FF*咕嗚嗚嗚嗚嘶嘶嘶嘶！*^000000";
 			next;
-			mes "^3355FFThe light emanating from";
-			mes "the groove distorts and";
-			mes "the column starts to shake.";
-			mes "The tremors in the ground";
-			mes "make it difficult to stand";
-			mes "steadily, but suddently you";
-			mes "are warped somewhere else...^000000";
+			mes "^3355FF凹槽散發出的光芒";
+			mes "扭曲，接著";
+			mes "柱子開始搖晃。";
+			mes "地面的震動";
+			mes "讓人難以站穩，";
+			mes "但突然間你";
+			mes "被扭送到其他地方……^000000";
 			next;
 			specialeffect EF_BOWLINGBASH;
 			specialeffect2 EF_PORTAL;
@@ -146,7 +146,7 @@ hu_fild05,171,211,0	script	Column#abyss2	111,1,1,{
 	}
 }
 
-hu_fild05,196,210,1	script	AbyssWarp	45,2,2,{
+hu_fild05,196,210,1	script	深淵傳送::AbyssWarp	45,2,2,{
 
 OnInit:
 	disablenpc "AbyssWarp";

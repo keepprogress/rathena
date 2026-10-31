@@ -7,9 +7,9 @@
 //============================================================
 
 // Storage
-tra_fild01,204,110,2	script	Training Ground Warehouse Soldier#fild01_1	8W_SOLDIER,{
-	mes "[Training Ground Warehouse Soldier]";
-	mes "Would you like to use the Storage? 1000 Zeny is required to use the training ground Storage. Please select the Storage you wish to use.";
+tra_fild01,204,110,2	script	訓練場倉庫士兵#fild01_1::Training Ground Warehouse Soldier#fild01_1	8W_SOLDIER,{
+	mes "[訓練場倉庫士兵]";
+	mes "你要使用倉庫嗎？使用訓練場倉庫需要 1000 Zeny。請選擇你想使用的倉庫。";
 	next;
 	// switch( select( "�� Storage 1", "�� Storage 2", "�� Storage 3", "�� Guild Storage", "�� Cancel" ) ) {
 	switch( select( "�� Storage 1", "", "", "�� Guild Storage", "�� Cancel" ) ) {
@@ -27,26 +27,26 @@ tra_fild01,204,110,2	script	Training Ground Warehouse Soldier#fild01_1	8W_SOLDIE
 		.@guildid = getcharid( 2 );
 
 		if( .@guildid == 0 ){
-			mes "[Training Ground Warehouse Soldier]";
+			mes "[訓練場倉庫士兵]";
 			mes "只有公會成員才能使用公會倉庫。";
 			close;
 		}
 
 		if( getgdskilllv( .@guildid, "GD_GUILD_STORAGE" ) == 0 || !guild_has_permission( GUILD_PERM_STORAGE ) ){
-			mes "[Training Ground Warehouse Soldier]";
+			mes "[訓練場倉庫士兵]";
 			mes "看來你的公會目前還無法使用公會倉庫，或是你沒有倉庫的存取權限。";
 			mes "請在確認公會技能與倉庫存取權限後再來。";
 			close;
 		}
 
 		if( Zeny < 1000 ){
-			mes "[Training Ground Warehouse Soldier]";
+			mes "[訓練場倉庫士兵]";
 			mes "很抱歉，你的金錢不足以支付手續費。";
 			mes "手續費為 1000 Zeny。";
 			close;
 		}
 
-		mes "[Training Ground Warehouse Soldier]";
+		mes "[訓練場倉庫士兵]";
 		mes "那我就為你開啟公會倉庫。祝你有段難忘的時光！";
 		close2;
 
@@ -59,7 +59,7 @@ tra_fild01,204,110,2	script	Training Ground Warehouse Soldier#fild01_1	8W_SOLDIE
 			Zeny -= 1000;
 			end;
 		}else{
-			mes "[Training Ground Warehouse Soldier]";
+			mes "[訓練場倉庫士兵]";
 			mes "很抱歉，現在有其他人正在使用倉庫。";
 			mes "請稍後再試一次。";
 			close;
@@ -69,7 +69,7 @@ tra_fild01,204,110,2	script	Training Ground Warehouse Soldier#fild01_1	8W_SOLDIE
 	}
 	// TODO (custom text)
 	if (!callfunc("F_CanOpenStorage")) {
-		mes "[Training Ground Warehouse Soldier]";
+		mes "[訓練場倉庫士兵]";
 		mes "很抱歉，您";
 		mes "需要初學者的";
 		mes "基本技能等級 6 才能";
@@ -80,27 +80,27 @@ tra_fild01,204,110,2	script	Training Ground Warehouse Soldier#fild01_1	8W_SOLDIE
 	}
 
 	if (Zeny < 1000) {
-		mes "[Training Ground Warehouse Soldier]";
-		mes "^4d4dff1000 Zeny is required to use the training grounds Storage.^000000";
+		mes "[訓練場倉庫士兵]";
+		mes "^4d4dff使用訓練場倉庫需要 1000 Zeny。^000000";
 		close;
 	}
 	Zeny -= 1000;
 	openstorage; // TODO: open correct storage 1-3
 	end;
 }
-tra_fild01,15,110,6	duplicate(Training Ground Warehouse Soldier#fild01_1)	Training Ground Warehouse Soldier#fild01_2	8W_SOLDIER
-tra_fild01,113,32,0	duplicate(Training Ground Warehouse Soldier#fild01_1)	Training Ground Warehouse Soldier#fild01_3	8W_SOLDIER
-tra_fild01,111,100,4	duplicate(Training Ground Warehouse Soldier#fild01_1)	Training Ground Warehouse Soldier#fild01_4	8W_SOLDIER
+tra_fild01,15,110,6	duplicate(Training Ground Warehouse Soldier#fild01_1)	訓練場倉庫士兵#fild01_2::Training Ground Warehouse Soldier#fild01_2	8W_SOLDIER
+tra_fild01,113,32,0	duplicate(Training Ground Warehouse Soldier#fild01_1)	訓練場倉庫士兵#fild01_3::Training Ground Warehouse Soldier#fild01_3	8W_SOLDIER
+tra_fild01,111,100,4	duplicate(Training Ground Warehouse Soldier#fild01_1)	訓練場倉庫士兵#fild01_4::Training Ground Warehouse Soldier#fild01_4	8W_SOLDIER
 
-tra_fild02,204,110,2	duplicate(Training Ground Warehouse Soldier#fild01_1)	Training Ground Warehouse Soldier#fild02_1	8W_SOLDIER
-tra_fild02,15,110,6	duplicate(Training Ground Warehouse Soldier#fild01_1)	Training Ground Warehouse Soldier#fild02_2	8W_SOLDIER
-tra_fild02,113,32,0	duplicate(Training Ground Warehouse Soldier#fild01_1)	Training Ground Warehouse Soldier#fild02_3	8W_SOLDIER
-tra_fild02,111,100,4	duplicate(Training Ground Warehouse Soldier#fild01_1)	Training Ground Warehouse Soldier#fild02_4	8W_SOLDIER
+tra_fild02,204,110,2	duplicate(Training Ground Warehouse Soldier#fild01_1)	訓練場倉庫士兵#fild02_1::Training Ground Warehouse Soldier#fild02_1	8W_SOLDIER
+tra_fild02,15,110,6	duplicate(Training Ground Warehouse Soldier#fild01_1)	訓練場倉庫士兵#fild02_2::Training Ground Warehouse Soldier#fild02_2	8W_SOLDIER
+tra_fild02,113,32,0	duplicate(Training Ground Warehouse Soldier#fild01_1)	訓練場倉庫士兵#fild02_3::Training Ground Warehouse Soldier#fild02_3	8W_SOLDIER
+tra_fild02,111,100,4	duplicate(Training Ground Warehouse Soldier#fild01_1)	訓練場倉庫士兵#fild02_4::Training Ground Warehouse Soldier#fild02_4	8W_SOLDIER
 
-tra_fild03,204,110,2	duplicate(Training Ground Warehouse Soldier#fild01_1)	Training Ground Warehouse Soldier#fild03_1	8W_SOLDIER
-tra_fild03,15,110,6	duplicate(Training Ground Warehouse Soldier#fild01_1)	Training Ground Warehouse Soldier#fild03_2	8W_SOLDIER
-tra_fild03,113,32,0	duplicate(Training Ground Warehouse Soldier#fild01_1)	Training Ground Warehouse Soldier#fild03_3	8W_SOLDIER
-tra_fild03,111,100,4	duplicate(Training Ground Warehouse Soldier#fild01_1)	Training Ground Warehouse Soldier#fild03_4	8W_SOLDIER
+tra_fild03,204,110,2	duplicate(Training Ground Warehouse Soldier#fild01_1)	訓練場倉庫士兵#fild03_1::Training Ground Warehouse Soldier#fild03_1	8W_SOLDIER
+tra_fild03,15,110,6	duplicate(Training Ground Warehouse Soldier#fild01_1)	訓練場倉庫士兵#fild03_2::Training Ground Warehouse Soldier#fild03_2	8W_SOLDIER
+tra_fild03,113,32,0	duplicate(Training Ground Warehouse Soldier#fild01_1)	訓練場倉庫士兵#fild03_3::Training Ground Warehouse Soldier#fild03_3	8W_SOLDIER
+tra_fild03,111,100,4	duplicate(Training Ground Warehouse Soldier#fild01_1)	訓練場倉庫士兵#fild03_4::Training Ground Warehouse Soldier#fild03_4	8W_SOLDIER
 
 
 // Misc NPCs
@@ -169,112 +169,112 @@ tra_fild03,110,57,4	duplicate(Cleaning Robot#fild01)	Cleaning Robot#fild03	EP17_
 
 
 // Chitchat
-tra_fild01,122,75,6	script	Neighborhood Grandmother#npc02	4_F_JPNOBA,{
-	mes "[Neighborhood Grandmother]";
-	mes "Hohoho- Seeing the young people sweating and working hard makes me feel a bit energized.";
+tra_fild01,122,75,6	script	鄰居奶奶#npc02::Neighborhood Grandmother#npc02	4_F_JPNOBA,{
+	mes "[鄰居奶奶]";
+	mes "呵呵呵～看到年輕人揮汗努力，我也跟著有精神起來了。";
 	next;
-	mes "[Neighborhood Grandmother]";
-	mes "Oh, by the way. Did you know that?";
+	mes "[鄰居奶奶]";
+	mes "喔，對了。你知道嗎？";
 	next;
-	mes "[Neighborhood Grandmother]";
-	mes "Dummies in the training grounds that are strong against physical attacks have a sword icon above their heads, and dummies that are strong against magic attacks have a staff icon above their heads.";
+	mes "[鄰居奶奶]";
+	mes "訓練場裡對物理攻擊較強的假人頭上有劍的圖示，對魔法攻擊較強的假人頭上則有法杖的圖示。";
 	next;
-	mes "[Neighborhood Grandmother]";
-	mes "If you know this, you'll be able to hit them harder, right?";
+	mes "[鄰居奶奶]";
+	mes "知道這個的話，你就能打得更重，對吧？";
 	close;
 }
 
-tra_fild01,34,102,3	script	Cat#npc03	4_CAT_REST,{
-	npctalk "Meow-", "", bc_self;
+tra_fild01,34,102,3	script	貓#npc03::Cat#npc03	4_CAT_REST,{
+	npctalk "喵～", "", bc_self;
 	end;
 }
 
-tra_fild01,34,120,3	script	Fress#npc05	4_M_SITDOWN,{
-	mes "[Fress]";
-	mes "If you want to go to Prontera, you can exit through the guards located throughout the area or through the warp portals at 3 and 9 o'clock. Seriously.";
+tra_fild01,34,120,3	script	弗雷斯#npc05::Fress#npc05	4_M_SITDOWN,{
+	mes "[弗雷斯]";
+	mes "想去普隆德拉的話，可以從各處的衛兵那裡離開，或是透過三點鐘和九點鐘方向的傳送門。真的喔。";
 	close;
 }
 
-tra_fild01,128,142,7	script	Nine Oranges#npc04	4_F_ROGUE,{
-	mes "[Nine Oranges]";
-	mes "Remember! Once you've chosen a name, it's hard to change, so choose wisely.";
+tra_fild01,128,142,7	script	九顆橘子#npc04::Nine Oranges#npc04	4_F_ROGUE,{
+	mes "[九顆橘子]";
+	mes "記住！名字一旦選定就很難更改，所以要慎重選擇喔。";
 	next;
-	mes "[Nine Oranges]";
-	mes "By the way, where's the Undead Dummy?";
+	mes "[九顆橘子]";
+	mes "對了，不死假人在哪裡？";
 	next;
-	mes "[Nine Oranges]";
-	mes "My friend said it has a bone icon above its head...? You have to see it first.";
+	mes "[九顆橘子]";
+	mes "我朋友說它頭上有骨頭圖示……？你得先親眼看看。";
 	close;
 }
 
-tra_fild01,97,64,3	script	Village#npc01	4_M_CHN8GUEK,{
-	mes "[Village ]";
-	mes "Hi! The weather is really nice, isn't it? I came to check out the new training grounds.";
+tra_fild01,97,64,3	script	村莊#npc01::Village#npc01	4_M_CHN8GUEK,{
+	mes "[村莊 ]";
+	mes "嗨！天氣真好，對吧？我來看看新的訓練場。";
 	next;
-	mes "[Village ]";
-	mes "The old training grounds weren't bad, but they were actually renting space that beginners had been using for a long time, so there were some inconveniences.";
+	mes "[村莊 ]";
+	mes "舊訓練場其實不差，只是把新手長期使用的場地拿來出租，所以多少有些不便。";
 	next;
-	mes "[Village ]";
-	mes "But they're building such a spacious and nice new training ground. It seems like they're quite financially sound these days!";
+	mes "[村莊 ]";
+	mes "不過他們蓋的新訓練場又寬敞又好。看來最近財務狀況相當穩健呢！";
 	close;
 }
 
-tra_fild02,101,90,5	script	Jar Cat#npc09	4_CAT_SAILOR5,{
-	mes "[Jar Cat]";
-	mes "Is this your first time at the training grounds? I'll explain myself, as a veteran.";
+tra_fild02,101,90,5	script	罐子貓#npc09::Jar Cat#npc09	4_CAT_SAILOR5,{
+	mes "[罐子貓]";
+	mes "這是你第一次來訓練場嗎？身為老手，我來跟你解說一下吧。";
 	next;
-	mes "[Jar Cat]";
-	mes "There are three training grounds: the basic training ground, the 1/10 training ground, and the 1/100 training ground. I'll leave the differences between each training ground for you to discover for yourself.";
+	mes "[罐子貓]";
+	mes "訓練場共有三個:基礎訓練場、1/10 訓練場和 1/100 訓練場。各個訓練場之間的差異就留給你自己去發現吧。";
 	next;
-	mes "[Jar Cat]";
-	mes "Oh, right! To move to another training ground, you can use the warp portals at 3 o'clock and 9 o'clock. Remember!";
+	mes "[罐子貓]";
+	mes "喔對了！要前往其他訓練場，可以使用三點鐘和九點鐘方向的傳送門。記住喔！";
 	close;
 }
 
-tra_fild02,166,46,3	script	Little One#npc06	4_M_KID2,{
-	mes "[Little One]";
-	mes "Dad told me! The Dummys with staff icons above their heads are strong against magic!";
+tra_fild02,166,46,3	script	小不點#npc06::Little One#npc06	4_M_KID2,{
+	mes "[小不點]";
+	mes "爸爸跟我說的！頭上有法杖圖示的假人對魔法很強！";
 	next;
-	mes "[Little One]";
-	mes "So... if you can defeat those Dummys with magic, you're truly strong, right?!";
+	mes "[小不點]";
+	mes "所以……如果你能用魔法打倒那些假人，就是真正的強者，對吧？！";
 	close;
 }
 
-tra_fild02,129,93,6	script	Kekekekereurur#npc10	4_GEFFEN_02,{
-	mes "[Kekekekereurur]";
-	mes "They say training with the Dummys with cat icons above them will help you fight Doram in PvP.";
+tra_fild02,129,93,6	script	咯咯咯咯#npc10::Kekekekereurur#npc10	4_GEFFEN_02,{
+	mes "[咯咯咯咯]";
+	mes "聽說跟頭上有貓圖示的假人練習，能幫你在 PvP 中對付多蘭。";
 	next;
-	mes "[Kekekekereurur]";
-	mes "I'm definitely not practicing here after getting beat up by a passing Doram. Remember!";
+	mes "[咯咯咯咯]";
+	mes "我才不是因為被路過的多蘭揍了一頓，才跑來這裡練習的。記住喔！";
 	close;
 }
 
-tra_fild03,98,46,7	script	Lumberjack#npc13	4_M_NOV_HUNT,{
-	mes "[Lumberjack]";
-	mes "Whoosh- Cha-Whoosh- Cha-";
+tra_fild03,98,46,7	script	伐木工#npc13::Lumberjack#npc13	4_M_NOV_HUNT,{
+	mes "[伐木工]";
+	mes "嗖——咔嚓——嗖——咔嚓——";
 	close;
 }
 
-tra_fild03,53,140,5	script	Dong#npc15	4_M_CACTUSMAN1,{
-	mes "[Dong]";
-	mes "Aaaah- Stop! Stop! I'm not a monster. Don't attack me.";
+tra_fild03,53,140,5	script	東#npc15::Dong#npc15	4_M_CACTUSMAN1,{
+	mes "[東]";
+	mes "啊啊啊——住手！住手！我不是怪物，別攻擊我。";
 	next;
-	mes "[Dong]";
-	mes "Whew- Thank you. Some people often mistake me for the monster Mukka, but I'm a cactus from a place called RockRidge.";
+	mes "[東]";
+	mes "呼——謝謝你。有些人常把我誤認成怪物木卡，但我是來自岩脊的仙人掌。";
 	next;
-	mes "[Dong]";
-	mes "If you visit RockRidge, you can meet our living, breathing Cacti, the Cactus. Come visit. Hahaha.";
+	mes "[東]";
+	mes "如果你去岩脊，就能見到我們活生生的仙人掌族。歡迎來玩。哈哈哈。";
 	close;
 }
 
-tra_fild03,92,108,7	script	Cat#npc12	4_CAT_REST,{
-	npctalk "Gororong-", "", bc_self;
+tra_fild03,92,108,7	script	貓#npc12::Cat#npc12	4_CAT_REST,{
+	npctalk "咕嚕嚕——", "", bc_self;
 	end;
 }
 
-tra_fild03,180,102,4	script	Coco#npc14	4_COCO,{
+tra_fild03,180,102,4	script	可可#npc14::Coco#npc14	4_COCO,{
 	emotion ET_QUESTION;
-	mes "[Coco]";
+	mes "[可可]";
 	mes "?";
 	close;
 }

@@ -14,42 +14,42 @@
 //= 1.1 Optimized. [Euphy]
 //============================================================ 
 
-pvp_y_room,77,85,4	script	Guild Battle Guide	105,{
+pvp_y_room,77,85,4	script	公會戰嚮導::Guild Battle Guide	105,{
 
 	setarray .@map1X[1],7,9,16,8,20;
 	setarray .@map2X[1],91,90,83,91,79;
 	setarray .@mapY[1],49,49,50,49,50;
 
-	mes "[Guild Battle Guide]";
+	mes "[公會戰嚮導]";
 	mes "最近過得如何？";
-	mes "I'm the Guild Battle Guide";
-	mes "for the new PvP maps.";
-	mes "Let me know to which map";
-	mes "you want me to move you.";
+	mes "我是公會戰嚮導";
+	mes "負責新的PvP地圖。";
+	mes "請告訴我";
+	mes "要把你傳送到哪一張地圖。";
 	next;
-	set .@i, select("Map 1:Map 2:Map 3:Map 4:Map 5");
-	mes "[Guild Battle Guide]";
-	mes "You've chosen Map "+.@i+".";
-	mes "Now, which team are";
-	mes "you on? You can choose";
-	mes "either Team 1 or Team 2.";
+	set .@i, select("地圖1:地圖2:地圖3:地圖4:地圖5");
+	mes "[公會戰嚮導]";
+	mes "你選擇了地圖 "+.@i+".";
+	mes "現在，你是哪一隊的";
+	mes "？你可以選擇";
+	mes "隊伍1或隊伍2。";
 	next;
-	set .@j, select("Team 1:Team 2");
-	mes "[Guild Battle Guide]";
-	mes "Alright, I'll move you";
-	mes "to Map "+.@i+" as a member";
-	mes "of Team "+.@j+". Are you ready";
-	mes "to be transported there now?";
+	set .@j, select("隊伍1:隊伍2");
+	mes "[公會戰嚮導]";
+	mes "好的，我會把你";
+	mes "傳送到地圖 "+.@i+" 並以成員身分";
+	mes "加入隊伍 "+.@j+"。你準備好";
+	mes "現在就前往那裡了嗎？";
 	next;
 	if(select("是:否") == 2) {
-		mes "[Guild Battle Guide]";
-		mes "Alright, I hope to";
-		mes "see you again on";
-		mes "the PvP fields!";
+		mes "[公會戰嚮導]";
+		mes "好的，希望能";
+		mes "在";
+		mes "PvP 戰場上再見到你！";
 		close;
 	}
-	mes "[Guild Battle Guide]";
-	mes "Great! Have a good time~";
+	mes "[公會戰嚮導]";
+	mes "太好了！祝你玩得愉快～";
 	close2;
 	warp "guild_vs"+.@i,getd(".@map"+.@j+"X["+.@i+"]"),.@mapY[.@i];
 	end;

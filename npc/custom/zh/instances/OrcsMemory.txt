@@ -73,7 +73,7 @@ gef_fild10,242,202,0	script	Dimensional Gorge Piece	406,{
 	} else if (.@orctime == 0 || .@orctime == 1) {
 		mes "You can enter the Dungeon if it has been generated.";
 		next;
-		if(select("Enter the Dungeon "+.@md_name$+":Cancel") == 2)
+		if(select("Enter the Dungeon "+.@md_name$+":取消") == 2)
 			close;
 		callsub L_Enter,0;
 	} else if (.@orctime == 2) {
@@ -86,7 +86,7 @@ gef_fild10,242,202,0	script	Dimensional Gorge Piece	406,{
 L_Enter:
 	switch(instance_enter("Orc's Memory")) {
 	case IE_OTHER:
-		mes "An unknown error has occurred.";
+		mes "發生了未知的錯誤。";
 		close;
 	case IE_NOINSTANCE:
 		mes "Memorial Dungeon Orc's Memory does not exist.";

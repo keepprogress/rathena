@@ -356,7 +356,7 @@ gef_tower,57,167,3	script	Amateur Collector#pa0829	1_F_01,{
 		close;
 	}
 	mes "[Amateur Collector]";
-	mes "If you bring me a " + mesitemlink(25235, false) + ", I can enchant a wonderful effect on your accessory!";
+	mes "如果你帶來一個 " + mesitemlink(25235, false) + ", I can enchant a wonderful effect on your accessory!";
 	next;
 	switch( select( "What can you do with the Crafting Stone?", "Accessory Enchantment", "Reset Enchant" ) ) {
 	case 1:
@@ -554,7 +554,7 @@ gef_tower,57,167,3	script	Amateur Collector#pa0829	1_F_01,{
 			mes "[Amateur Collector]";
 			mes "Please select an enchantment type~";
 			next;
-			switch( select( "Physical", "Magical", "Ranged" ) ) {
+			switch( select( "Physical", "Magical", "遠程" ) ) {
 			case 1:
 				if (.@pos == 2)
 					.@equip_card[2] = F_enchant(2);
@@ -609,7 +609,7 @@ gef_tower,57,167,3	script	Amateur Collector#pa0829	1_F_01,{
 		default:	// Normal Accessory Enchantment
 			if (.@equip_card[3] != 0) {
 				mes "[Amateur Collector]";
-				mes "此外 " + mesitemlink(.@equip_id, false) + " already has an enchant.";
+				mes "此外 " + mesitemlink(.@equip_id, false) + " 已經有附魔了。";
 				mes "I cannot work on this any further.";
 				close;
 			}

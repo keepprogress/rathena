@@ -8,12 +8,12 @@
 //= 1.2 Added warp to the Illusion Investigation room [Capuche]
 //============================================================
 
-prt_lib_q,9,25,0	script	lib_q_to_pprt	WARPNPC,1,1,{
+prt_lib_q,9,25,0	script	lib_q_to_pprt::lib_q_to_pprt	WARPNPC,1,1,{
 	end;
 OnTouch:
 	if (ep16_royal < 21) {
-		mes "There are more to find out.";
-		mes "Go back to Nillem.";
+		mes "目前還有更多等待發掘。";
+		mes "返回尼勒姆。";
 		close;
 	}
 	warp "prt_q",155,354;
@@ -24,11 +24,11 @@ prt_cas,152,163,0	script	way_to_qroom_L_qroom_L_to_way	WARPNPC,1,1,{
 	end;
 OnTouch:
 	if (ep16_royal == 0) {
-		npctalk "That way is a royal villa for VIPs. Outsiders cannot access the place.", "Royal Guardian Knight#02", bc_self;
+		npctalk "那邊是貴賓專用的皇家別墅，外人無法進入。", "皇家近衛騎士#02", bc_self;
 		setpcblock PCBLOCK_NPC, true;
 		sleep2 3000;
 		setpcblock PCBLOCK_NPC, false;
-		npctalk "If you are invited, a severnt should be there to greet you. Please be guided officially.", "Royal Guardian Knight#02", bc_self;
+		npctalk "若您受到邀請，會有僕人在此迎接您。請依正式程序前往。", "皇家近衛騎士#02", bc_self;
 		end;
 	}
 	warp "prt_cas_q",150,8;
@@ -39,11 +39,11 @@ prt_cas,278,163,0	script	way_to_qroom_R_qroom_R_to_way	WARPNPC,1,1,{
 	end;
 OnTouch:
 	if (ep16_royal == 0) {
-		npctalk "That way is a royal villa for VIPs. Outsiders cannot access the place.", "Royal Guardian Knight#03", bc_self;
+		npctalk "那邊是貴賓專用的皇家別墅，外人無法進入。", "皇家近衛騎士#03", bc_self;
 		setpcblock PCBLOCK_NPC, true;
 		sleep2 3000;
 		setpcblock PCBLOCK_NPC, false;
-		npctalk "If you are invited, a severnt should be there to greet you. Please be guided officially.", "Royal Guardian Knight#03", bc_self;
+		npctalk "若您受到邀請，會有僕人在此迎接您。請依正式程序前往。", "皇家近衛騎士#03", bc_self;
 		end;
 	}
 	warp "prt_cas_q",135,119;
@@ -54,7 +54,7 @@ prt_cas_q,130,32,0	script	qroom_heine_in_qroom_heine_out	WARPNPC,1,1,{
 	end;
 OnTouch:
 	if (ep16_royal > 7 && ep16_royal < 16) {
-		mes "It is locked.";
+		mes "上鎖了。";
 		close;
 	}
 	warp "prt_cas_q",30,78;
@@ -65,12 +65,12 @@ prt_cas_q,130,56,0	script	qroom_nerius_in_qroom_nerius_out	WARPNPC,1,1,{
 	end;
 OnTouch:
 	if (ep16_royal > 2 && ep16_royal < 15 && ep16_royal != 7) {
-		mes "It is locked.";
+		mes "上鎖了。";
 		close;
 	}
 	if (ep16_royal == 15) {
 		if (isbegin_quest(7697) < 1) {
-			mes "Let's first reply to the servant that the invitation will be accepted.";
+			mes "我們先回覆僕人，表示會接受邀請。";
 			close;
 		}
 	}
@@ -78,27 +78,27 @@ OnTouch:
     end;
 }
 
-prt_lib,9,24,0	script	lib_to_prt_prison	WARPNPC,1,1,{
+prt_lib,9,24,0	script	lib_to_prt_prison::lib_to_prt_prison	WARPNPC,1,1,{
 	end;
 OnTouch_:
 	if (ep16_royal > 13)
 		warp "prt_pri00",60,127;
 	else {
-		mes "[Guardian Knight]";
-		mes "You cannot go that way.";
+		mes "[近衛騎士]";
+		mes "您不能從那邊走。";
 		close2;
 		warp "prt_lib",60,61;
 	}
 	end;
 }
 
-prt_cas,188,258,0	script	prt_cas_to_prt_pri00	WARPNPC,1,1,{
+prt_cas,188,258,0	script	prt_cas_to_prt_pri00::prt_cas_to_prt_pri00	WARPNPC,1,1,{
 	end;
 OnTouch_:
 	if (ep16_royal >= 2)
 		warp "prt_pri00",54,134;
 	else {
-		npctalk "You shouldn't enter the place like that.", "Guardian Knight#ep16_prigate01", bc_self;
+		npctalk "您不該這樣進入那裡。", "近衛騎士#ep16_prigate01", bc_self;
 		setpcblock PCBLOCK_NPC, true;
 		sleep2 2000;
 		setpcblock PCBLOCK_NPC, false;

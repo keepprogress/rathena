@@ -9,12 +9,12 @@
 
 prontera,246,62,3	script	訓練教官#prontera_in::Training Instructor#prontera_in	8W_SOLDIER,{
 	mes "[訓練教官]";
-	mes "The royal court has set up a training ground for adventurers who wish to test their skills. If you wish to test your skills under various conditions, we will send you to the training ground.";
+	mes "皇家宮廷為想要測試實力的冒險者設置了訓練場。若您想在各種條件下測試實力，我們會將您傳送至訓練場。";
 	next;
 	switch( select( "��Enter Basic Training Ground", "��Enter 1/10 Training Ground", "��Enter 1/100 Training Ground", "��Cancel" ) ) {
 	case 1:
 		mes "[訓練教官]";
-		mes "I'll send you to the Basic Training Ground.";
+		mes "我會把您傳送到基礎訓練場。";
 		close2;
 		.@x = rand(109,110);
 		.@y = rand(93,94);
@@ -22,7 +22,7 @@ prontera,246,62,3	script	訓練教官#prontera_in::Training Instructor#prontera_
 		break;
 	case 2:
 		mes "[訓練教官]";
-		mes "I'll send you to the 1/10 Training Ground.";
+		mes "我會把您傳送到1/10訓練場。";
 		close2;
 		.@x = rand(109,110);
 		.@y = rand(93,94);
@@ -30,7 +30,7 @@ prontera,246,62,3	script	訓練教官#prontera_in::Training Instructor#prontera_
 		break;
 	case 3:
 		mes "[訓練教官]";
-		mes "I'll send you to the 1/100 Training Ground.";
+		mes "我會把您傳送到1/100訓練場。";
 		close2;
 		.@x = rand(109,110);
 		.@y = rand(93,94);
@@ -44,9 +44,9 @@ prontera,246,62,3	script	訓練教官#prontera_in::Training Instructor#prontera_
 
 
 // Warps
-tra_fild01,204,117,2	script	Training Ground Manager#fild01_1	8W_SOLDIER,{
-	mes "[Training Ground Manager]";
-	mes "Need to move to a different area within the training ground? Please select the location you'd like to move to.";
+tra_fild01,204,117,2	script	訓練場管理員#fild01_1::Training Ground Manager#fild01_1	8W_SOLDIER,{
+	mes "[訓練場管理員]";
+	mes "需要在訓練場內移動到其他區域嗎？請選擇您想前往的地點。";
 	next;
 	switch( atoi( charat(strnpcinfo(2), 7) ) ) {
 	case 1:
@@ -95,19 +95,19 @@ tra_fild01,204,117,2	script	Training Ground Manager#fild01_1	8W_SOLDIER,{
 	}
 	end;
 }
-tra_fild01,15,117,6	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild01_2	8W_SOLDIER
-tra_fild01,106,32,0	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild01_3	8W_SOLDIER
-tra_fild01,108,100,4	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild01_4	8W_SOLDIER
+tra_fild01,15,117,6	duplicate(Training Ground Manager#fild01_1)	訓練場管理員#fild01_2::Training Ground Manager#fild01_2	8W_SOLDIER
+tra_fild01,106,32,0	duplicate(Training Ground Manager#fild01_1)	訓練場管理員#fild01_3::Training Ground Manager#fild01_3	8W_SOLDIER
+tra_fild01,108,100,4	duplicate(Training Ground Manager#fild01_1)	訓練場管理員#fild01_4::Training Ground Manager#fild01_4	8W_SOLDIER
 
-tra_fild02,204,117,2	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild02_1	8W_SOLDIER
-tra_fild02,15,117,6	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild02_2	8W_SOLDIER
-tra_fild02,106,32,0	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild02_3	8W_SOLDIER
-tra_fild02,108,100,4	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild02_4	8W_SOLDIER
+tra_fild02,204,117,2	duplicate(Training Ground Manager#fild01_1)	訓練場管理員#fild02_1::Training Ground Manager#fild02_1	8W_SOLDIER
+tra_fild02,15,117,6	duplicate(Training Ground Manager#fild01_1)	訓練場管理員#fild02_2::Training Ground Manager#fild02_2	8W_SOLDIER
+tra_fild02,106,32,0	duplicate(Training Ground Manager#fild01_1)	訓練場管理員#fild02_3::Training Ground Manager#fild02_3	8W_SOLDIER
+tra_fild02,108,100,4	duplicate(Training Ground Manager#fild01_1)	訓練場管理員#fild02_4::Training Ground Manager#fild02_4	8W_SOLDIER
 
-tra_fild03,204,117,2	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild03_1	8W_SOLDIER
-tra_fild03,15,117,6	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild03_2	8W_SOLDIER
-tra_fild03,106,32,0	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild03_3	8W_SOLDIER
-tra_fild03,108,100,4	duplicate(Training Ground Manager#fild01_1)	Training Ground Manager#fild03_4	8W_SOLDIER
+tra_fild03,204,117,2	duplicate(Training Ground Manager#fild01_1)	訓練場管理員#fild03_1::Training Ground Manager#fild03_1	8W_SOLDIER
+tra_fild03,15,117,6	duplicate(Training Ground Manager#fild01_1)	訓練場管理員#fild03_2::Training Ground Manager#fild03_2	8W_SOLDIER
+tra_fild03,106,32,0	duplicate(Training Ground Manager#fild01_1)	訓練場管理員#fild03_3::Training Ground Manager#fild03_3	8W_SOLDIER
+tra_fild03,108,100,4	duplicate(Training Ground Manager#fild01_1)	訓練場管理員#fild03_4::Training Ground Manager#fild03_4	8W_SOLDIER
 
 tra_fild01,12,114,0	script	tra_fild01_out1	WARPNPC,2,2,{
 	end;

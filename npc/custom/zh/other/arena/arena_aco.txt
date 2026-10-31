@@ -17,19 +17,19 @@
 //= 1.5 Added GM management function. [Euphy]
 //============================================================
 
-arena_room,114,102,0	script	onlyaco#arena	45,1,1,{
+arena_room,114,102,0	script	onlyaco#arena::onlyaco#arena	45,1,1,{
 OnTouch_:
 	if (BaseClass == Job_Acolyte) {
 		warp "arena_room",135,129;
 		end;
 	}
 	else {
-		mes "Only Acolyte class are applicable to join this mode.";
+		mes "只有見習祭司職業可以參加此模式。";
 		close;
 	}
 }
 
-arena_room,136,138,3	script	Acolyte Waiting Room	124,{
+arena_room,136,138,3	script	服事者等候室::Acolyte Waiting Room	124,{
 	end;
 
 OnInit:
@@ -48,7 +48,7 @@ OnStart:
 	end;
 }
 
-force_5-1,100,12,0	script	arena#aco	-1,5,5,{
+force_5-1,100,12,0	script	arena#aco::arena#aco	-1,5,5,{
 OnTouch_:
 	donpcevent "allkill#aco::OnEnable";
 	if (BaseJob == Job_Acolyte) {
@@ -119,68 +119,68 @@ OnEnable:
 	end;
 
 OnTimer2000:
-	mapannounce "force_5-1","Good day! I am Trocco, your host for the Acolyte Class Time Force Battle!",bc_map|bc_npc;
+	mapannounce "force_5-1","您好！我是特羅可，是見習祭司職業時間突襲戰的主持人！",bc_map|bc_npc;
 	end;
 
 OnTimer3000:
-	mapannounce "force_5-1","Make your decisions carefully. Here, the right choices make the difference between victory and defeat!",bc_map|bc_npc;
+	mapannounce "force_5-1","請謹慎做出決定。在這裡，正確的選擇決定勝負！",bc_map|bc_npc;
 	end;
 
 OnTimer4000:
-	mapannounce "force_5-1","You now have 8 minutes to complete this challenge. Enter the Left Entrance now to begin. Remember that you will be traveling clockwise as you clear the stages.",bc_map|bc_npc;
+	mapannounce "force_5-1","你現在有 8 分鐘完成這場挑戰。請從左側入口進入開始挑戰。記住，你通過各個關卡時將順時針前進。",bc_map|bc_npc;
 	end;
 
 OnTimer60000:
 	if (getmapusers("force_5-1") == 0) {
 		donpcevent "Trocco#aco1::OnFailClearStage";
 	}
-	mapannounce "force_5-1","Time left: 7 Minutes",bc_map|bc_npc;
+	mapannounce "force_5-1","剩餘時間:7 分鐘",bc_map|bc_npc;
 	end;
 
 OnTimer120000:
 	if (getmapusers("force_5-1") == 0) {
 		donpcevent "Trocco#aco1::OnFailClearStage";
 	}
-	mapannounce "force_5-1","Time left: 6 Minutes",bc_map|bc_npc;
+	mapannounce "force_5-1","剩餘時間:6 分鐘",bc_map|bc_npc;
 	end;
 
 OnTimer180000:
 	if (getmapusers("force_5-1") == 0) {
 		donpcevent "Trocco#aco1::OnFailClearStage";
 	}
-	mapannounce "force_5-1","Time left: 5 Minutes",bc_map|bc_npc;
+	mapannounce "force_5-1","剩餘時間:5 分鐘",bc_map|bc_npc;
 	end;
 
 OnTimer240000:
 	if (getmapusers("force_5-1") == 0) {
 		donpcevent "Trocco#aco1::OnFailClearStage";
 	}
-	mapannounce "force_5-1","Time left: 4 Minutes",bc_map|bc_npc;
+	mapannounce "force_5-1","剩餘時間:4 分鐘",bc_map|bc_npc;
 	end;
 
 OnTimer300000:
 	if (getmapusers("force_5-1") == 0) {
 		donpcevent "Trocco#aco1::OnFailClearStage";
 	}
-	mapannounce "force_5-1","Time left: 3 Minutes",bc_map|bc_npc;
+	mapannounce "force_5-1","剩餘時間:3 分鐘",bc_map|bc_npc;
 	end;
 
 OnTimer360000:
 	if (getmapusers("force_5-1") == 0) {
 		donpcevent "Trocco#aco1::OnFailClearStage";
 	}
-	mapannounce "force_5-1","Time left: 2 Minutes",bc_map|bc_npc;
+	mapannounce "force_5-1","剩餘時間:2 分鐘",bc_map|bc_npc;
 	end;
 
 OnTimer420000:
 	if (getmapusers("force_5-1") == 0) {
 		donpcevent "Trocco#aco1::OnFailClearStage";
 	}
-	mapannounce "force_5-1","Time left: 1 Minute",bc_map|bc_npc;
+	mapannounce "force_5-1","剩餘時間:1 分鐘",bc_map|bc_npc;
 	end;
 
 OnTimer480000:
-	mapannounce "force_5-1","Time's up! I hope you had fun!",bc_map|bc_npc;
+	mapannounce "force_5-1","時間到！希望你玩得開心！",bc_map|bc_npc;
 	end;
 
 OnTimer485000:
@@ -213,67 +213,67 @@ OnFailClearStage:
 	end;
 
 On01_Start:
-	mapannounce "force_5-1","Objective: Destroy all Red Plants!",bc_map|bc_npc;
+	mapannounce "force_5-1","目標:摧毀所有紅色植物！",bc_map|bc_npc;
 	end;
 
 On01_End:
-	mapannounce "force_5-1","The North Exit has opened!",bc_map|bc_npc;
+	mapannounce "force_5-1","北側出口已開啟！",bc_map|bc_npc;
 	end;
 
 On02_Start:
-	mapannounce "force_5-1","Objective: Kill at least 10 Drops!",bc_map|bc_npc;
+	mapannounce "force_5-1","目標:擊殺至少 10 隻土波利！",bc_map|bc_npc;
 	end;
 
 On02_End:
-	mapannounce "force_5-1","The North Exit has opened!",bc_map|bc_npc;
+	mapannounce "force_5-1","北側出口已開啟！",bc_map|bc_npc;
 	end;
 
 On03_Start:
-	mapannounce "force_5-1","Objective: Terminate all Zombies!",bc_map|bc_npc;
+	mapannounce "force_5-1","目標:消滅所有腐屍！",bc_map|bc_npc;
 	end;
 
 On03_End:
-	mapannounce "force_5-1","The East Exit has opened!",bc_map|bc_npc;
+	mapannounce "force_5-1","東側出口已開啟！",bc_map|bc_npc;
 	end;
 
 On04_Start:
-	mapannounce "force_5-1","As a courtesy, we'll restore some of your HP and SP. Now, head to the next room! Go go go!!",bc_map|bc_npc;
+	mapannounce "force_5-1","作為謝禮，我們會恢復你一部分的 HP 與 SP。現在，前往下一個房間！快去快去！！",bc_map|bc_npc;
 	end;
 
 On05_Start:
-	mapannounce "force_5-1","Objective: Obliterate all Orc Zombies!",bc_map|bc_npc;
+	mapannounce "force_5-1","目標:消滅所有獸人腐屍！",bc_map|bc_npc;
 	end;
 
 On05_End:
-	mapannounce "force_5-1","The South Exit has opened!",bc_map|bc_npc;
+	mapannounce "force_5-1","南側出口已開啟！",bc_map|bc_npc;
 	end;
 
 On06_Start:
-	mapannounce "force_5-1","Objective: Reach the South Exit while dodging Hydras!",bc_map|bc_npc;
+	mapannounce "force_5-1","目標:在閃避九頭蛇的同時抵達南側出口！",bc_map|bc_npc;
 	end;
 
 On07_Start:
-	mapannounce "force_5-1","Objective: Kill all Archer Skeletons and Firelock Soldiers!",bc_map|bc_npc;
+	mapannounce "force_5-1","目標:擊殺所有弓箭骷髏與火槍士兵！",bc_map|bc_npc;
 	end;
 
 On07_End:
-	mapannounce "force_5-1","The West Exit has opened!",bc_map|bc_npc;
+	mapannounce "force_5-1","西側出口已開啟！",bc_map|bc_npc;
 	end;
 
 On08_Start:
-	mapannounce "force_5-1","Objective: Boss Battle. Please proceed to the room to the north!",bc_map|bc_npc;
+	mapannounce "force_5-1","目標:頭目戰。請前往北方的房間！",bc_map|bc_npc;
 	end;
 
 On09_Start:
-	mapannounce "force_5-1","Objective: Kill Zombie Prisoners, Skel Prisoners and Zombie Troops!",bc_map|bc_npc;
+	mapannounce "force_5-1","目標:擊殺腐屍囚犯、骷髏囚犯與腐屍部隊！",bc_map|bc_npc;
 	end;
 
 On09_End:
-	mapannounce "force_5-1","Boss Defeated! The North Exit has opened. Thank you.",bc_map|bc_npc;
+	mapannounce "force_5-1","頭目已擊敗！北側出口已開啟。謝謝你。",bc_map|bc_npc;
 	end;
 }
 
-force_5-1,40,26,0	script	force_01start#aco	-1,1,1,{
+force_5-1,40,26,0	script	force_01start#aco::force_01start#aco	-1,1,1,{
 OnTouch_:
 	donpcevent "force_01mob#aco::OnEnable";
 	disablenpc "force_01start#aco";
@@ -302,7 +302,7 @@ OnMyMobDead:
 	end;
 }
 
-force_5-1,25,69,0	script	force_02start#aco	-1,1,1,{
+force_5-1,25,69,0	script	force_02start#aco::force_02start#aco	-1,1,1,{
 OnTouch_:
 	set $@drop_gate,0;
 	donpcevent "force_02mob#aco::OnEnable";
@@ -329,7 +329,7 @@ OnMyMobDead:
 	end;
 }
 
-force_5-1,25,159,0	script	force_03start#aco	-1,1,1,{
+force_5-1,25,159,0	script	force_03start#aco::force_03start#aco	-1,1,1,{
 OnTouch_:
 	donpcevent "force_03mob#aco::OnEnable";
 	disablenpc "force_03start#aco";
@@ -353,7 +353,7 @@ OnMyMobDead:
 	end;
 }
 
-force_5-1,69,174,0	script	force_04start#aco	-1,1,1,{
+force_5-1,69,174,0	script	force_04start#aco::force_04start#aco	-1,1,1,{
 OnTouch_:
 	donpcevent "Trocco#aco1::On04_Start";
 	donpcevent "arena_aco1::OnReset_04";
@@ -362,7 +362,7 @@ OnTouch_:
 	end;
 }
 
-force_5-1,159,174,0	script	force_05start#aco	-1,1,1,{
+force_5-1,159,174,0	script	force_05start#aco::force_05start#aco	-1,1,1,{
 OnTouch_:
 	donpcevent "force_05mob#aco::OnEnable";
 	disablenpc "force_05start#aco";
@@ -387,7 +387,7 @@ OnMyMobDead:
 	end;
 }
 
-force_5-1,174,130,0	script	force_06start#aco	-1,1,1,{
+force_5-1,174,130,0	script	force_06start#aco::force_06start#aco	-1,1,1,{
 OnTouch_:
 	donpcevent "force_06mob#aco::OnEnable";
 	donpcevent "arena_aco1::OnReset_06";
@@ -425,7 +425,7 @@ OnMyMobDead:
 	end;
 }
 
-force_5-1,174,40,0	script	force_07start#aco	-1,1,1,{
+force_5-1,174,40,0	script	force_07start#aco::force_07start#aco	-1,1,1,{
 OnTouch_:
 	donpcevent "force_07mob#aco::OnEnable";
 	disablenpc "force_07start#aco";
@@ -453,7 +453,7 @@ OnMyMobDead:
 	end;
 }
 
-force_5-1,132,26,0	script	force_08start#aco	-1,1,1,{
+force_5-1,132,26,0	script	force_08start#aco::force_08start#aco	-1,1,1,{
 OnTouch_:
 	percentheal 50,50;
 	donpcevent "Trocco#aco1::On08_Start";
@@ -462,7 +462,7 @@ OnTouch_:
 	end;
 }
 
-force_5-1,99,82,0	script	force_09start#aco	-1,1,1,{
+force_5-1,99,82,0	script	force_09start#aco::force_09start#aco	-1,1,1,{
 OnTouch_:
 	donpcevent "Trocco#aco1::On09_Start";
 	donpcevent "force_09mob#aco::OnEnable";
@@ -547,68 +547,68 @@ OnEnable:
 	end;
 
 OnTimer2000:
-	mapannounce "force_5-1","Good day! I am Trocco, your host for the Acolyte Class Time Force Battle!",bc_map|bc_npc;
+	mapannounce "force_5-1","您好！我是特羅可，是見習祭司職業時間突襲戰的主持人！",bc_map|bc_npc;
 	end;
 
 OnTimer3000:
-	mapannounce "force_5-1","Make your decisions carefully. Here, the right choices make the difference between victory and defeat!",bc_map|bc_npc;
+	mapannounce "force_5-1","請謹慎做出決定。在這裡，正確的選擇決定勝負！",bc_map|bc_npc;
 	end;
 
 OnTimer4000:
-	mapannounce "force_5-1","You now have 8 minutes to complete this challenge. Enter the Left Entrance now to begin. Remember that you will be traveling clockwise as you clear the stages.",bc_map|bc_npc;
+	mapannounce "force_5-1","你現在有 8 分鐘完成這場挑戰。請從左側入口進入開始挑戰。記住，你通過各個關卡時將順時針前進。",bc_map|bc_npc;
 	end;
 
 OnTimer60000:
 	if (getmapusers("force_5-1") == 0) {
 		donpcevent "Trocco#aco2::OnFailClearStage";
 	}
-	mapannounce "force_5-1","Time left: 7 Minutes",bc_map|bc_npc;
+	mapannounce "force_5-1","剩餘時間:7 分鐘",bc_map|bc_npc;
 	end;
 
 OnTimer120000:
 	if (getmapusers("force_5-1") == 0) {
 		donpcevent "Trocco#aco2::OnFailClearStage";
 	}
-	mapannounce "force_5-1","Time left: 6 Minutes",bc_map|bc_npc;
+	mapannounce "force_5-1","剩餘時間:6 分鐘",bc_map|bc_npc;
 	end;
 
 OnTimer180000:
 	if (getmapusers("force_5-1") == 0) {
 		donpcevent "Trocco#aco2::OnFailClearStage";
 	}
-	mapannounce "force_5-1","Time left: 5 Minutes",bc_map|bc_npc;
+	mapannounce "force_5-1","剩餘時間:5 分鐘",bc_map|bc_npc;
 	end;
 
 OnTimer240000:
 	if (getmapusers("force_5-1") == 0) {
 		donpcevent "Trocco#aco2::OnFailClearStage";
 	}
-	mapannounce "force_5-1","Time left: 4 Minutes",bc_map|bc_npc;
+	mapannounce "force_5-1","剩餘時間:4 分鐘",bc_map|bc_npc;
 	end;
 
 OnTimer300000:
 	if (getmapusers("force_5-1") == 0) {
 		donpcevent "Trocco#aco2::OnFailClearStage";
 	}
-	mapannounce "force_5-1","Time left: 3 Minutes",bc_map|bc_npc;
+	mapannounce "force_5-1","剩餘時間:3 分鐘",bc_map|bc_npc;
 	end;
 
 OnTimer360000:
 	if (getmapusers("force_5-1") == 0) {
 		donpcevent "Trocco#aco2::OnFailClearStage";
 	}
-	mapannounce "force_5-1","Time left: 2 Minutes",bc_map|bc_npc;
+	mapannounce "force_5-1","剩餘時間:2 分鐘",bc_map|bc_npc;
 	end;
 
 OnTimer420000:
 	if (getmapusers("force_5-1") == 0) {
 		donpcevent "Trocco#aco2::OnFailClearStage";
 	}
-	mapannounce "force_5-1","Time left: 1 Minute",bc_map|bc_npc;
+	mapannounce "force_5-1","剩餘時間:1 分鐘",bc_map|bc_npc;
 	end;
 
 OnTimer480000:
-	mapannounce "force_5-1","Time's up! I hope you had fun!",bc_map|bc_npc;
+	mapannounce "force_5-1","時間到！希望你玩得開心！",bc_map|bc_npc;
 	end;
 
 OnTimer485000:
@@ -641,75 +641,75 @@ OnFailClearStage:
 	end;
 
 On01_Start:
-	mapannounce "force_5-1","Objective: Kill all Zombies!",bc_map|bc_npc;
+	mapannounce "force_5-1","目標:擊殺所有腐屍！",bc_map|bc_npc;
 	end;
 
 On01_End:
-	mapannounce "force_5-1","The North Exit has opened!",bc_map|bc_npc;
+	mapannounce "force_5-1","北側出口已開啟！",bc_map|bc_npc;
 	end;
 
 On02_Start:
-	mapannounce "force_5-1","Objective: Defeat all monsters!",bc_map|bc_npc;
+	mapannounce "force_5-1","目標:擊敗所有怪物！",bc_map|bc_npc;
 	end;
 
 On02_End:
-	mapannounce "force_5-1","The North Exit has opened!",bc_map|bc_npc;
+	mapannounce "force_5-1","北側出口已開啟！",bc_map|bc_npc;
 	end;
 
 On03_Start:
-	mapannounce "force_5-1","Objective: Destroy all Red Plants!",bc_map|bc_npc;
+	mapannounce "force_5-1","目標:摧毀所有紅色植物！",bc_map|bc_npc;
 	end;
 
 On03_End:
-	mapannounce "force_5-1","The East Exit has opened!",bc_map|bc_npc;
+	mapannounce "force_5-1","東側出口已開啟！",bc_map|bc_npc;
 	end;
 
 On04_Start:
-	mapannounce "force_5-1","Objective: Obliterate every monster!",bc_map|bc_npc;
+	mapannounce "force_5-1","目標:消滅所有怪物！",bc_map|bc_npc;
 	end;
 
 On04_End:
-	mapannounce "force_5-1","The East Exit has opened!",bc_map|bc_npc;
+	mapannounce "force_5-1","東側出口已開啟！",bc_map|bc_npc;
 	end;
 
 On05_Start:
-	mapannounce "force_5-1","Objective: Defeat Gargoyle!",bc_map|bc_npc;
+	mapannounce "force_5-1","目標:擊敗蝙蝠弓箭手！",bc_map|bc_npc;
 	end;
 
 On05_End:
-	mapannounce "force_5-1","The South Exit has opened!",bc_map|bc_npc;
+	mapannounce "force_5-1","南側出口已開啟！",bc_map|bc_npc;
 	end;
 
 On06_Start:
-	mapannounce "force_5-1","Objective: Kill all Khalitzburgs!",bc_map|bc_npc;
+	mapannounce "force_5-1","目標:擊殺所有卡利茲堡！",bc_map|bc_npc;
 	end;
 
 On06_End:
-	mapannounce "force_5-1","The South Exit has opened!",bc_map|bc_npc;
+	mapannounce "force_5-1","南側出口已開啟！",bc_map|bc_npc;
 	end;
 
 On07_Start:
-	mapannounce "force_5-1","Objective: Kill 1 Ancient Mummy!",bc_map|bc_npc;
+	mapannounce "force_5-1","目標:擊殺 1 隻狂暴木乃伊！",bc_map|bc_npc;
 	end;
 
 On07_End:
-	mapannounce "force_5-1","The West Exit has opened!",bc_map|bc_npc;
+	mapannounce "force_5-1","西側出口已開啟！",bc_map|bc_npc;
 	end;
 
 On08_Start:
-	mapannounce "force_5-1","The time has come for the Boss Battle. Please move north into the next room...",bc_map|bc_npc;
+	mapannounce "force_5-1","頭目戰的時刻到了。請向北移動至下一個房間……",bc_map|bc_npc;
 	end;
 
 On09_Start:
-	mapannounce "force_5-1","Objective: Defeat the Boss Monster!",bc_map|bc_npc;
+	mapannounce "force_5-1","目標:擊敗頭目怪物！",bc_map|bc_npc;
 	end;
 
 On09_End:
-	mapannounce "force_5-1","Boss Cleared! The North Exit has opened! Thank you.",bc_map|bc_npc;
+	mapannounce "force_5-1","頭目已擊破！北側出口已開啟！謝謝你。",bc_map|bc_npc;
 	end;
 }
 
-force_5-1,40,26,0	script	force_01start#pri	-1,1,1,{
+force_5-1,40,26,0	script	force_01start#pri::force_01start#pri	-1,1,1,{
 OnTouch_:
 	donpcevent "force_01mob#pri::OnEnable";
 	disablenpc "force_01start#pri";
@@ -734,7 +734,7 @@ OnMyMobDead:
 	end;
 }
 
-force_5-1,25,69,0	script	force_02start#pri	-1,1,1,{
+force_5-1,25,69,0	script	force_02start#pri::force_02start#pri	-1,1,1,{
 OnTouch_:
 	if (BaseLevel < 70) {
 		donpcevent "force_02mob#pri::OnOn1";
@@ -769,7 +769,7 @@ OnMyMobDead:
 	end;
 }
 
-force_5-1,25,159,0	script	force_03start#pri	-1,1,1,{
+force_5-1,25,159,0	script	force_03start#pri::force_03start#pri	-1,1,1,{
 OnTouch_:
 	donpcevent "force_03mob#pri::OnEnable";
 	disablenpc "force_03start#pri";
@@ -794,7 +794,7 @@ OnMyMobDead:
 	end;
 }
 
-force_5-1,69,174,0	script	force_04start#pri	-1,1,1,{
+force_5-1,69,174,0	script	force_04start#pri::force_04start#pri	-1,1,1,{
 OnTouch_:
 	if (BaseLevel < 90) {
 		donpcevent "force_04mob#pri::OnOn1";
@@ -835,7 +835,7 @@ OnMyMobDead:
 	end;
 }
 
-force_5-1,159,174,0	script	force_05start#pri	-1,1,1,{
+force_5-1,159,174,0	script	force_05start#pri::force_05start#pri	-1,1,1,{
 OnTouch_:
 	donpcevent "force_05mob#pri::OnEnable";
 	if (BaseLevel < 70) {
@@ -884,7 +884,7 @@ OnMyMobDead:
 	end;
 }
 
-force_5-1,174,130,0	script	force_06start#pri	-1,1,1,{
+force_5-1,174,130,0	script	force_06start#pri::force_06start#pri	-1,1,1,{
 OnTouch_:
 	donpcevent "force_06ex#pri::OnEnable";
 	if (BaseLevel < 70) {
@@ -942,7 +942,7 @@ OnMyMobDead:
 	end;
 }
 
-force_5-1,174,40,0	script	force_07start#pri	-1,1,1,{
+force_5-1,174,40,0	script	force_07start#pri::force_07start#pri	-1,1,1,{
 OnTouch_:
 	donpcevent "force_07mob#pri::OnEnable";
 	disablenpc "force_07start#pri";
@@ -967,7 +967,7 @@ OnMyMobDead:
 	end;
 }
 
-force_5-1,132,26,0	script	force_08start#pri	-1,1,1,{
+force_5-1,132,26,0	script	force_08start#pri::force_08start#pri	-1,1,1,{
 OnTouch_:
 	donpcevent "Trocco#aco2::On08_Start";
 	donpcevent "arena_aco2::OnReset_08";
@@ -975,7 +975,7 @@ OnTouch_:
 	end;
 }
 
-force_5-1,99,82,0	script	force_09start#pri	-1,1,1,{
+force_5-1,99,82,0	script	force_09start#pri::force_09start#pri	-1,1,1,{
 OnTouch_:
 	donpcevent "Trocco#aco2::On09_Start";
 	if (BaseLevel < 70) {
@@ -1026,7 +1026,7 @@ OnMyMobDead:
 	end;
 }
 
-force_5-1,62,26,0	script	force_08_01#aco	45,1,1,{
+force_5-1,62,26,0	script	force_08_01#aco::force_08_01#aco	45,1,1,{
 OnTouch_:
 	warp "force_5-1",40,26;
 	if (BaseJob == Job_Acolyte) {
@@ -1038,7 +1038,7 @@ OnTouch_:
 	end;
 }
 
-force_5-1,99,124,0	script	force_exit#aco	45,1,1,{
+force_5-1,99,124,0	script	force_exit#aco::force_exit#aco	45,1,1,{
 OnTouch_:
 	donpcevent "Trocco#aco1::OnTimerOff";
 	donpcevent "#arn_timer_aco::OnEnable";
@@ -1048,29 +1048,29 @@ OnTouch_:
 
 prt_are_in,181,83,3	script	站務人員#aco-1::Staff#aco-1	67,{
 	mes "[站務人員]";
-	mes "Nice work!";
-	mes "You might have failed";
-	mes "the Time Attack battle,";
-	mes "but you still earned a";
-	mes "small Arena Point reward~";
+	mes "做得好！";
+	mes "你可能沒有成功";
+	mes "這場限時挑戰，";
+	mes "但你仍獲得了一份";
+	mes "小額的競技場點數獎勵~";
 	next;
 	if (arena_point == 30000) {
 		mes "[站務人員]";
-		mes "Wait, I'm sorry, but you";
-		mes "have too many Arena Points.";
-		mes "Since you've reached the point";
-		mes "limitation, I can't give you any point rewards until you spend";
-		mes "some of your Arena Points.";
+		mes "等等，很抱歉，但你";
+		mes "擁有太多競技場點數了。";
+		mes "由於你已達到";
+		mes "上限，在你花費";
+		mes "部分競技場點數之前，我無法再給你點數獎勵。";
 		next;
 	}
 	else {
 		set arena_point,arena_point+1;
 	}
 	mes "[站務人員]";
-	mes "Well, let me guide";
-	mes "you back outside.";
-	mes "I hope you enjoyed";
-	mes "your battle in the area~";
+	mes "好吧，讓我帶";
+	mes "你回到外面。";
+	mes "希望你享受了";
+	mes "在這裡的戰鬥~";
 	close2;
 	specialeffect2 EF_EXIT;
 	warp "arena_room",100,75;
@@ -1098,34 +1098,34 @@ prt_are_in,25,31,3	script	站務人員#aco-2::Staff#aco-2	67,{
 	if ((.@record_timeaco < 0 ) || (.@record_houraco < 0) || (.@record_minaco < 0 ) || (.@record_secaco < 0)) {
 		emotion ET_HUK;
 		mes "[站務人員]";
-		mes "How did you...?";
-		mes "According to these re-";
-		mes "Uh oh. These records";
-		mes "got messed up somehow.";
-		mes "Th-This isn't good at all!";
-		mes "Now what am I gonna do?";
+		mes "你是怎麼……？";
+		mes "根據這些紀";
+		mes "糟糕。這些紀錄";
+		mes "不知為何被弄亂了。";
+		mes "這、這一點都不好！";
+		mes "現在我該怎麼辦？";
 		next;
 		mes "[站務人員]";
-		mes "Well, I'll give you the";
-		mes "benefit of the doubt and";
-		mes "assume you completed the";
-		mes "arena battle under the time";
-		mes "limit. So, let me give you the";
-		mes "standard Arena Point reward.";
+		mes "好吧，我就給你";
+		mes "一份信任，";
+		mes "假設你已經在";
+		mes "時間限制內完成了";
+		mes "競技場戰鬥。所以，我就給你";
+		mes "標準的競技場點數獎勵。";
 		next;
 		mes "[站務人員]";
-		mes "I'm really sorry about";
-		mes "this, especially if you";
-		mes "broke some record, but";
-		mes "all I can do is restore your";
-		mes "HP and SP for you, "+strcharinfo(0)+".";
+		mes "真的很抱歉";
+		mes "這件事，尤其是如果你";
+		mes "打破了某個紀錄，但";
+		mes "我所能做的，就是恢復你的";
+		mes "HP 與 SP， "+strcharinfo(0)+".";
 		percentheal 100,100;
 		next;
 		mes "[站務人員]";
 		emotion ET_FLAG;
 		mes "謝謝。";
 		mes "希望你享受";
-		mes "your time in the Arena~";
+		mes "在競技場裡的時光~";
 		close2;
 		if (arena_point < 29981) {
 			set arena_point,arena_point+20;
@@ -1167,36 +1167,36 @@ prt_are_in,25,31,3	script	站務人員#aco-2::Staff#aco-2	67,{
 		set .@topchoaco, .@acotop_t % 60;
 		set .@gapaco, .@acotop_t - .@record_timeaco;
 		mes "[站務人員]";
-		mes "^3131FF"+strcharinfo(0)+"^000000, right?";
-		mes "Hey, you did great! You";
-		mes "completed this Arena Battle";
-		mes "in "+.@record_minaco+" min and "+.@record_secaco+" seconds!";
+		mes "^3131FF"+strcharinfo(0)+"^000000，對吧？";
+		mes "嘿，你做得很好！你";
+		mes "完成了這場競技場戰鬥";
+		mes "用時 "+.@record_minaco+" 分 "+.@record_secaco+" 秒！";
 		next;
 		mes "[站務人員]";
-		mes "Currently, ^3131FF"+.@acotop_n$+"^000000";
-		mes "is the top player, with a record";
-		mes "of ^3131FF"+.@topbunaco+"^000000 minutes, ^3131FF"+.@topchoaco+"^000000 seconds, of the Acolyte Class Time Force Battle.";
+		mes "目前，^3131FF"+.@acotop_n$+"^000000";
+		mes "是目前的第一名玩家，最佳紀錄為";
+		mes "^3131FF"+.@topbunaco+"^000000 分 ^3131FF"+.@topchoaco+"^000000 秒，即見習祭司職業時間突襲戰的紀錄。";
 		next;
 		if ((.@acotop_t < 0) || (.@topbunaco < 0 ) || (.@topchoaco < 0)) {
 			emotion ET_HUK;
 			mes "[站務人員]";
 			mes "等一下……";
-			mes "Your time is better";
-			mes "than that. Well now.";
-			mes "It's time I made a little";
-			mes "correction to the records.";
+			mes "你的時間比";
+			mes "那還要好。嗯，那麼。";
+			mes "是時候為";
+			mes "紀錄做一點修正了。";
 			next;
 			emotion ET_BEST;
 			mes "[站務人員]";
-			mes "Wow! A new record!";
-			mes "Excellent!";
+			mes "哇！新紀錄！";
+			mes "太棒了！";
 			next;
 			mes "[站務人員]";
-			mes "^333333*Ahem*^000000 Oh wow!";
-			mes "A new record! Your";
-			mes "name will now be listed";
-			mes "under the Time Force Battle";
-			mes "Arena - Acolyte Class Record!";
+			mes "^333333*咳咳*^000000 哇喔！";
+			mes "新紀錄！你的";
+			mes "名字現在將會列在";
+			mes "時間突襲戰的";
+			mes "競技場 - 見習祭司職業紀錄！";
 			if (BaseJob == Job_Acolyte) {
 				set $arn_acotop,.@record_timeaco;
 				set $arn_acotopn$, strcharinfo(0);
@@ -1224,51 +1224,51 @@ prt_are_in,25,31,3	script	站務人員#aco-2::Staff#aco-2	67,{
 			next;
 			if (arena_point == 30000) {
 				mes "[站務人員]";
-				mes "Alright, let me reward you";
-				mes "with some Arena Poi--Wait.";
-				mes "I can't. Your Arena Points are";
-				mes "already maxed out. I'm sorry,";
-				mes "but you'll have to spend some before you can receive more points.";
+				mes "好的，讓我獎勵你";
+				mes "一些競技場點——等等。";
+				mes "不行。你的競技場點數已經";
+				mes "達到上限了。抱歉，";
+				mes "你必須先花掉一些，才能再獲得點數。";
 				next;
 				mes "[站務人員]";
-				mes "Anyway, you can check";
-				mes "your current Arena Point";
-				mes "total in the Arena Lobby";
-				mes "with Vendigos. Well, I hope";
-				mes "you enjoyed your battle. Now, let me guide you back outside...";
+				mes "總之，你可以確認";
+				mes "你目前的競技場點數";
+				mes "總數，在競技場大廳";
+				mes "找文迪戈斯查看。嗯，希望";
+				mes "你享受了這場戰鬥。現在，讓我帶你回到外面……";
 				close2;
 			}
 			else if (arena_point > 29950) {
 				mes "[站務人員]";
-				mes "Let me reward you with some";
-				mes "Arena Points. This time, you'll";
-				mes "be getting more points since";
-				mes "you set a new record. Please";
-				mes "talk with ^3131FFVendigos^000000 in the lobby";
-				mes "to check your new point total.";
+				mes "讓我獎勵你一些";
+				mes "競技場點數。這次，你會";
+				mes "獲得更多點數，因為";
+				mes "你創下了新紀錄。請";
+				mes "在大廳與^3131FF文迪戈斯^000000交談";
+				mes "以確認你新的點數總數。";
 				next;
 				mes "[站務人員]";
 				mes "嗯，希望您";
-				mes "enjoyed your battle.";
-				mes "Now let me guide you";
-				mes "back to the Arena Lobby...";
+				mes "享受了你的戰鬥。";
+				mes "現在讓我帶你";
+				mes "回到競技場大廳……";
 				close2;
 				set arena_point,30000;
 			}
 			else {
 				mes "[站務人員]";
-				mes "Let me reward you with some";
-				mes "Arena Points. This time, you'll";
-				mes "be getting more points since";
-				mes "you set a new record. Please";
-				mes "talk with ^3131FFVendigos^000000 in the lobby";
-				mes "to check your new point total.";
+				mes "讓我獎勵你一些";
+				mes "競技場點數。這次，你會";
+				mes "獲得更多點數，因為";
+				mes "你創下了新紀錄。請";
+				mes "在大廳與^3131FF文迪戈斯^000000交談";
+				mes "以確認你新的點數總數。";
 				next;
 				mes "[站務人員]";
 				mes "嗯，希望您";
-				mes "enjoyed your battle.";
-				mes "Now let me guide you";
-				mes "back to the Arena Lobby...";
+				mes "享受了你的戰鬥。";
+				mes "現在讓我帶你";
+				mes "回到競技場大廳……";
 				close2;
 				set arena_point,arena_point+50;
 			}
@@ -1281,58 +1281,58 @@ prt_are_in,25,31,3	script	站務人員#aco-2::Staff#aco-2	67,{
 		}
 		if (gapaco < 0) {
 			mes "[站務人員]";
-			mes "You didn't break the";
-			mes "current record this time,";
-			mes "but you still gave an awesome";
-			mes "performance. Excellent work!";
+			mes "您沒有打破";
+			mes "目前的紀錄，";
+			mes "但您依然有很棒的";
+			mes "表現。做得非常好！";
 			next;
 			if (arena_point == 30000) {
 				mes "[站務人員]";
-				mes "Alright, let me reward you";
-				mes "with some Arena Poi--Wait.";
-				mes "I can't. Your Arena Points are";
-				mes "already maxed out. I'm sorry,";
-				mes "but you'll have to spend some before you can receive more points.";
+				mes "好的，讓我獎勵你";
+				mes "一些競技場點——等等。";
+				mes "不行。你的競技場點數已經";
+				mes "達到上限了。抱歉，";
+				mes "你必須先花掉一些，才能再獲得點數。";
 				next;
 				mes "[站務人員]";
-				mes "Anyway, you can check";
-				mes "your current Arena Point";
-				mes "total in the Arena Lobby";
-				mes "with Vendigos. Well, I hope";
-				mes "you enjoyed your battle. Now, let me guide you back outside...";
+				mes "總之，你可以確認";
+				mes "你目前的競技場點數";
+				mes "總數，在競技場大廳";
+				mes "找文迪戈斯查看。嗯，希望";
+				mes "你享受了這場戰鬥。現在，讓我帶你回到外面……";
 				close2;
 			}
 			else if (arena_point > 29980) {
 				mes "[站務人員]";
-				mes "Let me reward you";
-				mes "with some Arena Points.";
-				mes "Please check your new";
-				mes "Arena Point total in the";
-				mes "Arena Lobby by speaking";
-				mes "to the friendly ^3131FFVendigos.^000000";
+				mes "讓我獎勵您";
+				mes "一些競技點數。";
+				mes "請查看您新的";
+				mes "競技點數總額於";
+				mes "競技場大廳，與";
+				mes "和善的^3131FF文迪哥斯。^000000";
 				next;
 				mes "[站務人員]";
 				mes "嗯，希望您";
-				mes "enjoyed your battle.";
-				mes "Now let me guide you";
-				mes "back to the Arena Lobby...";
+				mes "享受了你的戰鬥。";
+				mes "現在讓我帶你";
+				mes "回到競技場大廳……";
 				close2;
 				set arena_point,30000;
 			}
 			else {
 				mes "[站務人員]";
-				mes "Let me reward you";
-				mes "with some Arena Points.";
-				mes "Please check your new";
-				mes "Arena Point total in the";
-				mes "Arena Lobby by speaking";
-				mes "to the friendly ^3131FFVendigos.^000000";
+				mes "讓我獎勵您";
+				mes "一些競技點數。";
+				mes "請查看您新的";
+				mes "競技點數總額於";
+				mes "競技場大廳，與";
+				mes "和善的^3131FF文迪哥斯。^000000";
 				next;
 				mes "[站務人員]";
 				mes "嗯，希望您";
-				mes "enjoyed your battle.";
-				mes "Now let me guide you";
-				mes "back to the Arena Lobby...";
+				mes "享受了你的戰鬥。";
+				mes "現在讓我帶你";
+				mes "回到競技場大廳……";
 				close2;
 				set arena_point,arena_point+20;
 			}
@@ -1346,16 +1346,16 @@ prt_are_in,25,31,3	script	站務人員#aco-2::Staff#aco-2	67,{
 		else {
 			emotion ET_HUK;
 			mes "[站務人員]";
-			mes "Wow! A new record!";
-			mes "This is awsome!";
+			mes "哇！新紀錄！";
+			mes "太棒了！";
 			next;
 			mes "[站務人員]";
-			mes "Oooh... A brand new";
-			mes "record. ^3131FF"+ strcharinfo(0)+"^000000, your";
-			mes "name will now be listed in";
-			mes "the Time Force Battle Arena";
-			mes "Acolyte Class Records.";
-			mes "Congratulations~";
+			mes "哇……一個全新的";
+			mes "紀錄。^3131FF"+ strcharinfo(0)+"^000000，您的";
+			mes "名字將被列在";
+			mes "時間限制戰競技場";
+			mes "服事者職業紀錄。";
+			mes "恭喜~";
 			if (BaseJob == Job_Acolyte) {
 				set $arn_acotop,.@record_timeaco;
 				set $arn_acotopn$, strcharinfo(0);
@@ -1386,51 +1386,51 @@ prt_are_in,25,31,3	script	站務人員#aco-2::Staff#aco-2	67,{
 			next;
 			if (arena_point == 30000) {
 				mes "[站務人員]";
-				mes "Alright, let me reward you";
-				mes "with some Arena Poi--Wait.";
-				mes "I can't. Your Arena Points are";
-				mes "already maxed out. I'm sorry,";
-				mes "but you'll have to spend some before you can receive more points.";
+				mes "好的，讓我獎勵你";
+				mes "一些競技場點——等等。";
+				mes "不行。你的競技場點數已經";
+				mes "達到上限了。抱歉，";
+				mes "你必須先花掉一些，才能再獲得點數。";
 				next;
 				mes "[站務人員]";
-				mes "Anyway, you can check";
-				mes "your current Arena Point";
-				mes "total in the Arena Lobby";
-				mes "with Vendigos. Well, I hope";
-				mes "you enjoyed your battle. Now, let me guide you back outside...";
+				mes "總之，你可以確認";
+				mes "你目前的競技場點數";
+				mes "總數，在競技場大廳";
+				mes "找文迪戈斯查看。嗯，希望";
+				mes "你享受了這場戰鬥。現在，讓我帶你回到外面……";
 				close2;
 			}
 			else if (arena_point > 29980) {
 				mes "[站務人員]";
-				mes "Let me reward you with some";
-				mes "Arena Points. This time, you'll";
-				mes "be getting more points since";
-				mes "you set a new record. Please";
-				mes "talk with ^3131FFVendigos^000000 in the lobby";
-				mes "to check your new point total.";
+				mes "讓我獎勵你一些";
+				mes "競技場點數。這次，你會";
+				mes "獲得更多點數，因為";
+				mes "你創下了新紀錄。請";
+				mes "在大廳與^3131FF文迪戈斯^000000交談";
+				mes "以確認你新的點數總數。";
 				next;
 				mes "[站務人員]";
 				mes "嗯，希望您";
-				mes "enjoyed your battle.";
-				mes "Now let me guide you";
-				mes "back to the Arena Lobby...";
+				mes "享受了你的戰鬥。";
+				mes "現在讓我帶你";
+				mes "回到競技場大廳……";
 				close2;
 				set arena_point,30000;
 			}
 			else {
 				mes "[站務人員]";
-				mes "Let me reward you with some";
-				mes "Arena Points. This time, you'll";
-				mes "be getting more points since";
-				mes "you set a new record. Please";
-				mes "talk with ^3131FFVendigos^000000 in the lobby";
-				mes "to check your new point total.";
+				mes "讓我獎勵你一些";
+				mes "競技場點數。這次，你會";
+				mes "獲得更多點數，因為";
+				mes "你創下了新紀錄。請";
+				mes "在大廳與^3131FF文迪戈斯^000000交談";
+				mes "以確認你新的點數總數。";
 				next;
 				mes "[站務人員]";
 				mes "嗯，希望您";
-				mes "enjoyed your battle.";
-				mes "Now let me guide you";
-				mes "back to the Arena Lobby...";
+				mes "享受了你的戰鬥。";
+				mes "現在讓我帶你";
+				mes "回到競技場大廳……";
 				close2;
 				set arena_point,arena_point+20;
 			}
@@ -1450,11 +1450,11 @@ OnEnable:
 	end;
 
 OnTimer2000:
-	mapannounce "prt_are_in","This broadcast is to inform you about the Acolyte Class Arena.",bc_map,"0xFFCE00";
+	mapannounce "prt_are_in","這則廣播是要通知您有關服事者職業競技場。",bc_map,"0xFFCE00";
 	end;
 
 OnTimer3000:
-	mapannounce "prt_are_in","For smoother game play, the Warp Portal in the Final Waiting Room will activate in 1 minute.",bc_map,"0xFFCE00";
+	mapannounce "prt_are_in","為了遊戲更順暢，最終等候室的傳送門將在1分鐘後啟動。",bc_map,"0xFFCE00";
 	end;
 
 OnTimer4000:
@@ -1473,7 +1473,7 @@ OnStop:
 	end;
 }
 
-prt_are_in,22,29,0	script	arn_warp_aco	-1,20,20,{
+prt_are_in,22,29,0	script	arn_warp_aco::arn_warp_aco	-1,20,20,{
 OnInit:
 	disablenpc "arn_warp_aco";
 	end;
@@ -1554,35 +1554,35 @@ OnEnable:
 	end;
 }
 
-arena_room,94,82,7	script	Arena Record Staff#aco	79,{
-	mes "[Mathea]";
-	mes "Hello, I'm in charge of";
-	mes "the Acolyte Class Records";
-	mes "in the Arena. If you'd like to";
-	mes "view the other records, please";
-	mes "talk to the Arena Record Staff,";
-	mes "Owen Kheuv, and he'll help you.";
+arena_room,94,82,7	script	競技場紀錄職員#aco::Arena Record Staff#aco	79,{
+	mes "[瑪提亞]";
+	mes "您好，我負責";
+	mes "服事者職業紀錄";
+	mes "於競技場中。若您想要";
+	mes "查看其他紀錄，請";
+	mes "與競技場紀錄職員";
+	mes "歐文凱夫交談，他會幫助您。";
 	next;
-	mes "[Mathea]";
+	mes "[瑪提亞]";
 	mes "您想要";
-	mes "see who are the top";
-	mes "players in the Acolyte";
-	mes "Class Arena Challenges?";
-	mes "Please choose from the menu.";
+	mes "看看誰是最頂尖的";
+	mes "玩家，於服事者";
+	mes "職業競技挑戰中？";
+	mes "請從選單中選擇。";
 	next;
-	switch(select("Acolyte Mode:Priest - Level 70 or lower:Priest - Level 80 or lower:Priest - Level 90 or lower:Priest - Level 91 ~ "+(checkre(0)?"160":"99"))) {
+	switch(select("服事者模式:祭司 - 70級以下:祭司 - 80級以下:祭司 - 90級以下:祭司 - 91 ~ "+(checkre(0)?"160":"99"))) {
 	case 1:
 		set .@acotop_t,$arn_acotop;
 		set .@acotop_n$,$arn_acotopn$;
 		set .@acotopbun, ((.@acotop_t % 3600) / 60 );
 		set .@acotopcho, (.@acotop_t % 60);
-		mes "[Mathea]";
+		mes "[瑪提亞]";
 		mes "^3131FF"+.@acotop_n$+"^000000";
-		mes "is the top player of the";
-		mes "Acolyte Mode, finishing";
-		mes "with a time of ^3131FF"+.@acotopbun+"^000000 minutes";
-		mes "and ^3131FF"+.@acotopcho+"^000000 seconds. Thank you";
-		mes "for participating in the Arena.";
+		mes "是";
+		mes "服事者模式的頂尖玩家，完成";
+		mes "用時^3131FF"+.@acotopbun+"^000000分";
+		mes "與^3131FF"+.@acotopcho+"^000000秒。感謝您";
+		mes "參與競技場。";
 		close;
 	case 2:
 		set .@pritop_t,$arn_pritop60;
@@ -1603,13 +1603,13 @@ arena_room,94,82,7	script	Arena Record Staff#aco	79,{
 	}
 	set .@pritopbun, ((.@pritop_t % 3600) / 60 );
 	set .@pritopcho, (.@pritop_t % 60);
-	mes "[Mathea]";
+	mes "[瑪提亞]";
 	mes "^3131FF"+.@pritop_n$+"^000000";
-	mes "is the top player of this";
-	mes "Priest Mode, finishing ";
-	mes "with a time of ^3131FF"+.@pritopbun+" minutes";
-	mes "and ^3131FF"+.@pritopcho+" seconds. Thank you";
-	mes "for participating in the Arena.";
+	mes "是";
+	mes "祭司模式的頂尖玩家，完成 ";
+	mes "用時^3131FF"+.@pritopbun+" 分";
+	mes "與^3131FF"+.@pritopcho+" 秒。感謝您";
+	mes "參與競技場。";
 	close;
 
 OnInit:
@@ -1630,104 +1630,104 @@ OnInit:
 
 -	script	#Vendigos	-1,{
 OnLineRec_aco:
-	mapannounce "arena_room","Vendigos: "+$arn_acotopn$+" has made a new record in the Arena Time Force Battle - Acolyte Mode. Congratulations!",bc_map,"0xFFFF00";
+	mapannounce "arena_room","文迪哥斯: "+$arn_acotopn$+" 在時間限制戰競技場服事者模式中創下了新紀錄。恭喜！",bc_map,"0xFFFF00";
 	end;
 
 OnLineRec_pri60:
-	mapannounce "arena_room","Vendigos: "+$arn_pritopn60$+" has made a new record in the Arena Time Force Battle - Priest: Level 70 or lower. Congratulations!",bc_map,"0xFFFF00";
+	mapannounce "arena_room","文迪哥斯: "+$arn_pritopn60$+" 在時間限制戰競技場祭司:70級以下中創下了新紀錄。恭喜！",bc_map,"0xFFFF00";
 	end;
 
 OnLineRec_pri70:
-	mapannounce "arena_room","Vendigos: "+$arn_pritopn70$+" has made a new record in the Arena Time Force Battle - Priest: Level 80 or lower. Congratulations!",bc_map,"0xFFFF00";
+	mapannounce "arena_room","文迪哥斯: "+$arn_pritopn70$+" 在時間限制戰競技場祭司:80級以下中創下了新紀錄。恭喜！",bc_map,"0xFFFF00";
 	end;
 
 OnLineRec_pri80:
-	mapannounce "arena_room","Vendigos: "+$arn_pritopn80$+" has made a new record in the Arena Time Force Battle - Priest: Level 90 or lower. Congratulations!",bc_map,"0xFFFF00";
+	mapannounce "arena_room","文迪哥斯: "+$arn_pritopn80$+" 在時間限制戰競技場祭司:90級以下中創下了新紀錄。恭喜！",bc_map,"0xFFFF00";
 	end;
 
 OnLineRec_pri90:
-	mapannounce "arena_room","Vendigos: "+$arn_pritopn90$+" has made a new record in the Arena Time Force Battle - Priest: Level 91~"+(checkre(0)?"160":"99")+". Congratulations!",bc_map,"0xFFFF00";
+	mapannounce "arena_room","文迪哥斯: "+$arn_pritopn90$+" 在時間限制戰競技場祭司:91~中創下了新紀錄"+(checkre(0)?"160":"99")+"。恭喜！",bc_map,"0xFFFF00";
 	end;
 }
 
-arena_room,140,136,3	script	Guide Alias	729,{
-	mes "[Alias]";
-	mes "Hello there, I'm here";
-	mes "to inform you about";
-	mes "the Izlude Arena's";
-	mes "Acolyte Class Mode.";
-	mes "My name is Alias,";
-	mes "your Arena Guide.";
+arena_room,140,136,3	script	嚮導艾莉亞斯::Guide Alias	729,{
+	mes "[艾莉亞斯]";
+	mes "您好，我在這裡";
+	mes "來通知您關於";
+	mes "伊茲魯德競技場的";
+	mes "服事者職業模式。";
+	mes "我是艾莉亞斯，";
+	mes "您的競技場嚮導。";
 	next;
-	mes "[Alias]";
-	mes "Now, there are two modes";
-	mes "under Acolyte Class Mode.";
-	mes "These are ^3131FFAcolyte Mode^000000 and";
-	mes "^3131FFPriest Mode^000000. For both modes,";
-	mes "you will need to wait inside the ^3131FFAcolyte Class Waiting Room^000000.";
+	mes "[艾莉亞斯]";
+	mes "現在有兩種模式";
+	mes "於服事者職業模式下。";
+	mes "分別是^3131FF服事者模式^000000與";
+	mes "^3131FF祭司模式^000000。兩種模式皆";
+	mes "需要在^3131FF服事者職業等候室^000000內等待。";
 	next;
-	mes "[Alias]";
-	mes "Once it's your turn,";
-	mes "you'll be sent out of the";
-	mes "waiting room and guided to";
-	mes "the arena grounds. Oh, and";
-	mes "the entrance fee is 1,000 zeny.";
+	mes "[艾莉亞斯]";
+	mes "輪到您的時候，";
+	mes "您將被送出";
+	mes "等候室，並被引導至";
+	mes "競技場。還有，";
+	mes "入場費為1,000 Zeny。";
 	next;
-	mes "[Alias]";
-	mes "It'll be handy to know";
-	mes "that the Red Plants and";
-	mes "Permeters in the Acolyte";
-	mes "Class Mode will drop items";
-	mes "and give experience. Other";
-	mes "monsters, however, won't.";
+	mes "[艾莉亞斯]";
+	mes "請記住，";
+	mes "紅草與";
+	mes "帕米特於服事者";
+	mes "職業模式中會掉落道具";
+	mes "並給予經驗值。其他";
+	mes "怪物則不會。";
 	next;
-	mes "[Alias]";
-	mes "Once you've been guided";
-	mes "to the actual arena grounds,";
-	mes "listen to ^3131FFTrocco^000000 for the mission objectives that you will have to";
-	mes "complete within the time limit";
-	mes "of ^3131FF8 minutes^000000. Don't forget~";
+	mes "[艾莉亞斯]";
+	mes "一旦您被引導";
+	mes "至實際的競技場地，";
+	mes "請聽^3131FF特洛可^000000說明您必須";
+	mes "在時限內完成";
+	mes "的任務（時限^3131FF8分鐘^000000）。別忘了~";
 	next;
-	mes "[Alias]";
-	mes "Upon completing the";
-	mes "entire stage, you will be";
-	mes "warped to the ^3131DDFinale Waiting";
-	mes "Room^000000 where you'll be rewarded";
-	mes "with Arena Points. But you must get your points within 1 minute.";
+	mes "[艾莉亞斯]";
+	mes "完成";
+	mes "整個關卡後，您將被";
+	mes "傳送至^3131DD最終等候";
+	mes "室^000000，您將在此獲得";
+	mes "競技點數獎勵。但您必須在1分鐘內領取點數。";
 	next;
-	mes "[Alias]";
-	mes "Once you're automatically";
-	mes "sent outside of the Finale";
-	mes "Waiting Room, you won't have";
-	mes "the chance to get your Arena";
-	mes "Points if you didn't get them";
-	mes "there, so be careful~";
+	mes "[艾莉亞斯]";
+	mes "一旦您被自動";
+	mes "送出最終";
+	mes "等候室，您將無法";
+	mes "獲得競技";
+	mes "點數的機會，若您沒有在";
+	mes "那裡領取，請小心~";
 	next;
-	mes "[Alias]";
-	mes "Well, I hope you enjoy";
-	mes "the Acolyte Mode Arena!";
-	mes "Good luck and good fighting!";
+	mes "[艾莉亞斯]";
+	mes "希望您享受";
+	mes "服事者模式競技場！";
+	mes "祝您好運，戰鬥順利！";
 	close;
 }
 
-arena_room,195,5,3	script	log-on-aco#arena	802,{
+arena_room,195,5,3	script	log-on-aco#arena::log-on-aco#arena	802,{
 	set .@i, callfunc("F_GM_NPC",1357,0);
 	if (.@i == -1) {
-		mes "^3355FFIncorrect Password.^000000";
+		mes "^3355FF密碼錯誤。^000000";
 		close;
 	} else if (.@i == 0) {
 		end;
 	} else {
-		mes "[!!CAUTION!!]";
-		mes "^3355FFThe following menu";
-		mes "the record for that";
-		mes "particular mode in the";
-		mes "Arena Acolyte Class Mode.^000000";
+		mes "[!!注意!!]";
+		mes "^3355FF以下選單";
+		mes "可查詢該";
+		mes "模式於";
+		mes "競技場服事者職業模式的紀錄。^000000";
 		next;
-		switch(select("Cancel:Acolyte:~level 70:~level 80:~level 90:~level "+(checkre(0)?"160":"99"))) {
+		switch(select("取消:服事者:~70級:~80級:~90級:~ "+(checkre(0)?"160":"99"))) {
 		case 1:
-			mes "^3355FFCommand has";
-			mes "been canceled.^000000";
+			mes "^3355FF指令已";
+			mes "被取消。^000000";
 			close;
 		case 2:
 			set $arn_acotop, 480;
@@ -1754,35 +1754,35 @@ arena_room,195,5,3	script	log-on-aco#arena	802,{
 	}
 }
 
-arena_room,195,10,3	script	acolink#arena	802,{
+arena_room,195,10,3	script	acolink#arena::acolink#arena	802,{
 	set .@i, callfunc("F_GM_NPC",1357,0);
 	if (.@i == -1) {
-		mes "Command has";
-		mes "been canceled.";
+		mes "指令已";
+		mes "取消了。";
 		close;
 	} else if (.@i == 0) {
 		end;
 	} else {
-		mes "This NPC opens and";
-		mes "closes the Warp Portal";
-		mes "to the Arena's Acolyte";
-		mes "Class Mode. Choose";
-		mes "an option from the menu.";
+		mes "此NPC負責開啟與";
+		mes "關閉傳送門";
+		mes "於競技場的服事者";
+		mes "職業模式。請選擇";
+		mes "選單中的一個選項。";
 		next;
-		switch(select("Cancel:Warp ON:Warp OFF")) {
+		switch(select("取消:開啟傳送門:關閉傳送門")) {
 		case 1:
-			mes "Command has";
-			mes "been canceled.";
+			mes "指令已";
+			mes "取消了。";
 			close;
 		case 2:
 			enablenpc "onlyaco#arena";
-			mes "The Warp Portal";
-			mes "will be opened shortly.";
+			mes "傳送門";
+			mes "即將開啟。";
 			close;
 		case 3:
 			disablenpc "onlyaco#arena";
-			mes "The Warp Portal";
-			mes "will be closed shortly.";
+			mes "傳送門";
+			mes "即將關閉。";
 			close;
 		}
 	}

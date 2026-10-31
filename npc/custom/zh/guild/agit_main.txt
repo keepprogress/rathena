@@ -121,7 +121,7 @@ OnAgitBreak:
 	SetCastleData strnpcinfo(2),CD_GUILD_ID, .@GID;
 
 	// Announce that the Emperium is destroyed, and respawn all but new castle-occupants.
-	mapannounce strnpcinfo(2),"The emperium has been destroyed.",bc_map|bc_woe,"0x00CCFF",FW_NORMAL,12;
+	mapannounce strnpcinfo(2),"華麗金屬已被摧毀。",bc_map|bc_woe,"0x00CCFF",FW_NORMAL,12;
 	MapRespawnGuildID strnpcinfo(2),.@GID,6;
 
 	// Refresh castle data, disable Kafra and reset Invest information.
@@ -141,7 +141,7 @@ OnAgitBreak:
 	if( agitcheck() )
 		donpcevent "Agit#"+strnpcinfo(2)+"::OnStartArena";
 	sleep 7000;
-	announce "The [" + getcastlename(strnpcinfo(2)) + "] castle has been conquered by the [" + getguildName(.@GID) + "] guild.",bc_all|bc_woe;
+	announce "[" + getcastlename(strnpcinfo(2)) + "] 城堡已被 [" + getguildName(.@GID) + "] 公會攻占。",bc_all|bc_woe;
 	end;
 
 // War of Emperium has ended.
@@ -345,9 +345,9 @@ OnRecvCastle:
 	if (getcharid(2) == .@GID) {
 		mes "[卡普拉職員]";
 		mes "歡迎。^ff0000" + GetGuildName(.@GID) + "^000000 會員。";
-		mes "The Kafra Corporation will stay with you wherever you go.";
+		mes "無論您走到哪裡，卡普拉公司都會與您同行。";
 		next;
-		switch (select("Use Storage:Use Teleport Service:Rent a Pushcart:Cancel")) {
+		switch (select("使用倉庫:使用傳送服務:租用手推車:取消")) {
 		case 1:
 			if(!callfunc("F_CanOpenStorage")){
 				mes "[卡普拉職員]";
@@ -373,14 +373,14 @@ OnRecvCastle:
 			mes "請選擇";
 			mes "您的目的地。";
 			next;
-			switch (select(.@destination$+" -> 200z:Cancel")) {
+			switch (select(.@destination$+" -> 200z:取消")) {
 			case 1:
 				if (Zeny < 200) {
 					mes "[卡普拉職員]";
 					mes "很抱歉，您身上沒有";
 					mes "足夠的 Zeny 支付傳送";
 					mes "服務。傳送費用";
-					mes "至 "+.@destination$+" is 200 zeny.";
+					mes "至 "+.@destination$+" 為200 Zeny。";
 					close2;
 					cutin "",255;
 					end;
@@ -402,8 +402,8 @@ OnRecvCastle:
 				mes "手推車租借服務";
 				mes "僅限商人、";
 				mes "鐵匠、大師鐵匠、";
-				mes "Alchemists, Biochemists,";
-				mes "Mechanics and Geneticists.";
+				mes "鍊金術師、生化學者、";
+				mes "機械師與基因學者。";
 				close2;
 				cutin "",255;
 				end;
@@ -421,7 +421,7 @@ OnRecvCastle:
 			}
 			mes "[卡普拉職員]";
 			mes "手推車租借";
-			mes "fee is 800 zeny. Would";
+			mes "費用為800 Zeny。您是否";
 			mes "想要租借手推車嗎？";
 			next;
 			switch (select("租借手推車。:取消")) {
@@ -431,7 +431,7 @@ OnRecvCastle:
 					mes "很抱歉，您";
 					mes "您身上沒有足夠的";
 					mes "Zeny 支付手推車";
-					mes "rental fee of 800 zeny.";
+					mes "租借費為800 Zeny。";
 					close2;
 					cutin "",255;
 					end;
@@ -457,7 +457,7 @@ OnRecvCastle:
 		}
 	}
 	mes "[卡普拉職員]";
-	mes "I am instructed to only offer my services to the ^ff0000"+GetGuildName(.@GID)+"^000000 Guild. Please try another Kafra Employee around here. Sorry for the inconvenience.";
+	mes "我只能為^ff0000"+GetGuildName(.@GID)+"^000000公會提供服務。請找這附近的其他卡普拉職員。很抱歉造成不便。";
 	close2;
 	cutin "",255;
 	end;
@@ -606,34 +606,34 @@ OnRecvCastle:
 
 	if (.@GID == 0) {
 		mes "["+strnpcinfo(1)+"]";
-		mes "I have been waiting for a master to fulfill my destiny.";
-		mes "Brave soul... fate will guide you towards your future...";
+		mes "我一直在等待主人來完成我的宿命。";
+		mes "勇者啊……命運將引領你走向未來……";
 		close;
 	}
 	if (is_guild_leader(.@GID) == false) {
 		mes "["+strnpcinfo(1)+"]";
-		mes "No matter how much you pester me, I'll still follow my master ^ff0000"+GetGuildMaster(.@GID)+"^000000. Where are the Guardians?! Send these ruffians away right now!";
+		mes "不管你怎麼糾纏我，我仍會追隨我的主人^ff0000"+GetGuildMaster(.@GID)+"^000000。守衛們在哪裡？！立刻把這些無賴趕走！";
 		close;
 	}
 	mes "["+strnpcinfo(1)+"]";
-	mes "Welcome. My honorable master, ^ff0000"+strcharinfo(0)+"^000000...";
-	mes "Your humble servent, "+strnpcinfo(1)+", is here to serve you.";
+	mes "歡迎。我尊貴的主人，^ff0000"+strcharinfo(0)+"^000000...";
+	mes "您卑微的僕人， "+strnpcinfo(1)+"在此為您效勞。";
 	next;
-	switch (select("Castle briefing:Invest in commercial growth:Invest in Castle Defenses:Summon Guardian:Hire / Fire a Kafra Employee:Go into Master's room")) {
+	switch (select("城堡簡報:投資商業成長:投資城堡防禦:召喚守衛:僱用/解僱卡普拉職員:進入主人的房間")) {
 	case 1:
 		mes "["+strnpcinfo(1)+"]";
-		mes "I will report the Castle briefing, Master.";
+		mes "主人，我將報告城堡簡報。";
 		mes " ";
-		mes "^0000ffNow, the commercial growth level is "+GetCastleData(strnpcinfo(2),CD_CURRENT_ECONOMY)+".";
+		mes "^0000ff目前商業成長等級為 "+GetCastleData(strnpcinfo(2),CD_CURRENT_ECONOMY)+".";
 		if (GetCastleData(strnpcinfo(2),CD_INVESTED_ECONOMY)) {
-			mes " You invested "+GetCastleData(strnpcinfo(2),CD_INVESTED_ECONOMY)+" times in past 1 day.";
+			mes " 您已投資 "+GetCastleData(strnpcinfo(2),CD_INVESTED_ECONOMY)+" 次（過去1天內）。";
 		}
-		mes " Now, the Castle Defense level is "+GetCastleData(strnpcinfo(2),CD_CURRENT_DEFENSE)+".^000000";
+		mes " 目前城堡防禦等級為 "+GetCastleData(strnpcinfo(2),CD_CURRENT_DEFENSE)+".^000000";
 		if (GetCastleData(strnpcinfo(2),CD_INVESTED_DEFENSE)) {
-			mes " ^0000ff- You invested "+GetCastleData(strnpcinfo(2),CD_INVESTED_DEFENSE)+" times in past 1 day.^000000";
+			mes " ^0000ff- 您已投資 "+GetCastleData(strnpcinfo(2),CD_INVESTED_DEFENSE)+" 次（過去1天內）。^000000";
 		}
 		mes " ";
-		mes "That's all I have to report, Master.";
+		mes "主人，報告完畢。";
 		close;
 	case 2:
 		set .@Economy,GetCastleData(strnpcinfo(2),CD_CURRENT_ECONOMY);
@@ -662,43 +662,43 @@ OnRecvCastle:
 			set .@eco_invest,.@eco_invest*4;
 		}
 		mes "["+strnpcinfo(1)+"]";
-		mes "If you invest in commercial growth, the quantity of goods made by the guild will increase. Therfore, if you consider our future, investments will be a necessity.";
+		mes "若您投資商業成長，公會製作的商品數量將會增加。因此，若您考慮公會的未來，投資是必要的。";
 		mes " ";
-		mes "Initially, you are able to invest just once but if you pay more money, you will be able to invest twice.";
+		mes "起初您只能投資一次，但若支付更多費用，就能投資兩次。";
 		if (.@Economy >= 100) {
 			mes " ";
-			mes "^ff0000The commercial growth level of our Castle is at it's highest, 100%. No more investments are needed. Just as I have expected from a great economist like you, Master.^000000";
+			mes "^ff0000本城堡的商業成長等級已達最高的100%，無需再投資。正如我所預料，主人您真是位偉大的經濟學家。^000000";
 			close;
 		}
 		if (GetCastleData(strnpcinfo(2),CD_INVESTED_ECONOMY) >= 2) {
 			mes " ";
-			mes "^ff0000You have already invested twice today. You cannot invest any more.^000000 I expect riches of the guild to grow at a high rate.";
+			mes "^ff0000您今天已投資兩次，無法再投資。^000000 我期待公會的財富能快速成長。";
 			close;
 		}
 		if (GetCastleData(strnpcinfo(2),CD_INVESTED_ECONOMY) == 0) {
 			mes " ";
-			mes "The current investment amount required is ^ff0000"+.@eco_invest+"^000000 zeny. Will you invest?";
+			mes "目前所需的投資金額為^ff0000"+.@eco_invest+"^000000 Zeny。您要投資嗎？";
 		}
 		else {
 			mes " ";
-			mes "You've invested once today... if you wish to invest once more, ^ff0000"+.@eco_invest+"^000000 more zeny will be needed.";
+			mes "您今天已投資一次……若想再投資一次，需要^ff0000"+.@eco_invest+"^000000 Zeny 才行。";
 		}
 		next;
-		switch (select("Invest in commercial growth:Cancel")) {
+		switch (select("投資商業成長:取消")) {
 		case 1:
 			if (Zeny < .@eco_invest) {
 				mes "["+strnpcinfo(1)+"]";
-				mes "I'm sorry but there is not enough zeny to invest. You will have to try again when you have the funds, Master.";
+				mes "很抱歉，主人，投資所需的 Zeny 不足。等您備妥資金後再來吧。";
 				close;
 			}
 			set Zeny, Zeny - .@eco_invest;
 			SetCastleData strnpcinfo(2),CD_INVESTED_ECONOMY,GetCastleData(strnpcinfo(2),CD_INVESTED_ECONOMY)+1;
 			mes "[ "+strnpcinfo(1)+"]";
-			mes "We finished the investment safely. I expect that our growth level will be increased by tomorrow.";
+			mes "投資已順利完成。我預計成長等級明天就會提升。";
 			close;
 		case 2:
 			mes "["+strnpcinfo(1)+"]";
-			mes "I'll do as you bid, my master... There is no hurry. We will do our best.";
+			mes "遵命，我的主人……不必著急，我們會盡力而為。";
 			close;
 		}
 	case 3:
@@ -728,49 +728,49 @@ OnRecvCastle:
 			set .@def_invest,.@def_invest*4;
 		}
 		mes "["+strnpcinfo(1)+"]";
-		mes "If you raise Castle Defenses, the durability of Guardians and the Emperium will increase. Therefore, if you consider our coming battles, some investment in this area will be required.";
+		mes "若提升城堡防禦，守衛與華麗金屬的耐久度將會提升。因此，若考慮即將到來的戰鬥，就需要在這方面做一些投資。";
 		mes " ";
-		mes "Originally you can invest just once but if you pay more money, you can invest twice.";
+		mes "原本您只能投資一次，但若支付更多費用，就能投資兩次。";
 		if (.@Defence >= 100) {
 			mes " ";
-			mes "^ff0000But the Castle Defense level of our Castle is at it's highest, 100%. No more investments are needed. Just as I have expected from a great strategist like you, Master.^000000";
+			mes "^ff0000但本城堡的防禦等級已達最高的100%，無需再投資。正如我所預料，主人您真是位偉大的策略家。^000000";
 			close;
 		}
 		if (GetCastleData(strnpcinfo(2),CD_INVESTED_DEFENSE) >= 2) {
 			mes " ";
-			mes "^ff0000You have already invested twice today. You cannot invest any more.^000000 I expect the Defenses of the guild to grow at a high rate.";
+			mes "^ff0000您今天已投資兩次，無法再投資。^000000 我期待公會的防禦能快速成長。";
 			close;
 		}
 		if (GetCastleData(strnpcinfo(2),CD_INVESTED_DEFENSE) == 0) {
 			mes " ";
-			mes "The current investment amount required is ^ff0000"+.@def_invest+"^000000 zeny. Will you invest?";
+			mes "目前所需的投資金額為^ff0000"+.@def_invest+"^000000 Zeny。您要投資嗎？";
 		}
 		else {
 			mes " ";
-			mes "You've invested once today... if you wish to invest once more, ^ff0000"+.@def_invest+"^000000 more zeny will be needed.";
+			mes "您今天已投資一次……若想再投資一次，需要^ff0000"+.@def_invest+"^000000 Zeny 才行。";
 		}
 		next;
-		switch (select("Invest in Castle Defenses.:Cancel")) {
+		switch (select("投資城堡防禦:取消")) {
 		case 1:
 			if (Zeny < .@def_invest) {
 				mes "["+strnpcinfo(1)+"]";
-				mes "I'm sorry but there is not enough zeny to invest. You will have to try again when you have the funds, Master.";
+				mes "很抱歉，主人，投資所需的 Zeny 不足。等您備妥資金後再來吧。";
 				close;
 			}
 			set Zeny, Zeny - .@def_invest;
 			SetCastleData strnpcinfo(2),CD_INVESTED_DEFENSE,GetCastleData(strnpcinfo(2),CD_INVESTED_DEFENSE)+1;
 			mes "[ "+strnpcinfo(1)+"]";
-			mes "We finished the investment safely. I expect that our Castle Defense level will be increased by tomorrow.";
+			mes "投資已順利完成。我預計城堡防禦等級明天就會提升。";
 			close;
 		case 2:
 			mes "["+strnpcinfo(1)+"]";
-			mes "I'll do as you bid, my master... There is no hurry. We will do our best.";
+			mes "遵命，我的主人……不必著急，我們會盡力而為。";
 			close;
 		}
 	case 4:
 		mes "["+strnpcinfo(1)+"]";
-		mes "Will you summon a Guardian? It'll be a protector to defend us loyally.";
-		mes "Please select a guardian to defend us.";
+		mes "您要召喚守衛嗎？他會忠誠地守護我們。";
+		mes "請選擇一位守衛來保護我們。";
 		next;
 		for( set .@i, 0; .@i <= 7 ; set .@i, .@i+1 ) {
 			if (.@guardiantype[.@i] == 1) { set .@type$,"Guardian Soldier"; }
@@ -786,23 +786,23 @@ OnRecvCastle:
 		set .@menu$,.@gname$[0]+":"+.@gname$[1]+":"+.@gname$[2]+":"+.@gname$[3]+":"+.@gname$[4]+":"+.@gname$[5]+":"+.@gname$[6]+":"+.@gname$[7];
 		set .@GDnum,select(.@menu$)+9;
 		mes "["+strnpcinfo(1)+"]";
-		mes "Will you summon the chosen guardian? 10,000 zeny are required to summon a Guardian.";
+		mes "您要召喚所選的守衛嗎？召喚守衛需要10,000 Zeny。";
 		next;
-		switch (select("Summon:Cancel")) {
+		switch (select("召喚:取消")) {
 		case 1:
 			if (getgdskilllv(.@GID,10002) == 0) {
 				mes "["+strnpcinfo(1)+"]";
-				mes "Master, we have not the resources to Summon the Guardian. If you want to accumulate them, you have to learn the Guild skill. We failed to summon the Guardian.";
+				mes "主人，我們沒有召喚守衛所需的資源。若想累積資源，您必須學會公會技能。我們召喚守衛失敗了。";
 				close;
 			}
 			if (GetCastleData(strnpcinfo(2),.@GDnum) == 1) {
 				mes "["+strnpcinfo(1)+"]";
-				mes "Master, you already have summoned that Guardian. We cannot summon another.";
+				mes "主人，您已經召喚過那位守衛了，無法再召喚另一位。";
 				close;
 			}
 			if (Zeny < 10000) {
 				mes "["+strnpcinfo(1)+"]";
-				mes "Well... I'm sorry but we don't have funds to summon the Guardian. We failed to summon the Guardian.";
+				mes "嗯……很抱歉，我們沒有召喚守衛的資金。召喚守衛失敗了。";
 				close;
 			}
 			set Zeny, Zeny - 10000;
@@ -813,103 +813,103 @@ OnRecvCastle:
 			else { set .@type,1286; }
 			guardian strnpcinfo(2),.@guardianposx[.@UseGID],.@guardianposy[.@UseGID],getmonsterinfo(.@type, MOB_NAME),.@type,"Guardian#"+strnpcinfo(2)+"::OnGuardianDied",.@UseGID;
 			mes "["+strnpcinfo(1)+"]";
-			mes "We completed the summoning of the Guardian. Our defenses are now increased with it in place.";
+			mes "守衛已成功召喚。有了它在場，我們的防禦力已提升。";
 			close;
 		case 2:
 			mes "["+strnpcinfo(1)+"]";
-			mes "I did as you ordered. But please remember if you the have money to spare, it'll be better to set it up.";
+			mes "已遵照您的命令辦理。不過請記住，若您有閒錢，最好還是事先準備好。";
 			close;
 		}
 	case 5:
 		if (GetCastleData(strnpcinfo(2),CD_ENABLED_KAFRA) == 1) {
 			mes "["+strnpcinfo(1)+"]";
-			mes "We are currently hiring a Kafra Employee... Do you want to fire the Kafra Employee?";
+			mes "我們目前正在僱用卡普拉職員……您要解僱這位卡普拉職員嗎？";
 			next;
-			switch (select("Fire:Cancel")) {
+			switch (select("解僱:取消")) {
 			case 1:
 				cutin "kafra_01",2;
-				mes "[ Hired Kafra Employee ]";
-				mes "I worked so hard... How can you do that, Master?... Please... Please reconsider... Check it again, Master... Please...";
+				mes "[ 受僱的卡普拉職員 ]";
+				mes "我已經很努力了……主人，您怎麼能這樣做？……請……請再考慮一下……主人，請再確認一次……拜託……";
 				next;
-				switch (select("Fire:Cancel")) {
+				switch (select("解僱:取消")) {
 				case 1:
-					mes "[ Hired Kafra Employee ]";
-					mes "Oh, my goodness! This is nonsense!";
+					mes "[ 受僱的卡普拉職員 ]";
+					mes "哎呀，天哪！這太荒謬了！";
 					next;
 					cutin "",255;
 					break;
 				case 2:
-					mes "[ Hired Kafra Employee ]";
-					mes "I'll work hard for you... Thank you!";
+					mes "[ 受僱的卡普拉職員 ]";
+					mes "我會為您努力工作……謝謝您！";
 					close;
 				}
 				break;
 			case 2:
 				mes "["+strnpcinfo(1)+"]";
-				mes "She worked hard in my opinion. It was a good decision to keep her.";
+				mes "依我看，她工作很認真。留下她是個好決定。";
 				close;
 			}
 			disablenpc "Kafra Staff#"+strnpcinfo(2);
 			SetCastleData strnpcinfo(2),CD_ENABLED_KAFRA,0;
 			mes "["+strnpcinfo(1)+"]";
 			mes "....";
-			mes "I have discharged the Kafra Employee... But... are you unsatisfied with something?";
+			mes "我已經解僱了那位卡普拉職員……不過……您有什麼不滿意的嗎？";
 			close;
 		}
 		mes "["+strnpcinfo(1)+"]";
-		mes "Will you contact the kafra Main Office and Hire a Employee for our Castle?";
-		mes "^ff0000 10,000 zeny is required for their services. ";
+		mes "您要與卡普拉總部聯絡，為我們的城堡僱用一位職員嗎？";
+		mes "^ff0000 他們的服務需要10,000 Zeny。 ";
 		next;
-		switch (select("Hire.:Cancel")) {
+		switch (select("僱用:取消")) {
 		case 1:
 			if (getgdskilllv(.@GID,10001) == 0) {
 				mes "["+strnpcinfo(1)+"]";
-				mes "Master, we can't hire a Kafra Employee because we don't have a contract with the Kafra Main Office. If you want to obtain a contract with the Kafra Main Office, you will need to learn the Guild skill first.";
+				mes "主人，我們無法僱用卡普拉職員，因為我們與卡普拉總部沒有合約。若想與卡普拉總部簽約，您必須先學會公會技能。";
 				close;
 			}
 			if (Zeny < 10000) {
 				mes "["+strnpcinfo(1)+"]";
-				mes "Well... I'm sorry but we don't have enough funds to hire a Kafra Employee.";
+				mes "嗯……很抱歉，我們的資金不足以僱用卡普拉職員。";
 				close;
 			}
 			set Zeny, Zeny - 10000;
 			enablenpc "Kafra Staff#"+strnpcinfo(2);
 			SetCastleData strnpcinfo(2),CD_ENABLED_KAFRA,1;
 			mes "["+strnpcinfo(1)+"]";
-			mes "We obtained a contract with the kafra Main Office, and hired a Kafra Employee.";
+			mes "我們已與卡普拉總部簽約，並僱用了一位卡普拉職員。";
 			next;
 			cutin "kafra_01",2;
-			mes "[ Hired Kafra Employee ]";
-			mes "How do you do? I was dispatched from the Main Office.";
-			mes "I'll do my best to not tarnish the reputation of the Guild.";
+			mes "[ 受僱的卡普拉職員 ]";
+			mes "您好。我是從總部派遣過來的。";
+			mes "我會盡力不讓公會的名聲受損。";
 			next;
 			cutin "",255;
 			mes "["+strnpcinfo(1)+"]";
-			mes "The Contract terms of the hired Kafra Employee are for 1 month and after this term, you will need to pay an additional fee.";
-			mes "It will be useful for our members.";
+			mes "受僱卡普拉職員的合約期限為1個月，期滿後需要支付額外費用。";
+			mes "這對我們的成員會很有幫助。";
 			close;
 		case 2:
 			mes "["+strnpcinfo(1)+"]";
-			mes "I did as you ordered, but some of our members will be unhappy. It will be better to hire a Kafra Employee quickly.";
+			mes "我已遵照您的命令辦理，但部分成員會不開心。最好儘快僱用一位卡普拉職員。";
 			close;
 		}
 	case 6:
 		mes "["+strnpcinfo(1)+"]";
-		mes "Do you want to visit the room where our valuables are stored?";
-		mes "That room is restricted to you... you are the only one with access to it.";
+		mes "您想去參觀存放我們貴重物品的房間嗎？";
+		mes "那個房間只限您進入……您是唯一能進入的人。";
 		next;
-		switch (select("Go into Master's room.:Cancel")) {
+		switch (select("進入主人的房間:取消")) {
 		case 1:
 			mes "["+strnpcinfo(1)+"]";
-			mes "I'll show you the secret path. Follow me...please.";
-			mes "When you want to return here, please press the secret switch.";
+			mes "我帶您走秘密通道。請跟我來……";
+			mes "想要回到這裡時，請按下秘密開關。";
 			close2;
 			warp strnpcinfo(2),.@masterroom[0],.@masterroom[1];
 			end;
 		case 2:
 			mes "["+strnpcinfo(1)+"]";
-			mes "Goods are produced once a day... if you don't remove them in time, they will not be produced anymore.";
-			mes "Therefore, it will be better if you check up on them from time to time.";
+			mes "商品每天生產一次……若不及時取走，就不會再生產了。";
+			mes "因此，最好時常確認一下。";
 			close;
 		}
 	}
@@ -923,7 +923,7 @@ OnRecvCastle:
 
 	if (.@GID == 0) {
 		mes "[迴盪的聲音]";
-		mes "'Those who overcome an ordeal shows a great deal of bravery... and will find their way to another ordeal.'";
+		mes "「克服考驗者必展現非凡勇氣……並將找到通往下一道考驗的道路。」";
 		close;
 	}
 
@@ -965,19 +965,19 @@ OnRecvCastle:
 	}
 
 	mes "[迴盪的聲音]";
-	mes "'Only the truly brave can take the test.'";
+	mes "「只有真正的勇者才能接受考驗。」";
 	next;
 	mes " ";
-	mes "There's a small lever. Will you pull it?";
+	mes "這裡有一個小拉桿。您要拉嗎？";
 	next;
-	if(select("Pull.:Don't pull.") == 1) {
+	if(select("拉:不拉") == 1) {
 		if (getcharid(2) == .@GID) {
 			close2;
 			warp .@destination$,.@coordinates[0],.@coordinates[1];
 			end;
 		}
 		mes " ";
-		mes "Nothing happened.";
+		mes "什麼也沒發生。";
 		close;
 	}
 	close;

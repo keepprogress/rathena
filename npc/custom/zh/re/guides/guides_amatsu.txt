@@ -15,23 +15,23 @@
 //= 1.2 Navigation system update. [Euphy]
 //============================================================ 
 
-amatsu,202,91,3	script	Amatsu Guide#amatsu	758,{
-	mes "[Amachang]";
-	mes "Welcome to ^8B4513Amatsu^000000,";
-	mes "the town of kind towners";
-	mes "and beautiful cherry blossoms.";
+amatsu,202,91,3	script	天津嚮導#amatsu::Amatsu Guide#amatsu	758,{
+	mes "[阿瑪醬]";
+	mes "歡迎來到^8B4513天津^000000，";
+	mes "這是一座充滿善良居民的小鎮，";
+	mes "也有美麗的櫻花。";
 	next;
-	mes "[Amachang]";
-	mes "I'm Amachang,";
-	mes "the 13th Miss Amatsu.";
-	mes "I will guide you about town";
-	mes "as Miss Amatsu.";
-	mes "Please tell me";
-	mes "if you want to know something.";
+	mes "[阿瑪醬]";
+	mes "我是阿瑪醬，";
+	mes "第十三屆天津小姐。";
+	mes "我會帶你參觀城鎮，";
+	mes "身為天津小姐。";
+	mes "有什麼想知道的，";
+	mes "請儘管問我。";
 	F_Navi("[Amachang]");
 	while (1) {
 		next;
-		switch(select("[ Kafra Employee ]:[ Bar ]:[ Weapon Dealer ]:[ Tool Dealer ]:[ Amatsu Palace ]:[ Chef Assistant ]:[ Ninja Guild Building ]:[ Sea Captain ]:Remove Marks from Mini-Map:Cancel")) {
+		switch(select("[ 卡普拉職員 ]:[ 酒館 ]:[ 武器商人 ]:[ 工具商人 ]:[ 天津宮殿 ]:[ 主廚助手 ]:[ 忍者公會大樓 ]:[ 船長 ]:移除小地圖標記:取消")) {
 		case 1:
 			callsub L_Mark, "^0000FFKafra Employee^000000";
 			viewpoint 1,102,149,0,0x0A82FF;
@@ -65,8 +65,8 @@ amatsu,202,91,3	script	Amatsu Guide#amatsu	758,{
 			viewpoint 1,195,79,7,0x00BFFF;
 			break;
 		case 9:
-			mes "[Amachang]";
-			mes "I'll remove all marks from your mini-map.";
+			mes "[阿瑪醬]";
+			mes "我會移除你小地圖上的所有標記。";
 			mes "還有什麼我能為你效勞的嗎？";
 			viewpoint 2,1,1,0,0xFFFFFF;
 			viewpoint 2,1,1,1,0xFFFFFF;
@@ -78,16 +78,16 @@ amatsu,202,91,3	script	Amatsu Guide#amatsu	758,{
 			viewpoint 2,1,1,7,0xFFFFFF;
 			break;
 		case 10:
-			mes "[Amachang]";
-			mes "Enjoy your trip~!!";
+			mes "[阿瑪醬]";
+			mes "祝旅途愉快~！！";
 			close;
 		}
 	}
 	end;
 L_Mark:
-	mes "[Amachang]";
-	mes "此外 "+getarg(0)+" is";
-	mes "marked on your mini-map.";
+	mes "[阿瑪醬]";
+	mes "此外 "+getarg(0)+" 已";
+	mes "標記在你的小地圖上。";
 	mes "還有什麼我能為你效勞的嗎？";
 	return;
 }

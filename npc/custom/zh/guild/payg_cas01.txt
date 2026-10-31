@@ -23,25 +23,25 @@
 	set .@GID, GetCastleData("payg_cas01",1);
 
 	if (.@GID == 0) {
-		mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+		mes "[ 神聖符文中土王國敕令 ]";
 		mes " ";
-		mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
-		mes "We declare that";
-		mes "there is no formal master of this castle.";
+		mes "1. 遵守神聖符文中土王國的律令， ";
+		mes "我們宣告";
+		mes "此城堡並無正式的主人。";
 		mes " ";
-		mes "2. To the one who can ";
-		mes "overcome all trials";
-		mes "and destroy the Emperium,";
-		mes "the king will endow the one with";
-		mes "ownership of this castle.";
+		mes "2. 能夠 ";
+		mes "克服所有考驗";
+		mes "並摧毀華麗金屬，";
+		mes "國王將把";
+		mes "此城堡的所有權賜予該人。";
 		close;
 	}
 	if (getcharid(2) == .@GID) {
-		mes "[ Echoing Voice ]";
-		mes "Brave ones...";
-		mes "Do you wish to return to your honorable place?";
+		mes "[ 迴響之聲 ]";
+		mes "勇者們……";
+		mes "您想返回您尊貴的所在嗎？";
 		next;
-		if(select("Return to the guild castle.:Quit.") == 1) {
+		if(select("返回公會城堡:離開") == 1) {
 			close2;
 			if (getcharid(2) == GetCastleData("payg_cas01",1)) {
 					warp "payg_cas01",54,144;
@@ -51,16 +51,16 @@
 		}
 		close;
 	}
-	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes "[ 神聖符文中土王國敕令 ]";
 	mes " ";
-	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
-	mes "we approve that this place is in";
-	mes "the private prossession of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild.";
+	mes "1. 遵守神聖符文中土王國的律令， ";
+	mes "我們認定此地";
+	mes "私人持有：^ff0000"+GetGuildName(.@GID)+"^000000公會所有。";
 	mes " ";
-	mes "2. The guild Master of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild is";
+	mes "2. 公會會長為 ^ff0000"+GetGuildName(.@GID)+"^000000 公會，";
 	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
-	mes "If there is anyone who objects to this,";
-	mes "prove your strength and honor with a steel blade in your hand.";
+	mes "若有人對此有異議，";
+	mes "請以手中的鋼刃證明你的實力與榮譽。";
 	close;
 
 OnRecvCastlePy01:
@@ -68,10 +68,10 @@ OnRecvCastlePy01:
 	end;
 }
 
-pay_gld,125,236,4	duplicate(OutsideFlagsPA1)	Bright Arbor#1-2	722
-pay_gld,110,233,4	duplicate(OutsideFlagsPA1)	Bright Arbor#2	722
-pay_gld,116,233,4	duplicate(OutsideFlagsPA1)	Bright Arbor#3	722
-pay_gld,91,239,2	duplicate(OutsideFlagsPA1)	Bright Arbor#4	722
+pay_gld,125,236,4	duplicate(OutsideFlagsPA1)	光輝林蔭#1-2::Bright Arbor#1-2	722
+pay_gld,110,233,4	duplicate(OutsideFlagsPA1)	光輝林蔭#2::Bright Arbor#2	722
+pay_gld,116,233,4	duplicate(OutsideFlagsPA1)	光輝林蔭#3::Bright Arbor#3	722
+pay_gld,91,239,2	duplicate(OutsideFlagsPA1)	光輝林蔭#4::Bright Arbor#4	722
 
 // Guild Flags (Inside Castle)
 //============================================================
@@ -83,17 +83,17 @@ OnRecvCastlePy01:
 	end;
 }
 
-payg_cas01,238,67,4	duplicate(InsideFlagsPA1)	Bright Arbor#5-2	722
-payg_cas01,233,67,4	duplicate(InsideFlagsPA1)	Bright Arbor#6	722
-payg_cas01,221,123,4	duplicate(InsideFlagsPA1)	Bright Arbor#7	722
-payg_cas01,221,116,4	duplicate(InsideFlagsPA1)	Bright Arbor#8	722
-payg_cas01,206,108,4	duplicate(InsideFlagsPA1)	Bright Arbor#9	722
-payg_cas01,212,108,4	duplicate(InsideFlagsPA1)	Bright Arbor#10	722
+payg_cas01,238,67,4	duplicate(InsideFlagsPA1)	光輝林蔭#5-2::Bright Arbor#5-2	722
+payg_cas01,233,67,4	duplicate(InsideFlagsPA1)	光輝林蔭#6::Bright Arbor#6	722
+payg_cas01,221,123,4	duplicate(InsideFlagsPA1)	光輝林蔭#7::Bright Arbor#7	722
+payg_cas01,221,116,4	duplicate(InsideFlagsPA1)	光輝林蔭#8::Bright Arbor#8	722
+payg_cas01,206,108,4	duplicate(InsideFlagsPA1)	光輝林蔭#9::Bright Arbor#9	722
+payg_cas01,212,108,4	duplicate(InsideFlagsPA1)	光輝林蔭#10::Bright Arbor#10	722
 
 // Guild Flag (Town)
 //============================================================
-payon,90,322,4	duplicate(InsideFlagsPA1)	Bright Arbor#11	722
-payon,166,177,3	duplicate(InsideFlagsPA1)	Bright Arbor#12	722
+payon,90,322,4	duplicate(InsideFlagsPA1)	光輝林蔭#11::Bright Arbor#11	722
+payon,166,177,3	duplicate(InsideFlagsPA1)	光輝林蔭#12::Bright Arbor#12	722
 
 // Kafra Employee
 //============================================================
@@ -101,15 +101,15 @@ payg_cas01,128,58,3	duplicate(guildkafra)	卡普拉職員#payg_cas01::Kafra Staf
 
 // Steward
 //============================================================
-payg_cas01,120,58,4	duplicate(cm)	Kurunnadi#payg_cas01	55
+payg_cas01,120,58,4	duplicate(cm)	庫倫納迪#payg_cas01::Kurunnadi#payg_cas01	55
 
 // Treasure Room Exit
 //============================================================
 payg_cas01,295,8,0	script	#lever_PA01	111,{
 	mes " ";
-	mes "There's a small lever. Will you pull it?";
+	mes "這裡有一個小拉桿。您要拉嗎？";
 	next;
-	if(select("Pull.:Do not.") == 1) {
+	if(select("拉:不拉") == 1) {
 		close2;
 		warp "payg_cas01",120,59;
 		end;

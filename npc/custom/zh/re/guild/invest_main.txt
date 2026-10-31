@@ -114,17 +114,17 @@ function	script	F_Invest_Status	{
 //callfunc "F_Invest_Abyss","<variable>","<NPC name>"{,"<addon message>"};
 function	script	F_Invest_Abyss	{
 	.@npc_name$ = getarg(1);
-	mes "There are 2 ways to invest, by Zeny or the Investment Certificate given out by the Cat Paw Merchant Guild.";
-	mes "Which way would you like to make your investment?";
+	mes "投資方式共有兩種，可用 Zeny 或喵爪商人公會發放的投資證明書來投資。";
+	mes "您想用哪種方式投資？";
 	next;
-	switch(select("Invest with Zeny.:Invest with Investment Certificates.:Cancel")) {
+	switch(select("以 Zeny 投資:以投資證明書投資:取消")) {
 	case 1:
 		mes .@npc_name$;
-		mes "So you've decided to invest in Zeny.";
-		mes "Minimum investment unit is ^4d4dff10,000 Zeny^000000.";
-		mes "You can invest a maximum of 50 units which is ^4d4dff500,000 Zeny^000000.";
+		mes "原來你決定用 Zeny 投資啊。";
+		mes "最低投資單位為 ^4d4dff10,000 Zeny^000000。";
+		mes "最多可以投資 50 單位，也就是 ^4d4dff500,000 Zeny^000000。";
 		next;
-		switch(select("1 unit 10,000 Zeny:10 units 100,000 Zeny:50 units 500,000 Zeny:Another amount:Cancel")) {
+		switch(select("1 單位 10,000 Zeny:10 單位 100,000 Zeny:50 單位 500,000 Zeny:其他金額:取消")) {
 		case 1:
 			set .@units,1;
 			break;
@@ -136,46 +136,46 @@ function	script	F_Invest_Abyss	{
 			break;
 		case 4:
 			mes .@npc_name$;
-			mes "Please enter the amount you want to invest.";
-			mes "Please choose between 1 to 200.";
-			mes "Please enter 0 to cancel.";
+			mes "請輸入你想投資的金額。";
+			mes "請選擇 1 到 200 之間的數字。";
+			mes "輸入 0 即可取消。";
 			next;
 			input .@units;
 			if (.@units < 0 || .@units > 200) {
 				mes .@npc_name$;
-				mes "You've exceeded the amount per investment.";
-				mes "Please try again.";
+				mes "已超過單次投資金額上限。";
+				mes "請再試一次。";
 				close;
 			} else if (.@units == 0) {
 				mes .@npc_name$;
-				mes "Canceled.";
+				mes "已取消。";
 				close;
 			} else
 				break;
 		case 5:
 			mes .@npc_name$;
-			mes "Canceled.";
+			mes "已取消。";
 			close;
 		}
 		set .@zeny, .@units * 10000;
 		if (Zeny < .@zeny) {
 			mes .@npc_name$;
-			mes "You do not have enough money.";
+			mes "您沒有足夠的 Zeny。";
 			close;
 		}
 		mes .@npc_name$;
-		mes "You've invested "+callfunc("F_InsertPlural",.@units,"unit")+" "+callfunc("F_InsertComma",.@zeny)+" Zeny"+getarg(2,"")+".";
-		mes "Not much but this is a small gift. You can exchange it with items in Malangdo.";
+		mes "你已投資 "+callfunc("F_InsertPlural",.@units,"unit")+" "+callfunc("F_InsertComma",.@zeny)+" Zeny"+getarg(2,"")+".";
+		mes "不是什麼貴重的東西，只是一份小禮物。你可以在馬朗多用它兌換物品。";
 		set Zeny, Zeny-.@zeny;
 		setd getarg(0), getd(getarg(0)) + .@units;
 		getitem 6488,.@units; //Thanks_Invest_Ticket
 		close;
 	case 2:
 		mes .@npc_name$;
-		mes "Wow, you've brought Investment Certificates.";
-		mes "How many certificates will you submit?";
+		mes "哇，你帶來投資證明書了呢。";
+		mes "你要繳交幾張證明書？";
 		next;
-		switch(select("1 Investment Certificate:5 Investment Certificates:Another amount:Cancel")) {
+		switch(select("1 張投資證明書:5 張投資證明書:其他數量:取消")) {
 		case 1:
 			set .@tickets,1;
 			break;
@@ -184,43 +184,43 @@ function	script	F_Invest_Abyss	{
 			break;
 		case 3:
 			mes .@npc_name$;
-			mes "Please enter the number of Investment Certificates you want to submit.";
-			mes "Please choose between 1 to 20.";
-			mes "Please enter 0 to cancel.";
+			mes "請輸入你想繳交的投資證明書數量。";
+			mes "請選擇 1 到 20 之間的數量。";
+			mes "輸入 0 即可取消。";
 			next;
 			input .@tickets;
 			if (.@tickets < 0 || .@tickets > 20) {
 				mes .@npc_name$;
-				mes "You've exceeded the amount per investment.";
-				mes "Please try again.";
+				mes "已超過單次投資金額上限。";
+				mes "請再試一次。";
 				close;
 			} else if (.@tickets == 0) {
 				mes .@npc_name$;
-				mes "Canceled.";
+				mes "已取消。";
 				close;
 			} else
 				break;
 		case 4:
 			mes .@npc_name$;
-			mes "Canceled.";
+			mes "已取消。";
 			close;
 		}
 		if (countitem(6489) < .@tickets) {
 			mes .@npc_name$;
-			mes "Looks like you have fewer Investment Certificates than you want to submit.";
+			mes "你的投資證明書數量不足以繳交。";
 			close;
 		}
 		set .@units, .@tickets * 10;
 		mes .@npc_name$;
-		mes .@tickets+" Investment Certificate"+((.@tickets == 1)?" is":"s are")+" the same as an investment of "+.@units+" units ("+((.@units < 100)?.@units:insertchar(""+.@units,",",1))+"0,000z)"+getarg(2,"")+".";
-		mes "Not much but this is a small gift. You can exchange it with items in Malangdo.";
+		mes .@tickets+" 投資證明書"+((.@tickets == 1)?" 已":"皆")+" 等同於投資 "+.@units+" 單位 ("+((.@units < 100)?.@units:insertchar(""+.@units,",",1))+"0,000z)"+getarg(2,"")+".";
+		mes "不是什麼貴重的東西，只是一份小禮物。你可以在馬朗多用它兌換物品。";
 		delitem 6489,.@tickets; //Cats_Invest_Certif
 		setd getarg(0), getd(getarg(0)) + .@units;
 		getitem 6488,.@units; //Thanks_Invest_Ticket
 		close;
 	case 3:
 		mes .@npc_name$;
-		mes "Canceled.";
+		mes "已取消。";
 		close;
 	}
 }
@@ -325,7 +325,7 @@ OnCalculate:
 	}
 	end;
 OnInvest_start:
-	announce "From now on, we are going to start the investments to connect the 'Abyss Gate' in the WOE areas: Valkyrie Realm, Greenwood Lake, Luina, Britoniah.",bc_all,0xFF0000; //FW_NORMAL 10
+	announce "從現在起，我們將開始為攻城區域的「深淵之門」連線進行投資:女武神之境、綠林湖、露伊娜、布里托尼亞。",bc_all,0xFF0000; //FW_NORMAL 10
 	set $fund_prt01,0;
 	set $fund_prt02,0;
 	set $fund_prt03,0;
@@ -349,12 +349,12 @@ OnInvest_start:
 	donpcevent "Investment_total#fund00::OnEnable";
 	end;
 OnInvest_stop:
-	announce "We've finished the investments to connect the 'Abyss Gate'.",bc_all,0xFF0000; //FW_NORMAL 10
+	announce "「深淵之門」的連線投資已經結束。",bc_all,0xFF0000; //FW_NORMAL 10
 	donpcevent "Investment_total#fund00::OnReset";
 	donpcevent "#fund_master::OnCalculate_Election";
 	end;
 OnResult:
-	announce "We've got the results of the investments for the 'Abyss Gate'. You can check through the Investment Status Board in each WOE area.",bc_all,0xFF0000; //FW_NORMAL 10
+	announce "「深淵之門」的投資結果已出爐。你可以在各攻城區域的投資狀況告示板上查看。",bc_all,0xFF0000; //FW_NORMAL 10
 	if ($2011_agit_invest == 4) {
 		set $fund_prt01,0;
 		set $fund_prt02,0;
@@ -389,24 +389,24 @@ OnReset:
 	end;
 }
 
-prt_gld,2,2,0	script	Investment_total#fund00	844,{
+prt_gld,2,2,0	script	投資總額#fund00::Investment_total#fund00	844,{
 	callfunc "F_GM_NPC";
-	mes "Is this not working properly?";
+	mes "是不是沒有正常運作？";
 	next;
 	if (callfunc("F_GM_NPC",1854,0) == 1) {
-		mes "If you think the investment timer is dead, please adjust the timer.";
+		mes "如果你覺得投資計時器停了，請調整計時器。";
 		next;
-		switch(select("Turn on the timer:Cancel")) {
+		switch(select("開啟計時器:取消")) {
 		case 1:
 			donpcevent "Investment_total#fund00::OnTimerReset";
-			mes "You've turned on the timer.";
+			mes "已開啟計時器。";
 			close;
 		case 2:
-			mes "Canceled.";
+			mes "已取消。";
 			close;
 		}
 	} else {
-		mes "I don't need to adjust anything now.";
+		mes "現在不需要調整任何東西。";
 		close;
 	}
 
@@ -452,7 +452,7 @@ OnTimer3600000:
 			if ($agit_result_timer % 10 == 5 || $agit_result_timer % 10 == 0 || $agit_result_timer == 58) {
 				set $agit_result_notice, $agit_result_notice+1;
 				donpcevent "Investment_total#fund00::OnVarInit";
-				announce "No. "+$agit_result_notice+" Interim statement is now available. You can check through the Investment Status Board in each WOE area.",bc_all,0xFF0000; //FW_NORMAL 10
+				announce "第 "+$agit_result_notice+" 期中結算已公布，可在各攻城區域的投資狀況告示板上查看。",bc_all,0xFF0000; //FW_NORMAL 10
 			}
 
 			donpcevent "Investment_total#fund00::OnTimerReset";
@@ -465,10 +465,10 @@ OnTimer3600000:
 	}
 }
 
-prt_gld,164,98,3	script	Revoting Manager#Invest1	421,{
-	mes "[Revoting Manager]";
-	mes "We are not accepting additional votes.";
-	mes "Please wait for our results announcement.";
+prt_gld,164,98,3	script	重新投票管理員#Invest1::Revoting Manager#Invest1	421,{
+	mes "[重新投票管理員]";
+	mes "目前不接受追加投票。";
+	mes "請等待結果公布。";
 	close;
 OnInit:
 	set .@invest_status, callfunc("F_Invest_Status");
@@ -538,7 +538,7 @@ OnTimer60000:
 		set $agit_revoting_timer, $agit_revoting_timer+1;
 		donpcevent "Revoting Manager#Invest1::OnTimerReset";
 	} else if (.@revote == 30) {
-		announce "Cat Paw Merchant Guild: Now we are going to close the additional vote. We will announce the results soon.",bc_all,0xFF0000; //FW_NORMAL 10
+		announce "喵爪商人公會:現在將結束追加投票，結果即將公布。",bc_all,0xFF0000; //FW_NORMAL 10
 		donpcevent "Revoting Manager#Invest2::OnDisable";
 		donpcevent "Revoting Manager#Invest1::OnEnable";
 		set $agit_revoting_timer, $agit_revoting_timer+1;
@@ -555,34 +555,34 @@ OnTimer60000:
 	end;
 }
 
-prt_gld,164,98,3	script	Revoting Manager#Invest2	421,{
+prt_gld,164,98,3	script	重新投票管理員#Invest2::Revoting Manager#Invest2	421,{
 	set .@invest, $2011_agit_invest;
 	if (.@invest < 11) {
-		mes "[Revoting Manager]";
-		mes "No! This is not the time to take a revote.";
+		mes "[重新投票管理員]";
+		mes "不行！現在不是重新投票的時候。";
 		close2;
 		disablenpc "Revoting Manager#Invest2";
 		end;
 	}
 	set .@playtime, checkquest(7349,PLAYTIME);
 	if (.@playtime == 0 || .@playtime == 1) {
-		mes "[Revoting Manager]";
-		mes "You've already participated in the vote.";
-		mes "Please relax and wait for the results.";
+		mes "[重新投票管理員]";
+		mes "您已經參加過投票了。";
+		mes "請放輕鬆，等待結果。";
 		close;
 	} else if (.@playtime == 2)
 		erasequest 7349;
-	mes "[Revoting Manager]";
-	mes "Would you like to participate in the vote for choosing where to connect the 'Abyss Gate'?";
+	mes "[重新投票管理員]";
+	mes "您要參加選擇「深淵之門」連線地點的投票嗎？";
 	next;
-	if(select("Participate in the vote.:Skip for now.") == 2) {
-		mes "[Revoting Manager]";
-		mes "You've canceled the vote.";
+	if(select("參加投票:暫時略過") == 2) {
+		mes "[重新投票管理員]";
+		mes "已取消投票。";
 		close;
 	}
-	mes "[Revoting Manager]";
-	mes "You can vote once and won't need to invest for your choice.";
-	mes "Plesae choose one WOE area.";
+	mes "[重新投票管理員]";
+	mes "只能投一次票，選擇的地點不需要投資。";
+	mes "請選擇一個攻城區域。";
 	next;
 
 	// Create menu.
@@ -599,9 +599,9 @@ prt_gld,164,98,3	script	Revoting Manager#Invest2	421,{
 	}
 	set .@vote, select(implode(.@menu$,":"))-1;
 
-	mes "[Revoting Manager]";
-	mes "You've voted for "+.@menu$[.@vote]+".";
-	mes "Thanks for voting.";
+	mes "[重新投票管理員]";
+	mes "您已投票給 "+.@menu$[.@vote]+".";
+	mes "感謝您的投票。";
 	setquest 7349;
 	setd "$fund_"+.@candidates$[.@vote]+"_extra", getd("$fund_"+.@candidates$[.@vote]+"_extra") + 1;
 	close;
@@ -634,16 +634,16 @@ OnNotice_on:
 	initnpctimer;
 	end;
 OnTimer5000:
-	announce "Cat Paw Merchant Guild: As no WOE area has reached the maximum investment level to connect the 'Abyss Gate'...",bc_all,0xFF0000; //FW_NORMAL 10
+	announce "喵爪商人公會:由於沒有任何攻城區域達到連接「深淵之門」的投資上限……",bc_all,0xFF0000; //FW_NORMAL 10
 	end;
 OnTimer8000:
-	announce "Cat Paw Merchant Guild: We were about to connect the 'Abyss Gate' to the WOE area which invested most.",bc_all,0xFF0000; //FW_NORMAL 10
+	announce "喵爪商人公會:原本打算將「深淵之門」連接到投資最多的攻城區域。",bc_all,0xFF0000; //FW_NORMAL 10
 	end;
 OnTimer11000:
-	announce "Cat Paw Merchant Guild: However, there were areas which invested the same amount. So we will put them to a vote.",bc_all,0xFF0000; //FW_NORMAL 10
+	announce "喵爪商人公會:但有些區域投資金額相同，因此將進行投票。",bc_all,0xFF0000; //FW_NORMAL 10
 	end;
 OnTimer14000:
-	announce "Cat Paw Merchant Guild: Additional votes will be available for 30 minutes. You can vote in Valkyrie Realm.",bc_all,0xFF0000; //FW_NORMAL 10
+	announce "喵爪商人公會:追加投票將開放 30 分鐘。您可以在女武神之境投票。",bc_all,0xFF0000; //FW_NORMAL 10
 	end;
 OnTimer20000:
 	explode(.@candidates$, callsub(OnGetCandidates, $2011_agit_invest),"|");
@@ -657,7 +657,7 @@ OnTimer20000:
 		else if (.@candidates$[.@i] == "prt")
 			set .@choices$[.@i],"Valkyrie Realm";
 	}
-	announce "Cat Paw Merchant Guild: The candidates for the additional vote are... "+implode(.@choices$," vs. ")+".",bc_all,0xFF0000; //FW_NORMAL 10
+	announce "喵爪商人公會:追加投票的候選地點是…… "+implode(.@choices$," 對 ")+".",bc_all,0xFF0000; //FW_NORMAL 10
 	set $fund_prt_extra,0;
 	set $fund_pay_extra,0;
 	set $fund_gef_extra,0;
@@ -669,7 +669,7 @@ OnTimer20000:
 }
 
 /*
-prtg_cas01,2,2,0	script	Abrai	55,{
+prtg_cas01,2,2,0	script	阿布萊::Abrai	55,{
 	mes "I should quit my steward job.";
 	close;
 OnAgitInvest:
@@ -722,175 +722,175 @@ OnAgitInvest:
 	set .@n$,"["+.@name$+"]";
 
 	mes .@n$;
-	mes "我是 "+.@name$+", the "+.@intro$+" of the Cat Paw Merchant Guild.";
-	mes "I consult about investments for the Abyss Gate development.";
+	mes "我是 "+.@name$+"， "+.@intro$+" 喵爪商人公會投票。";
+	mes "我負責「深淵之門」開發的投資諮詢。";
 	mes "有什麼可以為您效勞的嗎？";
 	next;
-	switch(select("What is the Abyss Gate?:Investing in the gate development?:I want to invest in this area.:Cancel")) {
+	switch(select("什麼是深淵之門？:投資門扉開發？:我想投資這個區域。:取消")) {
 	case 1:
 		mes .@n$;
-		mes "It is only called the Abyss Gate for convenience but it's simply a ^4d4dffgap to another dimension^000000.";
+		mes "它只是為了方便才被稱為深淵之門，其實不過是 ^4d4dff通往另一個次元的縫隙^000000。";
 		next;
 		mes .@n$;
-		mes "More of these gaps are found here and there after Morocc created the Crack of Dimension.";
-		mes "I personally think that the Abyss Gate found recently is part of the past or even from the future.";
+		mes "自從摩洛克製造出次元裂縫之後，各處陸續發現了更多這樣的縫隙。";
+		mes "我個人認為最近發現的深淵之門，可能是來自過去，甚至是未來的一部分。";
 		next;
 		mes .@n$;
-		mes "It is said that the Abyss Gate forcefully connects to another dimension beyond our world.";
-		mes "Probably because there are those that follow the Emperium's power.";
+		mes "據說深淵之門會強行連接到我們世界之外的另一個次元。";
+		mes "大概是因為有人追隨華麗金屬的力量吧。";
 		next;
 		mes .@n$;
-		mes "There are a total of 4 Abyss Gates found so far. They all connect to the Agit region overflowing with the Emperium's force.";
+		mes "目前總共發現了 4 道深淵之門，它們全都連接到充滿華麗金屬力量的 Agit 領地。";
 		next;
 		mes .@n$;
-		mes "We named each by dimension beyond the gap.";
-		mes "^4d4dffWay of the Warrior, Hill of the Dead, Winds of the Ancient, and the Hero's Tears.^000000";
-		mes "And all these four gaps are called the ^4d4dffAbyss Gate^000000.";
+		mes "我們依照縫隙另一端的次元來命名。";
+		mes "^4d4dff戰士之道、死者之丘、古代之風，以及英雄之淚。^000000";
+		mes "這四道縫隙全都被稱為 ^4d4dff深淵之門^000000。";
 		next;
 		mes .@n$;
-		mes "The gap may lead to the past, future or even an unknown world.";
-		mes "The power the Abyss Gate holds is both fearful but sweet";
+		mes "縫隙可能通往過去、未來，甚至是未知的世界。";
+		mes "深淵之門蘊含的力量既令人畏懼，卻又教人著迷";
 		next;
 		mes .@n$;
-		mes "Are you also interested in exploring the Abyss Gate?";
-		mes "Ha ha. You'll need to go through several steps before exploring.";
+		mes "你也對探索深淵之門有興趣嗎？";
+		mes "哈哈。在探索之前，你還需要經過幾道程序。";
 		next;
 		mes .@n$;
-		mes "If you are interested,";
-		mes "will you take the time to sit down and talk about investing in maintaining the Abyss Gate?";
+		mes "如果你有興趣，";
+		mes "願意花點時間坐下來，談談投資維護深淵之門的事嗎？";
 		close;
 	case 2:
 		mes .@n$;
-		mes "Are you curious about investing in the Gate development?";
-		mes "What do you want to know about?";
+		mes "你對投資門扉的開發有興趣嗎？";
+		mes "你想了解哪方面的事？";
 		next;
-		switch(select("About the Gate?:About investments?:How to invest?:Benefits from investing?")) {
+		switch(select("關於深淵之門？:關於投資？:要如何投資？:投資有什麼好處？")) {
 		case 1:
 			mes .@n$;
-			mes "The Gate is what it is named after, a door.";
-			mes "A dimensional passageway that connects here to there.";
+			mes "門就如其名，是一扇門。";
+			mes "一條連接此處與彼處的次元通道。";
 			next;
 			mes .@n$;
-			mes "The Abyss Gate was created as a very unstable path from beyond the dimensional gap,";
-			mes "therefore traveling through the Gate will need an artificial dimension connection.";
+			mes "深淵之門是從次元縫隙另一端開闢出的極不穩定通道，";
+			mes "因此要穿越此門，需要人工的次元連接。";
 			next;
 			mes .@n$;
-			mes "Humans are far from having the advanced technology that's needed";
-			mes "but our Cat Paw Merchant Guild holds the high technology to use the Crack of Dimension.";
+			mes "人類距離擁有所需的先進技術還很遙遠，";
+			mes "但我們喵爪商人公會掌握了運用次元裂縫的高端技術。";
 			next;
 			mes .@n$;
-			mes "So we made a proposal.";
-			mes "With the promise of support the Cat Paw Merchant Guild and paying for the immense expense for maintaining the connection with the Gate,";
-			mes "we will make the connection to the Crack of Dimension.";
+			mes "所以我們提出了一項提案。";
+			mes "只要承諾支持喵爪商人公會，並支付維持門扉連線的龐大費用，";
+			mes "我們就會替你接通次元裂縫。";
 			next;
 			mes .@n$;
-			mes "Of course working on the Crack of Dimension is no easy job and it does come with risks.";
-			mes "There are cases where people go missing from traveling between.";
+			mes "當然，處理次元裂縫絕非易事，也確實伴隨著風險。";
+			mes "曾有人在往來途中失蹤。";
 			next;
 			mes .@n$;
-			mes "The best maintaining duration is about 4 days";
-			mes "You invest in us and we create the door that connects to the dimensional gap.";
+			mes "最佳的維持時間約為 4 天";
+			mes "只要你投資我們，我們就會打造連接次元縫隙的門扉。";
 			next;
 			mes .@n$;
-			mes "Doesn't this sound like the perfect win-win proposal?";
+			mes "聽起來是不是很完美的雙贏提案？";
 			close;
 		case 2:
 			mes .@n$;
-			mes "Forcing through the unstable dimensional gap and creating a passageway is very dangerous.";
-			mes "Not to mention the huge resources needed.";
+			mes "強行穿越不穩定的次元縫隙、開闢通道，非常危險。";
+			mes "更不用說所需的龐大資源了。";
 			next;
 			mes .@n$;
-			mes "If you take care of the charges and also the danger pay by investing in the Cat Paw Merchant Guild,";
-			mes "we'll create and maintain the gate regardless of the risks.";
+			mes "如果你透過投資喵爪商人公會來負擔費用與風險成本，";
+			mes "無論有什麼風險，我們都會建立並維持這扇門。";
 			next;
 			mes .@n$;
-			mes "But then of course the money involved for the gate costs will be extreme.";
-			mes "It will be easy if you can find investors to share the amount.";
+			mes "不過，門扉的建設費用自然會非常高昂。";
+			mes "如果能找到幾位投資人一同分擔，就會輕鬆許多。";
 			next;
 			mes .@n$;
-			mes "There is a basic charge to start connecting the gate.";
-			mes "Results depend on the how much investment money is collected.";
+			mes "開始連接門扉需要一筆基本費用。";
+			mes "結果取決於募集到多少投資金額。";
 			next;
 			mes .@n$;
-			mes "The Abyss Gate exists in each Agit region.";
-			mes "Can you imagine how much money and sacrifice our guild will have to go through to develop in all areas?";
+			mes "每個 Agit 領地都有一道深淵之門。";
+			mes "你能想像公會要為了在各區域發展，投入多少金錢與犧牲嗎？";
 			next;
 			mes .@n$;
-			mes "This explains the regional competition in investments.";
-			mes "If not enough gate maintenance costs are collected then it is obvious the region with the most investments will receive the benefits";
+			mes "這就是各區域投資競爭的原因。";
+			mes "如果募集的門扉維持費用不足，那麼投資最多的區域自然會得到好處，";
 			next;
 			mes .@n$;
-			mes "If ^4d4dffthe Abyss Gate is successfully connected then the dungeon of the hideout area";
-			mes "will be open to others instead of being guild exclusive^000000 which will be very attractive for investment.";
+			mes "如果 ^4d4dff深淵之門成功連接，那麼藏身處的地城";
+			mes "將對外開放，不再只限公會專用^000000，這對投資者來說會非常有吸引力。";
 			next;
 			mes .@n$;
-			mes "But then again, this is only for when the gate is connected.";
+			mes "不過，這只適用於門扉已經連接的情況。";
 			close;
 		case 3:
 			mes .@n$;
-			mes "It's simple.";
-			mes "Visit the branch manager of the ^4d4dffregion you want to invest in during the investment duration^000000 and make your investment.";
+			mes "很簡單。";
+			mes "請在投資期間內，^4d4dff拜訪您想投資區域的分店經理^000000，然後進行投資。";
 			next;
 			mes .@n$;
-			mes "We usually receive ^4d4dffthe common currency here, Zeny^000000.";
-			mes "But since we're talking about supporting our Cat Paw Merchant Guild, you can also invest with items in demand in Malangdo.";
+			mes "我們通常收取 ^4d4dff通用貨幣 Zeny^000000。";
+			mes "不過既然是支持喵爪商人公會，你也可以用馬朗多需求的物品來投資。";
 			next;
 			mes .@n$;
-			mes "Provide the items in need to Namis in Malangdo who is in charge of general affairs in our guild.";
-			mes "Bring back your Investment Certificate to add it to the investment tribute.";
+			mes "請把所需物品交給馬朗多負責公會總務的娜米絲。";
+			mes "把你的投資證明書帶回來，就能加進投資貢品中。";
 			next;
 			mes .@n$;
-			mes "You must visit and invest at the region you want in order for your investment to be counted as a tribute.";
+			mes "必須親自前往想要的區域投資，投資才會計入貢品。";
 			close;
 		case 4:
 			mes .@n$;
-			mes "The Abyss Gate is basically contracting and connecting with the castle that owns the Agit;";
-			mes "therefore, we will provide all we have once the costs for connecting and maintaining the gate are sufficient.";
+			mes "深淵之門基本上是與擁有 Agit 的城堡締結契約並連接，";
+			mes "因此，只要連接與維持門扉的費用足夠，我們就會傾盡所有。";
 			next;
 			mes .@n$;
-			mes "In terms of the minimum and maximum costs for the whole work,";
-			mes "if the collected investment ^4d4dffexceeds the minimum costs^000000, we can connect you to the ^4d4dffdeepest layer of an unknown guild dungeon^000000.";
+			mes "就整體工程的最低與最高費用而言，";
+			mes "如果募集的投資 ^4d4dff超過最低費用^000000，我們就能把你連接到 ^4d4dff未知公會地城的最深層^000000。";
 			next;
 			mes .@n$;
-			mes "If investments exceed the maximum costs, that region will be connected to the";
-			mes "^4d4dffAbyss Gate^000000 regardless of the investment rank which includes the deepest layer of the guild dungeon.";
+			mes "如果投資超過最高費用，該區域將會連接到";
+			mes "^4d4dff深淵之門^000000，不論投資排名如何，也包括公會地城的最深層。";
 			next;
 			mes .@n$;
-			mes "^ff0000If there is no Agit region that reached the maximum investment, then the region with the";
-			mes "highest investment participation will get the Abyss Gate connected with the investment collected from all regions.^000000";
+			mes "^ff0000如果沒有任何 Agit 領地達到投資上限，那麼投資參與度";
+			mes "最高的區域，將以所有區域募集的投資連接深淵之門。^000000";
 			next;
 			mes .@n$;
-			mes "Once the Abyss Gate is connected, the deepest layer (2F) of the guild dungeon";
-			mes "will be open to all adventurers that participated in the regional investment.";
+			mes "深淵之門連接之後，公會地城的最深層（2F）";
+			mes "將開放給所有參與區域投資的冒險者。";
 			next;
 			mes .@n$;
-			mes "Visits to the dungeon will be counted for the next investment for the Agit region";
-			mes "so being in good terms with the guild that claims the Agit castle will be a bonus.";
+			mes "前往地城的次數，將計入 Agit 領地的下一次投資中";
+			mes "因此與擁有 Agit 城堡的公會保持良好關係會更有利。";
 			next;
 			mes .@n$;
-			mes "By the way, it isn't easy to maintain the connection with the Abyss Gate and investments and reconnection is needed weekly";
-			mes "so please continue your support and investment if you want the power of the unknown.";
+			mes "順帶一提，要維持與深淵之門的連線並不容易，每週都需要重新連接，";
+			mes "所以如果你想要未知的力量，請持續給予支持與投資。";
 			close;
 		}
 	case 3:
 		if (checkweight(1201,1) == 0 || MaxWeight - Weight < 1000) {
 			mes "- 你目前攜帶的 -";
 			mes "- 道具太多了。 -";
-			mes "- Please try again after you -";
-			mes "- lose some weight. -";
+			mes "- 請先 -";
+			mes "- 減點肥再來吧。 -";
 			close;
 		}
 		if (countitem(6488) >= 4800) {
 			mes .@n$;
-			mes "You have too many Thank You Tickets to receive any more.";
-			mes "Cannot give you any more tickets. Please use your ticket and come back.";
-			mes "The ticket can be exchanged with various items in Malangdo.";
+			mes "你持有的感謝票已經太多，無法再領取了。";
+			mes "無法再發放感謝票給你了。請先使用手中的票再來吧。";
+			mes "這張票可以在馬朗多兌換各種物品。";
 			close;
 		}
 		if (callfunc("F_Invest_Status") != 1) {
 			mes .@n$;
-			mes "We do not receive investments now.";
-			mes "Please come back during the investment duration.";
+			mes "目前不接受投資。";
+			mes "請在投資期間再來。";
 			close;
 		}
 		set .@guild, getcharid(2);
@@ -905,24 +905,24 @@ OnAgitInvest:
 				set .@menu$, .@menu$+"^aaaaaaNot the guild that claimed "+.@castle_name$[.@i]+"^000000:";
 		}
 		mes .@n$;
-		mes "Would you like to invest in the ^4d4dff"+.@realm$+"^000000 region?";
-		mes "If there is a castle occupied already, you will invest in the castle and the guild that is occupying it.";
+		mes "您想投資 ^4d4dff"+.@realm$+"^000000 區域嗎？";
+		mes "如果該城堡已被佔領，你將會投資給佔領它的城堡與公會。";
 		next;
 		if (.@castles_owned) {
 			set .@i, select(.@menu$+"取消");
 			if (.@i == 6) {
 				mes .@n$;
-				mes "Canceled.";
+				mes "已取消。";
 				close;
 			}
 			if (.@guild != .@owner_id[.@i]) {
 				mes .@n$;
-				mes "The guild that is occupying "+.@castle_name$[.@i]+" 為 "+.@owner_name$[.@i]+".";
-				mes "Doesn't look like your guild.";
+				mes "佔領該區域的公會是 "+.@castle_name$[.@i]+" 為 "+.@owner_name$[.@i]+".";
+				mes "看起來不是你的公會。";
 				close;
 			}
 			mes .@n$;
-			mes "Invest under "+.@castle_name$[.@i]+"'s"+.@owner_name$[.@i]+" guild name.";
+			mes "請以 "+.@castle_name$[.@i]+"的"+.@owner_name$[.@i]+" 公會名義投資。";
 			callfunc "F_Invest_Abyss","$fund_"+.@npc$+"0"+.@i,.@n$;
 			end;
 		} else {
@@ -933,7 +933,7 @@ OnAgitInvest:
 	case 4:
 		mes .@n$;
 		mes "是這樣嗎？";
-		mes "Please come back whenever you are interested in investing in the Abyss Gate development.";
+		mes "如果你對深淵之門的開發投資有興趣，隨時再來吧。";
 		close;
 	}
 }
@@ -965,34 +965,34 @@ OnAgitInvest:
 
 	if (callfunc("F_Invest_Status") != 3) {
 		mes .@n$;
-		mes "There are currently no connected dungeon gates.";
+		mes "目前沒有已連接的地城之門。";
 		close;
 	}
 	set .@status, getd("$"+.@npc$+"_invest_result");
 	if (.@status == 3) {
 		mes .@n$;
-		mes "We've successfully connected the Abyss Gate ["+.@gate$+"] with the help from your investment.";
-		mes "The Agit dungeon will be open to everyone with a small entrance fee in "+.@realm$+".";
+		mes "我們已成功連接深淵之門 ["+.@gate$+"] ，多虧了你的投資。";
+		mes "Agit 地城將開放給所有人，入場費為 "+.@realm$+".";
 		next;
 		mes .@n$;
-		mes "Please visit as often as possible since the entrance fee is saved as an investment for the region.";
-		mes "Do you want to enter the Agit dungeon?";
+		mes "請盡量多來訪，因為入場費會被存為該區域的投資。";
+		mes "你要進入 Agit 地城嗎？";
 		next;
-		set .@i, select(.@realm$+" Dungeon 1F - 10000z:"+.@realm$+" Dungeon 2F - 10000z:Cancel");
+		set .@i, select(.@realm$+" 地城 1F - 10000z:"+.@realm$+" 地城 2F - 10000z:取消");
 		if (.@i == 3) {
 			mes .@n$;
-			mes "Canceled.";
+			mes "已取消。";
 			close;
 		}
 		if (Zeny < 10000) {
 			mes .@n$;
-			mes "I'm collecting a small entrance fee.";
-			mes "Your contribution will be saved for the next investment.";
-			mes "Entrance fee is 10000z.";
+			mes "我正在收取一點入場費。";
+			mes "你的貢獻將會保留，作為下一次投資。";
+			mes "入場費為 10000z。";
 			close;
 		}
 		mes .@n$;
-		mes "I'm sending you to the "+.@realm$+" Agit Dungeon "+.@i+"F.";
+		mes "正在把你傳送到 "+.@realm$+" Agit 地城 "+.@i+"F。";
 		set Zeny, Zeny-10000;
 		setd "$fund_"+.@npc$+"_extra", getd("$fund_"+.@npc$+"_extra") + 1;
 		close2;
@@ -1007,13 +1007,13 @@ OnAgitInvest:
 		end;
 	} else if (.@status == 2) {
 		mes .@n$;
-		mes "此外 "+.@realm$+" Agit Dungeon 2F is now available but since it is not connected with the Abyss Gate,";
-		mes "the Agit dungeon is only accessible to the Agit guild.";
+		mes "此外 "+.@realm$+" Agit 地城 2F 目前已可進入，但由於尚未與深淵之門連接，";
+		mes "Agit 地城只能由 Agit 公會進入。";
 		close;
 	} else {
 		mes .@n$;
-		mes .@realm$+" was not chosen to be connected with a gate this time.";
-		mes "Please wait for the next investment duration.";
+		mes .@realm$+" 本次未被選為連接門扉的對象。";
+		mes "請等待下一次的投資期間。";
 		close;
 	}
 	end;
@@ -1037,44 +1037,44 @@ OnAgitInvest:
 		}
 		set .@notice, $agit_result_notice;
 		if (.@notice < 1 || .@notice > 12) {
-			mes "There are currently no investment sums available.";
+			mes "目前沒有可查看的投資總額。";
 			close;
 		}
-		mes callfunc("F_GetNumSuffix",.@notice)+" total (unit in 10,000z)";
+		mes callfunc("F_GetNumSuffix",.@notice)+" 總計 (單位為 10,000z)";
 		for(set .@i,1; .@i<=5; set .@i,.@i+1) {
 			set .@map$, .@npc$+"g_cas0"+.@i;
 			set .@fund[.@i], getd("$@vfund_"+.@npc$+"0"+.@i);
-			mes getcastlename(.@map$)+" "+getguildname(getcastledata(.@map$,CD_GUILD_ID))+" Guild: "+.@fund[.@i];
+			mes getcastlename(.@map$)+" "+getguildname(getcastledata(.@map$,CD_GUILD_ID))+" 公會: "+.@fund[.@i];
 		}
 		set .@fund[0], getd("$@vfund_"+.@npc$+"_extra");
-		mes .@realm$+" normal: "+.@fund[0];
-		mes .@realm$+" Investment Grand Total: "+(.@fund[0]+.@fund[1]+.@fund[2]+.@fund[3]+.@fund[4]+.@fund[5]);
+		mes .@realm$+" 一般: "+.@fund[0];
+		mes .@realm$+" 投資總額: "+(.@fund[0]+.@fund[1]+.@fund[2]+.@fund[3]+.@fund[4]+.@fund[5]);
 		close;
 	} else if (.@invest_status == 2) {
-		mes "!- Notice -!";
-		mes "No sums are available because the total investment amount is currently being calculated.";
-		mes "Please wait for the announcement of the results.";
+		mes "!- 告示 -!";
+		mes "目前正在計算投資總額，因此暫時無法查看。";
+		mes "請等待結果公布。";
 		close;
 	} else if (.@invest_status == 3) {
 		setarray .@invest_result[0], $prt_invest_result,$pay_invest_result,$gef_invest_result,$alde_invest_result;
 		setarray .@invest_region$[0],  "Valkyrie Realm",  "Greenwood Lake",       "Britoniah",            "Luina";
-		mes "!- Investment Results of All Agit Regions -!";
+		mes "!- 所有 Agit 領地的投資結果 -!";
 		for(set .@i,0; .@i<4; set .@i,.@i+1) {
 			if (.@invest_result[.@i] == 1)
-				mes "^aaaaaa["+.@invest_region$[.@i]+"] below minimum^000000";
+				mes "^aaaaaa["+.@invest_region$[.@i]+"] 未達最低標準^000000";
 			else if (.@invest_result[.@i] == 2) {
-				mes "["+.@invest_region$[.@i]+"] minimum achieved";
-				mes "-> Guild Dungeon Deepest Layer (2F) available";
+				mes "["+.@invest_region$[.@i]+"] 已達最低標準";
+				mes "-> 公會地城最深層（2F）已開放";
 			} else if (.@invest_result[.@i] == 3) {
-				mes "^4d4dff["+.@invest_region$[.@i]+"] maximum achieved^000000";
-				mes "-> Abyss Gate available";
+				mes "^4d4dff["+.@invest_region$[.@i]+"] 已達最高標準^000000";
+				mes "-> 深淵之門已可連接";
 			} else
-				mes "No data for ["+.@invest_region$[.@i]+"].";
+				mes "尚無 ["+.@invest_region$[.@i]+"].";
 		}
 		close;
 	} else {
-		mes "!- Notice -!";
-		mes "No investment information will be announced now.";
+		mes "!- 告示 -!";
+		mes "目前不會公布任何投資資訊。";
 		close;
 	}
 }
@@ -1100,51 +1100,51 @@ OnAgitInvest:
 
 	set .@GID, getcastledata(strnpcinfo(4),CD_GUILD_ID);
 	if (getcharid(2) != .@GID) {
-		mes "[Gate Manager]";
-		mes "You don't seem to be the member of guild owning this castle.";
-		mes "If you need any help, please visit any of our guild members at "+.@realm$+" Square.";
+		mes "[門扉管理員]";
+		mes "你似乎不是擁有此城堡的公會成員。";
+		mes "如果需要幫助，請到 "+.@realm$+" 廣場找公會成員。";
 		close;
 	}
-	mes "[Gate Manager]";
-	mes "Hello, I am the Gate Manager from Cat Paw Merchant Guild warp department.";
+	mes "[門扉管理員]";
+	mes "你好，我是喵爪商人公會傳送部門的門扉管理員。";
 	mes "今天有什麼能為您效勞的嗎？";
 	next;
-	switch(select("Invest for gate connection:Deepest Layer Dungeon Access:Abyss Gate Access:Cancel")) {
+	switch(select("投資門扉連接:公會地城最深層入場:深淵之門入場:取消")) {
 	case 1:
 		if (checkweight(1201,1) == 0 || MaxWeight - Weight < 1000) {
-			mes "[Gate Manager]";
-			mes "You have too many items to receive the Thank You Ticket as a small gift for your investment.";
-			mes "Please come back after making room in your inventory.";
+			mes "[門扉管理員]";
+			mes "你的物品太多，無法領取投資的感謝票小禮物。";
+			mes "請先清出背包空間再來吧。";
 			close;
 		}
 		if (countitem(6488) >= 4800) {
-			mes "[Gate Manager]";
-			mes "You have too many Thank You Tickets to receive any more.";
-			mes "Cannot give you any more tickets. Please use your ticket and come back.";
-			mes "The ticket can be exchanged with various items in Malangdo.";
+			mes "[門扉管理員]";
+			mes "你持有的感謝票已經太多，無法再領取了。";
+			mes "無法再發放感謝票給你了。請先使用手中的票再來吧。";
+			mes "這張票可以在馬朗多兌換各種物品。";
 			close;
 		}
 		if (callfunc("F_Invest_Status") != 1) {
-			mes "[Gate Manager]";
-			mes "We do not receive investments now.";
-			mes "Please come back during the investment duration.";
+			mes "[門扉管理員]";
+			mes "目前不接受投資。";
+			mes "請在投資期間再來。";
 			close;
 		}
 		if (getcharid(2) != .@GID) {
-			mes "[Gate Manager]";
-			mes "You don't seem to be the member of the guild owning this castle.";
-			mes "Please use the normal investment from "+.@realm$+" Square.";
+			mes "[門扉管理員]";
+			mes "你似乎不是擁有此城堡的公會成員。";
+			mes "請使用一般投資，於 "+.@realm$+" 廣場找公會成員。";
 			close;
 		}
-		mes "[Gate Manager]";
-		mes "Proceed investing under your guild name.";
+		mes "[門扉管理員]";
+		mes "以你的公會名義投資。";
 		callfunc "F_Invest_Abyss","$fund_"+.@npc$+"0"+.@id,"[Gate Manager]";
 		end;
 	case 2:
 		callsub L_Enter,1,.@realm$,.@npc$;
-		mes "[Gate Manager]";
-		mes "You are interested in exploring the "+.@realm$+" Guild Dungeon Deepest Layer (2F).";
-		mes "Let me guide you. Good luck.";
+		mes "[門扉管理員]";
+		mes "你有興趣探索 "+.@realm$+" 公會地城最深層 (2F)。";
+		mes "我來帶你過去。祝你好運。";
 		close2;
 		if (compare(strnpcinfo(2),"alde")) {
 			switch(.@id) {
@@ -1182,8 +1182,8 @@ OnAgitInvest:
 		end;
 	case 3:
 		callsub L_Enter,2,.@realm$,.@npc$;
-		mes "[Gate Manager]";
-		mes "Let me guide you to the Abyss Gap connected with "+.@realm$+", the Abyss Gate 'Way of the Warrior'.";
+		mes "[門扉管理員]";
+		mes "我來帶你前往與 "+.@realm$+"，即深淵之門「戰士之道」。";
 		close2;
 		if (compare(strnpcinfo(2),"alde")) {
 			switch(.@id) {
@@ -1220,8 +1220,8 @@ OnAgitInvest:
 		}
 		end;
 	case 4:
-		mes "[Gate Manager]";
-		mes "Canceled.";
+		mes "[門扉管理員]";
+		mes "已取消。";
 		close;
 	}
 	end;
@@ -1233,50 +1233,50 @@ L_Enter:
 		if ((getarg(0) == 1 && .@status == 2) || .@status == 3)
 			return;
 		else {
-			mes "[Gate Manager]";
-			mes getarg(1)+" was not chosen to be connected with a gate this time.";
-			mes "Please wait for the next investment duration.";
+			mes "[門扉管理員]";
+			mes getarg(1)+" 本次未被選為連接門扉的對象。";
+			mes "請等待下一次的投資期間。";
 			close;
 		}
 	} else if (.@invest_status < 3) {
-		mes "[Gate Manager]";
-		mes "There are currently no connected dungeon gates.";
-		mes "A gate will be connected as soon as the investment results are available.";
-		mes "Please wait.";
+		mes "[門扉管理員]";
+		mes "目前沒有已連接的地城之門。";
+		mes "投資結果公布後，門扉將立即連接。";
+		mes "請稍候。";
 		close;
 	} else {
-		mes "[Gate Manager]";
-		mes "The gate will disappear soon.";
-		mes "The dungeon is no longer accessible.";
-		mes "Please try again next time.";
+		mes "[門扉管理員]";
+		mes "門扉即將消失。";
+		mes "地城已無法進入。";
+		mes "下次請再來。";
 		close;
 	}
 }
 
 // Item Investments :: tooja_namis
 //============================================================
-malangdo,218,126,4	script	Cat Paw Merchants Notice	857,{
-	mes "<< Cat Paw Merchants Notice >>";
-	mes "'^C379CEInvest Unused Items for Prizes!^000000'";
+malangdo,218,126,4	script	喵爪商人告示::Cat Paw Merchants Notice	857,{
+	mes "<< 喵爪商人告示 >>";
+	mes "「^C379CE用未使用的道具投資換取獎品！^000000」";
 	next;
-	switch(select("Read Notice:Check Event 1:Check Event 2")) {
+	switch(select("閱讀告示:查看活動 1:查看活動 2")) {
 	case 1:
-		mes "- Notice -";
-		mes "Hello all Cat Paw Merchants customers! With your love, we Cat Paw Merchants are growing every day. All executives and staff members promise to do our best to further our frontier and development.";
+		mes "- 告示 -";
+		mes "各位喵爪商人的顧客們好！在大家的愛護下，我們喵爪商人每天都在成長。全體高層與職員都承諾會竭盡全力，拓展疆界與事業發展。";
 		next;
-		mes "- Event Notice! -";
-		mes " An Event called '^C379CEInvest Unused Items for Prizes!^000000' is under way, where you could exchange unused items in your storage for Investment Certificate of the Cat Paw Merchants.";
+		mes "- 活動告示！ -";
+		mes " 名為「^C379CE用未使用的道具投資換取獎品！^000000」的活動正在進行中，您可以將倉庫中未使用的道具兌換為喵爪商人的投資證明書。";
 		next;
-		mes "Exchangeable items will be announced on a separate sheet. Thank you for your time.";
-		mes "- From all the employees of Cat Paw Merchants -";
+		mes "可兌換的道具將另行公布。感謝您撥冗閱讀。";
+		mes "- 喵爪商人全體職員敬上 -";
 		next;
-		mes "There is a small warning at the bottom.";
+		mes "下方還有一則小小的提醒。";
 		mes " ";
-		mes "^FF0000This event could be changed or repealed due to the Merchants' situation.^000000";
+		mes "^FF0000本活動可能因商人們的狀況而變更或取消。^000000";
 		close;
 	case 2:
-		mes "'^C379CEInvest Unused Items for Prizes!^000000'";
-		mes "There are details of Event 1.";
+		mes "「^C379CE用未使用的道具投資換取獎品！^000000」";
+		mes "活動 1 的詳情如下。";
 		next;
 		setarray .@event1$[0],
 			"Wings of the Insect Queen","Crown of the Fly King","I hear Dragon Scales are tough 01","The Meaning of the Mother's Nightmare",
@@ -1312,72 +1312,72 @@ malangdo,218,126,4	script	Cat Paw Merchants Notice	857,{
 				case 21: set .@str$,"2 Foolishness of the Blind"; break;
 			}
 			mes "["+.@event1$[.@i-1]+"]";
-			mes .@str$+" for one Cat Paw Merchants Investment Certificate.";
+			mes .@str$+" 可兌換一張喵爪商人投資證明書。";
 			next;
 		}
 	case 3:
-		mes "Look out for the next '^C379CEInvest Unused Items for Prizes!^000000' Event 2!! Coming up real soon!";
+		mes "敬請期待下一個「^C379CE用未使用的道具投資換取獎品！^000000」活動 2！即將到來！";
 		close;
 	}
 }
 
-malangdo,218,123,1	script	Namis#invest	545,4,4,{
+malangdo,218,123,1	script	娜米絲#invest::Namis#invest	545,4,4,{
 	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 1000) {
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
-		mes "- Please try again after you -";
-		mes "- lose some weight. -";
+		mes "- 請先 -";
+		mes "- 減點肥再來吧。 -";
 		close;
 	}
 	emotion ET_HUK;
 	emotion ET_FRET;
 	emotion ET_ANGER;
-	mes "[Namis]";
-	mes "Purr-Purr-Purrr-Purrrr-Pur~ Meow!!";
-	mes "Wh-- What? How rude. You scared me.";
+	mes "[娜米絲]";
+	mes "呼嚕-呼嚕-呼嚕嚕-呼嚕嚕嚕-嚕~ 喵！！";
+	mes "哇-- 什麼？真沒禮貌。你嚇到我了。";
 	next;
-	switch(select("What do you need? I'll invest!:What's the purpose of this event?:Were you asleep?")) {
+	switch(select("你需要什麼？我要投資！:這個活動的目的是什麼？:你剛剛在睡覺嗎？")) {
 	case 1:
 		break;
 	case 2:
-		mes "[Namis]";
-		mes "So, another pushover in contract with the Cat Paw Merchants?";
+		mes "[娜米絲]";
+		mes "所以，又一個和喵爪商人簽約、好欺負的傢伙？";
 		next;
-		select("Huh? What! You calling me a pushover?");
-		mes "[Namis]";
-		mes "I'll say this just once, so you listen good!";
-		mes "We, the Cat Paw Merchants have planned an event for loyal workers like yourself.";
+		select("啊？什麼！你說我好欺負？");
+		mes "[娜米絲]";
+		mes "我只說一次，你給我好好聽著！";
+		mes "我們喵爪商人為像你這樣忠心的員工準備了一場活動。";
 		next;
-		mes "[Namis]";
-		mes "Run along to your storage and bring back rotting antiques to us and we'll exchange them for the oh-so valuable 'Cat Paw Merchants Investment Certificate'.";
+		mes "[娜米絲]";
+		mes "快去倉庫把那些破舊的古董拿來給我們，我們會把它們換成超珍貴的「喵爪商人投資證明書」。";
 		next;
-		mes "[Namis]";
-		mes "It will be wise for you to do so because the Cat Paw Merchants are doing this at a loss!";
+		mes "[娜米絲]";
+		mes "你最好照做，因為喵爪商人可是虧本在做這件事！";
 		next;
-		mes "[Namis]";
-		mes "Details are on the notice.";
+		mes "[娜米絲]";
+		mes "詳情請見告示。";
 		close;
 	case 3:
-		mes "[Namis]";
-		mes "Hick- Slurp-";
-		mes "Remember, human! There's no other cat who works as hard as I do.";
+		mes "[娜米絲]";
+		mes "嗝- 咕嚕-";
+		mes "記住，人類！世上沒有別隻貓像我這麼努力工作。";
 		close;
 	}
-	mes "[Namis]";
-	mes "You must be here to participate in the '^C379CEInvest Unused Items for Prizes!^000000' event of the Cat Paw Merchants.";
+	mes "[娜米絲]";
+	mes "你是來參加喵爪商人的「^C379CE用未使用的道具投資換取獎品！^000000」活動的吧。";
 	next;
-	mes "[Namis]";
-	mes "So, which event do you wish to participate in?";
+	mes "[娜米絲]";
+	mes "那麼，你想參加哪一個活動？";
 	next;
-	switch(select("Not interested:Event 1 Items:Event 2 Items")) {
+	switch(select("沒興趣:活動 1 道具:活動 2 道具")) {
 	case 1:
-		mes "[Namis]";
-		mes "Don't you mess with a busy cat!";
+		mes "[娜米絲]";
+		mes "別打擾忙碌中的貓！";
 		close;
 	case 2:
-		mes "[Namis]";
-		mes "So you're in for Event 1.";
-		mes "Choose from the shown list.";
+		mes "[娜米絲]";
+		mes "那你是要參加活動 1 囉。";
+		mes "請從列表中選擇。";
 		next;
 		setarray .@event1$[0],
 			"Wings of the Insect Queen","Crown of the Fly King","I hear Dragon Scales are tough 01","The Meaning of the Mother's Nightmare",
@@ -1410,9 +1410,9 @@ malangdo,218,123,1	script	Namis#invest	545,4,4,{
 			case 21: callsub L_Check,"2 Foolishness of the Blind",7021,2,"This blind man is foolish in not knowing that gathering 300 cats cures blindness...",.@event1$[.@i];
 		}
 	case 3:
-		mes "[Namis]";
-		mes "Participate in Event 2?";
-		mes "It is not yet in motion. Wait for it!";
+		mes "[娜米絲]";
+		mes "要參加活動 2 嗎？";
+		mes "還沒開始呢，請耐心等待！";
 		close;
 	}
 	end;
@@ -1425,31 +1425,31 @@ L_Check:
 			set .@items,2; //complete
 	}
 	if (countitem(getarg(1)) < getarg(2) || .@items == 1) {
-		mes "[Namis]";
-		mes "You don't have the items?";
-		mes getarg(0)+" exchange for one Cat Paw Merchants Investment Certificate.";
+		mes "[娜米絲]";
+		mes "你沒有這些道具嗎？";
+		mes getarg(0)+" 可兌換一張喵爪商人投資證明書。";
 		next;
-		mes "[Namis]";
-		mes "Don't bother me and look up the details on the board over there!";
+		mes "[娜米絲]";
+		mes "別來煩我，去看看那邊告示板上的詳細資訊！";
 		close;
 	}
-	mes "[Namis]";
-	mes "'^8E5601"+getarg(4)+" Event^000000'";
-	mes "Seems to be the right items.";
+	mes "[娜米絲]";
+	mes "「^8E5601"+getarg(4)+" 活動^000000」";
+	mes "看起來是正確的道具呢。";
 	mes getarg(3);
-	mes "Oh! Almost forgot. Will you invest?";
+	mes "哦！差點忘了。你要投資嗎？";
 	next;
-	if(select("Invest:Don't Invest") == 2) {
-		mes "[Namis]";
-		mes "Don't you mess with a busy cat!";
+	if(select("投資:不投資") == 2) {
+		mes "[娜米絲]";
+		mes "別打擾忙碌中的貓！";
 		close;
 	}
 	delitem getarg(1),getarg(2);
 	if (.@items == 2)
 		delitem getarg(5),getarg(6);
 	getitem 6489,1; //Cats_Invest_Certif
-	mes "[Namis]";
-	mes "Here's your Certificate. Always be grateful to the Merchants for these events!";
+	mes "[娜米絲]";
+	mes "這是你的證明書。請永遠感謝商人們舉辦的這些活動！";
 	close;
 OnTouch:
 	if (rand(2))
@@ -1461,28 +1461,28 @@ OnTouch:
 
 // Investment Rewards :: tooja_japanki
 //============================================================
-malangdo,215,119,4	script	Thanks Ticket Machine	564,{
+malangdo,215,119,4	script	感謝票販賣機::Thanks Ticket Machine	564,{
 	if (MaxWeight - Weight < 4500 || checkweight(1201,1) == 0) {
 		mes "- 你目前攜帶的 -";
 		mes "- 道具太多了。 -";
-		mes "- Please try again after you -";
-		mes "- lose some weight. -";
+		mes "- 請先 -";
+		mes "- 減點肥再來吧。 -";
 		close;
 	}
-	mes "[Vending Machine Notice]";
-	mes "^6815EA1. Don't kick the machine please. @_@";
-	mes "2. You can only insert Invest Thanks Ticket.";
-	mes "3. About the Jelly Box, if you open it, it gives you a random item.";
-	mes "4. Hope you enjoy~^000000";
-	mes "- Mr. Cat, the Machine Owner -";
+	mes "[販賣機告示]";
+	mes "^6815EA1. 請不要踢機器喔。@_@";
+	mes "2. 只能投入投資感謝票。";
+	mes "3. 關於果凍盒，打開後會隨機獲得一件道具。";
+	mes "4. 希望你玩得開心~^000000";
+	mes "- 貓先生，販賣機的主人 -";
 	next;
-	switch(select("Finish:Purchase:Red Paw Jelly Bag (5 Tickets):Black Paw Jelly Bag (50 Tickets)")) {
+	switch(select("完成:購買:紅爪果凍袋 (5 張票):黑爪果凍袋 (50 張票)")) {
 	case 1:
 		close;
 	case 2:
-		mes "The Vending Machine is selling items in the following list.";
+		mes "販賣機目前販售以下道具。";
 		next;
-		switch(select("Finish:1 Siege Arrow Quiver A (2 Tickets):1 Siege Arrow Quiver S (2 Tickets):30 White Potion (12 Tickets):30 White Slim Potion (14 Tickets):10 Dark Water (20 Tickets):20 Siege_Violet_Potion (30 Tickets):10 Coldproof Potion (30 Tickets):10 Thunderproof Potion (30 Tickets):10 Earthproof Potion (30 Tickets):10 Fireproof Potion (30 Tickets):10 Elemental Converter[Fire] (30 Tickets):10 Elemental Converter[Water] (30 Tickets):10 Elemental Converter[Wind] (30 Tickets):10 Elemental Converter[Earth] (30 Tickets)")) {
+		switch(select("完成:1 攻城箭矢筒 A (2 張票):1 攻城箭矢筒 S (2 張票):30 白色藥水 (12 張票):30 白色纖細藥水 (14 張票):10 黑暗水 (20 張票):20 攻城紫羅蘭藥水 (30 張票):10 水抵抗藥 (30 張票):10 風抵抗藥 (30 張票):10 地抵抗藥 (30 張票):10 火抵抗藥 (30 張票):10 火 肯貝特[火] (30 張票):10 水 肯貝特[水] (30 張票):10 風 肯貝特[風] (30 張票):10 地 肯貝特[地] (30 張票)")) {
 			case 1: close;
 			case 2: callsub L_Purchase,2,12678,1; //Siege_Arrow_Quiver_A
 			case 3: callsub L_Purchase,2,12677,1; //Siege_Arrow_Quiver_S
@@ -1501,10 +1501,10 @@ malangdo,215,119,4	script	Thanks Ticket Machine	564,{
 		}
 		end;
 	case 3:
-		mes "Red Paw Jelly Bag Button chosen. Need to insert 5 ^FF0000Invest Thanks Ticket^000000 and a random item will appear.";
+		mes "已選擇紅爪果凍袋按鈕。需要投入 5 張 ^FF0000投資感謝票^000000，就會出現隨機道具。";
 		next;
 		if (countitem(6488) < 5) {
-			mes "You don't have enough ^FF0000Invest Thanks Ticket^000000 to proceed.";
+			mes "您的 ^FF0000投資感謝票^000000 不足，無法繼續。";
 			close;
 		}
 		delitem 6488,5; //Thanks_Invest_Ticket
@@ -1570,10 +1570,10 @@ malangdo,215,119,4	script	Thanks Ticket Machine	564,{
 		else callsub L_Bag,12016,10; //Speed_Up_Potion
 		end;
 	case 4:
-		mes "Black Paw Jelly Bag Button chosen. Need to insert 50 ^FF0000Invest Thanks Ticket^000000 and a random item will appear.";
+		mes "已選擇黑爪果凍袋按鈕。需要投入 50 張 ^FF0000投資感謝票^000000，就會出現隨機道具。";
 		next;
 		if (countitem(6488) < 50) {
-			mes "You don't have enough ^FF0000Invest Thanks Ticket^000000 to proceed.";
+			mes "您的 ^FF0000投資感謝票^000000 不足，無法繼續。";
 			close;
 		}
 		delitem 6488,50; //Thanks_Invest_Ticket
@@ -1652,21 +1652,21 @@ malangdo,215,119,4	script	Thanks Ticket Machine	564,{
 //callsub L_Purchase,<ticket cost>,<reward ID>,<reward amount>{,<reward name>};
 L_Purchase:
 	if (countitem(6488) < getarg(0)) {
-		mes "You don't have enough ^FF0000Invest Thanks Ticket^000000 to proceed.";
+		mes "您的 ^FF0000投資感謝票^000000 不足，無法繼續。";
 		close;
 	}
 	delitem 6488,getarg(0); //Thanks_Invest_Ticket
 	getitem getarg(1),getarg(2);
-	mes "- Done! -";
+	mes "- 完成！ -";
 	next;
-	mes "The item ^0000FF"+((getargcount() > 3)?getarg(3,""):getitemname(getarg(1)))+"^000000 has been obtained.";
+	mes "道具 ^0000FF"+((getargcount() > 3)?getarg(3,""):getitemname(getarg(1)))+"^000000 已取得。";
 	close;
 
 //callsub L_Bag,<reward ID>,<reward amount>{,<reward name>};
 L_Bag:
 	getitem getarg(0),getarg(1);
-	mes "- Done! -";
+	mes "- 完成！ -";
 	next;
-	mes "The item ^0000FF"+((getargcount() > 2)?getarg(2,""):getitemname(getarg(0)))+"^000000 has been obtained.";
+	mes "道具 ^0000FF"+((getargcount() > 2)?getarg(2,""):getitemname(getarg(0)))+"^000000 已取得。";
 	close;
 }

@@ -156,14 +156,14 @@ OnAgitBreak:
 			setcastledata .@map$,.@i,0;
 	}
 
-	mapannounce .@map$,"Emperium has been destroyed.",bc_map,"0x00FF00",FW_BOLD,20,0,40;
+	mapannounce .@map$,"華麗金屬已被摧毀。",bc_map,"0x00FF00",FW_BOLD,20,0,40;
 	maprespawnguildid .@map$,.@guild_id,2;// Respawn all but new castle-occupants, don't remove monsters.
 
 	sleep 500;
 	if (agitcheck3())
 		donpcevent strnpcinfo(0) +"::OnEmpSpawn";
 	sleep 7000;
-	announce "The [" + getcastlename(.@map$) + "] castle has been conquered by the [" + getguildName(.@guild_id) + "] guild.",bc_all|bc_woe;
+	announce "[" + getcastlename(.@map$) + "] 城堡已被 [" + getguildName(.@guild_id) + "] 公會攻占。",bc_all|bc_woe;
 	end;
 
 OnGuildBreak:
@@ -174,7 +174,7 @@ OnGuildBreak:
 	disablenpc "Kafra Employee#"+ .@tmp$;
 	setcastledata .@map$,CD_GUILD_ID,0;
 	sleep 7000;
-	announce "Guild Base [" + getcastlename(.@map$) + "] has been abandoned.",bc_all;
+	announce "公會據點 [" + getcastlename(.@map$) + "] 已遭棄置。",bc_all;
 	donpcevent strnpcinfo(0) +"::OnAgitInit3";
 	end;
 
@@ -183,9 +183,9 @@ S_Message:
 	.@guild_id = getcastledata(.@map$,CD_GUILD_ID);
 	
 	if (.@guild_id)
-		announce "The [" + getcastlename(.@map$) + "] castle is occupied by the [" + getguildname(.@guild_id) + "] guild.",bc_all,"0xFF0000",FW_NORMAL,10;
+		announce "[" + getcastlename(.@map$) + "] 城堡已被 [" + getguildname(.@guild_id) + "] 公會攻占。",bc_all,"0xFF0000",FW_NORMAL,10;
 	else
-		announce "The [" + getcastlename(.@map$) + "] castle is currently unoccupied.", bc_all,"0xFF0000",FW_NORMAL,10;
+		announce "[" + getcastlename(.@map$) + "] 城堡目前無人佔領。", bc_all,"0xFF0000",FW_NORMAL,10;
 	if (compare( .@map$,"te_alde" ))
 		.@string$ = "alde0"+ charat( .@map$,getstrlen(.@map$)-1 );
 	else
@@ -218,7 +218,7 @@ OnMyMobDead:
 	mes "[卡普拉職員]";
 	if (.@guild_id == getcharid(2)) {
 		mes "歡迎。^ff0000" + .@guildname$ + "^000000 會員。";
-		mes "The Kafra Corporation will stay with you wherever you go.";
+		mes "無論您走到哪裡，卡普拉公司都會與您同行。";
 		next;
 		switch( select( "使用倉庫", "使用傳送服務", "租用手推車", "取消" ) ) {
 		case 1:
@@ -250,7 +250,7 @@ OnMyMobDead:
 				mes "很抱歉，";
 				mes "手推車租借服務";
 				mes "僅限商人、";
-				mes "Blacksmiths and Alchemists.";
+				mes "鐵匠與煉金術師。";
 				close2;
 			}
 			else if (checkcart()) {
@@ -263,7 +263,7 @@ OnMyMobDead:
 			}
 			else {
 				mes "手推車租借";
-				mes "fee is 800 zeny. Would";
+				mes "費用為800 Zeny。您是否";
 				mes "想要租借手推車嗎？";
 				next;
 				if (select( "租用手推車","取消" ) == 1) {
@@ -272,7 +272,7 @@ OnMyMobDead:
 						mes "很抱歉，您";
 						mes "您身上沒有足夠的";
 						mes "Zeny 支付手推車";
-						mes "rental fee of 800 zeny.";
+						mes "租借費為800 Zeny。";
 						close2;
 					}
 					else {
@@ -292,7 +292,7 @@ OnMyMobDead:
 		}
 	}
 	else {
-		mes "I am instructed to only offer my services to the ^ff0000"+ .@guildname$ +"^000000 Guild. Please try another Kafra Employee around here. Sorry for the inconvenience.";
+		mes "我只能為^ff0000"+ .@guildname$ +"^000000公會提供服務。請找這附近的其他卡普拉職員。很抱歉造成不便。";
 		close2;
 	}
 	cutin "",255;
@@ -303,14 +303,14 @@ S_Warp:
 	mes "請選擇";
 	mes "您的目的地。";
 	next;
-	switch( select( getarg(0) + " -> 200 z", "Cancel it" ) ) {
+	switch( select( getarg(0) + " -> 200 z", "取消" ) ) {
 	case 1:
 		if (Zeny < 200) {
 			mes "[卡普拉職員]";
 			mes "很抱歉，您身上沒有";
 			mes "足夠的 Zeny 支付傳送";
 			mes "服務。傳送費用";
-			mes "至 "+getarg(0)+" is 200 zeny.";
+			mes "至 "+getarg(0)+" 為200 Zeny。";
 			close2;
 			cutin "",255;
 			end;
@@ -340,32 +340,32 @@ function GuardianData;
 
 	mes .@npc_name$;
 	if (.@guild_id == 0) {
-		mes "I have been waiting for a master to fulfill my destiny.";
-		mes "Brave soul... fate will guide you towards your future...";
+		mes "我一直在等待主人來完成我的宿命。";
+		mes "勇者啊……命運將引領你走向未來……";
 		close;
 	}
 	if (strcharinfo(0) != .@guildmaster$) {
-		mes "No matter how much you pester me, I'll still follow my master ^ff0000"+.@guildmaster$+"^000000. Where are the Guardians?! Send these ruffians away right now!";
+		mes "不管你怎麼糾纏我，我仍會追隨我的主人^ff0000"+.@guildmaster$+"^000000。守衛們在哪裡？！立刻把這些無賴趕走！";
 		close;
 	}
-	mes "Welcome. My honorable master, ^ff0000"+strcharinfo(0)+"^000000...";
-	mes "Your humble servent, "+strnpcinfo(1)+", is here to serve you.";
+	mes "歡迎。我尊貴的主人，^ff0000"+strcharinfo(0)+"^000000...";
+	mes "您卑微的僕人， "+strnpcinfo(1)+"在此為您效勞。";
 	next;
-	switch( select( "Castle briefing", "Invest in commercial growth", "Invest in Castle Defenses", "Summon Guardian", "Hire / Fire a Kafra Employee", "Go into Master's room" ) ) {
+	switch( select( "城堡簡報", "投資商業發展", "投資城堡防禦", "召喚守護者", "雇用 / 解雇卡普拉職員", "進入會長房間" ) ) {
 	case 1:
 		.@economy_today = getcastledata(.@map$,CD_INVESTED_ECONOMY);
 		.@defense_today = getcastledata(.@map$,CD_INVESTED_DEFENSE);
 		mes .@npc_name$;
-		mes "I will report the Castle briefing, Master.";
+		mes "主人，我將報告城堡簡報。";
 		mes " ";
-		mes "^0000ffNow, the commercial growth level is "+GetCastleData(.@map$,CD_CURRENT_ECONOMY)+".";
+		mes "^0000ff目前商業成長等級為 "+GetCastleData(.@map$,CD_CURRENT_ECONOMY)+".";
 		if (.@economy_today > 0)
-			mes " You invested "+.@economy_today+" times in past 1 day.";
-		mes " Now, the Castle Defense level is "+GetCastleData(.@map$,CD_CURRENT_DEFENSE)+".^000000";
+			mes " 您已投資 "+.@economy_today+" 次（過去1天內）。";
+		mes " 目前城堡防禦等級為 "+GetCastleData(.@map$,CD_CURRENT_DEFENSE)+".^000000";
 		if (.@defense_today > 0)
-			mes " ^0000ff- You invested "+.@defense_today+" times in past 1 day.^000000";
+			mes " ^0000ff- 您已投資 "+.@defense_today+" 次（過去1天內）。^000000";
 		mes " ";
-		mes "That's all I have to report, Master.";
+		mes "主人，報告完畢。";
 		close;
 
 	case 2:
@@ -386,8 +386,8 @@ function GuardianData;
 
 	case 4:
 		mes .@npc_name$;
-		mes "Will you summon a Guardian? It'll be a protector to defend us loyally.";
-		mes "Please select a guardian to defend us.";
+		mes "您要召喚守衛嗎？他會忠誠地守護我們。";
+		mes "請選擇一位守衛來保護我們。";
 		next;
 		GuardianData( .@mob_id, .@x, .@y, .@name$ );
 		for ( .@i = 0; .@i < MAX_GUARDIANS ; .@i++ ) {
@@ -398,108 +398,108 @@ function GuardianData;
 		}
 		.@s = select(.@menu$) -1;
 		mes .@npc_name$;
-		mes "Will you summon the chosen guardian? 10,000 zeny are required to summon a Guardian.";
+		mes "您要召喚所選的守衛嗎？召喚守衛需要10,000 Zeny。";
 		next;
-		if (select( "Summon","取消" ) == 2) {
+		if (select( "召喚","取消" ) == 2) {
 			mes .@npc_name$;
-			mes "I did as you ordered. But please remember if you the have money to spare, it'll be better to set it up.";
+			mes "已遵照您的命令辦理。不過請記住，若您有閒錢，最好還是事先準備好。";
 			close;
 		}
 		mes .@npc_name$;
 		if (getgdskilllv(.@guild_id,10002) == 0) {
-			mes "Master, we have not the resources to Summon the Guardian. If you want to accumulate them, you have to learn the Guild skill. We failed to summon the Guardian.";
+			mes "主人，我們沒有召喚守衛所需的資源。若想累積資源，您必須學會公會技能。我們召喚守衛失敗了。";
 		}
 		else if (getcastledata( .@map$,(.@s + CD_ENABLED_GUARDIAN00) ) == 1)
-			mes "Master, you already have summoned that Guardian. We cannot summon another.";
+			mes "主人，您已經召喚過那位守衛了，無法再召喚另一位。";
 		else if (Zeny <  10000)
-			mes "Well... I'm sorry but we don't have funds to summon the Guardian. We failed to summon the Guardian.";
+			mes "嗯……很抱歉，我們沒有召喚守衛的資金。召喚守衛失敗了。";
 		else {
 			Zeny = Zeny - 10000;
 			setcastledata .@map$,(.@s + CD_ENABLED_GUARDIAN00),1;
 			guardian .@map$, .@x[.@s], .@y[.@s], .@name$[.@s], .@mob_id[.@s], "Kafra Employee#"+ replacestr(.@map$, "cas", "") +"::OnGuardianDied", .@s;
-			mes "We completed the summoning of the Guardian. Our defenses are now increased with it in place.";
+			mes "守衛已成功召喚。有了它在場，我們的防禦力已提升。";
 		}
 		close;
 
 	case 5:
 		mes .@npc_name$;
 		if (getcastledata(.@map$,CD_ENABLED_KAFRA) == 1) {
-			mes "We are currently hiring a Kafra Employee... Do you want to fire the Kafra Employee?";
+			mes "我們目前正在僱用卡普拉職員……您要解僱這位卡普拉職員嗎？";
 			next;
 			if (select( "火","取消" ) == 2) {
 				mes .@npc_name$;
-				mes "She worked hard in my opinion. It was a good decision to keep her.";
+				mes "依我看，她工作很認真。留下她是個好決定。";
 				close;
 			}
 			cutin "kafra_01",2;
-			mes "[ Hired Kafra Employee ]";
-			mes "I worked so hard... How can you do that, Master?... Please... Please reconsider... Check it again, Master... Please...";
+			mes "[ 受僱的卡普拉職員 ]";
+			mes "我已經很努力了……主人，您怎麼能這樣做？……請……請再考慮一下……主人，請再確認一次……拜託……";
 			next;
 			if (select( "火","取消" ) == 2) {
-				mes "[ Hired Kafra Employee ]";
-				mes "I'll work hard for you... Thank you!";
+				mes "[ 受僱的卡普拉職員 ]";
+				mes "我會為您努力工作……謝謝您！";
 				close3;
 			}
-			mes "[ Hired Kafra Employee ]";
-			mes "Oh, my goodness! This is nonsense!";
+			mes "[ 受僱的卡普拉職員 ]";
+			mes "哎呀，天哪！這太荒謬了！";
 			next;
 			cutin "",255;
 			disablenpc "Kafra Employee#" + replacestr(.@map$, "cas", "");
 			setcastledata .@map$,CD_ENABLED_KAFRA,0;
 			mes .@npc_name$;
 			mes "....";
-			mes "I have discharged the Kafra Employee... But... are you unsatisfied with something?";
+			mes "我已經解僱了那位卡普拉職員……不過……您有什麼不滿意的嗎？";
 			close;
 		}
-		mes "Will you contact the kafra Main Office and Hire a Employee for our Castle?";
-		mes "^ff0000 10,000 zeny is required for their services. ";
+		mes "您要與卡普拉總部聯絡，為我們的城堡僱用一位職員嗎？";
+		mes "^ff0000 他們的服務需要10,000 Zeny。 ";
 		next;
-		if (select( "Hire.","取消" ) == 2) {
+		if (select( "雇用。","取消" ) == 2) {
 			mes .@npc_name$;
-			mes "I did as you ordered, but some of our members will be unhappy. It will be better to hire a Kafra Employee quickly.";
+			mes "我已遵照您的命令辦理，但部分成員會不開心。最好儘快僱用一位卡普拉職員。";
 			close;
 		}
 		mes .@npc_name$;
 		if (getgdskilllv(.@guild_id,10001) == 0) {
-			mes "Master, we can't hire a Kafra Employee because we don't have a contract with the Kafra Main Office. If you want to obtain a contract with the Kafra Main Office, you will need to learn the Guild skill first.";
+			mes "主人，我們無法僱用卡普拉職員，因為我們與卡普拉總部沒有合約。若想與卡普拉總部簽約，您必須先學會公會技能。";
 			close;
 		}
 		if (Zeny <  10000) {
-			mes "Well... I'm sorry but we don't have enough funds to hire a Kafra Employee.";
+			mes "嗯……很抱歉，我們的資金不足以僱用卡普拉職員。";
 			close;
 		}
 		Zeny = Zeny - 10000;
 		enablenpc "Kafra Employee#" + replacestr(.@map$, "cas", "");
 		setcastledata .@map$,CD_ENABLED_KAFRA,1;
 
-		mes "We obtained a contract with the kafra Main Office, and hired a Kafra Employee.";
+		mes "我們已與卡普拉總部簽約，並僱用了一位卡普拉職員。";
 		next;
 		cutin "kafra_01",2;
-		mes "[ Hired Kafra Employee ]";
-		mes "How do you do? I was dispatched from the Main Office.";
-		mes "I'll do my best to not tarnish the reputation of the Guild.";
+		mes "[ 受僱的卡普拉職員 ]";
+		mes "您好。我是從總部派遣過來的。";
+		mes "我會盡力不讓公會的名聲受損。";
 		next;
 		cutin "",255;
 		mes .@npc_name$;
-		mes "The Contract terms of the hired Kafra Employee are for 1 month and after this term, you will need to pay an additional fee.";
-		mes "It will be useful for our members.";
+		mes "受僱卡普拉職員的合約期限為1個月，期滿後需要支付額外費用。";
+		mes "這對我們的成員會很有幫助。";
 		close;
 
 	case 6:
 		mes .@npc_name$;
-		mes "Do you want to visit the room where our valuables are stored?";
-		mes "That room is restricted to you... you are the only one with access to it.";
+		mes "您想去參觀存放我們貴重物品的房間嗎？";
+		mes "那個房間只限您進入……您是唯一能進入的人。";
 		next;
 		mes .@npc_name$;
-		mes "If you don't open the treasure box within time limits, there is a possibility of losing it when unexpected situation occurs.";
-		mes "Please make sure to remember that always, Master.";
-		mes "So, for our guild's improvement, you must find time to collect it.";
+		mes "如果沒有在時限內開啟寶箱，發生意外狀況時可能會遺失。";
+		mes "主人，請務必牢記這點。";
+		mes "所以，為了公會的發展，請務必抽空前來領取。";
 		next;
-		switch( select( "Go into Master's room.","取消" ) ) {
+		switch( select( "請進入主人的房間。","取消" ) ) {
 		case 1:
 			mes .@npc_name$;
-			mes "I'll show you the secret path. Follow me...please.";
-			mes "When you want to return here, please press the secret switch.";
+			mes "我帶您走秘密通道。請跟我來……";
+			mes "想要回到這裡時，請按下秘密開關。";
 			close2;
 			if (.@map$ == "te_aldecas1") warp "te_aldecas1",113,223;
 			else if (.@map$ == "te_aldecas2") warp "te_aldecas2",134,225;
@@ -514,8 +514,8 @@ function GuardianData;
 			end;
 		case 2:
 			mes .@npc_name$;
-			mes "Goods are produced once a day... if you don't remove them in time, they will not be produced anymore.";
-			mes "Therefore, it will be better if you check up on them from time to time.";
+			mes "商品每天生產一次……若不及時取走，就不會再生產了。";
+			mes "因此，最好時常確認一下。";
 			close;
 		}
 	}
@@ -528,37 +528,37 @@ S_Invest:
 		.@cost_invest = .@cost_invest * 4;
 
 	mes .@npc_name$;
-	mes "If you invest in "+ getarg(3) +", the "+ getarg(4) +". Therfore, if you consider our "+ getarg(5) +", investments will be a necessity.";
+	mes "若要投資 "+ getarg(3) +"， "+ getarg(4) +"。因此，若您考慮提升我們的 "+ getarg(5) +"，投資就勢在必行。";
 	mes " ";
-	mes "Initially, you are able to invest just once but if you pay more money, you will be able to invest twice.";
+	mes "起初您只能投資一次，但若支付更多費用，就能投資兩次。";
 	mes " ";
 	if (getcastledata(strnpcinfo(4),CD_CURRENT_ECONOMY) >= 100) {
-		mes "^ff0000The "+ getarg(3) +" level of our Castle is at it's highest, 100%. No more investments are needed. Just as I have expected from a great "+ getarg(6) +" like you, Master.^000000";
+		mes "^ff0000我們城堡的 "+ getarg(3) +" 等級已達最高的100%，不需要再投資。正如我所期望，您真不愧是優秀的 "+ getarg(6) +" 主人。^000000";
 		close;
 	}
 	if (.@num_invest_today >= 2) {
-		mes "^ff0000You have already invested twice today. You cannot invest any more.^000000 I expect the "+ getarg(7) +" of the guild to grow at a high rate.";
+		mes "^ff0000今天您已投資兩次，無法再投資。^000000 我期待公會的 "+ getarg(7) +" 能快速成長。";
 		close;
 	}
 	if (.@num_invest_today == 0)
-		mes "The current investment amount required is ^ff0000"+.@cost_invest+"^000000 zeny. Will you invest?";
+		mes "目前所需的投資金額為^ff0000"+.@cost_invest+"^000000 Zeny。您要投資嗎？";
 	else
-		mes "You've invested once today... if you wish to invest once more, ^ff0000"+.@cost_invest+"^000000 more zeny will be needed.";
+		mes "您今天已投資一次……若想再投資一次，需要^ff0000"+.@cost_invest+"^000000 Zeny 才行。";
 	next;
-	switch( select( "Invest in "+ getarg(3) +".","取消" ) ) {
+	switch( select( "投資 "+ getarg(3) +".","取消" ) ) {
 	case 1:
 		mes .@npc_name$;
 		if (Zeny < .@cost_invest) {
-			mes "I'm sorry but there is not enough zeny to invest. You will have to try again when you have the funds, Master.";
+			mes "很抱歉，主人，投資所需的 Zeny 不足。等您備妥資金後再來吧。";
 			close;
 		}
 		Zeny = Zeny - .@cost_invest;
 		setcastledata strnpcinfo(4), getarg(0), (.@num_invest_today +1);
-		mes "We finished the investment safely. I expect that our "+ getarg(3) +" level will be increased by tomorrow.";
+		mes "投資已順利完成。我期待我們的 "+ getarg(3) +" 等級明天就會提升。";
 		close;
 	case 2:
 		mes .@npc_name$;
-		mes "I'll do as you bid, my master... There is no hurry. We will do our best.";
+		mes "遵命，我的主人……不必著急，我們會盡力而為。";
 		close;
 	}
 
@@ -700,16 +700,16 @@ OnSpawnGuardians:
 	.@guild_id = getcastledata( strnpcinfo(4),CD_GUILD_ID );
 	if (.@guild_id == 0) {
 		mes "[迴盪的聲音]";
-		mes "'Those who overcome an ordeal shows a great deal of bravery... and will find their way to another ordeal.'";
+		mes "「克服考驗者必展現非凡勇氣……並將找到通往下一道考驗的道路。」";
 		close;
 	}
 	mes "[迴盪的聲音]";
-	mes "'Only the truly brave can take the test.'";
+	mes "「只有真正的勇者才能接受考驗。」";
 	next;
 	mes " ";
-	mes "There's a small lever. Will you pull it?";
+	mes "這裡有一個小拉桿。您要拉嗎？";
 	next;
-	if (select( "Pull.","Don't pull." ) == 1) {
+	if (select( "拉","不要拉" ) == 1) {
 		if (.@guild_id == getcharid(2)) {
 			.@npc_map$ = strnpcinfo(4);
 			if (compare( .@npc_map$,"te_alde" )) {
@@ -732,7 +732,7 @@ OnSpawnGuardians:
 		}
 		else {
 			mes " ";
-			mes "Nothing happened.";
+			mes "什麼也沒發生。";
 			close;
 		}
 	}
@@ -743,9 +743,9 @@ OnSpawnGuardians:
 //============================================================
 -	script	lever1_TE	-1,{
 	mes " ";
-	mes "There's a small lever. Will you pull it?";
+	mes "這裡有一個小拉桿。您要拉嗎？";
 	next;
-	if ( select( "Pull.","Do not." ) == 1 ) {
+	if ( select( "拉","不要" ) == 1 ) {
 		.@map$ = strnpcinfo(4);
 		if (.@map$ == "te_aldecas1") setarray .@coord[0],218,176;
 		else if (.@map$ == "te_aldecas2") setarray .@coord[0],51,179;
@@ -1073,27 +1073,27 @@ function	script	F_flag_woe_TE	{
 	.@castle$ = getarg(1);
 	.@guild_id = getcastledata( .@castle$,CD_GUILD_ID );
 	if (.@guild_id == 0) {
-		mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+		mes "[ 神聖符文中土王國敕令 ]";
 		mes " ";
-		mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
-		mes "We declare that";
-		mes "there is no formal master of this castle.";
+		mes "1. 遵守神聖符文中土王國的律令， ";
+		mes "我們宣告";
+		mes "此城堡並無正式的主人。";
 		mes " ";
-		mes "2. To the one who can ";
-		mes "overcome all trials";
-		mes "and destroy the Emperium,";
-		mes "the king will endow the one with";
-		mes "ownership of this castle.";
+		mes "2. 能夠 ";
+		mes "克服所有考驗";
+		mes "並摧毀華麗金屬，";
+		mes "國王將把";
+		mes "此城堡的所有權賜予該人。";
 		close;
 	}
 	if (.@guild_id == getcharid(2) && getarg(0)) {
-		mes "[ Echoing Voice ]";
-		mes "Brave ones...";
-		mes "Do you wish to return to your honorable place?";
+		mes "[ 迴響之聲 ]";
+		mes "勇者們……";
+		mes "您想返回您尊貴的所在嗎？";
 		next;
-		if (select( "Return to the guild castle.","Quit." ) == 1) {
+		if (select( "返回公會城堡。","離開。" ) == 1) {
 			if (jobcanentermap(.@castle$) == 0) {
-				mes "Tertiary job class and users with expanded levels are not allowed to participate in Training Siege Battles.";
+				mes "三轉職業與擴充等級的玩家無法參加訓練攻城戰。";
 				close;
 			}
 			if (getcastledata( getarg(1),CD_GUILD_ID ) == getcharid(2))
@@ -1103,16 +1103,16 @@ function	script	F_flag_woe_TE	{
 	}
 	.@guildname$ = getguildname(.@guild_id);
 	.@guildmaster$ = getguildmaster(.@guild_id);
-	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes "[ 神聖符文中土王國敕令 ]";
 	mes " ";
-	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
-	mes "we approve that this place is in";
-	mes "the private prossession of ^ff0000"+.@guildname$+"^000000 Guild.";
+	mes "1. 遵守神聖符文中土王國的律令， ";
+	mes "我們認定此地";
+	mes "私人持有：^ff0000"+.@guildname$+"^000000公會所有。";
 	mes " ";
-	mes "2. The guild Master of ^ff0000"+.@guildname$+"^000000 Guild is";
+	mes "2. 公會會長為 ^ff0000"+.@guildname$+"^000000 公會，";
 	mes "^ff0000"+.@guildmaster$+"^000000";
-	mes "If there is anyone who objects to this,";
-	mes "prove your strength and honor with a steel blade in your hand.";
+	mes "若有人對此有異議，";
+	mes "請以手中的鋼刃證明你的實力與榮譽。";
 	close;
 }
 
@@ -1136,48 +1136,48 @@ OnInit:
 // GM NPC
 //============================================================
 prt_gld,1,4,0	script	#Enterance Button prt	CLEAR_NPC,{
-	mes "password";
+	mes "密碼";
 	next;
 	if ( callfunc( "F_GM_NPC", 1854,0, 0,9000 ) < 1 ) {
-		mes "That's not right";
+		mes "不對喔";
 		close;
 	}
-	mes "What do you want to do with the Gloria-bound warp?";
+	mes "您想對前往格羅利亞的傳送門做什麼？";
 	next;
-	switch( select( "Open it","Close it","取消","Rental item provided" ) ) {
+	switch( select( "開啟","關閉","取消","已提供租借道具" ) ) {
 	case 1:
-		mes "Opening the warp.";
+		mes "正在開啟傳送門。";
 		enablenpc "to_gloria";
 		close;
 	case 2:
-		mes "Closing the warp.";
+		mes "正在關閉傳送門。";
 		disablenpc "to_gloria";
 		close;
 	case 3:
 		end;
 	case 4:
-		mes "You have 300 seconds.";
+		mes "您還有300秒。";
 		rentitem 13083,300;// TE_Woe_Knife
 		close;
 	}
 }
 
 alde_gld,1,4,0	script	#Enterance Button ald	CLEAR_NPC,{
-	mes "password";
+	mes "密碼";
 	next;
 	if ( callfunc( "F_GM_NPC", 1854,0, 0,9000 ) < 1 ) {
-		mes "That's not right";
+		mes "不對喔";
 		close;
 	}
-	mes "What do you want to do with the Kafragarten-bound warp?";
+	mes "您想對前往卡夫拉花園的傳送門做什麼？";
 	next;
-	switch( select( "Open it","Close it","取消" ) ) {
+	switch( select( "開啟","關閉","取消" ) ) {
 	case 1:
-		mes "Opening the warp.";
+		mes "正在開啟傳送門。";
 		enablenpc "to_kafragarten";
 		close;
 	case 2:
-		mes "Closing the warp.";
+		mes "正在關閉傳送門。";
 		disablenpc "to_kafragarten";
 		close;
 	case 3:
@@ -1186,16 +1186,16 @@ alde_gld,1,4,0	script	#Enterance Button ald	CLEAR_NPC,{
 }
 
 // God Item Hervor & Jormungand
-sec_in02,20,20,0	script	Test Guide	CLEAR_NPC,{
-	mes "Password?";
+sec_in02,20,20,0	script	測試嚮導::Test Guide	CLEAR_NPC,{
+	mes "密碼？";
 	next;
 	if (callfunc( "F_GM_NPC", 18543792,0, 0,99999999 ) < 1) {
-		mes "Aww...";
+		mes "唉呀……";
 		close;
 	}
-	mes "We provide material items needed for testing TE.";
+	mes "我們提供TE測試所需的材料道具。";
 	next;
-	switch( select( "Materials for Hervor","Materials for Jormungand" ) ) {
+	switch( select( "海爾伯樂神盾的材料","耶夢加得法杖的材料" ) ) {
 	case 1:
 		getitem 6595,2;// Hammer_Of_Velund
 		getitem 6596,1;// Anvil_Of_Velund

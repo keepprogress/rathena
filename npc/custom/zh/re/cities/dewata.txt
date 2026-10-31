@@ -19,59 +19,59 @@
 
 // Dewata Transportation :: dewata_trans
 //============================================================
-alberta,212,202,4	script	Dewata Sailor#alberta	536,{
-	mes "[Dewata Sailor]";
-	mes "Do you want to visit ^8B4513Dewata Island^000000?";
-	mes "With its dazzling waves and charming vistas it's a great place to relax.";
+alberta,212,202,4	script	德瓦塔水手#alberta::Dewata Sailor#alberta	536,{
+	mes "[德瓦塔水手]";
+	mes "你想前往^8B4513德瓦塔島^000000嗎？";
+	mes "這裡波光粼粼、風景迷人，是個很棒的放鬆之地。";
 	if (VIP_SCRIPT) {
 		set .@cost, vip_status(VIP_STATUS_ACTIVE)?1000:10000;
-		mes "The transit fee is 10,000 Zeny and 1,000 for VIP.";
+		mes "交通費是 10,000 Zeny，VIP 則為 1,000 Zeny。";
 	} else {
 		set .@cost,10000;
-		mes "The transit fee is 10,000 Zeny.";
+		mes "交通費是 10,000 Zeny。";
 	}
 	next;
 	switch(select("是!:否。")) {
 	case 1:
 		if (Zeny >= .@cost) {
-			mes "[Dewata Sailor]";
-			mes "^8B4513Dewata^000000 is a beautiful and peaceful island country.";
-			mes "Have a nice trip~";
+			mes "[德瓦塔水手]";
+			mes "^8B4513德瓦塔^000000是一個美麗而寧靜的島國。";
+			mes "旅途愉快～";
 			close2;
 			set Zeny, Zeny - .@cost;
 			warp "dewata",232,53;
 			end;
 		} else {
-			mes "[Dewata Sailor]";
-			mes "You don't have the dough, kid.";
-			mes "Come back when you have a bigger wallet.";
+			mes "[德瓦塔水手]";
+			mes "小子，你沒有錢啊。";
+			mes "等你錢包再鼓一點再來吧。";
 			close;
 		}
 	case 2:
-		mes "[Dewata Sailor]";
-		mes "Let me know";
-		mes "when you're ready to travel~";
+		mes "[德瓦塔水手]";
+		mes "準備好出發的時候，";
+		mes "跟我說一聲～";
 		close;
 	}
 }
 
-dewata,229,49,6	script	Alberta Sailor#dewata	536,{
-	mes "[Alberta Sailor]";
-	mes "Do you want to go back to Alberta?";
+dewata,229,49,6	script	艾伯塔水手#dewata::Alberta Sailor#dewata	536,{
+	mes "[艾伯塔水手]";
+	mes "你想回艾伯塔嗎？";
 	next;
 	switch(select("是。:否。")) {
 	case 1:
-		mes "[Alberta Sailor]";
-		mes "I hope you had a lot of fun on";
-		mes "your trip to ^8B4513Dewata^000000 Island.";
-		mes "Please come again!";
+		mes "[艾伯塔水手]";
+		mes "希望你在";
+		mes "前往^8B4513德瓦塔^000000島的旅途中玩得開心。";
+		mes "歡迎下次再來！";
 		close2;
 		warp "alberta",192,215;
 		end;
 	case 2:
-		mes "[Alberta Sailor]";
-		mes "Have some more fun before you go.";
-		mes "^8B4513Dewata^000000 Island still has more to offer.";
+		mes "[艾伯塔水手]";
+		mes "走之前再多玩一會兒吧。";
+		mes "^8B4513德瓦塔^000000島還有更多值得一看的地方。";
 		close;
 	}
 }
@@ -79,135 +79,135 @@ dewata,229,49,6	script	Alberta Sailor#dewata	536,{
 // Generic Dewata NPCs :: dewata_npc
 //============================================================ 
 dewata,221,237,5	script	年輕男性#dew-1::Young Man#dew-1	536,{
-	mes "[Fruit Fancier]";
-	mes "What's wrong with your faaaaaace? You must really be clueless!";
+	mes "[果實愛好者]";
+	mes "你那張臉是怎麼回事？你還真是一無所知啊！";
 	next;
-	mes "[Fruit Fancier]";
-	mes "Let me drop some knowledge on ya.";
+	mes "[果實愛好者]";
+	mes "讓我來傳授你一點知識吧。";
 	next;
-	mes "[Fruit Fancier]";
-	mes "I may be a youngling, but no one knows more than I do about ^777700Palm fruit^000000. All right! What do you want to know?";
+	mes "[果實愛好者]";
+	mes "我雖然年紀還小，但對^777700棕櫚果^000000的了解，沒人比我更清楚。好吧！你想知道什麼？";
 	next;
-	switch(select("About the shell...:About the pulp...:About the palm kernel...:No thanks.")) {
+	switch(select("關於果殼……:關於果肉……:關於棕櫚仁……:不用了，謝謝。")) {
 	case 1:
-		mes "[Fruit Fancier]";
-		mes "So you want to know about Palm fruit's pulp? Let me explain.";
+		mes "[果實愛好者]";
+		mes "所以你想知道棕櫚果的果肉嗎？讓我來解釋。";
 		next;
-		mes "[Fruit Fancier]";
-		mes "Normally Palm fruit shell is used for making oil. Palm Oil is a useful ingredient for many dishes.";
+		mes "[果實愛好者]";
+		mes "通常棕櫚果殼是用來榨油的。棕櫚油是許多料理中很實用的食材。";
 		next;
-		mes "[Fruit Fancier]";
+		mes "[果實愛好者]";
 		if (dew_drink > 0)
-			mes "Hmm... Have you met Memo already? Then it should be easy for you to understand.";
+			mes "嗯……你已經見過梅莫了嗎？那你應該很容易理解。";
 		else
-			mes "If you want to know how to use Palm Oil, go find Memo on the north side of Dewata island. Everyday, he makes traditional drinks with Palm Oil.";
+			mes "如果你想知道怎麼使用棕櫚油，就去德瓦塔島北側找梅莫。他每天都會用棕櫚油製作傳統飲品。";
 		next;
-		mes "[Fruit Fancier]";
-		mes "Anyways, we refer to the oil that comes from the Palm fruit as Palm oil or Coconut oil, which is well known for it's quality.";
+		mes "[果實愛好者]";
+		mes "總之，我們把從棕櫚果提煉出的油稱為棕櫚油或椰子油，品質向來很有名。";
 		next;
-		mes "[Fruit Fancier]";
-		mes "The leftovers from oil production gets dried, and used for fuel in cooking or heating.";
+		mes "[果實愛好者]";
+		mes "榨油後剩下的殘渣會被曬乾，用來當作烹飪或取暖的燃料。";
 		next;
-		mes "[Fruit Fancier]";
-		mes "It burns well and has a good smell, can't get better than that.";
+		mes "[果實愛好者]";
+		mes "燃燒得很好，還帶著好聞的味道，再好不過了。";
 		next;
-		mes "[Fruit Fancier]";
-		mes "Ok!! That is all about the pulp, it takes too long to explain all those useful effects for Palm fruit shells.";
+		mes "[果實愛好者]";
+		mes "好了！關於果肉就說到這裡，要解釋棕櫚果殼所有好用的功效實在太花時間了。";
 		next;
-		mes "[Fruit Fancier]";
-		mes "It's not like this is the extent of my knowledge. Don't get me wrong!";
+		mes "[果實愛好者]";
+		mes "我可不是只知道這些。別誤會！";
 		close;
 	case 2:
-		mes "[Fruit Fancier]";
-		mes "So you want to know about the Palm interior? Let me explain.";
+		mes "[果實愛好者]";
+		mes "所以你想知道棕櫚果的內部構造嗎？讓我來解釋。";
 		next;
-		mes "[Fruit Fancier]";
-		mes "Palm tree fruit has 2 layers of pulp. Outside is very rough, and the inside is smooth...";
+		mes "[果實愛好者]";
+		mes "棕櫚果有兩層果肉。外層非常粗糙，內層則很光滑……";
 		next;
-		mes "[Fruit Fancier]";
-		mes "Hmm... Yes! the pulp of Palm tree fruit is a little bit harder than a walnut shell, must be the water it contains inside.";
+		mes "[果實愛好者]";
+		mes "嗯……是的！棕櫚果的果肉比核桃殼還要硬一點，大概是因為裡面含有水分的關係。";
 		next;
-		mes "[Fruit Fancier]";
-		mes "Inside of the shell, there's about 300cc water which is useful in quenching people's thirst since Dewata island has very hot weather.";
+		mes "[果實愛好者]";
+		mes "殼裡大約有300cc的水，因為德瓦塔島天氣很炎熱，這些水能用來解渴。";
 		next;
-		mes "[Fruit Fancier]";
-		mes "And it's not like we just throw it away once we drink the water inside!!";
+		mes "[果實愛好者]";
+		mes "而且可不是喝完裡面的水就直接丟掉喔！！";
 		next;
-		mes "[Fruit Fancier]";
-		mes "We also can make a quality canteen out of it! Like I said, it has really thick outer shell enough and can act as a water bottle.";
+		mes "[果實愛好者]";
+		mes "我們還能用它做出很好的水壺！就像我說的，它的外殼夠厚，可以當作水瓶使用。";
 		next;
-		mes "[Fruit Fancier]";
-		mes "It is also great to make charcoal. Charcoal made out of palm fruit is well known for long lasting and quality fire,";
+		mes "[果實愛好者]";
+		mes "用來製作木炭也很棒。棕櫚果炭以持久且火力穩定而聞名，";
 		next;
-		mes "[Fruit Fancier]";
-		mes "People love to cook seafoods and chicken with Palm fruit charcoal..";
+		mes "[果實愛好者]";
+		mes "大家都喜歡用棕櫚果炭來烹煮海鮮和雞肉。";
 		next;
-		mes "[Fruit Fancier]";
-		mes "It has the extra bonus of being burning with a pleasant palm smell";
+		mes "[果實愛好者]";
+		mes "燃燒時還帶有宜人的棕櫚香氣";
 		next;
-		mes "[Fruit Fancier]";
-		mes "Ok!! That is all for pulp information, it takes too long to explain all those useful effects.";
+		mes "[果實愛好者]";
+		mes "好了！果肉的資訊就到這裡，要解釋所有好用的功效實在太花時間了。";
 		next;
-		mes "[Fruit Fancier]";
-		mes "It's not like this is all I know. Don't get me wrong!";
+		mes "[果實愛好者]";
+		mes "我可不是只知道這些。別誤會！";
 		close;
 	case 3:
-		mes "[Fruit Fancier]";
-		mes "So, you want to know about tender kernel inside? Let me explain for you";
+		mes "[果實愛好者]";
+		mes "所以，你想知道裡面嫩嫩的果仁嗎？讓我為你解釋";
 		next;
-		mes "[Fruit Fancier]";
-		mes "The kernel inside of the hard pulp is used as a natural digestive.";
+		mes "[果實愛好者]";
+		mes "堅硬果肉裡的果仁可以當作天然的消化劑。";
 		next;
-		mes "[Fruit Fancier]";
-		mes "Not much to say about the kernel inside..";
+		mes "[果實愛好者]";
+		mes "關於裡面的果仁也沒什麼好說的……";
 		next;
-		mes "[Fruit Fancier]";
-		mes "but we do make sure to use every part of the palm fruit.";
+		mes "[果實愛好者]";
+		mes "但我們確實會把棕櫚果的每一部分都好好利用。";
 		next;
-		mes "[Fruit Fancier]";
-		mes "Wouldn't you agree?";
+		mes "[果實愛好者]";
+		mes "你不這麼覺得嗎？";
 		close;
 	case 4:
-		mes "[Fruit Fancier]";
-		mes "Arrgg! You have no interest in the world!";
+		mes "[果實愛好者]";
+		mes "唉！你對這世界毫無興趣！";
 		close;
 	}
 }
 
-dewata,114,243,6	script	Lazy Young Man#dew	536,1,1,{
+dewata,114,243,6	script	懶散的年輕人#dew::Lazy Young Man#dew	536,1,1,{
 	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 500) {
-		mes "[Lazy Young Man]";
-		mes "Why are you carrying so much? Isn't it heavy?";
+		mes "[懶散的年輕人]";
+		mes "你怎麼扛這麼多？不會很重嗎？";
 		close;
 	}
 	if (countitem(11534)) {
-		mes "[Lazy Young Man]";
-		mes "Wewt~!! Isn't that Palm Juice?";
-		mes "Can you give me that? I just woke";
-		mes "up, and my throat is parched!";
+		mes "[懶散的年輕人]";
+		mes "哇～！那不是棕櫚汁嗎？";
+		mes "可以把那個給我嗎？我剛醒過來，";
+		mes "喉嚨乾得要命！";
 		next;
-		switch(select("Give:Do not give")) {
+		switch(select("給予:不給")) {
 		case 1:
-			mes "[Lazy Young Man]";
-			mes "Really? For me?? I'll give you this in return... Thanks... Hehe~";
+			mes "[懶散的年輕人]";
+			mes "真的嗎？給我的？？我會用這個回報你……謝謝……嘿嘿～";
 			delitem 11534,1; //Coco_Juice
 			getgroupitem(IG_GiftBox);
 			close;
 		case 2:
-			mes "[Lazy Young Man]";
-			mes "So be it~ Ok...";
+			mes "[懶散的年輕人]";
+			mes "就這麼說定了～好吧……";
 			close;
 		}
 	}
-	mes "[Lazy Young Man]";
-	mes "Ah~ Thristy~ Anyone have some Palm";
-	mes "juice for me?~";
+	mes "[懶散的年輕人]";
+	mes "啊～好渴～有誰有棕櫚汁";
+	mes "可以分我一點嗎？～";
 	close;
 OnTouch:
 	if (countitem(11534) == 0) {
-		mes "[Lazy Young Man]";
-		mes "Arrgg~ I'm thirsty~~ so thirsty~~";
-		mes "Give me Palm juice... Palm Juuiice~~";
+		mes "[懶散的年輕人]";
+		mes "啊～我好渴～～好渴啊～～";
+		mes "給我棕櫚汁……棕櫚汁～～";
 		emotion ET_FRET;
 		next;
 		emotion ET_FRET;
@@ -220,277 +220,277 @@ OnTouch:
 	end;
 }
 
-dewata,159,81,4	script	Tourist#dew-1	881,{
-	mes "[Nasolo]";
-	mes "Wow~ Pure ocean, a warm beach...";
-	mes "Perfect for a date with a girlfriend...";
+dewata,159,81,4	script	觀光客#dew-1::Tourist#dew-1	881,{
+	mes "[納索洛]";
+	mes "哇～好清澈的大海，溫暖的沙灘……";
+	mes "很適合和女朋友約會……";
 	next;
-	mes "[Nasolo]";
-	mes "If only I had one...";
+	mes "[納索洛]";
+	mes "要是我也有一個就好了……";
 	emotion ET_CRY;
 	next;
-	mes "[Nasolo]";
-	mes "I wonder when my princess will come...";
+	mes "[納索洛]";
+	mes "不知道我的公主什麼時候會來……";
 	emotion ET_OHNO;
 	close;
 }
 
-dewata,146,109,5	script	Restauranteur#dew	886,{
+dewata,146,109,5	script	餐廳老闆#dew::Restauranteur#dew	886,{
 	if (checkweight(11532,1) == 0 || checkweight(11533,1) == 0 || MaxWeight - Weight < 500) {
-		mes "[Restauranteur]";
-		mes "You came to taste my dish? It is always good to eat with an empty stomach.";
+		mes "[餐廳老闆]";
+		mes "你是來品嚐我的料理嗎？空著肚子來吃總是最好的。";
 		close;
 	}
-	mes "[Restauranteur]";
-	mes "Welcome to the island of Dewata.";
-	mes "I hope you behave like a noble";
-	mes "traveler, unlike some of these";
-	mes "teenage punks...";
+	mes "[餐廳老闆]";
+	mes "歡迎來到德瓦塔島。";
+	mes "希望你能表現得像個有教養的";
+	mes "旅人，不像某些";
+	mes "青少年小混混……";
 	next;
-	switch(select("About Dewata dishes:Today's menu?:I'm okay.")) {
+	switch(select("關於德瓦塔料理:今日菜單？:不用了。")) {
 	case 1:
-		mes "[Restauranteur]";
-		mes "Need info about our foods? Well... I don't have much to talk about, but feel free to listen if you want.";
+		mes "[餐廳老闆]";
+		mes "想了解我們的料理嗎？嗯……我沒什麼好說的，不過想聽的話就聽聽吧。";
 		next;
-		mes "[Restauranteur]";
-		mes "So much to cover, let me begin.";
+		mes "[餐廳老闆]";
+		mes "要講的還真多，我開始囉。";
 		next;
-		mes "[Restauranteur]";
-		mes "First, Dewata dishes have special names based on each cooking recipe,";
+		mes "[餐廳老闆]";
+		mes "首先，德瓦塔料理會依照烹調方式取特別的名字，";
 		next;
-		mes "[Restauranteur]";
-		mes "If dish name has 'Goreng' in it, then it is either stir or deep fried food.";
+		mes "[餐廳老闆]";
+		mes "如果菜名裡有「Goreng」，那就是炒或油炸的料理。";
 		next;
-		mes "[Restauranteur]";
-		mes "If it is a type of 'Bakar', then it is a grilled food.";
+		mes "[餐廳老闆]";
+		mes "如果是「Bakar」類的，那就是燒烤料理。";
 		next;
-		mes "[Restauranteur]";
-		mes "And if it's 'Satay', then you are eating a skewered dish.";
+		mes "[餐廳老闆]";
+		mes "如果是「沙嗲」，那你吃的就是串燒料理。";
 		next;
-		mes "[Restauranteur]";
-		mes "Second, we have dishes named after basic ingredients,";
+		mes "[餐廳老闆]";
+		mes "第二，料理也會以基本食材來命名，";
 		next;
-		mes "[Restauranteur]";
-		mes "In Dewata island, we call rice as Nasi, noodle as Mie, bread as Roti, chicken as Ayam, fish as Ikan, and corn as Jagung.";
+		mes "[餐廳老闆]";
+		mes "在德瓦塔島，我們把米飯叫做 Nasi，麵條叫做 Mie，麵包叫做 Roti，雞肉叫做 Ayam，魚叫做 Ikan，玉米叫做 Jagung。";
 		next;
-		mes "[Restauranteur]";
-		mes "So, if rice is fried we call it 'Nasi Goreng', and fried noodle is 'Mie Goreng'.";
+		mes "[餐廳老闆]";
+		mes "所以炒過的米飯叫「印尼什錦炒飯」，炒麵則叫「Mie Goreng」。";
 		next;
-		mes "[Restauranteur]";
-		mes "Well... This is enough to enjoy our foods in Dewata!! If you are hungry, we have our special set menu for only ^0000FF5000^000000 Zeny.";
+		mes "[餐廳老闆]";
+		mes "好了……這樣就足夠讓你享受德瓦塔的料理了！如果你餓了，我們有特製套餐，只要 ^0000FF5000^000000 Zeny。";
 		close;
 	case 2:
-		mes "[Restauranteur]";
-		mes "We have 2 items 'Nasi Goreng' and 'Satay'. Which one do you want?";
+		mes "[餐廳老闆]";
+		mes "我們有兩種餐點：「印尼什錦炒飯」和「沙嗲」。你要哪一種？";
 		next;
-		switch(select("Nasi Goreng:Satay")) {
+		switch(select("印尼什錦炒飯:沙嗲")) {
 		case 1:
-			mes "[Restauranteur]";
-			mes "This is Nasi Goreng fried with my special sauce plus egg fry on the top. It only costs ^0000FF5000^000000 Zeny.";
+			mes "[餐廳老闆]";
+			mes "這是用我的特製醬汁炒的印尼什錦炒飯，上面還加了一顆煎蛋。只要 ^0000FF5000^000000 Zeny。";
 			set .@food,11532;
 			break;
 		case 2:
-			mes "[Restauranteur]";
-			mes "This is the Satay, a slice of meat skewered and grilled over Palm fruit charcoal. It costs only ^0000FF5000^000000 Zeny.";
+			mes "[餐廳老闆]";
+			mes "這是沙嗲，把肉片串起來，用棕櫚果炭火烤成的。只要 ^0000FF5000^000000 Zeny。";
 			set .@food,11533;
 			break;
 		}
 		next;
-		switch(select("Taste:Walk away")) {
+		switch(select("品嚐:離開")) {
 		case 1:
 			if (Zeny < 5000) {
-				mes "[Restauranteur]";
-				mes "Where's the money kid? Sheesh! No free food here! Ok?";
+				mes "[餐廳老闆]";
+				mes "錢呢，小鬼？真是的！這裡可沒有免費的食物！懂嗎？";
 				close;
 			}
-			mes "[Restauranteur]";
-			mes "這是你的 "+getitemname(.@food)+", you won't regret it!";
+			mes "[餐廳老闆]";
+			mes "這是你的 "+getitemname(.@food)+"，你絕對不會後悔的！";
 			set Zeny, Zeny - 5000;
 			getitem .@food,1;
 			close;
 		case 2:
-			mes "[Restauranteur]";
-			mes "It's a shame you won't taste this great dish...";
+			mes "[餐廳老闆]";
+			mes "真可惜，你就嚐不到這道好料理了……";
 			close;
 		}
 	case 3:
-		mes "[Restauranteur]";
-		mes "Are you serious? This is not even funny.";
+		mes "[餐廳老闆]";
+		mes "你認真的嗎？一點都不好笑。";
 		close;
 	}
 }
 
-dewata,147,107,6	script	Gourmet#dew	85,{
-	mes "[Gourmet]";
-	mes "Oh... it's like a party in my";
-	mes "mouth... and everyone's invited!";
+dewata,147,107,6	script	美食家#dew::Gourmet#dew	85,{
+	mes "[美食家]";
+	mes "喔……我的嘴裡";
+	mes "像在開派對……大家都受邀了！";
 	emotion ET_CRY;
 	next;
-	mes "[Gourmet]";
-	mes "Master~ One more please~";
+	mes "[美食家]";
+	mes "老闆～再來一份～";
 	emotion ET_BEST;
 	emotion ET_OK, getnpcid(0, "Restauranteur#dew");
 	next;
-	mes "[Gourmet]";
-	mes "You must try this! The Food here is succulent~";
+	mes "[美食家]";
+	mes "你一定要試試看！這裡的食物超級多汁美味～";
 	close;
 }
 
-dewata,154,107,4	script	Sightseer#dew	86,{
-	mes "[Tourist]";
+dewata,154,107,4	script	觀光客#dew::Sightseer#dew	86,{
+	mes "[觀光客]";
 	mes "哇……";
-	mes "How many has he already eaten?";
+	mes "他已經吃了幾份了？";
 	emotion ET_SCRATCH;
 	next;
-	mes "[Tourist]";
-	mes "He must be big eater, not the gourmet...";
+	mes "[觀光客]";
+	mes "他一定是大胃王，不是美食家……";
 	next;
-	mes "[Tourist]";
-	mes "Have you been to Prontera yet? I think I've seen him somewhere..";
+	mes "[觀光客]";
+	mes "你去過普隆德拉了嗎？我好像在哪裡見過他……";
 	close;
 }
 
-dewata,95,203,6	script	Travel Guide#dew	536,{
+dewata,95,203,6	script	導遊#dew::Travel Guide#dew	536,{
 	mes "[嚮導]";
-	mes "This temple behind me is called Borobudur.";
-	mes "Borobudur temple was built in the 9th century";
-	mes "to venerate the Great Buddha, an ancient religious figure.";
+	mes "我身後的這座寺廟叫做婆羅浮屠。";
+	mes "婆羅浮屠寺建於九世紀，";
+	mes "是為了膜拜偉大的佛陀這位古老的宗教人物。";
 	emotion ET_PROFUSELY_SWEAT;
 	next;
 	mes "[嚮導]";
-	mes "This temple is made with 6 square platforms and 3 round platforms, and 2672 hand carved relief panels as well as 504 statue of various Buddhas.";
+	mes "這座寺廟由6個方形平台與3個圓形平台構成，並有2672塊手工雕刻的浮雕板，以及504尊各式佛像。";
 	emotion ET_PROFUSELY_SWEAT;
 	next;
 	mes "[嚮導]";
-	mes "The central stupa, or shrine is located at the center of high platform, which is surrounded by 72 more statues.";
+	mes "中央的佛塔（又稱神殿）位於最高平台的中心，周圍環繞著72尊佛像。";
 	emotion ET_PROFUSELY_SWEAT;
 	next;
 	mes "[嚮導]";
-	mes "Even in modern times Borobudur temple is a pilgrimage site for many monks worshiping the Buddha. It's also a major tourist attraction, as you can imagine.";
+	mes "即使在現代，婆羅浮屠寺仍是許多僧侶朝聖禮佛的聖地，當然也是重要的觀光景點。";
 	emotion ET_PROFUSELY_SWEAT;
 	next;
 	mes "[嚮導]";
-	mes "That is all I have on Borobudur temple, are there any questions?";
-	mes "If not, we can move to the next spot.";
+	mes "關於婆羅浮屠寺我就說這些，還有什麼問題嗎？";
+	mes "如果沒有，我們就前往下一個景點吧。";
 	close;
 }
 
-dewata,97,207,4	script	Tourist#dew1	803,{
-	mes "[Tourist]";
-	mes "Oh, dag-nabbit... I've gone and";
-	mes "picked the wrong tour guide...";
+dewata,97,207,4	script	觀光客#dew1::Tourist#dew1	803,{
+	mes "[觀光客]";
+	mes "哎呀，真是的……我竟然";
+	mes "選錯了導遊……";
 	next;
-	mes "[Tourist]";
-	mes "This hombre is a real snooze...";
-	mes "Why make it longer..";
+	mes "[觀光客]";
+	mes "這傢伙真是無聊透頂……";
+	mes "何必拖那麼久呢……";
 	emotion ET_CONFUSE;
 	next;
-	mes "[Tourist]";
-	mes "I need to change my travel agent...";
+	mes "[觀光客]";
+	mes "我得換個旅行社了……";
 	emotion ET_OHNO;
 	close;
 }
 
-dewata,100,206,4	script	Tourist#dew2	59,{
-	mes "[Tourist]";
-	mes "Hey, let's go there! Hurry up,";
-	mes "while the tour guide is explaining~";
+dewata,100,206,4	script	觀光客#dew2::Tourist#dew2	59,{
+	mes "[觀光客]";
+	mes "嘿，我們去那邊吧！快點，";
+	mes "趁導遊還在解說～";
 	next;
-	mes "[Tourist]";
-	mes "Come on... It doesn't sound like";
-	mes "he's going to stop talking anytime soon.";
+	mes "[觀光客]";
+	mes "拜託……看起來";
+	mes "他一時半刻不會停下來吧。";
 	close;
 }
 
-dewata,101,206,4	script	Tourist#dew3	90,{
-	mes "[Tourist]";
-	mes "Aren't we going to get lost without the guide?";
+dewata,101,206,4	script	觀光客#dew3::Tourist#dew3	90,{
+	mes "[觀光客]";
+	mes "沒有導遊我們不會迷路嗎？";
 	next;
-	mes "[Tourist]";
-	mes "We got lost already last time...";
+	mes "[觀光客]";
+	mes "上次我們已經迷路過了……";
 	close;
 }
 
-dewata,99,203,4	script	Tourist#dew4	755,{
-	mes "[Tourist]";
-	mes "Oh~ This is very interesting. A";
-	mes "temple that worships the Buddha...";
+dewata,99,203,4	script	觀光客#dew4::Tourist#dew4	755,{
+	mes "[觀光客]";
+	mes "喔～這很有趣。一座";
+	mes "供奉佛陀的寺廟……";
 	emotion ET_OK;
 	next;
-	mes "[Tourist]";
-	mes "But I don't really get all the";
-	mes "symbology here.";
+	mes "[觀光客]";
+	mes "不過這裡的";
+	mes "象徵意義我不太懂。";
 	next;
-	mes "[Tourist]";
-	mes "So beautiful... I wonder who built";
-	mes "this place?";
+	mes "[觀光客]";
+	mes "真美……不知道是誰";
+	mes "蓋了這個地方呢？";
 	close;
 }
 
-dewata,67,186,8	script	Monk#dew1	834,{
-	mes "[Monk]";
-	mes "I am a monk, content to spend my days in religious study.";
+dewata,67,186,8	script	僧侶#dew1::Monk#dew1	834,{
+	mes "[僧侶]";
+	mes "我是僧侶，樂於把日子花在宗教研究上。";
 	next;
-	mes "[Monk]";
-	mes "I've just returned from a pilgrimage to Borobudur temple with my fellow monks...";
+	mes "[僧侶]";
+	mes "我剛和同修從婆羅浮屠寺的朝聖之旅回來……";
 	next;
-	mes "[Monk]";
-	mes "Borobudur temple has many pilgrims visiting, since it is one of few temples left for worshipping the Great Buddha.";
+	mes "[僧侶]";
+	mes "婆羅浮屠寺有許多朝聖者造訪，因為它是少數仍供奉偉大佛陀的寺廟之一。";
 	close;
 }
 
-dewata,65,188,8	script	Monk#dew2	834,{
-	mes "[Monk]";
-	mes "Borobudur temple is one of few temples left for worshiping the Great Buddha.";
+dewata,65,188,8	script	僧侶#dew2::Monk#dew2	834,{
+	mes "[僧侶]";
+	mes "婆羅浮屠寺是少數仍供奉偉大佛陀的寺廟之一。";
 	next;
-	mes "[Monk]";
-	mes "I don't understand why there are only few temples left that follow our ways...";
+	mes "[僧侶]";
+	mes "我不明白為什麼只剩下少數寺廟還遵循我們的傳統……";
 	close;
 }
 
-dewata,63,190,8	script	Monk#dew3	834,{
-	mes "[Monk]";
-	mes "Are you a Tourist? You can make an offering and a wish to one of the shrines.";
+dewata,63,190,8	script	僧侶#dew3::Monk#dew3	834,{
+	mes "[僧侶]";
+	mes "你是觀光客嗎？你可以在其中一座神龕前獻上供品並許願。";
 	next;
-	mes "[Monk]";
-	mes "Our great Buddha may grant your wish..";
+	mes "[僧侶]";
+	mes "我們偉大的佛陀或許會實現你的願望……";
 	close;
 }
 
-dewata,62,192,8	script	Monk#dew4	834,{
-	mes "[Monk]";
-	mes "Our great Buddha is the king of souls and the leader of all good Gods.";
+dewata,62,192,8	script	僧侶#dew4::Monk#dew4	834,{
+	mes "[僧侶]";
+	mes "我們偉大的佛陀是靈魂之王，也是所有善神的領袖。";
 	next;
-	mes "[Monk]";
-	mes "The Dewata tribes believes in Buddha, the strange thing is they all describe Buddha as different creatures.";
+	mes "[僧侶]";
+	mes "德瓦塔的部族信仰佛陀，奇怪的是他們描述佛陀時，各自說的都是不同的生物。";
 	next;
-	mes "[Monk]";
-	mes "I'm not really sure about the reason for that. Maybe because there are many different tribes in Dewata with different characteristics.";
+	mes "[僧侶]";
+	mes "我也不太清楚原因。或許是因為德瓦塔有許多特色各異的部族吧。";
 	close;
 }
 
-dewata,89,191,6	script	Small Shrine#dew1	844,{
-	mes "There is a small shrine here. There are many people making wishes.";
+dewata,89,191,6	script	小神龕#dew1::Small Shrine#dew1	844,{
+	mes "這裡有一座小神龕，許願的人很多。";
 	next;
-	switch(select("Make a donation.:Make a wish.:Walk away.")) {
+	switch(select("捐獻。:許願。:離開。")) {
 	case 1:
-		mes "Donation case says:";
-		mes "^FF00001,000 ~ 100,000 Zeny^000000";
-		mes "How much do you want to donate?";
+		mes "捐獻箱上寫著:";
+		mes "捐獻金額 ^FF00001,000 ~ 100,000 Zeny^000000";
+		mes "你想捐獻多少？";
 		next;
 		input .@input,0,100000;
 		if (.@input < 1000) {
-			mes "- Cancelled. -";
+			mes "- 已取消。 -";
 			close;
 		} else if (.@input <= 50000)
 			set .@good_luck, rand(1,10000);
 		else
 			set .@good_luck, rand(1,5000);
 		if (.@input > Zeny) {
-			mes "- Not enough Zeny. -";
+			mes "- Zeny 不足。 -";
 			close;
 		}
-		mes "What is your wish?";
+		mes "你的願望是什麼？";
 		next;
 		input(.@wish$);
 
@@ -515,7 +515,7 @@ dewata,89,191,6	script	Small Shrine#dew1	844,{
 			}
 		}
 
-		mes "You make a wish for ^0000FF" + .@wish$ + "^000000 to the small shrine.";
+		mes "你為 ^0000FF" + .@wish$ + "^000000 向小神龕許下願望。";
 		next;
 		callsub L_Wish;
 		set Zeny, Zeny - .@input;
@@ -533,313 +533,313 @@ dewata,89,191,6	script	Small Shrine#dew1	844,{
 			consumeitem 12068; //Luk_Dish03
 		else if (.@stat & 64) {
 			specialeffect2 EF_ANGEL;
-			mes "- A celestial entity gives you a blessing. -";
+			mes "- 一位天界存在賜予你祝福。 -";
 			next;
 		} else if (.@stat & 128) {
-			mes "- The shrine envelops you in a loving aura. -";
+			mes "- 神龕以慈愛的光芒籠罩了你。 -";
 			if ((Sex == SEX_FEMALE && compare(.@wish$,.@wishes$[26])) || (Sex == SEX_MALE && compare(.@wish$,.@wishes$[27])))
 				specialeffect2 EF_LIGHTSPHERE;
 			next;
 		}
-		mes "It feels like this wish could come true.";
+		mes "感覺這個願望有可能實現。";
 		close;
 	case 2:
-		mes "What is your wish?";
+		mes "你的願望是什麼？";
 		next;
 		input .@wish$;
-		mes "You have made your wish for ^0000FF" + .@wish$ + "^000000 to the small shrine.";
+		mes "你已為 ^0000FF" + .@wish$ + "^000000 向小神龕許下願望。";
 		next;
 		callsub L_Wish;
-		mes "It feels like this wish could come true.";
+		mes "感覺這個願望有可能實現。";
 		close;
 	case 3:
 		close;
 	}
 
 L_Wish:
-	mes "Mysterious energy comes out from the shrine.";
+	mes "神秘的能量從神龕中湧出。";
 	specialeffect EF_FLASHER,AREA,"Small Shrine#dew1";
 	specialeffect EF_FLASHER,AREA,"Small Shrine#dew2";
 	specialeffect EF_FLASHER,AREA,"Small Shrine#dew3";
 	specialeffect EF_FLASHER,AREA,"Small Shrine#dew4";
 	next;
-	mes "You have received the shrine's blessing.";
+	mes "你獲得了神龕的祝福。";
 	specialeffect2 EF_BLESSING;
 	next;
 	return;
 }
-dewata,89,212,6	duplicate(Small Shrine#dew1)	Small Shrine#dew2	844
-dewata,68,212,6	duplicate(Small Shrine#dew1)	Small Shrine#dew3	844
-dewata,68,191,6	duplicate(Small Shrine#dew1)	Small Shrine#dew4	844
+dewata,89,212,6	duplicate(Small Shrine#dew1)	小神龕#dew2::Small Shrine#dew2	844
+dewata,68,212,6	duplicate(Small Shrine#dew1)	小神龕#dew3::Small Shrine#dew3	844
+dewata,68,191,6	duplicate(Small Shrine#dew1)	小神龕#dew4::Small Shrine#dew4	844
 
-dewata,75,122,6	script	Monk#dewt1	834,{
-	mes "[Monk]";
-	mes "You are a stranger here. What brings here to this quiet place?";
+dewata,75,122,6	script	僧侶#dewt1::Monk#dewt1	834,{
+	mes "[僧侶]";
+	mes "你是這裡的生面孔。是什麼帶你來到這個寧靜的地方？";
 	next;
-	switch(select("I'm sightseeing.:No reason.")) {
+	switch(select("我來觀光。:沒什麼特別的理由。")) {
 	case 1:
-		mes "[Monk]";
-		mes "Oh, you are a tourist. This is the '^0000FFPagoda^000000' worshiping the great Buddha. Please be respectful of the monks praying here.";
+		mes "[僧侶]";
+		mes "喔，你是觀光客啊。這座是供奉偉大佛陀的「^0000FF寶塔^000000」。請尊重在此祈禱的僧侶。";
 		close;
 	case 2:
-		mes "[Monk]";
-		mes "Good day to you...";
+		mes "[僧侶]";
+		mes "祝你有美好的一天……";
 		close;
 	}
 }
 
-dewata,69,101,6	script	Monk#dewt2	834,{
-	mes "[Monk]";
-	mes "We have a pagoda for the worship of Buddhas. Each temple has one of these towers, though not many people come here besides other monks.";
+dewata,69,101,6	script	僧侶#dewt2::Monk#dewt2	834,{
+	mes "[僧侶]";
+	mes "我們有供奉佛陀的寶塔。每座寺廟都有一座這樣的塔，不過除了其他僧侶以外，來這裡的人不多。";
 	next;
-	switch(select("I see...:Explain about Buddhas:Ah, okay.")) {
+	switch(select("原來如此……:說明佛陀:喔，好的。")) {
 	case 1:
-		mes "[Monk]";
-		mes "You must feel the compassion of our Buddha!";
+		mes "[僧侶]";
+		mes "你一定要感受我們佛陀的慈悲！";
 		close;
 	case 2:
-		mes "[Monk]";
-		mes "Buddha is our God from Dewata myth, he is the king of souls and also the leader of good Gods.";
+		mes "[僧侶]";
+		mes "佛陀是德瓦塔神話中的神，他是靈魂之王，也是善神的領袖。";
 		next;
-		mes "[Monk]";
-		mes "Buddha is the guardian of souls whom often described in traditional dance as fighting against the magician Rangda.";
+		mes "[僧侶]";
+		mes "佛陀是靈魂的守護者，在傳統舞蹈中常被描繪為與巫師蘭妲搏鬥。";
 		next;
-		mes "[Monk]";
-		mes "In Dewata we belive there are many deities protecting each island and tribal locale,";
+		mes "[僧侶]";
+		mes "在德瓦塔，我們相信每座島嶼與部族聚落都有許多神明守護，";
 		next;
-		mes "[Monk]";
-		mes "so we do have different manifestations of the Buddha, usually described as a bear, tiger, dragon, snake, or lion";
+		mes "[僧侶]";
+		mes "所以佛陀也有不同的化身，通常被描述為熊、虎、龍、蛇或獅子。";
 		next;
-		mes "[Monk]";
-		mes "Great Lion is one of famous Buddhas worshipped in Dewata.";
+		mes "[僧侶]";
+		mes "大獅子是德瓦塔所供奉的著名佛陀之一。";
 		next;
-		mes "[Monk]";
-		mes "Hope this was good explanation for you. Let me know if you have anything else you want to know.";
+		mes "[僧侶]";
+		mes "希望這個解說對你有幫助。如果還想知道什麼，請告訴我。";
 		close;
 	case 3:
-		mes "[Monk]";
-		mes "Good day to you...";
+		mes "[僧侶]";
+		mes "祝你有美好的一天……";
 		close;
 	}
 }
 
-dewata,71,79,6	script	Monk#dewt3	834,{
-	mes "[Monk]";
-	mes "This tower is built on the edge of coastal cliff. You can pray with a cool ocean breeze in your hair.";
+dewata,71,79,6	script	僧侶#dewt3::Monk#dewt3	834,{
+	mes "[僧侶]";
+	mes "這座塔建在海岸懸崖的邊緣。你可以在涼爽的海風中祈禱。";
 	next;
-	mes "[Monk]";
-	mes "Come, you should feel the compassion of our Buddha in this pleasant weather.";
+	mes "[僧侶]";
+	mes "來吧，在這麼宜人的天氣裡，你應該感受我們佛陀的慈悲。";
 	close;
 }
 
-dewata,211,272,4	script	Lodge Owner#dew	534,2,3,{
+dewata,211,272,4	script	旅館老闆#dew::Lodge Owner#dew	534,2,3,{
 OnTouch:
-	mes "[Lodge Owner]";
-	mes "These days, we have many honeymooners visiting here.";
+	mes "[旅館老闆]";
+	mes "最近有很多蜜月旅行的人來這裡。";
 	next;
-	mes "[Lodge Owner]";
-	mes "It must be the beautiful scenery, right?";
+	mes "[旅館老闆]";
+	mes "一定是因為風景優美吧？";
 	next;
-	mes "[Lodge Owner]";
-	mes "I'm happy with my business. Hope all we have a lot more visitors like that.";
+	mes "[旅館老闆]";
+	mes "我的生意很好。真希望能有更多這樣的客人。";
 	next;
-	mes "[Lodge Owner]";
-	mes "Ah! You should bring your lover to Dewata on your honeymoon.";
-	mes "I'll give you a good price-";
+	mes "[旅館老闆]";
+	mes "啊！你應該帶你的愛人來德瓦塔度蜜月。";
+	mes "我給你好價錢——";
 	close;
 }
 
-dewata,245,244,4	script	Lodge Employee#dew	536,2,3,{
+dewata,245,244,4	script	旅館員工#dew::Lodge Employee#dew	536,2,3,{
 OnTouch:
-	mes "[Lodge employee]";
-	mes "Argg~ This is really ticking me off!";
+	mes "[旅館員工]";
+	mes "啊～這真的讓我火大！";
 	emotion ET_FRET;
 	next;
-	mes "[Lodge employee]";
-	mes "How come more and more couples come here?";
+	mes "[旅館員工]";
+	mes "為什麼越來越多情侶來這裡？";
 	next;
-	mes "[Lodge employee]";
-	mes "And why do they have act so lovey-dovey? What's up with that?";
+	mes "[旅館員工]";
+	mes "而且他們為什麼要這麼膩歪？到底是怎麼回事？";
 	next;
-	mes "[Lodge employee]";
-	mes "C'mon, show some respect to the people who work here...";
+	mes "[旅館員工]";
+	mes "拜託，對這裡工作的人尊重一點……";
 	close;
 }
 
-dewata,233,263,8	script	Sweet Married Couple#1	828,2,3,{
+dewata,233,263,8	script	甜蜜夫妻#1::Sweet Married Couple#1	828,2,3,{
 OnTouch:
-	mes "[Sweet Husband]";
-	mes "You are the most beautiful thing in the world baby~";
+	mes "[甜蜜丈夫]";
+	mes "你是世界上最美的人，寶貝～";
 	emotion ET_CHUP;
 	next;
-	mes "[Sweet Wife]";
-	mes "Really? I'm that beautiful? I love you, honey~";
+	mes "[甜蜜妻子]";
+	mes "真的嗎？我有那麼美？我愛你，親愛的～";
 	emotion ET_CHUPCHUP, getnpcid(0, "Sweet Married Couple#2");
 	next;
-	mes "[Sweet Married Couple]";
-	mes "Hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha";
-	mes "Hohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohoho";
+	mes "[甜蜜夫妻]";
+	mes "哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈";
+	mes "呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵";
 	emotion ET_SMILE;
 	emotion ET_SMILE, getnpcid(0, "Sweet Married Couple#2");
 	next;
-	mes "Come on now, I'm growing tired of this. Let's go.";
+	mes "好了啦，我已經厭倦了。我們走吧。";
 	close;
 }
 
-dewata,234,263,8	script	Sweet Married Couple#2	727,2,3,{
+dewata,234,263,8	script	甜蜜夫妻#2::Sweet Married Couple#2	727,2,3,{
 OnTouch:
-	mes "[Sweet Wife]";
-	mes "Baby~ You know what flower that is~?";
+	mes "[甜蜜妻子]";
+	mes "寶貝～你知道那是什麼花嗎～？";
 	emotion ET_QUESTION;
 	next;
-	mes "[Sweet Husband]";
-	mes "Hmm? I don't know. But it's really pretty.";
+	mes "[甜蜜丈夫]";
+	mes "嗯？我不知道。不過真的很漂亮。";
 	next;
-	mes "[Sweet Wife]";
-	mes "Baby~ Who's prettier, me or the flower?";
+	mes "[甜蜜妻子]";
+	mes "寶貝～我和那朵花，誰比較漂亮？";
 	emotion ET_QUESTION;
 	next;
-	mes "[Sweet Husband]";
-	mes "No matter how pretty the flower is, you are always more beautiful~";
+	mes "[甜蜜丈夫]";
+	mes "不管那朵花多漂亮，你永遠都更美～";
 	emotion ET_CHUP, getnpcid(0, "Sweet Married Couple#1");
 	next;
-	mes "[Sweet Wife]";
-	mes "Really? I'm that pretty? I love you, sweetie~";
+	mes "[甜蜜妻子]";
+	mes "真的嗎？我有那麼漂亮？我愛你，甜心～";
 	emotion ET_CHUPCHUP;
 	next;
-	mes "[Sweet Married Couple]";
-	mes "Hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha";
-	mes "Hohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohoho";
+	mes "[甜蜜夫妻]";
+	mes "哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈";
+	mes "呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵";
 	emotion ET_SMILE, getnpcid(0, "Sweet Married Couple#1");
 	emotion ET_SMILE;
 	next;
-	mes "Come on now, this bores me. Let's move on.";
+	mes "好啦，我看膩了。我們走吧。";
 	close;
 }
 
-dewata,279,213,4	script	Tourist#dew-2	887,2,3,{
+dewata,279,213,4	script	觀光客#dew-2::Tourist#dew-2	887,2,3,{
 OnTouch:
-	mes "[Reclining Tourist]";
-	mes "Wow~ This is really comfy~";
+	mes "[躺椅上的觀光客]";
+	mes "哇～這真的好舒服～";
 	next;
-	mes "[Reclining Tourist]";
-	mes "I'm having a great time just relaxing.";
+	mes "[躺椅上的觀光客]";
+	mes "光是放鬆就很開心。";
 	next;
-	mes "[Reclining Tourist]";
-	mes "You should lie down here too.";
-	mes "Once you do, you'll never want to get up.";
+	mes "[躺椅上的觀光客]";
+	mes "你也應該躺下來試試看。";
+	mes "躺下來之後，你就再也不想起來了。";
 	next;
-	mes "[Reclining Tourist]";
-	mes "That's why I haven't moved in a whole week! Hahahaha~";
+	mes "[躺椅上的觀光客]";
+	mes "所以我已經整整一個禮拜沒動了！哈哈哈～";
 	emotion ET_SMILE;
 	close;
 }
 
-dewata,269,208,4	script	Little Kid in Town#dew	538,2,3,{
+dewata,269,208,4	script	鎮上的小孩#dew::Little Kid in Town#dew	538,2,3,{
 OnTouch:
 	mes "[小孩]";
-	mes "Hey "+((Sex == SEX_MALE)?"bro":"sis")+", look at that man!";
+	mes "嘿， "+((Sex == SEX_MALE)?"老兄":"姊妹")+"，快看那個男人！";
 	next;
 	mes "[小孩]";
-	mes "He's been lying there for a week doin' nothin'...";
+	mes "他已經在那裡躺了一個禮拜，什麼都不做……";
 	next;
 	mes "[小孩]";
-	mes "Who IS that man?";
+	mes "那個男人到底是誰？";
 	emotion ET_QUESTION;
 	next;
 	mes "[小孩]";
-	mes "I don't want to be a lazybones like him when I grow up.";
+	mes "我長大可不想變成像他那樣的懶鬼。";
 	close;
 }
 
-dewata,227,129,4	script	Sarr#dew	538,2,3,{
+dewata,227,129,4	script	薩爾#dew::Sarr#dew	538,2,3,{
 OnTouch:
-	mes "[Sarr]";
-	mes "They're hiding so I should seek.";
-	mes "I'll find them for sure!-";
+	mes "[薩爾]";
+	mes "他們躲起來了，所以我要去找。";
+	mes "我一定會找到他們的！－";
 	next;
-	mes "[Sarr]";
-	mes "One~";
+	mes "[薩爾]";
+	mes "一～";
 	next;
-	mes "[Sarr]";
-	mes "Two~ Three~";
+	mes "[薩爾]";
+	mes "二～三～";
 	next;
-	mes "[Sarr]";
-	mes "Four~ Five~ Six~";
+	mes "[薩爾]";
+	mes "四～五～六～";
 	next;
-	mes "[Sarr]";
+	mes "[薩爾]";
 	mes "... ... ... ...";
 	next;
-	mes "[Sarr]";
-	mes "Ninty nine~ One hundred!!! Now I'm coming~";
+	mes "[薩爾]";
+	mes "九十九～一百！！！我來找囉～";
 	close;
 }
 
-dewata,239,140,4	script	Siyak#dew	539,2,3,{
+dewata,239,140,4	script	西亞克#dew::Siyak#dew	539,2,3,{
 OnTouch:
-	mes "[Siyak]";
-	mes "Hey come on, move over~ He's gonna find me~~";
+	mes "[西亞克]";
+	mes "嘿，快讓開～他要找到我了～～";
 	next;
-	mes "[Sarr]";
-	mes "I found Siyak!! Come out, come out!!";
+	mes "[薩爾]";
+	mes "我找到西亞克了！！出來吧，出來吧！！";
 	emotion ET_KIK, getnpcid(0, "Sarr#dew");
 	emotion ET_HUK;
 	emotion ET_KIK, getnpcid(0, "Sipo#dew");
 	emotion ET_HUK, playerattached();
 	next;
-	mes "[Siyak]";
-	mes "Arrgg!! This is all your fault~!!";
+	mes "[西亞克]";
+	mes "啊啊！！都是你的錯～！！";
 	emotion ET_FRET;
 	close;
 }
 
-dewata,193,145,4	script	Sipo#dew	538,2,3,{
+dewata,193,145,4	script	西波#dew::Sipo#dew	538,2,3,{
 OnTouch:
-	mes "[Sipo]";
-	mes "Sarr won't find me here, right?";
+	mes "[西波]";
+	mes "薩爾不會在這裡找到我吧？";
 	next;
-	mes "[Sarr]";
-	mes "I found Siyak!! Come out come out!!";
+	mes "[薩爾]";
+	mes "我找到西亞克了！！快出來！！";
 	emotion ET_KIK, getnpcid(0, "Sarr#dew");
 	emotion ET_HUK, getnpcid(0, "Siyak#dew");
 	emotion ET_KIK;
 	emotion ET_HUK, playerattached();
 	next;
-	mes "[Sipo]";
-	mes "Hehe~ Now Siyak is IT~ I'll just keep hiding in here.";
+	mes "[西波]";
+	mes "嘿嘿～現在西亞克是鬼了～我就繼續躲在這裡。";
 	close;
 }
 
-dewata,228,177,4	script	Majya#dew	538,2,3,{
+dewata,228,177,4	script	瑪亞#dew::Majya#dew	538,2,3,{
 OnTouch:
-	mes "[Majya]";
-	mes "I was playing hide-and-seek with my friends...";
+	mes "[瑪亞]";
+	mes "我正在跟朋友玩捉迷藏……";
 	next;
-	mes "[Majya]";
-	mes "I've been just standing here, and they haven't found me for 3 hours...";
+	mes "[瑪亞]";
+	mes "我一直站在這裡，他們3個小時都沒找到我……";
 	emotion ET_SCRATCH;
 	next;
-	mes "[Majya]";
-	mes "What should I do? Come out? I don't want to be IT...";
+	mes "[瑪亞]";
+	mes "我該怎麼辦？出去嗎？我不想當鬼……";
 	close;
 }
 
-dewata,278,100,4	script	Missing Child#dew	703,2,3,{
+dewata,278,100,4	script	走失的孩子#dew::Missing Child#dew	703,2,3,{
 OnTouch:
-	mes "[Ukki]";
-	mes "WaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaa~";
+	mes "[烏奇]";
+	mes "哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇~";
 	emotion ET_CRY;
 	emotion ET_PROFUSELY_SWEAT;
 	next;
 	mes "["+strcharinfo(0)+"]";
-	mes "Hey, kid...";
+	mes "喂，小鬼……";
 	next;
-	mes "[Ukki]";
-	mes "WaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaaWaa~";
+	mes "[烏奇]";
+	mes "哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇~";
 	emotion ET_CRY;
 	next;
-	mes "[Ukki]";
-	mes "Mama~ Papa~ Where are youuu~ Waa~";
+	mes "[烏奇]";
+	mes "媽媽～爸爸～你們在哪裡呀～哇～";
 	emotion ET_CRY;
 	emotion ET_PROFUSELY_SWEAT;
 	next;
@@ -849,327 +849,327 @@ OnTouch:
 	close;
 }
 
-dewata,249,87,4	script	Mum#dew	101,2,3,{
+dewata,249,87,4	script	媽媽#dew::Mum#dew	101,2,3,{
 OnTouch:
-	mes "[Mum]";
-	mes "Ukki~ Ukki~ Where did she go?";
+	mes "[媽媽]";
+	mes "烏奇～烏奇～她去哪裡了？";
 	emotion ET_KEK;
 	next;
-	mes "[Mum]";
-	mes "I can't take my eyes of her for a second...";
+	mes "[媽媽]";
+	mes "我一刻都不能不看著她……";
 	next;
-	mes "[Mum]";
-	mes "Ukki~";
+	mes "[媽媽]";
+	mes "烏奇～";
 	emotion ET_KEK;
 	close;
 }
 
-dewata,251,85,6	script	Poppa#dew	97,2,3,{
+dewata,251,85,6	script	爸比#dew::Poppa#dew	97,2,3,{
 OnTouch:
-	mes "[Poppa]";
-	mes "Honey, is Ukki lost again?";
+	mes "[爸比]";
+	mes "親愛的，烏奇又走丟了嗎？";
 	emotion ET_QUESTION;
 	next;
-	mes "[Poppa]";
-	mes "Arrgg... I can't go anywhere with her... How many times already?";
+	mes "[爸比]";
+	mes "啊……我根本沒辦法跟她出門……已經第幾次了？";
 	emotion ET_PROFUSELY_SWEAT;
 	next;
-	mes "[Daddy]";
-	mes "She's gotten lost in Luoyang, Amatsu, Moscovia, Brasilis, Kunlun,";
-	mes "and in Ayothaya...";
+	mes "[老爸]";
+	mes "她在洛陽、天津、莫斯科維亞、巴西里斯、崑崙，";
+	mes "還有阿尤塔亞……";
 	emotion ET_PROFUSELY_SWEAT;
 	next;
-	mes "[Daddy]";
-	mes "What!! It's already been 7 times including this time in Dewata... 7 times!!!!!!";
+	mes "[老爸]";
+	mes "什麼！！包括這次在德瓦塔，已經是第7次了……7次！！！！！！";
 	emotion ET_OTL;
 	close;
 }
 
-dewata,278,281,4	script	Happily Married Grandpa	534,{
-	mes "[Happily Married Grandpa]";
-	mes "Today, I should ask my lady to";
-	mes "cook me some ^006400fried rice^000000.";
+dewata,278,281,4	script	幸福的爺爺::Happily Married Grandpa	534,{
+	mes "[幸福的爺爺]";
+	mes "今天，我應該請我的老婆";
+	mes "幫我煮一些 ^006400炒飯^000000。";
 	next;
-	mes "[Happily Married Grandpa]";
-	mes "My wife's ^006400fried rice^000000 is";
-	mes "always very special!";
+	mes "[幸福的爺爺]";
+	mes "我老婆的 ^006400炒飯^000000";
+	mes "總是特別美味！";
 	next;
-	mes "[Happily Married Grandpa]";
-	mes "It makes me love her even more.";
-	mes "You can't imagine the wonderful flavor!";
+	mes "[幸福的爺爺]";
+	mes "這讓我更愛她了。";
+	mes "你絕對想像不到那美妙的滋味！";
 	emotion ET_THROB;
 	close;
 }
 
-dewata,280,277,4	script	Happily Married Grandma	535,{
-	mes "[Happily Married Grandma]";
-	mes "In my younger days,";
-	mes "there were many gentleman callers";
-	mes "who wanted to court me.";
+dewata,280,277,4	script	幸福的奶奶::Happily Married Grandma	535,{
+	mes "[幸福的奶奶]";
+	mes "年輕的時候，";
+	mes "有很多紳士前來";
+	mes "想要追求我。";
 	emotion ET_PROFUSELY_SWEAT;
 	next;
-	mes "[Happily Married Grandma]";
-	mes "Yet, I met just the right guy,";
-	mes "and got married.";
-	mes "I asked what he likes best";
-	mes "about me, he said it was";
-	mes "my homemade ^006400fried rice^000000";
+	mes "[幸福的奶奶]";
+	mes "然而，我遇到了對的人，";
+	mes "然後結婚了。";
+	mes "我問他最喜歡我哪一點，";
+	mes "他說是";
+	mes "我自己做的 ^006400炒飯^000000";
 	next;
-	mes "[Happily Married Grandma]";
-	mes "And since then, he only asks me";
-	mes "to make ^006400fried rice^000000 for dinner.";
-	mes "Over 40 years of marriage";
-	mes "and he still doesn't get tired ot it.";
+	mes "[幸福的奶奶]";
+	mes "從那時起，他就只要求我";
+	mes "晚餐做 ^006400炒飯^000000。";
+	mes "結婚四十多年了，";
+	mes "他還是吃不膩。";
 	next;
-	mes "[Happily Married Grandma]";
-	mes "I always think it was lucky";
-	mes "to be growing old with a guy";
-	mes "who loves what I cook.";
+	mes "[幸福的奶奶]";
+	mes "我總覺得很幸運，";
+	mes "能和一個";
+	mes "愛吃我做的菜的人一起變老。";
 	emotion ET_THROB;
 	close;
 }
 
-dewata,165,103,6	script	Adventurer Semangat#dew	534,{
-	mes "[Adventurer Semangat]";
-	mes "I also traveled around the World";
-	mes "When I was young like you.";
-	mes "^FF0000Monkey, Cuttlefish^000000";
-	mes "^FF0000Eagle, and Snake^000000,";
-	mes "all were good friends I met";
-	mes "during my travels.";
+dewata,165,103,6	script	冒險家瑟曼加#dew::Adventurer Semangat#dew	534,{
+	mes "[冒險家瑟曼加]";
+	mes "我年輕時也曾環遊世界，";
+	mes "就像你這樣的年紀。";
+	mes "^FF0000猴子、墨魚^000000";
+	mes "^FF0000老鷹和蛇^000000，";
+	mes "全都是我旅途中";
+	mes "結識的好朋友。";
 	next;
-	mes "[Adventurer Semangat]";
-	mes "I still have passion for adventure and traveling.";
-	mes "But, I can't just leave";
-	mes "my beloved wife and";
-	mes "grandchildren behind...";
+	mes "[冒險家瑟曼加]";
+	mes "我仍然熱愛冒險與旅行。";
+	mes "但是，我不能就這樣離開";
+	mes "我心愛的妻子和";
+	mes "孫子們……";
 	next;
-	mes "[Adventurer Semangat]";
-	mes "You will also have something";
-	mes "or someone that is as precious";
-	mes "in your heart someday.";
+	mes "[冒險家瑟曼加]";
+	mes "總有一天，你也會有";
+	mes "某個像這樣珍貴的人或事物，";
+	mes "留在你心中。";
 	close;
 }
 
-dewata,139,114,6	script	Semangat's Wife#dew	535,{
-	mes "[Semangat's Wife]";
-	mes "Where's that old man";
-	mes "gone off to again?";
-	mes "Have you seen my husband around?";
+dewata,139,114,6	script	瑟曼加的妻子#dew::Semangat's Wife#dew	535,{
+	mes "[瑟曼加的妻子]";
+	mes "那個老頭";
+	mes "又跑去哪裡了？";
+	mes "你有看到我丈夫嗎？";
 	next;
-	switch(select("I think I saw him there..:No I haven't..")) {
+	switch(select("我好像在那邊看到他……:沒有，我沒看到……")) {
 	case 1:
-		mes "[Semangat's Wife]";
-		mes "He ran away when";
-		mes "I was looking for him.";
-		mes "Should be somewhere, telling tall tales";
-		mes "to some travelers, like always.";
+		mes "[瑟曼加的妻子]";
+		mes "我去找他的時候，";
+		mes "他就跑掉了。";
+		mes "應該是在某個地方，";
+		mes "像往常一樣，對旅人吹牛。";
 		next;
-		mes "[Semangat's Wife]";
-		mes "I apologize";
-		mes "on behalf of my husband.";
-		mes "Please don't believe his foolish stories";
-		mes "saying he met with ^FF0000Monkeys and Snakes^000000, or";
-		mes "that he fought alongside a ^FF0000Cuttlefish^000000.";
+		mes "[瑟曼加的妻子]";
+		mes "我替我丈夫";
+		mes "向你道歉。";
+		mes "請別相信他那些荒唐的故事，";
+		mes "他說自己遇到過 ^FF0000猴子和蛇^000000，或是";
+		mes "曾和一隻 ^FF0000墨魚^000000 並肩作戰。";
 		next;
-		mes "[Semangat's Wife]";
-		mes "He has been living here";
-		mes "for entire life.";
-		mes "Yet, always find some travelers,";
-		mes "and who will listen to his made-up tales.";
+		mes "[瑟曼加的妻子]";
+		mes "他一輩子";
+		mes "都住在這裡。";
+		mes "卻總能找到一些旅人，";
+		mes "願意聽他編的故事。";
 		close;
 	case 2:
-		mes "[Semangat's Wife]";
-		mes "Oh. Please let me know";
-		mes "if you ever see him around.";
+		mes "[瑟曼加的妻子]";
+		mes "喔，如果你看到他，";
+		mes "請告訴我一聲。";
 		close;
 	}
 }
 
 dewata,181,88,6	script	年輕男性#dew-2::Young Man#dew-2	536,{
 	mes "[年輕男性]";
-	mes "Isn't ^8B4513Dewata^000000 beach";
-	mes "really beautiful?";
-	mes "The children always play";
-	mes "at this beach. It really";
-	mes "reminds me of my youth.";
+	mes "^8B4513德瓦塔^000000的海灘";
+	mes "真的很美吧？";
+	mes "孩子們總是在";
+	mes "這片海灘玩耍。這讓我";
+	mes "想起了我的青春。";
 	next;
 	mes "[年輕男性]";
-	mes "At the evening, you can see";
-	mes "fireworks from the beach.";
-	mes "With ocean breeze, the crashing waves,";
-	mes "and fireworks lighting the sky,";
-	mes "the nighttime is a time of beauty here!";
+	mes "傍晚的時候，你可以";
+	mes "在海灘上看到煙火。";
+	mes "伴著海風、拍打的浪花，";
+	mes "以及點亮天空的煙火，";
+	mes "這裡的夜晚就是美麗的時刻！";
 	close;
 }
 
-dewata,179,204,4	script	Young Lady#dew	537,{
-	mes "[Young Lady]";
-	mes "When you are outside of the town,";
-	mes "and meet ^FF0000Tiger, Monkey, or pig^000000,";
-	mes "make sure to avoid them.";
+dewata,179,204,4	script	年輕女士#dew::Young Lady#dew	537,{
+	mes "[年輕女士]";
+	mes "當你走出城鎮，";
+	mes "遇到 ^FF0000老虎、猴子或豬^000000時，";
+	mes "一定要避開牠們。";
 	next;
-	select("What do you mean?");
-	mes "[Young Lady]";
-	mes "I haven't seen yet,";
-	mes "but legend says there's a";
-	mes "cruel monster named ^FF0000Leak^000000";
-	mes "which can transform into an animal";
-	mes "and hypnotize people into killing.";
+	select("什麼意思？");
+	mes "[年輕女士]";
+	mes "我還沒見過，";
+	mes "但傳說中有一種";
+	mes "殘酷的怪物叫做 ^FF0000Leak^000000";
+	mes "能變身成動物，";
+	mes "並催眠人們去殺戮。";
 	next;
-	mes "[Young Lady]";
-	mes "You know the dangers of this world.";
-	mes "It's never hurts to be careful";
-	mes "even if it's just an urban legend.";
+	mes "[年輕女士]";
+	mes "你應該知道這個世界的危險。";
+	mes "小心總是沒有壞處，";
+	mes "即使只是都市傳說。";
 	//emotion ET_SCRATCH; //TODO
 	close;
 }
 
-dewata,280,236,4	script	Settler#dew	726,{
-	mes "[Settler]";
-	mes "I'm not really from ^8B4513Dewata^000000.";
-	mes "But while traveling,";
-	mes "I found this place...";
-	mes "And made my decision";
-	mes "to live in this beautiful town.";
+dewata,280,236,4	script	移居者#dew::Settler#dew	726,{
+	mes "[移居者]";
+	mes "我其實不是 ^8B4513德瓦塔^000000 人。";
+	mes "不過我在旅途中，";
+	mes "發現了這個地方……";
+	mes "於是決定";
+	mes "住在這座美麗的小鎮。";
 	next;
-	mes "[Settler]";
-	mes "I've been happy to live here";
-	mes "and to find and experience";
-	mes "all these beautiful sights.";
-	mes "It's a dream come true.";
+	mes "[移居者]";
+	mes "住在這裡很開心，";
+	mes "也能發現並體驗";
+	mes "這一切美麗的風景。";
+	mes "這是夢想成真。";
 	next;
-	mes "[Settler]";
-	mes "Would you ever think of";
-	mes "settling here too?";
+	mes "[移居者]";
+	mes "你有沒有想過";
+	mes "也要在這裡定居？";
 	close;
 }
 
-dewata,204,230,6	script	Dieting Lady#dew	537,{
+dewata,204,230,6	script	節食中的女士#dew::Dieting Lady#dew	537,{
 	if (countitem(11533) == 0) {
-		mes "[Dieting Lady]";
-		mes "Ah~ I'm starving!!";
-		mes "I should be on a diet now.";
-		mes "Why am I still hungry?";
+		mes "[節食中的女士]";
+		mes "啊～我快餓扁了！！";
+		mes "我現在應該要節食才對。";
+		mes "為什麼我還是這麼餓？";
 		next;
-		mes "[Dieting Lady]";
-		mes "Don't talk to me too much!!";
-		mes "I want to try that grilled ^006400Satay^000000";
-		mes "so much~!!!!!";
+		mes "[節食中的女士]";
+		mes "別跟我講太多話！！";
+		mes "我好想吃那串烤的 ^006400沙嗲^000000";
+		mes "好想吃～！！！！！";
 		close;
 	}
-	mes "[Dieting Lady]";
-	mes "Is that mouth-watering";
-	mes "^006400Satay^000000 for me?";
+	mes "[節食中的女士]";
+	mes "那令人垂涎欲滴的";
+	mes "^006400沙嗲^000000 是給我的嗎？";
 	next;
-	switch(select("Yes, want a taste?:No, it's for me!")) {
+	switch(select("是啊，想嚐一口嗎？:不，這是我的！")) {
 	case 1:
 		delitem 11533,1; //Satay
-		mes "[Dieting Lady]";
-		mes "Thanks so much!";
-		mes "I've been so hungry~!!";
-		mes "This smell of this ^006400Satay^000000";
-		mes "is so good~!";
+		mes "[節食中的女士]";
+		mes "真是太感謝了！";
+		mes "我已經餓很久了～！！";
+		mes "這 ^006400沙嗲^000000 的香味";
+		mes "真是太好聞了～！";
 		next;
 		getitem 11533,1; //Satay
-		mes "[Dieting Lady]";
-		mes "Ah... gotta come back to my senses,";
-		mes "too much of a good thing is bad...";
-		mes "I should stick with my diet.";
-		mes "Sorry, I'll give it back to you.";
+		mes "[節食中的女士]";
+		mes "啊……得回過神來，";
+		mes "好東西吃太多也不好……";
+		mes "我還是應該堅持節食。";
+		mes "抱歉，還給你吧。";
 		emotion ET_CRY;
 		close;
 	case 2:
-		mes "[Dieting Lady]";
-		mes "Arrgg.. You are so greedy!";
-		mes "Since you don't want to share.";
-		mes "Anyway, I shouldn't cheat on my diet";
-		mes "even for something that looks and smells so good...";
+		mes "[節食中的女士]";
+		mes "啊……你真是太貪心了！";
+		mes "明明你就不肯分享。";
+		mes "總之，我不該為了";
+		mes "看起來聞起來都這麼好的東西，就破壞我的節食……";
 		emotion ET_HNG;
 		close;
 	}
 }
 
-dewata,117,156,6	script	Dreaming Kid#dew	538,{
-	mes "[Dreaming Kid]";
-	mes "My granny says";
-	mes "There was once a bird named ^FF0000Garuda^000000";
-	mes "who flew above this town.";
-	mes "Afterwards we had some great harvests";
-	mes "and were able to live happily.";
+dewata,117,156,6	script	做夢的孩子#dew::Dreaming Kid#dew	538,{
+	mes "[做夢的孩子]";
+	mes "我奶奶說";
+	mes "從前有一隻名叫 ^FF0000迦樓羅^000000 的鳥";
+	mes "曾在這座小鎮上空飛翔。";
+	mes "之後我們有了豐收，";
+	mes "也得以幸福地生活。";
 	next;
-	mes "[Dreaming Kid]";
-	mes "I want to see that bird";
-	mes "flying above our town again!";
-	mes "Then my mom, dad";
-	mes "granny, and grandpa";
-	mes "can be happy like the old times.";
+	mes "[做夢的孩子]";
+	mes "我好想再看到那隻鳥";
+	mes "飛過我們的小鎮！";
+	mes "那麼我的媽媽、爸爸、";
+	mes "奶奶和爺爺";
+	mes "就能像從前一樣快樂了。";
 	mes "你覺得怎麼樣？";
 	close;
 }
 
-dewata,144,216,4	script	Energetic Kid#dew	538,{
-	mes "[Energetic Kid]";
-	mes "My parents used to tell me...";
+dewata,144,216,4	script	活潑的孩子#dew::Energetic Kid#dew	538,{
+	mes "[活潑的孩子]";
+	mes "我爸媽以前常跟我說……";
 	next;
-	mes "- ^006400Son,^000000 -";
-	mes "- ^006400You should study hard.^000000 -";
-	mes "- ^006400Be happy.^000000 -";
-	mes "- ^006400Live a slow^000000 -";
-	mes "- ^006400and safe life.^000000 -";
-	mes "- ^006400The mountain over yonder^000000 -";
-	mes "- ^006400will always be there for you.^000000 -";
+	mes "- ^006400孩子，^000000 -";
+	mes "- ^006400你應該用功讀書。^000000 -";
+	mes "- ^006400要快樂。^000000 -";
+	mes "- ^006400過著慢慢的^000000 -";
+	mes "- ^006400平安的生活。^000000 -";
+	mes "- ^006400那座遠方的山^000000 -";
+	mes "- ^006400會永遠陪伴著你。^000000 -";
 	next;
-	mes "[Energetic Kid]";
-	mes "Isn't it a great philosophy?";
-	mes "I want to live that way";
-	mes "and become a great person,";
-	mes "and help all of the people in our town";
-	mes "live happily ever after!";
+	mes "[活潑的孩子]";
+	mes "這不是很棒的人生哲學嗎？";
+	mes "我想要這樣生活，";
+	mes "成為一個偉大的人，";
+	mes "並幫助鎮上的所有人";
+	mes "永遠幸福快樂！";
 	close;
 }
 
-dewata,127,248,6	script	Wishing Kid#dew	539,{
-	mes "[Kid wishing to be an adult]";
-	mes "My family has been brewing";
-	mes "traditional Dewata wine for ages.";
-	mes "I want to drink it myself,";
-	mes "but my dad says I'm too young.";
-	mes "He said I can drink it";
-	mes "only after I sleep for over ^FF0000100 days^000000.";
+dewata,127,248,6	script	許願的孩子#dew::Wishing Kid#dew	539,{
+	mes "[渴望長大的孩子]";
+	mes "我們家世世代代";
+	mes "都在釀造傳統的德瓦塔酒。";
+	mes "我也想自己喝，";
+	mes "可是我爸說我還太小。";
+	mes "他說我必須";
+	mes "睡超過 ^FF0000100天^000000 之後才能喝。";
 	next;
-	mes "[Kid wishing to be an adult]";
-	mes "All grown-ups love to drink";
-	mes "my dad's wine.";
-	mes "I want to try some so bad.";
-	mes "But, what should I do...?";
-	mes "I've forgotten how many ^FF0000nights^000000";
-	mes "I've already slept... boo hoo!";
+	mes "[渴望長大的孩子]";
+	mes "所有大人都愛喝";
+	mes "我爸釀的酒。";
+	mes "我好想嚐一口。";
+	mes "可是，我該怎麼辦……？";
+	mes "我已經忘記睡了多少個 ^FF0000晚上^000000";
+	mes "了……嗚嗚！";
 	emotion ET_CRY;
 	close;
 }
 
-dew_fild01,101,259,6	script	Jaty Tribe Gatekeeper	541,{
-	mes "[Jaty Tribe Gatekeeper]";
-	mes "Welcome to ^FF0000Jaty^000000 town.";
-	mes "Our tribe reveres strength and bravery.";
-	mes "We wish you a safe and restful time here.";
+dew_fild01,101,259,6	script	賈提族守門人::Jaty Tribe Gatekeeper	541,{
+	mes "[賈提族守門人]";
+	mes "歡迎來到 ^FF0000賈提^000000 鎮。";
+	mes "我們部族崇尚力量與勇氣。";
+	mes "願你在這裡過得平安又舒適。";
 	close;
 }
 
-dew_fild01,106,306,4	script	R. Jaty Tribe Warrior	541,{
-	mes "[Reserved Jaty Warrior]";
-	mes "I want to be the very best";
-	mes "like no one ever was.";
+dew_fild01,106,306,4	script	預備賈提戰士::R. Jaty Tribe Warrior	541,{
+	mes "[預備賈提戰士]";
+	mes "我要成為最棒的，";
+	mes "前無古人的那種。";
 	next;
-	mes "[Reserved Jaty Warrior]";
-	mes "I'm learning hunting skills";
-	mes "these days. And I'm getting";
-	mes "better and better";
-	mes "every day!";
+	mes "[預備賈提戰士]";
+	mes "我最近在學狩獵技巧，";
+	mes "而且";
+	mes "每天都越來越";
+	mes "厲害！";
 	next;
-	mes "[Reserved Jaty Warrior]";
-	mes "I won't stop until";
-	mes "I become a true warrior!";
+	mes "[預備賈提戰士]";
+	mes "我不會停下來，";
+	mes "直到成為真正的戰士！";
 	close;
 }

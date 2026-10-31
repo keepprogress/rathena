@@ -8,23 +8,23 @@
 //= 1.2 Navigation system update. [Euphy]
 //============================================================
 
-lighthalzen,207,310,5	script	Lighthalzen Guide#lhz01::GuideLighthalzen	852,{
+lighthalzen,207,310,5	script	光哈爾岑嚮導#lhz01::GuideLighthalzen	852,{
 	cutin "ein_soldier",2;
-	mes "[Lighthalzen Guide]";
-	mes "Welcome to ^8B4513Lighthalzen^000000,";
-	mes "the Corporation City-State.";
-	mes "If you need any guidance";
-	mes "around the city, feel free";
-	mes "to ask me and I'll do my";
-	mes "very best to help you.";
+	mes "[光哈爾岑嚮導]";
+	mes "歡迎來到^8B4513光哈爾岑^000000，";
+	mes "企業城邦。";
+	mes "如果你需要任何指引，";
+	mes "在城裡，請隨時";
+	mes "來問我，我會盡力";
+	mes "協助你。";
 	next;
-	mes "[Lighthalzen Guide]";
-	mes "Please be aware that I'm";
-	mes "in charge of providing info";
-	mes "regarding the West District";
-	mes "of ^8B4513Lighthalzen^000000. Now, please";
-	mes "select the location that you'd";
-	mes "like to learn more about.";
+	mes "[光哈爾岑嚮導]";
+	mes "請注意，我";
+	mes "負責提供";
+	mes "西區的相關資訊，";
+	mes "^8B4513光哈爾岑^000000的資訊。現在請";
+	mes "選擇你想";
+	mes "進一步了解的地點。";
 	F_Navi("[Lighthalzen Guide]");
 	next;
 	while (1) {
@@ -32,7 +32,7 @@ lighthalzen,207,310,5	script	Lighthalzen Guide#lhz01::GuideLighthalzen	852,{
 		case 1:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ Hotel ]:[ Bank ]:[ Airport ]:[ Weapon Shop ]:[ Department Store ]:[ Police Station ]:[ Jewelry Store ]:[ Cool Event Corp. ]:[ Somatology Laboratory ]:[ Alchemist Association ]:Previous Menu")) {
+				switch(select("[ 飯店 ]:[ 銀行 ]:[ 機場 ]:[ 武器店 ]:[ 百貨公司 ]:[ 警察局 ]:[ 珠寶店 ]:[ 酷活動公司 ]:[ 人體研究所 ]:[ 鍊金術師協會 ]:上一選單")) {
 				case 1:
 					callsub L_Mark, F_Navi("Hotel","lighthalzen,159,133","^FF0000");
 					viewpoint 1,160,217,0,0xFF0000;
@@ -92,23 +92,23 @@ lighthalzen,207,310,5	script	Lighthalzen Guide#lhz01::GuideLighthalzen	852,{
 		case 2:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ Armsmith ]:[ Seiayablem ]:[ Pet Groomer ]:[ Kafra Employees ]:[ Cool Event Corp. Staff ]:Previous Menu")) {
+				switch(select("[ 武器匠 ]:[ 塞亞布雷姆 ]:[ 寵物美容師 ]:[ 卡普拉職員 ]:[ 酷活動公司 員工 ]:上一選單")) {
 				case 1:
-					mes "[Lighthalzen Guide]";
-					mes "You may go to Fulerr,";
-					mes "the ^0A9696Armsmith^000000";
-					mes "on the 1st floor of the Weapon Shop.";
+					mes "[光哈爾岑嚮導]";
+					mes "你可以前往富勒爾，";
+					mes "^0A9696武器匠^000000";
+					mes "武器店的一樓。";
 					viewpoint 1,194,35,10,0x0A9696;
 					next;
 					callsub L_Mark, "^0A9696Armsmith^000000";
 					next;
 					break;
 				case 2:
-					mes "[Lighthalzen Guide]";
-					mes "^4B0082Seiyablem^000000 adds";
-					mes "sockets on your items";
-					mes "on the 1st floor";
-					mes "of the Weapon Shop.";
+					mes "[光哈爾岑嚮導]";
+					mes "^4B0082塞亞布雷姆^000000 能";
+					mes "在你的物品上新增插槽，";
+					mes "位於";
+					mes "武器店的一樓。";
 					viewpoint 1,194,35,11,0x4B0082;
 					next;
 					callsub L_Mark, "^4B0082Seiyablem^000000",1;
@@ -137,7 +137,7 @@ lighthalzen,207,310,5	script	Lighthalzen Guide#lhz01::GuideLighthalzen	852,{
 			}
 			break;
 		case 3:
-			mes "[Lighthalzen Guide]";
+			mes "[光哈爾岑嚮導]";
 			mes "好的，我會移除你小地圖上的所有標記。";
 			mes "還有什麼我能為你效勞的嗎？";
 			viewpoint 2,160,217,0,0xFFFFFF;
@@ -159,8 +159,8 @@ lighthalzen,207,310,5	script	Lighthalzen Guide#lhz01::GuideLighthalzen	852,{
 			next;
 			break;
 		case 4:
-			mes "[Lighthalzen Guide]";
-			mes "Enjoy your adventures!";
+			mes "[光哈爾岑嚮導]";
+			mes "祝你冒險愉快！";
 			close2;
 			cutin "ein_soldier",255;
 			end;
@@ -168,14 +168,14 @@ lighthalzen,207,310,5	script	Lighthalzen Guide#lhz01::GuideLighthalzen	852,{
 	}
 	end;
 L_Mark:
-	mes "[Lighthalzen Guide]";
-	mes "I will mark the location";
-	mes "共 "+((getarg(1,0))?"":"the ")+getarg(0);
+	mes "[光哈爾岑嚮導]";
+	mes "我會在小地圖上標示出";
+	mes "共 "+((getarg(1,0))?"":"需先學會 ")+getarg(0);
 	mes "你的小地圖上標示它的位置。";
 	mes "你想看看其他地點嗎？";
 	return;
 }
-lighthalzen,220,310,3	duplicate(GuideLighthalzen)	Lighthalzen Guide#lhz02	852
-lighthalzen,154,100,5	duplicate(GuideLighthalzen)	Lighthalzen Guide#lhz03	852
-lighthalzen,307,224,3	duplicate(GuideLighthalzen)	Lighthalzen Guide#lhz04	852
-lighthalzen,247,82,3	duplicate(GuideLighthalzen)	Lighthalzen Guide#lhz05	852
+lighthalzen,220,310,3	duplicate(GuideLighthalzen)	光哈爾岑嚮導#lhz02::Lighthalzen Guide#lhz02	852
+lighthalzen,154,100,5	duplicate(GuideLighthalzen)	光哈爾岑嚮導#lhz03::Lighthalzen Guide#lhz03	852
+lighthalzen,307,224,3	duplicate(GuideLighthalzen)	光哈爾岑嚮導#lhz04::Lighthalzen Guide#lhz04	852
+lighthalzen,247,82,3	duplicate(GuideLighthalzen)	光哈爾岑嚮導#lhz05::Lighthalzen Guide#lhz05	852

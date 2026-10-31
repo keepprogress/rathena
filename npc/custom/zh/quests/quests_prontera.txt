@@ -49,15 +49,15 @@
 
 // Prontera Culvert :: prt_npc
 //============================================================
-prt_in,88,105,2	script	Recruiter	105,{
+prt_in,88,105,2	script	招募員::Recruiter	105,{
 	if (MISC_QUEST & 8) {
-		mes "[Recruiter]";
+		mes "[招募員]";
 		mes "啊……";
 		mes "I know those eyes.";
 		mes "Full of compassion";
 		mes "...and courage.";
 		next;
-		mes "[Recruiter]";
+		mes "[招募員]";
 		mes "Of course you're a volunteer for campaign to reclaim the Prontera Culvert. Would you let me warp you there?";
 		next;
 		if (select("Warp to Culvert Entrance.:Quit.") == 1) {
@@ -66,13 +66,13 @@ prt_in,88,105,2	script	Recruiter	105,{
 		}
 		close;
 	}
-	mes "[Recruiter]";
+	mes "[招募員]";
 	mes "Ah, let me inform you that the Capital Defense Headquarter of the Rune-Midgarts Kingdom has now decided to recruit a punitive force due to the Prontera Culvert's situation.";
 	next;
 	switch(select("Volunteer.:Situation...?:Quit.")) {
 	case 1:
 		callsub S_Volunteer;
-		mes "[Recruiter]";
+		mes "[招募員]";
 		mes "Are you ready, hero?";
 		mes "I will now warp you";
 		mes "to the Culvert.";
@@ -80,32 +80,32 @@ prt_in,88,105,2	script	Recruiter	105,{
 		warp "prt_fild05",274,208;
 		end;
 	case 2:
-		mes "[Recruiter]";
+		mes "[招募員]";
 		mes "Haven't you heard...?";
 		mes "The Prontera Culvert is infested with all kinds of filthy vermin!";
 		next;
-		mes "[Recruiter]";
+		mes "[招募員]";
 		mes "Due to the serious risk of water contamination, and the safety of Rune-Midgartsians, the Culvert has been quarantined by royal decree.";
 		next;
-		mes "[Recruiter]";
+		mes "[招募員]";
 		mes "Needless to say, this has caused shortages in the water supply in our kingdom. Indeed, such a crisis in these dark times...";
 		next;
-		mes "[Recruiter]";
+		mes "[招募員]";
 		mes "Our people";
 		mes "thirst for water...";
 		mes "But they thirst";
 		mes "even more...";
 		mes "For a hero!";
 		next;
-		mes "[Recruiter]";
+		mes "[招募員]";
 		mes "Will you stand idly as the children of Rune-Midgarts suffer from parched throats and shed tears of dryness?! Would you bury our children?!";
 		next;
-		mes "[Recruiter]";
+		mes "[招募員]";
 		mes "Warriors! Rune-Midgarts is calling you! Cleanse this land's pestilence and cast out the vermin in the Culvert! Only you... Can make a difference.";
 		next;
 		if (select("Volunteer.:Quit.") == 1) {
 			callsub S_Volunteer;
-			mes "[Recruiter]";
+			mes "[招募員]";
 			mes "Adventurer...";
 			mes "I will now warp you";
 			mes "to the Prontera Culvert.";
@@ -113,7 +113,7 @@ prt_in,88,105,2	script	Recruiter	105,{
 			warp "prt_fild05",274,208;
 			end;
 		}
-		mes "[Recruiter]";
+		mes "[招募員]";
 		mes "Hmpf. Well. The next time you take a drink of water, just remember that an average of nine and a half children just died... ^990000Of thirst^000000.";
 		close;
 
@@ -123,14 +123,14 @@ prt_in,88,105,2	script	Recruiter	105,{
 
 S_Volunteer:
 	set MISC_QUEST,MISC_QUEST | 8;
-	mes "[Recruiter]";
+	mes "[招募員]";
 	mes "Your registration...";
 	mes "is now complete.";
 	next;
-	mes "[Recruiter]";
+	mes "[招募員]";
 	mes "I would like to thank you for volunteering to do your part for our great kingdom. Here, take these provisions for your battles against the forces of darkness.";
 	next;
-	mes "[Recruiter]";
+	mes "[招募員]";
 	mes "3 Red Potions, 1 Milk,";
 	mes "and 1 Orange Potion";
 	mes "...to give you hope.";
@@ -547,7 +547,7 @@ OnTouch:
 S_GetBooks:
 	if (select("Help him:Don't help him") == 1) {
 		mes "[Busy-Looking Boy]";
-		mes "Oh, thank you so much!";
+		mes "喔，真的非常感謝你！";
 		mes "You don't understand how";
 		mes "much I dread those Airships.";
 		mes "Now, would you please deliver";
@@ -569,8 +569,8 @@ S_GetBooks:
 
 S_CheckWeight:
 	if ((MaxWeight-Weight) < 2000 || checkweight(1201,1) == 0) {
-		mes "^3355FFWait a second!";
-		mes "Right now, you're carrying";
+		mes "^3355FF等一下！";
+		mes "您目前攜帶了";
 		mes "too many things with you.";
 		mes "請先";
 		mes "using the Kafra Service";
@@ -582,8 +582,8 @@ S_CheckWeight:
 
 yuno,311,195,3	script	Historian#prt01	754,{
 	if ((MaxWeight-Weight) < 2000 || checkweight(1201,1) == 0) {
-		mes "^3355FFWait a second!";
-		mes "Right now, you're carrying";
+		mes "^3355FF等一下！";
+		mes "您目前攜帶了";
 		mes "too many things with you.";
 		mes "請先";
 		mes "using the Kafra Service";
@@ -800,7 +800,7 @@ yuno,311,195,3	script	Historian#prt01	754,{
 		mes "[Historian]";
 		mes "With the return of peace,";
 		mes "the 7 warriors established";
-		mes "the Rune-Midgarts Kingdom,";
+		mes "皇家主教，";
 		mes "choosing Tristram Geoborg III";
 		mes "as the kingdom's first ruler. ";
 		next;
@@ -934,8 +934,8 @@ yuno,311,195,3	script	Historian#prt01	754,{
 
 morocc_in,45,126,3	script	Historian#prt02	702,{
 	if ((MaxWeight-Weight) < 2000 || checkweight(1201,1) == 0) {
-		mes "^3355FFWait a second!";
-		mes "Right now, you're carrying";
+		mes "^3355FF等一下！";
+		mes "您目前攜帶了";
 		mes "too many things with you.";
 		mes "請先";
 		mes "using the Kafra Service";
@@ -1338,7 +1338,7 @@ morocc_in,45,126,3	script	Historian#prt02	702,{
 
 S_GiveName:
 	next;
-	select("My name is "+strcharinfo(0)+".");
+	select("我的名字是 "+strcharinfo(0)+".");
 	mes "[Historian Rodafrian]";
 	mes "Ah "+strcharinfo(0)+", eh?";
 	mes "Do you mind if I ask you a favor? I really need to verify the true";
@@ -1352,7 +1352,7 @@ S_GiveName:
 	mes "for this song's lyrics? You can";
 	mes "find him in the ancient ruins";
 	mes "in Mount Mjolnir, north in the";
-	mes "Rune-Midgarts Kingdom.";
+	mes "盧恩米德加茲王國的寶物。";
 	next;
 	mes "[Historian Rodafrian]";
 	mes "I apologize for asking";
@@ -1368,8 +1368,8 @@ S_GiveName:
 
 mjolnir_01,135,168,3	script	Historian#prt03	754,{
 	if ((MaxWeight-Weight) < 2000 || checkweight(1201,1) == 0) {
-		mes "^3355FFWait a second!";
-		mes "Right now, you're carrying";
+		mes "^3355FF等一下！";
+		mes "您目前攜帶了";
 		mes "too many things with you.";
 		mes "請先";
 		mes "using the Kafra Service";
@@ -1545,7 +1545,7 @@ S_Song:
 	else {
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "Wait, wait...";
+		mes "等等，等等……";
 		mes "I think I messed up!";
 		mes "(Those weren't the";
 		mes "correct lyrics...)";
@@ -1759,8 +1759,8 @@ mjolnir_01,313,269,5	script	Dazed Boy#prt	706,{
 
 mjolnir_01,316,268,3	script	Exhausted-Looking Woman	879,{
 	if ((MaxWeight-Weight) < 2000 || checkweight(1201,1) == 0) {
-		mes "^3355FFWait a second!";
-		mes "Right now, you're carrying";
+		mes "^3355FF等一下！";
+		mes "您目前攜帶了";
 		mes "too many things with you.";
 		mes "請先";
 		mes "using the Kafra Service";
@@ -3062,7 +3062,7 @@ prt_church,23,89,3	script	Father Biscuss#tomb	60,{
 		end;
 	}
 	mes "[Father Biscuss]";
-	mes "Please take your time";
+	mes "請慢慢考慮，";
 	mes "and investigate this as";
 	mes "thoroughly as you can.";
 	close;
@@ -3094,7 +3094,7 @@ prt_church,16,114,4	script	Father Bamph#tomb	60,{
 		mes "behind by Jormungand's curse?";
 		next;
 		mes "[Father Bamph]";
-		mes "That's right.";
+		mes "沒錯。";
 		mes "Now, let's examine the";
 		mes "body of the second prince,";
 		mes "located in the middle.";
@@ -3606,8 +3606,8 @@ OnTouch:
 
 prt_in,162,99,4	script	Librarian#curse	67,{
 	if (checkweight(1201,1) == 0) {
-		mes "^3355FFWait a second!";
-		mes "Right now, you're carrying";
+		mes "^3355FF等一下！";
+		mes "您目前攜帶了";
 		mes "too many things with you.";
 		mes "請先";
 		mes "using the Kafra Service";

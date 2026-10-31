@@ -22,64 +22,64 @@
 
 // Mora :: ep14_1_tre
 //============================================================
-mora,106,117,3	script	Quiver Maker#mora	4_M_RAFLE_GR,{
+mora,106,117,3	script	箭矢筒製作者#mora::Quiver Maker#mora	4_M_RAFLE_GR,{
 	if (checkweight(1201,1) == 0) {
-		mes "[Quiver Maker]";
-		mes "You have too many things with you.";
-		mes "Make some space in your inventory and come back. I'll tell you something interesting.";
+		mes "[箭矢筒製作者]";
+		mes "你身上的東西太多了。";
+		mes "先騰出一些背包空間再回來吧，我有有趣的事要告訴你。";
 		close;
 	}
 	if (MaxWeight - Weight < 2000) {
-		mes "[Quiver Maker]";
-		mes "You seem worn out with all that stuff.";
-		mes "Make some space in your inventory and come back. I'll tell you something interesting.";
+		mes "[箭矢筒製作者]";
+		mes "你好像被那些東西累壞了。";
+		mes "先騰出一些背包空間再回來吧，我有有趣的事要告訴你。";
 		close;
 	}
-	mes "[Quiver Maker]";
-	mes "Mora villagers ask what good quivers are. They just don't know how the world works.";
-	mes "No wonder they don't know a thing about quivers - spreading jam over leaves all day long.";
+	mes "[箭矢筒製作者]";
+	mes "摩拉村的村民問箭矢筒有什麼好處。他們根本不懂這世界的道理。";
+	mes "難怪他們對箭矢筒一無所知——整天都在葉子上抹果醬。";
 	next;
 	if (getbattleflag("feature.barter")) {
 		.@menu$ = "I want arrows";
 	}
-	switch( select("Please make me a quiver.", .@menu$, "What's a quiver?") ) {
+	switch( select("請幫我做一個箭矢筒。", .@menu$, "箭矢筒是什麼？") ) {
 	case 1:
 		if (getbattleflag("feature.barter")) {
-			mes "[Quiver Maker]";
-			mes "Finally, someone has appeared who knows the true value of a quiver. I will do it for those who know its worth.";
+			mes "[箭矢筒製作者]";
+			mes "終於出現一個懂箭矢筒真正價值的人了。我只為懂得它價值的人製作。";
 			close2;
 			callshop "Quiver_Archer", 1;
 			end;
 		}
-		mes "[Quiver Maker]";
-		mes "At last someone appreciates a quiver!";
-		mes "I can make Elven Quivers and Hunting Quivers.";
-		mes "Which do you need?";
+		mes "[箭矢筒製作者]";
+		mes "終於有人懂得欣賞箭矢筒了！";
+		mes "我能製作精靈箭矢筒和獵人箭矢筒。";
+		mes "你需要哪一個？";
 		next;
-		switch(select("An Elven Quiver:A Hunting Quiver:I don't need a quiver.")) {
+		switch(select("精靈箭矢筒:獵人箭矢筒:我不需要箭矢筒。")) {
 		case 1: callsub S_BuyQuiver,1773,500,500,12575; //Arrow_Of_Elf_Cntr
 		case 2: callsub S_BuyQuiver,1774,500,500,12576; //Hunting_Arrow_Cntr
 		case 3:
-			mes "[Quiver Maker]";
-			mes "You can buy arrows off the tool merchant next to me.";
+			mes "[箭矢筒製作者]";
+			mes "你可以到我旁邊的道具商人那裡買箭矢。";
 			close;
 		}
 		end;
 	case 2:
 		if (getbattleflag("feature.barter")) {
-			mes "[Quiver Maker]";
-			mes "I don't sell ordinary arrows. These are artisan arrows that can only be purchased here. Would you really recognize its worth, right?";
+			mes "[箭矢筒製作者]";
+			mes "我不賣普通箭矢。這些是只能在這裡購買的工匠箭矢。你真的懂它的價值吧？";
 			close2;
 			callshop "Catch_Arrows", 1;
 		}
 		end;
 	case 3:
-		mes "[Quiver Maker]";
-		mes "An arrow may be thin and light, but carrying hundreds and thousands of arrows is like carrying a whole log.";
+		mes "[箭矢筒製作者]";
+		mes "一支箭雖然又細又輕，但要攜帶成百上千支箭，就像扛著一整根原木。";
 		next;
-		mes "[Quiver Maker]";
-		mes "But when you have quivers, you can put arrows in them and save weight and space.";
-		mes "If you're interested in one, I'll stitch one up for you.";
+		mes "[箭矢筒製作者]";
+		mes "但有了箭矢筒，就能把箭收進去，省下重量和空間。";
+		mes "如果你有興趣，我可以幫你縫製一個。";
 		close;
 	}
 	end;
@@ -88,30 +88,30 @@ S_BuyQuiver:
 	.@item_req = getarg(0);
 	.@req_amount = getarg(1);
 	if (countitem(getarg(0)) < .@req_amount) {
-		mes "[Quiver Maker]";
-		mes "Bring more than "+ .@req_amount +" "+ getitemname(.@item_req) +" and I'll make you a quiver.";
+		mes "[箭矢筒製作者]";
+		mes "請帶來超過 "+ .@req_amount +" "+ getitemname(.@item_req) +" 支，我就幫你做一個箭矢筒。";
 		close;
 	}
-	mes "[Quiver Maker]";
-	mes "Oh, I see you have "+ getitemname(.@item_req) +" in your hand!";
-	mes "Are you interested in using a quiver? It's really convenient!";
-	mes "If you're interested, I can trade "+ .@req_amount +" of those arrows for one of these quivers for ^FF3131"+getarg(2)+" Zeny^000000。";
+	mes "[箭矢筒製作者]";
+	mes "喔，我看到你有 "+ getitemname(.@item_req) +" 在你手上！";
+	mes "你有興趣使用箭矢筒嗎？真的很方便喔！";
+	mes "如果你有興趣，我可以用 "+ .@req_amount +" 支那些箭，換取一個這樣的箭矢筒，費用為 ^FF3131"+getarg(2)+" Zeny^000000。";
 	next;
-	switch(select("Trade all the arrows you have:Get only one quiver:Don't trade")) {
+	switch(select("全部交易你所有的箭:只換取一個箭矢筒:不交易")) {
 	case 1:
 		set .@arrows, countitem(.@item_req);
 		set .@quiver, .@arrows / .@req_amount;
 		set .@arrows_used, .@quiver * .@req_amount;
 		set .@arrow_zeny01, .@quiver * getarg(2);
-		mes "The number of arrows you have : ^3131FF"+.@arrows+"^000000";
-		mes "The number of quivers available : ^3131FF"+.@quiver+"^000000";
-		mes "Zeny needed for trade : ^3131FF"+.@arrow_zeny01+" zeny^000000";
+		mes "你擁有的箭矢數量 : ^3131FF"+.@arrows+"^000000";
+		mes "可用的箭矢筒數量 : ^3131FF"+.@quiver+"^000000";
+		mes "交易所需的 Zeny : ^3131FF"+.@arrow_zeny01+" Zeny^000000";
 		next;
-		mes "Trade?";
+		mes "要交易嗎？";
 		next;
-		if(select("Trade:Don't trade") == 2) {
-			mes "[Quiver Maker]";
-			mes "Hey, you don't doubt my skills, do you?";
+		if(select("交易:不交易") == 2) {
+			mes "[箭矢筒製作者]";
+			mes "喂，你不會懷疑我的技術吧？";
 			close;
 		}
 		break;
@@ -122,23 +122,23 @@ S_BuyQuiver:
 		set .@zeny_mes,1;
 		break;
 	case 3:
-		mes "[Quiver Maker]";
-		mes "Hey, you don't doubt my skills, do you?";
+		mes "[箭矢筒製作者]";
+		mes "喂，你不會懷疑我的技術吧？";
 		close;
 	}
 	if (Zeny < .@arrow_zeny01) {
-		mes "[Quiver Maker]";
+		mes "[箭矢筒製作者]";
 		if (.@zeny_mes == 1)
-			mes "I said I'd accept human coins just for you, and you still don't want to spend the money?";
+			mes "我可是為你破例收人類的錢幣，你還是不想花錢嗎？";
 		else
-			mes "You really don't expect to get your hands on a masterpiece for nothing, do you?";
+			mes "你該不會以為能白拿到傑作吧？";
 		close;
 	}
-	mes "[Quiver Maker]";
-	mes "Hey, here you are.";
-	mes "There is ^3131FFsomething you need to know^000000 - try to remember it.";
-	mes "^FF0000You can't use quivers when your encumbrance is over 70%.^000000";
-	mes "You'd better keep that in mind, or you might be in trouble later.";
+	mes "[箭矢筒製作者]";
+	mes "喂，給你。";
+	mes "有 ^3131FF一件你必須知道的事^000000 ——記好了。";
+	mes "^FF0000負重超過 70% 時無法使用箭矢筒。^000000";
+	mes "你最好記住這點，否則以後可能會有麻煩。";
 	set Zeny, Zeny-.@arrow_zeny01;
 	delitem .@item_req,.@arrows_used;
 	getitem getarg(3),.@quiver;

@@ -17,85 +17,85 @@
 //= 1.4 Added GM management function. [Euphy]
 //============================================================
 
-arena_room,94,93,5	script	Vendigos	97,{
-	mes "[Vendigos]";
-	mes "Welcome to the world of Arena, the battle against a time limit.";
-	mes "My name is Vendigos, I am here to help you.";
+arena_room,94,93,5	script	文迪哥斯::Vendigos	97,{
+	mes "[文迪哥斯]";
+	mes "歡迎來到競技場的世界，與時間限制對抗的戰鬥。";
+	mes "我是文迪哥斯，我是來幫助您的。";
 	next;
-	mes "[Vendigos]";
-	mes "If you have any questions, feel free to ask me.";
+	mes "[文迪哥斯]";
+	mes "若您有任何疑問，歡迎隨時問我。";
 	next;
 	while(1) {
-		switch(select("How to challenge:About Arena Points:My Current Arena Points:Cancel")) {
+		switch(select("如何挑戰:關於競技點數:我目前的競技點數:取消")) {
 		case 1:
-			mes "[Vendigos]";
-			mes "There are two different kinds of arena mode such as ^3131FFPlayer Mode^000000 and ^3131FFParty Mode^000000.";
+			mes "[文迪哥斯]";
+			mes "競技場模式分為兩種，即^3131FF個人模式^000000與^3131FF組隊模式^000000。";
 			next;
-			mes "[Vendigos]";
-			mes "^3131FFPlayer Mode^000000 consists of 4 different stages based on character level from 50~80.";
-			mes "For a party with 5 members, they can participate in ^3131FFParty Mode^000000.";
+			mes "[文迪哥斯]";
+			mes "^3131FF個人模式^000000依角色等級50~80，共分為4個不同關卡。";
+			mes "隊伍為5人時，可以參加^3131FF組隊模式^000000。";
 			next;
-			mes "[Vendigos]";
-			mes "For ^3131FFeach Player Mode Stage^000000, characters who are 20 levels higher than the level requirement on each stage cannot enter. This is to prevent high level characters preoccupying a low level stage.";
+			mes "[文迪哥斯]";
+			mes "每個^3131FF個人模式關卡^000000，等級高於該關卡要求20級以上的角色無法進入。此規定是為了防止高等級角色佔用低等級關卡。";
 			next;
-			mes "[Vendigos]";
-			mes "There are the NPCs for Player Mode Stages from 12 o'clock direction to the reversed clock direction.";
-			mes "While you're waiting in a chat room, you will be automatically guided to an arena room by the waiting order.";
+			mes "[文迪哥斯]";
+			mes "個人模式關卡的NPC從12點方向往逆時針方向排列。";
+			mes "在聊天室等候時，會依照排隊順序自動引導您進入競技場房間。";
 			break;
 		case 2:
-			mes "[Vendigos]";
-			mes "Let me explain about the ^3131FFArena Point^000000.";
-			mes "It is a reward point for players who ^3131FFsuccessfully cleared a arena stage^000000, a player can possess the maximum 30,000 points.";
+			mes "[文迪哥斯]";
+			mes "讓我說明^3131FF競技點數^000000。";
+			mes "這是給予^3131FF成功通過競技場關卡^000000玩家的獎勵點數，玩家最多可持有30,000點。";
 			next;
-			mes "[Vendigos]";
-			mes "Even if you did not clear a stage due to time-over or other errors, you will be given a very small amount of arena points.";
+			mes "[文迪哥斯]";
+			mes "即使因超時或其他錯誤而未通過關卡，您仍會獲得少量競技點數。";
 			next;
-			mes "[Vendigos]";
-			mes "Regarding the use of Arena Points,";
-			mes "we are providing various services such as souvenir photograph services through an NPC named Givu.";
+			mes "[文迪哥斯]";
+			mes "關於競技點數的使用，";
+			mes "我們透過名為吉武的NPC提供各種服務，例如紀念照拍攝服務。";
 			break;
 		case 3:
-			mes "[Vendigos]";
-			mes "Let me check "+strcharinfo(0)+"'s current arena points.";
+			mes "[文迪哥斯]";
+			mes "讓我查看 "+strcharinfo(0)+"的目前競技點數。";
 			next;
-			mes "[Vendigos]";
-			mes ""+strcharinfo(0)+" has total ^3131FF"+arena_point+"^000000 points.";
+			mes "[文迪哥斯]";
+			mes ""+strcharinfo(0)+" 總共有^3131FF"+arena_point+"^000000點。";
 			next;
-			mes "[Vendigos]";
-			mes "If you wish to know how to use arena points, please refer to the 2nd menu ^3131FF'About Arena Points'^000000.";
+			mes "[文迪哥斯]";
+			mes "若您想了解如何使用競技點數，請參閱第2個選單^3131FF'關於競技點數'^000000。";
 			break;
 		case 4:
-			mes "[Vendigos]";
+			mes "[文迪哥斯]";
 			mes "那好吧，";
-			mes "please have";
+			mes "請準備";
 			mes "玩得愉快。";
 			close;
 		}
 		next;
-		mes "[Vendigos]";
-		mes "Is there anything";
-		mes "more I can help you with?";
+		mes "[文迪哥斯]";
+		mes "還有什麼";
+		mes "需要我幫忙的嗎？";
 		next;
 	}
 	close;
 
 OnLineRec_50:
-	mapannounce "arena_room",""+$arena_50topn$+" has renewed the top record in the Arena Time Force Battle level 50. Congratulations!",0;
+	mapannounce "arena_room",""+$arena_50topn$+" 刷新了競技場時間限制戰50等級的最高紀錄。恭喜！",0;
 	end;
 
 OnLineRec_60:
-	mapannounce "arena_room",""+$arena_60topn$+" has renewed the top record in the Arena Time Force Battle level 60. Congratulations!",0;
+	mapannounce "arena_room",""+$arena_60topn$+" 刷新了競技場時間限制戰60等級的最高紀錄。恭喜！",0;
 	end;
 
 OnLineRec_70:
-	mapannounce "arena_room",""+$arena_70topn$+" has renewed the top record in the Arena Time Force Battle level 70. Congratulations!",0;
+	mapannounce "arena_room",""+$arena_70topn$+" 刷新了競技場時間限制戰70等級的最高紀錄。恭喜！",0;
 	end;
 OnLineRec_80:
-	mapannounce "arena_room",""+$arena_80topn$+" has renewed the top record in the Arena Time Force Battle level 80. Congratulations!",0;
+	mapannounce "arena_room",""+$arena_80topn$+" 刷新了競技場時間限制戰80等級的最高紀錄。恭喜！",0;
 	end;
 
 OnLineRec_pt:
-	mapannounce "arena_room","Party "+$arena_pttopn$+" has renewed the top record in the Arena Time Force Battle. Congratulations!",0;
+	mapannounce "arena_room","組隊 "+$arena_pttopn$+" 刷新了時間限制戰競技場的最高紀錄。恭喜！",0;
 	end;
 
 //OnLineRec_vs:
@@ -103,35 +103,35 @@ OnLineRec_pt:
 //	end;
 }
 
-arena_room,105,82,5	script	Arena Record Staff	57,{
-	mes "[Owen Kheuv]";
-	mes "Hello, my name is Own Kheuv";
-	mes "in charge of every arena stage record of players.";
+arena_room,105,82,5	script	競技場紀錄職員::Arena Record Staff	57,{
+	mes "[歐文凱夫]";
+	mes "您好，我是歐文凱夫";
+	mes "負責管理所有玩家的競技場關卡紀錄。";
 	next;
-	mes "[Owen Kheuv]";
-	mes "Would you like to check the top record players in each stage?";
-	mes "If so, please choose a menu below.";
+	mes "[歐文凱夫]";
+	mes "您想查看每個關卡的最高紀錄玩家嗎？";
+	mes "若是的話，請從以下選單中選擇。";
 	next;
-	switch(select("Lv 50 Stage:Lv 60 Stage:Lv 70 Stage:Lv 80 Stage:Party Stage")) {
+	switch(select("50級關卡:60級關卡:70級關卡:80級關卡:組隊關卡")) {
 	case 1:
-		mes "[Owen Kheuv]";
-		mes "Currently the top player of the arena Lv 50 stage is ^3131FF "+$arena_50topn$+"^000000, the top record is ^3131FF"+$top_50min+"^000000 minutes ^3131FF"+$top_50sec+"^000000 seconds.";
+		mes "[歐文凱夫]";
+		mes "目前競技場50級關卡的最高玩家是^3131FF "+$arena_50topn$+"^000000，最高紀錄為^3131FF"+$top_50min+"^000000分 ^3131FF"+$top_50sec+"^000000秒。";
 		close;
 	case 2:
-		mes "[Owen Kheuv]";
-		mes "Currenly the top player of the arena Lv 60 stage is ^3131FF"+$arena_60topn$+"^000000, the top record is ^3131FF"+$top_60min+"^000000 minutes ^3131FF"+$top_60sec+"^000000 seconds.";
+		mes "[歐文凱夫]";
+		mes "目前競技場60級關卡的最高玩家是^3131FF"+$arena_60topn$+"^000000，最高紀錄為^3131FF"+$top_60min+"^000000分 ^3131FF"+$top_60sec+"^000000秒。";
 		close;
 	case 3:
-		mes "[Owen Kheuv]";
-		mes "Currenly the top player of the arena Lv 70 stage is ^3131FF"+$arena_70topn$+"^000000, the top record is ^3131FF"+$top_70min+"^000000 minutes ^3131FF"+$top_70sec+"^000000 seconds.";
+		mes "[歐文凱夫]";
+		mes "目前競技場70級關卡的最高玩家是^3131FF"+$arena_70topn$+"^000000，最高紀錄為^3131FF"+$top_70min+"^000000分 ^3131FF"+$top_70sec+"^000000秒。";
 		close;
 	case 4:
-		mes "[Owen Kheuv]";
-		mes "Currenly the top player of the arena Lv 80 stage is ^3131FF"+$arena_80topn$+"^000000, the top record is ^3131FF"+$top_80min+"^000000 minutes ^3131FF"+$top_80sec+"^000000 seconds.";
+		mes "[歐文凱夫]";
+		mes "目前競技場80級關卡的最高玩家是^3131FF"+$arena_80topn$+"^000000，最高紀錄為^3131FF"+$top_80min+"^000000分 ^3131FF"+$top_80sec+"^000000秒。";
 		close;
 	case 5:
-		mes "[Owen Kheuv]";
-		mes "Currenly the top party is ^3131FF"+$arena_pttopn$+"^000000, the top record is ^3131FF"+$top_ptmin+"^000000 minutes ^3131FF"+$top_ptsec+"^000000 seconds.";
+		mes "[歐文凱夫]";
+		mes "目前最高紀錄的隊伍是^3131FF"+$arena_pttopn$+"^000000，最高紀錄為^3131FF"+$top_ptmin+"^000000分 ^3131FF"+$top_ptsec+"^000000秒。";
 		close;
 	}
 }
@@ -508,7 +508,7 @@ sec_in02,72,180,3	script	競技場管理員#arena::Arena Manager#arena	802,{
 				input .@arenasec;
 				setd .@sec$,.@arenasec;
 				mes "[競技場管理員]";
-				mes "目前 "+.@mode$+" 排名者的遊戲時間已重新設定為^FF0000"+getd(.@min$)+"^000000 分鐘又^FF0000"+getd(.@sec$)+"^000000 seconds.";
+				mes "目前 "+.@mode$+" 排名者的遊戲時間已重新設定為^FF0000"+getd(.@min$)+"^000000 分鐘又^FF0000"+getd(.@sec$)+"^000000秒。";
 				close;
 			}
 		}
@@ -711,10 +711,10 @@ prt_are_in,98,14,3	script	吉伍#arena::Givu#arena	728,{
 		}
 	case 4:
 		mes "[吉伍]";
-		mes "Let me check "+strcharinfo(0)+"'s current arena points.";
+		mes "讓我查看 "+strcharinfo(0)+"的目前競技點數。";
 		next;
 		mes "[吉伍]";
-		mes ""+strcharinfo(0)+" has total ^3131FF"+arena_point+"^000000 points.";
+		mes ""+strcharinfo(0)+" 總共有^3131FF"+arena_point+"^000000點。";
 		close;
 	}
 }

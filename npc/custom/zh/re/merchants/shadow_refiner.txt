@@ -12,16 +12,16 @@
 //============================================================
 -	script	::ShadowBlacksmith	-1,{
 	if( getbattleflag( "feature.refineui" ) ){
-		mes "[Shadow Blacksmith]";
-		mes "Now Basta is in charge of refinement for shadow items.";
-		mes "If you'd like to refine a shadow item, please visit him.";
+		mes "[影子鐵匠]";
+		mes "現在由巴斯塔負責影子裝備的精煉。";
+		mes "如果你想精煉影子裝備，請去找他。";
 		close;
 	}
 
 	.@zeny_cost = 200000; // Zeny cost is 200,000 according to official script [Secret]
 	disable_items;
-	mes "[Shadow Blacksmith]";
-	mes "Do you want to refine a shadow item? Pick yer poison!";
+	mes "[影子鐵匠]";
+	mes "你想精煉影子裝備嗎？那就選吧，任君挑選！";
 	next;
 	setarray .@indices[1], EQI_SHADOW_ARMOR, EQI_SHADOW_WEAPON, EQI_SHADOW_SHIELD, EQI_SHADOW_SHOES, EQI_SHADOW_ACC_R, EQI_SHADOW_ACC_L;
 	.@indlen = getarraysize(.@indices) - 1;
@@ -30,26 +30,26 @@
 	.@menu$ = .@menu$ + "Refine info";
 	.@choice = select(.@menu$);
 	if (.@choice == .@indlen + 1) { // Refine info
-		mes "[Shadow Blacksmith]";
-		mes "When a shadow item is refined, it gains extra bonuses very much like normal items.";
+		mes "[影子鐵匠]";
+		mes "影子裝備精煉後，會獲得與一般裝備相似的額外加成。";
 		next;
-		mes "[Shadow Blacksmith]";
-		mes "Weapon: ATK, MATK + 1 increase for each +1 refine success.";
-		mes "Etc: HP + 10 increase for each +1 refine success.";
+		mes "[影子鐵匠]";
+		mes "武器: 每成功精煉+1，ATK、MATK +1。";
+		mes "其他: 每成功精煉+1，HP +10。";
 		next;
-		mes "[Shadow Blacksmith]";
-		mes "All types of Oridecon and Elunium can be used to refine shadow items. Each attempt will also cost 20,000 zeny.";
+		mes "[影子鐵匠]";
+		mes "所有種類的神之金屬與鋁都可用於精煉影子裝備。每次嘗試還需支付20,000 Zeny。";
 		next;
-		mes "[Shadow Blacksmith]";
-		mes "HD ores can be used for gear that is at least refine level +7 and will prevent breaking as long as you stay talking to me.";
+		mes "[影子鐵匠]";
+		mes "高密度礦石可用於精煉等級至少+7的裝備，只要你持續與我對話，就能防止裝備損壞。";
 		close;
 	}
 
 	.@part = .@indices[.@choice];
 
 	if (!getequipisequiped(.@part)) {
-		mes "[Shadow Blacksmith]";
-		mes "There's nothing here!";
+		mes "[影子鐵匠]";
+		mes "這裡什麼都沒有！";
 		close;
 	}
 	.@equip_id = getequipid(.@part);
@@ -57,9 +57,9 @@
 
 	while(1) {
 		.@equip_refine = getequiprefinerycnt(.@part);
-		mes "[Shadow Blacksmith]";
-		mes "I require " + callfunc("F_InsertComma", .@zeny_cost) + " zeny as a fee for EACH refine attempt.";
-		mes "Choose your Ore and start refining.";
+		mes "[影子鐵匠]";
+		mes "我需要 " + callfunc("F_InsertComma", .@zeny_cost) + " Zeny 作為每次精煉嘗試的手續費。";
+		mes "選擇你的礦石，開始精煉吧。";
 		next;
 
 		.@material[0] = getequiprefinecost(.@part, REFINE_COST_NORMAL, REFINE_MATERIAL_ID);
@@ -90,54 +90,54 @@
 			break;
 		case 3:// HD
 			if (.@equip_refine < 7) {
-				mes "[Shadow Blacksmith]";
-				mes "HD Ore can only used for +7 or higher refine level items.";
+				mes "[影子鐵匠]";
+				mes "高密度礦石只能用於精煉等級+7以上的道具。";
 				close;
 			}
 			.@hoihoi = 1;
 			.@choose = .@material[2];
 			break;
 		case 4:
-			mes "[Shadow Blacksmith]";
-			mes "You've cancelled refining.";
+			mes "[影子鐵匠]";
+			mes "你已取消精煉。";
 			close;
 		}
 		if (!countitem(.@choose)) {
-			mes "[Shadow Blacksmith]";
-			mes "You do not have enough "+ getitemname(.@choose) +".";
+			mes "[影子鐵匠]";
+			mes "你沒有足夠的 "+ getitemname(.@choose) +".";
 			close;
 		}
 		if (Zeny < .@zeny_cost) {
-			mes "[Shadow Blacksmith]";
+			mes "[影子鐵匠]";
 			mes "您的 Zeny 不足。";
 			close;
 		}
 		if (.@equip_refine > 9) {
-			mes "[Shadow Blacksmith]";
-			mes "Shadow Equipment can be refined to the maximum of 10...";
+			mes "[影子鐵匠]";
+			mes "影子裝備最多可精煉至+10……";
 			close;
 		}
 		if (!getequipisenableref(.@part)) {
-			mes "[Shadow Blacksmith]";
+			mes "[影子鐵匠]";
 			mes "這個道具無法精煉。";
 			close;
 		}
 		if (getequippercentrefinery(.@part) < 100) {
-			mes "[Shadow Blacksmith]";
-			mes "The safety refine level for Shadow Equipment is +4.";
+			mes "[影子鐵匠]";
+			mes "影子裝備的安全精煉等級為+4。";
 			if (!.@hoihoi)
-				mes "Shadow equipment may be destroyed in subsequent refinements. Want to get started?";
+				mes "影子裝備在後續精煉中可能會損壞。要開始嗎？";
 			else
-				mes "The next refinement, if it fails, will degrade the refinement. Do you want to refine?";
+				mes "下一次精煉若失敗，將會降低精煉等級。要精煉嗎？";
 			next;
-			if (select("Proceed","取消") == 2) {
-				mes "[Shadow Blacksmith]";
-				mes "Heh, I knew it!";
+			if (select("繼續","取消") == 2) {
+				mes "[影子鐵匠]";
+				mes "哼，我就知道！";
 				close;
 			}
 		}
-		mes "[Shadow Blacksmith]";
-		mes "Well then.. here goes nothing!";
+		mes "[影子鐵匠]";
+		mes "那麼……就試試看吧！";
 		next;
 		delitem .@choose,1;
 		Zeny -= .@zeny_cost;
@@ -148,16 +148,16 @@
 
 		if (getequippercentrefinery(.@part, .@is_enriched) > rand(100)) {
 			successrefitem .@part;
-			mes "[Shadow Blacksmith]";
-			mes "It worked! It worked!";
+			mes "[影子鐵匠]";
+			mes "成功了！成功了！";
 			next;
 		} else {
 			if (.@hoihoi)
 				downrefitem .@part;
 			else
 				failedrefitem .@part;
-			mes "[Shadow Blacksmith]";
-			mes "Oh Odin No!";
+			mes "[影子鐵匠]";
+			mes "噢，奧丁啊，不！";
 			close;
 		}
 	}
@@ -165,4 +165,4 @@
 
 //moc_paraup,45,185,5	duplicate(ShadowBlacksmith)	Shadow Blacksmith#eden1	4_F_JOB_BLACKSMITH // Commented out until it's added to the map index
 //prt_in,61,54,3	duplicate(ShadowBlacksmith)	Shadow Blacksmith#itemmall	4_F_JOB_BLACKSMITH
-itemmall,31,76,3	duplicate(ShadowBlacksmith)	Shadow Blacksmith#itemmall	4_F_JOB_BLACKSMITH
+itemmall,31,76,3	duplicate(ShadowBlacksmith)	影子鐵匠#itemmall::Shadow Blacksmith#itemmall	4_F_JOB_BLACKSMITH

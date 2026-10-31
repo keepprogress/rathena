@@ -28,18 +28,18 @@ OnTouch:
 		donpcevent "Soldier2#mos::OnEnable";
 		donpcevent "Soldier3#mos::OnEnable";
 		mes "[士兵]";
-		mes "Halt right there!";
+		mes "站住！";
 		next;
 		mes "[士兵]";
-		mes "We have information";
-		mes "that you've been secretly";
-		mes "communicating with";
-		mes "Baba Yaga, the Horrible.";
+		mes "我們得到消息，";
+		mes "你一直在暗中";
+		mes "與";
+		mes "可怕的芭芭雅嘎。";
 		next;
 		mes "[士兵]";
-		mes "If you have something to say,";
-		mes "speak to the Csar.";
-		mes "Come with us.";
+		mes "如果你有話要說，";
+		mes "就去找沙皇。";
+		mes "跟我們走。";
 		close2;
 		donpcevent "Soldier1#mos::OnInit";
 		donpcevent "Soldier2#mos::OnInit";
@@ -53,24 +53,24 @@ OnTouch:
 		donpcevent "Soldier2#mos::OnEnable";
 		donpcevent "Soldier3#mos::OnEnable";
 		mes "[士兵]";
-		mes "We expected";
-		mes "that you would appear again.";
-		mes "What is your business with the Csar?";
+		mes "我們就料到";
+		mes "你會再次出現。";
+		mes "你跟沙皇有什麼事？";
 		next;
-		if(select("Run away.:Explain the situation.") == 1) {
+		if(select("逃跑:說明情況。") == 1) {
 			mes "["+strcharinfo(0)+"]";
-			mes "I should get out of here...";
+			mes "我該離開這裡……";
 			close2;
 			warp "mosk_dun02",100,100;
 		}
 		else {
-			mes "-I explain what happend until now.-";
+			mes "-我解釋到目前為止發生的事。-";
 			next;
 			mes "[士兵]";
-			mes "If you have something to say, speak";
-			mes "to the Csar.";
-			mes "If you leave to this place,";
-			mes "you will be considered as our enemy.";
+			mes "如果你有話要說，就";
+			mes "去找沙皇。";
+			mes "如果你離開這個地方，";
+			mes "你就會被視為我們的敵人。";
 			close2;
 		}
 		donpcevent "Soldier1#mos::OnInit";
@@ -86,9 +86,9 @@ OnTouch:
 
 mosk_dun02,53,215,3	script	Soldier1#mos	4_M_RUSKNIGHT,{
 	mes "[士兵]";
-	mes "We're the Csar's soldiers.";
-	mes "We're called out for emergencies,";
-	mes "don't disturb us anymore.";
+	mes "我們是沙皇的士兵。";
+	mes "我們是為了緊急狀況而被召集的，";
+	mes "別再來打擾我們了。";
 	close;
 	
 OnInit:
@@ -101,125 +101,125 @@ OnEnable:
 mosk_dun02,50,217,3	duplicate(Soldier1#mos)	Soldier2#mos	4_M_RUSKNIGHT
 mosk_dun02,56,217,5	duplicate(Soldier1#mos)	Soldier3#mos	4_M_RUSKNIGHT
 
-mosk_dun01,170,164,3	script	Milestone#1	HIDDEN_NPC,{
-	mes "- There is writing on a big rock. -";
+mosk_dun01,170,164,3	script	里程碑#1::Milestone#1	HIDDEN_NPC,{
+	mes "- 大石頭上刻著字。 -";
 	next;
-	mes "^3131FF- Those who serve the Sun will die, Go to the North. -^000000";
+	mes "^3131FF- 侍奉太陽者將會死去，前往北方。 -^000000";
 	close;
 }
 
-mosk_dun01,207,276,3	script	Milestone#1-2	HIDDEN_NPC,{
-	mes "- There is writing on a big rock. -";
+mosk_dun01,207,276,3	script	里程碑#1-2::Milestone#1-2	HIDDEN_NPC,{
+	mes "- 大石頭上刻著字。 -";
 	next;
-	mes "^3131FF- Those who advance may get hurt but are courageous of heart and those who move back will remain safe.";
-	mes "If you have courage, step forward. Otherwise, step backward. -^000000";
+	mes "^3131FF- 前進者或許會受傷，但心懷勇氣；後退者將保持安全。";
+	mes "若你有勇氣，就向前踏一步。否則，就向後退一步。 -^000000";
 	next;
-	if(select("Step forward.:Stay.") == 1) {
-		mes "- You follow the way before you. -";
+	if(select("向前踏出一步:留在原地。") == 1) {
+		mes "- 你順著眼前的道路前進。 -";
 		close2;
 		warp "mosk_dun02",165,30;
 		end;
 	}
-	mes "- You won't advance. -";
+	mes "- 你不會前進。 -";
 	close;
 }
 
-mosk_dun01,264,191,3	script	Milestone#1-3	HIDDEN_NPC,{
-	mes "- There is writing on a big rock. -";
+mosk_dun01,264,191,3	script	里程碑#1-3::Milestone#1-3	HIDDEN_NPC,{
+	mes "- 大石頭上刻著字。 -";
 	next;
-	mes "^3131FF- Those who advance may get hurt but are brave of heart and those who move back will remain safe.";
-	mes "If you are brave, then take a step forward. Otherwise, step back. -^000000";
+	mes "^3131FF- 前進者或許會受傷，但內心勇敢；後退者將保持安全。";
+	mes "若你勇敢，就向前踏一步。否則，就後退。 -^000000";
 	next;
-	if(select("Step forward.:Stay.") == 1) {
-		mes "- You follow the way before you. -";
+	if(select("向前踏出一步:留在原地。") == 1) {
+		mes "- 你順著眼前的道路前進。 -";
 		close2;
 		warp "mosk_dun03",117,36;
 		end;
 	}
-	mes "- You decide to stay. -";
+	mes "- 你決定留下。 -";
 	close;
 }
 
-mosk_dun02,168,28,3	script	Milestone#2-1	HIDDEN_NPC,{
-	mes "- There is writing on a big rock. -";
+mosk_dun02,168,28,3	script	里程碑#2-1::Milestone#2-1	HIDDEN_NPC,{
+	mes "- 大石頭上刻著字。 -";
 	next;
-	mes "^3131FF- Those who advance may get hurt but are valorous of heart and those who move back will remain safe.";
-	mes "If you valorous, then take a step forward. Otherwise, step back. -^000000";
+	mes "^3131FF- 前進者或許會受傷，但內心英勇；後退者將保持安全。";
+	mes "若你英勇，就向前踏一步。否則，就後退。 -^000000";
 	next;
-	if(select("Go back.:Stay.") == 1) {
-		mes "- You sense danger and decide to go back -";
+	if(select("後退:留在原地。") == 1) {
+		mes "- 你感覺到危險，決定後退 -";
 		close2;
 		warp "mosk_dun01",201,269;
 		end;
 	}
-	mes "- You decided to stay. -";
+	mes "- 你決定留下。 -";
 	close;
 }
 
-mosk_dun02,268,117,3	script	Milestone#2-3	HIDDEN_NPC,{
-	mes "- There is writing on a big rock. -";
+mosk_dun02,268,117,3	script	里程碑#2-3::Milestone#2-3	HIDDEN_NPC,{
+	mes "- 大石頭上刻著字。 -";
 	next;
-	mes "^3131FF- Those who step forward will gain honor but may die, those who step backward will have courage but may still get hurt.";
-	mes "If you are truly brave, step forward. Otherwise, step back -^000000";
+	mes "^3131FF- 向前踏出者將獲得榮耀但可能死亡，向後退者將擁有勇氣但仍可能受傷。";
+	mes "若你真的勇敢，就向前踏一步。否則，就後退 -^000000";
 	next;
-	if(select("Step forward.:Stay.") == 1) {
-		mes "- You bravely step forward. -";
+	if(select("向前踏出一步:留在原地。") == 1) {
+		mes "- 你勇敢地向前踏出一步。 -";
 		close2;
 		warp "mosk_dun03",32,135;
 		end;
 	}
-	mes "- You decided to stay. -";
+	mes "- 你決定留下。 -";
 	close;
 }
 
-mosk_dun03,27,131,3	script	Milestone#3-2	HIDDEN_NPC,{
-	mes "- There is writing on a big rock. -";
+mosk_dun03,27,131,3	script	里程碑#3-2::Milestone#3-2	HIDDEN_NPC,{
+	mes "- 大石頭上刻著字。 -";
 	next;
-	mes "^3131FF- Those who stay may die but will gain honor, those who go back may get hurt but will gain courage.";
-	mes "Those who have courage will go back, otherwise step forward and stay. -^000000";
+	mes "^3131FF- 留下者可能死亡但將獲得榮耀，後退者可能受傷但將獲得勇氣。";
+	mes "有勇氣者將後退，否則就向前踏出並留下。 -^000000";
 	next;
-	if(select("Go back.:Stay.") == 1) {
-		mes "- You sense danger and decide to go back -";
+	if(select("後退:留在原地。") == 1) {
+		mes "- 你感覺到危險，決定後退 -";
 		close2;
 		warp "mosk_dun02",262,118;
 		end;
 	}
-	mes "- You decide to stay. -";
+	mes "- 你決定留下。 -";
 	close;
 }
 
-mosk_dun03,119,46,3	script	Milestone#3-1	HIDDEN_NPC,{
-	mes "There is writing on a big rock.";
+mosk_dun03,119,46,3	script	里程碑#3-1::Milestone#3-1	HIDDEN_NPC,{
+	mes "大石頭上刻著字。";
 	next;
-	mes "^3131FF- Those who stay may die but will gain honor, those who go back may get hurt but will gain courage.";
-	mes "Those who are afraid of the death will go back, otherwise step forward and stay. -^000000";
+	mes "^3131FF- 留下者可能死亡但將獲得榮耀，後退者可能受傷但將獲得勇氣。";
+	mes "懼怕死亡者將後退，否則就向前踏出並留下。 -^000000";
 	next;
-	if(select("Go back.:Stay.") == 1) {
-		mes "- You sense danger and decide to go back -";
+	if(select("後退:留在原地。") == 1) {
+		mes "- 你感覺到危險，決定後退 -";
 		close2;
 		warp "mosk_dun01",257,190;
 		end;
 	}
-	mes "- You decided to stay. -";
+	mes "- 你決定留下。 -";
 	close;
 }
 
-mosk_dun01,194,43,3	script	Milestone#1-1	HIDDEN_NPC,{
-	mes "- There is writing on a big rock. -";
+mosk_dun01,194,43,3	script	里程碑#1-1::Milestone#1-1	HIDDEN_NPC,{
+	mes "- 大石頭上刻著字。 -";
 	next;
-	mes "- If you want to protect your life, go back -";
+	mes "- 若你想保住性命，就後退 -";
 	close;
 }
 
-mosk_fild02,198,53,3	script	Ship#mos_dun	HIDDEN_NPC,{
-	mes "- You find a ship at anchor. -";
+mosk_fild02,198,53,3	script	船#mos_dun::Ship#mos_dun	HIDDEN_NPC,{
+	mes "- 你發現一艘停泊中的船。 -";
 	next;
-	if(select("Take the ship and go back to the village.:Explore more.") == 1) {
-		mes "- You board the ship and pull at the oars. -";
+	if(select("搭船返回村莊:繼續探索。") == 1) {
+		mes "- 你登上船並拉動船槳。 -";
 		close2;
 		warp "moscovia",140,54;
 		end;
 	}
-	mes "- That unknown area arouses your interest. -";
+	mes "- 那片未知的區域引起了你的興趣。 -";
 	close;
 }

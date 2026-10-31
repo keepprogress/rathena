@@ -126,8 +126,8 @@ S_Coord:
 
 -	script	Training_Instructor_TE	-1,{
 	if (checkweight(1201,5) == 0) {
-		mes "You have too many items to proceed with the quest.";
-		mes "Please lighten your load and try again.";
+		mes "你持有的道具太多，無法進行任務。";
+		mes "請減輕負重後再試一次。";
 		close;
 	}
 	.@map$ = strnpcinfo(4);
@@ -249,7 +249,7 @@ S_Coord:
 						}
 						next;
 						mes "["+ .@npc_name$ +"]";
-						mes "Since you've done a good job, I'll let you open my tool box " + .@num_tool_box + " times.";
+						mes "Since you've done a good job, I'll let you open my tool box " + .@num_tool_box + " 次。";
 						mes "Although you won't find anything mostly...";
 						mes "It's a bonus, so don't complaint even if you don't find anything.";
 						next;
@@ -284,7 +284,7 @@ S_Coord:
 				next;
 				mes "["+ .@npc_name$ +"]";
 				mes "It only makes sense that way, doesn't it?";
-				mes "Don't you think so?";
+				mes "你不這麼認為嗎？";
 				close;
 			}
 			mes "I've been told that "+ .@mob_name$[1] +" appear during the busy siege hours at the fortress in "+ .@fortress$ +".";
@@ -318,7 +318,7 @@ S_Coord:
 						mes "You must be contributing a lot to your guild. Good job!";
 						next;
 						mes "["+ .@npc_name$ +"]";
-						mes "Since you've done a good job, I'll let you open my tool box "+ .@num_tool_box +" times.";
+						mes "Since you've done a good job, I'll let you open my tool box "+ .@num_tool_box +" 次。";
 						mes "Although you won't find anything mostly...";
 						mes "It's a bonus, so don't complaint even if you don't find anything.";
 						next;
@@ -349,7 +349,7 @@ S_Coord:
 				next;
 				mes "["+ .@npc_name$ +"]";
 				mes "It only makes sense that way, doesn't it?";
-				mes "Don't you think so?";
+				mes "你不這麼認為嗎？";
 				close;
 			}
 			.@playtime_check2 = checkquest(7516,PLAYTIME);
@@ -420,7 +420,7 @@ S_Coord:
 						mes "I'll return it to its original owner.";
 						next;
 						mes "["+ .@npc_name$ +"]";
-						mes "Since you've done a good job, I'll let you open my tool box "+ .@num_tool_box +" times.";
+						mes "Since you've done a good job, I'll let you open my tool box "+ .@num_tool_box +" 次。";
 						mes "Although you won't find anything mostly...";
 						mes "It's a bonus, so don't complaint even if you don't find anything.";
 						next;
@@ -451,7 +451,7 @@ S_Coord:
 				next;
 				mes "["+ .@npc_name$ +"]";
 				mes "It only makes sense that way, doesn't it?";
-				mes "Don't you think so?";
+				mes "你不這麼認為嗎？";
 				close;
 			}
 			mes "Hmm you wouldn't believe it, but this mission is related to a theft.";
@@ -529,7 +529,7 @@ S_Cancelquest:
 S_Acceptquest:
 	.@npc_name$ = getarg(1);
 	next;
-	switch( select( "Accept it.","Do not accept it." ) ) {
+	switch( select( "接受","Do not accept it." ) ) {
 	case 1:
 		mes "["+ .@npc_name$ +"]";
 		mes "^4d4dffThe time limit is 4 hours.^000000";

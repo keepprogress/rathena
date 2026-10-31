@@ -143,10 +143,10 @@ OnTouch:
 		mes "...... now you can run wild.";
 		next;
 		cutin "",255;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "Something seems to have exploded over there. The flames have risen from the front!";
 		next;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "There are 4 identified locations these explosion came from! I have ^FF0000shown them on your minimap.^000000";
 		viewpointmap 'map$,1,140,79,1,0xFFFFFF;
 		viewpointmap 'map$,1,160,119,2,0xFFFFFF;
@@ -188,7 +188,7 @@ OnTouch:
 		npctalk "Elena Volkova : The briefing... the criminal here will be the one to do it. It's hard to babysit criminals.";
 		next;
 		cutin "ep171_elyumina04",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Haha! Isn't that your job? Do it properly. Why are you leaving the briefing to me?";
 		npctalk "Elyumina : Haha! Isn't that your job? Do it properly. Why are you leaving the briefing to me?",.@elyumina$;
 		next;
@@ -198,18 +198,18 @@ OnTouch:
 		npctalk "Elena Volkova : So noisy. Before we get started. Are you part of the USU now?";
 		next;
 		cutin "ep171_elyumina03",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "That, that's what he said... are you afraid that I'll be scared!";
 		mes "Heh, I'll do the explaining because I want to take care of my children!";
 		npctalk "Elyumina : Heh, I'll do the explaining because I want to take care of my children!",.@elyumina$;
 		next;
 		cutin "ep171_elyumina01",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "... Okay, it's almost time.";
 		mes "My children will start setting up traps in <TIPBOX>[four places]<INFO>8086</INFO></TIPBOX>.";
 		npctalk "Elyumina : ... Okay, it's almost time. My children will start setting up traps in four places.",.@elyumina$;
 		next;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Here, take the map. The information will also be delivered to the party members as well.";
 		mes "You aren't alone right? You know my children are powerful?";
 		npctalk "Elyumina : Here, take the map. The information will also be delivered to the party members as well.",.@elyumina$;
@@ -219,18 +219,18 @@ OnTouch:
 		viewpointmap 'map$,1,222,236,4,0xFFFFFF;
 		next;
 		cutin "ep171_elyumina04",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Go ahead and touch the traps. The traps will activate and my lovely children will appear.";
 		mes "You do remember how the traps work, right?";
 		npctalk "Elyumina : Go ahead and touch the traps. The traps will activate and my lovely children will appear.",.@elyumina$;
 		next;
 		cutin "ep171_elyumina03",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "After you've cleared the four traps, EL1_A17T will come out, and this lady here will bring you to the same place as last time.";
 		npctalk "Elyumina : After you've cleared the four traps, EL1_A17T will come out, and this lady here will bring you to the same place as last time.",.@elyumina$;
 		next;
 		cutin "ep171_elyumina04",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "That's it for the explanation. Now, get to work! Muscle idiots! Ahahaha!";
 		npctalk "Elyumina : That's it for the explanation. Now, get to work! Muscle idiots! Ahahaha!",.@elyumina$;
 		emotion ET_SMILE,getnpcid(0,.@elyumina$);
@@ -253,29 +253,29 @@ OnTouch:
 	end;
 }
 
-1@cor,178,172,3	duplicate(dummy_npc)	Elyumina#171_cmd_0	4_EP17_ELYUMINA
+1@cor,178,172,3	duplicate(dummy_npc)	艾露米娜#171_cmd_0::Elyumina#171_cmd_0	4_EP17_ELYUMINA
 
-1@cor,172,223,3	script	Elyumina#171_cmd_1	4_EP17_ELYUMINA,{
+1@cor,172,223,3	script	艾露米娜#171_cmd_1::Elyumina#171_cmd_1	4_EP17_ELYUMINA,{
 	cutin "ep171_elyumina03",0;
-	mes "[Elyumina]";
+	mes "[艾露米娜]";
 	mes "That was fast... It was expected that my kids wouldn't win though.";
 	mes "There's a lot more trouble going on up there~";
 	npctalk "Elyumina : That was fast... It was expected that my kids wouldn't win though. There's a lot more trouble going on up there~";
 	next;
 	cutin "ep171_elyumina01",0;
-	mes "[Elyumina]";
+	mes "[艾露米娜]";
 	mes "... are you going straight for my EL1-A17T?";
 	mapannounce 'map$,"Elena Volkova : Yeah, damn criminal! Why don't you open the portal right now?",bc_map,0xFFFF99;
 	npctalk "Elyumina : ... are you going straight for my EL1_A17T?";
 	next;
 	if (select("Go in.:Don't go in yet.") == 2) {
 		cutin "ep171_elyumina02",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Come on, I was about to open it.";
 		close3;
 	}
 	cutin "ep171_elyumina04",0;
-	mes "[Elyumina]";
+	mes "[艾露米娜]";
 	mes "Hahaha! Yes. Let's work hard. Gather more battle data for me!";
 	npctalk "Elyumina : Hahaha! Yes. Let's work hard. Gather more battle data for me!";
 	close2;
@@ -288,40 +288,40 @@ OnTouch:
 	end;
 }
 
-1@cor,177,165,1	duplicate(dummy_npc)	Rebellion#171_cmd_0	4_M_REBELLION3
-1@cor,180,165,1	duplicate(dummy_npc)	Rebellion#171_cmd_1	4_M_GONY
-1@cor,183,165,1	duplicate(dummy_npc)	Rebellion#171_cmd_2	4_F_REBELLION3
-1@cor,177,163,1	duplicate(dummy_npc)	Rebellion#171_cmd_3	4_F_ANYA
-1@cor,180,163,1	duplicate(dummy_npc)	Rebellion#171_cmd_4	4_M_ILYA
-1@cor,183,163,1	duplicate(dummy_npc)	Rebellion#171_cmd_5	4_F_REBELLION2
+1@cor,177,165,1	duplicate(dummy_npc)	反抗軍#171_cmd_0::Rebellion#171_cmd_0	4_M_REBELLION3
+1@cor,180,165,1	duplicate(dummy_npc)	反抗軍#171_cmd_1::Rebellion#171_cmd_1	4_M_GONY
+1@cor,183,165,1	duplicate(dummy_npc)	反抗軍#171_cmd_2::Rebellion#171_cmd_2	4_F_REBELLION3
+1@cor,177,163,1	duplicate(dummy_npc)	反抗軍#171_cmd_3::Rebellion#171_cmd_3	4_F_ANYA
+1@cor,180,163,1	duplicate(dummy_npc)	反抗軍#171_cmd_4::Rebellion#171_cmd_4	4_M_ILYA
+1@cor,183,163,1	duplicate(dummy_npc)	反抗軍#171_cmd_5::Rebellion#171_cmd_5	4_F_REBELLION2
 
-1@cor,224,238,3	script	Rebellion#171_box_0	4_M_REBELLION3,{
+1@cor,224,238,3	script	反抗軍#171_box_0::Rebellion#171_box_0	4_M_REBELLION3,{
 	if (isbegin_quest(16355) == 0) {
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "There is a suspicious box! A signal is being transmitted from the inside, it's currently being decrypted!";
 		close;
 	}
 	.@event$ = instance_npcname("Box#" + strnpcinfo(2))+"::OnMobKill";
 	if (isbegin_quest(16355) == 1 && mobcount('map$,.@event$)) {
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "Destroy the Biological Battery and kill the monsters!";
 		close;
 	}
 	if (isbegin_quest(16355) == 1 && !mobcount('map$,.@event$)) {
 OnTalk:
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "Sorry for the late analysis. It wasn't a device to summon monsters.";
 		next;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "After summoning the monsters, it summons a bio-battery to strengthen the monsters and explodes.";
 		next;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "If you want to handle it, just destroy it. It's good because it's a simple solution.";
 		next;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "Well, it looks like this is over....";
 		next;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "It looks like you've found something interesting here. You should check out the other teams!";
 		close2;
 		completequest 16355;
@@ -338,10 +338,10 @@ OnTalk:
 
 1@cor,222,236,3	script	Box#171_box_0	4_STEELBOX,{
 	if (isbegin_quest(16355) == 0) {
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "The cause of the explosion is unknown, but I've found this suspicious box at the site. It seems to be some type of mechanism.";
 		next;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "There is a signal being transmitted from the inside... Huh, be careful. Something's happening!";
 		close2;
 		setquest 16355;
@@ -351,7 +351,7 @@ OnTalk:
 	}
 	.@event$ = instance_npcname(strnpcinfo(0))+"::OnMobKill";
 	if (isbegin_quest(16355) == 1 && mobcount('map$,.@event$)) {
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "Destroy the Biological Battery and kill the monsters!";
 		close;
 	}
@@ -456,30 +456,30 @@ OnTimer17000:
 	end;
 }
 
-1@cor,218,172,5	script	Rebellion#171_box_1	4_F_REBELLION2,{
+1@cor,218,172,5	script	反抗軍#171_box_1::Rebellion#171_box_1	4_F_REBELLION2,{
 	if (isbegin_quest(16356) == 0) {
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "There is a suspicious box! A signal is being transmitted from the inside, it's currently being decrypted!";
 		close;
 	}
 	.@event$ = instance_npcname("Box#" + strnpcinfo(2)) + "::OnMobKill";
 	if (isbegin_quest(16356) == 1 && mobcount('map$,.@event$)) {
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "Avoid the Chemical Poison and kill the monsters!";
 		close;
 	}
 	if (isbegin_quest(16356) == 1 && !mobcount('map$,.@event$)) {
 OnTalk:
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "It's an awful but interesting device. It wasn't a device meant to summon monsters.";
 		next;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "After summoning monsters, it constantly releases chemical poison, making it even more difficult to remove the monster.";
 		next;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "If you touch the chemical poison, it will spread like bomb. You shouldn't get any closer.";
 		next;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "So, it looks like this is over, I'll go join another team! You should too.";
 		close2;
 		disablenpc();
@@ -496,10 +496,10 @@ OnTalk:
 
 1@cor,220,170,3	script	Box#171_box_1	4_WOODBOX,{
 	if (isbegin_quest(16356) == 0) {
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "The cause of the explosion is unknown, but I've found this suspicious box at the site. It seems to be some type of mechanism.";
 		next;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "There is a signal being transmitted from the inside... Huh, be careful. Something's happening!";
 		close2;
 		setquest 16356;
@@ -509,7 +509,7 @@ OnTalk:
 	}
 	.@event$ = instance_npcname(strnpcinfo(0)) + "::OnMobKill";
 	if (isbegin_quest(16356) == 1 && mobcount('map$,.@event$)) {
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "Avoid the Chemical Poison and kill the monsters!";
 		close;
 	}
@@ -580,27 +580,27 @@ OnTimer10000:
 	end;
 }
 
-1@cor,162,117,1	script	Rebellion#171_box_2	4_M_GONY,{
-	mes "[Rebellion]";
+1@cor,162,117,1	script	反抗軍#171_box_2::Rebellion#171_box_2	4_M_GONY,{
+	mes "[反抗軍]";
 	mes ".....";
 	close;
 }
 
 1@cor,160,119,3	script	Box#171_box_2	4_STEELBOX,{
-	mes "[Rebellion]";
+	mes "[反抗軍]";
 	mes ".....";
 	specialeffect EF_M03;
 	next;
-	mes "[Rebellion]";
+	mes "[反抗軍]";
 	mes ".....";
 	next;
 	mes "- Smoke is rising from the suspicious box. -";
 	next;
 	select("Have you done this already?:Are you still silent?");
-	mes "[Rebellion]";
+	mes "[反抗軍]";
 	mes ".....";
 	next;
-	mes "[Rebellion]";
+	mes "[反抗軍]";
 	mes "*Nods, nods*";
 	next;
 	mes "- Let's go support another team. -";
@@ -611,36 +611,36 @@ OnTimer10000:
 	end;
 }
 
-1@cor,138,82,5	script	Rebellion#171_box_3	4_F_ANYA,{
-	mes "[Rebellion]";
+1@cor,138,82,5	script	反抗軍#171_box_3::Rebellion#171_box_3	4_F_ANYA,{
+	mes "[反抗軍]";
 	mes "Did I tell you that I'm really happy working with the Secret Wing? Thanks to them, I was chosen for this operation.";
 	next;
-	mes "[Rebellion]";
+	mes "[反抗軍]";
 	mes "Let's show them what we're all about, and that we're good guys.";
 	close;
 }
 
-1@cor,142,82,3	script	Rebellion#171_box_4	4_M_ILYA,{
-	mes "[Rebellion]";
+1@cor,142,82,3	script	反抗軍#171_box_4::Rebellion#171_box_4	4_M_ILYA,{
+	mes "[反抗軍]";
 	mes "I haven't seen you in a while adventurer.";
 	next;
-	mes "[Rebellion]";
+	mes "[反抗軍]";
 	mes "I already know you adventurer, but please be careful.";
 	close;
 }
 
 1@cor,140,79,3	script	Box#171_box_3	4_WOODBOX,{
-	mes "[Rebellion]";
+	mes "[反抗軍]";
 	mes "Hello adventurer.";
 	specialeffect EF_M03;
 	next;
-	mes "[Rebellion]";
+	mes "[反抗軍]";
 	mes "It was nice to be part of this squad, we've already taken care of this box.";
 	next;
-	mes "[Rebellion]";
+	mes "[反抗軍]";
 	mes "These machines uses chemical poison, be careful.";
 	next;
-	mes "[Rebellion]";
+	mes "[反抗軍]";
 	mes "We will now conduct our search, until the signal comes. Adventurer, be careful!";
 	viewpointmap 'map$,2,140,79,1,0xFFFFFF;
 	close2;
@@ -702,7 +702,7 @@ OnTimer10000:
 			mes "Oh, yes. You've worked hard again this time. It's quite tough! How long do we have to use that scrap of metal for it to stop?";
 			next;
 			cutin "ep171_elyumina02",0;
-			mes "[Elyumina]";
+			mes "[艾露米娜]";
 			mes "Didn't I say not to call it scrap of metal?! You idiot!";
 			next;
 			cutin "162elena_01",2;
@@ -733,7 +733,7 @@ OnTimer10000:
 		mes "I ran away also, It's quite embarrassing since you knocked down that huge scrap of metal. I also captured something mesmerizing.";
 		next;
 		cutin "ep171_elyumina02",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Scrap metal! It's a masterpiece! My great child!";
 		mes "You! You... hurt my child! You destroyed my child!";
 		next;
@@ -763,15 +763,15 @@ OnTimer10000:
 	end;
 }
 
-1@cor,140,221,3	script	Elyumina#171_cor_end	4_EP17_ELYUMINA,{
+1@cor,140,221,3	script	艾露米娜#171_cor_end::Elyumina#171_cor_end	4_EP17_ELYUMINA,{
 	npctalk "Elyumina : You guys... you killed it?! You slaughtered it! Executioners!";
 	end;
 }
-1@cor,141,222,3	script	Rebellion#171_cmd_6	4_M_ILYA,{
+1@cor,141,222,3	script	反抗軍#171_cmd_6::Rebellion#171_cmd_6	4_M_ILYA,{
 	npctalk "The Illusion researcher Elyumina has been captured!";
 	end;
 }
-1@cor,141,220,3	script	Rebellion#171_cmd_7	4_F_ANYA,{
+1@cor,141,220,3	script	反抗軍#171_cmd_7::Rebellion#171_cmd_7	4_F_ANYA,{
 	npctalk "We've successfully captured her alive, the operation is over!";
 	end;
 }
@@ -956,7 +956,7 @@ OnTouch:
 	end;
 }
 
-1@cor,224,238,3	script	Elyumina#171_box_d0	4_EP17_ELYUMINA,{
+1@cor,224,238,3	script	艾露米娜#171_box_d0::Elyumina#171_box_d0	4_EP17_ELYUMINA,{
 	if ('cor == 4) {
 		npctalk "Elyumina : You know where the barrack is? I showed it up on your minimap. I'll head there soon.";
 		end;
@@ -972,9 +972,9 @@ OnTouch:
 	end;
 }
 
-1@cor,218,172,5	duplicate(Elyumina#171_box_d0)	Elyumina#171_box_d1	4_EP17_ELYUMINA
-1@cor,162,117,3	duplicate(Elyumina#171_box_d0)	Elyumina#171_box_d2	4_EP17_ELYUMINA
-1@cor,140,82,3	duplicate(Elyumina#171_box_d0)	Elyumina#171_box_d3	4_EP17_ELYUMINA
+1@cor,218,172,5	duplicate(Elyumina#171_box_d0)	艾露米娜#171_box_d1::Elyumina#171_box_d1	4_EP17_ELYUMINA
+1@cor,162,117,3	duplicate(Elyumina#171_box_d0)	艾露米娜#171_box_d2::Elyumina#171_box_d2	4_EP17_ELYUMINA
+1@cor,140,82,3	duplicate(Elyumina#171_box_d0)	艾露米娜#171_box_d3::Elyumina#171_box_d3	4_EP17_ELYUMINA
 
 1@cor,222,236,3	script	Box#171_box_d0	4_STEELBOX,{
 	.@id = atoi(replacestr(strnpcinfo(2),"171_box_d",""));

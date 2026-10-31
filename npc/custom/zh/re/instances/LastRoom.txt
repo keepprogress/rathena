@@ -32,7 +32,7 @@ un_myst,163,38,5	script	馬克::Mark	4_M_BLUEMAN,{
 		}
 		if (is_party_leader() == true)
 			.@string$ = "Open door.";
-		switch( select( .@string$, "Go in.", "Quit." ) ) {
+		switch( select( .@string$, "Go in.", "離開。" ) ) {
 		case 1:
 			if (instance_create("Last room") < 1) {
 				mes "Party: " + getpartyname( getcharid(1) ) + "";
@@ -347,7 +347,7 @@ OnTouch:
 	mes "My head...is splitting.";
 	mes "A sound coming from this...door...";
 	next;
-	if (select( "Quit.", "Go inside." ) == 1) {
+	if (select( "離開。", "Go inside." ) == 1) {
 		mes "[Verity]";
 		mes "Go back...we have to go back...";
 		cutin "EP15_2_brt_7.bmp",2;
@@ -447,7 +447,7 @@ OnMyMobDead2:
 
 1@uns,242,253,3	script	Verity#room4	4_F_BERRYTEA,{
 	mes "[Verity]";
-	mes "Who am I?";
+	mes "我是誰？";
 	mes "Who am I...";
 	cutin "EP15_2_brt_6.bmp",2;
 	close2;

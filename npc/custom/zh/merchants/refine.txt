@@ -21,81 +21,81 @@
 
 // Christopher: Geffen Blacksmith
 //============================================================
-geffen_in,110,172,0	script	Christopher#1	63,{
-	mes "[Christopher Guillenrow]";
-	mes "Welcome to Christopher's Workshop. Ye can get all yer stuff for forging here. What business";
-	mes "brings ye to me?";
+geffen_in,110,172,0	script	克里斯多福#1::Christopher#1	63,{
+	mes "[克里斯多福]";
+	mes "歡迎來到克里斯多福的工坊。這裡什麼鍛造用的東西都買得到喔。你有什麼事";
+	mes "找我呢？";
 	next;
-	switch(select("Purchase Anvil:Purchase Forging Item:Purchase Metal:Purify Rough Ores:Cancel")) {
+	switch(select("購買鐵砧:購買鍛造道具:購買金屬:精煉粗礦:取消")) {
 	case 1:
-		mes "[Christopher Guillenrow]";
-		mes "A better Anvil gives ye a greeeater chance to make better weapons, ye know? But they'll cost ye more zeny. Just get it off yer chest and buy what fits your purposes best, laddy.";
+		mes "[克里斯多福]";
+		mes "好的鐵砧能讓你更有機會打出好武器，你知道吧？不過價錢也會更貴。別猶豫了，小子，挑最適合你用途的買吧。";
 		next;
-		switch(select("Anvil - 30,000 zeny:Oridecon Anvil - 120,000 zeny:Golden Anvil - 300,000 zeny:Better Anvil than the others.:Cancel.")) {
+		switch(select("鐵砧 - 30,000 Zeny:神之金屬鐵砧 - 120,000 Zeny:黃金鐵砧 - 300,000 Zeny:比其他的都好的鐵砧。:取消。")) {
 		case 1:
 			if (Zeny < 30000) {
-				mes "[Christopher Guillenrow]";
-				mes "I don't think I can let ye have this with the zeny ye have. I can't lose me money because of ye.";
+				mes "[克里斯多福]";
+				mes "你的 Zeny 好像不夠喔。我可不能因為你而賠錢啊。";
 				close;
 			}
 			getitem 986,1; // Anvil
 			Zeny = Zeny-30000;
-			mes "[Christopher Guillenrow]";
-			mes "This is the cheapest one, but efficient enough to forge most items. Thank ye fer shopping at me workshop.  Feel free to come anytime, whenever ye need.";
+			mes "[克里斯多福]";
+			mes "這是最便宜的，但足以鍛造大部分的道具。感謝你來光顧我的工坊。隨時歡迎你再來，需要時就來吧。";
 			close;
 		case 2:
 			if (Zeny < 120000) {
-				mes "[Christopher Guillenrow]";
-				mes "I don't think I can let ye have this with the zeny ye have. I can't lose me money because of ye.";
+				mes "[克里斯多福]";
+				mes "你的 Zeny 好像不夠喔。我可不能因為你而賠錢啊。";
 				close;
 			}
 			getitem 987,1; // Oridecon_Anvil
 			Zeny = Zeny-120000;
-			mes "[Christopher Guillenrow]";
-			mes "Aye, friend ye have an eye for the anvil. This must be the proper anvil for a Blacksmith, eh? Thank ye fer shopping at me workshop.  Feel free to come anytime, whenever ye need.";
+			mes "[克里斯多福]";
+			mes "哦，老兄你很有眼光嘛。這一定是鐵匠該用的好鐵砧吧？感謝你來光顧我的工坊。隨時歡迎你再來，需要時就來吧。";
 			close;
 		case 3:
 			if (Zeny < 300000) {
-				mes "[Christopher Guillenrow]";
-				mes "I don't think I can let ye have this with the zeny ye have. I can't lose me money because of ye.";
+				mes "[克里斯多福]";
+				mes "你的 Zeny 好像不夠喔。我可不能因為你而賠錢啊。";
 				close;
 			}
 			getitem 988,1; // Golden_Anvil
 			Zeny = Zeny-300000;
-			mes "[Christopher Guillenrow]";
-			mes "This one is the best among all me stuffs in me workshop! With this, ye can rule the Blacksmith world! Thank ye fer shopping at me workshop.  Feel free to come anytime, whenever ye need.";
+			mes "[克里斯多福]";
+			mes "這是我工坊裡所有東西中最好的！有了它，你就能稱霸鐵匠界！感謝你來光顧我的工坊。隨時歡迎你再來，需要時就來吧。";
 			close;
 		case 4:
-			mes "[Christopher Guillenrow]";
-			mes "Well, sorry. But I don't have anythin' harder' than the Golden Anvil.";
+			mes "[克里斯多福]";
+			mes "唉，抱歉。我這裡沒有比黃金鐵砧更好的了。";
 			next;
-			mes "[Christopher Guillenrow]";
-			mes "Me thinks 'Ringgel,' the Legendary Anvil Maker would have one. But, I don't think ye can find him, though he be somewhere in this world.";
+			mes "[克里斯多福]";
+			mes "我想傳說中的鐵砧大師「林格爾」應該有，不過就算他在這世界上某處，我想你也找不到他吧。";
 			close;
 		case 5:
-			mes "[Christopher Guillenrow]";
-			mes "Okay, feel free to come anytime, whenever ye need. Fare ye well.";
+			mes "[克里斯多福]";
+			mes "好吧，隨時歡迎你再來，需要時就來吧。一路順風。";
 			close;
 		}
 	case 2:
-		mes "[Christopher Guillenrow]";
-		mes "A respectable blacksmith uses fine tools. Ye can become one o'those with me Stuff. Choose anything ye want.";
+		mes "[克里斯多福]";
+		mes "受人尊敬的鐵匠都用好工具。用我的東西，你也能成為那樣的人。想要什麼就挑吧。";
 		next;
-		switch(select("Mini-Furnace - 150 zeny:Iron Hammer - 1000 zeny:Golden Hammer - 3000 zeny:Oridecon Hammer - 5000 zeny:Cancel.")) {
+		switch(select("攜帶用熔礦爐 - 150 Zeny:鋼鐵錘子 - 1000 Zeny:黃金錘子 - 3000 Zeny:神之金屬錘子 - 5000 Zeny:取消。")) {
 		case 1:
-			mes "[Christopher Guillenrow]";
-			mes "It's a much needed tool fer refining metal! So, How many do ye wish to buy? If ye want to quit, just type the number '0.'";
+			mes "[克里斯多福]";
+			mes "這可是精煉金屬必備的工具！那麼，你想買幾個？不想買的話，輸入數字 '0' 就行了。";
 			next;
 			while(1) {
 				input .@input;
 				if (.@input == 0) {
-					mes "[Christopher Guillenrow]";
-					mes "Aye, the deal is canceled. Fare ye well.";
+					mes "[克里斯多福]";
+					mes "好吧，交易取消了。一路順風。";
 					close;
 				}
 				else if ((.@input < 0) || (.@input > 500)) {
-					mes "[Christopher Guillenrow]";
-					mes "Ye can buy 500, er less.";
+					mes "[克里斯多福]";
+					mes "最多只能買 500 個喔。";
 					next;
 				}
 				else {
@@ -104,79 +104,79 @@ geffen_in,110,172,0	script	Christopher#1	63,{
 			}
 			.@sell = .@input * 150;
 			if (Zeny < .@sell) {
-				mes "[Christopher Guillenrow]";
-				mes "I don't think I can let ye have this with the zeny ye have. I can't lose me money because of ye.";
+				mes "[克里斯多福]";
+				mes "你的 Zeny 好像不夠喔。我可不能因為你而賠錢啊。";
 				close;
 			}
 			if (checkweight(612,.@input) == 0) {
-				mes "[Christopher Guillenrow]";
-				mes "Ye look like you don't got enough room in yer inventory. Put some stuff into your Kafra Storage, why don't ye?";
+				mes "[克里斯多福]";
+				mes "你的背包好像放不下了。何不把一些東西放進卡普拉倉庫呢？";
 				close;
 			}
 			getitem 612,.@input; // Portable_Furnace
 			Zeny = Zeny-.@sell;
-			mes "[Christopher Guillenrow]";
-			mes "Thank ye fer shopping at me workshop. Feel free to come anytime, whenever ye need.";
+			mes "[克里斯多福]";
+			mes "感謝你來光顧我的工坊。隨時歡迎你再來，需要時就來吧。";
 			close;
 		case 2:
 			if (Zeny < 1000) {
-				mes "[Christopher Guillenrow]";
-				mes "I don't think I can let ye have this with the zeny ye have. I can't lose me money because of ye.";
+				mes "[克里斯多福]";
+				mes "你的 Zeny 好像不夠喔。我可不能因為你而賠錢啊。";
 				close;
 			}
 			getitem 613,1; // Iron_Hammer
 			Zeny = Zeny-1000;
-			mes "[Christopher Guillenrow]";
-			mes "Thank ye fer shopping at me workshop. Feel free to come anytime, whenever ye need.";
+			mes "[克里斯多福]";
+			mes "感謝你來光顧我的工坊。隨時歡迎你再來，需要時就來吧。";
 			close;
 		case 3:
 			if (Zeny < 3000) {
-				mes "[Christopher Guillenrow]";
-				mes "I don't think I can let ye have this with the zeny ye have. I can't lose me money because of ye.";
+				mes "[克里斯多福]";
+				mes "你的 Zeny 好像不夠喔。我可不能因為你而賠錢啊。";
 				close;
 			}
 			getitem 614,1; // Golden_Hammer
 			Zeny = Zeny-3000;
-			mes "[Christopher Guillenrow]";
-			mes "Thank ye fer shopping at me workshop. Feel free to come anytime, whenever ye need.";
+			mes "[克里斯多福]";
+			mes "感謝你來光顧我的工坊。隨時歡迎你再來，需要時就來吧。";
 			close;
 		case 4:
 			if (Zeny < 5000) {
-				mes "[Christopher Guillenrow]";
-				mes "I don't think I can let ye have this with the zeny ye have. I can't lose me money because of ye.";
+				mes "[克里斯多福]";
+				mes "你的 Zeny 好像不夠喔。我可不能因為你而賠錢啊。";
 				close;
 			}
 			getitem 615,1; // Oridecon_Hammer
 			Zeny = Zeny-5000;
-			mes "[Christopher Guillenrow]";
-			mes "Thank ye fer shopping at me workshop. Feel free to come anytime, whenever ye need.";
+			mes "[克里斯多福]";
+			mes "感謝你來光顧我的工坊。隨時歡迎你再來，需要時就來吧。";
 			close;
 		case 5:
-			mes "[Christopher Guillenrow]";
-			mes "Feel free to come anytime, whenever ye need. Fare ye well.";
+			mes "[克里斯多福]";
+			mes "隨時歡迎你再來，需要時就來吧。一路順風。";
 			close;
 		}
 	case 3:
-		mes "[Christopher Guillenrow]";
-		mes "I prepare every Metal, and only the high quality ones o'course. Now then, which one do ye need?";
+		mes "[克里斯多福]";
+		mes "我備有各種金屬，當然都是高品質的。那麼，你需要哪一種？";
 		next;
-		switch(select("Phracon - 200z.:Emveretarcon - 1000z.:Cancel.")) {
+		switch(select("強化武器金屬-級數一 - 200z.:強化武器金屬-級數二 - 1000z.:取消。")) {
 		case 1:
-			mes "[Christopher Guillenrow]";
-			mes "So, How many do ye wish to buy? If ye dont want anything, just type the number as '0.'";
+			mes "[克里斯多福]";
+			mes "那麼，你想買幾個？不想買的話，輸入數字 '0' 就行了。";
 			next;
 			while(1) {
 				input .@input;
 				if (.@input == 0) {
-					mes "[Christopher Guillenrow]";
-					mes "Deal has";
-					mes "been canceled.";
-					mes "Fare ye well.";
+					mes "[克里斯多福]";
+					mes "交易已經";
+					mes "取消了。";
+					mes "一路順風。";
 					close;
 				}
 				else if ((.@input < 0) || (.@input > 500)) {
-					mes "[Christopher Guillenrow]";
-					mes "Ye can buy 500, er less.";
+					mes "[克里斯多福]";
+					mes "最多只能買 500 個喔。";
 					next;
 				}
 				else {
@@ -185,36 +185,36 @@ geffen_in,110,172,0	script	Christopher#1	63,{
 			}
 			.@sell = .@input * 200;
 			if (Zeny < .@sell) {
-				mes "[Christopher Guillenrow]";
-				mes "Ye don't have enough money. Ye know I can't sell this at a lower price... You know how the wifey nags about Zeny.";
+				mes "[克里斯多福]";
+				mes "你的錢不夠啊。你知道的，我不能賣得更便宜……你也知道我老婆有多愛念 Zeny 的。";
 				close;
 			}
 			if (checkweight(1010,.@input) == 0) {
-				mes "[Christopher Guillenrow]";
-				mes "Ye look like you don't have the room to carry anythin' new. Why don't ye put some things into Kafra Storage n' come back.";
+				mes "[克里斯多福]";
+				mes "你的背包好像裝不下新東西了。何不先把一些東西存進卡普拉倉庫，再回來呢？";
 				close;
 			}
 			getitem 1010,.@input; // Phracon
 			Zeny = Zeny-.@sell;
-			mes "[Christopher Guillenrow]";
-			mes "Thank ye fer shopping at me workshop. Feel free to come anytime, whenever ye need.";
+			mes "[克里斯多福]";
+			mes "感謝你來光顧我的工坊。隨時歡迎你再來，需要時就來吧。";
 			close;
 		case 2:
-			mes "[Christopher Guillenrow]";
-			mes "So, how many do ye wish to buy? If ye dont want anything at all, just type the number as '0.'";
+			mes "[克里斯多福]";
+			mes "那麼，你想買幾個？完全不想買的話，輸入數字 '0' 就行了。";
 			next;
 			while(1) {
 				input .@input;
 				if (.@input == 0) {
-					mes "[Christopher Guillenrow]";
-					mes "Deal has";
-					mes "been canceled.";
-					mes "Fare ye well.";
+					mes "[克里斯多福]";
+					mes "交易已經";
+					mes "取消了。";
+					mes "一路順風。";
 					close;
 				}
 				else if ((.@input < 0) || (.@input > 500)) {
-					mes "[Christopher Guillenrow]";
-					mes "Ye can buy 500, er less.";
+					mes "[克里斯多福]";
+					mes "最多只能買 500 個喔。";
 					next;
 				}
 				else {
@@ -223,71 +223,71 @@ geffen_in,110,172,0	script	Christopher#1	63,{
 			}
 			.@sell = .@input * 1000;
 			if (Zeny < .@sell) {
-				mes "[Christopher Guillenrow]";
-				mes "I don't think I can let ye have this with the zeny ye have. I can't lose me money because of ye.";
+				mes "[克里斯多福]";
+				mes "你的 Zeny 好像不夠喔。我可不能因為你而賠錢啊。";
 				close;
 			}
 			if (checkweight(1011,.@input) == 0) {
-				mes "[Christopher Guillenrow]";
-				mes "Me friend... Seems to me ye don't have Inventory space. Why doncha put some things into Kafra Storage first?";
+				mes "[克里斯多福]";
+				mes "老兄……看起來你的背包空間不夠了。何不先把東西放進卡普拉倉庫呢？";
 				close;
 			}
 			getitem 1011,.@input; // Emveretarcon
 			Zeny = Zeny-.@sell;
-			mes "[Christopher Guillenrow]";
-			mes "Thank ye fer shopping at me workshop. Feel free to come anytime, whenever ye need, whenever ye want.";
+			mes "[克里斯多福]";
+			mes "感謝你來光顧我的工坊。隨時歡迎你再來，需要時、想來時都行。";
 			close;
 		case 3:
-			mes "[Christopher Guillenrow]";
-			mes "Feel free to come anytime, whenever ye need. Fare ye well.";
+			mes "[克里斯多福]";
+			mes "隨時歡迎你再來，需要時就來吧。一路順風。";
 			close;
 		}
 	case 4:
-		mes "[Christopher Guillenrow]";
-		mes "I can purify yer Oridecon and Elunium. I make a refined Ore out of 5 o'each rough ones. Well... Which one do ye want to make?";
+		mes "[克里斯多福]";
+		mes "我可以幫你精煉神之金屬和鋁。每 5 個粗礦就能精煉出 1 個精煉礦。嗯……你想精煉哪一種？";
 		next;
-		switch(select("Make Oridecon:Make Elunium:Cancel.")) {
+		switch(select("精煉神之金屬:精煉鋁:取消。")) {
 		case 1:
 			if (countitem(756) < 5) {
-				mes "[Christopher Guillenrow]";
-				mes "I told ye, I need 5 o'the rough Oridecons fer one Oridecon.";
+				mes "[克里斯多福]";
+				mes "我跟你說過了，要 5 個粗糙的神之金屬才能換 1 個神之金屬。";
 				close;
 			}
 			else {
 				delitem 756,5;  //Oridecon_Stone
 				getitem 984,1; // Oridecon
-				mes "[Christopher Guillenrow]";
-				mes "Here's an Oridecon fer ye. Ye will be always welcome here, I'll be waitin' for ye.";
+				mes "[克里斯多福]";
+				mes "這是你的神之金屬。你隨時都歡迎再來，我會等你的。";
 				close;
 			}
 		case 2:
 			if (countitem(757) < 5) {
-				mes "[Christopher Guillenrow]";
-				mes "I told ye, I need 5 rough Eluniums fer one Elunium.";
+				mes "[克里斯多福]";
+				mes "我跟你說過了，要 5 個粗糙的鋁才能換 1 個鋁。";
 				close;
 			}
 			else {
 				delitem 757,5;  //Elunium_Stone
 				getitem 985,1; // Elunium
-				mes "[Christopher Guillenrow]";
-				mes "Arrr, here's yer Elunium. Yer business is always welcome here, so feel free to come again.";
+				mes "[克里斯多福]";
+				mes "啊，這是你的鋁。歡迎你隨時再來光顧。";
 				close;
 			}
 		case 3:
-			mes "[Christopher Guillenrow]";
-			mes "Feel free to come anytime, whenever ye need. Fare ye well.";
+			mes "[克里斯多福]";
+			mes "隨時歡迎你再來，需要時就來吧。一路順風。";
 			close;
 		}
 	case 5:
-		mes "[Christopher Guillenrow]";
-		mes "Feel free to come anytime, whenever ye need and whenever ye want. Fare ye well.";
+		mes "[克里斯多福]";
+		mes "隨時歡迎你再來，需要時、想來時都行。一路順風。";
 		close;
 	}
 }
 
 // Paul Spanner: Einbroch Blacksmith Supplier
 //============================================================
-ein_in01,38,29,0	script	Paul Spanner	63,{
+ein_in01,38,29,0	script	保羅·史潘納::Paul Spanner	63,{
 	if (checkweight(1201,1) == 0) {
 		mes "- 等一下！！ -";
 		mes "- 你目前攜帶的 -";
@@ -296,76 +296,76 @@ ein_in01,38,29,0	script	Paul Spanner	63,{
 		mes "- 等你減輕一些負重後。 -";
 		close;
 	}
-	mes "[Paul Spanner]";
-	mes "Welcome, my friend.";
-	mes "In my shop, you will find everything that you need in forging.";
-	mes "Tell me what you need.";
+	mes "[保羅·史潘納]";
+	mes "歡迎，朋友。";
+	mes "在我的店裡，你能找到鍛造所需的一切。";
+	mes "告訴我你需要什麼。";
 	next;
-	switch(select("Purchase Anvil.:Purchase Forging Items.:Purchase Metal.:Process Ores.:Quit.")) {
+	switch(select("購買鐵砧。:購買鍛造道具。:購買金屬。:加工礦石。:離開。")) {
 	case 1:
-		mes "[Paul Spanner]";
-		mes "Anvil is the most necessary item for Blacksmiths.";
-		mes "Since you will use an Anvil more than once, you'd better buy a nice one.";
+		mes "[保羅·史潘納]";
+		mes "鐵砧是鐵匠最不可或缺的道具。";
+		mes "既然你會用好幾次鐵砧，最好買個好一點的。";
 		next;
-		switch(select("Anvil - 30,000z.:Oridecon Anvil - 120,000z.:Golden Anvil - 300,000z.:I need a better anvil.:Cancel.")) {
+		switch(select("鐵砧 - 30,000z.:神之金屬鐵砧 - 120,000z.:黃金鐵砧 - 300,000z.:我需要更好的鐵砧。:取消。")) {
 		case 1:
 			if (Zeny < 30000) {
-				mes "[Paul Spanner]";
-				mes "With that much of money, you cannot even buy a toy anvil!";
+				mes "[保羅·史潘納]";
+				mes "就你這點錢，連個玩具鐵砧都買不起！";
 				close;
 			}
 			getitem 986,1; //Anvil
 			Zeny = Zeny-30000;
-			mes "[Paul Spanner]";
-			mes "It is the cheapest anvil which has the most basic ability.";
-			mes "Thank you for using my shop. If you need anything, just let me know.";
+			mes "[保羅·史潘納]";
+			mes "這是最便宜、性能最基本的鐵砧。";
+			mes "感謝光顧我的店。有任何需要，儘管告訴我。";
 			close;
 		case 2:
 			if (Zeny < 120000) {
-				mes "[Paul Spanner]";
-				mes "With that much of money, you cannot even buy a toy anvil!";
+				mes "[保羅·史潘納]";
+				mes "就你這點錢，連個玩具鐵砧都買不起！";
 				close;
 			}
 			getitem 987,1; //Oridecon_Anvil
 			Zeny = Zeny-120000;
-			mes "[Paul Spanner]";
-			mes "Ah, you have an eye for anvil. A Blacksmith needs an anvil at least as good as this.";
-			mes "Thank you for using my shop. If you need anything, just let me know.";
+			mes "[保羅·史潘納]";
+			mes "啊，你很有眼光嘛。鐵匠至少需要像這樣的鐵砧。";
+			mes "感謝光顧我的店。有任何需要，儘管告訴我。";
 			close;
 		case 3:
 			if (Zeny < 300000) {
-				mes "[Paul Spanner]";
-				mes "With that much of money, you cannot even buy a toy anvil!";
+				mes "[保羅·史潘納]";
+				mes "就你這點錢，連個玩具鐵砧都買不起！";
 				close;
 			}
 			getitem 988,1; //Golden_Anvil
 			Zeny = Zeny-300000;
-			mes "[Paul Spanner]";
-			mes "I can tell your ambition to become a good Blacksmith just by looking at you to choose this Golden Anvil!";
-			mes "This anvil will surely aid you in creating the best weapons.";
+			mes "[保羅·史潘納]";
+			mes "看你挑了這個黃金鐵砧，我就知道你想成為一名優秀鐵匠的雄心壯志了！";
+			mes "這個鐵砧一定能幫你打造出最好的武器。";
 			close;
 		case 4:
-			mes "[Paul Spanner]";
-			mes "I am sorry, but I do not sell better anvils than Golden Anvil.";
-			mes "Unless you find the legendary anvil of 'Linggell', I don't think that you could find better one than Golden Anvil in any other places.";
+			mes "[保羅·史潘納]";
+			mes "很抱歉，我這裡沒有比黃金鐵砧更好的鐵砧。";
+			mes "除非你找到傳說中「林格爾」的鐵砧，否則我想你在其他任何地方都找不到比黃金鐵砧更好的了。";
 			close;
 		case 5:
-			mes "[Paul Spanner]";
-			mes "If you need anything, just let me know.";
+			mes "[保羅·史潘納]";
+			mes "有任何需要，儘管告訴我。";
 			close;
 		}
 	case 2:
-		mes "[Paul Spanner]";
-		mes "You need various materials to process ores and to forge weapons.";
-		mes "I have everything that you need. Take a look.";
+		mes "[保羅·史潘納]";
+		mes "加工礦石和鍛造武器，需要各式各樣的材料。";
+		mes "你需要的東西我這裡都有，看看吧。";
 		next;
-		switch(select("Mini Furnace - 150z.:Iron Hammer - 1,000z.:Golden Hammer - 3,000z.:Oridecon Hammer - 5,000z.:Cancel.")) {
+		switch(select("攜帶用熔礦爐 - 150z.:鋼鐵錘子 - 1,000z.:黃金錘子 - 3,000z.:神之金屬錘子 - 5,000z.:取消。")) {
 		case 1:
 			.@item = 612;
 			.@item_cost = 150;
 			.@item_weight = 200;
-			mes "[Paul Spanner]";
-			mes "You definitely need this furnace to process ores!";
+			mes "[保羅·史潘納]";
+			mes "要加工礦石，你一定需要這個熔爐！";
 			next;
 			break;
 		case 2:
@@ -384,23 +384,23 @@ ein_in01,38,29,0	script	Paul Spanner	63,{
 			.@item_weight = 400;
 			break;
 		case 5:
-			mes "[Paul Spanner]";
-			mes "If you need anything, just let me know.";
+			mes "[保羅·史潘納]";
+			mes "有任何需要，儘管告訴我。";
 			close;
 		}
-		mes "[Paul Spanner]";
-		mes "So, how many do you need? If you want to cancel the trade, enter '0'.";
+		mes "[保羅·史潘納]";
+		mes "那麼，你需要幾個？如果要取消交易，輸入 '0'。";
 		next;
 		while(1) {
 			input .@input;
 			if (.@input == 0) {
-				mes "[Paul Spanner]";
-				mes "You have canceled the trade. If you need anything, just let me know.";
+				mes "[保羅·史潘納]";
+				mes "你已取消交易。有任何需要，儘管告訴我。";
 				close;
 			}
 			else if ((.@input < 0) || (.@input > 500)) {
-				mes "[Paul Spanner]";
-				mes "You can only buy 500 or less at a time.";
+				mes "[保羅·史潘納]";
+				mes "一次最多只能買 500 個。";
 				next;
 			}
 			else {
@@ -409,26 +409,26 @@ ein_in01,38,29,0	script	Paul Spanner	63,{
 		}
 		.@sell = .@input * .@item_cost;
 		if (Zeny < .@sell) {
-			mes "[Paul Spanner]";
-			mes "You don't have enough money. Sorry, I cannot sell them at a loss.";
+			mes "[保羅·史潘納]";
+			mes "你的錢不夠。抱歉，我不能賠本賣。";
 			close;
 		}
 		if (checkweight(.@item,.@input) == 0) {
-			mes "[Paul Spanner]";
-			mes "Hey, you look pale. Why don't you go lighten your weight first.";
+			mes "[保羅·史潘納]";
+			mes "嘿，你臉色很差喔。先去把身上的負重減輕一點吧。";
 			close;
 		}
 		Zeny = Zeny-.@sell;
 		getitem .@item,.@input;
-		mes "[Paul Spanner]";
-		mes "Thank you for using my shop. If you need anything, just let me know.";
+		mes "[保羅·史潘納]";
+		mes "感謝光顧我的店。有任何需要，儘管告訴我。";
 		close;
 	case 3:
-		mes "[Paul Spanner]";
-		mes "I have high quality metal.";
-		mes "So, which metal would you like to buy?";
+		mes "[保羅·史潘納]";
+		mes "我這裡有高品質的金屬。";
+		mes "那麼，你想買哪一種金屬？";
 		next;
-		switch(select("Phracon - 200z.:Emveretarcon - 1,000z.:Quit.")) {
+		switch(select("強化武器金屬-級數一 - 200z.:強化武器金屬-級數二 - 1,000z.:離開。")) {
 		case 1:
 			.@item = 1010;
 			.@item_price = 200;
@@ -438,23 +438,23 @@ ein_in01,38,29,0	script	Paul Spanner	63,{
 			.@item_price = 1000;
 			break;
 		case 3:
-			mes "[Paul Spanner]";
-			mes "If you need anything, just let me know.";
+			mes "[保羅·史潘納]";
+			mes "有任何需要，儘管告訴我。";
 			close;
 		}
-		mes "[Paul Spanner]";
-		mes "So, how many of them do you need? If you want to cancel the trade, enter '0'.";
+		mes "[保羅·史潘納]";
+		mes "那麼，你需要幾個？如果要取消交易，輸入 '0'。";
 		next;
 		while(1) {
 			input .@input;
 			if (.@input == 0) {
-				mes "[Paul Spanner]";
-				mes "The trade has been canceled. If you need anything, just let me know.";
+				mes "[保羅·史潘納]";
+				mes "交易已取消。有任何需要，儘管告訴我。";
 				close;
 			}
 			else if ((.@input < 0) || (.@input > 500)) {
-				mes "[Paul Spanner]";
-				mes "You can buy 500 or less at a time.";
+				mes "[保羅·史潘納]";
+				mes "一次最多只能買 500 個。";
 				next;
 			}
 			else {
@@ -463,71 +463,71 @@ ein_in01,38,29,0	script	Paul Spanner	63,{
 		}
 		.@sell = .@input * .@item_price;
 		if (Zeny < .@sell) {
-			mes "[Paul Spanner]";
-			mes "You don't have enough money. Sorry, I cannot sell them at a loss.";
+			mes "[保羅·史潘納]";
+			mes "你的錢不夠。抱歉，我不能賠本賣。";
 			close;
 		}
 		if (checkweight(.@item,.@input) == 0) {
-			mes "[Paul Spanner]";
-			mes "Hey, you look pale. Why don't you go lighten your weight first?";
+			mes "[保羅·史潘納]";
+			mes "嘿，你臉色很差喔。先去把身上的負重減輕一點吧？";
 			close;
 		}
 		getitem .@item,.@input;
 		Zeny = Zeny-.@sell;
-		mes "[Paul Spanner]";
-		mes "Thank you for using my shop. If you need anything, just let me know.";
+		mes "[保羅·史潘納]";
+		mes "感謝光顧我的店。有任何需要，儘管告訴我。";
 		close;
 	case 4:
-		mes "[Paul Spanner]";
-		mes "I can process Oridecon and Elunium for you.";
-		mes "You need 5 ores to process them into one Oridecon or Elunium.";
-		mes "So, which one do you want to process?";
-		switch(select("Oridecon:Elunium:Quit.")) {
+		mes "[保羅·史潘納]";
+		mes "我可以幫你加工神之金屬和鋁。";
+		mes "要把礦石加工成 1 個神之金屬或鋁，需要 5 個礦石。";
+		mes "那麼，你想加工哪一種？";
+		switch(select("神之金屬:鋁:離開。")) {
 		case 1:
 			if (countitem(756) < 5) {
-				mes "[Paul Spanner]";
-				mes "You need 5 ores to process them into one pure Oridecon.";
+				mes "[保羅·史潘納]";
+				mes "要把礦石加工成 1 個純淨的神之金屬，需要 5 個礦石。";
 				close;
 			}
 			else {
 				delitem 756,5; //Oridecon_Stone
 				getitem 984,1; //Oridecon
-				mes "[Paul Spanner]";
-				mes "There you go. Thank you for using my service.";
+				mes "[保羅·史潘納]";
+				mes "給你。感謝使用我的服務。";
 				close;
 			}
 		case 2:
 			if (countitem(757) < 5) {
-				mes "[Paul Spanner]";
-				mes "You need 5 ores to process them into one pure Elunium.";
+				mes "[保羅·史潘納]";
+				mes "要把礦石加工成 1 個純淨的鋁，需要 5 個礦石。";
 				close;
 			}
 			else {
 				delitem 757,5; //Elunium_Stone
 				getitem 985,1; //Elunium
-				mes "[Paul Spanner]";
-				mes "There you go. Thank you for using my service.";
+				mes "[保羅·史潘納]";
+				mes "給你。感謝使用我的服務。";
 				close;
 			}
 		case 3:
-			mes "[Paul Spanner]";
-			mes "If you need anything, just let me know.";
+			mes "[保羅·史潘納]";
+			mes "有任何需要，儘管告訴我。";
 			close;
 		}
 	case 5:
-		mes "[Paul Spanner]";
-		mes "If you need anything, just let me know.";
+		mes "[保羅·史潘納]";
+		mes "有任何需要，儘管告訴我。";
 		close;
 	}
 }
 
 // Weapon/Armor Refiners
 //============================================================
-prt_in,63,60,0	script	Hollgrehenn	4_M_03,{
+prt_in,63,60,0	script	霍爾格倫::Hollgrehenn	4_M_03,{
 	if( getbattleflag( "feature.refineui" ) ){
-		mes "[Hollgrehenn]";
-		mes "I'm a blacksmith who can refine weapons and equipment.";
-		mes "Do you have any items that you'd like to refine?";
+		mes "[霍爾格倫]";
+		mes "我是能精煉武器與裝備的鐵匠。";
+		mes "你有想精煉的道具嗎？";
 		close2;
 		refineui();
 		end;
@@ -537,12 +537,12 @@ prt_in,63,60,0	script	Hollgrehenn	4_M_03,{
 	}
 }
 
-morocc_in,73,38,6	script	Aragham	4W_M_03,{
+morocc_in,73,38,6	script	阿拉漢::Aragham	4W_M_03,{
 	if( getbattleflag( "feature.refineui" ) ){
-		mes "[Aragham]";
-		mes "De~ sert~ Blacksmith~";
-		mes "Aragham Ssaleh~ who can refine anything Ssaleh~";
-		mes "Let me see what you'd like to refine~";
+		mes "[阿拉漢]";
+		mes "沙～漠～鐵匠～";
+		mes "我是阿拉漢・薩勒～什麼都能精煉喔～薩勒～";
+		mes "讓我看看你想精煉什麼～";
 		close2;
 		refineui();
 		end;
@@ -552,10 +552,10 @@ morocc_in,73,38,6	script	Aragham	4W_M_03,{
 	}
 }
 
-payon,144,173,5	script	Antonio	4_M_ORIENT01,{
+payon,144,173,5	script	邪惡老公公::Antonio	4_M_ORIENT01,{
 	if( getbattleflag( "feature.refineui" ) ){
-		mes "[Antonio]";
-		mes "Stop nagging and get me the equipment you want to refine.";
+		mes "[邪惡老公公]";
+		mes "別囉嗦了，把你想精煉的裝備拿來給我。";
 		close2;
 		refineui();
 		end;
@@ -565,11 +565,11 @@ payon,144,173,5	script	Antonio	4_M_ORIENT01,{
 	}
 }
 
-alberta_in,28,58,0	script	Fredrik	4_M_03,{
+alberta_in,28,58,0	script	弗雷德里克::Fredrik	4_M_03,{
 	if( getbattleflag( "feature.refineui" ) ){
-		mes "[Fredrik Hermanthorn]";
-		mes "I am a blacksmith who can refine your weapon or equipment.";
-		mes "Do you have anything that you'd like to refine?";
+		mes "[弗雷德里克]";
+		mes "我是能精煉你的武器或裝備的鐵匠。";
+		mes "你有想精煉的東西嗎？";
 		close2;
 		refineui();
 		end;
@@ -579,10 +579,10 @@ alberta_in,28,58,0	script	Fredrik	4_M_03,{
 	}
 }
 
-yuno_in01,171,21,4	script	Lambert	4_M_ORIENT01,{
+yuno_in01,171,21,4	script	蘭伯特::Lambert	4_M_ORIENT01,{
 	if( getbattleflag( "feature.refineui" ) ){
-		mes "[Lambert]";
-		mes "Wel...come... This is... the best... smithy... in Juno.";
+		mes "[蘭伯特]";
+		mes "歡……迎……來到……朱諾……最好的……鐵匠鋪。";
 		close2;
 		refineui();
 		end;
@@ -592,11 +592,11 @@ yuno_in01,171,21,4	script	Lambert	4_M_ORIENT01,{
 	}
 }
 
-ein_in01,24,87,5	script	Manthasman	4_M_DWARF,{
+ein_in01,24,87,5	script	曼塔斯曼::Manthasman	4_M_DWARF,{
 	if( getbattleflag( "feature.refineui" ) ){
-		mes "[Manthasman Pruhag]";
-		mes "Hahaha, you already knew it. So you'd like to refine something?";
-		mes "Let's try something risky today!";
+		mes "[曼塔斯曼]";
+		mes "哈哈哈，你早就知道了吧。所以你想精煉什麼東西？";
+		mes "今天來點刺激的吧！";
 		close2;
 		refineui();
 		end;
@@ -606,12 +606,12 @@ ein_in01,24,87,5	script	Manthasman	4_M_DWARF,{
 	}
 }
 
-lhz_in02,282,20,7	script	Fulerr	4_M_LGTMAN,{
+lhz_in02,282,20,7	script	弗勒爾::Fulerr	4_M_LGTMAN,{
 	if( getbattleflag( "feature.refineui" ) ){
-		mes "[Fulerr]";
-		mes "Hehe... You wanna refine?";
-		mes "Hehe.. Consider it done..";
-		mes "Hehe....";
+		mes "[弗勒爾]";
+		mes "嘿嘿……你想精煉？";
+		mes "嘿嘿……包在我身上了……";
+		mes "嘿嘿……";
 		close2;
 		refineui();
 		end;
@@ -634,9 +634,9 @@ function	script	refinemain	{
 	.@npc_name$ = getarg(0);
 	.@features = getarg(1);
 	mes "["+ .@npc_name$ +"]";
-	mes "I'm the Armsmith.";
-	mes "I can refine all kinds of weapons, armor and equipment, so let me";
-	mes "know what you want me to refine.";
+	mes "我是武器鍛造師。";
+	mes "各種武器、防具和裝備我都能精煉，所以";
+	mes "告訴我你想讓我精煉什麼吧。";
 	next;
 
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
@@ -656,25 +656,25 @@ function	script	refinemain	{
 
 	if(!getequipisequiped(.@part)) { //custom check
 		mes "["+ .@npc_name$ +"]";
-		mes "You're not wearing";
-		mes "anything there that";
-		mes "I can refine.";
+		mes "你身上沒有穿戴";
+		mes "任何";
+		mes "我能精煉的東西。";
 		emotion ET_FRET;
 		close;
 	}
 	//Check if the item is refinable...
 	if(!getequipisenableref(.@part)) {
 		mes "["+ .@npc_name$ +"]";
-		mes "I don't think I can";
-		mes "refine this item at all...";
+		mes "我想我沒辦法";
+		mes "精煉這個道具了……";
 		close;
 	}
 	//Check to see if the items is already +10
 	if(getequiprefinerycnt(.@part) >= 10) {
 		mes "["+ .@npc_name$ +"]";
-		mes "I can't refine this";
-		mes "any more. This is as";
-		mes "refined as it gets!";
+		mes "這個我沒辦法再";
+		mes "精煉了。這已經";
+		mes "是精煉的極限了！";
 		close;
 	}
 	.@refineitemid = getequipid(.@part); // save id of the item
@@ -757,53 +757,53 @@ function	script	refinemain	{
 
 	if(.@features != 1) {
 		mes "["+ .@npc_name$ +"]";
-		mes "To refine this I need";
-		mes "one ^003366"+getitemname(.@material)+"^000000 and";
-		mes "a service fee of " + .@price + " Zeny。";
+		mes "要精煉這個，我需要";
+		mes "一個 ^003366"+getitemname(.@material)+"^000000 以及";
+		mes "手續費 " + .@price + " Zeny。";
 		mes "你真的要繼續嗎？";
 		next;
 		if(select("是:否") == 2){
 			mes "["+ .@npc_name$ +"]";
 			mes "是啊……";
-			mes "There's no need to";
-			mes "rush. Take your time.";
+			mes "不用";
+			mes "急，慢慢來就好。";
 			close;
 		}
 		if(getequippercentrefinery(.@part) < 100) {
 			mes "["+ .@npc_name$ +"]";
-			mes "Oh no! If I continue to";
-			mes "refine this, there's a risk it could";
+			mes "糟了！如果我繼續";
+			mes "精煉這個，它有可能會";
 			switch(.@material) {
 			case 985:
-				mes "be destroyed! That means that ^FF0000this equipment^000000, and ^FF0000any cards^000000 or special properties added to this armor, ^FF0000will be gone^000000.";
+				mes "被摧毀！這就表示 ^FF0000這件裝備^000000，以及這件防具上的 ^FF0000任何卡片^000000 或特殊屬性，^FF0000都會消失^000000。";
 				break;
 			default:
-				mes "be destroyed, and you'd ^FF0000lose the weapon^000000, any ^FF0000cards in the weapon^000000,";
-				mes "or any added special properties.";
+				mes "被摧毀，你就會 ^FF0000失去這把武器^000000，武器上的 ^FF0000任何卡片^000000，";
+				mes "以及所有附加的特殊屬性。";
 				break;
 			}
 			next;
 			mes "["+getarg(0)+"]";
-			mes "I can't make it any clearer.";
-			mes "Once a weapon is destroyed,";
-			mes "there's no getting it back.";
-			mes "You really have a chance to";
-			mes "^FF0000lose this weapon^000000 forever.";
-			mes "Do you still want to refine?";
+			mes "我已經說得不能再清楚了。";
+			mes "武器一旦被摧毀，";
+			mes "就再也拿不回來了。";
+			mes "你確實有可能";
+			mes "^FF0000永遠失去這把武器^000000。";
+			mes "你還要精煉嗎？";
 			next;
 			if(select("是:否") == 2){
 				mes "["+ .@npc_name$ +"]";
-				mes "I completely agree...";
-				mes "I might be a great refiner, but sometimes even I make mistakes.";
+				mes "我完全同意……";
+				mes "我或許是出色的精煉師，但有時候連我也會失手。";
 				close;
 			}
 		}
 		if((countitem(.@material) < 1) || (Zeny < .@price)) {
 			mes "["+ .@npc_name$ +"]";
-			mes "You don't seem to have";
-			mes "enough Zeny or "+getitemname(.@material)+"...";
-			mes "Go get some more. I'll be";
-			mes "here all day if you need me.";
+			mes "你好像沒有";
+			mes "足夠的 Zeny，或是 "+getitemname(.@material)+"...";
+			mes "去多準備一些吧，我會";
+			mes "整天都在這裡，需要時再來找我。";
 			close;
 		}
 		Zeny = Zeny-.@price;
@@ -826,19 +826,19 @@ function	script	refinemain	{
 			emotion (!rand(5))?ET_MONEY:ET_HUK;
 			.@lose = rand(1,3);
 			if (.@lose == 1) {
-				mes "OH! MY GOD!";
-				mes "Damn it! Not again!";
-				mes "I'm terribly sorry, but you know practice does make perfect.";
-				mes "Um, right? Heh heh...";
+				mes "天啊！我的天啊！";
+				mes "該死！又來了！";
+				mes "真的很抱歉，不過你也知道，熟能生巧嘛。";
+				mes "嗯，對吧？嘿嘿……";
 			} else if(.@lose == 2) {
-				mes "Nooooooo!";
-				mes "It broke!";
-				mes "I-I'm sorry!";
+				mes "不要啊啊啊！";
+				mes "壞掉了！";
+				mes "對、對不起！";
 			} else {
-				mes "Crap!";
-				mes "It couldn't take";
-				mes "much more tempering!";
-				mes "Sorry about this...";
+				mes "糟糕！";
+				mes "它承受不住";
+				mes "再多一次的淬鍊了！";
+				mes "很抱歉這樣……";
 			}
 			close;
 		}
@@ -847,22 +847,22 @@ function	script	refinemain	{
 		emotion ET_SMILE;
 		.@win = rand(1,3);
 		if (.@win == 1) {
-			mes "Perfect!";
-			mes "Heh heh!";
-			mes "Once again,";
-			mes "flawless work";
-			mes "from the master~";
+			mes "完美！";
+			mes "嘿嘿！";
+			mes "又一次，";
+			mes "完美無瑕的作品";
+			mes "出自大師之手～";
 		} else if(.@win == 2) {
-			mes "Success...!";
-			mes "Yet again, my amazing";
-			mes "talent truly dazzles";
-			mes "and shines today.";
+			mes "成功了……！";
+			mes "我那驚人的";
+			mes "才華又一次";
+			mes "在今天閃耀光芒。";
 		} else {
-			mes "Heh heh!";
-			mes "I'm all done.";
-			mes "No doubt, my work is";
-			mes "to your satisfaction.";
-			mes "Sheer, utter perfection~";
+			mes "嘿嘿！";
+			mes "全部完成了。";
+			mes "毫無疑問，我的作品";
+			mes "一定能讓你滿意。";
+			mes "完美至極～";
 		}
 		close;
 	}
@@ -870,9 +870,9 @@ function	script	refinemain	{
 // New Refining Functions ========================
 	if (.@refinerycnt < .@safe) {
 		mes "["+ .@npc_name$ +"]";
-		mes "I can refine this to the safe limit or a desired number of times. It's your choice.";
+		mes "我可以把它精煉到安全上限，或是精煉到你想要的次數。由你決定。";
 		next;
-		.@menu2 = select("To the safe limit, please.","I'll decide how many times.","I've changed my mind...");
+		.@menu2 = select("請精煉到安全上限。","我自己決定次數。","我改變主意了……");
 	} else
 		.@menu2 = 2;
 	switch(.@menu2){
@@ -882,23 +882,23 @@ function	script	refinemain	{
 	case 2:
 		next;
 		mes "["+ .@npc_name$ +"]";
-		mes "How many times would you like me to refine your item?";
+		mes "你想讓我把道具精煉幾次？";
 		next;
 		input .@refinecnt;
 		.@refinecheck = .@refinecnt + .@refinerycnt;
 		if (.@refinecnt < 1 || .@refinecheck > 10) {
 			mes "["+ .@npc_name$ +"]";
-			mes "I can't refine this item that many times.";
+			mes "這個道具我沒辦法精煉那麼多次。";
 			close;
 		}
 		if(.@refinecheck > .@safe) {
 			.@refinecheck = .@refinecheck - .@safe;
 			mes "["+ .@npc_name$ +"]";
-			mes "This will try to refine the equipment " + .@refinecheck + " times past the safe limit. Your equipment may be destroyed... is that ok?";
+			mes "這將嘗試把裝備精煉超過安全上限 " + .@refinecheck + " 次。你的裝備可能會被摧毀……這樣可以嗎？";
 			next;
 			if(select("是的……","不……") == 2){
 				mes "["+ .@npc_name$ +"]";
-				mes "You said so... So be it.";
+				mes "你都這麼說了……那就這樣吧。";
 				close;
 			}
 		}
@@ -906,21 +906,21 @@ function	script	refinemain	{
 	case 3:
 		next;
 		mes "["+ .@npc_name$ +"]";
-		mes "You said so... So be it.";
+		mes "你都這麼說了……那就這樣吧。";
 		close;
 	}
 	.@fullprice = .@price * .@refinecnt;
 	mes "["+ .@npc_name$ +"]";
-	mes "That will cost you " + .@refinecnt + " " + getitemname(.@material) + " 與 " + .@fullprice + " Zeny. Is that ok?";
+	mes "這將會花費你 " + .@refinecnt + " " + getitemname(.@material) + " 與 " + .@fullprice + " Zeny。這樣可以嗎？";
 	next;
 	if(select("是","不……") == 2){
 		mes "["+ .@npc_name$ +"]";
-		mes "You said so... So be it.";
+		mes "你都這麼說了……那就這樣吧。";
 		close;
 	}
 	if(countitem(.@material) < .@refinecnt || Zeny < .@fullprice) {
 		mes "["+ .@npc_name$ +"]";
-		mes "Is that all you got? Unfortunately I can't work for you at a lower price. Try putting yourself in my shoes.";
+		mes "你就只有這些嗎？很遺憾，我不能用更低的價格幫你做事。換位思考一下吧。";
 		close;
 	}
 	Zeny = Zeny - .@fullprice;
@@ -928,27 +928,27 @@ function	script	refinemain	{
 	while(.@refinecnt){
 		if (getequipisequiped(.@part) == 0) {
 			mes "["+ .@npc_name$ +"]";
-			mes "Look here... you don't have any items on...";
+			mes "喂……你身上根本沒有穿戴任何道具……";
 			close;
 		}
 		// anti-hack
 		if (callfunc("F_IsEquipIDHack", .@part, .@refineitemid) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3]) ||
 				callfunc("F_IsEquipRefineHack", .@part, .@refinerycnt) || (.@menu2 == 1 && getequippercentrefinery(.@part) < 100)) {
 			mes "["+ .@npc_name$ +"]";
-			mes "Clang... No, but did you imagine I could be so stupid?!";
-			mes "You changed it...";
-			mes "Get out before I stun you with my Hammer!!";
+			mes "鏘……不，你竟然以為我有這麼笨嗎？！";
+			mes "你改了……";
+			mes "在我用錘子把你打暈之前，給我滾出去！！";
 			close;
 		} 
-		mes "Clang, clang!!!";
+		mes "鏘！鏘！鏘！";
 		if(.@menu2 == 2 && getequippercentrefinery(.@part) <= rand(100)) {
 			failedrefitem .@part;
 			emotion ET_HUK;
 			mes "["+ .@npc_name$ +"]";
-			mes "WAHHHH!!! I'm so sorry... I warned you this could happen...";
+			mes "哇啊啊啊！！我真的很抱歉……我早就警告過你會發生這種事了……";
 			.@refinecnt = .@refinecnt - 1;
 			if(.@refinecnt == 0) close;
-			mes "Here's the unused Zeny and materials back...";
+			mes "這是沒用到的 Zeny 和材料，還給你……";
 			getitem .@material,.@refinecnt;
 			.@fullprice = .@refinecnt * .@price;
 			Zeny = Zeny + .@fullprice;
@@ -961,37 +961,37 @@ function	script	refinemain	{
 		next;
 	}
 	mes "["+ .@npc_name$ +"]";
-	mes "All finished... Come again soon.";
+	mes "全部完成了……歡迎再來。";
 	close;
 }
 
 // Material Salesmen
 //============================================================
-prt_in,56,68,5	script	Vurewell	86,{
+prt_in,56,68,5	script	瓦雷韋爾::Vurewell	86,{
 	callfunc "phramain","Vurewell";
 	end;
 }
-payon,145,178,3	script	Begnahd	88,{
+payon,145,178,3	script	貝格納::Begnahd	88,{
 	callfunc "phramain","Begnahd";
 	end;
 }
-morocc_in,63,32,6	script	Sade	99,{
+morocc_in,63,32,6	script	薩德::Sade	99,{
 	callfunc "phramain","Sade";
 	end;
 }
-alberta_in,13,71,3	script	Kahlamanlith	86,{
+alberta_in,13,71,3	script	卡拉曼利斯::Kahlamanlith	86,{
 	callfunc "phramain","Kahlamanlith";
 	end;
 }
-yuno_in01,171,27,4	script	Dilemma	88,{
+yuno_in01,171,27,4	script	迪萊瑪::Dilemma	88,{
 	callfunc "phramain","Dilemma";
 	end;
 }
-ein_in01,15,87,3	script	Tirehaus	86,{
+ein_in01,15,87,3	script	提雷豪斯::Tirehaus	86,{
 	callfunc "phramain","Tirehaus";
 	end;
 }
-lhz_in02,278,24,3	script	Krugg	86,{
+lhz_in02,278,24,3	script	克魯格::Krugg	86,{
 	callfunc "phramain","Krugg";
 	end;
 }
@@ -1009,13 +1009,13 @@ function	script	phramain	{
 	}
 	.@npc_name$ = getarg(0);
 	mes "["+ .@npc_name$ +"]";
-	mes "I sell 2 kinds of Metal";
-	mes "for tempering weaponry.";
-	mes "I have ^007777Phracon^000000 for Level 1";
-	mes "Weapons, and ^007777Emveretarcon^000000";
-	mes "for Level 2 Weapons.";
+	mes "我賣兩種金屬";
+	mes "用來淬鍊武器。";
+	mes "我有 ^007777強化武器金屬-級數一^000000，用於一級";
+	mes "武器，還有 ^007777強化武器金屬-級數二^000000";
+	mes "用於二級武器。";
 	next;
-	switch(select("Phracon - 200 Zeny:Emveretarcon - 1000 Zeny:Ask about other Metals")) {
+	switch(select("強化武器金屬-級數一 - 200 Zeny:強化武器金屬-級數二 - 1000 Zeny:詢問其他金屬")) {
 	case 1:
 		.@material = 1010;
 		.@price = 200;
@@ -1026,29 +1026,29 @@ function	script	phramain	{
 		break;
 	case 3:
 		mes "["+ .@npc_name$ +"]";
-		mes "Other metals?";
-		mes "Well, you'll need special metals to upgrade higher level weapons, or any kind of armor. But you know, Oridecon and Elunium is really";
-		mes "hard to just find...";
+		mes "其他金屬？";
+		mes "嗯，要強化高等級的武器或任何防具，你會需要特殊的金屬。不過你也知道，神之金屬和鋁真的";
+		mes "很難找到……";
 		close;
 	}
 	mes "["+ .@npc_name$ +"]";
-	mes "So how many do you wish to buy?";
-	mes "If you don't want any, please enter the number, '0.'";
+	mes "那麼，你想買幾個？";
+	mes "如果不想買，請輸入數字 '0'。";
 	next;
 	while(1) {
 		input .@input;
 		if (.@input == 0) {
 			mes "["+ .@npc_name$ +"]";
-			mes "The deal has";
-			mes "been cancelled.";
+			mes "交易已經";
+			mes "取消了。";
 			close;
 		}
 		else if (.@input < 0 || .@input > 500) {
 			mes "["+ .@npc_name$ +"]";
-			mes "Alright, you can";
-			mes "puchase up to 500.";
-			mes "No more than that,";
-			mes "got it? Good.";
+			mes "好吧，你最多";
+			mes "只能購買 500 個。";
+			mes "不能再多了，";
+			mes "聽清楚了嗎？很好。";
 			next;
 		}
 		else {
@@ -1058,22 +1058,22 @@ function	script	phramain	{
 	.@sell = .@input * .@price;
 	if (Zeny < .@sell) {
 		mes "["+ .@npc_name$ +"]";
-		mes "Err...";
+		mes "呃……";
 		mes "你沒有";
-		mes "enough Zeny to buy";
-		mes ""+ .@input +" of them.";
+		mes "足夠的 Zeny 來買";
+		mes ""+ .@input +" 個。";
 		close;
 	}
 	if (checkweight(.@material,.@input) == 0) {
 		mes "["+ .@npc_name$ +"]";
 		mes "嗯……";
-		mes "I can't give you anything if you don't have enough room in your inventory. Why don't you put your extra things in Kafra Storage and try again?";
+		mes "如果你的背包空間不夠，我就沒辦法給你東西。何不把多餘的東西存進卡普拉倉庫，再試一次呢？";
 		close;
 	}
 	getitem .@material,.@input;
 	Zeny = Zeny-.@sell;
 	mes "["+ .@npc_name$ +"]";
-	mes "Here you are!";
+	mes "給你！";
 	mes "感謝您";
 	mes "您的惠顧。";
 	close;
@@ -1081,31 +1081,31 @@ function	script	phramain	{
 
 // Ori/Elu Refiners
 //============================================================
-prt_in,63,69,3	script	Dietrich	84,{
+prt_in,63,69,3	script	迪特里希::Dietrich	84,{
 	callfunc "orimain","Dietrich";
 	end;
 }
-payon,137,178,5	script	Hakhim	88,{
+payon,137,178,5	script	哈基姆::Hakhim	88,{
 	callfunc "orimain","Hakhim";
 	end;
 }
-morocc_in,72,32,6	script	Abdula	99,{
+morocc_in,72,32,6	script	阿布杜拉::Abdula	99,{
 	callfunc "orimain","Abdula";
 	end;
 }
-alberta_in,21,63,5	script	Xenophon	84,{
+alberta_in,21,63,5	script	色諾芬::Xenophon	84,{
 	callfunc "orimain","Xenophon Zolotas";
 	end;
 }
-yuno_in01,164,27,4	script	Delight	88,{
+yuno_in01,164,27,4	script	迪萊特::Delight	88,{
 	callfunc "orimain","Delight";
 	end;
 }
-ein_in01,18,82,6	script	Matestein	84,{
+ein_in01,18,82,6	script	馬特斯坦::Matestein	84,{
 	callfunc "orimain","Matestein";
 	end;
 }
-lhz_in02,281,24,5	script	Fruel	84,{
+lhz_in02,281,24,5	script	弗魯爾::Fruel	84,{
 	callfunc "orimain","Fruel";
 	end;
 }
@@ -1123,27 +1123,27 @@ function	script	orimain	{
 	}
 	.@npc_name$ = getarg(0);
 	mes "["+ .@npc_name$ +"]";
-	mes "I can purify your";
-	mes "Rough Oridecons or";
-	mes "Rough Eluniums. I'll need";
-	mes "5 Rough Stones to make";
-	mes "1 pure one for you.";
+	mes "我可以精煉你的";
+	mes "粗糙的神之金屬或";
+	mes "粗糙的鋁。我需要";
+	mes "5 個粗糙的石頭，才能製成";
+	mes "1 個純淨的給你。";
 	next;
-	switch(select("Make Oridecon:Make Elunium:Ask about Enchanted Stones")) {
+	switch(select("精煉神之金屬:精煉鋁:詢問附魔石")) {
 	case 1:
 		if (countitem(756) > 4) {
 			delitem 756,5;  //Oridecon_Stone
 			getitem 984,1; // Oridecon
 			mes "["+ .@npc_name$ +"]";
-			mes "Here's your Oridecon.";
-			mes "You're welcome to come";
-			mes "back whenever you want.";
+			mes "這是你的神之金屬。";
+			mes "歡迎你";
+			mes "隨時再來。";
 			close;
 		}
 		else {
 			mes "["+ .@npc_name$ +"]";
 			mes "你在開玩笑吧？";
-			mes "I just told you that I need 5 Rough Oridecons to make a pure Oridecon.";
+			mes "我剛才就跟你說了，要 5 個粗糙的神之金屬才能製成純淨的神之金屬。";
 			close;
 		}
 	case 2:
@@ -1151,31 +1151,31 @@ function	script	orimain	{
 			delitem 757,5;  //Elunium_Stone
 			getitem 985,1; // Elunium
 			mes "["+ .@npc_name$ +"]";
-			mes "Here's your Elunium.";
-			mes "You're welcome to come";
-			mes "back whenever you want.";
+			mes "這是你的鋁。";
+			mes "歡迎你";
+			mes "隨時再來。";
 			close;
 		}
 		else {
 			mes "["+ .@npc_name$ +"]";
 			mes "你在開玩笑吧？";
-			mes "I just told you that I need 5 Rough Eluniums to make a pure Elunium.";
+			mes "我剛才就跟你說了，要 5 個粗糙的鋁才能製成純淨的鋁。";
 			close;
 		}
 	case 3:
 		mes "["+ .@npc_name$ +"]";
-		mes "Enchanted Stones...?";
-		mes "I've been a stonesmith for 20 years, so I've heard a lot about them. Supposedly, there are";
-		mes "four different kinds.";
+		mes "附魔石……？";
+		mes "我當了二十年的石匠，聽過很多關於它們的傳聞。據說，總共有";
+		mes "四種不同的。";
 		next;
 		mes "["+ .@npc_name$ +"]";
-		mes "Each Enchanted Stone possesses one of the following elemental properties: Earth, Wind, Water and Fire.";
+		mes "每一種附魔石都具有以下其中一種屬性:地、風、水、火。";
 		next;
 		mes "["+ .@npc_name$ +"]";
-		mes "If someone combines a Enchanted Stone with a weapon while smithing, that weapon will possess the same property as the Stone.";
+		mes "如果在鍛造時把附魔石與武器結合，那把武器就會擁有與該石頭相同的屬性。";
 		next;
 		mes "["+ .@npc_name$ +"]";
-		mes "Needless to say, you need to have some smithing skill to produce this kind of elemental weapon.";
+		mes "不用說，要製作這種屬性武器，你必須具備一定的鍛造技術。";
 		close;
 	}
 }
@@ -1259,12 +1259,12 @@ function	script	repairmain	{
 	.@npc_name$ = getarg(0);
 	mes "["+ .@npc_name$ +"]";
 	mes "嘿，你好！";
-	mes "Do you want me";
-	mes "to repair any items?";
-	mes "You can count on me";
-	mes "for item repairs!";
+	mes "你要我";
+	mes "幫你修理道具嗎？";
+	mes "交給我吧，";
+	mes "道具修理我最在行！";
 	next;
-	switch(select("Actually, I do have some items...:None at the moment.")) {
+	switch(select("其實，我確實有些道具……:目前沒有。")) {
 	case 1:
 		.@checkitem = 1;
 		while (1) {
@@ -1276,30 +1276,30 @@ function	script	repairmain	{
 		.@checkitem = .@checkitem-1;
 		if (!.@checkitem) {
 			mes "["+ .@npc_name$ +"]";
-			mes "Oh wow, this is incredible!";
-			mes "You must take very good care of your things. None of your items are damaged!";
+			mes "哇，這太不可思議了！";
+			mes "你一定很愛惜你的東西。你的道具一件都沒有損壞！";
 			next;
 			mes "["+ .@npc_name$ +"]";
-			mes "If everyone is like you, I'm going to be unemployed!! Haha~!";
+			mes "如果大家都像你一樣，我就要失業了！！哈哈～！";
 			close;
 		}
 		mes "["+ .@npc_name$ +"]";
 		mes "嗯……";
 		mes "我看看……";
-		mes "Out of all your items,";
-		mes "" + .@checkitem + " are damaged.";
-		mes "Would you like to repair?";
+		mes "你的道具中，";
+		mes "" + .@checkitem + " 件已經損壞。";
+		mes "要修理嗎？";
 		next;
 		.@totalcost = .@repairprice*.@checkitem;
 		mes "["+ .@npc_name$ +"]";
-		mes "Each repair costs " + .@repairprice + " Zeny. So to repair all your damaged items would cost " + .@totalcost + " Zeny! Would you like to repair the items?";
+		mes "每次修理要花 " + .@repairprice + " Zeny。修理所有損壞的道具總共要花 " + .@totalcost + " Zeny！要修理這些道具嗎？";
 		next;
 		switch(select("是:否")) {
 		case 1:
 			if (Zeny < .@totalcost) {
 				mes "["+ .@npc_name$ +"]";
-				mes "Whoa whoa...";
-				mes "Check your wallet before you receive the repair bill! I can't repair anything because you don't have enough Zeny.";
+				mes "哇哇……";
+				mes "收修理費之前，先看看你的錢包吧！你的 Zeny 不夠，我什麼都修不了。";
 				close;
 			}
 			.@checkitem2 = 1;
@@ -1317,26 +1317,26 @@ function	script	repairmain	{
 					.@checkitem = .@checkitem-1;
 				}
 				mes "["+ .@npc_name$ +"]";
-				mes "Okay! All done. Now, try to be a little more careful. Items have lives too you know.";
+				mes "好了！全部修好了。以後小心一點，道具也是有生命的，你知道的。";
 				close;
 			}
 			else {
 				mes "["+ .@npc_name$ +"]";
-				mes "Mmm? Something's wrong. Wait... Equip the items you need to repair and then come back to me.";
+				mes "嗯？有點不對勁。等等……先把需要修理的道具裝備上，再回來找我。";
 				close;
 			}
 		case 2:
 			mes "["+ .@npc_name$ +"]";
-			mes "Well, it's no skin off my nose, but it's not good to leave items damaged. You should get them repaired as soon as possible!";
+			mes "好吧，這跟我沒關係，不過道具壞著不修可不好。你最好盡快去修理！";
 			close;
 		}
 	case 2:
 		mes "["+ .@npc_name$ +"]";
-		mes "Hohoho...";
+		mes "呵呵呵……";
 		mes "你沒有";
-		mes "any business with me";
-		mes "if you don't have any";
-		mes "items to repair.";
+		mes "有什麼事要找我嗎？";
+		mes "如果你沒有任何";
+		mes "需要修理的道具，就別來打擾我了。";
 		close;
 	}
 }

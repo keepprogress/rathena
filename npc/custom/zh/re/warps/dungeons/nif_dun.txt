@@ -4,12 +4,12 @@
 //= 1.0 First version. [Capuche]
 //============================================================
 
-niflheim,149,124,0	script	nifla_nifdun01a	WARPNPC,1,1,{
+niflheim,149,124,0	script	nifla_nifdun01a::nifla_nifdun01a	WARPNPC,1,1,{
 	end;
 OnTouch:
 	if (isbegin_quest(8640) == 0) {
-		npctalk "Angry Gatekeeper: How are you adventurer? Go in? Do you want to go in? Kick!", "Angry Gatekeeper#lv200", bc_self;
-		npctalk "Funny Gatekeeper's Friend: Awesome!", "Funny Gatekeeper's Friend#lv20", bc_self;
+		npctalk "憤怒的守門人: 冒險者，你還好嗎？要進去嗎？想進去嗎？踢飛你！", "憤怒的守門人#lv200", bc_self;
+		npctalk "搞笑守門人的朋友: 太棒了！", "搞笑守門人的朋友#lv20", bc_self;
 		end;
 	}
 	warp "nif_dun01",145,85;
@@ -18,12 +18,12 @@ OnTouch:
 
 nif_dun01,145,82,0	warp2	nifdun01a_nifla	1,1,niflheim,146,122
 	
-nif_dun01,146,36,0	script	nifdun01a_nifdun02a	WARPNPC,1,1,{
+nif_dun01,146,36,0	script	nifdun01a_nifdun02a::nifdun01a_nifdun02a	WARPNPC,1,1,{
 	end;
 OnTouch:
 	if (BaseLevel < 240) {
-		npctalk "Helpful Gatekeeper: Hey, look at how you look! How can you come all the way here!", "Helpful Gatekeeper#240", bc_self;
-		npctalk "Silent Gatekeeper: ...means lack of training.", "Silent Gatekeeper#240", bc_self;
+		npctalk "熱心守門人: 嘿，看看你這副模樣！怎麼會一路走到這裡來！", "熱心守門人#240", bc_self;
+		npctalk "沉默的守門人: ……代表訓練不足。", "沉默的守門人#240", bc_self;
 		end;
 	}
 	warp "nif_dun02",149,23;

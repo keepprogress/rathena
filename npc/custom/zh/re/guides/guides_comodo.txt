@@ -15,19 +15,19 @@
 //= 1.2 Navigation system update. [Euphy]
 //============================================================ 
 
-comodo,322,178,4	script	Comodo Guide#01comodo::GuideComodo	700,{
-	mes "[Comodo Guide]";
-	mes "Welcome to ^8B4513Comodo^000000,";
-	mes "the Beach Town of the Rune-Midgarts Kingdom.";
+comodo,322,178,4	script	科摩多嚮導#01comodo::GuideComodo	700,{
+	mes "[科摩多嚮導]";
+	mes "歡迎來到^8B4513科摩多^000000，";
+	mes "符文米德加茲王國的海濱小鎮。";
 	mes "你需要我帶你認識這座城鎮嗎？";
 	F_Navi("[Comodo Guide]");
 	next;
 	while (1) {
-		switch(select("[ Main Facilities ]:[ Merchants & Helpers ]:Remove Marks from Mini-Map:Cancel:About ^8B4513Comodo^000000")) {
+		switch(select("[ 主要設施 ]:[ 商人與助手 ]:移除小地圖標記:取消:關於^8B4513科摩多^000000")) {
 		case 1:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ Tavern ]:[ Casino ]:[ Weapon & Armor Shop ]:[ Tool Shop ]:[ Campsite ]:[ Souvenir Vendor ]:[ East Cave Mao ]:[ West Cave Karu ]:[ North Cave Ruanda ]:[ Hula Dance Stage ]:[ Kafra Co. Western Branch ]:Previous Menu")) {
+				switch(select("[ 酒館 ]:[ 賭場 ]:[ 武器與防具店 ]:[ 工具商店 ]:[ 營地 ]:[ 紀念品商人 ]:[ 東洞穴的毛 ]:[ 西洞穴的卡魯 ]:[ 北洞穴的魯安達 ]:[ 草裙舞舞台 ]:[ 卡普拉公司西部分店 ]:上一頁")) {
 				case 1:
 					callsub L_Mark, F_Navi("Tavern","comodo,161,315","^FF0000");
 					viewpoint 1,166,298,0,0xFF0000;
@@ -79,9 +79,9 @@ comodo,322,178,4	script	Comodo Guide#01comodo::GuideComodo	700,{
 					next;
 					break;
 				case 11:
-					mes "[Comodo Guide]";
+					mes "[科摩多嚮導]";
 					mes "我會在小地圖上標示";
-					mes F_Navi("Kafra Corporation Western Branch","comodo,131,195","^DB7093");
+					mes F_Navi("卡普拉公司西部分店","comodo,131,195","^DB7093");
 					mes "你的小地圖上標示它的位置。";
 					mes "你想看看其他地點嗎？";
 					viewpoint 1,136,202,10,0xDB7093;
@@ -96,16 +96,16 @@ comodo,322,178,4	script	Comodo Guide#01comodo::GuideComodo	700,{
 		case 2:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ Chief's House ]:[ Bor Robin ]:[ Kafra Employee ]:[ Roaming Bard ]:Previous Menu")) {
+				switch(select("[ 酋長之家 ]:[ 博爾·羅賓 ]:[ 卡普拉職員 ]:[ 遊吟詩人 ]:上一頁")) {
 				case 1:
 					callsub L_Mark, F_Navi("Chief's House","comodo,115,290","^6495ED");
 					viewpoint 1,114,294,11,0x6495ED;
 					next;
 					break;
 				case 2:
-					mes "[Comodo Guide]";
-					mes F_Navi("Bor Robin","comodo,193,151","^228B22");
-					mes "helps adventurers to become ^228B22Dancers^000000.";
+					mes "[科摩多嚮導]";
+					mes F_Navi("博爾·羅賓","comodo,193,151","^228B22");
+					mes "協助冒險者成為^228B22舞者^000000。";
 					mes "你想看看其他地點嗎？";
 					viewpoint 1,193,151,12,0x228B22;
 					next;
@@ -116,9 +116,9 @@ comodo,322,178,4	script	Comodo Guide#01comodo::GuideComodo	700,{
 					next;
 					break;
 				case 4:
-					mes "[Comodo Guide]";
-					mes "此外 "+F_Navi("Roaming Bard","comodo,226,123","^DB7093");
-					mes "helps adventurers to become ^DB7093Bards^000000.";
+					mes "[科摩多嚮導]";
+					mes "此外 "+F_Navi("遊吟詩人","comodo,226,123","^DB7093");
+					mes "協助冒險者成為^DB7093吟遊詩人^000000。";
 					mes "你想看看其他地點嗎？";
 					viewpoint 1,226,123,14,0xDB7093;
 					next;
@@ -130,7 +130,7 @@ comodo,322,178,4	script	Comodo Guide#01comodo::GuideComodo	700,{
 			}
 			break;
 		case 3:
-			mes "[Comodo Guide]";
+			mes "[科摩多嚮導]";
 			mes "好的，我會移除你小地圖上的所有標記。";
 			mes "還有什麼我能為你效勞的嗎？";
 			viewpoint 2,166,298,0,0xFFFFFF;
@@ -151,19 +151,19 @@ comodo,322,178,4	script	Comodo Guide#01comodo::GuideComodo	700,{
 			next;
 			break;
 		case 4:
-			mes "[Comodo Guide]";
+			mes "[科摩多嚮導]";
 			mes "祝你旅途愉快。";
 			close;
 		case 5:
-			mes "[Comodo Guide]";
-			mes "^8B4513Comodo^000000 is";
-			mes "located inside a cave";
-			mes "and can never be reached by natural sunlight.";
+			mes "[科摩多嚮導]";
+			mes "^8B4513科摩多^000000 是";
+			mes "位於一座洞穴內";
+			mes "而且陽光永遠照不到。";
 			next;
-			mes "[Comodo Guide]";
-			mes "The villagers of ^8B4513Comodo^000000";
-			mes "have overcome their poor natural surroundings";
-			mes "to create a popular tourist site.";
+			mes "[科摩多嚮導]";
+			mes "^8B4513科摩多^000000的村民";
+			mes "克服了不利的自然環境，";
+			mes "打造出一個受歡迎的觀光景點。";
 			mes "還有什麼我能為你效勞的嗎？";
 			next;
 			break;
@@ -171,13 +171,13 @@ comodo,322,178,4	script	Comodo Guide#01comodo::GuideComodo	700,{
 	}
 	end;
 L_Mark:
-	mes "[Comodo Guide]";
-	mes "Let me mark the location of";
-	mes "the "+getarg(0);
+	mes "[科摩多嚮導]";
+	mes "讓我標記出";
+	mes "需先學會 "+getarg(0);
 	mes "你的小地圖上標示它的位置。";
 	mes "你想看看其他地點嗎？";
 	return;
 }
-comodo,181,347,4	duplicate(GuideComodo)	Comodo Guide#02comodo	700
-comodo,197,149,3	duplicate(GuideComodo)	Comodo Guide#03comodo	700
-comodo,37,219,4	duplicate(GuideComodo)	Comodo Guide#04comodo	700
+comodo,181,347,4	duplicate(GuideComodo)	科摩多嚮導#02comodo::Comodo Guide#02comodo	700
+comodo,197,149,3	duplicate(GuideComodo)	科摩多嚮導#03comodo::Comodo Guide#03comodo	700
+comodo,37,219,4	duplicate(GuideComodo)	科摩多嚮導#04comodo::Comodo Guide#04comodo	700

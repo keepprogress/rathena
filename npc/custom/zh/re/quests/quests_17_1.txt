@@ -792,13 +792,13 @@ ein_fild03,268,207,0	duplicate(#171_EINF03_EV_0)	#171_EINF03_EV_1	HIDDEN_WARP_NP
 ein_fild03,218,266,0	duplicate(#171_EINF03_EV_0)	#171_EINF03_EV_2	HIDDEN_WARP_NPC,3,3
 
 //= Lighthalzen
-lighthalzen,56,270,3	script	Republic Guard#171_light	4_M_EIN_SOLDIER,{
+lighthalzen,56,270,3	script	共和國衛兵#171_light::Republic Guard#171_light	4_M_EIN_SOLDIER,{
 	if (isbegin_quest(7861) == 0) {
 		npctalk "It is prohibited to go further, please step back.","",bc_self;
 		end;
 	}
 	if (isbegin_quest(7861) == 1) {
-		mes "[Republic Guard]";
+		mes "[共和國衛兵]";
 		mes "I've been contacted by Tes.";
 		mes "Don't worry I belong to the Secret Wing.";
 		mes "Aas and Est went to look around this area.";
@@ -807,7 +807,7 @@ lighthalzen,56,270,3	script	Republic Guard#171_light	4_M_EIN_SOLDIER,{
 		cloakoffnpc "Aas#171_light",getcharid(0);
 		cloakoffnpc "Emily#171_light",getcharid(0);
 		npctalk "Est : Now we can enter.","Commander Est#171_light",bc_self;
-		mes "[Republic Guard]";
+		mes "[共和國衛兵]";
 		mes "Oh, there they are.";
 		next;
 		cutin "ep162_est01",2;
@@ -852,7 +852,7 @@ lighthalzen,56,270,3	script	Republic Guard#171_light	4_M_EIN_SOLDIER,{
 		close3;
 	}
 	if (isbegin_quest(7862) == 1) {
-		mes "[Republic Guard]";
+		mes "[共和國衛兵]";
 		mes "The entrance is secured by Oscar who is standing up ahead the front gate.";
 		mes "Me and the Rebellions will stay outside. Aas will be inside.";
 		mes "祝你好運！";
@@ -893,7 +893,7 @@ lighthalzen,55,278,3	script	Rekenber Guard Oscar#171_light	4_M_LGTGUARD,{
 		mes "[Oscar]";
 		mes "I'm not too sure about the locks on the inside, so I don't know yet.";
 		mes "Let's secure 'Regenschirm' and find out.";
-		mes "Are you ready?";
+		mes "你準備好了嗎？";
 		next;
 		.@md_name$ = "Regenschirm";
 		.@party_id = getcharid(1);
@@ -1638,7 +1638,7 @@ lhz_in01,107,137,5	script	站務人員#171_lhzin::Staff#171_lhzin	4_F_01,{
 		sleep2 2000;
 		npctalk "I will work here... I'm new... where should I go...","Pat#171_lhzin",bc_self;
 		sleep2 2000;
-		npctalk "What is your name?","",bc_self;
+		npctalk "你叫什麼名字？","",bc_self;
 		sleep2 2000;
 		npctalk "My name is Patrick Kaufmann.","Pat#171_lhzin",bc_self;
 		sleep2 2000;
@@ -1796,7 +1796,7 @@ lhz_in01,163,258,5	script	站務人員#171_lhzin2::Staff#171_lhzin2	4_M_EINMAN,{
 		next;
 		cutin "ep171_kaya01",0;
 		mes "[Kaya]";
-		mes "Why?";
+		mes "為什麼？";
 		next;
 		cutin "",255;
 		mes "[站務人員]";
@@ -1955,7 +1955,7 @@ lhz_in01,80,210,5	script	Secretary#171_lhzin	4_M_RUSMAN1,{
 		next;
 		cutin "",255;
 		mes "[Gray]";
-		mes "Yes, sir.";
+		mes "是的，長官。";
 		unittalk getcharid(3),strcharinfo(0) + " : Are you sure keeping secrets is a good idea?",bc_self;
 		sleep2 2000;
 		npctalk "Shush~ You're new at this. Give me some time to work this out.","Lazy#171_lhzin3",bc_self;
@@ -2527,7 +2527,7 @@ lighthalzen,335,261,1	script	Aas#171_lhz2	4_EP17_AS,{
 }
 
 lighthalzen,331,262,5	duplicate(dummy_cloaked_npc)	帕特#171_lhz::Pat#171_lhz	4_M_REPAIR
-lighthalzen,332,260,1	duplicate(dummy_cloaked_npc)	Recruiter#171_lhz	4_F_HUWOMAN
+lighthalzen,332,260,1	duplicate(dummy_cloaked_npc)	招募員#171_lhz::Recruiter#171_lhz	4_F_HUWOMAN
 lighthalzen,331,263,7	duplicate(dummy_cloaked_npc)	Pat's Father#171_lhz	4_M_MIDDLE1
 lighthalzen,333,264,7	duplicate(dummy_cloaked_npc)	Pat's Mother#171_lhz	4_F_EINWOMAN
 lighthalzen,104,163,5	duplicate(dummy_cloaked_npc)	Kaya Tos#171_lhz3	4_EP17_KAYA
@@ -2705,7 +2705,7 @@ pub_cat,93,105,3	script	Philofontes#171_cat	4_M_PHILOFONTES,{
 	if (isbegin_quest(7862) == 2 && isbegin_quest(7864) == 0) {
 		cutin "ep16_tes01",2;
 		mes "[Tes]";
-		mes "You're back.";
+		mes "你回來了。";
 		mes "Est came back first and I wasn't sure something had happened to you.";
 		next;
 		mes "[Tes]";
@@ -2735,7 +2735,7 @@ pub_cat,93,105,3	script	Philofontes#171_cat	4_M_PHILOFONTES,{
 		mes "Tsk, that Schlein.";
 		next;
 		mes "[Tes]";
-		mes "I understand.";
+		mes "我懂了。";
 		mes "I will analyze this along with the other materials.";
 		getexp 200000,200000;
 		completequest 7863;
@@ -3122,7 +3122,7 @@ pub_cat,163,102,3	script	Middle-Aged Man#171_cat	4_EP17_KAYA,{
 		cutin "ep16_tes01",1;
 		mes "[Tes]";
 		mes "I agree, we have to act quickly though.";
-		mes "So " + strcharinfo(0) + ",";
+		mes "所以 " + strcharinfo(0) + ",";
 		mes "If possible, could you join Est and do some planning?";
 		next;
 		mes "[Tes]";
@@ -3450,7 +3450,7 @@ pub_cat,105,58,3	script	Lazy#171_cat2	4_M_LAZY,{
 		mes "[Lazy]";
 		mes "Because he's a Rekenber official, it should be easy for him to find this information right?";
 		next;
-		select("Right.");
+		select("對。");
 		mes "[Lazy]";
 		mes "But, well, I need you to check this out and cooperate with the investigation. You know how I get when I get thrown paper from the head office.";
 		npctalk "I'm do disappointed. What if the adventurer gets on a battle?","",bc_self;
@@ -3645,7 +3645,7 @@ pub_cat,105,58,3	script	Lazy#171_cat2	4_M_LAZY,{
 		next;
 		cutin "16lei_03",2;
 		mes "[Lazy]";
-		mes "Why?";
+		mes "為什麼？";
 		next;
 		cutin "ep171_kaya01",0;
 		mes "[Kaya]";
@@ -3908,7 +3908,7 @@ sp_rudus,184,360,5	script	Elena Volkova#171_rudus	4_F_ELENA,{
 		mes "...";
 		mes "It's a joke, I think I need more time to properly investigate this area.";
 		next;
-		select("Is there any problem?");
+		select("有什麼問題嗎？");
 		mes "[Elena Volkova]";
 		mes "They said barriers were built because the factory closed.";
 		mes "Something doesn't feel right here though.";
@@ -4195,7 +4195,7 @@ OnInit:
 	end;
 }
 
-sp_rudus,27,300,0	script	Small Hole#171_rudus	4_ENERGY_BLUE,{
+sp_rudus,27,300,0	script	小洞穴#171_rudus::Small Hole#171_rudus	4_ENERGY_BLUE,{
 	if (isbegin_quest(7853) == 1 && isbegin_quest(7856) == 0) {
 		mes "There is a small enough hole just barely enough for a child to go through.";
 		mes "It seems like an animal has dug this hole and made a little cave.";
@@ -5090,12 +5090,12 @@ sp_cor,166,81,7	script	Tes#171_rvs_1	4_M_PHILOFONTES,{
 		171_worker_talk(87,.@old$);
 		next;
 		cutin "ep171_elyumina02",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Who gave you permission to approach my staff? You see them? Just try putting one hand on them, and I'll blow you up.";
 		171_worker_talk(88,.@moc$);
 		next;
 		cutin "ep171_elyumina04",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "No matter how stupid you are, it's always better to have your hands on your wrists, right?";
 		171_worker_talk(89,.@man$);
 		next;
@@ -5105,7 +5105,7 @@ sp_cor,166,81,7	script	Tes#171_rvs_1	4_M_PHILOFONTES,{
 		171_worker_talk(90,.@poor$);
 		next;
 		cutin "ep171_elyumina03",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "You all look like skeletons, why aren't you hiding? You will all disappear!";
 		next;
 		specialeffect EF_TETRA_FIRE,AREA,"Elyumina#171_rvs";
@@ -5120,7 +5120,7 @@ sp_cor,166,81,7	script	Tes#171_rvs_1	4_M_PHILOFONTES,{
 		171_worker_talk(95,.@cook$);
 		next;
 		cutin "ep171_elyumina02",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "You know what! If you have soybeans and rice, which one do you choose?";
 		mes "If you're in a hurry, you'll just mix them up!";
 		specialeffect EF_DESPERADO,AREA,"Fool 2#171_rvs_2";
@@ -5187,8 +5187,8 @@ sp_cor,166,81,7	script	Tes#171_rvs_1	4_M_PHILOFONTES,{
 		specialeffect EF_RAPIDSHOWER,AREA,"Tommy#171_rvs_2";
 		specialeffect EF_SUI_EXPLOSION,AREA,"Elyumina#171_rvs";
 		cutin "ep171_elyumina02",2;
-		mes "[Elyumina]";
-		mes "Argh...";
+		mes "[艾露米娜]";
+		mes "啊啊……";
 		171_worker_talk(105,.@cook$);
 		171_worker_talk(106,.@man$);
 		next;
@@ -5198,7 +5198,7 @@ sp_cor,166,81,7	script	Tes#171_rvs_1	4_M_PHILOFONTES,{
 		specialeffect EF_RAPIDSHOWER,AREA,"Tommy#171_rvs_2";
 		specialeffect EF_RAPIDSHOWER,AREA,"Advance Squad#171_rvs_1";
 		specialeffect EF_RAPIDSHOWER,AREA,"Advance Squad#171_rvs_2";
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "What, what? Come on? Why is our attack.. not working...?";
 		171_worker_talk(107,.@cook$);
 		171_worker_talk(108,.@old$);
@@ -5214,7 +5214,7 @@ sp_cor,166,81,7	script	Tes#171_rvs_1	4_M_PHILOFONTES,{
 		specialeffect EF_RAPIDSHOWER,AREA,"Tommy#171_rvs_2";
 		specialeffect EF_HITDARK,AREA,"Fool 1#171_rvs_1";
 		cutin "ep171_elyumina02",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Why? Why are they not budging? What about this?";
 		next;
 		specialeffect EF_DESPERADO,AREA,"Fool 2#171_rvs_2";
@@ -5223,7 +5223,7 @@ sp_cor,166,81,7	script	Tes#171_rvs_1	4_M_PHILOFONTES,{
 		mes "Oh, I've been hit! We should escape!";
 		next;
 		cutin "ep171_elyumina02",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Why are they doing so well? Did we pick the wrong test subjects?";
 		next;
 		specialeffect EF_RAPIDSHOWER,AREA,"Advance Squad#171_rvs_1";
@@ -5235,7 +5235,7 @@ sp_cor,166,81,7	script	Tes#171_rvs_1	4_M_PHILOFONTES,{
 		mes "These people are professionals!";
 		next;
 		cutin "ep171_elyumina02",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "You are professionals too!";
 		next;
 		specialeffect EF_DESPERADO,AREA,"Fool 2#171_rvs_2";
@@ -5248,7 +5248,7 @@ sp_cor,166,81,7	script	Tes#171_rvs_1	4_M_PHILOFONTES,{
 		specialeffect EF_RAPIDSHOWER,AREA,"Tommy#171_rvs_2";
 		specialeffect EF_HITDARK,AREA,"Fool 1#171_rvs_1";
 		cutin "ep171_elyumina02",2;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "No! Let me go! Now! I can't believe we can't avoid that kind of weapon! Let me go! Let me go!!";
 		next;
 		specialeffect EF_TELEPORTATION2,AREA,"Elyumina#171_rvs";
@@ -5457,7 +5457,7 @@ sp_cor,163,73,5	duplicate(dummy_cloaked_npc)	工人#171_rvs_7::Worker#171_rvs_7	
 sp_cor,162,72,5	duplicate(dummy_cloaked_npc)	工人#171_rvs_8::Worker#171_rvs_8	4_M_03
 sp_cor,167,85,1	duplicate(dummy_cloaked_npc)	工人#171_rvs_9::Worker#171_rvs_9	4_M_DIEMAN
 sp_cor,164,82,5	duplicate(dummy_cloaked_npc)	工人#171_rvs_10::Worker#171_rvs_10	4_M_DSTMANDEAD
-sp_cor,165,86,5	duplicate(dummy_cloaked_npc)	Elyumina#171_rvs	4_EP17_ELYUMINA
+sp_cor,165,86,5	duplicate(dummy_cloaked_npc)	艾露米娜#171_rvs::Elyumina#171_rvs	4_EP17_ELYUMINA
 sp_cor,163,87,5	duplicate(dummy_cloaked_npc)	Fool 1#171_rvs_1	3454
 sp_cor,166,88,5	duplicate(dummy_cloaked_npc)	Fool 2#171_rvs_2	3454
 sp_cor,159,68,7	duplicate(dummy_cloaked_npc)	Tes#171_rvs_2	4_M_PHILOFONTES
@@ -5516,7 +5516,7 @@ sp_cor,122,141,5	script	Tes#171_cor_0	4_M_PHILOFONTES,{
 		next;
 		mes "[工人]";
 		mes "Do you still trust the researchers? Is that what you're saying?";
-		npctalk "Really?","Worker#171_rvs_11",bc_self;
+		npctalk "真的嗎？","Worker#171_rvs_11",bc_self;
 		next;
 		mes "[工人]";
 		mes "No that's not it, I just can't believe it. Ugh, I'm so tired...";
@@ -6171,7 +6171,7 @@ sp_cor,110,130,3	script	Elena Volkova#rm171_0	4_F_ELENA,{
 			next;
 			cutin "",255;
 			cloakoffnpcself( "Rebellion#rm171_0" );
-			mes "[Rebellion]";
+			mes "[反抗軍]";
 			mes "Captain, there was another explosion near the facilities!";
 			mes "That researcher named ^0000CDElyumina^000000 must have done it. We'll go after him right away!";
 			next;
@@ -6531,7 +6531,7 @@ sp_cor,136,210,7	script	Goni#rm171_1	4_M_GONY,{
 		cutin "ep171_elyumina02",0;
 		npctalk "Lazy: Oooh, so demanding! I like that about you, too.", "Lazy#rm171_1", bc_self;
 		emotion 6, getnpcid(0,"Elyumina#rm171_1");
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Gah, you fools! Stop manhandling me! My body's precious! I'm more valuable than all of you muscleheads combined!";
 		next;
 		cutin "16lei_01",2;
@@ -6590,7 +6590,7 @@ sp_cor,135,216,5	script	Rookie#rm171_1	4_M_ROOKIE,{
 		next;
 		cutin "ep171_elyumina02",0;
 		emotion 7, getnpcid(0,"Elyumina#rm171_1");
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Stuff it! What about the damage you've done on me?";
 		mes "You invaded my lab and tried to steal my research results!";
 		next;
@@ -6608,7 +6608,7 @@ sp_cor,135,216,5	script	Rookie#rm171_1	4_M_ROOKIE,{
 		mes "Only the part that's legal, of course. But we'll make sure you can keep it. So, tell us everything you know about this place and your coworkers.";
 		next;
 		cutin "ep171_elyumina03",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "My coworkers? I don't care about those lunatics.";
 		mes "They're not my coworkers. I only used them for my research.";
 		next;
@@ -6618,26 +6618,26 @@ sp_cor,135,216,5	script	Rookie#rm171_1	4_M_ROOKIE,{
 		mes "Who are you? What kind of research did you need them for?";
 		next;
 		cutin "ep171_elyumina01",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Don't you know who I am? I'm Schwarzwald's--no, the continent's greatest machine learning researcher. I bet you all have seen my serviceroids.";
 		next;
 		cutin "16loo_03",2;
 		mes "[Rookie]";
 		mes "... Nope.";
 		npctalk "Have you?", "Elena Volkova#rm171_2", bc_self;
-		npctalk "Nope.", "Lazy#rm171_1", bc_self;
+		npctalk "不了。", "Lazy#rm171_1", bc_self;
 		next;
 		cutin "ep171_elyumina01",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Hmpf, you probably didn't even know they were serviceroids.";
 		mes "I was so close to transplanting human minds into my machines.";
 		next;
 		cutin "ep171_elyumina04",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "I could have given you my beautiful machine bodies, so you could forever preserve the knowledge that you all have worked so hard to accumulate.";
 		next;
 		cutin "ep171_elyumina03",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Do you get it? I was doing something greater than any one of you fools can imagine.";
 		mes "My research is nothing compared to the childish works of Vor, Wer, whatever their names were.";
 		npctalk "Who says I need a machine body?", "Elena Volkova#rm171_2", bc_self;
@@ -6649,7 +6649,7 @@ sp_cor,135,216,5	script	Rookie#rm171_1	4_M_ROOKIE,{
 		mes "Vor-who? Vorseff? Or Werner? Do you know them?";
 		next;
 		cutin "ep171_elyumina03",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Well, I know both names, but they don't interest me. Both of them risked their lives for stupid things.";
 		next;
 		cutin "16loo_01",2;
@@ -6674,7 +6674,7 @@ sp_cor,135,216,5	script	Rookie#rm171_1	4_M_ROOKIE,{
 		mes "You'll have to pay for what you did, of course, but eventually, you'll be able to do what you want.";
 		next;
 		cutin "ep171_elyumina03",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "...";
 		next;
 		cutin "16loo_01",2;
@@ -6683,7 +6683,7 @@ sp_cor,135,216,5	script	Rookie#rm171_1	4_M_ROOKIE,{
 		mes "I hope you'll make the right decision.";
 		next;
 		cutin "ep171_elyumina03",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "... I really don't know what the others did in their rooms.";
 		mes "...Can I still keep the bargain?";
 		next;
@@ -6849,7 +6849,7 @@ sp_cor,255,285,1	script	Rookie#rm171_2	4_M_ROOKIE,{
 		next;
 		cutin "ep171_elyumina03",0;
 		emotion 23, getnpcid(0,"Elyumina#rm171_3");
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Why are you looking at me like that? I told you nothing but the truth. That really is the entrance.";
 		mes "Why would I lie in a situation like that? I'm not that stupid, you know.";
 		next;
@@ -7063,7 +7063,7 @@ sp_cor,132,144,3	script	工人#171_rvs_11::Worker#171_rvs_11	4_F_05,{
 		next;
 		mes "[工人]";
 		mes "Where's the facility department here?";
-		npctalk "Don't you know?","",bc_self;
+		npctalk "你不知道嗎？","",bc_self;
 		next;
 		mes "[工人]";
 		mes "I knew before I came here!";
@@ -7080,7 +7080,7 @@ sp_cor,132,144,3	script	工人#171_rvs_11::Worker#171_rvs_11	4_F_05,{
 		next;
 		mes "[工人]";
 		mes "When I think about it, his eyes were so beautiful.";
-		npctalk "That's right.","Worker#171_rvs_13",bc_self;
+		npctalk "沒錯。","Worker#171_rvs_13",bc_self;
 		next;
 		mes "[工人]";
 		mes "Anyway, if you're looking for someone in particular, you should ^0000FFask the researchers.^000000 Most of them already ran away, but a few stayed behind.";
@@ -7595,7 +7595,7 @@ sp_cor,163,56,4	script	Est#171_ocp	4_F_ESTLOVELOY,{
 		next;
 		cutin "ep162_est01",2;
 		mes "[Est]";
-		mes "Are you ready?";
+		mes "你準備好了嗎？";
 		next;
 		.@party_id = getcharid(1);
 		if (!.@party_id) {
@@ -7658,7 +7658,7 @@ sp_cor,160,55,5	script	Operation Officer#171_ocp	4_M_ILYA,{
 	}
 	next;
 	mes "[Operation Officer]";
-	mes "Are you ready?";
+	mes "你準備好了嗎？";
 	next;
 	.@party_id = getcharid(1);
 	if (!.@party_id) {
@@ -7691,17 +7691,17 @@ OnInit:
 }
 
 //	Daily Quest NPC
-sp_cor,113,130,3	script	Rebellion#rm171_8	4_M_REBELLION3,{
+sp_cor,113,130,3	script	反抗軍#rm171_8::Rebellion#rm171_8	4_M_REBELLION3,{
 	if (isbegin_quest(16360) < 2) {
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "Ah, Adventurer! Long time, no see! Didn't you miss me?";
 		next;
 		select( "Do you know me?", "不……");
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "Ah, you're so cold, Adventurer. Don't be like that.";
 		mes "I'm on watch duty here, to keep strangers away.";
 		next;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "But since you're not a stranger, I'll let you pass.";
 		mes "You've got weapons and armor that match your class, and you're wearing warm clothes. Pass!";
 		close;
@@ -7712,21 +7712,21 @@ sp_cor,113,130,3	script	Rebellion#rm171_8	4_M_REBELLION3,{
 		break;
 	case 0:
 	case 1:
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "Mina said you can come back later. It's too early for his lovely children to be up and about.";
 		next;
 		cloakoffnpcself( "Elyumina#rm171_4" );
 		cutin "ep171_elyumina03",0;
-		npctalk "Elyumina: S-stop calling me that ridiculous name!", "Elyumina#rm171_4", bc_self;
-		mes "[Elyumina]";
+		npctalk "Elyumina: S-stop calling me that ridiculous name!", "艾露米娜#rm171_4", bc_self;
+		mes "[艾露米娜]";
 		mes "... The security devices and traps that summon monsters are still in low power mode. Leave them alone, or they can get easily overheated.";
 		next;
 		cutin "",255;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "Please come back after dawn when Mina's children wake up and get ready for another energetic day!";
 		next;
 		cutin "ep171_elyumina02",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "They'll be fully charged after dawn, and ready to operate again. Come back, then.";
 		npctalk "(This mercenary seems to know how to handle that troublemaker.)", "", bc_self;
 		close3;
@@ -7735,91 +7735,91 @@ sp_cor,113,130,3	script	Rebellion#rm171_8	4_M_REBELLION3,{
 		break;
 	}
 	if (isbegin_quest(16361) < 2) {
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "Oh, Adventurer! Long time, no see! Actually, I'd like to ask you something. It's about Mina.";
 		npctalk "Mina?", "", bc_self;
 		next;
 		cutin "ep171_elyumina03",0;
 		cloakoffnpcself( "Elyumina#rm171_4" );
-		npctalk "Elyumina: S-stop calling me that!", "Elyumina#rm171_4", bc_self;
+		npctalk "Elyumina: S-stop calling me that!", "艾露米娜#rm171_4", bc_self;
 		npctalk "You?", "", bc_self;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Just let me explain. When you came after me, my machines that used to protect me--";
 		next;
 		cutin "",255;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "No, we didn't catch Mina's machines. They've been in hiding, sleeping.";
 		next;
 		cutin "ep171_elyumina02",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "It's Elyumina's! Elyumina's machines! And traps! ... They go stealth in low power mode in case of emergency. And it's time that they show back up and start rampaging again.";
 		next;
 		cutin "",255;
 		npctalk "... They're yours. Just turn them off.", "", bc_self;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "Well, the problem is, Mina--";
 		next;
 		cutin "ep171_elyumina02",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "It's Elyumina, and I can't do it! They're equipped with a high-tech machine learning module.";
 		mes "Since that day, they used data about you, their most powerful enemy, and they've used it to grow rapidly.";
 		next;
 		cutin "ep171_elyumina03",0;
 		npctalk "Rebellion: So, now they're refusing to listen to Mina, and--", "Rebellion#rm171_8", bc_self;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "I can't control them! ... This is completely unexpected.";
 		mes "The only solution I can think of is to exhaust their batteries until they stop working.";
 		next;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "And the only person who can do it is you. You beat the EL1_A17T. Of course, I'll go with you, but I'll only be there to collect new data from them.";
 		next;
 		cutin "",255;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "I'd love to go too, but Mina won't let me. I wonder if it's because he cares.";
 		next;
 		cutin "ep171_elyumina03",0;
-		npctalk "Elyumina: No. NO!", "Elyumina#rm171_4", bc_self;
-		mes "[Elyumina]";
+		npctalk "Elyumina: No. NO!", "艾露米娜#rm171_4", bc_self;
+		mes "[艾露米娜]";
 		mes "Anyway, I don't think you can handle them by yourself.";
 		mes "That hooligan who detained me that day also won't be enough. Come back in a party with other adventurers, will you?";
 		next;
 		cutin "",255;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "Then, we've at least got four, including me and Mina--";
 		next;
 		cutin "ep171_elyumina02",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "I'll give you more details when we're inside. Please, say yes!";
 		mes "Please! Before he gives me a coronary!";
 		setquest 16361;
 		completequest 16361;
 	} else {
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "It's time Mina's children are up and about, Adventurer.";
 		mes "Do you want to play with them and tuck them back into bed while everyone else waits for you to finish?";
 		next;
 		cloakoffnpcself( "Elyumina#rm171_4" );
 		cutin "ep171_elyumina03",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "... Soon, my security devices and traps will come out of their low power mode and become mobile again.";
 		next;
 		cutin "ep171_elyumina02",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "Do you want to lock down Cor, exhaust them, and collect data again?";
 		mes "Please say yes. Let me follow you. I can't wait to get away from this guy.";
 	}
 	next;
 	cutin "",255;
-	mes "[Rebellion]";
+	mes "[反抗軍]";
 	mes "Mm, I'm sorry to hear that. Adventurer, if you'd like to join the operation, then as the leader of the party, please select Ready.";
 	next;
-	mes "[Rebellion]";
+	mes "[反抗軍]";
 	mes "And after the Memorial dungeon is created and all your party members select Enter, you can select Enter to start the operation.";
 	next;
 	mes "^ff0000Please note that you can't clear this dungeon if you try to tame monsters or perform any other irrelevant monster-related activities.^000000";
 	next;
 	if (getcharid(1) < 1) {
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "Mm? Mina doesn't think you can do this alone. Please come back in a party, Adventurer.";
 		close;
 	}
@@ -7828,12 +7828,12 @@ sp_cor,113,130,3	script	Rebellion#rm171_8	4_M_REBELLION3,{
 	switch (select( .@menu$, "進入", "取消" )) {
 	case 1:
 		if (instance_create("Cor Memorial") < 1) {
-			mes "[Rebellion]";
+			mes "[反抗軍]";
 			mes "There seems to be a problem. Your request has failed. Please try again later. If the problem persists, please contact the Operation Team.";
 			close;
 		}
 		npctalk "Hah hah. He's so cute.", "Rebellion#rm171_8", bc_self;
-		mes "[Rebellion]";
+		mes "[反抗軍]";
 		mes "Alright, if MD is activated, talk to me again and select ^0000CDEnter^000000. Our operation will begin as soon as you enter.";
 		close;
 	case 2:
@@ -7845,22 +7845,22 @@ sp_cor,113,130,3	script	Rebellion#rm171_8	4_M_REBELLION3,{
 			mapannounce "sp_cor", strcharinfo(0) + " in the " + getpartyname(getcharid(1)) + " party has launched the operation to subdue EL1_A17T.", bc_map, 0x00FF99;
 			end;
 		case IE_NOMEMBER:
-			mes "[Rebellion]";
+			mes "[反抗軍]";
 			mes "The dungeon is not yet created. Let me check again.";
 			close;
 		case IE_NOINSTANCE:
-			mes "[Rebellion]";
+			mes "[反抗軍]";
 			mes "Your party leader hasn't created the dungeon. Let me check again.";
 			close;
 		case IE_OTHER:
-			mes "[Rebellion]";
+			mes "[反抗軍]";
 			mes "An unknown error has occurred. Let's check it again.";
 			close;
 		}
 		end;
 	case 3:
 		cutin "ep171_elyumina02",0;
-		mes "[Elyumina]";
+		mes "[艾露米娜]";
 		mes "What are you doing? Come on, let's go. Please? I don't want to stay even a moment longer with that jerk who keeps calling me by that terrible nickname.";
 		close3;
 	}
@@ -8292,7 +8292,7 @@ OnInit:
 
 // Mood-setting NPC
 // Initial Conversation
-sp_cor,111,127,1	script	Rebellion#rm171_0	4_M_ILYA,{
+sp_cor,111,127,1	script	反抗軍#rm171_0::Rebellion#rm171_0	4_M_ILYA,{
 	end;
 OnInit:
 	for (.@i = 0; .@i < 7; .@i++)
@@ -8301,42 +8301,42 @@ OnInit:
 }
 
 // Before entering MD
-sp_cor,177,165,1	script	Rebellion#rm171_1	4_M_REBELLION3,{
+sp_cor,177,165,1	script	反抗軍#rm171_1::Rebellion#rm171_1	4_M_REBELLION3,{
 	npctalk "Well, we're flattered, but... we are not that special... We're always the elite. Heh!", "", bc_self;
 	end;
 }
 
-sp_cor,180,165,1	script	Rebellion#rm171_2	4_M_GONY,{
+sp_cor,180,165,1	script	反抗軍#rm171_2::Rebellion#rm171_2	4_M_GONY,{
 	npctalk "...", "", bc_self;
 	end;
 }
 
-sp_cor,183,165,1	script	Rebellion#rm171_3	4_F_REBELLION3,{
+sp_cor,183,165,1	script	反抗軍#rm171_3::Rebellion#rm171_3	4_F_REBELLION3,{
 	npctalk "You've picked us because you know you can walk all over us, didn't you? Because we're easy prey.", "", bc_self;
 	end;
 }
 
-sp_cor,177,163,1	script	Rebellion#rm171_4	4_F_ANYA,{
+sp_cor,177,163,1	script	反抗軍#rm171_4::Rebellion#rm171_4	4_F_ANYA,{
 	npctalk "Yay! Finally, I've got my chance to shine!", "", bc_self;
 	end;
 }
 
-sp_cor,180,163,1	script	Rebellion#rm171_5	4_M_ILYA,{
+sp_cor,180,163,1	script	反抗軍#rm171_5::Rebellion#rm171_5	4_M_ILYA,{
 	npctalk "Yes, we can finally show the world what we can do, sister!", "", bc_self;
 	end;
 }
 
-sp_cor,183,163,1	script	Rebellion#rm171_6	4_F_REBELLION2,{
+sp_cor,183,163,1	script	反抗軍#rm171_6::Rebellion#rm171_6	4_F_REBELLION2,{
 	npctalk "Stop embarrassing us. You're only saying that because you have an audience this time!", "", bc_self;
 	end;
 }
 
-sp_cor,183,170,3	script	Rebellion#rm171_9	4_M_REBELLION3,{
-	mes "[Rebellion]";
+sp_cor,183,170,3	script	反抗軍#rm171_9::Rebellion#rm171_9	4_M_REBELLION3,{
+	mes "[反抗軍]";
 	mes "Do you need help? If you have business with the <NAVI>[Rebellion]<INFO>sp_cor,127,140,0,101,0</INFO></NAVI>, then head southwest.";
 	mes "In the southeast, there's the <NAVI>[plantation]<INFO>sp_cor,243,84,0,101,0</INFO></NAVI> that we believe to exist for food supply and research purposes.";
 	next;
-	mes "[Rebellion]";
+	mes "[反抗軍]";
 	mes "The <NAVI>[tents]<INFO>sp_cor,159,220,0,101,0</INFO></NAVI> in the northwest are dangerous. Please stay away from them. The same goes for the <NAVI>[waterway]<INFO>sp_cor,236,275,0,101,0</INFO></NAVI> in the northeast.";
 	close;
 }
@@ -8363,18 +8363,18 @@ sp_cor,141,211,1	script	Lazy#rm171_1	4_M_LAZY,{
 	close3;
 }
 
-sp_cor,140,213,3	script	Elyumina#rm171_1	4_EP17_ELYUMINA,{
+sp_cor,140,213,3	script	艾露米娜#rm171_1::Elyumina#rm171_1	4_EP17_ELYUMINA,{
 	cutin "ep171_elyumina03",0;
-	mes "[Elyumina]";
+	mes "[艾露米娜]";
 	mes "...";
 	next;
 	cutin "ep171_elyumina02",0;
-	mes "[Elyumina]";
+	mes "[艾露米娜]";
 	mes "Stop talking to me!";
 	close3;
 }
 
-sp_cor,136,217,3	duplicate(dummy_cloaked_npc)	Elyumina#rm171_2	4_EP17_ELYUMINA
+sp_cor,136,217,3	duplicate(dummy_cloaked_npc)	艾露米娜#rm171_2::Elyumina#rm171_2	4_EP17_ELYUMINA
 
 sp_cor,138,220,3	script	Philopontes#rm171_1	4_M_PHILOFONTES,{
 	cutin "ep16_tes01",1;
@@ -8384,39 +8384,39 @@ sp_cor,138,220,3	script	Philopontes#rm171_1	4_M_PHILOFONTES,{
 	close3;
 }
 
-sp_cor,130,222,1	script	Rebellion#rm171_10	4_F_REBELLION2,{
+sp_cor,130,222,1	script	反抗軍#rm171_10::Rebellion#rm171_10	4_F_REBELLION2,{
 	npctalk "We don't know how dangerous these things are, just yet. Adventurer, please don't get too close.", "", bc_self;
 	end;
 }
 
-sp_cor,152,224,1	script	Rebellion#rm171_11	4_F_ANYA,{
+sp_cor,152,224,1	script	反抗軍#rm171_11::Rebellion#rm171_11	4_F_ANYA,{
 	npctalk "I've been taking inventory, but there are many things that I can't really identify. But I really want to do this on my own.", "", bc_self;
 	end;
 }
 
-sp_cor,154,223,1	script	Rebellion#rm171_12	4_M_REBELLION3,{
+sp_cor,154,223,1	script	反抗軍#rm171_12::Rebellion#rm171_12	4_M_REBELLION3,{
 	npctalk "I'm here in case she has questions, but she's as stubborn as a mule.", "", bc_self;
 	end;
 }
 
 // In front of the waterway
 sp_cor,254,284,7	duplicate(dummy_cloaked_npc)	Goni#rm171_2	4_M_GONY
-sp_cor,259,278,1	duplicate(dummy_cloaked_npc)	Elyumina#rm171_3	4_EP17_ELYUMINA
+sp_cor,259,278,1	duplicate(dummy_cloaked_npc)	艾露米娜#rm171_3::Elyumina#rm171_3	4_EP17_ELYUMINA
 sp_cor,260,276,3	duplicate(dummy_cloaked_npc)	Elena Volkova#rm171_3	4_F_ELENA
 
-sp_cor,260,280,3	script	Rebellion#rm171_13	4_F_ANYA,{
+sp_cor,260,280,3	script	反抗軍#rm171_13::Rebellion#rm171_13	4_F_ANYA,{
 	npctalk "I'm here to watch, and all's clear.", "", bc_self;
 	end;
 }
 
-sp_cor,235,292,7	script	Rebellion#rm171_14	4_M_REBELLION2,{
-	mes "[Rebellion]";
+sp_cor,235,292,7	script	反抗軍#rm171_14::Rebellion#rm171_14	4_M_REBELLION2,{
+	mes "[反抗軍]";
 	mes "I wonder how valuable these things are. How much do they cost? I want to touch and smell them. They smell and feel like valuables, I bet!";
 	close;
 }
 
-sp_cor,232,289,5	script	Rebellion#rm171_15	4_F_REBELLION2,{
-	mes "[Rebellion]";
+sp_cor,232,289,5	script	反抗軍#rm171_15::Rebellion#rm171_15	4_F_REBELLION2,{
+	mes "[反抗軍]";
 	mes "They're probably only valuable to scientists and researchers. You'd better not touch them. You could lose your hands.";
 	close;
 }
@@ -8566,7 +8566,7 @@ sp_cor,234,113,3	script	工人#171_rvs_28::Worker#171_rvs_28	4_COOK,{
 }
 
 sp_cor,117,268,1	script	Scout#171_rvs_29	4_F_GUNSLINGER2,{
-	npctalk "What are you doing here?","",bc_self;
+	npctalk "你在這裡做什麼？","",bc_self;
 	sleep2 1500;
 	npctalk "Don't get too close.","Scout#cor_01",bc_self;
 	end;
@@ -8600,39 +8600,39 @@ sp_cor,170,189,5	script	Scout#171_rvs_33	4_M_REBELLION3,{
 	end;
 }
 
-sp_cor,137,149,7	script	Sentinel#171_rvs_34	4_F_REBELLION3,{
-	mes "[Sentinel]";
+sp_cor,137,149,7	script	哨兵#171_rvs_34::Sentinel#171_rvs_34	4_F_REBELLION3,{
+	mes "[哨兵]";
 	mes "You can rest assured, there are eyes everywhere here. I'm being careful.";
 	close;
 }
 
-sp_cor,136,128,5	script	Sentinel#171_rvs_35	4_M_REBELLION,{
-	mes "[Sentinel]";
+sp_cor,136,128,5	script	哨兵#171_rvs_35::Sentinel#171_rvs_35	4_M_REBELLION,{
+	mes "[哨兵]";
 	mes "It's safe here. Even if it's a big place, they won't attack randomly.";
 	close;
 }
 
-sp_cor,117,132,3	script	Sentinel#171_rvs_36	4_M_GUNSLINGER2,{
-	mes "[Sentinel]";
+sp_cor,117,132,3	script	哨兵#171_rvs_36::Sentinel#171_rvs_36	4_M_GUNSLINGER2,{
+	mes "[哨兵]";
 	mes "If we're going to have a raid next time, we'll have to be thorough.";
 	close;
 }
 
-sp_cor,118,148,7	script	Sentinel#171_rvs_37	4_F_REBELLION2,{
-	mes "[Sentinel]";
+sp_cor,118,148,7	script	哨兵#171_rvs_37::Sentinel#171_rvs_37	4_F_REBELLION2,{
+	mes "[哨兵]";
 	mes "There's nothing that stands out in this location!";
 	close;
 }
 
-sp_cor,232,289,5	script	Rebellion#171_rvs_38	4_F_REBELLION2,{
-	mes "[Rebellion]";
+sp_cor,232,289,5	script	反抗軍#171_rvs_38::Rebellion#171_rvs_38	4_F_REBELLION2,{
+	mes "[反抗軍]";
 	mes "Scientists, researchers, everyone here just pretends things are fine.";
 	mes "Arthur, don't touch these or your hands will melt.";
 	close;
 }
 
-sp_cor,235,292,7	script	Rebellion#171_rvs_39	4_M_REBELLION2,{
-	mes "[Rebellion]";
+sp_cor,235,292,7	script	反抗軍#171_rvs_39::Rebellion#171_rvs_39	4_M_REBELLION2,{
+	mes "[反抗軍]";
 	mes "Are these expensive? I want to see them closer! I want to smell it!";
 	mes "The feeling of something valuable!";
 	close;

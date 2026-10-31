@@ -13,15 +13,15 @@
 //= 1.1 Navigation system update. [Euphy]
 //============================================================ 
 
-malaya,71,72,4	script	Port Malaya Guide#01::GuideMalaya	579,{
-	mes "[Port Malaya Guide]";
-	mes "Welcome to ^8B4513Port Malaya^000000, the Breathing Village.";
-	mes "Where cultures and legends come to life!";
-	mes "Do you need help navigating the village?";
+malaya,71,72,4	script	馬來亞港嚮導#01::GuideMalaya	579,{
+	mes "[馬來亞港嚮導]";
+	mes "歡迎來到^8B4513馬來亞港^000000，呼吸之村。";
+	mes "這裡文化與傳說活靈活現！";
+	mes "需要我帶你逛逛村子嗎？";
 	F_Navi("[Port Malaya Guide]");
 	while(1) {
 		next;
-		switch(select("[ Kafra Employees ]:[ Inn & Tavern ]:[ Weapon & Armor Shop ]:[ Tool Shop ]:[ Hospital ]:[ Park ]:[ Harbor ]:Remove marks from Mini-Map:Cancel")) {
+		switch(select("[ 卡普拉職員 ]:[ 旅館與酒館 ]:[ 武器與防具店 ]:[ 工具店 ]:[ 醫院 ]:[ 公園 ]:[ 港口 ]:從小地圖移除標記:取消")) {
 		case 1:
 			callsub L_Mark, "^0000FFKafra Employees^000000",1;
 			viewpoint 1,71,79,0,0x0A82FF;
@@ -52,8 +52,8 @@ malaya,71,72,4	script	Port Malaya Guide#01::GuideMalaya	579,{
 			viewpoint 1,276,55,7,0x8A2BE2;
 			break;
 		case 8:
-			mes "[Port Malaya Guide]";
-			mes "I'll remove all marks from your mini-map.";
+			mes "[馬來亞港嚮導]";
+			mes "我會移除你小地圖上的所有標記。";
 			mes "還有什麼我能為你效勞的嗎？";
 			viewpoint 2,1,1,0,0xFFFFFF;
 			viewpoint 2,1,1,1,0xFFFFFF;
@@ -65,19 +65,19 @@ malaya,71,72,4	script	Port Malaya Guide#01::GuideMalaya	579,{
 			viewpoint 2,1,1,7,0xFFFFFF;
 			break;
 		case 9:
-			mes "[Port Malaya Guide]";
-			mes "I hope you enjoy your journey.";
+			mes "[馬來亞港嚮導]";
+			mes "希望你旅途愉快。";
 			close;
 		}
 	}
 	end;
 L_Mark:
-	mes "[Port Malaya Guide]";
-	mes "此外 "+getarg(0)+" "+((getarg(1,0))?"are":"is");
-	mes "marked on your mini-map.";
-	mes "Check your mini-map.";
+	mes "[馬來亞港嚮導]";
+	mes "此外 "+getarg(0)+" "+((getarg(1,0))?"是":"是");
+	mes "標記在你的小地圖上。";
+	mes "請查看您的小地圖。";
 	mes "還有什麼我能為你效勞的嗎？";
 	return;
 }
-malaya,250,83,6	duplicate(GuideMalaya)	Port Malaya Guide#02	579
-malaya,224,204,6	duplicate(GuideMalaya)	Port Malaya Guide#03	579
+malaya,250,83,6	duplicate(GuideMalaya)	馬來亞港嚮導#02::Port Malaya Guide#02	579
+malaya,224,204,6	duplicate(GuideMalaya)	馬來亞港嚮導#03::Port Malaya Guide#03	579

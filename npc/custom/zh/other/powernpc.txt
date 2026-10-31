@@ -12,7 +12,7 @@
 //= 1.2 Cleaning. [Euphy]
 //============================================================
 
-gonryun,180,118,4	script	Iron man#gnp	85,{
+gonryun,180,118,4	script	鐵人#gnp::Iron man#gnp	85,{
 	if (checkweight(1201,1) == 0) {
 		mes "- 等一下！！ -";
 		mes "- 你目前攜帶的 -";
@@ -22,69 +22,69 @@ gonryun,180,118,4	script	Iron man#gnp	85,{
 		close;
 	}
 	if (BaseJob == Job_Novice) {
-		mes "[Songmoodoo]";
-		mes "Children are not allowed in here.";
+		mes "[宋木度]";
+		mes "這裡不允許小孩進入。";
 		close;
 	}
 	if (in_battle == 3) set in_battle,1;
 	if (in_battle < 1) {
-		mes "[Songmoodoo]";
-		mes "Hey hey~ This is not something";
-		mes "you can see everyday.";
-		mes "Oh~ you look strong!";
-		mes "Wanna try?";
+		mes "[宋木度]";
+		mes "嘿嘿～ 這可不是";
+		mes "你每天都能看到的東西。";
+		mes "喔～你看起來很強喔！";
+		mes "想試試嗎？";
 		next;
-		switch(select("Why not?:?????:No thanks.")){
+		switch(select("為什麼不？:？？？？？:不用了，謝謝。")){
 		case 1:
-			mes "[Songmoodoo]";
-			mes "Haha~ I knew you would try.";
-			mes "If you could lift this up,";
-			mes "I'll tell you something interesting.";
-			mes "Ready?";
+			mes "[宋木度]";
+			mes "哈哈～ 我就知道你會試。";
+			mes "如果你能把這個舉起來，";
+			mes "我會告訴你一件有趣的事。";
+			mes "準備好了嗎？";
 			next;
-			mes "^0000FFSongmoodoo points to a rock";
-			mes "and asks you to lift it.";
+			mes "^0000FF宋木度指向一塊石頭";
+			mes "並要求你把它舉起來。";
 			if (BaseJob < Job_Knight) callsub L_Lifting,690;
 			else if (BaseClass == Job_Swordman || BaseClass == Job_Thief || BaseClass == Job_Merchant || BaseJob == Job_Monk) callsub L_Lifting,1100;
 			else callsub L_Lifting,730;
 			break;
 		case 2:
-			mes "[Songmoodoo]";
-			mes "That's not a big deal.";
-			mes "If you believe you're strong,";
-			mes "this might be a good chance to experience";
-			mes "something new. Wanna try??";
+			mes "[宋木度]";
+			mes "這沒什麼大不了的。";
+			mes "如果你相信自己很強，";
+			mes "這或許是一個體驗";
+			mes "新事物的好機會。想試試嗎？？";
 			break;
 		case 3:
-			mes "[Songmoodoo]";
-			mes "I guess not...";
+			mes "[宋木度]";
+			mes "看來是不行……";
 			emotion ET_HNG;
 			break;
 		}
 	} else if (in_battle == 1) {
-		mes "[Songmoodoo]";
-		mes "Good to see you again!";
-		mes "Wanna go??";
+		mes "[宋木度]";
+		mes "很高興再次見到你！";
+		mes "想去嗎？？";
 		next;
-		if (select("Sure:Maybe next time") == 1) {
-			mes "[Songmoodoo]";
-			mes "Good! Haha.";
-			mes "I like your confidence.";
-			mes "Good luck to you~";
+		if (select("當然:下次再說") == 1) {
+			mes "[宋木度]";
+			mes "很好！哈哈。";
+			mes "我喜歡你的自信。";
+			mes "祝你好運～";
 			close2;
 			warp "gon_test",53,6;
 			end;
 		} else {
-			mes "[Songmoodoo]";
-			mes "Well... alright.";
-			mes "I'll see you next time then.";
+			mes "[宋木度]";
+			mes "嗯……好吧。";
+			mes "那下次再見吧。";
 		}
 	} else {
-		mes "[Songmoodoo]";
-		mes "You ran away from there?";
-		mes "Guess you're not strong enough!";
-		mes "I'll give you another chance.";
-		mes "See you again.";
+		mes "[宋木度]";
+		mes "你從那裡逃走了？";
+		mes "看來你還不夠強！";
+		mes "我再給你一次機會。";
+		mes "再見。";
 		emotion ET_HNG;
 		set in_battle,1;
 	}
@@ -92,51 +92,51 @@ gonryun,180,118,4	script	Iron man#gnp	85,{
 
 L_Lifting:
 	if (checkweight(7049,getarg(0))) {
-		mes "You lifted the Stone lightly.^000000";
+		mes "你輕鬆地舉起了石頭。^000000";
 		set in_battle,1;
 		getitem 7049, getarg(0); // Stone
 		next;
 		emotion ET_BEST;
-		mes "[Songmoodoo]";
-		mes "Wow~ Excellent~";
-		mes "I'll take you to someplace nice";
-		mes "next time I see you.";
-		mes "See ya~";
+		mes "[宋木度]";
+		mes "哇～ 太厲害了～";
+		mes "我會帶你去一個好地方";
+		mes "下次見到你的時候。";
+		mes "回頭見～";
 	} else {
-		mes "Looks too heavy for you.^000000";
+		mes "看起來對你來說太重了。^000000";
 		next;
-		mes "[Songmoodoo]";
-		mes "You lack training.";
-		mes "Come back after more practice.";
+		mes "[宋木度]";
+		mes "你還缺乏鍛鍊。";
+		mes "多練習之後再回來吧。";
 	}
 	return;
 }
 
-gon_test,50,14,4	script	Administrator#gnp	780,{
-	mes "[Administrator]";
+gon_test,50,14,4	script	管理員#gnp::Administrator#gnp	780,{
+	mes "[管理員]";
 	if (BaseJob == Job_Novice) {
-		mes "Children are not allowed in here.";
+		mes "這裡不允許小孩進入。";
 		close;
 	}
 	if ($@in_battle) {
-		mes "Sorry, the field of fight";
-		mes "is occupied right now.";
-		mes "Try again later.";
+		mes "抱歉，戰鬥場地";
+		mes "目前正在使用中。";
+		mes "請稍後再試。";
 		close;
 	}
-	mes "Are you ready?";
+	mes "你準備好了嗎？";
 	mes " ";
-	mes "Remember, you have to pay";
-	mes "500z to fight.";
+	mes "記得要付";
+	mes "500z 才能戰鬥。";
 	next;
-	if (select("Yes, let me fight!:One moment, please.") == 2) {
-		mes "[Administrator]";
-		mes "Ok, see you later.";
+	if (select("是的，讓我戰鬥！:請稍等一下。") == 2) {
+		mes "[管理員]";
+		mes "好，待會見。";
 		close;
 	}
 	if (Zeny < 500) {
-		mes "[Administrator]";
-		mes "I'm sorry but you don't have enough zeny.";
+		mes "[管理員]";
+		mes "很抱歉，你的 Zeny 不夠。";
 		close;
 	}
 	set Zeny,Zeny - 500;
@@ -148,28 +148,28 @@ gon_test,50,14,4	script	Administrator#gnp	780,{
 	end;
 }
 
-gon_test,42,89,4	script	Summoner#gnp	774,{
-	mes "[SongYeunWoo]";
+gon_test,42,89,4	script	召喚師#gnp::Summoner#gnp	774,{
+	mes "[宋妍宇]";
 	if (in_battle == 3) {
-		mes "Please come back after registration.";
+		mes "請在登記之後再回來。";
 		close;
 	} else if (in_battle == 2) {
-		mes "You had a single match already.";
-		mes "You can have a match once at a time.";
-		mes "Please re-enter if you want a match";
-		mes "with other monsters.";
+		mes "你已經參加過一場比賽了。";
+		mes "一次只能參加一場比賽。";
+		mes "如果想要比賽，請重新進入";
+		mes "與其他怪物進行比賽。";
 		close;
 	}
 	mes "歡迎。";
-	mes "Which monster will you recall?";
+	mes "你要召回哪一隻怪物？";
 	next;
-	set .@gnpGroup, select("Group 1:Group 2:Group 3:Group 4:Group 5:Group 6:Group 7:Group 8:Group 9:Group 10:Group 11");
+	set .@gnpGroup, select("第 1 組:第 2 組:第 3 組:第 4 組:第 5 組:第 6 組:第 7 組:第 8 組:第 9 組:第 10 組:第 11 組");
 	set .@gnpGroupMob$,.gnpMobsName$[(.@gnpGroup-1)*6];
 	for (set .@i,1; .@i < 6; set .@i, .@i+1)
 		set .@gnpGroupMob$, .@gnpGroupMob$ + ":" + .gnpMobsName$[(.@gnpGroup-1)*6 + .@i];
 	set .@gnpMob, select(.@gnpGroupMob$);
-	mes "[SongYeunWoo]";
-	mes "Let the fight begin!";
+	mes "[宋妍宇]";
+	mes "戰鬥開始！";
 	close2;
 	set in_battle,2;
 	if (getnpctimer(0) < 180000) monster "gon_test",56,86,.gnpMobsName$[(.@gnpGroup-1)*6 + .@gnpMob - 1],.gnpMobsId[(.@gnpGroup-1)*6 + .@gnpMob - 1],1,"Summoner#gnp::OnGnpMobDead";
@@ -202,7 +202,7 @@ OnInit:
 	end;
 
 OnTimer120000:
-	areaannounce "gon_test",41,81,74,92,"1 min. left",0;
+	areaannounce "gon_test",41,81,74,92,"剩下 1 分鐘",0;
 	end;
 
 OnTimer180000:
@@ -210,13 +210,13 @@ OnTimer180000:
 	end;
 
 OnTimer182000:
-	areaannounce "gon_test",41,81,74,92,"Time Over.",0;
+	areaannounce "gon_test",41,81,74,92,"時間到了。",0;
 	end;
 
 OnGnpMobDead:
 	setnpctimer 0;
 	set in_battle,1;
-	areaannounce "gon_test",41,81,74,92,"Thank you. Please come again.",0;
+	areaannounce "gon_test",41,81,74,92,"謝謝。歡迎再來。",0;
 	sleep 4000;
 OnTimer184000:
 	stopnpctimer;
@@ -225,61 +225,61 @@ OnTimer184000:
 	end;
 }
 
-gon_test,46,14,3	script	Guide of field of fight	770,{
-	mes "[SongHeeYeon]";
+gon_test,46,14,3	script	戰鬥場嚮導::Guide of field of fight	770,{
+	mes "[宋希妍]";
 	mes ".....";
-	mes "Hi, there~";
-	mes "This is a field of fight.";
-	mes "Got any questions?";
+	mes "嗨，你好～";
+	mes "這裡是戰鬥場地。";
+	mes "有什麼問題嗎？";
 	next;
-	switch(select("A field of fight?:You got a minute lady?:Get in.:Out.:Nope.")){
+	switch(select("戰鬥場地？:你有空嗎，女士？:進來吧。:出去。:不要。")){
 	case 1:
-		mes "[SongHeeYeon]";
-		mes "Just like the name of this place,";
-		mes "it is a field for matches.";
-		mes "We have various monsters";
-		mes "in different levels.";
+		mes "[宋希妍]";
+		mes "正如這個地方的名字，";
+		mes "這裡是比賽的場地。";
+		mes "我們有各式各樣的怪物";
+		mes "等級各不相同。";
 		next;
-		mes "[SongHeeYeon]";
-		mes "1st Class Boss Monsters are in middle of preparation yet.";
-		mes "We charge you a small fee to enter here.";
+		mes "[宋希妍]";
+		mes "一轉 BOSS 怪物還在準備中。";
+		mes "進入這裡需要收取一點小費用。";
 		break;
 	case 2:
-		mes "[SongHeeYeon]";
-		mes "Eh.... excuse me?";
-		mes "Ah, I'm afraid I have to work right now...";
-		mes "Sorry...";
+		mes "[宋希妍]";
+		mes "欸……請問？";
+		mes "啊，不好意思，我現在得工作了……";
+		mes "抱歉……";
 		break;
 	case 3:
-		mes "[SongHeeYeon]";
-		mes "Yes, thank you.";
+		mes "[宋希妍]";
+		mes "好的，謝謝。";
 		mes "祝你玩得愉快。";
 		close2;
 		set in_battle,3;
 		warp "gon_test",25,98;
 		end;
 	case 4:
-		mes "[SongHeeYeon]";
+		mes "[宋希妍]";
 		mes "謝謝。";
 		mes "歡迎再次光臨。";
 		close2;
 		warp "gonryun",177,112;
 		end;
 	case 5:
-		mes "[SongHeeYeon]";
+		mes "[宋希妍]";
 		mes "........";
-		mes "Goodbye...";
+		mes "再見……";
 		break;
 	}
 	close;
 }
 
-gon_test,70,103,3	script	ChowAnAn#gnp	773,{
-	mes "[ChowAnAn]";
-	mes "Want to go back?";
+gon_test,70,103,3	script	周安安#gnp::ChowAnAn#gnp	773,{
+	mes "[周安安]";
+	mes "想回去嗎？";
 	next;
 	if (select("是。:否。") == 1) {
-		mes "[ChowAnAn]";
+		mes "[周安安]";
 		mes "謝謝。";
 		mes "歡迎再次光臨。";
 		close2;
@@ -287,7 +287,7 @@ gon_test,70,103,3	script	ChowAnAn#gnp	773,{
 		warp "gon_test",44,4;
 		end;
 	}
-	mes "[ChowAnAn]";
+	mes "[周安安]";
 	mes "謝謝。";
 	close;
 }

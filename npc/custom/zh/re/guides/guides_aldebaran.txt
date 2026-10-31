@@ -17,10 +17,10 @@
 
 aldebaran,139,63,4	script	嚮導#01aldebaran::GuideAldearan	105,{
 	cutin "prt_soldier",2;
-	mes "[Al De Baran Guide]";
-	mes "Welcome to ^8B4513Al De Baran^000000,";
-	mes "the Border City.";
-	mes "Do you need help navigating the city?";
+	mes "[阿爾德巴蘭嚮導]";
+	mes "歡迎來到^8B4513阿爾德巴蘭^000000，";
+	mes "邊境之城。";
+	mes "需要我幫你引導城內各處嗎？";
 	F_Navi("[Al De Baran Guide]");
 	next;
 	set .@str$,"Would you like to check any other locations?";
@@ -29,7 +29,7 @@ aldebaran,139,63,4	script	嚮導#01aldebaran::GuideAldearan	105,{
 		case 1:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ Kafra Headquarters ]:[ Alchemist Guild ]:[ Clock Tower ]:[ Inn & Tool Shop ]:[ Repair & Buy Equipment ]:[ Tavern ]:Previous Menu")) {
+				switch(select("[ 卡普拉總部 ]:[ 煉金公會 ]:[ 艾爾帕蘭鐘塔 ]:[ 旅館與工具店 ]:[ 修理與購買裝備 ]:[ 酒館 ]:上一頁")) {
 				case 1:
 					callsub L_Mark, F_Navi("Kafra Headquarters","aldebaran,61,229","^B9062F");
 					mes .@str$;
@@ -49,19 +49,19 @@ aldebaran,139,63,4	script	嚮導#01aldebaran::GuideAldearan	105,{
 					next;
 					break;
 				case 4:
-					mes "[Al De Baran Guide]";
+					mes "[阿爾德巴蘭嚮導]";
 					mes "我會在小地圖上標示";
-					mes F_Navi("Inn & Tool Shop","aldebaran,197,70","^006400")+" building";
+					mes F_Navi("旅館與工具店","aldebaran,197,70","^006400")+" 大樓";
 					mes "你的小地圖上標示它的位置。";
 					mes .@str$;
 					viewpoint 1,197,70,3,0xAAFF00;
 					next;
 					break;
 				case 5:
-					mes "[Al De Baran Guide]";
-					mes "If you'd like to ";
-					mes F_Navi("Buy or Repair Equipment","aldebaran,197,70","^7F3300")+",";
-					mes "then this is the place you'll want to visit.";
+					mes "[阿爾德巴蘭嚮導]";
+					mes "如果你想要 ";
+					mes F_Navi("購買或修理裝備","aldebaran,197,70","^7F3300")+",";
+					mes "那麼這裡就是你該來的地方。";
 					mes .@str$;
 					viewpoint 1,72,197,4,0xD2691E;
 					next;
@@ -80,7 +80,7 @@ aldebaran,139,63,4	script	嚮導#01aldebaran::GuideAldearan	105,{
 		case 2:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ Eden Teleport Officer ]:[ Kafra Employee ]:[ Mr. Claus ]:[ Chef Assistant ]:Previous Menu")) {
+				switch(select("[ 伊甸園傳送官 ]:[ 卡普拉職員 ]:[ 克勞斯先生 ]:[ 主廚助手 ]:上一頁")) {
 				case 1:
 					callsub L_Mark, F_Navi("Eden Teleport Officer","aldebaran,133,119","^B9062F");
 					mes .@str$;
@@ -93,10 +93,10 @@ aldebaran,139,63,4	script	嚮導#01aldebaran::GuideAldearan	105,{
 					next;
 					break;
 				case 3:
-					mes "[Al De Baran Guide]";
-					mes "Mr. Claus can teleport";
-					mes "you to "+F_Navi("薑餅城","aldebaran,168,168","^006400")+".";
-					mes "Let me mark his location";
+					mes "[阿爾德巴蘭嚮導]";
+					mes "克勞斯先生可以傳送";
+					mes "你前往 "+F_Navi("薑餅城","aldebaran,168,168","^006400")+".";
+					mes "讓我標記他的位置";
 					mes "你的小地圖上標示它的位置。";
 					mes .@str$;
 					viewpoint 1,168,168,8,0xAAFF00;
@@ -115,7 +115,7 @@ aldebaran,139,63,4	script	嚮導#01aldebaran::GuideAldearan	105,{
 			}
 			break;
 		case 3:
-			mes "[Al De Baran Guide]";
+			mes "[阿爾德巴蘭嚮導]";
 			mes "好的，我會移除你小地圖上的所有標記。";
 			mes "還有什麼我能為你效勞的嗎？";
 			viewpoint 2,1,1,0,0xFFFF00;
@@ -131,9 +131,9 @@ aldebaran,139,63,4	script	嚮導#01aldebaran::GuideAldearan	105,{
 			next;
 			break;
 		case 4:
-			mes "[Al De Baran Guide]";
+			mes "[阿爾德巴蘭嚮導]";
 			mes "那好吧，";
-			mes "enjoy your stay!";
+			mes "祝你玩得愉快！";
 			close2;
 			cutin "prt_soldier",255;
 			end;
@@ -141,7 +141,7 @@ aldebaran,139,63,4	script	嚮導#01aldebaran::GuideAldearan	105,{
 	}
 	end;
 L_Mark:
-	mes "[Al De Baran Guide]";
+	mes "[阿爾德巴蘭嚮導]";
 	mes "我會在小地圖上標示";
 	mes getarg(0);
 	mes "你的小地圖上標示它的位置。";

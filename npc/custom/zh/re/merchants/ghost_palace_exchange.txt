@@ -6,35 +6,35 @@
 //= 1.0 First Version. [Capuche]
 //============================================================
 
-dali02,51,130,4	script	Dimension Traveler	4_F_SHABBY,{
+dali02,51,130,4	script	次元旅人::Dimension Traveler	4_F_SHABBY,{
 	if (checkweight(28100,1) == 0) {// Thanos Axe
-		mes "- You cannot proceed because you have too many items with you. -";
+		mes "- 您攜帶的物品太多，無法繼續。 -";
 		close;
 	}
 	.@item_name_req$ = getitemname(6672);// Gray_Shard
-	mes "[Dimension Traveler]";
-	mes "Adventurer friend, " + mesitemlink( 6672 ) + " is what I need. How about exchanging it with something I have?";
+	mes "[次元旅人]";
+	mes "冒險者朋友， " + mesitemlink( 6672 ) + " 正是我需要的。要不要跟我換點東西？";
 	next;
-	.@type = select( "Show me your weapon.", "Show me your armor.", "Anything special?", "I do not need." ) - 1;
-	mes "[Dimension Traveler]";
+	.@type = select( "給我看看你的武器。", "給我看看你的盔甲。", "有什麼特別的嗎？", "我不需要。" ) - 1;
+	mes "[次元旅人]";
 	switch(.@type) {
 	case 0:
-		mes "Oh! Are you interested in weapons? We have all the weapons we can get from the Ghost Palace. Why don't you choose one?";
+		mes "喔！您對武器有興趣嗎？幽靈宮能拿到的武器，我們這裡都有。挑一件看看吧？";
 		break;
 	case 1:
-		mes "Armor? We have all the armors we can get from the Ghost Palace. Why don't you choose one?";
+		mes "盔甲嗎？幽靈宮能拿到的盔甲，我們這裡都有。挑一件看看吧？";
 		break;
 	case 2:
-		mes "Huhh! It seems like many of them already heard that I have the best stuff. Feel free to check out my collections.";
+		mes "呼！看來很多人都聽說我這裡有最好的東西了。請隨意看看我的收藏吧。";
 		break;
 	case 3:
-		mes "Goodbye friend~ Come again!";
+		mes "再見，朋友～歡迎再來！";
 		close;
 	}
 	next;
-	mes "[Dimension Traveler]";
-	mes "Ah! The number that is written beside " + mesitemlink( 6672 ) + " will be needed.";
-	mes "Please keep that in mind.";
+	mes "[次元旅人]";
+	mes "啊！寫在旁邊的數字 " + mesitemlink( 6672 ) + " 將會需要。";
+	mes "請記住這點。";
 
 	switch(.@type) {
 	case 0:
@@ -78,41 +78,41 @@ dali02,51,130,4	script	Dimension Traveler	4_F_SHABBY,{
 	while(true) {
 		next;
 		.@s = (select(.@menu$) - 1) * 2;
-		mes "[Dimension Traveler]";
+		mes "[次元旅人]";
 		if (.@type != 1)	// armor type doesn't display item info
-			mes "Do you mean " + mesitemlink( .@items[.@s] ) + "?";
-		mes "" + .@items[.@s+1] + " ^006400" + .@item_name_req$ + "^000000 are required in exchange.";
+			mes "您是指 " + mesitemlink( .@items[.@s] ) + "?";
+		mes "" + .@items[.@s+1] + " ^006400" + .@item_name_req$ + "^000000 為兌換所需。";
 		next;
-		switch( select( "Let's exchange.", "Let me see other stuff.", "I will come back later." ) ) {
+		switch( select( "來兌換吧。", "讓我看看其他東西。", "我晚點再來。" ) ) {
 		case 1:
 			break;
 		case 2:
-			mes "[Dimension Traveler]";
+			mes "[次元旅人]";
 			switch(.@type) {
 			case 0:
-				mes "I have more than enough weapons.";
+				mes "我的武器已經夠多了。";
 				break;
 			case 1:
-				mes "We have many armors for you. Why don't you pick one?";
+				mes "我們有很多盔甲可供您選擇。挑一件吧？";
 				break;
 			case 2:
-				mes "If you bring me " + .@item_name_req$ + ", I will trade it with anything you want.";
+				mes "如果您帶來 " + .@item_name_req$ + "，我就能用您想要的任何東西跟您交換。";
 				break;
 			}
 			continue;
 		case 3:
-			mes "[Dimension Traveler]";
-			mes "Take care friend~ See you next time!";
+			mes "[次元旅人]";
+			mes "保重，朋友～下次見！";
 			close;
 		}
 		if (countitem(6672) < .@items[.@s+1]) {
-			mes "[Dimension Traveler]";
-			mes "You put me in a difficult situation, friend.";
-			mes "I am in need of " + .@item_name_req$ + ". I will exchange it for ^006400" + .@items[.@s+1] + " " + .@item_name_req$ + "^000000.";
+			mes "[次元旅人]";
+			mes "朋友，你讓我陷入了為難的處境。";
+			mes "我需要 " + .@item_name_req$ + "。我會用它換取 ^006400" + .@items[.@s+1] + " " + .@item_name_req$ + "^000000.";
 			close;
 		}
-		mes "[Dimension Traveler]";
-		mes "Thank you. Come back if you need anything else.";
+		mes "[次元旅人]";
+		mes "謝謝。如果還需要什麼，再來找我吧。";
 		delitem 6672, .@items[.@s+1];
 		getitem .@items[.@s], 1;
 		close;

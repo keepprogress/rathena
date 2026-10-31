@@ -23,25 +23,25 @@
 	set .@GID, GetCastleData("payg_cas05",1);
 
 	if (.@GID == 0) {
-		mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+		mes "[ 神聖符文中土王國敕令 ]";
 		mes " ";
-		mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
-		mes "We declare that";
-		mes "there is no formal master of this castle.";
+		mes "1. 遵守神聖符文中土王國的律令， ";
+		mes "我們宣告";
+		mes "此城堡並無正式的主人。";
 		mes " ";
-		mes "2. To the one who can ";
-		mes "overcome all trials";
-		mes "and destroy the Emperium,";
-		mes "the king will endow the one with";
-		mes "ownership of this castle.";
+		mes "2. 能夠 ";
+		mes "克服所有考驗";
+		mes "並摧毀華麗金屬，";
+		mes "國王將把";
+		mes "此城堡的所有權賜予該人。";
 		close;
 	}
 	if (getcharid(2) == .@GID) {
-		mes "[ Echoing Voice ]";
-		mes "Brave ones...";
-		mes "Do you wish to return to your honorable place?";
+		mes "[ 迴響之聲 ]";
+		mes "勇者們……";
+		mes "您想返回您尊貴的所在嗎？";
 		next;
-		if(select("Return to the guild castle.:Quit.") == 1) {
+		if(select("返回公會城堡:離開") == 1) {
 			close2;
 			if (getcharid(2) == GetCastleData("payg_cas05",1)) {
 					warp "payg_cas05",243,27;
@@ -51,16 +51,16 @@
 		}
 		close;
 	}
-	mes "[ Edict of the Divine Rune-Midgarts Kingdom ]";
+	mes "[ 神聖符文中土王國敕令 ]";
 	mes " ";
-	mes "1. Follow the ordinance of The Divine Rune-Midgarts Kingdom, ";
-	mes "we approve that this place is in";
-	mes "the private prossession of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild.";
+	mes "1. 遵守神聖符文中土王國的律令， ";
+	mes "我們認定此地";
+	mes "私人持有：^ff0000"+GetGuildName(.@GID)+"^000000公會所有。";
 	mes " ";
-	mes "2. The guild Master of ^ff0000"+GetGuildName(.@GID)+"^000000 Guild is";
+	mes "2. 公會會長為 ^ff0000"+GetGuildName(.@GID)+"^000000 公會，";
 	mes "^ff0000"+GetGuildMaster(.@GID)+"^000000";
-	mes "If there is anyone who objects to this,";
-	mes "prove your strength and honor with a steel blade in your hand.";
+	mes "若有人對此有異議，";
+	mes "請以手中的鋼刃證明你的實力與榮譽。";
 	close;
 
 OnRecvCastlePy05:
@@ -68,10 +68,10 @@ OnRecvCastlePy05:
 	end;
 }
 
-pay_gld,208,268,4	duplicate(OutsideFlagsPA5)	Bamboo Grove Hill#1-2	722
-pay_gld,199,268,4	duplicate(OutsideFlagsPA5)	Bamboo Grove Hill#2	722
-pay_gld,190,277,3	duplicate(OutsideFlagsPA5)	Bamboo Grove Hill#3	722
-pay_gld,187,294,2	duplicate(OutsideFlagsPA5)	Bamboo Grove Hill#4	722
+pay_gld,208,268,4	duplicate(OutsideFlagsPA5)	竹林丘陵#1-2::Bamboo Grove Hill#1-2	722
+pay_gld,199,268,4	duplicate(OutsideFlagsPA5)	竹林丘陵#2::Bamboo Grove Hill#2	722
+pay_gld,190,277,3	duplicate(OutsideFlagsPA5)	竹林丘陵#3::Bamboo Grove Hill#3	722
+pay_gld,187,294,2	duplicate(OutsideFlagsPA5)	竹林丘陵#4::Bamboo Grove Hill#4	722
 
 // Guild Flags (Inside Castle)
 //============================================================
@@ -83,17 +83,17 @@ OnRecvCastlePy05:
 	end;
 }
 
-payg_cas05,32,249,4	duplicate(InsideFlagsPA5)	Bamboo Grove Hill#5-2	722
-payg_cas05,24,249,4	duplicate(InsideFlagsPA5)	Bamboo Grove Hill#6	722
-payg_cas05,62,271,0	duplicate(InsideFlagsPA5)	Bamboo Grove Hill#7	722
-payg_cas05,57,271,0	duplicate(InsideFlagsPA5)	Bamboo Grove Hill#8	722
-payg_cas05,55,252,2	duplicate(InsideFlagsPA5)	Bamboo Grove Hill#9	722
-payg_cas05,55,260,2	duplicate(InsideFlagsPA5)	Bamboo Grove Hill#10	722
+payg_cas05,32,249,4	duplicate(InsideFlagsPA5)	竹林丘陵#5-2::Bamboo Grove Hill#5-2	722
+payg_cas05,24,249,4	duplicate(InsideFlagsPA5)	竹林丘陵#6::Bamboo Grove Hill#6	722
+payg_cas05,62,271,0	duplicate(InsideFlagsPA5)	竹林丘陵#7::Bamboo Grove Hill#7	722
+payg_cas05,57,271,0	duplicate(InsideFlagsPA5)	竹林丘陵#8::Bamboo Grove Hill#8	722
+payg_cas05,55,252,2	duplicate(InsideFlagsPA5)	竹林丘陵#9::Bamboo Grove Hill#9	722
+payg_cas05,55,260,2	duplicate(InsideFlagsPA5)	竹林丘陵#10::Bamboo Grove Hill#10	722
 
 // Guild Flag (Town)
 //============================================================
-payon,123,322,4	duplicate(InsideFlagsPA5)	Bamboo Grove Hill#11	722
-payon,166,161,3	duplicate(InsideFlagsPA5)	Bamboo Grove Hill#12	722
+payon,123,322,4	duplicate(InsideFlagsPA5)	竹林丘陵#11::Bamboo Grove Hill#11	722
+payon,166,161,3	duplicate(InsideFlagsPA5)	竹林丘陵#12::Bamboo Grove Hill#12	722
 
 // Kafra Employee
 //============================================================
@@ -101,15 +101,15 @@ payg_cas05,276,227,1	duplicate(guildkafra)	卡普拉職員#payg_cas05::Kafra Sta
 
 // Steward
 //============================================================
-payg_cas05,277,249,3	duplicate(cm)	Nahzarf#payg_cas05	55
+payg_cas05,277,249,3	duplicate(cm)	納扎夫#payg_cas05::Nahzarf#payg_cas05	55
 
 // Treasure Room Exit
 //============================================================
 payg_cas05,161,136,0	script	#lever_PA05	111,{
 	mes " ";
-	mes "There's a small lever. Will you pull it?";
+	mes "這裡有一個小拉桿。您要拉嗎？";
 	next;
-	if(select("Pull.:Do not.") == 1) {
+	if(select("拉:不拉") == 1) {
 		close2;
 		warp "payg_cas05",277,250;
 		end;

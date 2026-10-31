@@ -17,7 +17,7 @@
 
 prontera,121,77,3	script	Phantasmagorika Spokesperson#prt::spokesperson	4_F_ZONDAGIRL,4,4,{
 	mes "[Spokesperson]";
-	mes "Good day.";
+	mes "您好。";
 	mes "Rekenber is recruiting adventurers for an excavation project that takes place in Phantasmagorika, the newly discovered ruins in Juperos.";
 	next;
 	mes "[Spokesperson]";
@@ -456,7 +456,7 @@ ver_eju,114,40,4	script	Manager Michelle#atnd05	4_M_LGTGUARD,{
 			select("是的。");
 			mes "[Manager Michelle]";
 			mes "Let me check the roster.";
-			mes "Your name is... " + strcharinfo(0) + ". Ah, there you are.";
+			mes "你的名字是…… " + strcharinfo(0) + ". Ah, there you are.";
 			mes "You're from the Eden Group, all right.";
 			next;
 			mes "[Manager Michelle]";
@@ -476,7 +476,7 @@ ver_eju,114,40,4	script	Manager Michelle#atnd05	4_M_LGTGUARD,{
 		}
 		mes "Just clear the tunnel of monsters,";
 		mes "and report to the Central Command Center.";
-		mes "Thank you for your help.";
+		mes "謝謝你的幫忙。";
 		close;
 	}
 	if (isbegin_quest(7610) == 0) {
@@ -493,7 +493,7 @@ ver_eju,114,40,4	script	Manager Michelle#atnd05	4_M_LGTGUARD,{
 			mes "Can you help me again?";
 			mes "You know, exterminate monsters in the tunnel and around this area.";
 			mes "This time, you can just report back to me instead of making a trip to the Central Command Center.";
-			mes "Thank you for your help.";
+			mes "謝謝你的幫忙。";
 			setquest 7611;// Passage Cleaning
 			close;
 		case 0:
@@ -504,7 +504,7 @@ ver_eju,114,40,4	script	Manager Michelle#atnd05	4_M_LGTGUARD,{
 			mes "[Manager Michelle]";
 			mes "When you're done, you can report back to me,";
 			mes "or go to Louis at the Central Command Center.";
-			mes "Thank you for your help.";
+			mes "謝謝你的幫忙。";
 			close;
 		case 2:
 			mes "Oh, good job wiping out monsters.";
@@ -549,7 +549,7 @@ verus04,182,168,5	script	Receptionist Nara#atnd06	4_F_HUWOMAN,{
 		mes "I'm sorry, but I can't let you register.";
 		mes "We do need excavators, but we have standards.";
 		next;
-		switch( select( "I want to register now.", "I'll come back later." ) ) {
+		switch( select( "I want to register now.", "我之後再來。" ) ) {
 		case 1:
 			if (BaseLevel > 139) {
 				mes "[Nara]";
@@ -768,7 +768,7 @@ verus04,179,165,5	script	Commander Louis#atnd07	4_M_LGTGUARD,{
 				mes "Monsters are growing more numerous in the tunnel and the ruins.";
 				mes "The mercenaries have requested reinforcements.";
 				next;
-				if (select( "I'll go.", "Decline." ) == 2) {
+				if (select( "I'll go.", "拒絕。" ) == 2) {
 					mes "[Louis]";
 					mes "Of course, your priority is the excavation.";
 					mes "I'll look for someone else.";
@@ -825,7 +825,7 @@ verus04,179,165,5	script	Commander Louis#atnd07	4_M_LGTGUARD,{
 				mes "Threatening machines have appeared at the Plaza.";
 				mes "The workers have requested a combat unit.";
 				next;
-				if (select( "I'll go.", "Decline." ) == 2) {
+				if (select( "I'll go.", "拒絕。" ) == 2) {
 					mes "[Louis]";
 					mes "Of course, your priority is the excavation.";
 					mes "I'll look for someone else.";
@@ -941,7 +941,7 @@ verus04,141,193,5	script	Archaeologist Aures#atnd09	4_M_OLDSCHOLAR,{
 		next;
 		mes "[Aures]";
 		mes "Come back when you're done. I'll introduce you to the other members.";
-		mes "Go on.";
+		mes "繼續吧。";
 		close3;
 	case 5:
 		cutin "verus_aures.bmp",0;
@@ -1512,7 +1512,7 @@ verus04,144,193,3	script	Ian Atnad#ep152	4_M_IAN,{
 		mes "I need time to organize it as well.";
 		mes ".......";
 		mes "Come back later.";
-		mes "Please.";
+		mes "麻煩你了。";
 		delitem 11519,1;// Beef_Toast
 		erasequest 7626;// Delicacy for Him
 		setquest 7627;// Last Exploration
@@ -1763,7 +1763,7 @@ verus04,144,193,3	script	Ian Atnad#ep152	4_M_IAN,{
 		mes "[Ian Atnad]";
 		mes "And, if we gather enough Memory Records.....";
 		mes "Go to Arquien and find out the... ugh... contents.";
-		mes "Do you understand?";
+		mes "懂了嗎？";
 		erasequest 7647;// Report Memory Record
 		setquest 7648;// Memory Records of the Laboratories
 		ep15_1_atnad = 27;
@@ -2083,7 +2083,7 @@ function checkstatusquest;
 	case 1:
 		mes "I don't have a story to tell you at this moment.";
 		mes "I'm trying to rest my mind.";
-		mes "Why don't you go";
+		mes "你何不先去";
 		mes "rest for a while?";
 		close;
 	case 2:
@@ -2123,7 +2123,7 @@ function checkstatusquest;
 		if (checkstatusquest(.@quest_id[.@i]) == 0) {
 			mes "^ff0000You have not yet met the requirements to complete the quest.^000000";
 			next;
-			if (select( "Return the quest.", "End conversation." ) == 2) {
+			if (select( "Return the quest.", "結束對話。" ) == 2) {
 				mes "[Wandering Bard]";
 				mes "Please be safe.";
 				close;
@@ -2866,7 +2866,7 @@ verus03,36,113,4	script	Police Officer Salgran#EP15	2_M_THIEFMASTER,{
 		case 4:
 			emotion ET_SCRATCH;
 			mes "[Police Officer Salgran]";
-			mes "You're silly.";
+			mes "你真傻。";
 			close;
 		}
 	case 2:
@@ -3835,7 +3835,7 @@ verus03,103,177,5	script	Machinist Lloyd#atnd09	4_M_BOSSCAT,{
 			mes "You know the drill: collect condensed energy.";
 			mes "You'll do that for me, won't you?";
 			next;
-			if (select( "Sure.","Decline." ) == 2) {
+			if (select( "Sure.","拒絕。" ) == 2) {
 				mes "[Lloyd]";
 				mes "Why, do you have something else to do?";
 				mes "All right then,";
@@ -3863,7 +3863,7 @@ verus03,103,177,5	script	Machinist Lloyd#atnd09	4_M_BOSSCAT,{
 		mes "All right, I'll make good use of this energy.";
 		next;
 		mes "[Lloyd]";
-		mes "Come back tomorrow.";
+		mes "明天再來。";
 		mes "Well, you might as well come back every day at this time.";
 		mes "You can't say no.";
 		mes "I need you.";
@@ -3974,7 +3974,7 @@ ver_eju,15,151,3	script	雷肯貝爾鐵盾#atd04::Rekenber Guard#atd04	4_M_LGTGU
 	next;
 	mes "[雷肯貝爾鐵盾]";
 	mes "Follow the road all the way up, and then head southwest.";
-	mes "Let me mark the location on your mini-map.";
+	mes "讓我在你的小地圖上標示位置。";
 	viewpoint 1,113,36,0,0x4DFF00;
 	next;
 	mes "[雷肯貝爾鐵盾]";
@@ -3990,7 +3990,7 @@ juperos_01,48,243,5	script	雷肯貝爾鐵盾#atd05::Rekenber Guard#atd05	4_M_LG
 	next;
 	mes "[雷肯貝爾鐵盾]";
 	mes "Go straight east, then follow the road south. You'll see a giant status at a corner.";
-	mes "Let me mark the location on your mini-map.";
+	mes "讓我在你的小地圖上標示位置。";
 	viewpoint 1,242,87,0,0x4DFF00;
 	next;
 	mes "[雷肯貝爾鐵盾]";
@@ -4064,32 +4064,32 @@ verus04,218,217,5	script	Geologist#ver04	4_M_HUGRANFA,{
 	mes "Hm, the building was crushed by the stone wall.";
 	mes "The rest is almost pulverized to dust.";
 	next;
-	mes "[Assistant]";
+	mes "[助手]";
 	mes "Yes, Professor.";
 	next;
 	mes "[Geologist]";
 	mes "The terrain on which the village stands was formed in a different period, compared to this stone wall. At least that's my initial assessment.";
 	next;
-	mes "[Assistant]";
+	mes "[助手]";
 	mes "Yes, Professor.";
 	next;
 	mes "[Geologist]";
 	mes "The underground village doesn't seem to be artificial, though I can't imagine how it can be formed naturally. What do you think?";
 	next;
-	mes "[Assistant]";
+	mes "[助手]";
 	mes "Yes, Professor.";
 	next;
 	mes "[Geologist]";
 	mes "...Are you even listening to me?";
 	next;
-	mes "[Assistant]";
+	mes "[助手]";
 	mes "Yes, Professor.";
 	next;
 	mes "[Geologist]";
 	mes "Sigh.";
 	mes "Let's go have lunch.";
 	next;
-	mes "[Assistant]";
+	mes "[助手]";
 	mes "Yes, Professor!";
 	close;
 }
@@ -4456,7 +4456,7 @@ verus04,116,220,0	script	#ep15_1elb	PORTAL,{
 
 verus04,153,193,8	script	商人#ep15_1el10::Merchant#ep15_1el10	4_F_CAPEGIRL,{
 	mes "[商人]";
-	mes "Ho ho ho!";
+	mes "呵呵呵！";
 	mes "I came first, so I took the best spot!";
 	close;
 }
@@ -4492,8 +4492,8 @@ verus04,16,157,3	script	冒險者#ep15_1el14::Adventurer#ep15_1el14	4_M_MIDDLE1,
 }
 
 // missing #ep15_1el15 - 18
-verus04,104,120,3	script	Cow#ep15_1el19	4_BULL,{
-	mes "[Cow]";
+verus04,104,120,3	script	乳牛#ep15_1el19::Cow#ep15_1el19	4_BULL,{
+	mes "[乳牛]";
 	mes "*Moo*";
 	close;
 }
@@ -4524,7 +4524,7 @@ verus04,124,220,8	script	冒險者#ep15_1el23::Adventurer#ep15_1el23	4_M_HUMERCH
 	close;
 }
 
-verus04,135,213,4	script	Sign#EP15_1DCenter	4_BOARD3,{
+verus04,135,213,4	script	告示#EP15_1DCenter::Sign#EP15_1DCenter	4_BOARD3,{
 	mes "[Warning]";
 	mes "Attention visitors of Phantasmagorika,";
 	next;
@@ -4536,10 +4536,10 @@ verus04,135,213,4	script	Sign#EP15_1DCenter	4_BOARD3,{
 	mes "- Phantasmagorika Police Chief -";
 	close;
 }
-verus04,204,260,4	duplicate(Sign#EP15_1DCenter)	Sign#EP15_1DNorth	4_BOARD3
-verus03,83,241,4	duplicate(Sign#EP15_1DCenter)	Sign#EP15_1DSouth	4_BOARD3
-verus03,38,114,4	duplicate(Sign#EP15_1DCenter)	Sign#EP15_1DEast	4_BOARD3
-verus03,116,39,4	duplicate(Sign#EP15_1DCenter)	Sign#EP15_1DWest	4_BOARD3
+verus04,204,260,4	duplicate(Sign#EP15_1DCenter)	告示#EP15_1DNorth::Sign#EP15_1DNorth	4_BOARD3
+verus03,83,241,4	duplicate(Sign#EP15_1DCenter)	告示#EP15_1DSouth::Sign#EP15_1DSouth	4_BOARD3
+verus03,38,114,4	duplicate(Sign#EP15_1DCenter)	告示#EP15_1DEast::Sign#EP15_1DEast	4_BOARD3
+verus03,116,39,4	duplicate(Sign#EP15_1DCenter)	告示#EP15_1DWest::Sign#EP15_1DWest	4_BOARD3
 
 
 verus04,96,195,5	script	Adventurer Cat#ep15_1el18	4_CAT_REST,{
@@ -4786,11 +4786,11 @@ yuno_fild07,216,157,5	script	Guide Elisha#ep15_1bs	4_F_ZONDAGIRL,{
 		close;
 	}
 	mes "[Elisha]";
-	mes "Good day.";
+	mes "您好。";
 	mes "Please say your name, so I can check your registration.";
 	emotion ET_THROB;
 	next;
-	switch( select( "Say your name.", "Ask about the registration.", "End conversation." ) ) {
+	switch( select( "Say your name.", "Ask about the registration.", "結束對話。" ) ) {
 	case 1:
 		mes "[Elisha]";
 		switch(ep15_1_elb) {
@@ -4822,7 +4822,7 @@ yuno_fild07,216,157,5	script	Guide Elisha#ep15_1bs	4_F_ZONDAGIRL,{
 			mes "For your safety, please avoid running or jumping while inside.";
 			next;
 			mes "[Elisha]";
-			mes "Ready?";
+			mes "準備好了嗎？";
 			mes "Have a safe exploration!";
 			emotion ET_THROB;
 			next;
@@ -4934,7 +4934,7 @@ yuno_fild07,216,157,5	script	Guide Elisha#ep15_1bs	4_F_ZONDAGIRL,{
 		mes "For your safety, please avoid running or jumping while inside.";
 		next;
 		mes "[Elisha]";
-		mes "Ready?";
+		mes "準備好了嗎？";
 		mes "Have a safe exploration!";
 		close2;
 		warp "verus04",122,217;
@@ -4955,7 +4955,7 @@ yuno_fild07,216,157,5	script	Guide Elisha#ep15_1bs	4_F_ZONDAGIRL,{
 		if (ep15_1_elb > 1)
 			close;
 		next;
-		if (select( "End conversation.", "Ask for directions." ) == 1) {
+		if (select( "結束對話。", "Ask for directions." ) == 1) {
 			mes "[Elisha]";
 			mes "My company Rekenber is in partnership with the Eden Group";
 			mes "for the ^0000FFPhantasmagorika excavation project^000000.";
@@ -4995,13 +4995,13 @@ lhz_in01,75,209,3	script	Leitner#ep15_1bs	4_LGTSCIENCE,{
 	mes "[Leitner]";
 	switch(ep15_1_elb) {
 	case 0:
-		mes "Heya!";
+		mes "嗨！";
 		mes "What brings you here, sweetheart?";
 		mes "If you're looking for a shoulder to cry on, I'm here.";
 		emotion ET_CHUP;
 		close;
 	case 1:
-		mes "Heya!";
+		mes "嗨！";
 		mes "What brings you here, sweetheart?";
 		mes "If you're looking for a shoulder to cry on, I'm here.";
 		emotion ET_CHUP;
@@ -5160,7 +5160,7 @@ verus04,119,220,3	script	Guide Scarlet#ep15_1bs	4_M_TELEPORTER,{
 		cutin "bu_du5.bmp",2;
 		next;
 		mes "[史卡雷特]";
-		mes "Stop!";
+		mes "住手！";
 		mes "Everyone, stay still!";
 		mes "Or we might plummet to the bottom!";
 		emotion ET_HUK;
@@ -5322,10 +5322,10 @@ verus04,119,220,3	script	Guide Scarlet#ep15_1bs	4_M_TELEPORTER,{
 		cutin "",255;
 		close;
 	default:
-		mes "Good day.";
+		mes "您好。";
 		mes "Please say your name, so I can check your registration.";
 		next;
-		if (select( "Say your name.", "End conversation." ) == 2) {
+		if (select( "Say your name.", "結束對話。" ) == 2) {
 			mes "[史卡雷特]";
 			mes "祝您有美好的一天。";
 			close;
@@ -5341,7 +5341,7 @@ verus04,119,220,3	script	Guide Scarlet#ep15_1bs	4_M_TELEPORTER,{
 			close;
 		}
 		mes "[史卡雷特]";
-		mes "Ready?";
+		mes "準備好了嗎？";
 		mes "Have a safe exploration!";
 		close2;
 		warp "yuno_fild07",230,156;
@@ -6172,7 +6172,7 @@ verus03,35,254,3	script	Maggi#ep15_1elb03	4_F_PINKWOMAN,{
 	close3;
 }
 
-verus04,144,239,3	shop	Tool Merchant#verus	4_M_DEWMAN,611:-1,504:-1,656:-1,601:-1,602:-1,610:-1
+verus04,144,239,3	shop	工具商人#verus::Tool Merchant#verus	4_M_DEWMAN,611:-1,504:-1,656:-1,601:-1,602:-1,610:-1
 
 // ep15_1_moc_nk - Reward Coordinator
 morocc,54,190,5	script	Reward Coordinator	4_M_SAGE_C,{
@@ -6205,7 +6205,7 @@ morocc,54,190,5	script	Reward Coordinator	4_M_SAGE_C,{
 	mes "[Reward Coordinator]";
 	mes "So, how may I help you today?";
 	next;
-	switch( select( "Claim rewards.", "What can I do with the Contribution Certificate Vending Machine?", "End conversation." ) ) {
+	switch( select( "Claim rewards.", "What can I do with the Contribution Certificate Vending Machine?", "結束對話。" ) ) {
 	case 1:
 		for ( .@i = 5251; .@i <= 5263; .@i += 2 ) {
 			if (isbegin_quest(.@i) == 1)

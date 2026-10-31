@@ -188,7 +188,7 @@ pub_cat,94,43,5	script	Yulma#rudus4	4_F_ANYA,{
 			mes "Well, I should pay you for the work you did today.";
 			next;
 			mes "[Yulma]";
-			mes "Here you are!";
+			mes "給你！";
 			mes "Then since you've finished your work, take a good rest. Please take care of me tomorrow as well~";
 			erasequest 16524;
 			setquest 16523;
@@ -257,7 +257,7 @@ pub_cat,94,43,5	script	Yulma#rudus4	4_F_ANYA,{
 			mes "Then I should pay you for the work you did today.";
 			next;
 			mes "[Yulma]";
-			mes "Here you are!";
+			mes "給你！";
 			mes "You worked hard today, so get a good rest and come back. Let's work hard tomorrow!";
 			erasequest 16526;
 			setquest 16525;
@@ -673,7 +673,7 @@ niflheim,164,102,3	script	Tired looking dead#lv20	4_F_NFDEADMGCIAN,{
 		mes "It's a luxurious facility with a banquet hall and an Opera House, but each one is a little different.";
 		mes "I'll ask for that kind of skill based on your kindness...";
 		next;
-		switch( select( "He looks cute", "That's not an instrument", "Playing the piano", "Guys with messy hair", "The ones with dolls", "Wake them up", "Stop" ) ) {
+		switch( select( "He looks cute", "That's not an instrument", "Playing the piano", "Guys with messy hair", "The ones with dolls", "Wake them up", "停止" ) ) {
 		case 1:
 			switch( checkquest(8642,PLAYTIME) ) {
 			case -1:
@@ -1194,7 +1194,7 @@ niflheim,143,125,6	script	Funny Gatekeeper's Friend#lv20	LUDE_GAL,{
 
 niflheim,145,126,6	script	Angry Gatekeeper#lv200	GHOST_CUBE,{
 	npctalk "Angry Gatekeeper: Kye-Look! Living! Play! No need to go!", "", bc_self;
-	npctalk "Funny Gatekeeper's Friend: No need to leave! Play with us!", "Funny Gatekeeper's Friend#lv20", bc_self;
+	npctalk "Funny Gatekeeper's Friend: No need to leave! Play with us!", "搞笑守門人的朋友#lv20", bc_self;
 	end;
 }
 
@@ -1232,11 +1232,11 @@ nif_dun01,133,201,3	duplicate(dummy_npc)	Sleek Harp#lv200	CLEAR_NPC
 nif_dun01,148,43,3	script	Helpful Gatekeeper#240	DISGUISER,{
 	if (BaseLevel < 240) {
 		npctalk "Helpful Gatekeeper: Uh-huh-huh. You don't have enough grooming to get through here.", "", bc_self;
-		npctalk "Silent Gatekeeper: ...means you are under-leveled.", "Silent Gatekeeper#240", bc_self;
+		npctalk "Silent Gatekeeper: ...means you are under-leveled.", "沉默的守門人#240", bc_self;
 		end;
 	}
 	npctalk "Helpful Gatekeeper: Uh-huh-huh. Mountain, go up. Can't come down.", "", bc_self;
-	npctalk "Silent Gatekeeper: ...means welcome.", "Silent Gatekeeper#240", bc_self;
+	npctalk "Silent Gatekeeper: ...means welcome.", "沉默的守門人#240", bc_self;
 	end;
 }
 
@@ -1309,23 +1309,23 @@ OnInit:
 
 
 // amicitia1
-ein_fild08,158,96,3	script	Lana#ami	4_M_ILYA,{
+ein_fild08,158,96,3	script	拉娜#ami::Lana#ami	4_M_ILYA,{
 	if (BaseLevel < 215) {
-		mes "[Lana]";
+		mes "[拉娜]";
 		mes "Beyond this it is dangerous, so access is restricted except for adventurers above a certain level.";
 		next;
 		mes " - This area can be accessed from level 215 or higher -";
 		close;
 	}
-	mes "[Lana]";
+	mes "[拉娜]";
 	mes "Would you like to go to the first floor of the Amicitia General Lab?";
 	next;
 	if (select( "Go", "留下" ) == 2) {
-		mes "[Lana]";
+		mes "[拉娜]";
 		mes "Okay. Have a nice adventure then.";
 		close;
 	}
-	mes "[Lana]";
+	mes "[拉娜]";
 	mes "Okay. I will transfer you to the Amicitia General Lab.";
 	close2;
 	warp "amicitia1",242,244;
