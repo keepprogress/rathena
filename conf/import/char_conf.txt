@@ -1,2 +1,9 @@
 // 部署專屬設定（密碼、IP）放在 char.local，不進 git
 import: conf/import/char.local
+
+// 角色名稱允許中文（原本只放行英數字，中文名會被靜默拒絕）：改成黑名單，只禁會干擾指令／NPC 對話的符號
+char_name_option: 2
+char_name_letters: "';,%#:|<>@/~`^&*=+
+// 二次密碼允許連號與重複（預設擋 1234、1111 這類，client 端只會顯示失敗）
+pincode_allow_repeated: yes
+pincode_allow_sequential: yes
