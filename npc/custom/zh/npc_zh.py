@@ -5,9 +5,11 @@
   python3 npc/custom/zh/npc_zh.py apply <上游 npc 檔>...            # 依翻譯記憶產生 npc/custom/zh/<原路徑>
   python3 npc/custom/zh/npc_zh.py merge <翻譯 JSON>...              # 把 {原文: 譯文} 檢查後併入翻譯記憶
   python3 npc/custom/zh/npc_zh.py check <翻譯 JSON>...              # 只檢查，不寫入
+  python3 npc/custom/zh/npc_zh.py upstream                          # 依載入順序列出 map-server 會讀的上游 npc 檔
+  python3 npc/custom/zh/npc_zh.py conf                              # 依載入順序重寫 scripts_custom.conf 的中文化區塊
 
 翻譯記憶在 npc/custom/zh/translations.json（{原文: 譯文}）。
-上游改版後重跑 extract → 翻譯新字串 → merge → apply 即可。
+上游改版後重跑 extract → 翻譯新字串 → merge → apply → conf 即可（全部：$(python3 npc/custom/zh/npc_zh.py upstream)）。
 NPC 名稱沿用對話標頭的「[名字]」譯文；太長或要跟標頭不同時另設「#名字」。
 唯一的例外是 TWEAKS：少數 npc/custom 腳本的設定值（例如治療師順便加狀態），上游改了對不上會直接報錯。
 """
@@ -41,6 +43,8 @@ TWEAKS = {
 	'custom/warper.txt': [(_w := 'izlude,134,150,4\tduplicate(Warper)\t傳送師#izl::Warper#izl\t811\t//Pre-RE: (132,120)',
 		_w + ''.join(f'\nizlude_{c},134,150,4\tduplicate(Warper)\t傳送師#izl_{c}::Warper#izl_{c}\t811' for c in 'abcd'))],
 }
+CUSTOM_CONF = ROOT / 'npc/scripts_custom.conf'
+CONF_BEGIN, CONF_END = '// npc_zh.py conf: begin\n', '// npc_zh.py conf: end\n'
 NAME_BYTES = 23  # 名稱封包 24 位元組含結尾 0，超過會把中文字切半
 
 def strip_comment(line):
@@ -154,6 +158,8 @@ def main():
 					disp = m.group(2).split('::')[0].split('#')[0]
 					if re.search('[A-Za-z]', disp) and not npc_name(m.group(2), memory):
 						todo['#' + disp if name_key(disp) in memory else name_key(disp)] = ''
+		# 夾著 EUC-KR 位元組的字串（韓文資源名、韓文對話）不翻，原樣保留
+		todo = {k: v for k, v in todo.items() if not re.search('[\udc80-\udcff]', k)}
 		print(json.dumps(todo, ensure_ascii=False, indent=0))
 	elif cmd in ('merge', 'check'):
 		bad = 0
@@ -174,6 +180,8 @@ def main():
 			text = src_path.read_text('utf-8', errors='surrogateescape')  # 保留韓文資源名等非 UTF-8 位元組
 			lines = text.split('\n')
 			hits = display_strings(text)
+			if not hits and not any(HEADER.match(line) for line in lines):
+				continue  # 純生怪、mapflag、warp 的檔沒有東西可翻，維持載入上游原檔
 			done = 0
 			for n, a, b, s in reversed(hits):  # 由後往前換，位置才不會跑掉
 				if s in memory:
@@ -193,8 +201,32 @@ def main():
 			out.parent.mkdir(parents=True, exist_ok=True)
 			out.write_text(text, 'utf-8', errors='surrogateescape')
 			print(f'{out.relative_to(ROOT)}: {done}/{len(hits)} 句已翻譯, NPC 名稱 {names}')
+	elif cmd == 'upstream':
+		print('\n'.join(upstream()))
+	elif cmd == 'conf':
+		files = [f for f in upstream() if (ZH_DIR / f[len('npc/'):]).exists()]
+		block = ''.join(f'delnpc: {f}\n' for f in files) + ''.join(f'npc: npc/custom/zh/{f[len("npc/"):]}\n' for f in files)
+		text = CUSTOM_CONF.read_text()
+		head, rest = text.split(CONF_BEGIN)
+		CUSTOM_CONF.write_text(head + CONF_BEGIN + block + CONF_END + rest.split(CONF_END)[1])
+		print(f'{CUSTOM_CONF.relative_to(ROOT)}: {len(files)} 個中文副本')
 	else:
 		sys.exit(__doc__)
+
+
+def upstream(conf='npc/re/scripts_main.conf', seen=None):
+	"""依 map-server 讀 conf 的順序列出上游 npc 檔（npc/custom 下的不算）。
+	re 版常 duplicate 共用版的 NPC，中文副本也得照這個順序載入，否則會 original npc not found。"""
+	seen = [] if seen is None else seen
+	for line in (ROOT / conf).read_text(errors='replace').splitlines():
+		if not (m := re.match(r'(import|npc):\s*(\S+)', line.split('//')[0].strip())):
+			continue
+		kind, f = m.groups()
+		if kind == 'import':
+			upstream(f, seen)
+		elif not f.startswith('npc/custom/') and f not in seen and (ROOT / f).exists():
+			seen.append(f)
+	return seen
 
 
 if __name__ == '__main__':
