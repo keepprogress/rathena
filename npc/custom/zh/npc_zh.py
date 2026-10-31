@@ -22,7 +22,7 @@ MEMORY = ZH_DIR / 'translations.json'
 # 只有這些指令的字串會顯示給玩家
 DISPLAY = re.compile(
 	r'^\s*(mes|mesf|npctalk|dispbottom|announce|mapannounce|areaannounce|message|unittalk|showscript)\b'
-	r'|\b(select|prompt)\s*\(|^\s*menu\b')
+	r'|\b(select|prompt|Disp)\s*\(|^\s*menu\b')  # Disp 是 custom/warper.txt 組選單的函式
 STRING = re.compile(r'"((?:[^"\\]|\\.)*)"')
 # 譯文必須原樣保留的記號：格式佔位符、顏色碼、客戶端標籤（<NAVI> 等）與 <INFO> 裡的座標/ID
 KEEP = re.compile(r'%[-+ #0]*\d*(?:\.\d+)?[sdifxXuc%]|\^[0-9A-Fa-f]{6}|<INFO>[^<]*</INFO>|</?[A-Z]+>')
@@ -53,6 +53,7 @@ def display_strings(text):
 	"""逐行找顯示用字串，回傳 [(行號, 起點, 終點, 內容)]；跳過 /* */ 區塊註解。"""
 	found = []
 	in_block = False
+	cont = False  # 上一行的顯示指令以 , 或 + 結尾，跨到這一行（多行 menu）
 	for n, line in enumerate(text.split('\n')):
 		if in_block:
 			if '*/' in line:
@@ -62,13 +63,21 @@ def display_strings(text):
 			in_block = True
 			continue
 		code = line[:strip_comment(line)]
-		if not DISPLAY.search(code):
+		shown, cont = cont or DISPLAY.search(code), code.rstrip().endswith((',', '+'))
+		if not shown:
+			cont = False
 			continue
 		for m in STRING.finditer(code):
-			# 含非 UTF-8 位元組（韓文資源名）的字串不碰
-			if re.search(r'[A-Za-z]', m.group(1)) and not re.search('[\udc80-\udcff]', m.group(1)):
+			# 含非 UTF-8 位元組（韓文資源名）的字串不碰；F_InsertComma、ama_fild 這類函式名/地圖代號也不碰
+			if (re.search(r'[A-Za-z]', m.group(1)) and not re.search('[\udc80-\udcff]', m.group(1))
+					and not re.fullmatch(r'\w*_\w*', m.group(1))):
 				found.append((n, m.start(1), m.end(1), m.group(1)))
 	return found
+
+
+assert [s for *_, s in display_strings(
+	'menu "A",L1,\n\t"B",L2;\nset .@a$,"x";\nmes "Cost "+callfunc("F_InsertComma",1);\nDisp("C:D"); Pick("","ama_fild01");')
+] == ['A', 'B', 'Cost ', 'C:D']
 
 
 def name_key(disp):
