@@ -1,0 +1,66 @@
+//===== rAthena Script =======================================
+//= Jewel Case Quest
+//===== By: ==================================================
+//= Lupus
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= A quest for players at base level 99,
+//= with Jewel Case as a reward.
+//===== Additional Comments: =================================
+//= 1.0 First Version.
+//============================================================
+
+lighthalzen,108,229,2	script	拉芬::La Fenn	766,{
+	mes "[拉芬]";
+	if(BaseLevel<99) {
+		if(Q_99LVL) {
+			mes "你……你變年輕了！！但你絕對還是你自己！";
+			mes "沒想到你真的能達成我的條件……";
+			emotion ET_SCRATCH;
+			next;
+			mes "[拉芬]";
+			mes "這是你的獎品，從此永遠屬於你了。";
+			set Q_99LVL,0;
+			getitem 12106,1; //Jewel Case
+			emotion ET_CONGRATULATION;
+		} else {
+			mes callfunc("F_Hi");
+			mes "...";
+			emotion ET_SLEEPY;
+			next;
+			mes "[拉芬]";
+			mes "我有個謎題要給二轉以上、基本等級 99 的強者。";
+			mes "*打哈欠* 如果你遇到他們，請告訴他們我的謎題。";
+		}
+		close;
+	}
+	if(BaseLevel==99 && Upper==0) {
+		if(Q_99LVL) {
+			mes "現在去吧，去變年輕吧！";
+			mes "如果你解開我的謎題，我就給你一個附有稀有飾品的魔法寶石盒。";
+		} else {
+			mes callfunc("F_Hi")+" 英雄！";
+			if(BaseExp<1000000) {
+				mes "現在你變強了。";
+				mes "但是……還不夠強，應付不了我的謎題。";
+				if(rand(2)) {
+					mes "再擊殺 "+((1000000-BaseExp)/3765+1)+" 隻海豹寶寶後回來。";
+				} else {
+					mes "再擊殺 "+((1000000-BaseExp)/81+1)+" 隻波利後回來。";
+				}
+			} else {
+				mes "現在你真的變強了。";
+				mes "如果你能比現在更年輕，我就把我的寶物給你。";
+				set Q_99LVL,1;
+				emotion ET_BEST;
+			}
+		}
+		close;
+	}
+	emotion ET_SCRATCH;
+	mes "...";
+	close;
+}

@@ -1,0 +1,79 @@
+//===== rAthena Script ======================================= 
+//= Event King Items
+//===== By: ================================================== 
+//= $ephiroth
+//===== Current Version: ===================================== 
+//= 1.1
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= Grand Circlet Quest combined with Excalibur Quest.
+//===== Additional Comments: =================================
+//= 2006/09/27: 1.0 Release and fully working. [$ephiroth]
+//= 1.1 Optimized. [Euphy]
+//============================================================
+
+prt_castle,80,170,4	script	普隆德拉國王::King of Prontera	108,{
+	mes "[普隆德拉國王]";
+	mes "你好，可以幫我個忙嗎？";
+	next;
+	if(select("好啊，要我做什麼？:抱歉，我很忙。")==2) {
+		mes "[普隆德拉國王]";
+		mes "好吧，我相信會有別人願意幫忙的。";
+		close; }
+	mes "[普隆德拉國王]";
+	mes "謝謝你。唉，我身旁的女兒有點調皮……";
+	mes "如果你能把這些東西帶給她，我相信她會冷靜下來的。";
+	mes "我會把我的皇冠或佩劍當作獎勵給你。";
+	next;
+	setarray .@Items1[0],5007,742,30,741,50,753,20,732,1,710,20,629,20;
+	setarray .@Items2[0],1137,2254,1,2282,1,714,1;
+	switch(select("你需要什麼？:我已經有道具了！:算了。")) {
+		case 1:
+			for(set .@i,1; .@i<3; set .@i,.@i+1) {
+				mes "[普隆德拉國王]";
+				mes "如果你能幫我找來:";
+				for(set .@j,1; .@j<getarraysize(getd(".@Items"+.@i)); set .@j,.@j+2)
+					mes " ~ ^0055FF"+getd(".@Items"+.@i+"["+(.@j+1)+"]")+"^000000x "+getitemname(getd(".@Items"+.@i+"["+.@j+"]"));
+				mes "我會把我的 "+((.@i == 2 )?"佩劍。":"皇冠。");
+				if (.@i==2) close;
+				next; }
+		case 2:
+			mes "[普隆德拉國王]";
+			mes "你想要哪一個？";
+			next;
+			set .@i, select("皇冠:佩劍");
+			for(set .@j,1; .@j<getarraysize(getd(".@Items"+.@i)); set .@j,.@j+2)
+				if (countitem(getd(".@Items"+.@i+"["+.@j+"]")) < getd(".@Items"+.@i+"["+(.@j+1)+"]")) set .@nr,1;
+			mes "[普隆德拉國王]";
+			if (.@nr) { 
+				mes "你還缺了一些東西。";
+				mes "等你把所有道具都拿齊了再回來。";
+				close; }
+			for(set .@j,1; .@j<getarraysize(getd(".@Items"+.@i)); set .@j,.@j+2)
+				delitem getd(".@Items"+.@i+"["+.@j+"]"), getd(".@Items"+.@i+"["+(.@j+1)+"]");
+			getitem getd(".@Items"+.@i+"[0]"),1;
+			mes "真的非常感謝你！！";
+			mes "這樣她一定會冷靜下來的。";
+			mes "如約定，這是我的 "+((.@i==1)?"皇冠。":"佩劍。");
+			close;
+		case 3:
+			mes "[普隆德拉國王]";
+			mes "好吧，我相信會有別人願意幫忙的。";
+			close;
+	}
+}
+
+prt_castle,84,170,4	script	國王的女兒::King's Daughter	62,{
+	mes "[國王的女兒]";
+	mes "哼，我現在超討厭我爸！！";
+	next;
+	if(select("為什麼？:隨便啦……")==2) {
+		mes "[國王的女兒]";
+		mes "那好吧！哼！！";
+		close; }
+	mes "[國王的女兒]";
+	mes "他就是不肯給我想要的東西！！";
+	mes "他可是普隆德拉的國王，應該能給我任何東西才對！！！";
+	close;
+}

@@ -42,6 +42,8 @@ lines = [
 ]
 for i, n in names.items():
 	lines += [f'  - Id: {i}', f'    Name: {json.dumps(n, ensure_ascii=False)}', *(f'    {p}' for p in prices[i])]
+# 名稱以外的手寫覆蓋（新手包補品改零重量等）放在 item_db_caddo.yml，不會被重新產生蓋掉
+lines += ['', 'Footer:', '  Imports:', '  - Path: db/import/item_db_caddo.yml']
 out = root / 'db/import/item_db.yml'
 out.write_text('\n'.join(lines) + '\n', 'utf-8', newline='\n')
 print(f'{out}: {len(names)} 個道具')

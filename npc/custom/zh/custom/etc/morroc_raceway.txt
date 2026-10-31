@@ -1,0 +1,238 @@
+//===== rAthena Script =======================================
+//= Morocc Raceway
+//===== By: ==================================================
+//= acky
+//===== Current Version: =====================================
+//= 1.3
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Lets players race around Morocc (pvp_y_1-5)
+//===== Additional Comments: =================================
+//= If there are more than 3 players, at least 3 people
+//= must finish before a new race can be started.
+//=
+//= If there are less than 3 players, at least 1 person
+//= must finish before a new race can be started.
+//=
+//= Removed permanent global variables
+//= 1.2 Removed Duplicates [Silent]
+//= 1.3 Replaced effect numerics with constants. [Samuray22]
+//============================================================
+
+//Warps you into race way
+morocc,166,105,6	script	賽車女郎#01::Race Girl#01	116,{
+	mes "[賽車女郎]";
+	mes "你想去^0000FF夢羅克賽車場^000000看看嗎？";
+	next;
+	menu "是",L_Warp,"否",-;
+	mes "[賽車女郎]";
+	mes "好吧，想去的時候再來找我。";
+	close;
+L_Warp:
+	warp "pvp_y_1-5",165,256;
+	close;
+}
+
+//Warps you out of raceway
+pvp_y_1-5,169,265,5	script	賽車女郎#02::Race Girl#02	116,{
+	mes "[賽車女郎]";
+	mes "歡迎來到夢羅克賽車場！";
+	next;
+	menu "說明",-,"離開",L_Warp,"取消",L_Cancel;
+	mes "[賽車女郎]";
+	mes "必須有人點擊起跑員才能開始比賽。";
+	next;
+	mes "[賽車女郎]";
+	mes "比賽開始後，請沿逆時針方向繞行夢羅克。";
+	next;
+	mes "[賽車女郎]";
+	mes "你必須通過所有檢查點，禁止作弊！";
+	close;
+L_Warp:
+	warp "morocc",165,101;
+L_Cancel:
+	mes "[賽車女郎]";
+	mes "歡迎下次再來！";
+	close;
+}
+
+//Counts down and starts race
+pvp_y_1-5,145,269,5	script	起跑員::Starter	733,{
+	if ($@race != 0) goto L_Started;
+	if ($@counting != 0) goto L_Started;
+	if ($@racecount == 1) goto L_Started;
+L_Menu:
+	mes "[起跑員]";
+	mes "請站在我的東邊。";
+	menu "開始比賽",L_Count,"取消",-;
+	close;
+L_Count:
+	set $@counting,1;
+	mes "倒數中……";
+	addtimer 1000, "Starter::OnCount1000";
+	addtimer 2000, "Starter::OnCount2000";
+	addtimer 3000, "Starter::OnCount3000";
+	addtimer 4000, "Starter::OnCount4000";
+	announce strcharinfo(0) + "已開始倒數",1;
+	announce "準備好比賽了！",1;
+	close;
+
+OnCount1000:
+	announce "[3]",1;
+	end;
+OnCount2000:
+	announce "[2]",1;
+	end;
+OnCount3000:
+	announce "[1]",1;
+	end;
+OnCount4000:
+	emotion ET_GO;
+	specialeffect EF_CHIMTO;
+	announce "[出發！]",1;
+	set $@race,1;
+	set $@position,0;
+	set $@counting,0;
+	set $@raceid,rand(100000,999999);
+	end;
+
+L_Started:
+	if ((getmapusers("pvp_y_1-5") < 3) && ($@position > 0)) goto L_Menu;
+	if ($@position > 2) goto L_Menu;
+	mes "[起跑員]";
+	mes "比賽進行中";
+	close;
+
+OnInit:
+	set $@race,0;
+	set $@position,0;
+	set $@racecount,0;
+	end;
+}
+
+//Checkpoint 1
+pvp_y_1-5,144,262,5	script	檢查點1::Check Point 1	111,0,5,{
+	end;
+OnTouch:
+	if (@raceid != $@raceid) goto L_Started;
+	if (@race == 6) goto L_Finished;
+	if ($@race == 1) goto L_Started;
+	mes "比賽還沒開始，請往後退。";
+	close;
+L_Started:
+	set @race,1;
+	set @raceid,$@raceid;
+	end;
+L_Finished:
+	mes "你已經完成比賽了。";
+	close;
+}
+
+//Checkpoint 2
+pvp_y_1-5,73,247,5	script	檢查點2::Check Point 2	111,6,6,{
+	end;
+OnTouch:
+	if (@race != 1) goto L_Miss;
+	set @race,2;
+	announce "[" + strcharinfo(0) +"] 已抵達檢查點 [1]",1;
+	end;
+L_Miss:
+	mes "你錯過了一個檢查點，請回頭。";
+	close;
+}
+
+//Checkpoint 3
+pvp_y_1-5,77,44,5	script	檢查點3::Check Point 3	111,6,6,{
+	end;
+OnTouch:
+	if (@race != 2) goto L_Miss;
+	set @race,3;
+	announce "[" + strcharinfo(0) +"] 已抵達檢查點 [2]",1;
+	end;
+L_Miss:
+	mes "你錯過了一個檢查點，請回頭。";
+	close;
+}
+
+//Checkpoint 3
+pvp_y_1-5,249,60,5	script	檢查點4::Check Point 4	111,6,6,{
+	end;
+OnTouch:
+	if (@race != 3) goto L_Miss;
+	set @race,4;
+	announce "[" + strcharinfo(0) +"] 已抵達檢查點 [3]",1;
+	end;
+L_Miss:
+	mes "你錯過了一個檢查點，請回頭。";
+	close;
+}
+
+//Checkpoint 4
+pvp_y_1-5,255,256,5	script	檢查點5::Check Point 5	111,6,6,{
+	end;
+OnTouch:
+	if (@race != 4) goto L_Miss;
+	set @race,5;
+	announce "[" + strcharinfo(0) +"] 已抵達檢查點 [4]",1;
+	end;
+L_Miss:
+	mes "你錯過了一個檢查點，請回頭。";
+	close;
+}
+
+//Finish Line
+pvp_y_1-5,174,244,5	script	終點線::Finish Line	111,6,6,{
+	end;
+OnTouch:
+	if (@raceid != $@raceid) goto L_WrongRace;
+	if (@race != 5) goto L_Miss;
+	set @race,6;
+	set $@position,$@position+1;
+	announce "[" + strcharinfo(0) +"] 已抵達終點線！[名次: " + $@position + "]",1;
+	end;
+L_Miss:
+	mes "你錯過了一個檢查點，請回頭。";
+	close;
+L_WrongRace:
+	mes "你不在這場比賽中。";
+	close;
+}
+
+//Check Point Marker Flags
+pvp_y_1-5,144,267,4	script	檢查點1#01::Check Point 1#01	722,{
+	end;
+}
+pvp_y_1-5,144,257,4	script	檢查點1#02::Check Point 1#02	722,{
+	end;
+}
+pvp_y_1-5,70,252,3	script	檢查點2#01::Check Point 2#01	722,{
+	end;
+}
+pvp_y_1-5,77,243,3	script	檢查點2#02::Check Point 2#02	722,{
+	end;
+}
+pvp_y_1-5,81,48,1	script	檢查點3#01::Check Point 3#01	722,{
+	end;
+}
+pvp_y_1-5,72,40,1	script	檢查點3#02::Check Point 3#02	722,{
+	end;
+}
+pvp_y_1-5,244,65,7	script	檢查點4#01::Check Point 4#01	722,{
+	end;
+}
+pvp_y_1-5,252,57,7	script	檢查點4#02::Check Point 4#02	722,{
+	end;
+}
+pvp_y_1-5,259,260,5	script	檢查點5#01::Check Point 5#01	722,{
+	end;
+}
+pvp_y_1-5,251,252,5	script	檢查點5#02::Check Point 5#02	722,{
+	end;
+}
+pvp_y_1-5,174,249,4	script	終點線#01::Finish Line#01	722,{
+	end;
+}
+pvp_y_1-5,174,238,4	script	終點線#02::Finish Line#02	722,{
+	end;
+}

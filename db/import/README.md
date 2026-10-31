@@ -10,3 +10,9 @@ rAthena 上游 YAML DB 的覆蓋點。本目錄的 YAML 會在 `db/(re|pre-re)/`
 
 ## 載入順序
 詳見 `db/import-tmpl/` 與各 YAML loader 的 `Footer.Imports`。
+
+## 目前的檔案
+- `item_db.yml`：`data-overlay/zh-tw/gen_item_db.py` 產生的台服道具名，**不要手改**；檔尾 Footer 匯入 `item_db_caddo.yml`
+- `item_db_caddo.yml`：手寫的道具覆蓋（新手包補品改零重量）；有 Buy/Sell 的道具要照抄上游價格
+- `item_group_db.yml`：練功寶盒(1)～(175) 改成全部給（上游 1～90 級預設只隨機給一樣）並加碼補品
+- `mob_db.yml`：`gen_mob_db.py` 產生的台服魔物名

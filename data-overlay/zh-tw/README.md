@@ -6,7 +6,7 @@
 
 | 腳本 | 在哪跑 | 產物 |
 |---|---|---|
-| `gen_item_db.py` | 任一（需 rocn） | `db/import/item_db.yml`：台服道具名，Buy/Sell 照抄上游 |
+| `gen_item_db.py` | 任一（需 rocn） | `db/import/item_db.yml`：台服道具名，Buy/Sell 照抄上游；檔尾匯入手寫的 `item_db_caddo.yml` |
 | `gen_mob_db.py` | Omarchy（需 rocn、OpenCC ≥ 1.4；Pi 的 1.1.9 會把托轉成託） | `db/import/mob_db.yml`：台服卡片名 > `mob_names_extra.json` > 導航表簡轉繁 |
 | `build_zhtw.py` | Pi `~/apps/robrowser` | roBrowser 的 `DATA_OVERRIDE_PATH`（文字表、技能、貼圖） |
 | `gen_tex.py` | Omarchy（Pillow + Noto Sans CJK TC） | 按鈕貼圖的韓文換繁中，給 `build_zhtw.py` 的 `tex-zh/` |

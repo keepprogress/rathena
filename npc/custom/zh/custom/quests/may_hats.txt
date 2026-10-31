@@ -1,0 +1,180 @@
+//===== rAthena Script =======================================
+//= Quests: Bird Nest, Lion Mask, Skeleton Manteau,
+//=         Fashion Hip Sack & Sales Banner
+//===== By: ==================================================
+//= Lupus
+//===== Current Version: =====================================
+//= 1.01
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Custom quest for some RO mobile game bonus items 
+//===== Additional Comments: =================================
+//= 1 May, 2006
+//= 1.01 translated the rest of dialogues
+//============================================================
+
+gonryun,187,140,4	script	雅基瑪::Yakima	850,{
+	mes "[雅基瑪]";
+	mes callfunc("F_Hi");
+	mes "我可以為您製作一些道具。";
+	mes "這些現在相當稀有……";
+	specialeffect EF_HITBODY;
+	next;
+	menu "鳥窩",-,"獅子面具",M_2,"邪骸戰士的斗篷",M_3,"流行時尚袋",M_4,"打折告示牌",M_5,"離開",M_EXIT;
+
+	mes "[雅基瑪]";
+	mes "喔……這對任何獸類獵人來說都是絕佳的道具。";
+	emotion ET_ROCK;
+	next;
+	mes "[雅基瑪]";
+	mes "製作這頂帽子，我需要:";
+	mes "1 頂墨西哥帽，";
+	mes "920 根羽毛，以及";
+	mes "310 個鳥嘴。";
+	next;
+	mes "[雅基瑪]";
+	mes "您都帶齊材料了嗎？";
+	next;
+	menu "有。",-,"沒有。",M_EXIT;
+
+	if(countitem(5067) < 1 || countitem(916) < 920 || countitem(925) < 310) GOTO L_NOITEM;//Items: Sombrero, Feather_of_Birds, Bill_of_Birds,
+	delitem 5067,1;//Items: Sombrero,
+	delitem 916,920;//Items: Feather_of_Birds,
+	delitem 925,310;//Items: Bill_of_Birds,
+	getitem 5129,1;//Items: Bird_Nest,
+	mes "[雅基瑪]";
+	mes "非常非常感謝您！";
+	mes callfunc("F_Bye");
+	close;
+
+M_2:
+	mes "[雅基瑪]";
+	mes "就是這個！很多人都怕獅子……怕到說不出話來……";
+	emotion ET_SEXY;
+	next;
+	mes "[雅基瑪]";
+	mes "製作這頂帽子，我需要:";
+	mes "1 個老虎面具，";
+	mes "10 個虎掌，";
+	mes "30 張虎皮，以及";
+	mes "300 條豹紋內褲。";
+	next;
+	mes "[雅基瑪]";
+	mes "您都帶齊材料了嗎？";
+	next;
+	menu "有。",-,"沒有。",M_EXIT;
+
+	if(countitem(5098) < 1 || countitem(1030) < 10 || countitem(1029) < 30 || countitem(7267) < 300) GOTO L_NOITEM;//Items: Tiger_Mask, Tiger_Skin, Tiger's_Footskin, Tiger_Panty,
+	delitem 5098,1;//Items: Tiger_Mask,
+	delitem 1030,10;//Items: Tiger's_Footskin,
+	delitem 1029,30;//Items: Tiger_Skin,
+	delitem 7267,300;//Items: Tiger_Panty,
+	getitem 5130,1;//Items: Lion_Mask,
+	mes "[雅基瑪]";
+	mes "非常非常感謝您！";
+	mes callfunc("F_Bye");
+	close;
+
+M_3:
+	mes "[雅基瑪]";
+	mes "真希望這件髒斗篷能賣得更快……";
+	mes "看來它沒有外表那麼普通……嗯。";
+	emotion ET_KEK;
+	next;
+	mes "[雅基瑪]";
+	mes "我幾乎是白送的:";
+	mes "10 件舊斗篷，";
+	mes "3 個骷髏戒指，";
+	mes "2 件斗篷[1]，以及";
+	mes "1 件抗魔斗篷。";
+	next;
+	mes "[雅基瑪]";
+	mes "您都帶齊材料了嗎？";
+	next;
+	menu "有。",-,"沒有。",M_EXIT;
+
+	if(countitem(2508) < 1 || countitem(2506) < 2 || countitem(2609) < 3 || countitem(7207) < 10) GOTO L_NOITEM;//Items: Ragamuffin_Manteau, Manteau_, Skull_Ring, Old_Manteau,
+	delitem 2508,1;//Items: Ragamuffin_Manteau,
+	delitem 2506,2;//Items: Manteau_,
+	delitem 2609,3;//Items: Skull_Ring,
+	delitem 7207,10;//Items: Old_Manteau,
+	getitem 2511,1;//Items: Skeleton_Manteau,
+	mes "[雅基瑪]";
+	mes "非常非常感謝您！";
+	mes callfunc("F_Bye");
+	close;
+
+M_4:
+	mes "[雅基瑪]";
+	mes "這是全新的風格！飾品和袋子合而為一！您可以獲得 +2 STR……跟那個鳥窩可不一樣！";
+	mes "只適合商人職業。";
+	emotion ET_SMILE;
+	next;
+	mes "[雅基瑪]";
+	mes "現在我的庫存全是那種袋子……所以我會用 3 種花飾和一塊粗布來製作:";
+	mes "3 片花葉，";
+	mes "3 個花朵頭飾，";
+	mes "2 個花戒指，以及";
+	mes "3 條海盜頭巾。";
+	next;
+	mes "[雅基瑪]";
+	mes "您都帶齊材料了嗎？";
+	next;
+	menu "有。",-,"沒有。",M_EXIT;
+
+	if(countitem(2269) < 3 || countitem(2207) < 3 || countitem(2612) < 2 || countitem(2287)<3 ) GOTO L_NOITEM;//Items: Romantic_Flower, Fancy_Flower, Flower_Ring,
+	delitem 2269,3;//Items: Romantic_Flower,
+	delitem 2207,3;//Items: Fancy_Flower,
+	delitem 2612,2;//Items: Flower_Ring,
+	delitem 2287,3;//Items: Pirate_Bandana
+	getitem 2641,1;//Items: Fashion_Hip_Sack,
+	mes "[雅基瑪]";
+	mes "非常非常感謝您！";
+	mes callfunc("F_Bye");
+	close;
+
+M_5:
+	mes "[雅基瑪]";
+	mes "喔喔喔……這個告示牌適合達到一定等級的任何職業！";
+	mes "敵人一定會被您迷得眼花撩亂！";
+	emotion ET_BEST;
+	next;
+	mes "[雅基瑪]";
+	mes "嗯……我們用一些常見的材料來製作:";
+	mes "1 個紅色染料，";
+	mes "1 個赤色染料，";
+	mes "2 個停止標誌頭飾，";
+	mes "3 個小丑鼻子，";
+	mes "180 件樹葉衣，以及";
+	mes "20 個石榴桃。";
+	next;
+	mes "[雅基瑪]";
+	mes "您都帶齊材料了嗎？";
+	next;
+	menu "有。",-,"沒有。",M_EXIT;
+
+	if(countitem(975) < 1 || countitem(980) < 1 || countitem(2272) < 2 || countitem(2262) < 3 || countitem(7298) < 180 || countitem(7164) < 20) GOTO L_NOITEM;//Items: Scarlet_Dyestuff, Orange_Dyestuff, Stop_Post, Clown_Nose, Fig_Leaf, Solid_Peach,
+	delitem 975,1;//Items: Scarlet_Dyestuff,
+	delitem 980,1;//Items: Orange_Dyestuff,
+	delitem 2272,2;//Items: Stop_Post,
+	delitem 2262,3;//Items: Clown_Nose,
+	delitem 7298,180;//Items: Fig_Leaf,
+	delitem 7164,20;//Items: Solid_Peach,
+	getitem 5100,1;//Items: Sales_Banner,
+	mes "[雅基瑪]";
+	mes "非常非常感謝您！";
+	mes callfunc("F_Bye");
+	close;
+
+L_NOITEM:
+	mes "[雅基瑪]";
+	mes "您的材料還不夠，請把所有材料都收集齊。";
+	emotion ET_SORRY;
+	close;
+
+M_EXIT:
+	mes "[雅基瑪]";
+	mes callfunc("F_Bye");
+	close;
+}

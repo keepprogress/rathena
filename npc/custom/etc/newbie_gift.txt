@@ -1,0 +1,26 @@
+//===== rAthena Script =======================================
+//= Newbie Gift (新手禮包)
+//===== Description: =========================================
+//= Gives every character, once, a Level Up Box (1) and a stack
+//= of zero-weight supplies and EXP manuals on its first login.
+//= The boxes chain by level: (1) -> (10) -> ... -> (175);
+//= their contents and the extra supplies are set in
+//= db/import/item_group_db.yml, the weights in
+//= db/import/item_db_caddo.yml.
+//============================================================
+
+-	script	NewbieGift	-1,{
+OnPCLoginEvent:
+	if (newbie_gift_done)
+		end;
+	newbie_gift_done = 1;
+	getitem 23267,1;	// 練功寶盒(1)
+	getitem 14908,500;	// 年糕[活動專用]
+	getitem 11572,300;	// 藍色藥水[活動專用]
+	getitem 23042,30;	// 天地樹芽[活動專用]
+	getitem 12263,20;	// 經驗值倍增書[活動專用]
+	getitem 12766,20;	// 職業經驗值倍增書[活動專用]
+	getitem 12264,10;	// 掉寶率倍增糖[活動專用]
+	dispbottom "新手禮包已經放進背包！練功寶盒每到 10 級就能打開下一盒，補品都是零重量。";
+	end;
+}

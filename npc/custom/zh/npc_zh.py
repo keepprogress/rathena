@@ -9,6 +9,7 @@
 翻譯記憶在 npc/custom/zh/translations.json（{原文: 譯文}）。
 上游改版後重跑 extract → 翻譯新字串 → merge → apply 即可。
 NPC 名稱沿用對話標頭的「[名字]」譯文；太長或要跟標頭不同時另設「#名字」。
+唯一的例外是 TWEAKS：少數 npc/custom 腳本的設定值（例如治療師順便加狀態），上游改了對不上會直接報錯。
 """
 import json
 import re
@@ -24,12 +25,18 @@ DISPLAY = re.compile(
 	r'^\s*(mes|mesf|npctalk|dispbottom|announce|mapannounce|areaannounce|message|unittalk|showscript)\b'
 	r'|\b(select|prompt|Disp)\s*\(|^\s*menu\b')  # Disp 是 custom/warper.txt 組選單的函式
 STRING = re.compile(r'"((?:[^"\\]|\\.)*)"')
+# 顯示行裡當成名稱/變數名傳給這些函式的字串不能翻（例：getvariableofnpc(.x,"MVP Summoner")、getd("Mission"+.@i)）
+CODE_ARG = re.compile(r'\b(getvariableofnpc|getd|setd|callfunc|callsub|donpcevent|getmonsterinfo|strnpcinfo|getmapusers)\s*\([^()]*$')
 # 譯文必須原樣保留的記號：格式佔位符、顏色碼、客戶端標籤（<NAVI> 等）與 <INFO> 裡的座標/ID
 KEEP = re.compile(r'%[-+ #0]*\d*(?:\.\d+)?[sdifxXuc%]|\^[0-9A-Fa-f]{6}|<INFO>[^<]*</INFO>|</?[A-Z]+>')
 # 放在地圖上的 NPC 標頭；浮動 NPC（-）與 function 沒有看得到的名字
 HEADER = re.compile(
 	r'^((?!function\t)[^/\t-][^\t]*\t(?:script|duplicate\([^)]*\)|shop|cashshop|itemshop|pointshop|marketshop|trader)\t)'
 	r'([^\t]+)(?=\t)')
+# 依 npc/ 下的相對路徑：(原文, 改成)，每組在原檔必須剛好出現一次
+TWEAKS = {
+	'custom/healer.txt': [('.@Buffs = 0;', '.@Buffs = 1;')],  # 私服常見：治療順便加速度/祝福
+}
 NAME_BYTES = 23  # 名稱封包 24 位元組含結尾 0，超過會把中文字切半
 
 def strip_comment(line):
@@ -70,14 +77,16 @@ def display_strings(text):
 		for m in STRING.finditer(code):
 			# 含非 UTF-8 位元組（韓文資源名）的字串不碰；F_InsertComma、ama_fild 這類函式名/地圖代號也不碰
 			if (re.search(r'[A-Za-z]', m.group(1)) and not re.search('[\udc80-\udcff]', m.group(1))
-					and not re.fullmatch(r'\w*_\w*', m.group(1))):
+					and not re.fullmatch(r'\w*_\w*', m.group(1))
+					and not CODE_ARG.search(STRING.sub('""', code[:m.start()]))):
 				found.append((n, m.start(1), m.end(1), m.group(1)))
 	return found
 
 
 assert [s for *_, s in display_strings(
-	'menu "A",L1,\n\t"B",L2;\nset .@a$,"x";\nmes "Cost "+callfunc("F_InsertComma",1);\nDisp("C:D"); Pick("","ama_fild01");')
-] == ['A', 'B', 'Cost ', 'C:D']
+	'menu "A",L1,\n\t"B",L2;\nset .@a$,"x";\nmes "Cost "+callfunc("F_InsertComma",1);\nDisp("C:D"); Pick("","ama_fild01");\n'
+	'mes "Room "+getvariableofnpc(.t,"MVP Summoner")+" min "+getd("Mission"+.@i+"_")+" ok";')
+] == ['A', 'B', 'Cost ', 'C:D', 'Room ', ' min ', ' ok']
 
 
 def name_key(disp):
@@ -170,9 +179,14 @@ def main():
 				if (m := HEADER.match(line)) and (zh := npc_name(m.group(2), memory)):
 					lines[n] = m.group(1) + zh + line[m.end():]
 					names += 1
-			out = ZH_DIR / src_path.relative_to(ROOT / 'npc')
+			rel = src_path.relative_to(ROOT / 'npc')
+			text = '\n'.join(lines)
+			for old, new in TWEAKS.get(rel.as_posix(), []):
+				assert text.count(old) == 1, (rel, old)
+				text = text.replace(old, new)
+			out = ZH_DIR / rel
 			out.parent.mkdir(parents=True, exist_ok=True)
-			out.write_text('\n'.join(lines), 'utf-8', errors='surrogateescape')
+			out.write_text(text, 'utf-8', errors='surrogateescape')
 			print(f'{out.relative_to(ROOT)}: {done}/{len(hits)} 句已翻譯, NPC 名稱 {names}')
 	else:
 		sys.exit(__doc__)

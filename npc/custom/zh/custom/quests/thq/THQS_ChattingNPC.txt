@@ -1,0 +1,95 @@
+//===== rAthena Script =======================================
+//= Treasure Hunter Quests
+//===== By: ==================================================
+//= Fredzilla
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Start for Treasure hunter quests
+//===== Additional Comments: =================================
+//= Event_THQS - Used to check if you have already registered
+//= #Treasure_Token - used to keep track of tokens
+//============================================================
+
+//Entrance Flags
+yuno,48,101,6	script	告示::Notice	722,{
+	mes "^FF0000[ 寶藏獵人公會 ]^000000";
+	mes " ";
+	mes "歡迎來到寶藏獵人公會會館。";
+	mes "歡迎隨意進來參觀";
+	mes "如果你有興趣，也歡迎加入成為會員。";
+	mes " ";
+	mes "想申請入會，請找基根談談";
+	mes "上樓後再沿著走廊走到底。";
+	close;
+}
+//Saver Girl;
+yuno_in01,32,178,3	script	阿爾瑪::Ahlma	94,{
+	mes "[阿爾瑪]";
+	if (Event_THQS == 0) goto N_Member;
+	mes "歡迎來到寶藏獵人公會。";
+	mes "有什麼可以為您效勞的嗎？";
+	next;
+	menu "存檔",-,"離開",N_Quit;
+	mes "[阿爾瑪]";
+	mes "好的，已存檔。謝謝～期待下次見～";
+	savepoint "yuno_in01",34,176;
+	close;
+N_Quit:
+	mes "[阿爾瑪]";
+	mes "嗯，如果你覺得自己很安全，那很好。";
+	close;
+N_Member:
+	mes "抱歉，僅限會員。";
+	close;
+}
+//Retired Smile mask girl;
+yuno_in01,33,162,3	script	微笑小幫手::Smile Helper	92,{
+	mes "[微笑女郎]";
+	mes "唉……我真受夠了";
+	mes "拿笑臉面具去換那些爛東西。";
+	mes " ";
+	mes "你要是跟我要一個，你會發現自己的荷包輕了 10 磅！";
+	close;
+}
+//Usless Female Assasin;
+yuno_in01,22,162,6	script	女刺客::Female Assasin	725,{
+	mes "[夏洛特]";
+	if (Event_THQS > 0) goto N_Member;
+	mes "嗯，抱歉，要是你連會員都不是，我可不想浪費時間跟你說話！";
+	close;
+N_Member:
+	set @TEMP,rand(1,2);
+	if (@TEMP == 1) goto N_Chat1;
+	if (@TEMP == 2) goto N_Chat2;
+	mes "你怎麼會看到這段話？？？";
+	mes "嗯，除非你在看程式碼 :)";
+	close;
+N_Chat1:
+	mes "啊，歡迎你，寶藏獵人夥伴 "+strcharinfo(0)+".";
+	mes "你有聽說那位獨自闖進克雷斯特漢姆古城的勇者嗎？！他一定是瘋了。";
+	close;
+N_Chat2:
+	mes ""+strcharinfo(0)+" 你就沒有更好的事情可以做嗎？像是接個任務之類的。";
+	close;
+}
+//another useless member
+yuno_in01,25,162,6	script	女巫師::Female Wizard	123,{
+	mes "[莎夏]";
+	if (Event_THQS > 0) goto N_Member;
+	mes "嗯，抱歉，要是你連會員都不是，我可不想浪費時間跟你說話！";
+	close;
+N_Member:
+	set @TEMP,rand(2);
+	if (@TEMP == 1) goto N_Chat;
+	mes "啊，歡迎你，寶藏獵人夥伴 "+strcharinfo(0)+".";
+	mes "你有聽說樹林裡到處跑的那隻山羊人嗎？";
+	mes " ";
+	mes "聽說他的名字叫巴風特，已經在普隆德拉外的森林迷宮裡到處跑了好一陣子。";
+	close;
+N_Chat:
+	mes ""+strcharinfo(0)+" 你就沒有更好的事情可以做嗎？像是接個任務之類的。";
+	close;
+}

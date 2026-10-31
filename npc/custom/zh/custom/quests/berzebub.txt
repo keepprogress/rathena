@@ -1,0 +1,64 @@
+//===== rAthena Script =======================================
+//= Berzebub Card Quest
+//===== By: ==================================================
+//= jabs
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Quest to get the Berzebub Card
+//===== Additional Comments: =================================
+//= 1.1 Fixed ingredients. Was too exploitable [Lupus]
+//= 1.2 Optimized. [Euphy]
+//============================================================
+
+prontera,165,178,8	script	老婦人::Old Woman	103,{
+
+	setarray .@Items[0],714,25,1061,100,1095,200,618,10,1551,2,1614,1,727,20;
+	set .@n$,"[Old Woman]";
+
+	mes .@n$;
+	if(BerzQuest == 1) {
+		mes "嘿，我記得你！我之前就跟你說過，這個任務只能完成一次。";
+		close; }
+	mes "年輕人，你好。我在克雷斯特漢姆古城附近採蘑菇時，發現了一個很棒的道具。";
+	next;
+	if(select("繼續說:離開")==2) goto M_Leave;
+
+	mes .@n$;
+	mes "我從來沒見過這種道具。聽說它可以裝在任何有空卡槽的飾品裡。";
+	next;
+	mes .@n$;
+	mes "如果你對這個道具有興趣，我可以告訴你要做一個屬於自己的，需要準備什麼材料。每位玩家只能拿到一個，所以完成這個任務後，就不能再做一次了。";
+	next;
+	if(select("再跟我說說詳情:算了，我沒興趣")==2) goto M_Leave;
+
+	mes .@n$;
+	mes "我記得這個道具叫做^FF0000貝雷傑卡片^000000。它能讓你的詠唱速度變得超快！";
+	next;
+	mes .@n$;
+	mes "我需要以下全部的道具:";
+	for(set .@i,0; .@i<getarraysize(.@Items); set .@i,.@i+2) {
+		mes " ~ "+.@Items[.@i+1]+"x "+getitemname(.@Items[.@i]);
+		if (countitem(.@Items[.@i]) < .@Items[.@i+1]) set .@nr,1; }
+	next;
+	if(select("我全部都有了！:我馬上去拿！")==2) goto M_Leave;
+
+	mes .@n$;
+	if (.@nr) {
+		mes "你在說謊！滾出去把那些道具拿來，你這個不成材的搖滾明星！";
+		close; }
+	for(set .@i,0; .@i<getarraysize(.@Items); set .@i,.@i+2)
+		delitem .@Items[.@i], .@Items[.@i+1];
+	getitem 4145,1;
+	set BerzQuest, 1;
+	mes "恭喜！你已經集齊所有道具了。這是你的^FF0000貝雷傑卡片^000000，如約定的獎勵。";
+	emotion ET_CONGRATULATION;
+	close;
+
+M_Leave:
+	mes .@n$;
+	mes "我手上正好有一個很棒的道具……";
+	close;
+}

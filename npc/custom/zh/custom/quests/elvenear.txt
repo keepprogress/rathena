@@ -1,0 +1,68 @@
+//===== rAthena Script =======================================
+//= Daily Job Quest For Elven Ears
+//===== By: ==================================================
+//= someone
+//===== Current Version: =====================================
+//= 1.2
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Elven Ears (require 75+ Base Level)
+//===== Additional Comments: =================================
+//= Optimized [Lupus], 1.1 misc fix
+//= 1.2 Fixed exploit [Lupus]
+//============================================================
+
+geffen,127,49,5	script	妖精耳朵任務::Elven Ears Quest	84,{
+	mes "[妖精耳朵任務]"; 
+	mes "嗨，今天的任務是……"; 
+	mes "啊，是^61B031妖精耳朵 ^000000任務！"; 
+	next; 
+	menu "需求條件",L_Bl, "製作道具",-,"取消",L_Cancel;
+
+	mes "[妖精耳朵任務]";
+	mes "好，我來確認一下"; 
+	next;
+	if(countitem(2213)<1 || countitem(1040)<20 || countitem(919)<20) goto L_NoMake; 
+	delitem 2213,1;
+	delitem 1040,20;
+	delitem 919,20;
+	mes "[妖精耳朵任務]";
+	mes "等我一下……";
+	next;
+	getitem 2286,1;
+	mes "[妖精耳朵任務]";
+	mes "好了！";
+	close;
+
+L_NoMake:
+	mes "[妖精耳朵任務]";
+	mes "你還沒達到條件。";
+	mes "那就改天再來吧……";
+	close;
+
+L_Bl: 
+	mes "[妖精耳朵任務]";
+	mes "好，你只要收集以下道具:"; 
+	mes "^362ED61貓耳髮圈^000000"; 
+	mes "^362ED620老妖精鬍鬚^000000"; 
+	mes "和^362ED620動物外皮^000000";
+	next;
+	menu "接受",-, "離開",L_Leave;
+
+	mes "[妖精耳朵任務]";
+	mes "收集完成後，把道具拿來給我。好的，祝你順利找到這些道具。";
+	close;
+
+L_Leave:
+	mes "[妖精耳朵任務]";
+	mes "也許下次吧？";
+	close;
+
+L_Cancel:
+	mes "[妖精耳朵任務]";
+	mes "唉，真可惜";
+	mes "這麼快就放棄了嗎？";
+	mes "唉，希望你明天能來參加任務。";
+	close;
+}

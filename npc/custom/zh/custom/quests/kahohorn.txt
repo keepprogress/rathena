@@ -1,0 +1,69 @@
+//===== rAthena Script =======================================
+//= Lord Kaho's Horns Quest
+//===== By: ==================================================
+//= ?
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Custom quest for Lord Kaho's Horns.
+//===== Additional Comments: =================================
+//= 1.1 Optimized, and fixed some requirements. [Euphy]
+//============================================================
+
+geffen,115,107,5	script	卡浩的僕人::Lord Kaho's Servant	61,{
+
+	setarray .@Items[0],7005, 968, 923, 734, 724,2268,7036,7020,5053,7018,741,742,743,750,751,752,753,754;
+	setarray .@Drops[0],1272,1087,1039,1260,1046,1115,1252,1147,1038,1059;
+	set .@n$, "[Lord Kaho's Servant]";
+
+	mes .@n$;
+	mes "我為了達成卡浩大人對頭飾那荒謬的期望，差點累死！";
+	mes "我終於找到了完美頭飾的配方，現在願意撥出時間和才華來幫忙。";
+	next;
+	mes .@n$;
+	mes "想要取得卡浩之角，你需要以下材料:";
+	mes "3x ^0055FF華麗金屬^000000";
+	next;
+	mes .@n$;
+	mes "喔，對了……";
+	mes "我還忘了提這些……";
+	next;
+	mes .@n$;
+	for(set .@i,0; .@i<10; set .@i,.@i+1)
+		mes "1x ^0055FF"+getitemname(.@Items[.@i])+"^000000 (取自 "+getmonsterinfo(.@Drops[.@i], MOB_NAME)+")";
+	next;
+	mes .@n$;
+	mes "還沒完呢，親愛的……";
+	mes "我超愛娃娃的，所以你得把這些可愛的東西帶來給我！";
+	for(set .@i,10; .@i<18; set .@i,.@i+1)
+		mes "1x ^0055FF"+getitemname(.@Items[.@i])+"^000000";
+	next;
+	mes .@n$;
+	mes "最後，我用上面提到的所有道具，為我的主人辛苦做出了這對角……";
+	mes "請另外附上 ^0055FF500萬Zeny^000000 作為我的辛勞費。"; 
+	next;
+	mes .@n$;
+	mes "你準備好讓我製作這件特殊道具了嗎？";
+	next;
+	if(select("當然！:這些條件也太誇張了吧！")==2) {
+		mes .@n$;
+		mes "我經歷過的事情，比這還要誇張……";
+		mes "如果你能順利取得這些道具，就會擁有驚人的力量！";
+		close; }
+	mes .@n$;
+	for(set .@i,0; .@i<18; set .@i,.@i+1)
+		if (!countitem(.@Items[.@i])) { set .@nr,1; break; }
+	if (.@nr || countitem(714) < 3 || Zeny < 5000000) {
+		mes "如果你沒有帶齊所有材料，我就無法製作。請諒解，這是為了造福像你這樣的英雄！";
+		close; }
+	for(set .@i,0; .@i<18; set .@i,.@i+1)
+		delitem .@Items[.@i],1;
+	delitem 714,3;
+	set Zeny, Zeny-5000000;
+	mes "哇！你真是勇敢！";
+	getitem 5013,1;
+	mes "祝你成為米德加爾德之神！";
+	close;
+}

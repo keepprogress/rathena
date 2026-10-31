@@ -1,0 +1,516 @@
+//===== rAthena Script =======================================
+//= Treasure Hunter Quests
+//===== By: ==================================================
+//= Fredzilla
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Start for Treasure hunter quests
+//===== Additional Comments: =================================
+//= Event_THQS - Used to check if you have already registered
+//= #Treasure_Token - used to keep track of tokens
+//= 1.0 - Straight conversion of Aegis NPC file
+//= 1.1 - balanced some prices, fixed 1 missing label
+//=       removed Executioner&Mysteltain swords [Lupus]
+//============================================================
+
+prt_in,159,172,0	warp	thqwrp	3,3,yuno_in01,123,155
+
+prt_in,164,174,1	script	寶藏獵人商店::Treasure Hunter's Shop	65,{
+	mes "[艾許]";
+	mes "啊， "+strcharinfo(0)+"！歡迎光臨寶藏獵人公會官方商店。";
+	mes "你目前持有 ^FF0000"+#Treasure_Token+"^000000 個寶藏獵人代幣！！！";
+	next;
+	menu "這裡是怎麼運作的？",-,"請問目前有哪些商品？",N_Shop,"算了",N_NVM;
+	mes "[艾許]";
+	mes "在這裡，您可以用寶藏獵人代幣兌換 Zeny，或是由本店鐵匠鍛造的稀有武器。";
+	mes " ";
+	mes "每樣東西都有其價值，取得代幣的唯一方法，就是完成指派給您的任務，系統大致是這樣運作的。";
+	mes " ";
+	mes "任務越困難，能獲得的代幣就越多。所有紅色任務價值 4-8 個代幣，其餘任務價值 1-5 個代幣。";
+	mes " ";
+	mes "希望這些能解答您的問題。";
+	close;
+N_NVM:
+	close;
+	end;
+N_Shop:
+//This is when it gets hard :)
+	mes "[艾許]";
+	mes "好的，這是我們的完整商品清單。";
+	mes " ";
+	mes "（T 代表寶藏獵人代幣。）";
+	next;
+	menu "兌換 Zeny",-,"兌換武器",N_BuyWeps,"兌換卡片",N_BuyCards,"算了",N_NVM;
+	mes "[艾許]";
+	mes "以下是本店提供的商品。";
+	next;
+	menu "1000z - 1T",-,"10000z - 10T",N_10T,"100000z - 100T",N_100T,"算了",N_NVM;
+	if (#Treasure_Token > 0) goto N_GetZeny1k;
+	mes "您的代幣不足！";
+	close;
+N_GetZeny1k:
+	set #Treasure_Token,#Treasure_Token-1;
+	set Zeny, Zeny+1000;
+	close;
+N_10T:
+	if (#Treasure_Token > 9) goto N_GetZeny10k;
+	mes "您的代幣不足！";
+	close;
+N_GetZeny10k:
+	set #Treasure_Token,#Treasure_Token-10;
+	set Zeny, Zeny+10000;
+	close;
+N_100T:
+	if (#Treasure_Token > 99) goto N_GetZeny100k;
+	mes "您的代幣不足！";
+	close;
+N_GetZeny100k:
+	set #Treasure_Token,#Treasure_Token-100;
+	set Zeny, Zeny+100000;
+	close;
+
+N_BuyWeps:
+	mes "[艾許]";
+	mes "以下是本店提供的商品。";
+	next;
+	menu "斧頭類",-,"單手劍類",N_1HandSword,"雙手劍類",N_2HandSword,"書類",N_Book,"弓類",N_Bow,"拳刃類",N_Katar,"拳套類",N_Knuckle,"錘類",N_Mace,"鞭類",N_Whip,"魔杖類",N_Wand,"算了",N_NVM;
+
+	mes "[艾許]";
+	mes "以下是本店提供的商品。";
+	next;
+	menu "暗靈之斧 - 160T",-,"斯勒特斧 - 160T",N_Slau,"風靈之斧 - 180T",N_Toma,"克萊伊特斧 - 200T",N_GreatA,"斬首之斧 - 200T",N_Guill,"算了",N_NVM;
+
+	if (#Treasure_Token < 160) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-160;
+	getitem 1365,1;
+	logmes "Treasure Token: Bought a Sabbath";
+	close;
+N_Slau:
+	if (#Treasure_Token < 160) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-160;
+	getitem 1367,1;
+	logmes "Treasure Token: Bought a Slaughter";
+	close;
+N_Toma:
+	if (#Treasure_Token < 180) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-180;
+	getitem 1368,1;
+	logmes "Treasure Token: Bought a Tomahawk";
+	close;
+N_GreatA:
+	if (#Treasure_Token < 200) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-200;
+	getitem 1364,1;
+	logmes "Treasure Token: Bought a Great Axe";
+	close;
+N_Guill:
+	if (#Treasure_Token < 200) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-200;
+	getitem 1369,1;
+	logmes "Treasure Token: Bought a Guillotine";
+	close;
+N_NeedToken:
+	mes "[艾許]";
+	mes "您的代幣不足！";
+	close;
+
+
+N_1HandSword:
+	mes "[艾許]";
+	mes "以下是本店提供的商品。";
+	next;
+	menu "秘劍 慕戀 - 130T",-,"烈陽之劍 - 150T",N_SolarS,"利剪劍 - 170T",N_CaesarS,"多刃尖刺刀 - 180T",N_Nagan,"聖劍 渾沌 - 200T",N_ImmatS,"石中劍 - 200T",N_Excal,"首領之劍 - 240T",N_Byeoll,"魔刀 吞神 - 320T",N_Talef,"算了",N_NVM;
+
+	if (#Treasure_Token < 130) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-130;
+	getitem 1132,1;
+	logmes "Treasure Token: Bought a Edge";
+	close;
+N_SolarS:
+	if (#Treasure_Token < 150) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-150;
+	logmes "Treasure Token: Bought a Solar Sword";
+	getitem 1136,1;
+	close;
+N_CaesarS:
+	if (#Treasure_Token < 170) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-170;
+	logmes "Treasure Token: Bought a Caesars Sword";
+	getitem 1134,1;
+	close;
+N_Nagan:
+	if (#Treasure_Token < 180) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-180;
+	logmes "Treasure Token: Bought a Nagan";
+	getitem 1130,1;
+	close;
+N_ImmatS:
+	if (#Treasure_Token < 200) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-200;
+	logmes "Treasure Token: Bought a Immaterial Sword";
+	getitem 1141,1;
+	close;
+N_Excal:
+	if (#Treasure_Token < 200) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-200;
+	logmes "Treasure Token: Bought a Excalibur";
+	getitem 1137,1;
+	close;
+N_Byeoll:
+	if (#Treasure_Token < 240) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-240;
+	logmes "Treasure Token: Bought a Byeollungum";
+	getitem 1140,1;
+	close;
+N_Talef:
+	if (#Treasure_Token < 320) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-320;
+	logmes "Treasure Token: Bought a Talefing";
+	getitem 1139,1;
+	close;
+
+
+N_2HandSword:
+	mes "[艾許]";
+	mes "以下是本店提供的商品。";
+	next;
+	menu "龍牙劍 - 140T",-,"風靈之劍 - 200T",N_Schwe,"亞藍斯之劍 - 300T",N_Katzb,"名刀 不知火 - 300T",N_Murama,"秘刀 十六夜月 - 400T",N_Masamu,"神器 三十二朔月 - 2000T",N_Balmu,"算了",N_NVM;
+
+	if (#Treasure_Token < 140) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-140;
+	logmes "Treasure Token: Bought a Dragon Slayer";
+	getitem 1166,1;
+	close;
+N_Schwe:
+	if (#Treasure_Token < 200) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-200;
+	logmes "Treasure Token: Bought a Schweizersabel";
+	getitem 1167,1;
+	close;
+N_Katzb:
+	if (#Treasure_Token < 300) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-300;
+	logmes "Treasure Token: Bought a Katzbalger";
+	getitem 1170,1;
+	close;
+N_Murama:
+	if (#Treasure_Token < 300) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-300;
+	logmes "Treasure Token: Bought a Muramasa";
+	getitem 1164,1;
+	close;
+N_Masamu:
+	if (#Treasure_Token < 400) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-400;
+	logmes "Treasure Token: Bought a Masamune";
+	getitem 1165,1;
+	close;
+N_Balmu:
+	if (#Treasure_Token < 2000) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-2000;
+	logmes "Treasure Token: Bought a Balmung";
+	getitem 1161,1;
+	close;
+
+
+N_Book:
+	mes "[艾許]";
+	mes "以下是本店提供的商品。";
+	next;
+	menu "火靈之書 - 80T",-,"水靈之書 - 80T",N_RoughSea,"風靈之書 - 80T",N_DryWinds,"地靈之書 - 80T",N_RipeEarth,"預言錄 - 80T",N_Revela,"聖言之書 - 90T",N_Bible,"智慧石碑 - 120T",N_Tablet,"算了",N_NVM;
+
+	if (#Treasure_Token < 80) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-80;
+	logmes "Treasure Token: Bought a Book of the Burning Sun";
+	getitem 1555,1;
+	close;
+N_RoughSea:
+	if (#Treasure_Token < 80) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-80;
+	logmes "Treasure Token: Bought a Book of the Rough Seas";
+	getitem 1553,1;
+	close;
+N_DryWinds:
+	if (#Treasure_Token < 80) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-80;
+	logmes "Treasure Token: Bought a Book of the Dry Winds";
+	getitem 1556,1;
+	close;
+N_RipeEarth:
+	if (#Treasure_Token < 80) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-80;
+	logmes "Treasure Token: Bought a Book of the Ripe Earth";
+	getitem 1554,1;
+	close;
+N_Revela:
+	if (#Treasure_Token < 80) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-80;
+	logmes "Treasure Token: Bought a Book of the Revelations";
+	getitem 1557,1;
+	close;
+N_Bible:
+	if (#Treasure_Token < 90) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-90;
+	logmes "Treasure Token: Bought a Bible";
+	getitem 1551,1;
+	close;
+N_Tablet:
+	if (#Treasure_Token < 120) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-120;
+	logmes "Treasure Token: Bought a Tablet";
+	getitem 1552,1;
+	close;
+
+N_Bow:
+	mes "[艾許]";
+	mes "以下是本店提供的商品。";
+	next;
+	menu "熾天使之弓 - 150T",-,"盜賊之弓 - 150T",N_Rogue,"算了",N_NVM;
+
+	if (#Treasure_Token < 150) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-150;
+	logmes "Treasure Token: Bought a Rudra Bow";
+	getitem 1720,1;
+	close;
+N_Rogue:
+	if (#Treasure_Token < 150) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-150;
+	logmes "Treasure Token: Bought a Roguemaster Bow";
+	getitem 1719,1;
+	close;
+
+N_Katar:
+	mes "[艾許]";
+	mes "以下是本店提供的商品。";
+	next;
+	menu "火靈拳刃 - 70T",-,"冰靈拳刃 - 70T",N_ColdIce,"風靈拳刃 - 70T",N_PiercWind,"刺藤拳刃 - 70T",N_DustyT,"骸靈拳刃 - 125T",N_Legbone,"刺殺拳刃 - 150T",N_Infiltra,"算了",N_NVM;
+
+	if (#Treasure_Token < 70) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-70;
+	logmes "Treasure Token: Bought a Katar of the Blazing Rage";
+	getitem 1258,1;
+	close;
+N_ColdIce:
+	if (#Treasure_Token < 70) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-70;
+	logmes "Treasure Token: Bought a Katar of the Cold Icicle";
+	getitem 1256,1;
+	close;
+N_PiercWind:
+	if (#Treasure_Token < 70) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-70;
+	logmes "Treasure Token: Bought a Katar of the Piercing Wind";
+	getitem 1259,1;
+	close;
+N_DustyT:
+	if (#Treasure_Token < 70) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-70;
+	logmes "Treasure Token: Bought a Katar of the Dusty Thornbush";
+	getitem 1257,1;
+	close;
+N_Legbone:
+	if (#Treasure_Token < 125) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-125;
+	logmes "Treasure Token: Bought a Sharpened Legbone of Ghoul";
+	getitem 1260,1;
+	close;
+N_Infiltra:
+	if (#Treasure_Token < 150) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-150;
+	logmes "Treasure Token: Bought a Infiltrator";
+	getitem 1261,1;
+	close;
+
+N_Knuckle:
+	mes "[艾許]";
+	mes "以下是本店提供的商品。";
+	next;
+	menu "風靈拳套 - 75T",-,"秘拳套 閃光 - 75T",N_Berserk,"算了",N_NVM;
+
+	if (#Treasure_Token < 75) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-75;
+	logmes "Treasure Token: Bought a Kaiser Knuckle";
+	getitem 1813,1;
+	close;
+N_Berserk:
+	if (#Treasure_Token < 75) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-75;
+	logmes "Treasure Token: Bought a Berserk";
+	getitem 1814,1;
+	close;
+
+N_Mace:
+	mes "[艾許]";
+	mes "以下是本店提供的商品。";
+	next;
+	menu "闇盲之錘 - 65T",-,"魔錘 安魂曲 - 90T",N_Slash,"聖錘 十字星 - 100T",N_GrandC,"秘錘 冷月 - 110T",N_Quadr,"雷神之錘 - 1000T",N_MJ,"算了",N_NVM;
+
+	if (#Treasure_Token < 65) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-65;
+	logmes "Treasure Token: Bought a Spike";
+	getitem 1523,1;
+	close;
+N_Slash:
+	if (#Treasure_Token < 90) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-90;
+	logmes "Treasure Token: Bought a Slash";
+	getitem 1526,1;
+	close;
+N_GrandC:
+	if (#Treasure_Token < 100) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-100;
+	logmes "Treasure Token: Bought a Grand Cross";
+	getitem 1528,1;
+	close;
+N_Quadr:
+	if (#Treasure_Token < 110) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-110;
+	logmes "Treasure Token: Bought a Quadrille";
+	getitem 1527,1;
+	close;
+N_MJ:
+	if (#Treasure_Token < 1000) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-1000;
+	logmes "Treasure Token: Bought a Mjolnir";
+	getitem 1530,1;
+	close;
+
+N_Whip:
+	mes "[艾許]";
+	mes "以下是本店提供的商品。";
+	next;
+	menu "毒鞭 薔薇 - 50T",-,"秘鞭 眷戀 - 65T",N_Chemeti,"算了",N_NVM;
+
+	if (#Treasure_Token < 50) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-50;
+	logmes "Treasure Token: Bought a Rapture Rose";
+	getitem 1963,1;
+	close;
+N_Chemeti:
+	if (#Treasure_Token < 65) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-65;
+	logmes "Treasure Token: Bought a Chemeti";
+	getitem 1964,1;
+	close;
+
+N_Wand:
+	mes "[艾許]";
+	mes "以下是本店提供的商品。";
+	next;
+	menu "巫杖 魂咬 - 90T",-,"大巫師之杖 - 150T",N_Wizardry,"骷髏魔杖 - 110T",N_BoneW,"靈魂之杖 - 120T",N_SOSoul,"算了",N_NVM;
+
+	if (#Treasure_Token < 90) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-90;
+	logmes "Treasure Token: Bought a Mighty Staff";
+	getitem 1613,1;//Items: Mighty_Staff,
+	close;
+N_Wizardry:
+	if (#Treasure_Token < 150) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-150;
+	logmes "Treasure Token: Bought a Wizardry Staff";
+	getitem 1473,1;//Items: Wizardy_Staff,
+	close;
+N_BoneW:
+	if (#Treasure_Token < 110) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-110;
+	logmes "Treasure Token: Bought a Bone Wand";
+	getitem 1615,1;//Items: Bone_Wand,
+	close;
+N_SOSoul:
+	if (#Treasure_Token < 120) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-120;
+	logmes "Treasure Token: Bought a Staff of Soul";
+	getitem 1472,1;//Items: Staff_of_Soul,
+	close;
+
+N_BuyCards:
+	mes "[艾許]";
+	mes "以下是本店提供的商品，所有卡片皆為 300T";
+	next;
+	menu "波利卡片 - 2T",-,"帕莎納卡片 - 420T",N_CPasana,"土人卡片 - 420T",N_CDok,"異變魚卡片 - 420T",N_CSFish,
+		"泥人卡片 - 420T",N_CSMan,"紅蝙蝠卡片 - 360T",N_CDrain,"卡浩卡片 - 360T",N_CKaho,"曼陀蘿魔花卡片 - 360T",N_CMand,
+		"螃蟹卡片 - 360T",N_CVadon,"木乃伊卡片 - 540T",N_CMummy,"茲諾克卡片 - 240T",N_CZeno,"禿鷹卡片 - 240T",N_CCond,
+		"腐屍卡片 - 210T",N_CZomb,"算了",N_NVM;
+
+	if (#Treasure_Token < 2) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-2;
+	logmes "Treasure Token: Bought a Poring Card";
+	getitem 4001,1;//Items: Poring_Card,
+	close;
+
+N_CPasana:
+	if (#Treasure_Token < 420) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-420;
+	logmes "Treasure Token: Bought a Pasana Card";
+	getitem 4099,1;//Items: Pasana_Card,
+	close;
+N_CDok:
+	if (#Treasure_Token < 420) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-420;
+	logmes "Treasure Token: Bought a Dokebi Card";
+	getitem 4098,1;//Items: Dokebi_Card,
+	close;
+N_CSFish:
+	if (#Treasure_Token < 420) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-420;
+	logmes "Treasure Token: Bought a Swordfish Card";
+	getitem 4089,1;//Items: Sword_Fish_Card,
+	close;
+N_CSMan:
+	if (#Treasure_Token < 420) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-420;
+	logmes "Treasure Token: Bought a Sandman Card";
+	getitem 4101,1;//Items: Sand_Man_Card,
+	close;
+N_CDrain:
+	if (#Treasure_Token < 360) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-360;
+	logmes "Treasure Token: Bought a Drainliar Card";
+	getitem 4069,1;//Items: Drainliar_Card,
+	close;
+N_CKaho:
+	if (#Treasure_Token < 360) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-360;
+	logmes "Treasure Token: Bought a Kaho Card";
+	getitem 4065,1;//Items: Kaho_Card,
+	close;
+N_CMand:
+	if (#Treasure_Token < 360) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-360;
+	logmes "Treasure Token: Bought a Mandragora Card";
+	getitem 4030,1;//Items: Mandragora_Card,
+	close;
+N_CVadon:
+	if (#Treasure_Token < 360) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-360;
+	logmes "Treasure Token: Bought a Vadon Card";
+	getitem 4049,1;//Items: Vadon_Card,
+	close;
+N_CMummy:
+	if (#Treasure_Token < 540) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-540;
+	logmes "Treasure Token: Bought a Mummy Card";
+	getitem 4106,1;//Items: Mummy_Card,
+	close;
+N_CZeno:
+	if (#Treasure_Token < 240) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-240;
+	logmes "Treasure Token: Bought a Zenorc Card";
+	getitem 4096,1;//Items: Zenorc_Card,
+	close;
+N_CCond:
+	if (#Treasure_Token < 240) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-240;
+	logmes "Treasure Token: Bought a Condor Card";
+	getitem 4015,1;//Items: Condor_Card,
+	close;
+N_CZomb:
+	if (#Treasure_Token < 210) goto N_NeedToken;
+	set #Treasure_Token,#Treasure_Token-210;
+	logmes "Treasure Token: Bought a Zombie Card";
+	getitem 4038,1;//Items: Zombie_Card,
+	close;
+}

@@ -1,0 +1,86 @@
+//===== rAthena Script =======================================
+//= Treasure Hunter Quests
+//===== By: ==================================================
+//= Fredzilla
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Start for Treasure hunter quests
+//===== Additional Comments: =================================
+//= Event_THQS - Used to check if you have already registered
+//= #Treasure_Token - used to keep track of tokens
+//============================================================
+
+yuno_in01,124,164,6	script	公會長::Guild Leader	108,{
+	mes "[基根]";
+	mes "是什麼風把你吹來這裡？有什麼話想說嗎？";
+	next;
+	menu "我想成為寶藏獵人",-,"接取新任務。",N_NQuest,"帶我去官方商店。",N_OShop,"算了。",N_NVM;
+	if(Event_THQS==1) goto N_AlreadyReg;
+	mes "[基根]";
+	mes "嗯 "+strcharinfo(0)+" 如果你想成為寶藏獵人，首先必須做到以下事項。";
+	mes " ";
+	mes "^FF00001.^000000 你將被收取 ^FF000025,000z^000000 作為基礎訓練及會員身分的證明費。";
+	mes " ";
+	mes "嗯……這樣就是你需要做的全部了。哈哈哈。";
+	next;
+	menu "請支付 ^FF000025,000z^000000。",-,"這也太貴了吧！！",N_HighPrice;
+	if (Zeny < 25000) goto N_NoZeny;
+	set Zeny,Zeny-25000;
+	//getitem 7950, 1;
+	//getitem 7951, 1;
+	set Event_THQS,1;
+	mes "[基根]";
+	mes "恭喜！";
+	emotion ET_CONGRATULATION;
+	next;
+	mes "[基根]";
+	mes "歡迎加入寶藏獵人公會。";
+	mes "現在你可以依自己的需要接取寶藏獵人任務了。";
+	close;
+N_NoZeny:
+	mes "[基根]";
+	mes "嗯……你似乎沒有 ^FF000025,000z^000000 "+strcharinfo(0)+"。請等你有了再回來。";
+	close;
+N_HighPrice:
+	mes "[基根]";
+	mes "嗯，如果你連一點點 ^FF000025,000z^000000 都付不起，你還不配當寶藏獵人。";
+	close;
+N_AlreadyReg:
+	mes "[基根]";
+	mes "哈哈哈……你已經是會員了。";
+	close;
+N_NQuest:
+	if (Event_THQS!=1) goto A_NeedReg;
+	mes "[基根]";
+	mes "嗯 "+strcharinfo(0)+" 如果你想接任務，請去隔壁房間找那位寶藏獵人夥伴談談。";
+	close;
+A_NeedReg:
+	mes "[基根]";
+	mes "抱歉，如果你想接任務，必須先是寶藏獵人公會的會員。";
+	mes " ";
+	mes "另外，既然你已經是會員了，隨時都歡迎使用我們的商店。它們都位於這一層。";
+	mes " ";
+	mes "我們還有一間僅供會員使用的商店，在那裡我們用名為寶藏獵人代幣的小金屬鑽石，來交換稀有物品。";
+	mes " ";
+	mes "你甚至還能進入我們專屬的私人地城。";
+	close;
+N_OShop:
+	if (Event_THQS!=1) goto N_NeedMem;
+	mes "[基根]";
+	mes "是的 "+strcharinfo(0)+" 我這就帶你去我們的商店！";
+	next;
+	warp "prt_in",166,171;
+	close;
+	end;
+N_NeedMem:
+	mes "[基根]";
+	mes "很抱歉，只有會員才能進入我們的私人商店。";
+	close;
+N_NVM:
+	mes "[基根]";
+	mes "好吧，等你有空閒時再回來吧。";
+	close;
+}
