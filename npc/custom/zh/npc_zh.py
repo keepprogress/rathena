@@ -44,9 +44,13 @@ TWEAKS = {
 	'custom/warper.txt': [(_w := 'izlude,134,150,4\tduplicate(Warper)\t傳送師#izl::Warper#izl\t811\t//Pre-RE: (132,120)',
 		_w + ''.join(f'\nizlude_{c},134,150,4\tduplicate(Warper)\t傳送師#izl_{c}::Warper#izl_{c}\t811' for c in 'abcd'))],
 	# 活動另外給商城點數（點數商城 / 轉蛋機用，見 custom/etc/cash_shop.txt）
-	'custom/events/cluckers.txt': [(_g := 'getitem $cluck_item_id,$cluck_item_amount;', _g + ' ' + (_cash := lambda n:
+	'custom/events/devil_square.txt': [('OnTreasureDead:\n\t.mob--;', 'OnTreasureDead:\n\t.mob--;\n\t' + (_cash := lambda n:
 		f'#CASHPOINTS += {n}; dispbottom "獲得 {n} 商城點數，目前共 " + #CASHPOINTS + " 點。";')(20))],
-	'custom/events/devil_square.txt': [('OnTreasureDead:\n\t.mob--;', 'OnTreasureDead:\n\t.mob--;\n\t' + _cash(20))],
+	# 咯咯雞：每天 15:50、21:50 自動開；獎品改成免費抽最新一期台服轉蛋 10 次（custom/etc/gacha.txt 的 OnPrize）
+	'custom/events/cluckers.txt': [
+		('getitem $cluck_item_id,$cluck_item_amount;', 'doevent "轉蛋機#cgacha::OnPrize";'),
+		('OnTimer10000:', 'OnClock1550:\nOnClock2150:\n\tif (.startcluck)\n\t\tend;\n'
+			'\tannounce "[咯咯咯！轟！] 即將在普隆德拉開始！獎品是免費抽最新一期轉蛋 10 次！",bc_blue;\n\tinitnpctimer;\n\tend;\nOnTimer10000:')],
 	'custom/events/mushroom_event.txt': [(_g := 'getitem .prize, .amount;', _g + '\n\t' + _cash(5))],
 	'custom/events/mvp_ladder.txt': [(_g, '{ ' + _g + ' ' + _cash(n) + ' }') for _g, n in (
 		('getitem .round_item_id, .round_item_amount;', 5),

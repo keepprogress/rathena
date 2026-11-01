@@ -45,7 +45,7 @@ prontera,156,219,4	script	咯咯雞::Cluckers	800,{
 					npctalk "咯咯雞 : 汪！...........";
 					specialeffect2 EF_SPHERE;
 					announce "[咯咯咯！轟！] " + strcharinfo(0) + " 擠出了獎品！做得好！",0;
-					getitem $cluck_item_id,$cluck_item_amount; #CASHPOINTS += 20; dispbottom "獲得 20 商城點數，目前共 " + #CASHPOINTS + " 點。";
+					doevent "轉蛋機#cgacha::OnPrize";
 					set .startcluck,0;
 				} else {
 					npctalk "咯咯雞 : 咯咯！咯咯咯！！";
@@ -98,6 +98,13 @@ prontera,156,219,4	script	咯咯雞::Cluckers	800,{
 	mes "咯咯……";
 	close;
 
+OnClock1550:
+OnClock2150:
+	if (.startcluck)
+		end;
+	announce "[咯咯咯！轟！] 即將在普隆德拉開始！獎品是免費抽最新一期轉蛋 10 次！",bc_blue;
+	initnpctimer;
+	end;
 OnTimer10000:
 	announce "想跟瘋狂的雞一起玩，就快到噴水池後面來！",bc_blue;
 	end;

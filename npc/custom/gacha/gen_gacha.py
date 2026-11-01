@@ -57,7 +57,8 @@ def build(pools):
 			A['gx'].append(int(w / tot <= RARE))
 		for item, qty, ref in g['fixed']:
 			A['fi'].append(item); A['fa'].append(qty); A['fr'].append(ref)
-	init = [f'\t.price = {PRICE};', f'\t.pools = {len(pools)};',
+	prize = max(i for i, g in enumerate(pools) if '轉蛋' in g['name'])  # 活動獎品抽最新一期轉蛋（不含禮包）
+	init = [f'\t.price = {PRICE};', f'\t.pools = {len(pools)};', f'\t.prize_pool = {prize};',
 	        f'\t.ymenu$ = "{":".join(y + " 年（" + str(n) + " 期）" for y, _, n in years)}:離開";']
 	init += arrays('.yr$', [y for y, _, _ in years], True) + arrays('.ys', [s for _, s, _ in years]) + arrays('.yn', [n for _, _, n in years])
 	for k, v in A.items():
@@ -111,28 +112,48 @@ prontera,156,180,4	script	轉蛋機#cgacha	76,{{
 			close;
 		}}
 		#CASHPOINTS -= .price * .@pulls;
-		.@batch = gettimetick(2) * 10000 + rand(10000);
-		.@values$ = "";
 		next;
 		mes "[轉蛋機]";
-		for (.@n = 1; .@n <= .@pulls; .@n++) {{
-			for (.@k = .fs[.@p]; .@k < .fs[.@p] + .fn[.@p]; .@k++)
-				getitem2 .fi[.@k], .fa[.@k], 1, .fr[.@k], 0, 0, 0, 0, 0;
-			.@r = rand(.pt[.@p]);
-			.@k = .ps[.@p];
-			while (.gw[.@k] <= .@r)  // .gw 是累計權重
-				.@k++;
-			getitem2 .gi[.@k], .ga[.@k], 1, .gr[.@k], 0, 0, 0, 0, 0;
-			mes .@n + ". " + (.gx[.@k] ? "^FF0000" : "^0055FF") + getitemname(.gi[.@k]) + (.gr[.@k] ? " +" + .gr[.@k] : "") + " x" + .ga[.@k] + "^000000";
-			if (.gx[.@k])
-				announce "[轉蛋機] " + strcharinfo(0) + " 從【" + .pname$[.@p] + "】抽中了 " + getitemname(.gi[.@k]) + "！", bc_all;
-			.@values$ += (.@n > 1 ? "," : "") + "(" + getcharid(0) + "," + getcharid(3) + "," + .@batch + "," + .@n + ","
-				+ (.gx[.@k] ? 0 : 2) + "," + .gi[.@k] + "," + .ga[.@k] + "," + .price + ",0,0)";
-		}}
-		query_sql "INSERT INTO `gacha_log` (`char_id`,`account_id`,`pull_batch_id`,`pull_idx`,`tier`,`item_id`,`qty`,`cost_zeny`,`cost_item_id`,`cost_item_qty`) VALUES " + .@values$;
+		callsub L_Pull, .@p, .@pulls, .price;
+		for (.@i = 0; .@i < .@pulls; .@i++)
+			mes (@gacha_rare[.@i] ? "^FF0000" : "^0055FF") + @gacha_res$[.@i] + "^000000";
 		mes "剩下 ^0055FF" + #CASHPOINTS + "^000000 點。";
 		next;
 	}}
+
+// 抽 getarg(1) 次第 getarg(0) 期，getarg(2) 是每抽點數（寫進 gacha_log）；結果放 @gacha_res$、@gacha_rare
+L_Pull:
+	.@p = getarg(0);
+	.@pulls = getarg(1);
+	deletearray @gacha_res$;
+	deletearray @gacha_rare;
+	.@batch = gettimetick(2) * 10000 + rand(10000);
+	.@values$ = "";
+	for (.@n = 1; .@n <= .@pulls; .@n++) {{
+		for (.@k = .fs[.@p]; .@k < .fs[.@p] + .fn[.@p]; .@k++)
+			getitem2 .fi[.@k], .fa[.@k], 1, .fr[.@k], 0, 0, 0, 0, 0;
+		.@r = rand(.pt[.@p]);
+		.@k = .ps[.@p];
+		while (.gw[.@k] <= .@r)  // .gw 是累計權重
+			.@k++;
+		getitem2 .gi[.@k], .ga[.@k], 1, .gr[.@k], 0, 0, 0, 0, 0;
+		@gacha_res$[.@n - 1] = .@n + ". " + getitemname(.gi[.@k]) + (.gr[.@k] ? " +" + .gr[.@k] : "") + " x" + .ga[.@k];
+		@gacha_rare[.@n - 1] = .gx[.@k];
+		if (.gx[.@k])
+			announce "[轉蛋機] " + strcharinfo(0) + " 從【" + .pname$[.@p] + "】抽中了 " + getitemname(.gi[.@k]) + "！", bc_all;
+		.@values$ += (.@n > 1 ? "," : "") + "(" + getcharid(0) + "," + getcharid(3) + "," + .@batch + "," + .@n + ","
+			+ (.gx[.@k] ? 0 : 2) + "," + .gi[.@k] + "," + .ga[.@k] + "," + getarg(2) + ",0,0)";
+	}}
+	query_sql "INSERT INTO `gacha_log` (`char_id`,`account_id`,`pull_batch_id`,`pull_idx`,`tier`,`item_id`,`qty`,`cost_zeny`,`cost_item_id`,`cost_item_qty`) VALUES " + .@values$;
+	return;
+
+// 活動獎品：免費抽最新一期轉蛋 10 次，用 doevent 帶著得獎者呼叫（咯咯雞，見 npc_zh.py TWEAKS）
+OnPrize:
+	dispbottom "[活動獎品] 免費抽【" + .pname$[.prize_pool] + "】10 次：";
+	callsub L_Pull, .prize_pool, 10, 0;
+	for (.@i = 0; .@i < 10; .@i++)
+		dispbottom "[活動獎品] " + @gacha_res$[.@i];
+	end;
 
 OnInit:
 '''
