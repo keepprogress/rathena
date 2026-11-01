@@ -52,6 +52,8 @@ TWEAKS = {
 		('getitem .round_item_id, .round_item_amount;', 5),
 		('getitem .finish_item_id, .finish_item_amount;', 50),
 		('getitem .bonus_item_id, .bonus_item_amount;', 30))],
+	# 狩獵任務 12 小時一次，任務點數（3＋怪物平均等級/6）×3 換商城點數
+	'custom/quests/hunting_missions.txt': [(_g := '#Mission_Points += .@Mission_Points;', _g + '\n\t#CASHPOINTS += .@Mission_Points * 3; dispbottom "獲得 " + (.@Mission_Points * 3) + " 商城點數，目前共 " + #CASHPOINTS + " 點。";')],
 }
 CUSTOM_CONF = ROOT / 'npc/scripts_custom.conf'
 CONF_BEGIN, CONF_END = '// npc_zh.py conf: begin\n', '// npc_zh.py conf: end\n'

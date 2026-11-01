@@ -1,0 +1,127 @@
+//===== rAthena Script =======================================
+//= 波利大作戰
+//===== Description: =========================================
+//= 偶數小時 :40 開放報名 2 分鐘，到普隆德拉找入口波利進小房間（guild_vs1-4）。
+//= 房間中央的波利大家一起點，點一下扣 1 點血；每打倒一關就變大進下一關，
+//= 血量 = 房內人數 × 30 × 關數，限時內打不倒就結束。
+//= 每關點滿 10 下的人拿 關數×3 商城點數，最後一關打倒最後一下的人另拿 50 點。
+//= GM 手動開：@bigporing
+//============================================================
+
+prontera,165,195,4	script	波利大作戰#bp_entry	1002,{
+	if (getvariableofnpc(.state, "波利#bp_room") != 1)
+		end;
+	mes "[波利大作戰]";
+	mes "大家一起點波利，波利會越變越大，";
+	mes "撐過越多關，商城點數越多！";
+	next;
+	if (select("進場:不用了") == 2)
+		close;
+	warp "guild_vs1-4", 50, 44;
+	end;
+
+OnInit:
+	disablenpc strnpcinfo(0);
+	end;
+}
+
+guild_vs1-4,50,50,4	script	波利#bp_room	1002,{
+	if (.hp <= 0)
+		end;
+	if (@bp_tick + 300 > gettimetick(0))	// 0.3 秒內重複點不算，避免連點器
+		end;
+	@bp_tick = gettimetick(0);
+	if (@bp_key != .key) {
+		@bp_key = .key;
+		@bp_hits = 0;
+	}
+	@bp_hits++;
+	.hp--;
+	specialeffect EF_HIT1;
+	if (.hp > 0) {
+		if (.hp % 50 == 0)
+			npctalk "還剩 " + .hp + " 點血！";
+		end;
+	}
+	.last_aid = getcharid(3);
+	.last_name$ = strcharinfo(0);
+	end;
+
+OnMinute40:
+	if (gettime(DT_HOUR) % 2)
+		end;
+OnStart:
+	detachrid;	// @bigporing 會帶著 GM，GM 下線不能讓活動跟著中斷
+	if (.state)
+		end;
+	.state = 1;
+	enablenpc "波利大作戰#bp_entry";
+	announce "[波利大作戰] 開放報名 2 分鐘！到普隆德拉 (165,195) 找波利進場，一起把波利點到最大！", bc_all;
+	sleep 60000;
+	announce "[波利大作戰] 報名剩 1 分鐘，普隆德拉 (165,195)。", bc_all;
+	sleep 60000;
+	disablenpc "波利大作戰#bp_entry";
+	.@n = getmapusers(strnpcinfo(4));
+	if (!.@n) {
+		announce "[波利大作戰] 沒有人參加，下次再來！", bc_all;
+		.state = 0;
+		end;
+	}
+	.state = 2;
+	announce "[波利大作戰] " + .@n + " 人參賽，開始！", bc_all;
+	for (.@s = 1; .@s <= .stages; .@s++) {
+		.key = gettimetick(2) * 10 + .@s;
+		.hp = getmapusers(strnpcinfo(4)) * 30 * .@s;
+		.@limit = 45 + 15 * .@s;
+		setnpcdisplay strnpcinfo(0), .name$[.@s], .class[.@s], .size[.@s];
+		specialeffect EF_SUMMONSLAVE;
+		mapannounce strnpcinfo(4), "第 " + .@s + " 關：" + .name$[.@s] + "（" + .hp + " 點血），限時 " + .@limit + " 秒！", bc_map;
+		for (.@t = 0; .@t < .@limit && .hp > 0; .@t++)
+			sleep 1000;
+		if (.hp > 0) {
+			.hp = 0;
+			npctalk "打不倒我～下次見！";
+			mapannounce strnpcinfo(4), "時間到，" + .name$[.@s] + " 逃走了！", bc_map;
+			break;
+		}
+		specialeffect EF_MVP;
+		mapannounce strnpcinfo(4), "第 " + .@s + " 關過關！點滿 10 下的人獲得 " + (.@s * 3) + " 商城點數。", bc_map;
+		.@c = getmapunits(BL_PC, strnpcinfo(4), .@aid);
+		for (.@i = 0; .@i < .@c; .@i++) {
+			if (!attachrid(.@aid[.@i]))
+				continue;
+			if (@bp_key == .key && @bp_hits >= 10) {
+				#CASHPOINTS += .@s * 3;
+				dispbottom "波利大作戰：第 " + .@s + " 關點了 " + @bp_hits + " 下，獲得 " + (.@s * 3) + " 商城點數，目前共 " + #CASHPOINTS + " 點。";
+			}
+			if (.@s == .stages && getcharid(3) == .last_aid) {
+				#CASHPOINTS += 50;
+				dispbottom "你打倒了" + .name$[.@s] + "！再獲得 50 商城點數，目前共 " + #CASHPOINTS + " 點。";
+			}
+			detachrid;
+		}
+		if (.@s == .stages)
+			announce "[波利大作戰] 全部 " + .stages + " 關過關！" + .last_name$ + " 打倒了" + .name$[.@s] + "，獲得 50 商城點數！", bc_all;
+		sleep 5000;
+	}
+	sleep 3000;
+	mapwarp strnpcinfo(4), "prontera", 156, 191;
+	setnpcdisplay strnpcinfo(0), .name$[1], .class[1], .size[1];
+	.state = 0;
+	end;
+
+OnInit:
+	bindatcmd "bigporing", strnpcinfo(3) + "::OnStart", 60, 99;
+	.stages = 5;
+	// 每關的樣子：名字、外觀（魔物 ID）、大小（0 一般、1 小、2 大）
+	setarray .name$[1], "小波利", "波利", "大波利", "巨型瑪斯特波利", "天使波利王";
+	setarray .class[1], 1002, 1002, 1002, 1090, 1096;
+	setarray .size[1], 1, 0, 2, 2, 2;
+	setnpcdisplay strnpcinfo(0), .name$[1], .class[1], .size[1];
+	end;
+}
+
+guild_vs1-4	mapflag	noteleport
+guild_vs1-4	mapflag	nomemo
+guild_vs1-4	mapflag	nobranch
+guild_vs1-4	mapflag	nosave	SavePoint

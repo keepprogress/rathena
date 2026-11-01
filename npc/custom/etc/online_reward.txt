@@ -1,0 +1,27 @@
+//===== rAthena Script =======================================
+//= 在線獎勵
+//===== Description: =========================================
+//= 每在線 30 分鐘給商城點數（#CASHPOINTS），掛網也算。
+//= 每 5 分鐘記一次，存在角色變數，斷線重登不會從頭算。
+//============================================================
+
+-	script	OnlineReward	-1,{
+OnPCLoginEvent:
+	addtimer .tick, strnpcinfo(3) + "::OnTick";
+	end;
+
+OnTick:
+	addtimer .tick, strnpcinfo(3) + "::OnTick";
+	if (++online_reward_ticks < .every)
+		end;
+	online_reward_ticks = 0;
+	#CASHPOINTS += .points;
+	dispbottom "在線獎勵：獲得 " + .points + " 商城點數，目前共 " + #CASHPOINTS + " 點。";
+	end;
+
+OnInit:
+	.tick = 5 * 60 * 1000;
+	.every = 6;	// 6 次 = 30 分鐘
+	.points = 10;
+	end;
+}
