@@ -11,6 +11,13 @@
 
 -	script	NewbieGift	-1,{
 OnPCLoginEvent:
+	if (!newbie_gift_gym) {	// 一次性補發：禮包加入健身房會員券之前就領過禮包的角色
+		newbie_gift_gym = 1;
+		if (newbie_gift_done) {
+			getitem 7776,10;
+			dispbottom "補發新手禮包的健身房會員券 10 張：拿去斐揚 (173,141) 找健身卡布斯，每張負重 +200。";
+		}
+	}
 	if (newbie_gift_done)
 		end;
 	newbie_gift_done = 1;
