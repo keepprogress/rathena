@@ -1,0 +1,27 @@
+//===== rAthena Script =======================================
+//= 手推車服務
+//===== Description: =========================================
+//= 任何職業找 NPC 免費拿手推車。pc_setcart() 需要 MC_PUSHCART，
+//= 所以先給 10 級 SKILL_PERM_GRANT：寫進存檔，轉職、重置技能都不會清掉，
+//= 手推車也就跟著保留（pc.cpp 轉職時只在沒有 MC_PUSHCART 才卸下手推車）。
+//= 已經自己學了手推車的商人系不再給，免得蓋掉他們點的技能點。
+//============================================================
+
+prontera,151,183,4	script	手推車服務#cart	4_F_KAFRA1,{
+	mes "[手推車服務]";
+	if (checkcart() && getskilllv("MC_PUSHCART")) {	// 舊版登入腳本給的是暫時技能，這種要重新補
+		mes "你已經推著手推車了。";
+		close;
+	}
+	mes "需要手推車嗎？不分職業，免費提供。";
+	mes "拿過一次之後，轉職也會跟著你。";
+	next;
+	if (select("我要手推車:不用了") == 2)
+		close;
+	if (!getskilllv("MC_PUSHCART"))
+		skill "MC_PUSHCART", 10, SKILL_PERM_GRANT;
+	setcart;
+	mes "[手推車服務]";
+	mes "推好了！按 Alt+W 可以打開手推車。";
+	close;
+}

@@ -29,7 +29,8 @@ DISPLAY = re.compile(
 	r'|\.@K_Menu0\$')  # 卡普拉選單：選項陣列和 == 比對同一批字串，一起翻才對得上
 STRING = re.compile(r'"((?:[^"\\]|\\.)*)"')
 # 顯示行裡當成名稱/變數名傳給這些函式的字串不能翻（例：getvariableofnpc(.x,"MVP Summoner")、getd("Mission"+.@i)）
-CODE_ARG = re.compile(r'\b(getvariableofnpc|getd|setd|callfunc|callsub|donpcevent|getmonsterinfo|strnpcinfo|getmapusers)\s*\([^()]*$')
+CODE_ARG = re.compile(r'\b(getvariableofnpc|getd|setd|callfunc|callsub|donpcevent|getmonsterinfo|strnpcinfo|getmapusers)\s*\([^()]*$'
+	r'|\b(mapannounce|areaannounce)\s+$')  # mapannounce 第一個參數是地圖代號（airplane、hugel）
 # 譯文必須原樣保留的記號：格式佔位符、顏色碼、客戶端標籤（<NAVI> 等）與 <INFO> 裡的座標/ID
 KEEP = re.compile(r'%[-+#0]*\d*(?:\.\d+)?[sdifxXuc%]|\^[0-9A-Fa-f]{6}|<INFO>[^<]*</INFO>|</?[A-Z]+>')
 # 放在地圖上的 NPC 標頭；浮動 NPC（-）與 function 沒有看得到的名字
@@ -103,8 +104,9 @@ def display_strings(text):
 assert [s for *_, s in display_strings(
 	'menu "A",L1,\n\t"B",L2;\nset .@a$,"x";\nmes "Cost "+callfunc("F_InsertComma",1);\nDisp("C:D"); Pick("","ama_fild01");\n'
 	'mes "Room "+getvariableofnpc(.t,"MVP Summoner")+" min "+getd("Mission"+.@i+"_")+" ok";\n'
+	'mapannounce "airplane","Hi",bc_map;\n'
 	'case 1: setarray .@K_Menu0$[0],"Save","Cancel";\nif (.@K_Menu0$[.@j] == "Save")')
-] == ['A', 'B', 'Cost ', 'C:D', 'Room ', ' min ', ' ok', 'Save', 'Cancel', 'Save']
+] == ['A', 'B', 'Cost ', 'C:D', 'Room ', ' min ', ' ok', 'Hi', 'Save', 'Cancel', 'Save']
 
 
 def name_key(disp):
