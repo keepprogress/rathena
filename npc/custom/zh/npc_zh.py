@@ -45,14 +45,17 @@ TWEAKS = {
 		_w + ''.join(f'\nizlude_{c},134,150,4\tduplicate(Warper)\t傳送師#izl_{c}::Warper#izl_{c}\t811' for c in 'abcd'))],
 	# 活動另外給商城點數（點數商城 / 轉蛋機用，見 custom/etc/cash_shop.txt）
 	'custom/events/devil_square.txt': [('OnTreasureDead:\n\t.mob--;', 'OnTreasureDead:\n\t.mob--;\n\t' + (_cash := lambda n:
-		f'#CASHPOINTS += {n}; dispbottom "獲得 {n} 商城點數，目前共 " + #CASHPOINTS + " 點。";')(20))],
+		f'#CASHPOINTS += {n}; dispbottom "獲得 {n} 商城點數，目前共 " + #CASHPOINTS + " 點。";')(20)),
+		# 名字被 strnpcinfo(0) 鎖住沒翻；整個檔都用 strnpcinfo(0) 找自己，改名不會斷（下面兩個同理）
+		('\tDevil Square Guardian#1\t', '\t惡魔廣場守衛#1\t'),
+		('"惡魔廣場已開放！活動將於 5 分鐘後開始。"', '"惡魔廣場已開放！5 分鐘內到普隆德拉 (156,185) 找惡魔廣場守衛進場（限 70 級以上，報名費 20,000z）。"')],
 	# 咯咯雞：每天 15:50、21:50 自動開；獎品改成免費抽最新一期台服轉蛋 10 次（custom/etc/gacha.txt 的 OnPrize）
 	'custom/events/cluckers.txt': [
 		('getitem $cluck_item_id,$cluck_item_amount;', 'doevent "轉蛋機#cgacha::OnPrize";'),
 		('OnTimer10000:', 'OnClock1550:\nOnClock2150:\n\tif (.startcluck)\n\t\tend;\n'
 			'\tannounce "[咯咯咯！轟！] 即將在普隆德拉開始！獎品是免費抽最新一期轉蛋 10 次！",bc_blue;\n\tinitnpctimer;\n\tend;\nOnTimer10000:')],
-	'custom/events/mushroom_event.txt': [(_g := 'getitem .prize, .amount;', _g + '\n\t' + _cash(5))],
-	'custom/events/mvp_ladder.txt': [(_g, '{ ' + _g + ' ' + _cash(n) + ' }') for _g, n in (
+	'custom/events/mushroom_event.txt': [(_g := 'getitem .prize, .amount;', _g + '\n\t' + _cash(5)), ('\tFind the Mushroom\t', '\t尋找蘑菇\t')],
+	'custom/events/mvp_ladder.txt': [('\tMvP Ladder Warper\t', '\tMVP 天梯傳送員\t')] + [(_g, '{ ' + _g + ' ' + _cash(n) + ' }') for _g, n in (
 		('getitem .round_item_id, .round_item_amount;', 5),
 		('getitem .finish_item_id, .finish_item_amount;', 50),
 		('getitem .bonus_item_id, .bonus_item_amount;', 30))],
