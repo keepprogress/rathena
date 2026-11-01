@@ -22,6 +22,8 @@ NPC 對話與 NPC 名稱另見 `npc/custom/zh/npc_zh.py`。
 # 伺服器端（在 rAthena 根目錄）
 python3 -I data-overlay/zh-tw/gen_item_db.py <rocn> .
 python3 -I data-overlay/zh-tw/gen_mob_db.py <rocn> .
+# 每日簽到：伺服器 db/import/attendance.yml＋客戶端 .lub（放 Pi client/System/，Config.local.js 要 enableCheckAttendance: true）
+python3 -I data-overlay/zh-tw/gen_attendance.py /tmp/CheckAttendance.lub
 
 # 客戶端（Pi ~/apps/robrowser）；輸出會先清空，不要直接指向 overlay/（容器 bind mount 的是目錄本身）
 python3 -I <repo>/data-overlay/zh-tw/build_zhtw.py rocn client/data kro_msgstringtable.csv tex-zh /tmp/overlay.new

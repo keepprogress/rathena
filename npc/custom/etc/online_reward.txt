@@ -3,6 +3,8 @@
 //===== Description: =========================================
 //= 每在線 30 分鐘給商城點數（#CASHPOINTS），掛網也算。
 //= 每 5 分鐘記一次，存在角色變數，斷線重登不會從頭算。
+//= 順便補發每日簽到的點數：簽到獎勵是郵件寄道具（db/import/attendance.yml），
+//= 沒有事件可掛，所以每次計時檢查 #AttendanceDate 有沒有變，有就給 10 點、每 5 天再加 30 點。
 //============================================================
 
 -	script	OnlineReward	-1,{
@@ -12,6 +14,12 @@ OnPCLoginEvent:
 
 OnTick:
 	addtimer .tick, strnpcinfo(3) + "::OnTick";
+	if (#AttendanceDate > #attendance_paid) {
+		#attendance_paid = #AttendanceDate;
+		.@p = 10 + (#AttendanceCounter % 5 ? 0 : 30);
+		#CASHPOINTS += .@p;
+		dispbottom "每日簽到第 " + #AttendanceCounter + " 天：獲得 " + .@p + " 商城點數，目前共 " + #CASHPOINTS + " 點。獎勵道具請到信箱領取。";
+	}
 	if (++online_reward_ticks < .every)
 		end;
 	online_reward_ticks = 0;
